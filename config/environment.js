@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'codingblocks-online',
+    podModulePrefix: 'codingblocks-online/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
