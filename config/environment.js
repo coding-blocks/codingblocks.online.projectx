@@ -33,6 +33,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.apiHost = 'http://localhost:3000'
     ENV.publicUrl = 'http://localhost:4200';
     ENV.clientId = 9517298757
     ENV.oneauthURL = 'https://account.codingblocks.com'

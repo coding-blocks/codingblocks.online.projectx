@@ -1,4 +1,9 @@
 import Route from '@ember/routing/route';
+import { action } from ''
 
-export default Route.extend({
-});
+export default class ApplicationRoute extends Route {
+    model () {
+
+    }
+
+}
