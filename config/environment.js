@@ -33,6 +33,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.publicUrl = 'http://localhost:4200';
+    ENV.clientId = 9517298757
+    ENV.oneauthURL = 'https://account.codingblocks.com'
   }
 
   if (environment === 'test') {
@@ -49,6 +52,17 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    /*ENV.publicUrl = 'https://online.codingblocks.com';
+    ENV.apiEndpoint = 'https://api-online.cb.lk';
+    ENV.clientId = 5633768694
+    ENV.oneauthURL = 'https://account.codingblocks.com/'*/
+  }
+
+  if (environment === 'staging') {
+    /*ENV.publicUrl = 'https://staging.codingblocks.online';
+    ENV.apiEndpoint = 'https://codingblocks-online-staging.herokuapp.com';
+    ENV.clientId = 5633768694
+    ENV.oneauthURL = 'https://account.codingblocks.com/'*/
   }
 
   return ENV;
