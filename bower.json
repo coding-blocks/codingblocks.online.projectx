@@ -1,0 +1,6 @@
+{
+  "name": "codingblocks-online",
+  "dependencies": {
+    "raven-js": "~3.3"
+  }
+}

@@ -2156,6 +2156,12 @@ ember-cli-qunit@^4.1.1:
     ember-cli-babel "^6.8.1"
     ember-qunit "^3.3.0"
 
+ember-cli-sentry@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/ember-cli-sentry/-/ember-cli-sentry-2.4.4.tgz#59a84a8c8b22d76d8f042740fe627521238420f9"
+  dependencies:
+    ember-cli-babel "^6.0.0"
+
 ember-cli-shims@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ember-cli-shims/-/ember-cli-shims-1.2.0.tgz#0f53aff0aab80b5f29da3a9731bac56169dd941f"

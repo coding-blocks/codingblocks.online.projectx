@@ -7,6 +7,9 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    sentry: {
+      dsn: 'http://d77f60ee852e4daeafe0edd20c294269@sentry.cb.lk/13'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
