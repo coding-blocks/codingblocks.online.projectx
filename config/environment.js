@@ -10,6 +10,15 @@ module.exports = function(environment) {
     sentry: {
       dsn: 'http://d77f60ee852e4daeafe0edd20c294269@sentry.cb.lk/13'
     },
+    'ember-simple-auth-token': {
+      identificationField: 'code',
+      passwordField: 'code',
+      tokenPropertyName: 'jwt',
+      refreshAccessTokens: true,
+      tokenExpireName: 'exp',
+      refreshLeeway: 60, //send a request for refresh_token 60sec before actual expiration
+      authorizationPrefix: 'JWT '
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -35,8 +44,11 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.apiHost = 'http://localhost:3000'
     ENV.publicUrl = 'http://localhost:4200';
-    ENV.clientId = 9517298757
+    ENV.clientId = 7642172843
     ENV.oneauthURL = 'https://account.codingblocks.com'
+    ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'
+    ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.apiHost}/api/jwt/login/`
+    ENV['ember-simple-auth-token'].serverTokenRefreshEndpoint = `${ENV.apiHost}/api/jwt/refresh/`
   }
 
   if (environment === 'test') {
