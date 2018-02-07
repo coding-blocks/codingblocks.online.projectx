@@ -1,0 +1,7 @@
+{{#if fetchRecommendedCoursesTask.isRunning}}
+    Loading... {{!-- here we can show blank cards to indicate loading --}}
+{{else}}
+    {{#each recommendedCourses as |course|}}
+        {{course.title}} <br>
+    {{/each}}
+{{/if}}
