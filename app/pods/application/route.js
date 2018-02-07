@@ -1,9 +1,29 @@
 import Route from '@ember/routing/route';
-import { action } from ''
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+import { inject as service } from '@ember/service';
+import { isNone } from '@ember/utils';
 
-export default class ApplicationRoute extends Route {
+export default Route.extend(ApplicationRouteMixin, {
+    session: service(),
+    currentUser: service(),
+    queryParams: {
+        code: {
+            refreshModel: true
+        }
+    },
+    beforeModel (transition) {
+        if( !isNone(transition.queryParams.code) ) {
+            if (this.get('session.isAuthenticated')) {
+                return this.transitionTo({queryParams: {code: undefined}})
+            }            
+            // we have ?code qp
+            const { code } = transition.queryParams
+            return this.get('session').authenticate('authenticator:jwt', {identification: code, password: code, code})
+        }
+    },
     model () {
-
+        if (this.get('session.isAuthenticated')) {
+            return this.get('currentUser').load()
+        } 
     }
-
-}
+})

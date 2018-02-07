@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     'ember'
   ],
+  parser: "babel-eslint",
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended'
