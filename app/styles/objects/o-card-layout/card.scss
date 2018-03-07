@@ -1,0 +1,20 @@
+.o-layout-card  {
+  display: block;
+  @include padding-mixin(25.5px , null, null, 19.5px);
+  position: relative;
+  top: 252px;
+  margin-left: -32px;
+  .button-solid {
+    margin-left: 140px;
+    position: relative;
+    top: 10px;
+  }
+}
+
+.o-image-card {
+  margin-bottom: 22.5px;
+}
+
+.o-text-card {
+  margin-bottom: 18.5px;
+}

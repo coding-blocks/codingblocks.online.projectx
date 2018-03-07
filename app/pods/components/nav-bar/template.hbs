@@ -1,6 +1,27 @@
-{{log session.isAuthenticated}}
-{{#if session.isAuthenticated}}
-    <button onclick={{action 'invalidateSession'}}>Logout</button>
-{{else}}
-    {{login-button}}
-{{/if}}
+<header>
+       <nav>
+           <span>
+                  <img src="images/online-logo.png" alt="online-logo" class="nav-logo">
+           </span>
+           <ul class="nav-list">
+               <li class="nav-items">
+                   About us
+               </li>
+               <li class="nav-items">
+                   All Courses
+               </li>
+               <li class="nav-items">
+                   Contact us
+               </li>
+               <li class="nav-items">
+                 <div class="button-solid">
+                    {{#if session.isAuthenticated}}
+                        <button onclick={{action 'invalidateSession'}}>Logout</button>
+                    {{else}}
+                        {{login-button tagName="button"}}
+                    {{/if}}
+                 </div>
+               </li>
+           </ul>
+       </nav>
+   </header>

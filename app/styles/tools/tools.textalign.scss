@@ -1,0 +1,11 @@
+@mixin textalign($textalign) {
+   @if $textalign == right {
+     text-align: right;
+   }
+   @else if $textalign == center {
+     text-align: center;
+   }
+   @else {
+     text-align: left;
+   }
+}

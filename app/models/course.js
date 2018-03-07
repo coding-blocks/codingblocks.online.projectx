@@ -8,6 +8,7 @@ export default DS.Model.extend({
     summary: DS.attr(),
     fees: DS.attr(),
     promoVideo: DS.attr(),
+    coverImage: DS.attr(),
     price: computed('fees', 'isFree', function () {
     if (this.get('isFree'))
         return 0

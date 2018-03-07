@@ -1,0 +1,30 @@
+
+$global-line-height: 24px !default;
+$global-border-radius: 50% !default;
+
+//button
+$global-button-border-radius: 42.5px !default;
+$global-transition: all 300ms ease-in-out !default;
+
+$dashed-button-width: 173px;
+$dashed-button-height: 44px;
+$dashed-border-radius: 22px;
+$dashed-button-background: $white;
+$dashed-button-color: $color-button-primary;
+
+$solid-button-background: $color-button-primary;
+$solid-button-color: $white;
+$solid-button-width: 94.5px;
+$solid-button-height: 42.5px;
+$solid-button-border-radius: 21.2px;
+
+
+//Font
+$global-font-family: Effra;
+$global-font-style: normal !default;
+$global-font-weight: normal !default;
+$global-font-src: local('Effra'), url('../../../public/fonts/Effra_Std_Rg.ttf') format('ttf');
+
+$global-container-width: 551px;
+$global-container-height: 106px;
+

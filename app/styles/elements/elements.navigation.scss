@@ -1,0 +1,14 @@
+.nav-list {
+  @include float(right);
+}
+
+.nav-items {
+  @include font($global-font-family, $global-font-size, $global-font-weight);
+  display: inline-block;
+  @include margin(null, 52px, null, null);
+}
+
+.nav-logo {
+  height: 55.8px;
+  @include margin(5px, null, null, 28px);
+}
