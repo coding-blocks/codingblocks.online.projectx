@@ -1,0 +1,14 @@
+TITLE: {{course.title}}
+
+<br>
+<ol>
+{{#each course.sections as |section|}}
+    <li>{{section.name}}
+        <ul>
+            {{#each section.contents as |content|}}
+                {{content.lecture.name}}
+            {{/each}}
+        </ul>
+    </li>
+{{/each}}
+</ol>

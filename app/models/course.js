@@ -24,5 +24,6 @@ export default DS.Model.extend({
     videosDuration: DS.attr(),
     type: DS.attr(),
     color: DS.attr(),
-    backgroundImage: DS.attr()
+    backgroundImage: DS.attr(),
+    sections: DS.hasMany('section')
 });

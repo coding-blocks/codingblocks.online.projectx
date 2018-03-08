@@ -18,7 +18,9 @@ Router.map(function() {
       })
     })
   */
-  this.route('classroom', function() {});
+  this.route('classroom', function() {
+    this.route('timeline', {path: '/course/:courseId/run/:runId'}, function () {})
+  });
 });
 
 export default Router;
