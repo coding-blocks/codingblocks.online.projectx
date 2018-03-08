@@ -18,6 +18,7 @@ Router.map(function() {
       })
     })
   */
+  this.route('classroom', function() {});
 });
 
 export default Router;

@@ -10,9 +10,11 @@
                <li class="nav-items">
                    All Courses
                </li>
+               {{#if session.isAuthenticated}}
                <li class="nav-items">
-                   Contact us
-               </li>
+                    {{#link-to 'classroom' tagName="span"}}My Courses{{/link-to}}
+               </li>         
+               {{/if}}
                <li class="nav-items">
                  <div class="button-solid">
                     {{#if session.isAuthenticated}}

@@ -1,0 +1,17 @@
+
+    {{#each runs as |run index|}}
+        <div class="card o-layout-card ">
+            <div class="card-image o-image-card">
+                <img src="images/c++">
+            </div>
+            <div class="card-heading o-text-card">
+                {{run.course.title}}
+            </div>
+            <div class="card-text">
+                {{run.course.summary}}
+            </div>
+            <div class="button-solid">
+                <button>Register</button>
+            </div>
+        </div>
+    {{/each}}

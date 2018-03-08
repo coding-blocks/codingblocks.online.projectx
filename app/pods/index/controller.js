@@ -16,11 +16,9 @@ export default class IndexController extends Controller {
 
     fetchRecommendedCoursesTask = task(function * () {
         return yield this.get('store').query('course', {
-            custom: {
-                ext: 'url',
-                url: 'all'
-            },
-            recommended: true
+            filter: {
+                recommended: true,
+            }
         })
     })
 }
