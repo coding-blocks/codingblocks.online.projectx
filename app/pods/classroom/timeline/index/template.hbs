@@ -1,5 +1,4 @@
 TITLE: {{course.title}}
-
 <br>
 <ol>
 {{#each course.sections as |section|}}
@@ -12,3 +11,8 @@ TITLE: {{course.title}}
     </li>
 {{/each}}
 </ol>
+
+{{log run.topRunAttempt.id}}
+{{#link-to 'attempt' run.topRunAttempt.id}}
+Run Attempts
+{{/link-to}}
