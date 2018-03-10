@@ -1,18 +1,22 @@
+<div class="grid row">
 {{#each runs as |run index|}}
-    <div class="card o-layout-card ">
-        <div class="card-image o-image-card">
-            <img src="images/c++">
-        </div>
-        <div class="card-heading o-text-card">
-            {{run.course.title}}
-        </div>
-        <div class="card-text">
-            {{run.course.summary}}
-        </div>
-        <div class="button-solid">
-            {{#link-to "classroom.timeline" run.course.id run.id tagName="button"}}
-                Resume
-            {{/link-to}}
+    <div class="col-md-4">
+        <div class="card o-layout-card ">
+            <div class="card-image o-image-card">
+                <img src="{{run.course.logo}}">
+            </div>
+            <div class="card-heading o-text-card">
+                {{run.course.title}}
+            </div>
+            <div class="card-text">
+                {{run.course.subtitle}}
+            </div>
+            <div class="button-solid">
+                {{#link-to "classroom.timeline" run.course.id run.id tagName="button"}}
+                    Resume
+                {{/link-to}}
+            </div>
         </div>
     </div>
 {{/each}}
+</div>

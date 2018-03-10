@@ -2,13 +2,18 @@
   display: block;
   @include padding-mixin(25.5px , null, null, 19.5px);
   position: relative;
-  top: 252px;
-  margin-left: -32px;
+  margin-top: 25.5px;
   .button-solid {
     margin-left: 140px;
     position: relative;
     top: 10px;
   }
+}
+
+.grid {
+  margin-left: 34px;
+  margin-right: 34px;
+  padding:32px;
 }
 
 .o-image-card {
