@@ -1,0 +1,6 @@
+@mixin font($global-font, $global-size, $global-weight) {
+  font-family: $global-font;
+  font-size: $global-size;
+  font-weight: $global-weight;
+}
+

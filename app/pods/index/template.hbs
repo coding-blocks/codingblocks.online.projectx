@@ -1,7 +1,24 @@
 {{#if fetchRecommendedCoursesTask.isRunning}}
     Loading... {{!-- here we can show blank cards to indicate loading --}}
 {{else}}
-    {{#each recommendedCourses as |course|}}
-        {{course.title}} <br>
-    {{/each}}
+    <div class="grid row">   
+        {{#each recommendedCourses as |course|}}
+        <div class="col-md-4">
+            <div class="card o-layout-card ">
+                <div class="card-image o-image-card">
+                    <img src="{{course.logo}}">
+                </div>
+                <div class="card-heading o-text-card">
+                    {{course.title}}
+                </div>
+                <div class="card-text">
+                    {{course.summary}}
+                </div>
+                <div class="button-solid">
+                    <button>Register</button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 {{/if}}

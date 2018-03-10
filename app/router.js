@@ -8,6 +8,19 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('courses');
+  /*
+    This is how it's gonna be
+
+    this.route('classroom', function () {
+      this.route('course-timeline', {path: '/course/:courseId/run/:runId'}, function () { 
+        // Move runAttempt Logic to service
+        this.route('content', {path: '/content/content:id'}) // Move this content (document/lecture/video) logic to service
+      })
+    })
+  */
+  this.route('classroom', function() {
+    this.route('timeline', {path: '/course/:courseId/run/:runId'}, function () {})
+  });
 });
 
 export default Router;

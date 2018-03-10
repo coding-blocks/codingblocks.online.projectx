@@ -8,6 +8,8 @@ export default DS.Model.extend({
     summary: DS.attr(),
     fees: DS.attr(),
     promoVideo: DS.attr(),
+    coverImage: DS.attr(),
+    logo: DS.attr(),
     price: computed('fees', 'isFree', function () {
     if (this.get('isFree'))
         return 0
@@ -23,5 +25,6 @@ export default DS.Model.extend({
     videosDuration: DS.attr(),
     type: DS.attr(),
     color: DS.attr(),
-    backgroundImage: DS.attr()
+    backgroundImage: DS.attr(),
+    sections: DS.hasMany('section')
 });

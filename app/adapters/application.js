@@ -8,7 +8,7 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     authorizer: 'authorizer:token',
     host: env.apiHost,
-    namespace: 'api',
+    namespace: 'api/v2',
     urlForQueryRecord(query) {
         if(query.custom) {
           switch (query.custom.ext){
