@@ -1,0 +1,9 @@
+<div class = "lecture video-container">
+   <video id="video"class="w-100" controls onended={{onVideoCompleted}}></video>
+   <div class="video-controls col-sm-12 offset-sm-5">
+      <button type="video-fast-fwd" {{action 'changeSpeed' -0.5}} id="video-fbwd"><i class="fa fa-fast-backward"></i></button>
+      <label id="playback-speed">{{pr}}X</label>
+      <button type="video-fast-back" {{action 'changeSpeed' 0.5}} id="video-ffwd"><i class="fa fa-fast-forward"></i></button>
+   </div>
+</div>
+{{yield}}

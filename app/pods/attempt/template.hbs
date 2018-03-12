@@ -2,3 +2,17 @@
 {{model.run.course.title}}
 <br>
 {{model.run.name}}
+
+
+<ul>
+    {{#each course.sections as |section|}}
+        <li>
+            {{section.name}}
+            <ol>
+                {{#each section.contents as |content|}}
+                    <li> {{#link-to 'attempt.content' content.id}} {{content.payload.name}} {{/link-to}} </li>
+                {{/each}}
+            </ol>
+        </li>
+    {{/each}}
+</ul>

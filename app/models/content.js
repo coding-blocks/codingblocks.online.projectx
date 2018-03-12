@@ -7,9 +7,9 @@ export default DS.Model.extend({
   //quiz: DS.belongsTo('quiz'),
   lecture: DS.belongsTo('lecture'),
   //"code-challenge": DS.belongsTo('code-challenge'),
-  //document: DS.belongsTo('document'),
+  document: DS.belongsTo('document'),
   //attachment: DS.belongsTo('attachment'),
-  //video: DS.belongsTo('video'),
+  video: DS.belongsTo('video'),
   payload: Ember.computed('contentable', 'quiz', 'lecture', 'code-challenge', 'document', 'video', function () {
     return this.get(this.get('contentable'))
   }),
