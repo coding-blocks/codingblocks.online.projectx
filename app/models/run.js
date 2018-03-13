@@ -9,5 +9,9 @@ export default DS.Model.extend({
   runAttemptId: DS.attr(),
   course: DS.belongsTo('course'),
   user: DS.belongsTo('user'),
+  topRunAttempt: Ember.computed('runAttempts', function () {
+    return this.get('runAttempts').objectAt(0)
+  }),
+  runAttempts: DS.hasMany('run-attempt'),
   percentComplete: DS.attr()
 })

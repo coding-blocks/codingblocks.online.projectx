@@ -5,6 +5,7 @@ export default Route.extend({
        return this.modelFor('classroom.timeline')
     },
     setupController(controller, model) {
-        controller.set("course", model)
+        controller.set("course", model.get("course"))
+        controller.set("run", model)
     }
 });
