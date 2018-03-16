@@ -17,8 +17,9 @@ module.exports = function(environment) {
       refreshAccessTokens: true,
       tokenExpireName: 'exp',
       refreshLeeway: 60, //send a request for refresh_token 60sec before actual expiration
-      authorizationPrefix: 'JWT '
+      authorizationPrefix: 'JWT ',
     },
+    hbBaseUrl: "https://hack.codingblocks.com",
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

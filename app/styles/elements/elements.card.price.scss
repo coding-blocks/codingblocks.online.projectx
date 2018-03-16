@@ -1,0 +1,18 @@
+.card-price-details {
+  display: inline-block;
+  position: relative;
+  top: 15px;
+  padding-right: 18px;
+}
+
+.card-batches {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.card-batch-details {
+  display: inline-block;
+  span {
+    color: red;
+  }
+}

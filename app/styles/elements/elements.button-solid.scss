@@ -24,7 +24,7 @@
     @extend %button-text;
     @include dimensions($width, $height);
     @include border-radius($border-radius);
-    background: $background;
+    background: $button-gradient;
     color: $color;
   }
 }

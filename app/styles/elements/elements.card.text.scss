@@ -1,5 +1,9 @@
+.card-layout {
+  margin-top: 22.5px;
+}
+
 .card {
-  @include dimensions(283px, 328px);
+  @include dimensions(283px, 353px);
   box-shadow: 0 20px 57px 0 $card-box-shadow;
   border: solid .5px $card-box-border;
   background: $white;
@@ -12,7 +16,7 @@
 }
 
 .card-heading {
-  @include dimensions(179px, unset);
+  @include dimensions(189px, unset);
   @include font(Effra-Regular, 20.1px, 300);
   color: $global-font-heading-color;
 

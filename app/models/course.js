@@ -26,5 +26,15 @@ export default DS.Model.extend({
     type: DS.attr(),
     color: DS.attr(),
     backgroundImage: DS.attr(),
-    sections: DS.hasMany('section')
+    topRun: computed('runs', function () {
+        const runs = this.get('runs')
+        const now = +new Date() / 1000.0
+        const currentRun = runs.find( (run, index) => {
+            return run.get('start') < now && run.get('end') > now 
+        })
+        return currentRun || runs.sortBy('start').objectAt(0)
+    }),
+    sections: DS.hasMany('section'),
+    runs: DS.hasMany('run'),
+    instructor: DS.belongsTo('instructor')
 });

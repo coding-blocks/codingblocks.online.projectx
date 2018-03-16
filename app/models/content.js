@@ -6,7 +6,7 @@ export default DS.Model.extend({
   course: DS.belongsTo('course'),
   //quiz: DS.belongsTo('quiz'),
   lecture: DS.belongsTo('lecture'),
-  //"code-challenge": DS.belongsTo('code-challenge'),
+  "code-challenge": DS.belongsTo('code-challenge'),
   document: DS.belongsTo('document'),
   //attachment: DS.belongsTo('attachment'),
   video: DS.belongsTo('video'),

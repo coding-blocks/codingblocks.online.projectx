@@ -2,5 +2,5 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 
 export default Component.extend({
-    video: computed.alias('payload')
+    code: computed.alias('payload')
 });

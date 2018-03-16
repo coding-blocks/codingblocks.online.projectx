@@ -1,0 +1,17 @@
+
+
+.expert-level {
+  @include border-radius(50%);
+  @include dimensions(21px,21px);
+  border: 3px solid $button-element-level;
+  position: absolute;
+  top: 6px;
+  left: 245px;
+}
+
+.expert-text {
+  font-size: 12px;
+  left: 239px;
+  margin-top: 2px;
+  position: absolute;
+}

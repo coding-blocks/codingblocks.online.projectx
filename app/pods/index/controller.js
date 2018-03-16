@@ -18,7 +18,8 @@ export default class IndexController extends Controller {
         return yield this.get('store').query('course', {
             filter: {
                 recommended: true,
-            }
+            },
+            include: 'instructor,runs'
         })
     })
 }

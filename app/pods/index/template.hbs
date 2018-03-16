@@ -5,6 +5,11 @@
         {{#each recommendedCourses as |course|}}
         <div class="col-md-4">
             <div class="card o-layout-card ">
+                
+                <div class="expert-level"></div>
+                <div class="expert-text">Expert</div>
+
+
                 <div class="card-image o-image-card">
                     <img src="{{course.logo}}">
                 </div>
@@ -12,8 +17,31 @@
                     {{course.title}}
                 </div>
                 <div class="card-text">
-                    {{course.summary}}
+                    {{course.subtitle}}
                 </div>
+
+                <div class="card-mentor">
+                    <div class="card-mentor-image">
+                        <img class="card-mentors" src="{{course.instructor.photo}}">
+                    </div>
+                    <div class="card-mentor-text">
+                        <span>Instructors</span>
+                        <div class="card-mentor-name">{{course.instructor.name}}</div>
+                    </div>
+                </div>
+                <div class="card-mentor-divider"></div>
+                <div class="button-solid">
+                    <button>Register</button>
+                </div>
+                <div class="card-price-details">
+                    <div class="card-batches">
+                         {{course.runs.length}} Batches Available
+                    </div>
+                    <div class="card-batch-details">
+                        Starting from <span class="price">Rs {{course.topRun.price}}</span>
+                    </div>
+                </div>
+                
                 <div class="button-solid">
                     <button>Register</button>
                 </div>

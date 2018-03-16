@@ -9,6 +9,7 @@ export default Controller.extend({
             case 'lecture': return 'player-lecture';
             case 'document': return 'player-document';
             case 'video': return 'player-video';
+            case 'code-challenge': return 'player-code-challenge';
         }
     })
 });
