@@ -7,7 +7,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('courses');
+  this.route('courses', function() {
+    this.route('id', {path: '/:courseId'});
+  });
   this.route('classroom', function() {
     this.route('timeline', {path: '/course/:courseId/run/:runId'}, function () {})
   });
