@@ -11,7 +11,12 @@ Router.map(function() {
     this.route('id', {path: '/:courseId'});
   });
   this.route('classroom', function() {
-    this.route('timeline', {path: '/course/:courseId/run/:runId'}, function () {})
+    this.route('timeline', {path: '/course/:courseId/run/:runId'}, function () {
+      this.route('overview');
+      this.route('contents');
+      this.route('announcements');
+      this.route('doubts');
+    })
   });
   this.route('attempt', {path: '/player/:runAttemptId'}, function() {
     this.route('content', {path: '/content/:contentId'}, function() {});

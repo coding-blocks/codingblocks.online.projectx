@@ -1,6 +1,6 @@
 
 %button-text {
-  @include font('Effra', $global-font-size, inherit);
+  @include font($global-font-family, $global-font-size, inherit);
   @include textalign(left);
 }
 
@@ -24,7 +24,7 @@
     @extend %button-text;
     @include dimensions($width, $height);
     @include border-radius($border-radius);
-    background: $button-gradient;
+    background: $background;
     color: $color;
   }
 }

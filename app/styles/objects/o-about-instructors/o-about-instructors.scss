@@ -1,0 +1,25 @@
+.o-about-instructors{
+  &>.flex-row{
+    flex-wrap: wrap;
+  }
+
+  .img-desc{
+    @include margin(0, 32px, 92px, 0);
+  }
+
+  .round-img{
+    @include dimensions(171px, 171px);
+    @include margin(0, 47px, 0, 0);
+  }
+
+  .classroom-para{
+    @include dimensions(390px, 77px);
+    @include margin(0,0,0,0);
+    text-align: justify;
+    font-size: 23.4px;
+  }
+
+  .flex-col{
+    align-items: flex-start;
+  }
+}

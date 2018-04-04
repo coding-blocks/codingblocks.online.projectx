@@ -14,16 +14,19 @@ $dashed-button-color: $color-button-primary;
 
 $solid-button-background: $color-button-primary;
 $solid-button-color: $white;
-$solid-button-width: 94.5px;
-$solid-button-height: 42.5px;
-$solid-button-border-radius: 21.2px;
+$solid-button-width: 135px;
+$solid-button-height: 60px;
+$solid-button-border-radius: 42.5px;
 
 
 //Font
-$global-font-family: Effra;
+$global-font-family: 'Cabin', sans-serif;
 $global-font-style: normal !default;
 $global-font-weight: normal !default;
-$global-font-src: local('Effra'), url('/public/fonts/Effra_Std_Rg.ttf') format('ttf');
+$font-normal: 500;
+$font-medium: 600;
+
+
 
 $global-container-width: 551px;
 $global-container-height: 106px;

@@ -1,0 +1,48 @@
+.accordian-ul{
+    @include font('Cabin', 27px, $font-normal);
+    @include border(solid, 1px, $default-border);
+    @include margin(0px, 0px, 20px, 0px);
+}
+
+.accordian-head{
+    @include flexbox(row);
+    @include padding-mixin(0, 32px, 0, 45px);
+    @include dimensions(100%, auto);
+    justify-content: space-between;
+    min-height: 106px;
+    background-color: $white;
+    cursor: pointer;
+}
+
+.accordian-li{
+    @include padding-mixin(15px, 32px, 15px, 33px);
+    justify-content: space-between;
+    border-bottom: solid 1px $default-border;
+    min-height: 106px;
+    background-color: $accordian-li;
+    cursor: pointer;
+}
+
+.accordian-li:first-child{
+    border-top: solid 1px $default-border;
+}
+
+.accordian-li:last-child{
+    border: none;
+}
+
+.accordian-ul[data-show=true]{
+    .accordian-li{
+        @include flexbox(row);
+    }
+}
+
+.accordian-ul[data-show=false]{
+    .accordian-li{
+        display: none;
+    }
+}
+
+.li-left{
+    width: 70%;
+}

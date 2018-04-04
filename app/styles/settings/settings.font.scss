@@ -1,8 +1,7 @@
 
-$global-font-size: 18.1px;
+$global-font-size: 19.9px;
 @font-face {
-  font-family: /*$global-font-family*/ 'effra';
+  font-family: $global-font-family;
   font-style: $global-font-style;
   font-weight: $global-font-weight;
-  src: $global-font-src;
 }

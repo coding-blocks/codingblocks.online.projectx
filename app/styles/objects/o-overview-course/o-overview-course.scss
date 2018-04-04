@@ -1,0 +1,31 @@
+.o-overview-course{
+  flex-wrap: wrap-reverse;
+  align-items: flex-end;
+
+  .classroom-para{
+    @include margin(0,0,40px,0);
+    width: 614px;
+    text-align: justify;
+    display: inline-block;
+    font-size: 24.1px;
+  }
+
+  .about-left{
+    @include margin(0, 24px, 0, 0);
+    &>.flex-row{
+      @include margin(0, 0, 72px, 0);
+    }
+  }
+
+  .img-desc{
+    .round-img{
+      @include margin(0, 20px, 0, 0);
+    }
+
+    .classroom-para{
+      width: 200px;
+      text-align: left;
+      @include margin(0,0,0,0);
+    }
+  }
+}

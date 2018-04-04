@@ -1,0 +1,11 @@
+//Heading with Underline
+
+.heading-u {
+  @include padding-mixin(0, 60px, 40px, 0);
+  @include margin(0, 0, 49px, 0);
+  border-bottom: solid 1px $global-font-text-color;
+  color: $global-font-text-color;
+  font-size: 30px;
+  font-weight: $font-medium;
+  display: inline-block;
+}

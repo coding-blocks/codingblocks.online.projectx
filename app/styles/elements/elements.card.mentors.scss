@@ -1,5 +1,5 @@
 #mentors {
-  @include dimensions(34.5px, 34.5px);
+  @include dimensions(50px, 50px);
   @include border-radius(50%);
   position: relative;
   display: inline-block;
@@ -7,12 +7,15 @@
 }
 .card-mentor {
    padding-bottom: 10px;
+   max-height: 67px;
+   margin-top: 37px;
+   margin-bottom: 25px;
 }
 
 .card-mentor-image {
   display: inline-block;
-  top: -15px;
   position: relative;
+  min-width: 51.53px;
 }
 @for $i from 0 through 2 {
   .card-mentors:nth-child(#{$i+1}) {
@@ -26,11 +29,15 @@
 .card-mentor-text {
   display: inline-block;
   margin-left: 20px;
-  width: 161px;
+  width: 191px;
+  font-size: 14.1px;
 }
 
 .card-mentor-name {
   margin-top: 7.5px;
+  max-height: 45px;
+  overflow: hidden;
+  font-size: 17.1px;
 }
 
 .card-mentor-divider {

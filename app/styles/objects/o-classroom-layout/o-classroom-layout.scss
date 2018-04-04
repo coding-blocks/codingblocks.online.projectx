@@ -1,0 +1,72 @@
+
+.classroom-container {
+  margin-bottom: 77px;
+
+  .classroom-header-box {
+    padding-right: 44px;
+    padding-left: 44px;
+    border-right: 2px solid $classroom-border;
+  }
+  .classroom-header {
+    .classroom-image {
+      display: inline-block;
+    }
+
+  }
+
+  .classroom-text {
+    text-transform: uppercase;
+    font-size: 38px;
+    transform: translateY(50%);
+  }
+
+  .classroom-para {
+    font-size: 24.1px;
+    @include textalign(left);
+    word-wrap: break-word;
+    margin-top: 43px;
+  }
+}
+
+
+.course-progress-2 {
+  padding-left: 45px;
+}
+.course-progress-heading {
+  font-size: 28.2px;
+}
+.progress-text {
+  font-size: 28.2px;
+  text-align: center;
+}
+
+.course-progress-detail {
+  padding: 30px;
+  padding-left: 21px;
+}
+
+.lectures-completed {
+  font-size: 25px;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.reset-progress {
+  color: $reset-progress;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.row {
+  padding: 10px;
+}
+
+.course-progress-box {
+  .button-solid {
+    @include dimensions(294px, 76.9px);
+    button {
+      font-size: 28px;
+    }
+  }
+}
