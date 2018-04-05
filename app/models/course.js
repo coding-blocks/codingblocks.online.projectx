@@ -34,6 +34,17 @@ export default DS.Model.extend({
         })
         return currentRun || runs.sortBy('start').objectAt(0)
     }),
+    totalContents: computed('sections.@each.contents.@each', function () {
+        //debugger;
+        return this.get('sections').reduce( (acc, section) => {
+            return acc + section.get('contents.length')
+        }, 0)
+    }),
+    completedContents: computed('sections.@each.doneContents', function () {
+        return this.get('sections').reduce( (acc, section) => {
+            return acc + section.get('doneContents.length')
+        }, 0)
+    }),
     sections: DS.hasMany('section'),
     runs: DS.hasMany('run'),
     instructor: DS.belongsTo('instructor')

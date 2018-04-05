@@ -4,7 +4,9 @@
 // Print styles.
 // Inlined to avoid the additional HTTP request: h5bp.com/r
 // ==========================================================================
-
+body {
+  @include font($global-font-family, 27.6px, normal);
+}
 @media print {
   *,
   *:before,
@@ -112,4 +114,8 @@ button {
 
 ul {
   list-style: none;
+}
+
+input:focus {
+  outline:none !important;
 }

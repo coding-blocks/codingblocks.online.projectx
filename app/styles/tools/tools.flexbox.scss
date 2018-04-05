@@ -1,0 +1,9 @@
+@mixin flexbox($direction, $webkit: true, $ms:true){
+    @if($webkit)    {display: -webkit-box};
+    @if($webkit)    {display: -webkit-flex};
+    @if($ms)        {display: -ms-flexbox};
+    display: flex;
+
+    @if($webkit)    {-webkit-flex-direction: $direction};
+    flex-direction: $direction;
+}

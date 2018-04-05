@@ -1,0 +1,205 @@
+<div class="overview-container">
+    <!-------------------------------------------Recent Activity----------------------------------->
+    <div class="heading-u">
+        Recent Activity
+    </div>
+
+    <div class="o-overview-recent flex-row">
+        <div class="card">
+            <div class="card-heading">Recent Doubts</div>
+            <div class="flex-row">
+                <div class="notify-type">
+                    <div class="notify-icon">
+                        <span class="notify-dot new"></span>
+                        <img src="/images/doubt.png" alt="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    Varun asked a doubt "<span class="faded">sample text sa...</span>"
+                </div>
+
+            </div>
+            <div class="flex-row">
+                <div class="notify-type">
+                    <div class="notify-icon">
+                        <span class="notify-dot new"></span>
+                        <img src="/images/doubt.png" alt="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    Sid asked a doubt "<span class="faded">sample text sa...</span>"
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="notify-type">
+                    <div class="notify-icon">
+                        <span class="notify-dot"></span>
+                        <img src="/images/doubt.png" alt="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    Varun asked a doubt "<span class="faded">sample text sa...</span>"
+                </div>
+            </div>
+
+            <div class="flex-row">
+                <div class="notify-type">
+                    <div class="notify-icon">
+                        <span class="notify-dot"></span>
+                        <img src="/images/doubt.png" alt="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    Varun asked a doubt "<span class="faded">sample text sa...</span>"
+                </div>
+            </div>
+
+            <div class="pull-right">
+                Browse All
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-heading">Announcements</div>
+            <div class="flex-row">
+                <div class="notify-type">
+                    <div class="notify-icon">
+                        <span class="notify-dot new"></span>
+                        <img src="/images/announcement.png" alt="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    UPDATE: UI animation on Flinto
+                </div>
+
+            </div>
+
+            <div class="flex-row">
+                <div class="notify-type">
+                    <div class="notify-icon">
+                        <span class="notify-dot new"></span>
+                        <img src="/images/announcement.png" alt="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    UPDATE: UI animation on Flinto
+                </div>
+
+            </div>
+
+            <div class="flex-row">
+                <div class="notify-type">
+                    <div class="notify-icon">
+                        <span class="notify-dot"></span>
+                        <img src="/images/announcement.png" alt="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    UPDATE: UI animation on Flinto
+                </div>
+
+            </div>
+
+            <div class="flex-row">
+                <div class="notify-type">
+                    <div class="notify-icon">
+                        <span class="notify-dot"></span>
+                        <img src="/images/announcement.png" alt="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    UPDATE: UI animation on Flinto
+                </div>
+
+            </div>
+
+            <div class="pull-right">
+                Browse All
+            </div>
+        </div>
+    </div>
+
+    <!-------------------------------------------About this course----------------------------------->
+    <div class="heading-u">
+        About This Course
+    </div>
+
+    <div class="o-overview-course flex-row">
+        <div class="about-left">
+            <div class="flex-row">
+                <div class="img-desc flex-row">
+                    <div class="round-img">
+                        <img src="" alt="">
+                    </div>
+                    <div class="classroom-para">
+                        30+ Hours Video Content
+                    </div>
+                </div>
+
+                <div class="img-desc flex-row">
+                    <div class="round-img">
+                        <img src="" alt="">
+                    </div>
+                    <div class="classroom-para">
+                        Full Lifetime Access
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-row">
+                <div class="img-desc flex-row">
+                    <div class="round-img">
+                        <img src="" alt="">
+                    </div>
+                    <div class="classroom-para">
+                        Certification of Completion
+                    </div>
+                </div>
+
+                <div class="img-desc flex-row">
+                    <div class="round-img">
+                        <img src="" alt="">
+                    </div>
+                    <div class="classroom-para">
+                        Supplemental Resources
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="classroom-para">
+            {{run.course.summary}}
+        </div>
+    </div>
+
+    <!-------------------------------------------About Instructors----------------------------------->
+    <div class="heading-u">
+        About Instructors
+    </div>
+
+    <div class="o-about-instructors">
+
+        <div class="flex-row">
+            <div class="img-desc flex-row">
+                <div class="round-img">
+                    <img src="{{course.instructor.photo}}" alt="Photo of {{course.instructor.name}}">
+                </div>
+                <div class="flex-col">
+                    <div class="heading-d">
+                        <div class="main-h">
+                            {{course.instructor.name}}
+                        </div>
+                        <div class="sub-h">
+                            Mentor, Coding Blocks
+                        </div>
+                    </div>
+
+                    <div class="classroom-para">
+                       {{course.instructor.description}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

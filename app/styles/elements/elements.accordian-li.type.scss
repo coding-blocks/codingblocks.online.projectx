@@ -1,0 +1,5 @@
+.accordian-li-type{
+    @include dimensions(41px, 41px);
+    @include border-radius(50%);
+    background-color: $global-font-text-color;
+}

@@ -1,0 +1,66 @@
+.o-announcement{
+  background-color: $nav-border;
+  padding-top: 40px;
+  
+  .accordian-ul{
+    @include margin(0,auto, 32px, auto);
+    max-width: 88%;
+  }
+
+  .accordian-li{
+    @include padding-mixin(52px, 152px, 55px, 58px);
+    height: auto;
+  }
+
+  .accordian-head{
+    @include padding-mixin(0, 54px, 0, 43px);
+    height: 145px;
+  }
+
+  .round-img{
+    @include margin(0, 24px, 0, 0);
+  }
+
+  .accordian-collapsar{
+    @include margin(0, 83px, 0, 0);
+  }
+
+  .heading-u{
+    @include margin(0, 0, 55px, 6%);
+  }
+
+  .heading-d{
+    @include margin(0,0,0,0);
+  }
+
+  .main-h{
+    @include margin(0, 0, 13px, 0);
+    color: $global-font-text-color;
+    font-size: 30px;
+    font-weight: $font-normal;
+  }
+
+  .sub-h{
+    color: $default-accordian-font;
+    font-size: 23.7px;
+    font-weight: $font-normal;
+  }
+
+  .classroom-para{
+    @include margin(0,0,0,0);
+    font-size: 24px;
+  }
+
+  .notify-icon{
+    width: auto
+  }
+
+  .button-dashed{
+    @include dimensions(265px, 88px);
+    @include margin(80px, auto, 0, auto);
+    background: transparent;
+    font-size: 32px;
+    border-radius: 44px;
+  }
+
+}

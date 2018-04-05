@@ -1,0 +1,29 @@
+.tab-nav{
+  @include font('Cabin', 30px, 600);
+  @include flexbox(column);
+  @include dimensions(100vw, 114px);
+  justify-content: center;
+  background-color: $global-font-heading-color;
+  color: $white;
+}
+
+.tab-list{
+  @include flexbox(row);
+  @include padding-mixin(0,0,0,0);
+  justify-content: space-around;
+}
+
+.tab-items{
+  @include padding-mixin(0px, 9px, 0px, 0px);
+  font-size: 30px;
+  font-weight: $font-medium;
+  cursor: pointer;
+  &:hover{
+    color: $button-element-level;
+  }
+}
+
+.active{
+  border-bottom: solid 3px $button-element-level;
+  color: $button-element-level;
+}
