@@ -42,7 +42,7 @@
             </div>
             <div class="course-progress-detail col-md-10">
                 <p class="lectures-completed">{{run.course.completedContents}} of {{run.course.totalContents}} Content completed</p>
-                <p class="reset-progress">Reset Progress</p>
+                <p class="reset-progress" {{action 'resetProgress'}} >Reset Progress</p>
             </div>
         </div>
         <div class="row">

@@ -4,7 +4,7 @@
             {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length}}
 
                 {{#each section.contents as |content|}}
-                    <div data-completed="{{content.progress.isDone}}" class="accordian-li">
+                    <div data-completed="{{content.progress.isDone}}" class="accordian-li" {{action 'transitionToContent' content.id}}>
                         <div class="li-left flex-row">
                             <div class="accordian-li-type"></div>
                             <div class="accordian-li-heading">
@@ -20,7 +20,7 @@
                                     <div class="circle-front"></div>
                                 </div>
                         </div>
-                    </div>
+                    </div>     
                 {{/each}}
             {{/accordian-head}}
         </div>

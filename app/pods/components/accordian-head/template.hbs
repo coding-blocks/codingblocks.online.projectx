@@ -1,7 +1,7 @@
 <div class="accordian-head" {{action 'toggle'}}>
     <div class="flex-row">
         <div class="accordian-collapsar">
-            -
+            {{if collapsed '+' '-'}}
         </div>
         <div class="accordian-heading">
             {{title}}
