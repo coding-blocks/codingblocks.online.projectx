@@ -1,9 +1,55 @@
-{{outlet}}
-{{model.run.course.title}}
-<br>
-{{model.run.name}}
+<div class="o-lecture">
+    <div class="lecture-header flex-row">
+        <div class="timeline-toggler flex-row">
+            <button class="button-dashed" {{action 'toggleSideBar'}}>X Table of Content</button>
+        </div>
+        {{outlet "heading"}}
+    </div>
 
+    <div class="video-container">
+        <div class="o-timeline">
+            <div class="o-accordian {{if sidebarCollapsed 'collapse'}}">
+                {{#each sections as |section|}}
+                    <div class="accordian-ul" data-show="true">
+                        {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length}}
+                            {{#each section.contents as |content|}}
+                                <div data-completed="{{content.isDone}}" class="accordian-li" {{action 'transitionToContent' content.id}}>
+                                    <div class="li-left flex-row">
+                                        <div class="accordian-li-type"></div>
+                                        <div class="accordian-li-heading">
+                                            {{content.payload.name}}
+                                        </div>
+                                    </div>
 
+                                    <div class="flex-row">
+                                        <div class="accordian-li-duration">
+                                            {{if content.isDone 'Completed'}}
+                                        </div>
+                                            <div class="circle-back">
+                                                <div class="circle-front"></div>
+                                            </div>
+                                    </div>
+                                </div>     
+                            {{/each}}
+                        {{/accordian-head}}
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="video-player {{unless sidebarCollapsed 'collapse'}}">
+            {{outlet}}
+        </div>
+        {{!-- 
+        <div class="video-player collapse">
+            <video src="" controls></video>
+        </div>
+        --}}
+    </div>
+            
+</div>
+
+{{!-- 
 <ul>
     {{#each course.sections as |section|}}
         <li>
@@ -16,3 +62,4 @@
         </li>
     {{/each}}
 </ul>
+--}}

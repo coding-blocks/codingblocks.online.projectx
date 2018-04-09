@@ -13,6 +13,8 @@ export default DS.Model.extend({
   payload: Ember.computed('contentable', 'quiz', 'lecture', 'code-challenge', 'document', 'video', function () {
     return this.get(this.get('contentable'))
   }),
-  isDone: Ember.computed.alias('progress.isDone'),
+  isDone: Ember.computed('progress.isDone', function () {
+    return !! this.get('progress.isDone')
+  }),
   progress: DS.belongsTo('progress')
 })

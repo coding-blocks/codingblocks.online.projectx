@@ -1,0 +1,23 @@
+<div class="flex-row lecture-desk">
+    <div class="heading-d">
+        <div class="main-h">
+            {{payload.name}}
+        </div>
+        {{!-- <div class="sub-h">
+            {{payload.name}}
+        </div> --}}
+    </div>
+
+    <div class="flex-row">
+        <div class="notify-type">
+            <div class="notify-text">
+                <span class="notify-dot new"></span>
+                Solve Doubts
+            </div>
+        </div>
+
+        <div>
+            <button class="button-solid" {{action 'transitionToDashboard'}}> &gt; Go to Dashboard</button>
+        </div>
+    </div>      
+</div>
