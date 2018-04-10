@@ -4,42 +4,84 @@
 //  margin-top: 30px;
 //}
 //
-//.card:nth-child(1) {
-//  position: absolute;
-//  z-index: 100;
-//}
-//
-//.card:nth-child(2) {
-//  position: absolute;
-//  top: 266px;
-//  left: 15px;
-//  z-index: 99;
-//}
-//
-//.card:nth-child(3) {
-//  position: absolute;
-//  top: 270px;
-//  left: 27px;
-//  z-index: 98;
-//}
+
+
 
 .card-stack {
 
   .card {
-    height: 328px;
+    @include dimensions(383px, 467px);
+
   }
 
+  .card:nth-child(2) {
+    left: -390px;
+  }
+
+  .card:nth-child(3) {
+    height: 343px;
+    transform: translateY(20%);
+    left: 60px;
+    .button-solid {
+      display: none;
+    }
+    .card-heading {
+      display: none;
+    }
+    .card-text {
+      display: none;
+    }
+    .o-image-card {
+      display: none;
+    }
+  }
+  .card:nth-child(4) {
+    height: 235px;
+    left: 95px;
+    transform: translateY(52%);
+     .button-solid {
+       display: none;
+     }
+     .card-heading {
+       display: none;
+     }
+    .card-text {
+      display: none;
+    }
+    .o-image-card {
+      display: none;
+    }
+   }
+
+  .card-heading {
+    height: unset;
+    font-size: 28px;
+  }
+
+  .card-text {
+    font-size: 21px;
+  }
   .o-image-card {
-    margin-bottom: 22.5px;
+    margin-bottom: 31px;
+    margin-top: 37px;
   }
   .o-text-card {
-    margin-bottom: 18.5px;
+    margin-bottom: 24px;
   }
 
-  .button-solid {
-    top: 10px;
-    position: relative;
+  .button-solid{
+    top: 80%;
+    left: 80px
   }
+
 }
 
+.card-stack-btn {
+  position: absolute;
+  bottom: -110%;
+  left: 30%;
+  font-size: 25px;
+  border-bottom: none;
+  color: $global-font-text-color;
+}
 

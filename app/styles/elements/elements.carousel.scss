@@ -1,7 +1,7 @@
 .card-stack {
-  margin-left: 140px;
+  margin-left: 220px;
   position: relative;
-  margin-top: 30px;
+  margin-top: 40px;
 
   @for $i from 1 through 3 {
     .card:nth-child(#{$i}) {

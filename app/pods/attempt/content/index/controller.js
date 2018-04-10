@@ -11,5 +11,10 @@ export default Controller.extend({
             case 'video': return 'player-video';
             case 'code-challenge': return 'player-code-challenge';
         }
-    })
+    }),
+    actions: {
+        transitionToDashboard () {
+            this.transitionToRoute('classroom.timeline', this.get('runAttempt.run.course.id'), this.get('runAttempt.run.id'))
+        }
+    }
 });

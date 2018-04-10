@@ -1,7 +1,3 @@
-<h1>This is a lecture</h1>
-
-{{lecture.videoUrl}}
-{{!-- hls-player src=lecture.video_url awsData=awsData title=lecture.name onVideoCompleted=(action 'onVideoCompleted') --}}
 {{#unless awsDataTask.isRunning}}
     {{#hls-player src=lecture.videoUrl awsData=awsDataTask.lastSuccessful.value title=lecture.name}} {{/hls-player}}
 {{/unless}}

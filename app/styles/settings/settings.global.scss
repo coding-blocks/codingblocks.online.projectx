@@ -18,13 +18,17 @@ $solid-button-width: 135px;
 $solid-button-height: 60px;
 $solid-button-border-radius: 42.5px;
 
+$circle-button-background: $nav-border;
+$circle-button-color: $white;
+$circle-button-width: 85px;
+$circle-button-height: 85px;
+$circle-button-border-radius: 50%;
+
 
 //Font
 $global-font-family: 'Cabin', sans-serif;
 $global-font-style: normal !default;
 $global-font-weight: normal !default;
-$font-normal: 500;
-$font-medium: 600;
 
 
 

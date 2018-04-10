@@ -1,0 +1,70 @@
+.o-lecture{
+    background-color: $vp-background;
+    margin-top: -54px;
+
+    .lecture-header{
+        @include dimensions(100%, auto);
+        max-height: 101px;
+    }
+
+    .timeline-toggler{
+        @include dimensions(20%, 101px);
+        min-width: 326px;
+        justify-content: center;
+        border-right: 1px solid $vp-border;
+    }
+
+    .lecture-desk{
+        @include padding-mixin(0, 27px, 0, 44px);
+        @include dimensions(80%, auto);
+        justify-content: space-between;
+    }
+
+    .button-dashed{
+        @include dimensions(239px, 54px);
+        @include border-radius(27px);
+        background-color: $vp-background;
+        color: $white;
+        text-align: center;
+    }
+
+    .heading-d{
+        @include margin(0,0,0,0);
+        flex: none;
+    }
+
+    .main-h, .sub-h{
+        font-size: $font-xs;
+        font-weight: $font-normal;
+    }
+
+    .main-h{
+        @include margin(0,0,0,0);
+        color: $white;
+    }
+
+    .sub-h{
+        color: $faded-text;
+    }
+
+    .button-solid{
+        @include dimensions(233px, 61px);
+        @include margin(0, 0, 0, 33px);
+        text-align: center;
+        font-size: $font-sm;
+    }
+
+    .notify-text{
+        cursor: pointer;
+    }
+
+    .new{
+        @include dimensions(8px, 8px);
+    }
+
+    .video-container{
+        position: relative;
+        height: 679px;
+    }
+
+}

@@ -1,6 +1,6 @@
 //Heading with Underline
 
-.heading-u {
+.heading-u{
   @include padding-mixin(0, 60px, 40px, 0);
   @include margin(0, 0, 49px, 0);
   border-bottom: solid 1px $global-font-text-color;
@@ -8,4 +8,14 @@
   font-size: 30px;
   font-weight: $font-medium;
   display: inline-block;
+}
+
+.heading-u-red{
+  @include padding-mixin(0, 114px, 25px, 0);
+  @include margin(0,0, 59px, 0);
+  display: inline-block;
+  font-size: 27.7px;
+  border-bottom: solid 3px $button-element-level;
+  color: $button-element-level;
+  font-weight: $font-medium;
 }
