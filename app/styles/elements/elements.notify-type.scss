@@ -5,11 +5,9 @@
 }
 
 .notify-icon{
-  // @include padding-mixin(10px, 0, 0, 0);
-  // flex: none;
   width: 40px;
-
 }
+
 
 .notify-dot{
   @include dimensions(10px, 10px);
@@ -27,6 +25,6 @@
 
 .notify-text{
   // @include padding-mixin(10px, 0, 0, 0);
-  font-size: $font-medium;
+  font-size: $font-xs;
   color: $white;
 }

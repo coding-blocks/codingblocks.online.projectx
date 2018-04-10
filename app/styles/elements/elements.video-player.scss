@@ -1,0 +1,10 @@
+.video-player{
+    @include dimensions(100%, 679px);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transform: translate(0vw, 0);
+    background: $white;
+    text-align: center;
+    transition: all 0.35s ease;
+}
