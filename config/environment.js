@@ -37,10 +37,6 @@ module.exports = function(environment) {
     }
   };
 
-  ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'
-  ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.apiHost}/api/jwt/login/`
-  ENV['ember-simple-auth-token'].serverTokenRefreshEndpoint = `${ENV.apiHost}/api/jwt/refresh/`
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -80,6 +76,10 @@ module.exports = function(environment) {
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
   }
+
+  ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'
+  ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.apiHost}/api/jwt/login/`
+  ENV['ember-simple-auth-token'].serverTokenRefreshEndpoint = `${ENV.apiHost}/api/jwt/refresh/`
 
   return ENV;
 };
