@@ -1,5 +1,5 @@
 
-$global-font-size: 19.9px;
+$global-font-size: 16px;
 @font-face {
   font-family: $global-font-family;
   font-style: $global-font-style;
@@ -11,8 +11,10 @@ $font-normal: 500;
 $font-medium: 600;
 
 //Size
-$font-xs: 22px;
-$font-sm: 24px;
-$font-md: 28px;
-$font-lg: 30px;
-$font-xl: 32px;
+
+$font-xs: 1.125rem; // 18px
+$font-sm: 1.25rem;  // 20px
+$font-md: 1.5rem;   // 24px
+$font-lg: 1.625rem; // 26px
+$font-xl: 1.75rem;  // 28px
+

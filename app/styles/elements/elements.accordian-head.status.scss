@@ -1,4 +1,4 @@
 .accordian-status{
-    @include font('Cabin', 24px, $font-normal);
+    @include font('Cabin', $font-sm, $font-normal);
     color: $global-font-text-color;
 }

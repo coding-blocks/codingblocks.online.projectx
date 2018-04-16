@@ -3,26 +3,24 @@
 }
 
 .card {
-  @include dimensions(403px, 503px);
+  @include dimensions(403px, 500px);
   box-shadow: 0 20px 57px 0 $card-box-shadow;
-  border: solid .5px $card-box-border;
   background: $white;
 }
 
 .card-text {
-  @include dimensions(296px,53px);
-  @include font($global-font-family, 17.1px, 300);
+  font-size: $global-font-size;
   color: $global-font-text-color;
   overflow: hidden;
 }
 
 .card-heading {
   @include dimensions(309px, 48px);
-  @include font($global-font-family, 22.6px, 300);
+  @include font($global-font-family, $font-sm, 300);
   color: $global-font-heading-color;
 
 }
 
 .card-image {
-  @include dimensions(81px, 91px);
+  width: 17%;
 }

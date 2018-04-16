@@ -21,7 +21,7 @@
   }
 
   .classroom-para {
-    font-size: 24.1px;
+    font-size: $font-sm;
     @include textalign(left);
     word-wrap: break-word;
     margin-top: 43px;
@@ -33,10 +33,10 @@
   padding-left: 45px;
 }
 .course-progress-heading {
-  font-size: 28.2px;
+  font-size: $font-md;
 }
 .progress-text {
-  font-size: 28.2px;
+  font-size: $font-md;
   text-align: center;
 }
 
@@ -66,7 +66,7 @@
   .button-solid {
     @include dimensions(294px, 76.9px);
     button {
-      font-size: 28px;
+      font-size: $font-md;
     }
   }
 }

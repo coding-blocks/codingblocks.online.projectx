@@ -12,7 +12,7 @@
         @include margin(0px, 41px, 0px, 0px);
     }
     .accordian-heading{
-        font-size: 32px;
+        font-size: $font-xl;
         font-weight: $font-normal;
     }
     .accordian-li-type{
@@ -24,11 +24,13 @@
         @include dimensions(51px, 51px);
         @include margin(0, 0, 0, 31px);
         flex:none;
+        background: $status-back-incomplete;
     }
 
     .circle-front{
         @include dimensions(39px, 39px);
         transform: translateY(15%);
+        background: $white;
     }
 
     .accordian-li[data-completed="true"]{
@@ -45,16 +47,6 @@
         }
         .circle-front::after{
             content: "";
-        }
-    }
-
-    .accordian-li[data-completed="false"]{
-        .circle-back{
-            background: $status-back-incomplete;
-        }
-    
-        .circle-front{
-            background: $white;
         }
     }
 }

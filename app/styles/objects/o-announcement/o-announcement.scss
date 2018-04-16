@@ -36,7 +36,7 @@
   .main-h{
     @include margin(0, 0, 13px, 0);
     color: $global-font-text-color;
-    font-size: 30px;
+    font-size: $font-lg;
     font-weight: $font-normal;
   }
 
@@ -48,7 +48,7 @@
 
   .classroom-para{
     @include margin(0,0,0,0);
-    font-size: 24px;
+    font-size: $font-sm;
   }
 
   .notify-icon{
@@ -59,7 +59,7 @@
     @include dimensions(265px, 88px);
     @include margin(80px, auto, 0, auto);
     background: transparent;
-    font-size: 32px;
+    font-size: $font-xl;
     border-radius: 44px;
   }
 

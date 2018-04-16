@@ -1,0 +1,53 @@
+.o-buy-top{
+    position: fixed;
+    width:100%;
+    transform: translateY(109px);
+    z-index: 1;
+    justify-content: space-between;
+    min-height: 140px;
+    padding: 0 70px;
+    background-color: $vp-background;
+    transition: all 0.35s ease;
+
+    .o-image-card{
+      @include dimensions(90px, 90px);
+      @include margin(0, 40px, 0, 0);
+      flex: none;
+    }
+
+    .heading-d{
+      @include margin(0, 50px, 0, 0);
+      flex:none;
+    }
+  
+    .main-h, .sub-h{
+      color: $white;
+      font-weight: $font-normal;
+    }
+  
+    .main-h{
+      text-transform: uppercase;
+      font-size: 38px;
+    }
+  
+    .sub-h{
+      font-size: $font-md;
+    }
+  
+    .button-solid{
+      margin: 0;
+      @include dimensions(370px, 89px);
+      font-size: $font-md;
+      font-weight: $font-normal;
+      flex: none;
+    }
+
+    .course-label{
+        flex: none;
+    }
+  
+    &.slide-up{
+      transform: translateY(-350px);
+    }
+  }
+  

@@ -1,5 +1,5 @@
 .tab-nav{
-  @include font('Cabin', 30px, 600);
+  @include font('Cabin', $font-lg, $font-medium);
   @include flexbox(column);
   @include dimensions(100vw, 114px);
   justify-content: center;
@@ -15,7 +15,7 @@
 
 .tab-items{
   @include padding-mixin(0px, 9px, 0px, 0px);
-  font-size: 30px;
+  font-size: $font-lg;
   font-weight: $font-medium;
   cursor: pointer;
   &:hover{

@@ -3,16 +3,16 @@
 .expert-level {
   @include border-radius(50%);
   @include dimensions(30px,30px);
-  border: 5px solid $button-element-level;
+  border: 6px solid $button-element-level;
   position: absolute;
-  top: 20px;
-  left: 355px;
+  top: 30px;
+  left: 345px;
 }
 
 .expert-text {
   font-size: 13px;
-  left: 350px;
+  left: 343px;
   margin-top: 2px;
   position: absolute;
-  top: 50px;
+  top: 60px;
 }

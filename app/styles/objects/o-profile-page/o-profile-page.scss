@@ -18,15 +18,15 @@
 
   .button-solid{
     @include dimensions(254px, 79px);
-    font-size: 24px;
-    font-weight: 600;
+    font-size: $font-sm;
+    font-weight: $font-medium;
   }
 
   .attributes{
     @include margin(0, 0, 55px, 0);
     height: 400px;
     justify-content: space-between;
-    font-weight: 500;
+    font-weight: $font-normal;
     .flex-row{
       justify-content: space-between;
     }

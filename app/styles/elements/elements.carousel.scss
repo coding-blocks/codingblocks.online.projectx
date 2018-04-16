@@ -1,12 +1,10 @@
 .card-stack {
-  margin-left: 220px;
   position: relative;
-  margin-top: 40px;
 
   @for $i from 1 through 3 {
     .card:nth-child(#{$i}) {
       @extend %carousel-card;
-      left: multiply-px($i, 15px);
+      left: multiply-px($i, 15px) ;
       z-index: 100 - $i;
     }
   }

@@ -1,18 +1,14 @@
-.video-player{
+.video-container{
+  @include dimensions(100%, 100%);
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  background: $vp-background;
+  transition: all 0.35s ease;
+
   &.collapse{
-    right: 0px;
+    right: 0%;
     width: 80%;
   }
 }
 
-@media all and (max-width: 1623px){
-  .video-player{
-    &.collapse{
-      width: calc(100% - 326px);
-    }
-  }
-}
-
-video{
-  @include dimensions(100%, 100%);
-}
