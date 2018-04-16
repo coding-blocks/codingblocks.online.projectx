@@ -1,6 +1,8 @@
 import Controller from '@ember/controller';
+import { inject } from '@ember/service';
 
 export default Controller.extend({
+    store: inject('store'),
     sidebarCollapsed: false,
     actions: {
         toggleSideBar () {
@@ -8,6 +10,23 @@ export default Controller.extend({
         },
         transitionToContent (contentId) {
             this.transitionToRoute('attempt.content', contentId)
+        },
+        async toggleProgress (content) {
+            if (await content.get('progress')) {
+                // if progress exits
+                const progress = await content.get('progress')
+                progress.set("status", progress.get('status') === 'DONE' ? 'UNDONE': 'DONE')
+                await progress.save().then(p => content.set('progress', p))
+                
+            } else  {
+                const newProgress = this.get('store').createRecord('progress', {
+                    status: 'DONE',
+                    runAttempt: this.get('model'),
+                    content
+                })
+                await newProgress.save().then(p => content.set('progress', p))
+            }
+            return false
         }
     }
 });
