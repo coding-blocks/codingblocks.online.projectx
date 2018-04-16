@@ -12,22 +12,8 @@
             {{run.course.summary}}
         </p>
         <div class="rating">
-            <span class="pos-rating">
-                <i class="fas fa-star"></i>
-            </span>
-            <span class="pos-rating">
-                <i class="fas fa-star"></i>
-            </span>
-            <span class="pos-rating">
-                <i class="fas fa-star"></i>
-            </span>
-            <span class="pos-rating">
-                <i class="fas fa-star"></i>
-            </span>
-            <span class="neg-rating">
-                <i class="fas fa-star"></i>
-            </span>
-
+            {{#rating-stars}}
+            {{/rating-stars}}
         </div>
     </div>
     <div class="course-progress-box col-md-6 col-sm-12 col-xs-12">

@@ -1,0 +1,9 @@
+{{#each (range 1 (inc scale)) as |index|}}
+  <span 
+    class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}" 
+    onMouseEnter={{action 'changeRating' index}}
+    onMouseLeave={{action 'resetRating'}}
+  >
+    <i class="fas fa-star"></i>
+  </span>
+{{/each}}
