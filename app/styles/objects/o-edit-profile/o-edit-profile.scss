@@ -1,5 +1,5 @@
 .o-edit-profile{
-  font-size: 28px;
+  font-size: $font-md;
   .card{
     @include  dimensions(854px, 1234px);
     @include padding-mixin(76px, 71px, 0px, 72px);
@@ -35,14 +35,14 @@
     bottom:71px;
     right: 71px;
     font-size: 26px;
-    font-weight: 600;
+    font-weight: $font-medium;
   }
 
   .button-solid{
     @include dimensions(254px, 79px);
     @include margin(0, 0, 0, 29px);
     font-size: 26px;
-    font-weight: 600;
+    font-weight: $font-medium;
   }
 
   .flex-row{

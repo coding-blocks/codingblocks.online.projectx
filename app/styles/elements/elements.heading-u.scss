@@ -5,7 +5,7 @@
   @include margin(0, 0, 49px, 0);
   border-bottom: solid 1px $global-font-text-color;
   color: $global-font-text-color;
-  font-size: 30px;
+  font-size: $font-lg;
   font-weight: $font-medium;
   display: inline-block;
 }
@@ -14,7 +14,7 @@
   @include padding-mixin(0, 114px, 25px, 0);
   @include margin(0,0, 59px, 0);
   display: inline-block;
-  font-size: 27.7px;
+  font-size: $font-md;
   border-bottom: solid 3px $button-element-level;
   color: $button-element-level;
   font-weight: $font-medium;

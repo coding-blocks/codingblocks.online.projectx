@@ -1,15 +1,16 @@
 .o-lecture{
     background-color: $vp-background;
     margin-top: -54px;
+    height: calc(100vh - 111px);//set according to height of navbar;
 
     .lecture-header{
-        @include dimensions(100%, auto);
+        @include dimensions(100%, 100%);
         max-height: 101px;
     }
 
     .timeline-toggler{
         @include dimensions(20%, 101px);
-        min-width: 326px;
+        min-width: 20%;
         justify-content: center;
         border-right: 1px solid $vp-border;
     }
@@ -62,9 +63,9 @@
         @include dimensions(8px, 8px);
     }
 
-    .video-container{
+    .lecture-content{
         position: relative;
-        height: 679px;
+        height: calc(100% - 101px);//set according to .lecture-header;
     }
 
 }

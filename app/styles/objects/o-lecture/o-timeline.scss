@@ -1,14 +1,16 @@
 .o-timeline{
-  @include dimensions(calc(20% + 15px), 100%);
-  overflow-y: scroll;
-  min-width: 326px;
+  @include dimensions(20%, 100%);
+  overflow-y: auto;
   border-right: solid 1px $vp-border;
+  background-color: $vp-background;
+  transition: all 0.35s ease;
+
+  &.collapse {
+    transform: translateX(-40%);
+  }
+
   .o-accordian{
     padding-top: 0px;
-    &.collapse{
-      transform: translateX(-20%);
-    }
-    transition: all 0.35s ease;
   }
 
   .accordian-li-heading, .accordian-status, .accordian-head{
@@ -54,9 +56,14 @@
 
   .circle-back{
     @include dimensions(37px, 37px);
+    margin-left: 20px;
   }
-}
 
-.black-background {
-  background-color: $vp-background
+  .li-left{
+    width: 70%;
+  }
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }

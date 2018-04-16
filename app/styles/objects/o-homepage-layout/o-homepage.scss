@@ -3,17 +3,26 @@
 }
 
 .home-heading {
-  font-size: 45px;
+  font-size: $font-xl;
   color: $button-element-level;
   margin-bottom: 30px;
 }
 
 .home-img {
   position: relative;
-  top: -80px;
+  margin-top: -190px;
+  width: 85%;
+  left: 65px;
 }
 
 .prev {
   padding-right: 20px;
   border-right: 1px solid;
+}
+
+.home-row {
+   position: relative;
+  .home-column {
+    position: static;
+  }
 }

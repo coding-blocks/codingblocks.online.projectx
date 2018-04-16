@@ -8,18 +8,18 @@
 
 
 .card-stack {
-
+  margin-left: 320px;
   .card {
-    @include dimensions(383px, 467px);
-
+    @include dimensions(281px, 325px);
+    border: none;
   }
 
   .card:nth-child(2) {
-    left: -390px;
+    left: -290px;
   }
 
   .card:nth-child(3) {
-    height: 343px;
+    height: 239px;
     transform: translateY(20%);
     left: 60px;
     .button-solid {
@@ -36,9 +36,9 @@
     }
   }
   .card:nth-child(4) {
-    height: 235px;
+    height: 142px;
     left: 95px;
-    transform: translateY(52%);
+    transform: translateY(72%);
      .button-solid {
        display: none;
      }
@@ -55,15 +55,24 @@
 
   .card-heading {
     height: unset;
-    font-size: 28px;
+    font-size: $font-sm;
+    word-wrap: break-word;
+    width: 90%;
+  }
+
+  .card-image {
+    width: 22%;
+  }
+
+  .word-wrap {
+    word-wrap: break-word;
+    width: 90%;
   }
 
   .card-text {
-    font-size: 21px;
-  }
-  .o-image-card {
-    margin-bottom: 31px;
-    margin-top: 37px;
+    font-size: $global-font-size;
+    word-wrap: break-word;
+    width: 90%;
   }
   .o-text-card {
     margin-bottom: 24px;
@@ -71,16 +80,18 @@
 
   .button-solid{
     top: 80%;
-    left: 80px
+    left: 20px;
+    width: 90px;
+    height: 41px;
   }
 
 }
 
 .card-stack-btn {
   position: absolute;
-  bottom: -110%;
+  top: 90%;
   left: 30%;
-  font-size: 25px;
+  font-size: $font-sm;
   border-bottom: none;
   color: $global-font-text-color;
 }

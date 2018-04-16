@@ -12,7 +12,7 @@
   }
 
   .card-heading{
-    @include font($global-font-family, 30px, 500);
+    @include font($global-font-family, $font-lg, $font-normal);
     height: 24px;
   }
 
