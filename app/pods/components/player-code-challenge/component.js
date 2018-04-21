@@ -69,9 +69,6 @@ export default class CodeChallengeComponent extends Component {
             data: {
                 contest_id: code.get('hbContestId'),
                 problem_id: code.get('hbProblemId')
-            },
-            xhrFields: {
-                withCredentials: true
             }
         }).then(result => {
             console.log(result)
@@ -118,9 +115,6 @@ export default class CodeChallengeComponent extends Component {
                 problemId: code.get('hbProblemId'),
                 language: this.get('language'),
                 source: this.get('sourceCodeBase64'),
-            },
-            xhrFields: {
-                withCredentials: true
             }
         }).then( ({submissionId}) => {
             const pollId = this.get('pollboy').add(this, function () {

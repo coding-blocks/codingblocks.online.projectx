@@ -5,7 +5,14 @@ import AjaxService from 'ember-ajax/services/ajax';
 
 export default AjaxService.extend({
     session: service(),
+    currentUser: service(),
     host: env.hackApiHost,
     contentType: 'application/json; charset=utf-8',
-    namespace: '/api'
+    namespace: '/api',
+    headers: computed('currentUser.user.hackJwt', function () {
+        return {
+            Authorization: `JWT ${this.get('currentUser.user.hackJwt')}`,
+            
+        }
+    })
 });
