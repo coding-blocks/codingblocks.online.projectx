@@ -1,22 +1,67 @@
-<div class="grid row">
-{{#each runs as |run index|}}
-    <div class="col-md-4">
-        <div class="card o-layout-card ">
-            <div class="card-image o-image-card">
-                <img src="{{run.course.logo}}">
-            </div>
-            <div class="card-heading o-text-card">
-                {{run.course.title}}
-            </div>
-            <div class="card-text">
-                {{run.course.subtitle}}
-            </div>
-            <div class="button-solid">
-                {{#link-to "classroom.timeline" run.course.id run.id tagName="button"}}
-                    Resume
-                {{/link-to}}
-            </div>
-        </div>
+<div class="container-courses">
+    <div class="heading">
+        <p>My Courses</p>
     </div>
-{{/each}}
+    {{!-- 
+        <div class="short-heading">
+            <p>Recently Accessed</p>
+        </div>
+    --}}
+
+    <div class="short-heading">
+        <p>My Current Enrollments</p>
+    </div>
+    <div class="recommended row">
+        {{#each runs as |run index|}}
+            <div class="card-layout col-md-4 col-sm-6">
+                <div class="card o-layout-card ">
+
+                    <div class="expert-level"></div>
+                    <div class="expert-text">Expert</div>
+
+                    <div class="card-image o-image-card">
+                        <img src="{{defaultTo run.course.logo '/images/c++'}}">
+                    </div>
+
+                    <div class="card-heading o-text-card">
+                        {{run.course.title}}
+                    </div>
+                    <div class="card-text">
+                        {{run.course.subtitle}}
+                    </div>
+                    <div class="card-mentor">
+                        <div class="card-mentor-image">
+                            <img class="card-mentors" src="{{run.course.instructor.photo}}">
+                        </div>
+                        <div class="card-mentor-text">
+                            <span>Instructors</span>
+                            <div class="card-mentor-name">{{run.course.instructor.name}}</div>
+                        </div>
+                    </div>
+                    <div class="card-mentor-divider"></div>
+                    <div class="price-detail row">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="card-price-details">
+                                <div class="card-batches">
+                                    {{run.course.runs.length}} Batches Available
+                                </div>
+                                <div class="card-batch-details">
+                                    Starting from <span class="price">{{run.course.topRun.price}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-parent col-md-6 col-sm-12 col-xs-12">
+
+                            <div class="button-solid">
+                                {{#link-to "classroom.timeline" run.course.id run.id tagName="button"}}
+                                    Resume
+                                {{/link-to}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {{/each}}
+    </div>
 </div>

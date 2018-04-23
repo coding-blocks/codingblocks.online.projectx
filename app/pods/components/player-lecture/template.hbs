@@ -1,3 +1,5 @@
 {{#unless awsDataTask.isRunning}}
-    {{#hls-player src=lecture.videoUrl awsData=awsDataTask.lastSuccessful.value title=lecture.name}} {{/hls-player}}
+    <div class="video-player {{unless sidebarCollapsed 'collapse'}}">
+        {{#hls-player src=lecture.videoUrl awsData=awsDataTask.lastSuccessful.value title=lecture.name}} {{/hls-player}}        
+    </div>  
 {{/unless}}

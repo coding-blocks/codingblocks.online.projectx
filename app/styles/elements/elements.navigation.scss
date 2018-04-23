@@ -1,7 +1,12 @@
 nav {
-  margin-bottom: 56px;
   border-bottom: 1px solid $nav-border;
   padding: 10px;
+  position: fixed;
+  top:0;
+  background: $white;
+  width: 100%;
+  max-height:100px;
+  z-index: 101;
 }
 .nav-list {
   @include float(right);
@@ -10,10 +15,20 @@ nav {
 .nav-items {
   @include font($global-font-family, $global-font-size, $global-font-weight);
   display: inline-block;
-  @include margin(null, 52px, null, null);
+  @include margin(null, 40px, null, null);
+  text-transform: uppercase;
 }
 
 .nav-logo {
-  height: 75px;
-  @include margin(5px, null, null, 28px);
+  height: 50px;
+  @include margin(12px, null, null, 28px);
+}
+
+.nav-search{
+  float: right;
+  margin-top: 10px;
+}
+
+.pointer{
+  cursor: pointer;
 }

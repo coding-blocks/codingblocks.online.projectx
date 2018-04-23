@@ -4,6 +4,7 @@
   display: inline-block;
   background-color: $nav-border;
   flex: none;
+  overflow: hidden;
 
   img{
     max-width: 100%;

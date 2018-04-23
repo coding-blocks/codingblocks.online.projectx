@@ -1,21 +1,25 @@
 <header>
        <nav>
            <span>
-                  <img src="/images/online-logo.png" alt="online-logo" class="nav-logo">
+                  <img src="/images/online-logo.png" alt="online-logo" class="nav-logo pointer">
            </span>
            <ul class="nav-list">
-               <li class="nav-items">
-                   About us
+               <li class="nav-items pointer">
+                   <li class="nav-items pointer">
+                       <a href="https://hack.codingblocks.com">Hacker Blocks</a>
+                    </li>   
                </li>
-               <li class="nav-items">
-                   All Courses
+               <li class="nav-items pointer">
+                   <li class="nav-items pointer">
+                       <a href="">All Courses</a>
+                    </li>   
                </li>
                {{#if session.isAuthenticated}}
-               <li class="nav-items">
+               <li class="nav-items pointer">
                     {{#link-to 'classroom' tagName="span"}}My Courses{{/link-to}}
                </li>         
                {{/if}}
-               <li class="nav-items">
+               <li class="nav-items pointer">
                  <div class="button-solid">
                     {{#if session.isAuthenticated}}
                         <button onclick={{action 'invalidateSession'}}>Logout</button>
@@ -25,5 +29,9 @@
                  </div>
                </li>
            </ul>
+           <div class="input-search nav-search">
+                <input type="text" placeholder="Search here">
+                <img src="/images/searchicon.png" alt="search">
+           </div>
        </nav>
    </header>

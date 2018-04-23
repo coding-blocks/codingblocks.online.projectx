@@ -1,13 +1,13 @@
-<div class="o-lecture">
-    <div class="lecture-header flex-row">
-        <div class="timeline-toggler flex-row">
+<div class="o-content-section">
+    <div class="header flex-row">
+        <div class="section-toggler flex-row">
             <button class="button-dashed" {{action 'toggleSideBar'}}>X Table of Content</button>
         </div>
         {{outlet "heading"}}
     </div>
 
-    <div class="lecture-content">
-        <div class="o-timeline">
+    <div class="content-section">
+        <div class="section">
             <div class="o-accordian {{if sidebarCollapsed 'collapse'}}">
                 {{#each sections as |section|}}
                     <div class="accordian-ul" data-show="true">
@@ -21,44 +21,19 @@
                                     </div>
 
                                     <div class="flex-row">
-                                        <div class="accordian-li-duration">
-                                            {{!-- if content.isDone 'Completed' --}}
+                                        <div class="circle-back">
+                                            <div class="circle-front" {{action 'toggleProgress' content bubbles=false}}></div>
                                         </div>
-                                            <div class="circle-back">
-                                                <div class="circle-front" {{action 'toggleProgress' content bubbles=false}} ></div>
-                                            </div>
                                     </div>
-                                </div>     
+                                </div>
                             {{/each}}
                         {{/accordian-head}}
                     </div>
                 {{/each}}
             </div>
         </div>
-
-        <div class="video-player {{unless sidebarCollapsed 'collapse'}}">
+        <div class="content collapse">
             {{outlet}}
         </div>
-        {{!-- 
-        <div class="video-player collapse">
-            <video src="" controls></video>
-        </div>
-        --}}
     </div>
-            
 </div>
-
-{{!-- 
-<ul>
-    {{#each course.sections as |section|}}
-        <li>
-            {{section.name}}
-            <ol>
-                {{#each section.contents as |content|}}
-                    <li> {{#link-to 'attempt.content' content.id}} {{content.payload.name}} {{/link-to}} </li>
-                {{/each}}
-            </ol>
-        </li>
-    {{/each}}
-</ul>
---}}

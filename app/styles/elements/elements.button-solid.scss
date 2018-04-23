@@ -29,10 +29,12 @@
 
   .button-#{$type} {
     @extend %button-text;
-    @include dimensions($width, $height);
     @include border-radius($border-radius);
     background: $background;
     color: $color;
+    max-width: $width;
+    height: $height;
+    width: 80%;
   }
 }
 
