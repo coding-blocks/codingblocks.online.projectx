@@ -19,6 +19,11 @@ nav {
   text-transform: uppercase;
 }
 
+.nav-items:hover {
+  color: $button-gradient;
+}
+
+
 .nav-logo {
   height: 50px;
   @include margin(12px, null, null, 28px);
@@ -29,6 +34,15 @@ nav {
   margin-top: 10px;
 }
 
-.pointer{
+.pointer {
+  color: $navLink;
+}
+
+.pointer:hover {
   cursor: pointer;
+  color: $global-font-text-color;
+}
+
+.active {
+  color: $button-gradient;
 }

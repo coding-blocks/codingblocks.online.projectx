@@ -8,6 +8,7 @@
     border-right: 2px solid $classroom-border;
   }
   .classroom-header {
+    padding: 0;
     .classroom-image {
       display: inline-block;
     }
@@ -16,8 +17,14 @@
 
   .classroom-text {
     text-transform: uppercase;
-    font-size: 38px;
+    font-size: $font-xl;
     transform: translateY(50%);
+  }
+
+  .classroom-image {
+    position: relative;
+    top: 18px;
+    padding-left: 0;
   }
 
   .classroom-para {
@@ -34,6 +41,8 @@
 }
 .course-progress-heading {
   font-size: $font-md;
+  top: 20px;
+  position: relative;
 }
 .progress-text {
   font-size: $font-md;
@@ -64,9 +73,15 @@
 
 .course-progress-box {
   .button-solid {
+    max-width: none;
     @include dimensions(294px, 76.9px);
     button {
       font-size: $font-md;
     }
+  }
+
+  .status-circle {
+    float: left;
+    margin-right: 40px;
   }
 }
