@@ -1,0 +1,27 @@
+<div class="card-stack">
+  {{#each cards as |card|}}
+    <div class="card o-layout-card ">
+        <div class="card-image o-image-card">
+            <img src="{{card.img}}">
+        </div>
+        <div class="word-wrap card-heading o-text-card">
+            {{card.title}}
+        </div>
+        <div class="word-wrap card-text">
+            {{card.subtitle}}
+        </div>
+        <div class="button-solid">
+            <a href="{{card.buttonLink}}">
+            <button>{{card.buttonText}}</button>
+            </a>
+        </div>
+    </div>
+  {{/each}}
+
+</div>
+
+<div class="card-stack-btn">
+    <a class="prev" {{action 'prev'}}>&lt;&nbsp;&nbsp;Prev</a>
+    &nbsp;&nbsp;
+    <a class="next" {{action 'next'}}>Next &nbsp;&nbsp;&gt;</a>
+</div>

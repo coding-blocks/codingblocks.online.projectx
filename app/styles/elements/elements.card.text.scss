@@ -12,12 +12,13 @@
 .card-text {
   font-size: $global-font-size;
   color: $global-font-text-color;
+  height: 7%;
   overflow: hidden;
 }
 
 .card-heading {
   max-width: 309px;
-  max-height: 52px;
+  height: 10%;
   overflow: hidden;
   @include font($global-font-family, $font-sm, 300);
   color: $global-font-heading-color;

@@ -18,6 +18,12 @@
     left: -290px;
   }
 
+   .card:hover {
+     box-shadow: 0 35px 57px 0 rgba(51, 51, 51, 0.1);
+     cursor: pointer;
+
+   }
+
   .card:nth-child(3) {
     height: 239px;
     transform: translateY(20%);
@@ -89,10 +95,10 @@
 
 .card-stack-btn {
   position: absolute;
-  left: -73px;
-  bottom: -235px;
+  left: 16%;
+  bottom: -1%;
   font-size: $font-sm;
   border-bottom: none;
   color: $global-font-text-color;
+  cursor: pointer;
 }
-
