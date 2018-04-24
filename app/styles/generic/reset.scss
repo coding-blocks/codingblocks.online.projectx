@@ -10,7 +10,7 @@
 }
 
 body {
-  //@include font($global-font-family, 27.6px, normal);
+  @include font($global-font-family, 16px, normal);
   padding-top: 100px;
 }
 @media print {
