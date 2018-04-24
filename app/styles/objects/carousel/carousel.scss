@@ -95,9 +95,10 @@
 
 .card-stack-btn {
   position: absolute;
-  left: -73px;
-  bottom: -235px;
+  left: 16%;
+  bottom: -1%;
   font-size: $font-sm;
   border-bottom: none;
   color: $global-font-text-color;
+  cursor: pointer;
 }

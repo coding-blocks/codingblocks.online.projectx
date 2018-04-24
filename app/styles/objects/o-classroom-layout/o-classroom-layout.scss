@@ -74,7 +74,7 @@
 .course-progress-box {
   .button-solid {
     max-width: none;
-    @include dimensions(294px, 76.9px);
+    @include dimensions(258px, 68px);
     button {
       font-size: $font-md;
     }
