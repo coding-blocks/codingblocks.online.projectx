@@ -25,7 +25,7 @@
   }
 
   .accordian-li{
-    @include padding-mixin(10px, 14px, 10px, 47px);
+    @include padding-mixin(10px, 14px, 10px, 5px);
     border-bottom: solid 1px $vp-border;
     background-color: $vp-background;
     min-height: 79px;
@@ -53,4 +53,5 @@
   .li-left{
     width: 70%;
   }
+
 }
