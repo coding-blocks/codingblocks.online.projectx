@@ -7,5 +7,8 @@ export default DS.Model.extend({
   doneContents: computed('contents.@each.isDone', function () {
     return this.get('contents').filter(content => content.get('isDone'))
   }),
+  isProgressCompleted: computed('doneContents', function () {
+    this.get('doneContents.length') === this.get('contents.length')
+  }),
   contents: DS.hasMany('content')
 });

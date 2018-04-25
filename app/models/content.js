@@ -16,5 +16,6 @@ export default DS.Model.extend({
   isDone: Ember.computed('progress.isDone', function () {
     return !! this.get('progress.isDone')
   }),
-  progress: DS.belongsTo('progress')
+  progress: DS.belongsTo('progress'),
+  section: DS.belongsTo('section')
 })
