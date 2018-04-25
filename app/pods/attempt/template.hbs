@@ -1,14 +1,18 @@
 <div class="o-content-section">
     <div class="header flex-row">
         <div class="section-toggler flex-row">
-            <button class="button-dashed" {{action 'toggleSideBar'}}>X Table of Content</button>
+            <div class="button-dashed" {{action 'toggleSideBar'}}>
+              <button>
+                X Table of Content
+              </button> 
+            </div>
         </div>
         {{outlet "heading"}}
     </div>
 
     <div class="content-section">
-        <div class="section">
-            <div class="o-accordian {{if sidebarCollapsed 'collapse'}}">
+        <div class="section {{if sidebarCollapsed 'collapse'}}">
+            <div class="o-accordian">
                 {{#each sections as |section|}}
                     <div class="accordian-ul" data-show="true">
                         {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length}}
@@ -32,7 +36,7 @@
                 {{/each}}
             </div>
         </div>
-        <div class="content collapse">
+        <div class="content {{if (not sidebarCollapsed) 'collapse'}}">
             {{outlet}}
         </div>
     </div>
