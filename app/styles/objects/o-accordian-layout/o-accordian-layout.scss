@@ -31,9 +31,8 @@
     }
 
     .accordian-li[data-completed="true"]{
-        .accordian-li-heading{
-            color: $font-complete;
-        }
+        color: $font-complete;
+
 
         .circle-back{
             background: $status-back-complete;

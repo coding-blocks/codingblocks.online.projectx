@@ -23,12 +23,93 @@
   padding-left: 18px;
   padding-right: 30px;
 
+  .select-box {
+    background: $editor-line-number;
+    text-indent: 25px;
+    width: 221px;
+    height: 61px;
+    color: $white;
+    display: flex;
+    align-items: center;
+
+     span {
+       float:right;
+     }
+  }
+
+  .open-select-box {
+
+    margin-bottom: 4px;
+    position: absolute;
+    background: $editor-line-number;
+    color: white;
+    width: 221px;
+    display: none;
+    border-top: 1px solid gray;
+    z-index: 100;
+    ul {
+      padding-left: 25px;
+      li {
+        padding-bottom: 10px;
+      }
+    }
+  }
+
   .button-solid{
     @include dimensions(168px, 50px);
+  }
+}
+
+.result {
+  .button-solid {
+    @include dimensions(116px, 42px);
+    font-size: 1rem;
+  }
+  .row {
+    padding:0;
   }
 }
 
 #dragger-ce-rs{
   @include dimensions(100%, 10px);
   position: absolute;
+}
+
+
+.output {
+  background-color: $editor-line-number;
+
+}
+
+.input {
+ background-color: #2a2a2a;
+
+  .row:nth-child(2) {
+    height: 50%;
+  }
+
+}
+
+.output, .input {
+  height: 150px;
+  padding-top: 22px;
+
+  .heading {
+    p {
+      font-size: 1rem;
+      color: $white;
+    }
+
+    span {
+      color: $button-element-level;
+      font-size: 1rem;
+    }
+  }
+   .input-box {
+     padding-top: 10px;
+     color: #ccc;
+     font-size: 1rem;
+     max-height: 50%;
+     overflow-y: scroll;
+   }
 }

@@ -1,0 +1,32 @@
+.o-summary{
+  padding-top: 25px;
+
+  .classroom-container{
+    margin-bottom: 60px;
+  }
+
+  .classroom-image{
+    max-width: 95px;
+  }
+
+  .classroom-header-box{
+    border: none;
+  }
+
+  .heading-u{
+    @include margin(67px, 0, 0, 0);
+  }
+
+  .para{
+    @include margin(38px, 0, 0, 0);
+  }
+
+  .key{
+    font-weight: $font-medium;
+  }
+  
+}
+
+.o-instructor{
+  @include padding-mixin(66px, 0px, 85px, 56px);
+}

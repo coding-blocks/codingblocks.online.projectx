@@ -1,0 +1,85 @@
+.o-buy-right{
+  position: fixed;
+  top: 130px;
+  transition: all 0.35s ease;
+  right: -14px;
+  width: 42%;
+
+  .card{
+    @include dimensions(100%, 730px);
+    padding-bottom: 30px;
+    overflow-y: scroll;
+  }
+
+  .button-solid{
+    @include margin(37px, auto, 0px, auto);
+    @include dimensions(304px, 80px);
+    font-size: $font-md;
+    font-weight: $font-medium;
+    max-width: 304px;
+  }
+
+  .card-video{
+    @include dimensions(100%, 336px);
+    position: relative;
+    cursor: pointer;
+    padding-top: 50px;
+  }
+
+  .card-video{
+    .status-circle{
+      position: absolute;
+      transform: translate(208px, 70px);
+      z-index: 10;
+    }
+
+    .circle-back{
+      @include dimensions(96px, 96px);
+      background: $white;
+      margin: 0;
+      opacity: 0.51;
+    }
+
+    .circle-front{
+      @include dimensions(82px, 82px);
+      transform: translateY(-109%);
+      background: $white;
+    }
+  }
+
+  .course-features{
+      .img-desc{
+        margin-top: 50px;
+        margin-left: 40px;
+      }
+      .round-img{
+        @include dimensions(65px, 65px);
+        margin-right: 22px;
+      }
+
+      .para{
+        max-width: 113px;
+        overflow: hidden;
+        font-size: $global-font-size;
+        text-align: left;
+      }
+  }
+
+  &.slide-right{
+    transform: translateX(600px);
+  }
+
+  .card-text{
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .card-img{
+    @include margin(0, auto, 10px, auto);
+    @include dimensions(350px, 240px);
+
+    img{
+      max-height: 100%;
+    }
+  }
+}
