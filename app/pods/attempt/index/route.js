@@ -1,12 +1,12 @@
-import Route from '@ember/routing/route';
+import Route from "@ember/routing/route";
 
 export default Route.extend({
-  model () {
-    return this.modelFor('attempt')
+  model() {
+    return this.modelFor("attempt");
   },
-  afterModel (model) {
-    const runAttempt = model
-    
+  afterModel(model) {
+    const runAttempt = model;
+
     const course = runAttempt.get("run.course");
     const section = course.get("sections").find(section => {
       return !section.get("isProgressCompleted");
@@ -19,6 +19,5 @@ export default Route.extend({
       runAttempt.get("id"),
       content.get("id")
     );
-  
   }
 });
