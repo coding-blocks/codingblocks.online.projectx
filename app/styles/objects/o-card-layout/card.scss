@@ -5,10 +5,17 @@
   position: relative;
 
   .button-solid {
-    margin-left: 150px;
     position: absolute;
-    top: 415px;
-    left: 119px;
+    top: 5px;
+    left: 39%;
+  }
+
+  .button-parent {
+    position: relative;
+  }
+
+  .price-detail {
+    margin-top: 25px;
   }
 }
 

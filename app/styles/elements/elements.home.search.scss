@@ -1,8 +1,8 @@
 .input-search {
   display: flex;
-  @include dimensions(494px, 77px);
+  @include dimensions(375px, 57px);
   background-color: $search-box-color;
-  @include border-radius(38px);
+  @include border-radius(28px);
   position: relative;
 }
 
@@ -10,15 +10,15 @@
   @include dimensions(78%,100%);
   border: none;
   background-color: transparent;
-  font-size: 27px;
+  font-size: $font-sm;
   position: absolute;
   left: 28px;
 }
 
 .input-search > img {
-  width: 40px;
-  height: 40px;
-  top: 25%;
-  left: 86%;
+  width: 23px;
+  height: 23px;
+  top: 30%;
+  left: 89%;
   position: absolute;
 }

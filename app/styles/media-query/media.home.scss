@@ -1,0 +1,31 @@
+@media all and (max-width: 1334px){
+  .home-container{
+    .input-search{
+      display: block;
+      margin:0 auto;
+    }
+  }
+  
+  .home-heading{
+    text-align: center;
+  }
+  
+  nav{
+    .input-search{
+      display: none;
+    }
+  }
+
+  .home-column{
+    display: none;
+  }
+
+  .home-img{
+    margin: 0 auto;
+    transform: translateX(25.5vw);
+  }
+}
+
+.testclass{
+  width: 100px;
+}

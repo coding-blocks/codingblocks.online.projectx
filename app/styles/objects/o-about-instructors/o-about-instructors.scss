@@ -1,25 +1,42 @@
 .o-about-instructors{
-  &>.flex-row{
-    flex-wrap: wrap;
-  }
-
   .img-desc{
-    @include margin(0, 32px, 92px, 0);
+    @include margin(0, 0px, 10px, 0);
   }
 
   .round-img{
-    @include dimensions(171px, 171px);
-    @include margin(0, 47px, 0, 0);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .classroom-para{
-    @include dimensions(390px, 77px);
     @include margin(0,0,0,0);
     text-align: justify;
-    font-size: 23.4px;
+    font-size: $font-sm;
   }
+
+  .main-h{
+    margin-bottom: 5px;
+  }
+;
 
   .flex-col{
     align-items: flex-start;
+  }
+
+  .img-container{
+    position: relative;
+    width:60%;
+    padding-bottom: 60%;
+    min-width: 75px;
+    min-height: 75px;
+  }
+
+  .description{
+    margin-left: -10%;
   }
 }

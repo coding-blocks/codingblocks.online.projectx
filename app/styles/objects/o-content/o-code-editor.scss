@@ -1,0 +1,34 @@
+.o-code-editor{
+  width: 70%;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+#editor{
+  @include dimensions(100%, 60%);
+  font-size: $font-xs;
+  background: $editor-background;
+
+  .ace_gutter-layer{
+    background: $editor-line-number;
+    color: $white;
+  }
+}
+
+.editor-options{
+  @include dimensions(100%, 100px);
+  max-height: 100px;
+  background-color: $global-font-text-color;
+  padding-left: 18px;
+  padding-right: 30px;
+
+  .button-solid{
+    @include dimensions(168px, 50px);
+  }
+}
+
+#dragger-ce-rs{
+  @include dimensions(100%, 10px);
+  position: absolute;
+}

@@ -1,0 +1,105 @@
+.o-content-section{
+    background-color: $vp-background;
+    margin-top: 10px;
+    height: calc(100vh - 107px);//set according to height of navbar;
+
+    .header{
+        @include dimensions(100%, 100%);
+        max-height: 101px;
+        border-bottom: solid 1px $vp-border;
+    }
+
+    .section-toggler{
+        @include dimensions(20%, 101px);
+        min-width: 20%;
+        justify-content: center;
+        border-right: 1px solid $vp-border;
+    }
+
+    .dashboard{
+        @include padding-mixin(0, 27px, 0, 44px);
+        @include dimensions(80%, auto);
+        justify-content: space-between;
+    }
+
+    .button-dashed{
+        @include dimensions(239px, 54px);
+        @include border-radius(27px);
+        background-color: $vp-background;
+        color: $white;
+        font-size: $font-sm;
+        max-width: 239px;
+    }
+
+    .heading-d{
+        @include margin(0,0,0,0);
+        flex: none;
+    }
+
+    .main-h, .sub-h{
+        font-size: $font-sm;
+        font-weight: $font-normal;
+    }
+
+    .main-h{
+        @include margin(0,0,0,0);
+        color: $white;
+    }
+
+    .sub-h{
+        color: $faded-text;
+    }
+
+    .button-solid{
+        @include dimensions(233px, 61px);
+        @include margin(0, 0, 0, 33px);
+        text-align: center;
+        font-size: $font-sm;
+        max-width: 233px;
+    }
+
+    .notify-text{
+        cursor: pointer;
+    }
+
+    .new{
+        @include dimensions(8px, 8px);
+    }
+
+    .content-section{
+        position: relative;
+        height: calc(100% - 101px);//set according to .lecture-header;
+    }
+
+    .section{
+        @include dimensions(20%, 100%);
+        overflow-y: auto;
+        border-right: solid 1px $vp-border;
+        background-color: $vp-background;
+        transition: all 0.35s ease;
+
+        &.collapse {
+            transform: translateX(-40%);
+        }
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+
+    .content{
+        @include dimensions(100%, 100%);
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: $vp-background;
+        transition: all 0.35s ease;
+
+        &.collapse{
+            right: 0;
+            width: 80%;
+        }
+    }
+
+}
+

@@ -1,0 +1,21 @@
+{{#if feedback.hasDirtyAttributes}}
+  {{textarea value=feedback.text placeholder="Enter Feedback"}}
+
+  {{#unless saveFeedbackTask.isRunning}}
+  <div class="button-solid">
+    <button {{action saveFeedback}}>Save</button>
+  </div>
+  {{else}}
+  <div class="button-solid">
+    <button disabled>Saving...</button>
+  </div>
+  {{/unless}}
+{{else}}
+  <h3>Your feedback:</h3>
+  <p>
+    {{feedback.text}}
+  </p>
+  <div class="button-solid">
+    <button {{action changeToEditMode}}> Edit </button>
+  </div>
+{{/if}}

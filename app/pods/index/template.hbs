@@ -11,133 +11,75 @@
 
 {{!-- Top Slider Courses --}}
 <div class="home-row row">
-    <div class="home-column col-md-6">
-        <div class="card-stack">
-            <div class="card o-layout-card ">
-                <div class="card-image o-image-card">
-                    <img src="images/c++">
-                </div>
-                <div class="card-heading o-text-card">
-                    Registration Open for Launchpad online
-                </div>
-                <div class="card-text">
-                    Learn data structures & algorithm in C++
-                </div>
-                <div class="button-solid">
-                    <button>Register</button>
-                </div>
-            </div>
-
-            <div class="card o-layout-card ">
-                <div class="card-image o-image-card">
-                    <img src="images/c++">
-                </div>
-                <div class="card-heading o-text-card">
-                    Registration Open for Launchpad online
-                </div>
-                <div class="card-text">
-                    Learn data structures & algorithm in C++
-                </div>
-                <div class="button-solid">
-                    <button>Register</button>
-                </div>
-            </div>
-
-            <div class="card o-layout-card ">
-                <div class="card-image o-image-card">
-                    <img src="images/c++">
-                </div>
-                <div class="card-heading o-text-card">
-                    Registration Open for Launchpad online
-                </div>
-                <div class="card-text">
-                    Learn data structures & algorithm in C++
-                </div>
-                <div class="button-solid">
-                    <button>Register</button>
-                </div>
-            </div>
-
-            <div class="card o-layout-card ">
-                <div class="card-image o-image-card">
-                    <img src="images/c++">
-                </div>
-                <div class="card-heading o-text-card">
-                    Registration Open for Launchpad online
-                </div>
-                <div class="card-text">
-                    Learn data structures & algorithm in C++
-                </div>
-                <div class="button-solid">
-                    <button>Register</button>
-                </div>
-            </div>
-        </div>
-        <div class="card-stack-btn">
-            <a class="prev" href="prev">&lt;&nbsp;&nbsp;Prev</a>
-            &nbsp;&nbsp;
-            <a class="next" href="next">Next &nbsp;&nbsp;&gt;</a>
-        </div>
+    <div class="home-column col-xs-12 col-md-6">
+        {{#carousel-cards}}
+        {{/carousel-cards}}
     </div>
-    <div class="col-md-6">
+    <div class="col-xs-12 col-md-6">
         <img class="home-img" src="images/home.png" alt="home">
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2> Recommended Courses </h2>
-    </div>
-</div>
-{{!-- Recommended Courses --}}
-<div class="grid row">
-    {{#if fetchRecommendedCoursesTask.isRunning}}
-        Loading... {{!-- here we can show blank cards to indicate loading --}}
-    {{else}}
-        {{#each recommendedCourses as |course|}}
-        <div class="card-layout col-md-4">
-            <div class="card o-layout-card ">
-
-                <div class="expert-level"></div>
-                <div class="expert-text">Expert</div>
-
-                <div class="card-image o-image-card">
-                    <img src="{{defaultTo course.logo 'images/c++'}}">
-                </div>
-
-                <div class="card-heading o-text-card">
-                    {{course.title}}
-                </div>
-                <div class="card-text">
-                    {{course.summary}}
-                </div>
-                <div class="card-mentor">
-                    <div class="card-mentor-image">
-                        <img class="card-mentors" src="{{course.instructor.photo}}">
-                    </div>
-                    <div class="card-mentor-text">
-                        <span>Instructors</span>
-                        <div class="card-mentor-name">{{course.instructor.name}}</div>
-                    </div>
-                </div>
-                <div class="card-mentor-divider"></div>
-                <div class="card-price-details">
-                    <div class="card-batches">
-                            {{course.runs.length}} Batches Available
-                    </div>
-                    <div class="card-batch-details">
-                        {{#if course.topRun.isFree}}
-                            Free
-                        {{else}}
-                            Starting from <span class="price">Rs {{course.topRun.price}}</span>
-                        {{/if}}
-                    </div>
-                </div>
-                <div class="button-solid">
-                    <button>Register</button>
-                </div>
-            </div>
+<div class="container-courses">
+    <div class="row">
+        <div class="heading">
+            <p>My Courses</p>
         </div>
-        {{/each}}
-    {{/if}}
+    </div>
+{{!-- Recommended Courses --}}
+    <div class="grid row">
+        {{#if fetchRecommendedCoursesTask.isRunning}}
+            Loading... {{!-- here we can show blank cards to indicate loading --}}
+        {{else}}
+            {{#each recommendedCourses as |course|}}
+                <div class="card-layout col-md-4 col-sm-6">
+                    <div class="card o-layout-card ">
+
+                        <div class="expert-level"></div>
+                        <div class="expert-text">Expert</div>
+
+                        <div class="card-image o-image-card">
+                            <img src="{{defaultTo course.logo '/images/c++'}}">
+                        </div>
+
+                        <div class="card-heading o-text-card">
+                            {{course.title}}
+                        </div>
+                        <div class="card-text">
+                            {{course.subtitle}}
+                        </div>
+                        <div class="card-mentor">
+                            <div class="card-mentor-image">
+                                <img class="card-mentors" src="{{course.instructor.photo}}">
+                            </div>
+                            <div class="card-mentor-text">
+                                <span>Instructors</span>
+                                <div class="card-mentor-name">{{course.instructor.name}}</div>
+                            </div>
+                        </div>
+                        <div class="card-mentor-divider"></div>
+                        <div class="price-detail row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="card-price-details">
+                                    <div class="card-batches">
+                                        {{course.runs.length}} Batches Available
+                                    </div>
+                                    <div class="card-batch-details">
+                                        Starting from <span class="price">{{course.topRun.price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button-parent col-md-6 col-sm-12 col-xs-12">
+
+                                <div class="button-solid">
+                                    <button>Register Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {{/each}}
+        {{/if}}
+    </div>
 </div>

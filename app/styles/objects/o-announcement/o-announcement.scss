@@ -3,7 +3,7 @@
   padding-top: 40px;
   
   .accordian-ul{
-    @include margin(0,auto, 32px, auto);
+    @include margin(0,auto, 17px, auto);
     max-width: 88%;
   }
 
@@ -14,11 +14,12 @@
 
   .accordian-head{
     @include padding-mixin(0, 54px, 0, 43px);
-    height: 145px;
+    height: 79px;
   }
 
   .round-img{
     @include margin(0, 24px, 0, 0);
+    @include dimensions(50px, 50px);
   }
 
   .accordian-collapsar{
@@ -26,6 +27,8 @@
   }
 
   .heading-u{
+    font-size: $font-md;
+    padding-bottom: 20px;
     @include margin(0, 0, 55px, 6%);
   }
 
@@ -36,13 +39,14 @@
   .main-h{
     @include margin(0, 0, 13px, 0);
     color: $global-font-text-color;
-    font-size: $font-lg;
+    font-size: $font-sm;
     font-weight: $font-normal;
+    margin-bottom: 2px ;
   }
 
   .sub-h{
     color: $default-accordian-font;
-    font-size: 23.7px;
+    font-size: 1rem;
     font-weight: $font-normal;
   }
 
@@ -52,7 +56,14 @@
   }
 
   .notify-icon{
-    width: auto
+
+    .notify-dot {
+      width: 5px;
+      height: 5px;
+    }
+    img {
+      width: 41px;
+    }
   }
 
   .button-dashed{

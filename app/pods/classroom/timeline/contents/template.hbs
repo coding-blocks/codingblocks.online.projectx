@@ -1,30 +1,32 @@
-<div class="o-accordian">
-    {{#each sections as |section|}}
-        <div class="accordian-ul" data-show="true">
-            {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length}}
+<div class="container">
+  <div class="o-accordian">
+      {{#each sections as |section|}}
+          <div class="accordian-ul" data-show="true">
+              {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length}}
 
-                {{#each section.contents as |content|}}
-                    <div data-completed="{{content.progress.isDone}}" class="accordian-li" {{action 'transitionToContent' content.id}}>
-                        <div class="li-left flex-row">
-                            <div class="accordian-li-type"></div>
-                            <div class="accordian-li-heading">
-                                {{content.payload.name}}
-                            </div>
-                        </div>
+                  {{#each section.contents as |content|}}
+                      <div data-completed="{{content.progress.isDone}}" class="accordian-li" {{action 'transitionToContent' content.id}}>
+                          <div class="li-left flex-row">
+                              <div class="accordian-li-type"></div>
+                              <div class="accordian-li-heading">
+                                  {{content.payload.name}}
+                              </div>
+                          </div>
 
-                        <div class="flex-row">
-                            <div class="accordian-li-duration">
-                                {{if content.progress.isDone 'Completed'}}
-                            </div>
-                                <div class="circle-back">
-                                    <div class="circle-front"></div>
-                                </div>
-                        </div>
-                    </div>     
-                {{/each}}
-            {{/accordian-head}}
-        </div>
-    {{/each}}
-    <div class="row" style="min-height:50px">
-    </div>
+                          <div class="flex-row">
+                              <div class="accordian-li-duration">
+                                  {{if content.progress.isDone 'Completed'}}
+                              </div>
+                                  <div class="circle-back">
+                                      <div class="circle-front"></div>
+                                  </div>
+                          </div>
+                      </div>     
+                  {{/each}}
+              {{/accordian-head}}
+          </div>
+      {{/each}}
+      <div class="row" style="min-height:50px">
+      </div>
+  </div>
 </div>

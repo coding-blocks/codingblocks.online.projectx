@@ -47,5 +47,9 @@ export default DS.Model.extend({
     }),
     sections: DS.hasMany('section'),
     runs: DS.hasMany('run'),
-    instructor: DS.belongsTo('instructor')
+    instructor: DS.belongsTo('instructor'),
+    feedbacks: DS.hasMany('feedback'),
+    feedback: computed('feedbacks', function () {
+      return this.get('feedbacks').objectAt(0)
+    })
 });

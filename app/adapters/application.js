@@ -9,6 +9,10 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     authorizer: 'authorizer:token',
     host: env.apiHost,
     namespace: 'api/v2',
+    pathForType: function (type) {
+      const original = this._super(...arguments)
+      return Ember.String.underscore(original)
+    },
     urlForQueryRecord(query) {
         if(query.custom) {
           switch (query.custom.ext){

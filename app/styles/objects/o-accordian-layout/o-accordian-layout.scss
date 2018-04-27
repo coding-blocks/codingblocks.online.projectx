@@ -1,35 +1,32 @@
 .o-accordian{
-
-    @include padding-mixin(65px, 0, 0, 0);
-    background: $nav-border;
+    font-size: $font-sm;
+    font-weight:$font-normal;
 
     .accordian-ul{
         @include margin(0, auto, 20px, auto);
-        max-width: 80%;
     }
 
     .accordian-collapsar{
-        @include margin(0px, 41px, 0px, 0px);
+        @include dimensions(30px, 30px);
+        @include margin(0px, 34px, 0px, 0px);
+        text-align: center;
     }
-    .accordian-heading{
-        font-size: $font-xl;
-        font-weight: $font-normal;
-    }
+
     .accordian-li-type{
-        @include margin(0px, 41px, 0px, 0px);
+        @include margin(0px, 34px, 0px, 0px);
         flex: none;
     }
     
     .circle-back{
-        @include dimensions(51px, 51px);
+        @include dimensions(42px, 42px);
         @include margin(0, 0, 0, 31px);
         flex:none;
         background: $status-back-incomplete;
     }
 
     .circle-front{
-        @include dimensions(39px, 39px);
-        transform: translateY(15%);
+        @include dimensions(34px, 34px);
+        transform: translateY(12%);
         background: $white;
     }
 

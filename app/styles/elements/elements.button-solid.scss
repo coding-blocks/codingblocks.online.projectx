@@ -29,10 +29,16 @@
 
   .button-#{$type} {
     @extend %button-text;
-    @include dimensions($width, $height);
     @include border-radius($border-radius);
     background: $background;
     color: $color;
+    max-width: $width;
+    height: $height;
+    width: 80%;
   }
 }
 
+
+.button-solid:hover {
+  box-shadow:  0 10px 41px 0 rgba(236, 131, 122, 0.2);
+}

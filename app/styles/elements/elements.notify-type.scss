@@ -12,7 +12,6 @@
 .notify-dot{
   @include dimensions(10px, 10px);
   @include border-radius(50%);
-  // flex: none;
   background-color: $button-element-level;
   display: none;
   position: relative;
@@ -24,7 +23,6 @@
 }
 
 .notify-text{
-  // @include padding-mixin(10px, 0, 0, 0);
-  font-size: $font-xs;
+  font-size: $font-sm;
   color: $white;
 }

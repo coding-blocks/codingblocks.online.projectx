@@ -1,0 +1,16 @@
+.o-pb-statement{
+  @include  padding-mixin(30px, 56px, 30px, 30px);
+
+  .para{
+    font-size: $font-xs;
+    margin: 25px 0;
+  }
+
+  .heading{
+    font-size: $font-xs;
+  }
+
+  .faded-cont{
+    margin: 18px 0;
+  }
+}
