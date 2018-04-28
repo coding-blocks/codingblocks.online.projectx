@@ -1,4 +1,55 @@
-{{#each courses as |course|}}
- {{course.title}}
-{{/each}}
-{{outlet}}
+<div class="grid-background">
+  <div class="heading">
+    <p>All Courses</p>
+  </div>
+  <div class="grid row">
+    {{#each courses as |course|}}
+      <div class="card-layout col-md-4 col-sm-6">
+        <div class="card o-layout-card ">
+
+          <div class="expert-level"></div>
+          <div class="expert-text">Expert</div>
+
+          <div class="card-image o-image-card">
+            <img src="{{defaultTo course.logo '/images/c++'}}">
+          </div>
+
+          <div class="card-heading o-text-card">
+            {{course.title}}
+          </div>
+          <div class="card-text">
+            {{course.subtitle}}
+          </div>
+          <div class="card-mentor">
+            <div class="card-mentor-image">
+              <img class="card-mentors" src="{{course.instructor.photo}}">
+            </div>
+            <div class="card-mentor-text">
+              <span>Instructors</span>
+              <div class="card-mentor-name">{{course.instructor.name}}</div>
+            </div>
+          </div>
+          <div class="card-mentor-divider"></div>
+          <div class="price-detail row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="card-price-details">
+                <div class="card-batches">
+                  {{course.runs.length}} Batches Available
+                </div>
+                <div class="card-batch-details">
+                  Starting from <span class="price">{{course.topRun.price}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="button-parent col-md-6 col-sm-12 col-xs-12">
+              <div class="button-solid">
+                <button>Register Now</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

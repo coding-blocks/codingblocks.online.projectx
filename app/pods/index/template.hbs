@@ -20,13 +20,13 @@
     </div>
 </div>
 
-<div class="container-courses">
-    <div class="row">
-        <div class="heading">
-            <p>My Courses</p>
-        </div>
-    </div>
-{{!-- Recommended Courses --}}
+<div class="grid-background">
+  <div class="heading">
+    <p>Recommended Courses</p>
+  </div>
+  <div class="button-dashed">
+    <button onclick="sectionToggler()">View All Courses</button>
+  </div>
     <div class="grid row">
         {{#if fetchRecommendedCoursesTask.isRunning}}
             Loading... {{!-- here we can show blank cards to indicate loading --}}
