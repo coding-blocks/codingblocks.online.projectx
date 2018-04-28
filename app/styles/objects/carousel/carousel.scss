@@ -9,6 +9,7 @@
 
 .card-stack {
   margin-left: 320px;
+  height: 100%;
   .card {
     @include dimensions(281px, 325px);
     border: none;
@@ -44,6 +45,7 @@
   .card:nth-child(4) {
     height: 142px;
     left: 95px;
+    position: absolute;
     transform: translateY(72%);
      .button-solid {
        display: none;
@@ -95,7 +97,7 @@
 
 .card-stack-btn {
   position: absolute;
-  left: 16%;
+  left: -21%;
   bottom: -1%;
   font-size: $font-sm;
   border-bottom: none;

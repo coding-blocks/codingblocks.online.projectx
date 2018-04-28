@@ -1,0 +1,10 @@
+// KEEP PARENT'S POSITION RELATIVE
+.fader{
+    @include dimensions(100%, 100%);
+    position: absolute;
+    background-color: $modal-fader;
+    opacity: 0.21;
+    z-index: 10;
+    top: 0;
+    left: 0;
+  }

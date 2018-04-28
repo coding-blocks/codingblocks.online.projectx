@@ -23,11 +23,11 @@
 
 //Heading with Underline
 .heading-u{
-  @include padding-mixin(0, 60px, 40px, 0);
+  @include padding-mixin(0, 60px, 22px, 0);
   @include margin(0, 0, 49px, 0);
   border-bottom: solid 1px $global-font-text-color;
   color: $global-font-text-color;
-  font-size: $font-lg;
+  font-size: $font-md;
   @extend %bold;
   display: inline-block;
 }
@@ -51,7 +51,11 @@
 
 //Heading Bold/Capitalized
 .heading{
-  @extend %bold;
-  text-transform: capitalize;
-  font-size: $font-md;
+    @extend %bold;
+    text-transform: capitalize;
+    font-size: $font-md;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+    width: 20%;
 }

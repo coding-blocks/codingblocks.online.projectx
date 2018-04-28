@@ -1,3 +1,26 @@
+<div class="o-pb">
+  <div class="pb-desk">
+    <div class="tab-nav">
+      <div class="tab-list">
+        <div class="tab-items">
+          <div class="tab-items active">Problem</div>
+          <div class="tab-items">Submissions</div>
+          <div class="tab-items">Leaderboard</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="o-pb-statement">
+      {{#problem-statement-component problem=problem}}{{/problem-statement-component}}
+    </div>
+  </div>
+  <div id="dragger-ps-ce"></div>
+  {{#code-editor runCodeTask=runCodeTask submitCodeTask=submitCodeTask}}
+  {{/code-editor}}
+</div>
+
+
+{{!-- 
 <div>
   {{textarea value=sourceCode placeholder="Source Code"}}
   {{textarea value=customInput placeholder="Custom Input"}}
@@ -7,6 +30,7 @@
     <button type="button" class="button-solid" onclick={{action 'submitCode'}}>
     Submit
   </button>
+</div>
 
 
   {{#if customOutput}}
@@ -26,3 +50,4 @@
     <p>{{stub.body}}</p>
   {{/each}}
 {{/if}}
+--}}

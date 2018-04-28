@@ -7,6 +7,12 @@ module.exports = function(defaults) {
     // Add options here
     'ember-composable-helpers': {
       only: ['range', 'pipe', 'inc'],
+    },
+    ace: {
+      themes: ['ambiance', 'chaos', 'monokai', 'solarized_dark'],
+      modes: ['javascript', 'c_cpp', 'python', 'java'],
+      workers: ['javascript'],
+      exts: ['language_tools']
     }
   });
 

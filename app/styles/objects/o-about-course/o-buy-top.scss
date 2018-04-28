@@ -1,23 +1,19 @@
 .o-buy-top{
+    @include dimensions(100%, auto);
     position: fixed;
-    width:100%;
-    transform: translateY(109px);
     z-index: 1;
-    justify-content: space-between;
-    min-height: 140px;
-    padding: 0 70px;
+    padding: 10px 60px;
     background-color: $vp-background;
     transition: all 0.35s ease;
 
     .o-image-card{
-      @include dimensions(90px, 90px);
-      @include margin(0, 40px, 0, 0);
-      flex: none;
+      margin: 0;
+      max-width: 95px;
+      min-width: 60px;
     }
 
     .heading-d{
-      @include margin(0, 50px, 0, 0);
-      flex:none;
+      margin: 0;
     }
   
     .main-h, .sub-h{
@@ -27,23 +23,19 @@
   
     .main-h{
       text-transform: uppercase;
-      font-size: 38px;
+      font-size: $font-md;
+      margin-bottom: 7px;
     }
   
     .sub-h{
-      font-size: $font-md;
+      font-size: $global-font-size;
     }
   
     .button-solid{
-      margin: 0;
-      @include dimensions(370px, 89px);
-      font-size: $font-md;
+      @include dimensions(258px, 68px);
+      font-size: $font-sm;
       font-weight: $font-normal;
-      flex: none;
-    }
-
-    .course-label{
-        flex: none;
+      max-width: 258px;
     }
   
     &.slide-up{
