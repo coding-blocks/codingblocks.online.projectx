@@ -1,25 +1,23 @@
 <header>
        <nav>
            <span>
-             {{#link-to 'index' tagName="span"}}
+             {{#link-to 'index' activeClass=''}}
                   <img src="/images/online-logo.png" alt="online-logo" class="nav-logo pointer">
               {{/link-to}}
            </span>
+
            <ul class="nav-list">
                <li class="nav-items pointer">
-                   <li class="nav-items pointer">
-                       <a href="https://hack.codingblocks.com">Hacker Blocks</a>
-                    </li>   
+                 {{#link-to 'index'}}Home{{/link-to}}
                </li>
                <li class="nav-items pointer">
-                   <li class="nav-items pointer">
-                       <a href="">All Courses</a>
-                    </li>   
+                        {{#link-to 'courses'}}All
+                       Courses{{/link-to}}
                </li>
                {{#if session.isAuthenticated}}
                <li class="nav-items pointer">
-                    {{#link-to 'classroom' tagName="span"}}My Courses{{/link-to}}
-               </li>         
+                    {{#link-to 'classroom'}}My Courses{{/link-to}}
+               </li>
                {{/if}}
                <li class="nav-items pointer">
                  <div class="button-solid">
