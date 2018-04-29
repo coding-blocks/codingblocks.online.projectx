@@ -37,6 +37,8 @@ export default class CodeChallengeComponent extends Component {
     @computed('problemJsonApiPayload')
     codeStubs () {
         const payload = this.get('problemJsonApiPayload')
+        if (!payload)
+          return []
         const checkList = {
             java: true,
             cpp: true,
@@ -69,7 +71,6 @@ export default class CodeChallengeComponent extends Component {
                 problem_id: code.get('hbProblemId')
             }
         }).then(result => {
-            console.log(result)
             this.set('problemJsonApiPayload', result)
         }).catch(err => {
             console.log(err)
@@ -77,30 +78,15 @@ export default class CodeChallengeComponent extends Component {
     }
 
     runCodeTask = task(function * (config) {
-        return yield this.get('ajax').request('https://judge.cb.lk/api/submission', {
+        const { submissionId } = yield this.get('hbApi').request('submissions', {
             method: 'POST',
-            contentType: 'application/json; charset=utf-8',
             data: {
-                expected_output: [""],
-                input: [config.input],
+                custom_input: config.input,
                 source: config.source,
-                test_count: 1,
-                lang: config.lang,
-                test_count: 1,
-                get_output: true,
-                wait: true
-            },
-            headers: {
-                'access-token': config.judgeApiKey 
+                language: config.lang,
             }
         })
-        // .then(({error, result, data}) => {
-        //     if (result === 'success') {
-        //         this.set('customOutput', window.atob(data.testcases[0].output))
-        //     } else {
-        //         this.set('runError', window.atob(error))
-        //     }
-        // })
+        return yield this.get('_pollForSubmissionTask').perform(submissionId)     
     })
 
     submitCodeTask = task(function *  (config) {
@@ -114,18 +100,23 @@ export default class CodeChallengeComponent extends Component {
                 source: config.source,
             }
         })
-        for (let i = 0; i < this.get('maxPollCount') ; i++) {
-          const result = yield this.get('hbApi').request('submissions/result/' + submissionId, {
-            xhrFields: {
-                withCredentials: true
-            }
-          })
-          if (result && result.data) {
-            return result
+        return yield this.get('_pollForSubmissionTask').perform(submissionId)
+    })
+    
+    _pollForSubmissionTask = task(function * (submissionId) {
+      for (let i = 0; i < this.get('maxPollCount') ; i++) {
+        const result = yield this.get('hbApi').request('submissions/result/' + submissionId, {
+          xhrFields: {
+              withCredentials: true
           }
-          yield timeout(3000)
+        })
+        console.log(result)
+        if (result && (result.result)) {
+          return result
         }
-        return ({err: 'Cannot Connect to HB'}) 
-    }) 
+        yield timeout(3000)
+      }
+      return ({err: 'Cannot Connect to HB'}) 
+    })
 
 }

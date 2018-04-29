@@ -47,9 +47,7 @@ module.exports = function(environment) {
     ENV.publicUrl = 'http://localhost:4200';
     ENV.clientId = 7642172843
     ENV.oneauthURL = 'https://account.codingblocks.com'
-    ENV.judgeApiKey = '47a5005319de80ad6b8dfa3cdff93729f3cb616cd252eb483b75dad441cb7a91'
-    ENV.hackApiHost = 'http://localhost:3001'
-    ENV.hbUrl = 'http://localhost:4201'
+    ENV.hackApiHost = 'https://api.codingblocks.xyz'
   }
 
   if (environment === 'test') {
@@ -77,9 +75,7 @@ module.exports = function(environment) {
     ENV.publicUrl = 'https://online.codingblocks.xyz';
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
-    ENV.judgeApiKey = '47a5005319de80ad6b8dfa3cdff93729f3cb616cd252eb483b75dad441cb7a91'
     ENV.hackApiHost = 'https://api.codingblocks.xyz'
-    ENV.hbUrl = 'https://hack.codingblocks.xyz'
   }
 
   ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'
