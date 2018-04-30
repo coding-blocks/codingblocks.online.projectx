@@ -13,7 +13,25 @@ export default class EditorClass extends Component {
       source: ""
     },
     {
-      name: "JAVA",
+      name: "C",
+      code: "c",
+      mode: "ace/mode/c_cpp",
+      source: ""
+    },
+    {
+      name: "Python 2.7",
+      code: "py2",
+      mode: "ace/mode/python",
+      source: ""
+    },
+    {
+      name: "Node",
+      code: "js",
+      mode: "ace/mode/javascript",
+      source: ""
+    },
+    {
+      name: "Java 8",
       code: "java",
       mode: "ace/mode/java",
       source: ""
