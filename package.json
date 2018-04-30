@@ -43,7 +43,6 @@
     "ember-export-application-global": "^2.0.0",
     "ember-keyboard-shortcuts": "^1.0.6",
     "ember-load-initializers": "^1.0.0",
-    "ember-pollboy": "^1.0.1",
     "ember-resolver": "^4.0.0",
     "ember-simple-auth": "^1.4.2",
     "ember-simple-auth-token": "git+https://github.com/abhishek97/ember-simple-auth-token.git",

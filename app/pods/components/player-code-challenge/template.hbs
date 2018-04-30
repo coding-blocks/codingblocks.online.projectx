@@ -2,15 +2,20 @@
   <div class="pb-desk">
     <div class="tab-nav">
       <div class="tab-list">
-        <div class="tab-items active">Problem</div>
-        <div class="tab-items">Submissions</div>
-        <div class="tab-items">Leaderboard</div>
+        {{#link-to "attempt.content" (query-params tab="problem") tagName="div" class="tab-items"}} Problem {{/link-to}}
+        {{#link-to "attempt.content" (query-params tab="submissions") tagName="div" class="tab-items"}} Submissions {{/link-to}}
+        {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class="tab-items"}} Leaderboard {{/link-to}}
       </div>
 
     </div>
-    <div class="o-pb-statement">
+    
+    {{#if (eq tabName 'problem')}}
       {{#problem-statement-component problem=problem}}{{/problem-statement-component}}
-    </div>
+    {{else if (eq tabName 'leaderboard')}}
+      {{#leaderboard-component code=code}}{{/leaderboard-component}}
+    {{else if (eq tabName 'submissions')}}
+      {{#submissions-component code=code}}{{/submissions-component}}
+    {{/if}}
   </div>
   <div id="dragger-ps-ce"></div>
   {{#code-editor runCodeTask=runCodeTask submitCodeTask=submitCodeTask stubs=codeStubs}}
