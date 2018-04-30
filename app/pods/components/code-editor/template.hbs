@@ -1,0 +1,111 @@
+<div class="o-code-editor">
+  <div id="editor">
+    {{ember-ace 
+      value=selectedLanguage.source
+      update=(action (mut selectedLanguage.source))
+      editorClass="height-100" 
+      classNames=classNames
+      mode=selectedLanguage.mode
+      theme='ace/theme/monokai'
+      useSoftTabs=true
+      tabSize=2
+      highlightActiveLine=true
+      enableDefaultAutocompletion=true
+      enableLiveAutocompletion=true
+    }}
+  </div>
+
+  <div id="dragger-ce-rs"></div>
+  <!-- code-editor -- result-->
+
+  <div>
+    <div class="editor-options row justify-content-between">
+      <div class="select-list align-self-center">
+        <div class="select-box pointer" onclick={{action 'openLanguageSelectBox'}}>
+          {{selectedLanguage.name}}
+          <span>&gt;</span>
+        </div>
+        <div class="open-select-box {{if isLanguageSelectOpen 'show-block'}}">
+          <ul>
+            {{#each allLanguages as |language|}}
+              <li class="pointer" {{action selectLanguage language}}>
+                {{language.name}}
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+
+      <div class="align-self-center">
+        <div class="button-solid">
+          {{#if isTaskRunning}}
+            <button disabled>Executing your code</button>
+          {{else}}
+            <button onclick={{action 'submitCode'}}>Submit Code</button>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+
+    <div class="result">
+      <div class="row">
+        <div class="input col-md-6 col-sm-6 col-xs-12">
+          <div class="row">
+            <div class="heading col-md-6">
+              <p>Custom Input</p>
+            </div>
+            <div class="col-md-6">
+              <div class="button-solid">
+                {{#if isTaskRunning}}
+                  <button disbaled>Running Code</button>
+                {{else}}
+                  <button onclick={{action 'runCode'}} >Run Code</button>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-box col-md-12" contenteditable="true" oninput={{action 'changeCustomInput'}}>
+            </div>
+          </div>
+        </div>
+        <div class="output  col-md-6 col-sm-6 col-xs-12">
+          <div class="row">
+            <div class="heading col-md-6">
+              <p>
+                Output : &nbsp;
+                <span>
+                  {{#if isRunOutput}}
+                      {{runCodeTask.last.value.result}}
+                  {{/if}}
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-box col-md-12">
+              {{#if isRunOutput}}
+                {{#if runCodeTask.last.value.error}}
+                  <code>{{base64 'decode' runCodeTask.last.value.error}}</code>
+                {{else if runCodeTask.last.value.data}}
+                  <code>{{base64 'decode' runCodeTask.last.value.data.output}}</code>
+                {{/if}}
+              {{else}}
+                {{#if submitCodeTask.last.value.error}}
+                  <code>{{base64 'decode' submitCodeTask.last.value.error}}</code>
+                {{else if submitCodeTask.last.value.data}}
+                  <code>
+                    {{#each submitCodeTask.last.value.data.testcases as |testcase index|}}
+                      TESTCASE #{{inc index}}: {{testcase.result}} {{testcase.runtime}} <br>
+
+                    {{/each}}
+                  </code>
+                {{/if}}
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,9 @@ import Controller from "@ember/controller";
 import { computed } from "@ember/object";
 
 export default Controller.extend({
+  queryParams: ['tab'],
+  tab: "problem",
+
   componentName: computed("model.contentable", function() {
     const contentable = this.get("model.contentable");
 

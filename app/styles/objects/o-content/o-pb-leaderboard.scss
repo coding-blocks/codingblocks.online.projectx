@@ -1,0 +1,36 @@
+.o-pb-leaderboard{
+  padding: 40px 0;
+
+  .badge{
+    @include dimensions(108px, 126px);
+    @include margin(0, auto, 25px, auto);
+  }
+
+  .heading{
+    font-size: $font-mds;
+    color: $button-element-level;
+    font-weight: $font-normal;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .para{
+    font-size: $font-xs;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .t-head{
+    font-size: $font-xs;
+    font-weight: $font-medium;
+  }
+
+  .t-row{
+    color: $navLink;
+  }
+
+  .t-data{
+    overflow: hidden;
+  }
+}
+

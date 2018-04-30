@@ -47,7 +47,7 @@ module.exports = function(environment) {
     ENV.publicUrl = 'http://localhost:4200';
     ENV.clientId = 7642172843
     ENV.oneauthURL = 'https://account.codingblocks.com'
-
+    ENV.hackApiHost = 'https://api.codingblocks.xyz'
   }
 
   if (environment === 'test') {
@@ -75,6 +75,7 @@ module.exports = function(environment) {
     ENV.publicUrl = 'https://online.codingblocks.xyz';
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
+    ENV.hackApiHost = 'https://api.codingblocks.xyz'
   }
 
   ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'

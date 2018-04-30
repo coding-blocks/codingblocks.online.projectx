@@ -1,19 +1,20 @@
 .o-buy-right{
+  @include dimensions(33%, 80%);
   position: fixed;
-  top: 130px;
+  top: 145px;
   transition: all 0.35s ease;
   right: -14px;
-  width: 42%;
+  z-index: 100;
+  max-height: 730px;
 
   .card{
-    @include dimensions(100%, 730px);
-    padding-bottom: 30px;
+    @include dimensions(100%, 100%);
     overflow-y: scroll;
   }
 
   .button-solid{
-    @include margin(37px, auto, 0px, auto);
-    @include dimensions(304px, 80px);
+    @include margin(37px, auto, 40px, auto);
+    @include dimensions(56%, 80px);
     font-size: $font-md;
     font-weight: $font-medium;
     max-width: 304px;
@@ -29,12 +30,15 @@
   .card-video{
     .status-circle{
       position: absolute;
-      transform: translate(208px, 70px);
+      top: 35%;
+      left: 42%;
       z-index: 10;
     }
 
     .circle-back{
       @include dimensions(96px, 96px);
+      max-width: 96px;
+      max-height: 96px;
       background: $white;
       margin: 0;
       opacity: 0.51;
@@ -42,19 +46,35 @@
 
     .circle-front{
       @include dimensions(82px, 82px);
+      max-width: 82px;
+      max-height: 82px;
       transform: translateY(-109%);
       background: $white;
     }
   }
 
+  .img-container{
+    position: relative;
+    padding-top: 100%;
+  }
+
   .course-features{
+      &>.row{
+        margin-bottom: 30px;
+      }
+
       .img-desc{
         margin-top: 50px;
-        margin-left: 40px;
       }
       .round-img{
-        @include dimensions(65px, 65px);
-        margin-right: 22px;
+        @include dimensions(100%, 100%);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        min-width: 30px;
+        min-height: 30px;
       }
 
       .para{
@@ -62,11 +82,12 @@
         overflow: hidden;
         font-size: $global-font-size;
         text-align: left;
+        padding-left: 0;
       }
   }
 
   &.slide-right{
-    transform: translateX(600px);
+    transform: translateX(105%);
   }
 
   .card-text{
@@ -76,7 +97,7 @@
 
   .card-img{
     @include margin(0, auto, 10px, auto);
-    @include dimensions(350px, 240px);
+    @include dimensions(68%, 240px);
 
     img{
       max-height: 100%;
