@@ -4,6 +4,9 @@ import { computed } from "@ember/object";
 export default DS.Model.extend({
   name: DS.attr(),
   premium: DS.attr(),
+  totalContents: computed("contents.@each", function () {
+    return this.get('contents.length')
+  }),
   doneContents: computed("contents.@each.isDone", function() {
     return this.get("contents").filter(content => content.get("isDone"));
   }),

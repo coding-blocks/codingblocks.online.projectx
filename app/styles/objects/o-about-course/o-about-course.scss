@@ -1,8 +1,27 @@
+%padding{
+  @include padding-mixin(55px, 5%, 80px, 5%);
+}
+
+%grid-row{
+  .grid{
+    margin: 0;
+  }
+
+  .row{
+    padding: 0;
+  }
+}
+
 .o-summary{
-  padding-top: 25px;
+  padding: 25px 5%;
 
   .classroom-container{
     margin-bottom: 60px;
+    padding: 0;
+  }
+
+  .classroom-header-box{
+    padding: 0;
   }
 
   .classroom-image{
@@ -28,5 +47,24 @@
 }
 
 .o-instructor{
-  @include padding-mixin(66px, 0px, 85px, 56px);
+  @extend %padding;
+}
+
+.o-batches{
+  @extend %padding;
+  @extend %grid-row;
+  background-color: $nav-border;
+}
+
+.o-recommended{
+  @extend %padding;
+  @extend %grid-row;
+
+  .heading-u{
+    margin: 0;
+  }
+
+  .custom-heading{
+    margin-bottom: 40px;
+  }
 }
