@@ -16,6 +16,7 @@
   }
 
   .accordian-collapsar{
+    @include dimensions(39px, 39px);
     @include margin(0, 12px, 0, 0);
   }
 
@@ -30,13 +31,15 @@
     border-bottom: solid 1px $vp-border;
     background-color: $vp-background;
     min-height: 79px;
+    font-size: $global-font-size;
   }
 
-  .accordian-heading, .accordian-li-heading{
-    font-size: $font-xs;
+  .accordian-li-type{
+    @include dimensions(39px, 39px);
+    margin-right: 12px;
   }
 
-  .accordian-status, .main-h, .sub-h{
+  .accordian-heading, .accordian-status, .main-h, .sub-h{
     font-size: $font-xs;
   }
 

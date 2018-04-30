@@ -20,9 +20,14 @@
     display: none;
   }
 
+  .img-container{
+    margin: 10px auto;
+  }
+
   .home-img{
-    margin: 0 auto;
-    transform: translateX(25.5vw);
+    margin: 0;
+    left: 0;
+    width: 100%;
   }
 }
 

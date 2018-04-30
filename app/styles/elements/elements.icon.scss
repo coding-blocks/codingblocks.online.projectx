@@ -1,7 +1,8 @@
 .content-icon {
-  width: 29px;
-  height: 29px;
-  background-size: 29px;
+  width: 39px;
+  height: 39px;
+  background-size: 39px;
+  background-repeat: no-repeat;
 }
 
 .play-icon-green {
@@ -26,4 +27,28 @@
 
 .code-icon-red {
   background-image: url("/images/code-red.png");
+}
+
+.play-icon-green-dark {
+  background-image: url("/images/video-green-dark.png");
+}
+
+.play-icon-red-dark {
+  background-image: url("/images/video-red-dark.png");
+}
+
+.file-icon-green-dark {
+  background-image: url("/images/file-green-dark.png");
+}
+
+.file-icon-red-dark {
+  background-image: url("/images/file-red-dark.png");
+}
+
+.code-icon-green-dark {
+  background-image: url("/images/code-green-dark.png");
+}
+
+.code-icon-red-dark {
+  background-image: url("/images/code-red-dark.png");
 }

@@ -1,16 +1,15 @@
 .o-content-section{
     background-color: $vp-background;
-    margin-top: 10px;
-    height: calc(100vh - 107px);//set according to height of navbar;
+    height: calc(100vh - 100px);//set according to height of navbar;
 
     .header{
         @include dimensions(100%, 100%);
-        max-height: 101px;
+        max-height: 90px;
         border-bottom: solid 1px $vp-border;
     }
 
     .section-toggler{
-        @include dimensions(20%, 101px);
+        @include dimensions(20%, 100%);
         min-width: 20%;
         justify-content: center;
         border-right: 1px solid $vp-border;
@@ -23,11 +22,11 @@
     }
 
     .button-dashed{
-        @include dimensions(239px, 54px);
+        @include dimensions(211px, 48px);
         @include border-radius(27px);
         background-color: $vp-background;
         color: $white;
-        font-size: $font-sm;
+        font-size: $font-xs;
         max-width: 239px;
     }
 
@@ -37,7 +36,7 @@
     }
 
     .main-h, .sub-h{
-        font-size: $font-sm;
+        font-size: $font-xs;
         font-weight: $font-normal;
     }
 
@@ -51,10 +50,10 @@
     }
 
     .button-solid{
-        @include dimensions(233px, 61px);
+        @include dimensions(233px, 55px);
         @include margin(0, 0, 0, 33px);
         text-align: center;
-        font-size: $font-sm;
+        font-size: $font-xs;
         max-width: 233px;
     }
 
@@ -68,7 +67,8 @@
 
     .content-section{
         position: relative;
-        height: calc(100% - 101px);//set according to .lecture-header;
+        height: calc(100% - 90px);//set according to .lecture-header;
+        overflow: hidden;
     }
 
     .section{

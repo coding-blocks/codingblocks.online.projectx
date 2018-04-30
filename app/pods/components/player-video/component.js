@@ -1,6 +1,7 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from "@ember/component";
+import { computed } from "@ember/object";
 
 export default Component.extend({
-    video: computed.alias('payload')
+  classNames: ['height-100'],
+  video: computed.alias("payload")
 });

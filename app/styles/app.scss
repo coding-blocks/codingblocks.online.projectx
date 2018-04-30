@@ -12,3 +12,7 @@
 @import "_elements";
 @import "_objects";
 @import "_media-query";
+
+.open-select-box.show-block {
+  display: block
+}
