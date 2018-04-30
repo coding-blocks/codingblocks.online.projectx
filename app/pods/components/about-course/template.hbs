@@ -1,0 +1,314 @@
+{{!-- {{course.title}}
+<div class="card-layout col-md-4">
+    <div class="card o-layout-card ">
+        <div class="card-image o-image-card">
+            <img src="images/c++">
+        </div>
+        <div class="card-heading o-text-card">
+            Registration Open for Launchpad online
+        </div>
+        <div class="card-text">
+            Learn data structures & algorithm in C++
+        </div>
+        <div class="button-solid">
+            <button>Register</button>
+        </div>
+    </div>
+</div> --}}
+
+<div class="o-buy-top slide-up row justify-content-between">
+  <div class="col-sm-8 align-self-center">
+    <div class="row">
+      <div class="o-image-card col-sm-2">
+        <img src="{{course.logo}}" alt="course image">
+      </div>
+      <div class="heading-d col-sm-10 align-self-center">
+        <div class="main-h">
+          {{course.title}}
+        </div>
+        <div class="sub-h">
+          Mentor : {{course.instructor.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="align-self-center">
+    <div class="button-solid">
+      <button>BUY NOW TO ENROLL</button>
+    </div>
+  </div>
+</div>
+
+{{!-- Summary Section --}}
+<div class="o-summary">
+  <div class="classroom-container row">
+    <div class="classroom-header-box col-md-7 col-sm-12 col-xs-12">
+      <div class="classroom-header row">
+        <div class="classroom-image col-md-2 col-xs-2 col-sm-2">
+          <img src="{{course.logo}}" alt="course logo">
+        </div>
+        <div class="classroom-text col-md-10 col-xs-10 col-sm-10">
+          {{course.title}}
+        </div>
+      </div>
+
+      <p class="classroom-para">
+        {{course.summary}}
+      </p>
+
+      {{#rating-stars course=course}}{{/rating-stars}}
+
+      <div class="para">
+        <span class="key">Mentor : </span> {{course.instructor.name}}
+      </div>
+
+      {{!-- <div class="button-solid">
+        <button>BUY NOW TO ENROLL</button>
+      </div> --}}
+
+      <div class="heading-u">
+        Summary
+      </div>
+
+      <div class="para">
+        {{course.subtitle}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Buy right --}}
+
+<div class="o-buy-right">
+  <div class="card">
+    <div class="card-video">
+      <div class="fader"></div>
+
+      <div class="status-circle">
+        <div class="circle-back"></div>
+        <div class="circle-front"></div>
+      </div>
+
+      <div class="card-img">
+        <img src="{{course.coverImage}}" alt="course logo">
+      </div>
+
+      <div class="card-text">
+        Preview this course
+      </div>
+
+    </div>
+    <div class="button-solid">
+      <button>BUY NOW TO ENROLL</button>
+    </div>
+
+    <div class="course-features">
+      <div class="row justify-content-center">
+        <div class="col-2 align-self-center">
+          <div class="img-container">
+            <div class="round-img">
+              <img src="" alt="">
+            </div>
+          </div>
+
+        </div>
+        <div class="para col-4 align-self-center">
+          30+ Hours Video Content
+        </div>
+
+        <div class="col-2 align-self-center">
+          <div class="img-container">
+            <div class="round-img">
+              <img src="" alt="">
+            </div>
+          </div>
+
+        </div>
+        <div class="para col-4 align-self-center">
+          Claim your bounties if you read this!
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-2 align-self-center">
+          <div class="img-container">
+            <div class="round-img">
+              <img src="" alt="">
+            </div>
+          </div>
+
+        </div>
+        <div class="para col-4 align-self-center">
+          Certification of Completion
+        </div>
+
+        <div class="col-2 align-self-center">
+          <div class="img-container">
+            <div class="round-img">
+              <img src="" alt="">
+            </div>
+          </div>
+
+        </div>
+        <div class="para col-4 align-self-center">
+          Supplemental Resources
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+{{!-- Accordian --}}
+
+<div class="o-about-accordian">
+  <div class="custom-heading accordian-head">
+    <div class="heading-u">
+      What will you learn
+    </div>
+
+    <div class="flex-row">
+      <div class="lecture-count">
+        {{course.totalContents}} Lectures
+      </div>
+      {{!-- <div class="duration">
+        54 Hours
+      </div> --}}
+    </div>
+  </div>
+
+  <div class="o-accordian">
+    {{#each course.sortedSections as |section|}}
+      <div class="accordian-ul" data-show="true">
+        {{#accordian-head title=section.name total=section.totalContents}}
+
+        {{#each section.contents as |content|}}
+          <div class="accordian-li">
+            <div class="li-left flex-row">
+              <div class="accordian-li-type"></div>
+              <div class="accordian-li-heading">
+                {{content.payload.name}}
+              </div>
+            </div>
+
+            <div class="flex-row">
+              <div>
+                Preview
+              </div>
+              <div class="accordian-li-duration">
+                01:03:34
+              </div>
+            </div>
+          </div>
+        {{/each}}
+
+        {{/accordian-head}}
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+{{!-- Instructor --}}
+
+<div class="o-instructor">
+  <div class="heading-u">
+    About Instructors
+  </div>
+
+  <div class="o-about-instructors container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="img-desc row">
+          <div class="col-4">
+            <div class="img-container">
+              <div class="round-img">
+                <img src="{{course.instructor.photo}}" alt="photo of {{course.instructor.name}}">
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="description col-8">
+            <div class="heading-d">
+              <div class="main-h">
+                {{course.instructor.name}}
+              </div>
+              <div class="sub-h">
+                Mentor, Coding Blocks
+              </div>
+            </div>
+
+            <div class="classroom-para">
+              {{course.instructor.description}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Available Batches --}}
+
+<div class="o-batches">
+<div class="heading-u">
+  Choose from Available Batches
+</div>
+
+<div class="grid row">
+  {{#each course.runs as |run|}}
+    <div class="card-layout col-lg-3 col-md-4 col-sm-6">
+      <div class="card my-course o-layout-card ">
+        <div class="card-heading o-text-card">
+          {{run.name}}
+        </div>
+        <div class="batch">
+          <div class="card-text">
+            Batch Starts
+          </div>
+          <div class="red-card-text">
+            {{moment-format (unix run.start) 'MMM Do YYYY'}}
+          </div>
+        </div>
+        <div class="batch">
+          <div class="card-text">
+            Batch Ends
+          </div>
+          <div class="red-card-text">
+            {{moment-format (unix run.end) 'MMM Do YYYY'}}
+          </div>
+        </div>
+
+        <div class="card-mentor-divider"></div>
+        <div class="price-detail row">
+          <div class="my-course-grid col-md-6 col-sm-12 col-xs-12">
+            <div class="card-price-details">
+              <div class="card-batch-details">
+                <span class="price">Rs {{run.price}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="button-parent col-md-6 col-sm-12 col-xs-12">
+
+            <div class="button-solid">
+              <button>Enroll Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="batch footer">
+          <div class="card-text">
+            HURRY UP!
+          </div>
+          <div class="red-card-text">
+            [Enrollment end date here]
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+</div>
+

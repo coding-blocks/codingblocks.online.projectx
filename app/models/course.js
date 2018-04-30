@@ -26,6 +26,11 @@ export default DS.Model.extend({
     type: DS.attr(),
     color: DS.attr(),
     backgroundImage: DS.attr(),
+    totalContents: computed('sections.@each.totalContents', function () {
+      return this.get('sections').reduce( (acc, section) => {
+        return acc + +section.get('totalContents')
+      }, 0)
+    }),
     topRun: computed('runs', function () {
         const runs = this.get('runs')
         const now = +new Date() / 1000.0
@@ -51,5 +56,8 @@ export default DS.Model.extend({
     feedbacks: DS.hasMany('feedback'),
     feedback: computed('feedbacks', function () {
       return this.get('feedbacks').objectAt(0)
+    }),
+    sortedSections: computed('sections', function () {
+      return this.get('sections').sortBy('id')
     })
 });
