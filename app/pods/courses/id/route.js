@@ -5,7 +5,7 @@ export default Route.extend({
       window.scrollTo(0,0);
     },
     model (params) {
-        return this.store.findRecord("course", params.courseId)
+        return this.store.findRecord("course", params.courseId, {reload: true})
     },
     setupController(controller, model) {
         this._super(...arguments)
