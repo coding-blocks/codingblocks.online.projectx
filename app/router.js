@@ -21,6 +21,7 @@ Router.map(function() {
   this.route('attempt', {path: '/player/:runAttemptId'}, function() {
     this.route('content', {path: '/content/:contentId'}, function() {});
   });
+  this.route('error');
 });
 
 export default Router;

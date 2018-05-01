@@ -19,6 +19,15 @@ export default Route.extend(ApplicationRouteMixin, {
             // we have ?code qp
             const { code } = transition.queryParams
             return this.get('session').authenticate('authenticator:jwt', {identification: code, password: code, code})
+              .catch(error => {
+              if(error.err === 'USER_EMAIL_NOT_VERIFIED') {
+                this.transitionTo('error', {
+                  queryParams: {
+                    errorCode: 'USER_EMAIL_NOT_VERIFIED'
+                  }
+                })
+              }
+            })
         }
     },
     model () {
