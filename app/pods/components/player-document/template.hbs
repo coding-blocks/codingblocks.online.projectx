@@ -1,1 +1,25 @@
-{{yield}}
+<div class="container-fluid o-document">
+  <div class="row">
+    <div class="col-md-4 heading">
+      {{document.name}}
+    </div>
+    <div class="offset-md-4 offset-lg-5 col-md-4 col-lg-3">
+      <div class="button-solid float-right">
+        <a href={{document.pdfLink}} style="color:white" target="_blank">
+          <button>
+            Download as PDF
+          </button>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  <div class="row markdown">
+    {{#if document.pdfLink}}
+      <iframe src="https://docs.google.com/gview?url={{document.pdfLink}}&embedded=true" style="width:100%" frameborder="0">
+      </iframe>
+    {{else}}
+      {{markdown-to-html document.markdown}}
+    {{/if}}
+  </div>
+</div>

@@ -1,5 +1,6 @@
 .video-player{
     @include dimensions(100%, 100%);
+    background: $black;
     
     video{
       @include dimensions(100%, 100%);

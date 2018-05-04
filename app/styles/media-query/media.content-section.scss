@@ -1,0 +1,66 @@
+@media all and (max-width: 768px){
+  .o-content-section{
+    height: 100vh;
+
+    .content-section{
+      overflow: auto;
+    }
+
+    .section-toggler{
+      display: none;
+    }
+
+    .section-collapsor{
+      display: flex;
+    }
+
+    .dashboard{
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 0;
+    }
+
+    .button-solid{
+      max-width: 170px;
+    }
+
+    .content{
+      position: static;
+      width: 100% !important;
+      height: calc(100vh - 180px);
+    }
+
+    .section{
+      @include dimensions(100%, 100%);
+      height: auto;
+    }
+
+    .main-h, .sub-h, .notify-text, .button-solid, .accordian-heading, .accordian-li, .accordian-status, .header{
+      font-size: $global-font-size;
+    }
+
+    .accordian-li{
+      padding-left: 3%;
+      padding-right: 5%;
+    }
+
+    .accordian-head{
+      padding-left: 3%;
+      padding-right: 4%;
+    }
+
+    .accordian-li-type, .accordian-collapsar{
+      margin-right: 4%;
+    }
+
+    .video-player{
+      padding: 23% 0;
+    }
+
+    .notify-text{
+      padding-right: 20px;
+      margin-left: 0;
+      display: none;
+    }
+  }
+}
