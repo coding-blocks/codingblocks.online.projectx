@@ -1,5 +1,8 @@
 <header>
   <nav>
+    <span class="hamburger-parent" onclick={{action 'toggleSidebar'}}>
+            <i class="hamburger fas fa-bars"></i>
+          </span>
     <span>
       {{#link-to 'index' activeClass=''}}
       <img src="/images/online-logo.png" alt="online-logo" class="nav-logo pointer"> {{/link-to}}
@@ -19,9 +22,7 @@
       {{/if}}
       <li class="nav-items pointer">
         <div class="button-solid">
-          {{#if session.isAuthenticated}}
-          <button onclick={{action 'invalidateSession'}}>Logout</button>
-          {{else}} {{login-button tagName="button"}} {{/if}}
+          {{login-button}}
         </div>
       </li>
     </ul>
@@ -30,4 +31,30 @@
       <img src="/images/searchicon.png" alt="search">
     </div>
   </nav>
+  <div class="sidebar {{if showSidebar 'display-block' 'display-none'}}">
+    <i class="close fas fa-times" onclick={{action 'toggleSidebar'}}></i>
+    <div class="upper-half">
+      <div class="round-img">
+      </div>
+      <div class="para">
+        Hello, {{if session.isAuthenticated currentUser.user.firstname 'Guest'}}
+      </div>
+      <div class="button-solid">
+        {{login-button}}
+      </div>
+    </div>
+    <div class="lower-half">
+      <div class="para">
+        {{#link-to 'index'}}Home{{/link-to}}
+      </div>
+      {{#if session.isAuthenticated}}
+        <div class="para">
+          {{#link-to 'classroom'}}My Courses{{/link-to}}
+        </div>
+      {{/if}}
+      <div class="para">
+        {{#link-to 'courses'}}All Courses{{/link-to}}
+      </div>
+    </div>
+  </div>
 </header>
