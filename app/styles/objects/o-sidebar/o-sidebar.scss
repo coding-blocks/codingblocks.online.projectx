@@ -1,0 +1,44 @@
+.sidebar {
+  position: absolute;
+  @include dimensions(55vw, 100vh);
+  top: 0;
+  left: 0;
+  z-index: 102;
+  background-color: #ffffff;
+  @include padding-mixin(7%, 5%, 7%, 5%);
+
+  .upper-half {
+    @include padding-mixin(10%, 0, 10%, 0);
+    @include textalign(center);
+    border-bottom: 1px solid #f6f6f6;
+
+    .round-img {
+      @include dimensions(100px, 100px);
+    }
+
+    .para {
+      text-transform: uppercase;
+      text-align: center;
+      @include padding-mixin(24px, 0, 25px, 0);
+    }
+
+    .button-solid {
+      @include margin(0, auto, 0, auto);
+    }
+  }
+
+  .lower-half {
+    @include textalign(center);
+
+    .para {
+      font-size: $font-xs;
+      text-transform: uppercase;
+      @include padding-mixin(12%, 0, 0, 5%);
+    }
+
+    .copyright-heading{
+      position: absolute;
+      bottom: 4%;
+    }
+  }
+}
