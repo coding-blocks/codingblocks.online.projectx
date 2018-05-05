@@ -1,7 +1,9 @@
-{{nav-bar}}
+{{#unless hideNav}}
+  {{nav-bar}}
+{{/unless}}
 
 {{outlet}}
 
-{{#unless isHidden}}
+{{#unless hideFooter}}
   {{foot-er}}
 {{/unless}}
