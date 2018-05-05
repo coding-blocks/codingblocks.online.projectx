@@ -11,15 +11,9 @@
         <p class="classroom-para">
             {{run.course.summary}}
         </p>
-        <div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between">
-          <div class="rating">
-              {{#rating-stars course=run.course}}
-              {{/rating-stars}}
-          </div>
-          <div class="rating">
-            <div>&nbsp;</div>
-            {{rating-stars-static course=run.course}}
-          </div>
+        <div class="rating">
+          {{#rating-stars course=run.course}}
+          {{/rating-stars}}
         </div>
     </div>
     <div class="course-progress-box col-md-6 col-sm-12 col-xs-12">

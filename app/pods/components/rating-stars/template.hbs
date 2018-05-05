@@ -2,6 +2,11 @@
   <div>
     Your rating: {{ratingMarkedByUser}}
   </div>
+{{else}}
+  <div>
+    Rate this course:
+    
+  </div>
 {{/if}}
 
 {{#each (range 1 (inc scale)) as |index|}}
