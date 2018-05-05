@@ -13,5 +13,6 @@ export default DS.Model.extend({
     return this.get('runAttempts').objectAt(0)
   }),
   runAttempts: DS.hasMany('run-attempt'),
+  announcements: DS.hasMany('announcement'),
   percentComplete: DS.attr()
 })
