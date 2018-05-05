@@ -13,8 +13,6 @@ export default DS.Model.extend ({
 
     const diff = Math.floor ((now.getTime () - createdAt.getTime ()) / 1000)
 
-    console.log (diff)
-
     if (diff < 3600) {
       return `${Math.floor (diff / 60)} minute(s) ago`
     }
