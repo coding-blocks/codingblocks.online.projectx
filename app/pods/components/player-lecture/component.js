@@ -5,6 +5,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
     api: inject(),
+    classNames: ['height-100'],
     lecture: computed.alias('payload'),
 
     didReceiveAttrs () {

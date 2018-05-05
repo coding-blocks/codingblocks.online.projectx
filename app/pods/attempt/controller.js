@@ -4,9 +4,13 @@ import { inject } from '@ember/service';
 export default Controller.extend({
     store: inject('store'),
     sidebarCollapsed: false,
+    accordianCollapsed: false,
     actions: {
         toggleSideBar () {
             this.toggleProperty("sidebarCollapsed")
+        },
+        toggleAccordian () {
+            this.toggleProperty("accordianCollapsed")
         },
         transitionToContent (contentId) {
             this.transitionToRoute('attempt.content', contentId)
