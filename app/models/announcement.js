@@ -1,4 +1,6 @@
 import DS from 'ember-data';
+import _moment from 'ember-moment/computeds/moment';
+import fromNow from 'ember-moment/computeds/from-now';
 
 export default DS.Model.extend ({
   title: DS.attr ("string"),
@@ -6,21 +8,8 @@ export default DS.Model.extend ({
   createdAt: DS.attr (),
   updatedAt: DS.attr (),
   run: DS.belongsTo ('run'),
-  elapsedTime: Ember.computed ('createdAt', function () {
-    const now = new Date (),
-      createdAt = new Date (this.get ('createdAt'))
-    ;
-
-    const diff = Math.floor ((now.getTime () - createdAt.getTime ()) / 1000)
-
-    if (diff < 3600) {
-      return `${Math.floor (diff / 60)} minute(s) ago`
-    }
-    else if (diff < 86400) {
-      return `${Math.floor (diff / 3600)} hour(s) ago`
-    }
-    else {
-      return createdAt.toDateString ()
-    }
-  })
+  elapsedTime: fromNow (
+    _moment ('createdAt'),
+    false
+  ),
 });
