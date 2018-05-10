@@ -1,8 +1,8 @@
 <div class="o-announcement">
     <div class="heading-u">
-		Announcements ({{run.announcements.length}})
+		Announcements ({{announcements.length}})
     </div>
-	{{#each run.announcements as |announcement|}}
+	{{#each announcements as |announcement|}}
 		<div class="accordian-ul" data-show="true">
 			{{#accordian-head announcement=announcement course=course}}
 			<div class="accordian-li">
@@ -15,6 +15,6 @@
 	{{/each}}
 
     <div class="button-dashed">
-        <button>Load More</button>
+        <button onclick={{action 'updatePage'}}>Load More</button>
     </div>
 </div>
