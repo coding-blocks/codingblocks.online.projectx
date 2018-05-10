@@ -16,7 +16,8 @@
   }
 
   .accordian-collapsar{
-    @include dimensions(39px, 39px);
+    @include dimensions(0px, 39px);
+    flex-grow: 1;
     @include margin(0, 12px, 0, 0);
   }
 
@@ -43,6 +44,10 @@
     font-size: $font-xs;
   }
 
+  .accordian-heading {
+    width: 0;
+    flex-grow: 10;
+  }
 
   .circle-front{
     @include dimensions(29px, 29px);
@@ -55,7 +60,7 @@
   }
 
   .li-left{
-    width: 70%;
+    width: 100%;
   }
 
 }

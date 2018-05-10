@@ -28,6 +28,7 @@
         @include dimensions(34px, 34px);
         transform: translateY(12%);
         background: $white;
+        position: static;
     }
 
     .accordian-li[data-completed="true"]{

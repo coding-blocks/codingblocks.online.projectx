@@ -1,21 +1,25 @@
+.status-circle{
+  position: relative;
+  padding-bottom: 100%;
+}
 
 .circle-back{
-  @include dimensions(113px, 113px);
+  @include dimensions(100%, 100%);
   @include border-radius(50%);
   background: $course-progress-circle-front;
-  margin-left: -16px;
 }
 
 .circle-front{
-  @include dimensions(86px, 84px);
+  @include dimensions(75%, 75%);
   @include border-radius(50%);
+  position: absolute;
+  top: 12.5%;
+  left: 12.5%;
   margin: 0 auto;
-  transform: translateY(18%);
   background: $button-gradient;
 }
 
 .progress-text {
-  transform: translateY(65%);
   color: $white;
   @include textalign(center);
 }

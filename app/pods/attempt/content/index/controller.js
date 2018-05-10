@@ -19,6 +19,7 @@ export default Controller.extend({
         return "player-code-challenge";
     }
   }),
+  course: computed.alias('runAttempt.run.course'),
   actions: {
     transitionToDashboard() {
       this.transitionToRoute(

@@ -20,6 +20,7 @@ module.exports = function(environment) {
       authorizationPrefix: 'JWT ',
     },
     hbBaseUrl: "https://hack.codingblocks.com",
+    discussBaseUrl: 'https://discuss.codingblocks.com',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

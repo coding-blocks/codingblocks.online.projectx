@@ -1,43 +1,79 @@
 .my-course {
-  padding-top: 58px;
-  height: 480px;
-   .batch {
-     margin-bottom: 30px;
-   }
+  padding: 10% 7%;
+  height: auto;
 
-  .card-text {
-    font-size: $font-sm;
-    color: #666666;
+  .card-heading{
+    margin-bottom: 40px;
   }
 
-   .red-card-text {
-     font-size: $font-sm;
-     color: #ff6666;
-   }
+  .card-text {
+    height: auto;
+    font-size: $global-font-size;
+  }
+
+  .batch {
+    margin-bottom: 37px;
+  }
+
+  .grey {
+    color: $navLink;
+  }
+
+  .red {
+    color: $button-element-level;
+  }
 
   .price {
-    font-size: $font-md;
-    color: #ff6666;
+    font-size: $font-sm;
+    color: $button-element-level;
   }
 
   .price-detail {
     padding: 0;
   }
 
-  .my-course-grid {
-    margin-top: 5%;
-    padding-left: 0;
+  .my-course-enroll{
+    font-size: $card-md;
+    margin-top: 5px;
+    position: relative;
   }
 
-  .footer {
-    margin-top: 20px;
-    .card-text {
-      text-transform: uppercase;
-      font-size: $font-sm;
-    }
+  .button-parent{
+    min-height: 44px;
+  }
+
+  .button-solid{
+    height: 44px;
+    max-width: 121px;
+    top: 0;
+    right: 0;
+    left: unset;
+  }
+
+  .button-dashed{
+    @include border(solid, 1.5px, $button-element-level);
+    position: absolute;
+    height: 44px;
+    max-width: 121px;
+    right: 0;
+    font-size: $card-md;
   }
 
   .card{
     max-width: 540px;
+  }
+
+  .divider-v{
+    @include dimensions(1px, 35px);
+    margin: 0 18px;
+    background: $global-font-text-color;
+  }
+
+  .card-mentor-divider{
+    margin: 40px 0;
+  }
+
+  .row{
+    padding: 0;
   }
 }

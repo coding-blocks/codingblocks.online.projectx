@@ -1,4 +1,3 @@
-
 .classroom-container {
   margin-bottom: 77px;
 
@@ -19,6 +18,7 @@
     text-transform: uppercase;
     font-size: $font-xl;
     transform: translateY(50%);
+    font-weight: $font-medium;
   }
 
   .classroom-image {
@@ -33,31 +33,26 @@
     word-wrap: break-word;
     margin-top: 43px;
   }
+
+  .circle-back{
+    margin-left: -16px;
+  }
 }
 
-
-.course-progress-2 {
-  padding-left: 45px;
-}
 .course-progress-heading {
   font-size: $font-md;
-  top: 20px;
-  position: relative;
+  margin-bottom: 40px;
 }
+
 .progress-text {
-  font-size: $font-md;
+  font-size: $font-xl;
   text-align: center;
 }
 
-.course-progress-detail {
-  padding: 30px;
-  padding-left: 21px;
-}
-
 .lectures-completed {
-  font-size: 25px;
+  font-size: $font-md;
   padding: 0;
-  margin-bottom: 5px;
+  margin: 0;
 }
 
 .reset-progress {
@@ -65,23 +60,61 @@
   font-weight: 500;
   font-size: 20px;
   margin-top: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.course-progress-detail{
+  transform: translateX(-4%);
 }
 
 .row {
   padding: 10px;
 }
 
+.progress{
+  padding: 0;
+}
+
 .course-progress-box {
+  padding-left: 44px;
+
   .button-solid {
-    max-width: none;
-    @include dimensions(258px, 68px);
-    button {
-      font-size: $font-md;
-    }
+    @include dimensions(100%, 68px);
+    max-width: 258px;
+    font-size: $font-md;
+    margin-top: 22px;
+  }
+
+  .progress-circle{
+    padding-right: 7%;
   }
 
   .status-circle {
+    @include dimensions(100%, 25%);
     float: left;
-    margin-right: 40px;
   }
+
+  .circle-back{
+    @include dimensions(100%, 100%);
+    position: absolute;
+    top: 0;
+  }
+}
+
+.rating{
+  &.mob{
+    display: none;
+  }
+}
+
+.heading-mob{
+  display: none;
+}
+
+.edit-rating{
+  font-size: $font-mds;
+  border-bottom: solid 1px $global-font-text-color;
+  cursor: pointer;
+  margin-left: 3%;
 }
