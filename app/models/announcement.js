@@ -8,6 +8,7 @@ export default DS.Model.extend ({
   createdAt: DS.attr (),
   updatedAt: DS.attr (),
   run: DS.belongsTo ('run'),
+  user: DS.belongsTo ('user'),
   elapsedTime: fromNow (
     _moment ('createdAt'),
     false
