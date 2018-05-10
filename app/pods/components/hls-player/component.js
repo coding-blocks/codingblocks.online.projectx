@@ -5,7 +5,7 @@ import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
 
 
 export default Component.extend(KeyboardShortcuts, {
-
+  classNames: ['height-100'],
   keyboardShortcuts: {
     space: 'toggleVideoPlayback',
     left: 'seekBack',

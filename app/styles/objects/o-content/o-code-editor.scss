@@ -53,6 +53,10 @@
         padding-bottom: 10px;
       }
     }
+
+    .show-block {
+      display: block
+    }
   }
 
   .button-solid{
@@ -112,8 +116,4 @@
      max-height: 50%;
      overflow-y: scroll;
    }
-}
-
-.show-block {
-  display: block
 }

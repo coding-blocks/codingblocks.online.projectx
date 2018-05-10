@@ -4,10 +4,12 @@ import { service } from 'ember-decorators/service';
 
 export default class navBarComponent extends Component {
     @service session
-    @service api
+    @service currentUser
 
+    showSidebar = false
+    
     @action
-    invalidateSession () {
-        this.get('api').request('/jwt/logout').then (() => this.get('session').invalidate())
+    toggleSidebar () {
+      this.toggleProperty('showSidebar')
     }
 }

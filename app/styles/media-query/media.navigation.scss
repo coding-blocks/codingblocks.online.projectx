@@ -1,0 +1,13 @@
+@media all and (max-width: 875px) {
+
+  .nav-list {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline-block;
+    @include dimensions(50px, 50px);
+    background-size: 50px ;
+    background-image: url("/images/menu-icon.png");
+  }
+}

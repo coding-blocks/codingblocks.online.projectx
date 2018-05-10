@@ -11,12 +11,14 @@
   font-size:$font-md;
   @extend %bold;
   color: $global-font-text-color;
+  overflow: hidden;
 }
 
 .sub-h{
   font-size: $font-sm;
   @extend %bold;
   color: $font-sub-heading;
+  overflow: hidden;
 }
 
 

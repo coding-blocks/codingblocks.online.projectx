@@ -1,6 +1,7 @@
 .o-content-section{
     background-color: $vp-background;
-    height: calc(100vh - 100px);//set according to height of navbar;
+    height: 100vh;//set according to height of navbar;
+    margin-top: -100px;
 
     .header{
         @include dimensions(100%, 100%);
@@ -16,9 +17,8 @@
     }
 
     .dashboard{
-        @include padding-mixin(0, 27px, 0, 44px);
         @include dimensions(80%, auto);
-        justify-content: space-between;
+        padding-left: 40px;
     }
 
     .button-dashed{
@@ -50,15 +50,16 @@
     }
 
     .button-solid{
-        @include dimensions(233px, 55px);
-        @include margin(0, 0, 0, 33px);
+        @include dimensions(100%, 53px);
         text-align: center;
         font-size: $font-xs;
         max-width: 233px;
+        overflow: hidden;
     }
 
     .notify-text{
         cursor: pointer;
+        margin-left: 44%;
     }
 
     .new{
@@ -87,6 +88,15 @@
         }
     }
 
+    .section-collapsor{
+      display: none;
+      height: 90px;
+      cursor: pointer;
+      font-size: $global-font-size;
+      padding-left: 11%;
+      padding-right: 4%;
+    }
+
     .content{
         @include dimensions(100%, 100%);
         position: absolute;
@@ -94,6 +104,7 @@
         right: 0;
         background: $vp-background;
         transition: all 0.35s ease;
+        z-index: 100;
 
         &.collapse{
             right: 0;

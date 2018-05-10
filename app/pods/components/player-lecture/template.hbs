@@ -1,5 +1,5 @@
 {{#unless awsDataTask.isRunning}}
-    <div class="video-player {{unless sidebarCollapsed 'collapse'}}">
+    <div class="video-player d-flex flex-column justify-content-around {{unless sidebarCollapsed 'collapse'}}">
         {{#hls-player src=lecture.videoUrl 
             awsData=awsDataTask.lastSuccessful.value
             title=lecture.name
