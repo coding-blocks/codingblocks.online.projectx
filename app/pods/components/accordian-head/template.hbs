@@ -1,4 +1,37 @@
 <div class="accordian-head" {{action 'toggle'}}>
+	{{#if announcement}}
+	<div class="flex-row">
+		<div class="accordian-collapsar">
+			<i class="fas fa-{{if collapsed 'plus' 'minus'}}"></i>
+		</div>
+		<div class="img-desc flex-row">
+			<div class="round-img">
+				<img src="" alt="">
+			</div>
+			<div>
+				<div class="heading-d">
+					<div class="main-h">
+						{{announcement.title}}
+					</div>
+					<div class="sub-h">
+						{{announcement.user.firstname}} |
+						{{announcement.elapsedTime}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="flex-row">
+		<div class="notify-type">
+			<div class="notify-icon">
+				<span class="notify-dot new"></span>
+				<img src="/images/announcement.png" alt="">
+			</div>
+		</div>
+	</div>
+	{{/if}}
+
     <div class="li-left flex-row">
         <div class="accordian-collapsar">
             {{if collapsed '+' '-'}}
