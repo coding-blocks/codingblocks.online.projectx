@@ -5,10 +5,9 @@
         <img src="/images/c++">
       </div>
       <div class="classroom-text col-10 col-md-10">
-        {{run.course.title}} 
+        {{run.course.title}}
         <div class="rating mob">
-          {{#rating-stars course=run.course}} 
-          {{/rating-stars}}
+          {{#rating-stars course=run.course}} {{/rating-stars}}
         </div>
       </div>
     </div>
@@ -40,13 +39,13 @@
         <p class="reset-progress" {{action 'resetProgress'}}>Reset Progress</p>
       </div>
       <div class="offset-md-5 col-4 col-md-5">
-      <div class="button-solid">
-        {{#link-to 'attempt' run.topRunAttempt.id tagName="button"}} Resume Learning {{/link-to}}
+        <div class="button-solid">
+          {{#link-to 'attempt' run.topRunAttempt.id tagName="button"}} Resume Learning {{/link-to}}
+        </div>
       </div>
     </div>
-    </div>
 
-    
+
 
   </div>
 </div>
