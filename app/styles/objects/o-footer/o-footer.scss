@@ -10,6 +10,7 @@ footer {
 
 	.link {
 		text-transform: uppercase;
+		text-align: center;
 	}
 
 	.links {
@@ -28,6 +29,20 @@ footer {
 	}
 
 	.logo-row {
-		padding-bottom: 20px;
+		padding-bottom: 30px;
+	}
+
+	.text-center {
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.link:nth-child(even):not(.shadow) {
+		display: none;
+	}
+	.link {
+		margin: 10px;
+		width: 100%;
 	}
 }

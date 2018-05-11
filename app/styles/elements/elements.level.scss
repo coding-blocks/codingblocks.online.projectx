@@ -16,3 +16,37 @@
   position: absolute;
   top: 60px;
 }
+
+.intermediate-level {
+  @include border-radius(50%);
+  @include dimensions(30px,30px);
+  border: 6px solid $intermediate-level;
+  position: absolute;
+  top: 30px;
+  left: 87%;
+}
+
+.intermediate-text {
+  font-size: 13px;
+  left: 87%;
+  margin-top: 2px;
+  position: absolute;
+  top: 60px;
+}
+
+.beginner-level {
+  @include border-radius(50%);
+  @include dimensions(30px,30px);
+  border: 6px solid $status-front-complete;
+  position: absolute;
+  top: 30px;
+  left: 84%;
+}
+
+.beginner-text {
+  font-size: 13px;
+  left: 84%;
+  margin-top: 2px;
+  position: absolute;
+  top: 60px;
+}
