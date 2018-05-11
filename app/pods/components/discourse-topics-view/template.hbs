@@ -1,0 +1,22 @@
+<div class="o-doubt">
+  <div class="d-flex head">
+    <div class="heading-u mr-auto">
+      Solve your doubts ({{topic_list.topics.length}})
+    </div>
+    <div class="button-solid right-head-button">
+      <a href="{{redirectLink}}" target="_blank" style="color: #fff">
+        <button>Ask a Question</button>
+      </a>
+    </div>
+  </div>
+
+  <div class="row doubts-box">
+    <div class="col-12">
+      {{#each topic_list.topics as |topic|}}
+        {{doubt-view topicId=topic.id}}
+      {{/each}}
+    </div>
+  </div>
+
+
+</div>

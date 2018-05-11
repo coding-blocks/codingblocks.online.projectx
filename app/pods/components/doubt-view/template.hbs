@@ -1,0 +1,25 @@
+<div class="row doubt">
+  <div class="d-flex flex-row doubt-head">
+    <div class="left flex-row mr-auto">
+      <div class="round-img">
+        <img src="{{photoUrl}}" class="rounded-circle">
+      </div>
+      <div class="author-name">
+        {{topic.username}}
+        <br>
+        <span class="time">{{moment-from-now topic.created_at}}</span>
+      </div>
+    </div>
+    <div class="text"> {{topicResponse.posts_count}} Replies</div>
+
+    <div class="button-dashed reply">
+      <a href="{{redirectLink}}" target="_blank" style="color: #ff6666">
+        <button>Reply Now</button>
+      </a>
+    </div>
+  </div>
+
+  <div class="doubt-body">
+    {{{topic.cooked}}}
+  </div>
+</div>

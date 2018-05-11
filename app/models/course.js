@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import { computed } from '@ember/object';
+import env from 'codingblocks-online/config/environment';
 
 export default DS.Model.extend({
     name: DS.attr(),
@@ -10,6 +11,9 @@ export default DS.Model.extend({
     promoVideo: DS.attr(),
     coverImage: DS.attr(),
     logo: DS.attr(),
+    categoryName: DS.attr(),
+    categoryId: DS.attr('number'),
+    doubtSubCategoryId: DS.attr('number'),
     price: computed('fees', 'isFree', function () {
     if (this.get('isFree'))
         return 0
@@ -59,5 +63,9 @@ export default DS.Model.extend({
     }),
     sortedSections: computed('sections', function () {
       return this.get('sections').sortBy('id')
+    }),
+    canHazDoubtsLink: computed.and('categoryId', 'doubtSubCategoryId'),
+    doubtsLink: computed('categoryId', 'doubtSubCategoryId', function () {
+      return `${env.discussBaseUrl}/c/${this.get('categoryId')}/${this.get('doubtSubCategoryId')}`
     })
 });
