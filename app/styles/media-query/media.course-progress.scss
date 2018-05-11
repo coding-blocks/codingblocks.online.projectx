@@ -1,0 +1,100 @@
+@media all and (max-width: 767px){
+  .classroom-para{
+    display: none;
+  }
+
+  .classroom-container{
+    margin-bottom: 15px;
+
+    .classroom-header-box{
+      border: none;
+      padding: 0;
+    }
+
+    .classroom-text{
+      transform: unset;
+      font-size: $font-xs;
+      padding-top: 2%;
+    }
+
+    .classroom-image{
+      top: 0;
+      padding: 0;
+    }
+  }
+
+  .course-progress-box{
+    padding: 0;
+    margin-top: 15px;
+
+    .button-solid {
+      height: 45px;
+      font-size: $global-font-size;
+      margin: 0;
+    }
+
+    .progress-circle{
+      padding-right: 10px;
+      font-size: $global-font-size;
+      min-width: unset;
+    }
+  }
+
+  .course-progress-detail{
+    margin:0;
+    transform: none;
+  }
+
+  .course-progress-heading, .lectures-completed{
+    font-size: $global-font-size;
+  }
+
+  .course-progress-heading{
+    padding: 0;
+    margin-bottom: 20px;
+    
+    .heading{
+      display: none;
+    }
+  }
+  
+  .divider-h{
+    height:1px;
+    background: $default-border;
+  }
+
+  .heading-mob{
+    font-size: $font-xs;
+    font-weight: $font-medium;
+    display: block;
+  }
+
+  .rating{
+    display: none;
+
+    &.mob{
+      display: block;
+
+      .pos-rating, .neg-rating{
+        font-size: $global-font-size;
+      }
+    }
+  }
+
+  p{
+    margin: 0;
+  }
+
+  .reset-progress, .edit-rating{
+    font-size: $card-sm;
+  }
+
+  .edit-rating{
+    text-transform: none;
+    font-weight: $font-normal;
+  }
+
+  .progress-text{
+    font-size: $font-mds;
+  }
+}

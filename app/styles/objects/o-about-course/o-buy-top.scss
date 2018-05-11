@@ -1,45 +1,61 @@
+%button-config{
+  @include dimensions(100%, 52px);
+  @include border-radius(40px);
+  font-size: $global-font-size;
+  font-weight: $font-medium;
+  max-width: 216px;
+}
+
 .o-buy-top{
-    @include dimensions(100%, auto);
-    position: fixed;
-    z-index: 1;
-    padding: 10px 60px;
-    background-color: $vp-background;
-    transition: all 0.35s ease;
+  @include dimensions(100%, auto);
+  position: fixed;
+  z-index: 1;
+  padding: 10px 4%;
+  background-color: $vp-background;
+  transition: all 0.35s ease;
 
-    .o-image-card{
-      margin: 0;
-      max-width: 95px;
-      min-width: 60px;
-    }
+  .o-image-card{
+    margin: 0;
+    max-width: 60px;
+    min-width: 60px;
+  }
 
-    .heading-d{
-      margin: 0;
-    }
-  
-    .main-h, .sub-h{
-      color: $white;
-      font-weight: $font-normal;
-    }
-  
-    .main-h{
-      text-transform: uppercase;
-      font-size: $font-md;
-      margin-bottom: 7px;
-    }
-  
-    .sub-h{
-      font-size: $global-font-size;
-    }
-  
-    .button-solid{
-      @include dimensions(258px, 68px);
-      font-size: $font-sm;
-      font-weight: $font-normal;
-      max-width: 258px;
-    }
-  
-    &.slide-up{
-      transform: translateY(-350px);
-    }
+  .heading-d{
+    margin: 0;
+    padding-left: 3%;
+  }
+
+  .main-h, .sub-h{
+    color: $white;
+    font-weight: $font-normal;
+  }
+
+  .main-h{
+    text-transform: uppercase;
+    font-size: $font-md;
+    margin-bottom: 7px;
+  }
+
+  .sub-h{
+    font-size: $global-font-size;
+  }
+
+  .button-solid{
+    @extend %button-config;
+  }
+
+  .button-dashed{
+    @extend %button-config;
+    @include border(solid, 2px, $button-element-level);
+    margin-right: 3%;
+  }
+
+  &.slide-up{
+    transform: translateY(-350px);
+  }
+
+  .row{
+    padding: 0;
+  }
   }
   

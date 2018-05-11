@@ -12,10 +12,14 @@
   <div class="col-6">
     <div class="row justify-content-end">
       <div class="col-md-4 notify-type align-self-center">
-        <div class="notify-text">
-          <span class="notify-dot new"></span>
-          Solve Doubts
-        </div>
+        {{#if course.canHazDoubtsLink}}
+          <div class="notify-text">
+            <a href="{{course.doubtsLink}}" target="_blank" style="color: #fff">
+              <span class="notify-dot new"></span>
+              Solve Doubts
+            </a>
+          </div>
+        {{/if}}
       </div>
 
       <div class="button-solid col-12 col-md-4 align-self-center">

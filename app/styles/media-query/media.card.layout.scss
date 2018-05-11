@@ -6,9 +6,120 @@
 
 }
 
-@media screen and (max-width: 832px) {
+@media screen and (min-width: 632px) and (max-width: 832px) {
+
+  .grid {
+    margin: 0;
+  }
+
+  .card {
+     padding: 8px;
+  }
+
+  .card-layout {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .card-image {
+    float: left;
+    margin-right: 15px;
+  }
+
+  .card-heading {
+    float: left;
+    display: contents;
+    overflow: hidden;
+    max-width: 40%;
+    font-size: 1rem;
+  }
+
+  .card-text {
+    overflow: hidden;
+    width: 70%;
+    display: inline-block;
+    font-size: 1rem;
+  }
+
+  .card-mentor {
+    display: flex;
+  }
+
+  .card-mentor-image {
+    padding-bottom: 16.5%;
+    width: 16.5%;
+    height: 0;
+    margin-left: -50px;
+  }
+
+  .card-mentors {
+    height: 50% !important;
+    position: absolute !important;
+    width: 50% !important;
+  }
+
+  .card {
+    height: 45vw;
+    padding-top: 40px;
+  }
+
+  .card-image {
+    width: 10%;
+  }
+
+  .card-text {
+    display: block;
+  }
+  .grid {
+    .o-image-card {
+      padding-top: 0;
+    }
+    .row {
+      padding:0;
+    }
+  }
+
+  .o-layout-card {
+    .button-solid {
+      left: 50%;
+      top: -5px;
+    }
+  }
+
+  .button-dashed {
+    margin: 20px auto;
+  }
+}
+
+
+@media screen and (max-width: 632px) {
+  .button-dashed {
+    margin: 20px auto;
+  }
+
   .card-layout {
     flex: 0 0 100% ;
     max-width: 100% ;
   }
+
+  .card-mentor-text {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    top: 1px;
+  }
+
+  .card-mentor-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+  }
+
+
+  .card-price-details {
+    text-align: center;
+    width: 100%;
+  }
+
 }
