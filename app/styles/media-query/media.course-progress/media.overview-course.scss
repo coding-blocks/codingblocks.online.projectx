@@ -1,0 +1,11 @@
+@media all and (max-width:767px){
+  .o-overview-course{
+    .classroom-para {
+      font-size: $global-font-size;
+    }
+
+    .para{
+      font-size: $card-md;
+    }
+  }
+}

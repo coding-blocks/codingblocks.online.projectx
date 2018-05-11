@@ -1,33 +1,43 @@
 .o-overview-course{
   flex-wrap: wrap-reverse;
   align-items: flex-end;
+  margin-bottom: 70px;
 
   .classroom-para{
-    @include margin(0,0,40px,0);
     flex: 25%;
     text-align: justify;
     display: inline-block;
     font-size: $font-sm;
+    margin-bottom: 40px;
   }
 
   .course-features{
-    padding-right: 55px;
-    &>.flex-row{
-      @include margin(0, 0, 50px, 0);
+    &>.row{
+      padding: 0;
+      margin-bottom: 40px;
     }
   }
 
-  .img-desc{
-    .round-img{
-      @include dimensions(72px, 72px);
-      @include margin(0, 20px, 0, 0);
-    }
+  .round-img{
+    @include dimensions(100%, 100%);
+    position: absolute;
+    top: 0;
+  }
 
-    .classroom-para{
-      width: 113px;
-      text-align: left;
-      @include margin(0,0,0,0);
-      font-size: $global-font-size;
-    }
+  .para{
+    width: 113px;
+    text-align: left;
+    @include margin(0,0,0,0);
+    font-size: $font-xs;
+    padding: 0 4%;
+  }
+
+  .img-box{
+    max-width: 72px;
+  }
+
+  .img-container{
+    position: relative;
+    padding-bottom: 100%;
   }
 }
