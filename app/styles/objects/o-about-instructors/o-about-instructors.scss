@@ -1,6 +1,7 @@
 .o-about-instructors{
   .img-desc{
-    @include margin(0, 0px, 10px, 0);
+    //@include margin(0, 0px, 10px, 0);
+    margin-bottom: 50px;
   }
 
   .round-img{
@@ -17,12 +18,12 @@
     @include margin(0,0,0,0);
     text-align: justify;
     font-size: $font-sm;
+    display: block;
   }
 
   .main-h{
     margin-bottom: 5px;
   }
-;
 
   .flex-col{
     align-items: flex-start;
@@ -38,5 +39,9 @@
 
   .description{
     margin-left: -10%;
+  }
+
+  .row{
+    padding: 0;
   }
 }

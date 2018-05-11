@@ -1,0 +1,11 @@
+@media all and (max-width: 768px){
+  .o-about-instructors{
+    .description{
+      margin-left: -5%;
+    }
+
+    .classroom-para{
+      font-size: $global-font-size;
+    }
+  }
+}

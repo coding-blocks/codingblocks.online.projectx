@@ -1,0 +1,95 @@
+@media screen and (max-width: 700px) {
+  .o-summary {
+    .classroom-text {
+      font-size: 1.6rem;
+      margin-top: 15px;
+    }
+
+    .classroom-para {
+      display: block;
+      margin-top: 8px;
+    }
+
+    .rating {
+      display: inline-block;
+    }
+
+
+  }
+
+  .o-buy-right {
+    position: relative;
+    width: 100%;
+    top: 0;
+      .button-dashed {
+        margin: 0;
+      }
+  }
+
+  .o-summary .para {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+}
+
+@media screen and (max-width: 503px) {
+  .o-summary {
+    .classroom-text {
+      font-size: 1rem;
+    }
+    .classroom-para {
+      font-size: 1rem;
+    }
+  }
+
+  .o-buy-right {
+    margin-top: 15px;
+  }
+
+  .o-buy-right.slide-right {
+    transform: none;
+  }
+  .heading-u {
+    width: 60%;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .rating {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  .pos-rating {
+    font-size: 1rem;
+  }
+  .neg-rating {
+    font-size: 1rem;
+  }
+
+  .para {
+    font-size: 1rem;
+    width: 100%;
+    float: right;
+  }
+
+ .o-about-accordian {
+   .lecture-count {
+     display: none;
+   }
+   .duration {
+     display: none;
+   }
+ }
+  .accordian-li {
+
+    .flex-row {
+      display: none;
+    }
+    .li-left {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
