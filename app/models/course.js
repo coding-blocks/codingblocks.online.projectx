@@ -11,6 +11,7 @@ export default DS.Model.extend({
     promoVideo: DS.attr(),
     coverImage: DS.attr(),
     logo: DS.attr(),
+    difficulty: DS.attr('number'),
     categoryName: DS.attr(),
     categoryId: DS.attr('number'),
     doubtSubCategoryId: DS.attr('number'),
@@ -67,5 +68,14 @@ export default DS.Model.extend({
     canHazDoubtsLink: computed.and('categoryId', 'doubtSubCategoryId'),
     doubtsLink: computed('categoryId', 'doubtSubCategoryId', function () {
       return `${env.discussBaseUrl}/c/${this.get('categoryId')}/${this.get('doubtSubCategoryId')}`
+    }),
+    difficultyName: computed('difficulty', function () {
+      console.log(this.get('difficulty'))
+      switch(+this.get('difficulty')) {
+        case 0: return 'beginner' ; break;
+        case 1: return 'intermediate'; break;
+        case 2: 
+        default: return 'expert'; break;
+      }
     })
 });
