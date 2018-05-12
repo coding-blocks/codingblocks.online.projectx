@@ -50,7 +50,6 @@ export default class CarouselCards extends Component {
 
   didRender () {
     this._super(...arguments)
-    console.log('CARDS: ', this.get('cards'))
     const carouselCardElements = Array.from(document.querySelectorAll('.card-stack > .card')).map(el => {
       return new carouselCard (el, {
         transition: '0.8s'
@@ -110,8 +109,8 @@ export default class CarouselCards extends Component {
     this.decrementProperty('currentIndex')
     this._reRender(-1)
   }
-  
-  
+
+
 
 
 }
