@@ -64,13 +64,25 @@
   }
 }
 
+.options-result{
+  @include dimensions(100%, 40%);
+}
+
 .result {
+  @include dimensions(100%, calc(100% - 100px));
+
   .button-solid {
     @include dimensions(116px, 42px);
     font-size: 1rem;
+    float: right;
   }
+
   .row {
     padding:0;
+  }
+
+  &>.row{
+    height: 100%;
   }
 }
 
@@ -82,20 +94,14 @@
 
 .output {
   background-color: $editor-line-number;
-
 }
 
 .input {
  background-color: #2a2a2a;
-
-  .row:nth-child(2) {
-    height: 50%;
-  }
-
 }
 
 .output, .input {
-  height: 150px;
+  height: 100%;
   padding-top: 22px;
 
   .heading {
@@ -113,7 +119,12 @@
      padding-top: 10px;
      color: #ccc;
      font-size: 1rem;
-     max-height: 50%;
+     max-height: 100%;
      overflow-y: scroll;
    }
+
+  .row:nth-child(2) {
+    height: calc(100% - 85px);
+    margin-top: 20px;
+  }
 }
