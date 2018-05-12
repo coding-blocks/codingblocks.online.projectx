@@ -20,10 +20,15 @@
     display: none;
   }
 
+  .home-img-container{
+    margin: 0 auto;
+  }
+
   .home-img{
-    margin: 0;
+    display: block;
     left: 0;
-    width: 100%;
+    margin: 0 auto;
+    width: 60%;
   }
 }
 
