@@ -61,7 +61,7 @@ export default DS.Model.extend({
     feedback: computed('feedbacks', function () {
       return this.get('feedbacks').objectAt(0)
     }),
-    sortedSections: computed('sections', function () {
+    sortedSections: computed('sections.@each', function () {
       return this.get('sections').sortBy('id')
     }),
     canHazDoubtsLink: computed.and('categoryId', 'doubtSubCategoryId'),
