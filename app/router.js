@@ -22,6 +22,8 @@ Router.map(function() {
     this.route('content', {path: '/content/:contentId'}, function() {});
   });
   this.route('error');
+  this.route('loading');
+  this.route('application-loading');
 });
 
 export default Router;

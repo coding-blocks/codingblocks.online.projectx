@@ -5,7 +5,7 @@
   {{#unless hideResultsBox}}
   <div class="search-box">
     {{#if searchTask.isRunning}}
-        Loading....
+        {{loader-component}}
     {{else}}
       {{#each results as |course|}}
       <div class="row search-content" {{action transitonToResult course}}>
