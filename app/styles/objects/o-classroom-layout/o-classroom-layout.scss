@@ -92,6 +92,10 @@
     float: left;
   }
 
+  .display-none {
+      display:none;
+  }
+
   .circle-back{
     @include dimensions(100%, 100%);
     position: absolute;
@@ -115,3 +119,4 @@
   cursor: pointer;
   margin-left: 3%;
 }
+
