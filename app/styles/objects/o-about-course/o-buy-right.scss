@@ -63,7 +63,8 @@
       @include dimensions(82px, 82px);
       max-width: 82px;
       max-height: 82px;
-      transform: translateY(-109%);
+      top: 6px;
+      left: 8.5%;
       background: $white;
       text-align: center;
 

@@ -1,0 +1,24 @@
+<div class="input-search nav-search">
+  {{input type="text" placeholder="Search here" value=qs key-press=(perform searchTask) focusIn=(action 'showResult') focusOut=(action 'hideResult') }}
+  <img src="/images/searchicon.png" alt="search">
+
+  {{#unless hideResultsBox}}
+  <div class="search-box">
+    {{#if searchTask.isRunning}}
+        Loading....
+    {{else}}
+      {{#each results as |course|}}
+      <div class="row search-content" {{action transitonToResult course}}>
+        <div class="img-container col-md-3">
+          <img src="{{course.logo}}" alt="online-logo" class="nav-logo pointer">
+        </div>
+        <div class="heading-container col-md-9">
+          <p>{{course.title}}</p>
+          <p>{{course.subtitle}}</p>
+        </div>
+      </div>
+      {{/each}}
+    {{/if}}
+  </div>
+  {{/unless}}
+</div>
