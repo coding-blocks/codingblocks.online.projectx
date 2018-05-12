@@ -23,14 +23,15 @@
   .circle-back{
     @include dimensions(100%, 100%);
     position: absolute;
+    height: 50%;
     top: 0;
   }
 
   .circle-front{
-    @include dimensions(80%, 80%);
+    @include dimensions(80%, 40%);
     transform: none;
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 10%;
   }
 

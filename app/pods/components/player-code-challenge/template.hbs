@@ -6,7 +6,6 @@
         {{#link-to "attempt.content" (query-params tab="submissions") tagName="div" class="tab-items"}} Submissions {{/link-to}}
         {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class="tab-items"}} Leaderboard {{/link-to}}
       </div>
-
     </div>
     
     {{#if (eq tabName 'problem')}}
@@ -14,7 +13,7 @@
     {{else if (eq tabName 'leaderboard')}}
       {{#leaderboard-component code=code}}{{/leaderboard-component}}
     {{else if (eq tabName 'submissions')}}
-      {{#submissions-component code=code}}{{/submissions-component}}
+      {{#submissions-component problemPayload=problemJsonApiPayload}}{{/submissions-component}}
     {{/if}}
   </div>
   <div id="dragger-ps-ce"></div>

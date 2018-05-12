@@ -5,7 +5,7 @@
 
 .accordian-head{
     @include flexbox(row);
-    @include padding-mixin(10px, 61px, 10px, 34px);
+    @include padding-mixin(10px, 5%, 10px, 3%);
     @include dimensions(100%, auto);
     justify-content: space-between;
     min-height: 79px;
@@ -14,7 +14,7 @@
 }
 
 .accordian-li{
-    @include padding-mixin(10px, 61px, 10px, 34px);
+    @include padding-mixin(10px, 5%, 10px, 3%);
     justify-content: space-between;
     border-bottom: solid 2px $search-box-color;
     min-height: 79px;
@@ -60,6 +60,10 @@
 
 .completed{
     color: $font-complete;
+}
+
+.accordian-status{
+    text-align: right;
 }
 
 .li-left{

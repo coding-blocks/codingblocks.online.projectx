@@ -44,7 +44,6 @@ export default class EditorClass extends Component {
     }
   ];
 
-  selectedLanguage;
   customInput = "";
   isRunOutput = true;
 

@@ -1,4 +1,4 @@
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 767px) {
   .o-summary {
     .classroom-text {
       font-size: 1.6rem;
@@ -13,8 +13,6 @@
     .rating {
       display: inline-block;
     }
-
-
   }
 
   .o-buy-right {
@@ -29,6 +27,25 @@
   .o-summary .para {
     margin-top: 8px;
     margin-bottom: 8px;
+  }
+
+  .o-about-accordian {
+    .lecture-count {
+      display: none;
+    }
+    .duration {
+      display: none;
+    }
+
+    .accordian-li, .accordian-head{
+      .flex-row:last-child{
+        display: none;
+      }
+
+      .li-left {
+        width: 100%;
+      }
+    }
   }
 
 }
@@ -72,24 +89,12 @@
     width: 100%;
     float: right;
   }
+}
 
- .o-about-accordian {
-   .lecture-count {
-     display: none;
-   }
-   .duration {
-     display: none;
-   }
- }
-  .accordian-li {
-
-    .flex-row {
-      display: none;
-    }
-    .li-left {
-      display: block;
-      width: 100%;
-    }
+@media screen and (max-width: 768px) {
+  .o-buy-top {
+    display: none;
   }
 }
+
 
