@@ -9,9 +9,6 @@
     padding-right: unset;
     padding-left: unset;
   }
-  .classroom-para{
-    display: none;
-  }
 
   .classroom-container{
     margin-bottom: 15px;
@@ -30,6 +27,10 @@
     .classroom-image{
       top: 0;
       padding: 0;
+    }
+
+    .classroom-para{
+      display: none;
     }
   }
 
