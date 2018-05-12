@@ -11,7 +11,7 @@ export default Component.extend({
       availableRuns = runs.filter (run => run.get ('isAvailable'))
     ;
 
-    this.set ('availableRuns', availableRuns)
+    this.set ('availableRuns', runs)
   },
 
   didInsertElement () {
