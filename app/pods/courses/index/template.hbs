@@ -37,13 +37,15 @@
                   {{course.runs.length}} Batches Available
                 </div>
                 <div class="card-batch-details">
-                  Starting from <span class="price">{{course.topRun.price}}</span>
+                  Starting from <span class="price">{{moment-format (unix course.topRun
+                .start) 'MMM Do YYYY'}}</span>
                 </div>
               </div>
             </div>
             <div class="button-parent col-md-6 col-sm-12 col-xs-12">
               <div class="button-solid">
-                {{#link-to 'courses.id' course.id tagName="button"}} Know More..{{/link-to}}
+                {{#link-to 'courses.id' course.id tagName="button"}} Rs. {{course
+                .topRun.price}}{{/link-to}}
               </div>
             </div>
           </div>
