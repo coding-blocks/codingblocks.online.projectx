@@ -21,6 +21,10 @@
   }
 }
 
+.tab-icons{
+  display: none;
+}
+
 .active{
   border-bottom: solid 2px $button-element-level;
   color: $button-element-level;

@@ -26,10 +26,8 @@
         </div>
       </li>
     </ul>
-    <div class="input-search nav-search">
-      <input type="text" placeholder="Search here">
-      <img src="/images/searchicon.png" alt="search">
-    </div>
+
+   {{search-box}}
   </nav>
   <div class="sidebar {{if showSidebar 'display-block' 'display-none'}}">
     <i class="close fas fa-times" onclick={{action 'toggleSidebar'}}></i>

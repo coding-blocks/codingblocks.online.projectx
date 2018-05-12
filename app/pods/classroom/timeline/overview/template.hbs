@@ -4,9 +4,9 @@
         Recent Activity
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid pl-0 pr-0">
         <div class="o-overview-recent row">
-            <div class="col-md-5 col-sm-12 offset-md-1">
+            <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="heading">Recent Doubts</div>
                     <div class="row">
@@ -75,7 +75,7 @@
 
             </div>
 
-            <div class="col-md-5 col-sm-12">
+            <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="heading">Announcements</div>
 	{{#each announcements as |announcement|}}
@@ -105,51 +105,66 @@
     <div class="heading-u">
         About This Course
     </div>
-
-    <div class="o-overview-course flex-row">
-        <div class="course-features">
-            <div class="flex-row">
-                <div class="img-desc flex-row">
-                    <div class="round-img">
-                        <img src="" alt="">
-                    </div>
-                    <div class="classroom-para">
-                        30+ Hours Video Content
-                    </div>
-                </div>
-
-                <div class="img-desc flex-row">
-                    <div class="round-img">
-                        <img src="" alt="">
-                    </div>
-                    <div class="classroom-para">
-                        Full Lifetime Access
-                    </div>
-                </div>
+  <div class="o-overview-course">
+    <div class="row no-gutters flex-wrap-reverse">
+      <div class="course-features col-12 col-md-5">
+        <div class="row no-gutters justify-content-center">
+          <div class="img-box col-2 align-self-center">
+            <div class="img-container">
+              <div class="round-img">
+                <img src="" alt="">
+              </div>
             </div>
 
-            <div class="flex-row">
-                <div class="img-desc flex-row">
-                    <div class="round-img">
-                        <img src="" alt="">
-                    </div>
-                    <div class="classroom-para">
-                        Certification of Completion
-                    </div>
-                </div>
+          </div>
+          <div class="para col-4 align-self-center">
+            30+ Hours Video Content
+          </div>
 
-                <div class="img-desc flex-row">
-                    <div class="round-img">
-                        <img src="" alt="">
-                    </div>
-                    <div class="classroom-para">
-                        Supplemental Resources
-                    </div>
-                </div>
+          <div class="img-box col-2 align-self-center">
+            <div class="img-container">
+              <div class="round-img">
+                <img src="" alt="">
+              </div>
             </div>
+
+          </div>
+          <div class="para col-4 align-self-center">
+            Full Lifetime Access
+          </div>
         </div>
-        
-        <div class="classroom-para">
+
+        <div class="row no-gutters justify-content-center">
+          <div class="img-box col-2 align-self-center">
+            <div class="img-container">
+              <div class="round-img">
+                <img src="" alt="">
+              </div>
+            </div>
+
+          </div>
+          <div class="para col-4 align-self-center">
+            Certification of Completion
+          </div>
+
+          <div class="img-box col-2 align-self-center">
+            <div class="img-container">
+              <div class="round-img">
+                <img src="" alt="">
+              </div>
+            </div>
+
+          </div>
+          <div class="para col-4 align-self-center">
+            Supplemental Resources
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+      <div class="classroom-para col-12 offset-md-1 col-md-5">
             {{run.course.summary}}
         </div>
     </div>
@@ -159,10 +174,10 @@
         About Instructors
     </div>
 
-    <div class="o-about-instructors container-fluid">
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <div class="img-desc row">
+    <div class="o-about-instructors">
+        <div class="row no-gutters">
+            <div class="col-md-6 col-12">
+                <div class="img-desc row no-gutters">
                     <div class="col-4">
                         <div class="img-container">
                             <div class="round-img">
@@ -170,7 +185,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="description col-8">
                         <div class="heading-d">
                             <div class="main-h">
@@ -190,8 +205,8 @@
         </div>
     </div>
 
-    <div class="container">
+    {{!-- <div class="container">
       {{#feedback-component feedback=course.feedback course=course}}
       {{/feedback-component}}
-    </div>
+    </div> --}}
 </div>

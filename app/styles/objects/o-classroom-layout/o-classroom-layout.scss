@@ -33,15 +33,6 @@
     word-wrap: break-word;
     margin-top: 43px;
   }
-
-  .circle-back{
-    margin-left: -16px;
-  }
-}
-
-.course-progress-heading {
-  font-size: $font-md;
-  margin-bottom: 40px;
 }
 
 .progress-text {
@@ -70,6 +61,12 @@
 
 .row {
   padding: 10px;
+}
+
+.course-progress-heading {
+  font-size: $font-md;
+  margin-bottom: 40px;
+  padding: 0;
 }
 
 .progress{

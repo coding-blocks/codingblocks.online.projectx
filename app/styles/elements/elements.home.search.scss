@@ -2,7 +2,6 @@
   display: flex;
   @include dimensions(375px, 57px);
   background-color: $search-box-color;
-  @include border-radius(28px);
   position: relative;
 }
 
@@ -22,3 +21,4 @@
   left: 89%;
   position: absolute;
 }
+
