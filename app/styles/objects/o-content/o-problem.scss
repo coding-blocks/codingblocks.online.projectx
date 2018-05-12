@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.o-pb-alert {
+  display: none;
+}
+
 .pb-desk{
   @include dimensions(30%, 100%);
   overflow-y: auto;

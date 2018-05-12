@@ -78,7 +78,7 @@ export default class CodeChallengeComponent extends Component {
         data: {
           contest_id: code.get("hbContestId"),
           problem_id: code.get("hbProblemId")
-        }
+        },
       })
       .then(result => {
         this.set("problemJsonApiPayload", result);

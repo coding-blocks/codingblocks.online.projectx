@@ -1,9 +1,9 @@
 .o-otp-enroll{
-  @include dimensions(100%);
+  @include dimensions(100%, auto);
   background: $nav-border;
   font-size: $global-font-size;
   font-weight: $font-medium;
-  padding-left: 40px;
+  @include padding-mixin(20px, 0px, 20px, 40px);
 
   .input-search{
     @include dimensions(100%, 60px);
@@ -26,7 +26,16 @@
     margin-top: 10px;
   }
 
+  .text-center {
+    text-align: center;
+  }
+
   p{
     margin: 0;
+  }
+
+  .p-1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }

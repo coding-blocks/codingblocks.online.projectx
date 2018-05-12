@@ -7,6 +7,6 @@ in
 (flex),
 (none){
   .display-#{$dis}{
-    @include display($dis);
+    @include display($dis !important);
   }
 }

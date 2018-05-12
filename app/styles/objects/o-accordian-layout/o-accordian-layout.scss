@@ -8,12 +8,12 @@
 
     .accordian-collapsar{
         @include dimensions(30px, 30px);
-        @include margin(0px, 34px, 0px, 0px);
+        @include margin(0px, 5%, 0px, 0px);
         text-align: center;
     }
 
     .accordian-li-type{
-        @include margin(0px, 34px, 0px, 0px);
+        @include margin(0px, 5%, 0px, 0px);
         flex: none;
     }
     

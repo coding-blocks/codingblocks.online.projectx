@@ -10,9 +10,10 @@ export default AjaxService.extend({
     contentType: 'application/json; charset=utf-8',
     namespace: '/api',
     headers: computed('currentUser.user.hackJwt', function () {
+      console.log(this.get('currentUser.user.hackJwt'))
         return {
             Authorization: `JWT ${this.get('currentUser.user.hackJwt')}`,
-            
+            'user-id': JSON.parse(window.atob(this.get('currentUser.user.hackJwt').split('.')[1])).user.id
         }
     })
 });

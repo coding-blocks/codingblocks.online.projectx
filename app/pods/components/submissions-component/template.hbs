@@ -1,1 +1,87 @@
-Your Submissions:
+<div class="o-pb-submissions">
+  {{#each problem.submissions as |submission| }}
+    <div class="card">
+      <div class="row">
+        <div class="col-4">
+          <div class="circle-container">
+            <div class="circle-back circle-md pass d-flex justify-content-center">
+              <p class="progress-text align-self-center">{{submission.language}}</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-4">
+          <div class="status-circle">
+            <div class="circle-back"></div>
+            <div class="circle-front d-flex justify-content-center">
+              <p class="progress-text align-self-center">{{submission.score}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="circle-container">
+            <div class="circle-back circle-md pass d-flex justify-content-center">
+              <p class="progress-text align-self-center">1</p> <!-- Hardcode for now -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4 para">Language Used</div>
+        <div class="col-4 para">Total Score</div>
+        <div class="col-4 para">Time Taken(ms)</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="test-cases row no-gutters">
+        <div class="col-6">
+          <div class="row no-gutters">
+            <div class="col-4">
+              <div class="circle-container">
+                <div class="circle-back circle-sm pass d-flex justify-content-center">
+                  <p class="progress-text align-self-center">{{submission.passedTestCasesArray.length}}</p>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-8">
+              <div class="para">
+                Test Cases Passed
+              </div>
+              <div class="para">
+                {{submission.passedTestCases}}
+                <!-- MUST use spaces btw testcase number-->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="row no-gutters">
+            <div class="col-4">
+              <div class="circle-container">
+                <div class="circle-back circle-sm fail d-flex justify-content-center">
+                  <p class="progress-text align-self-center">{{submission.failedTestCasesArray.length}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="para">
+                Test Cases Failed
+              </div>
+              <div class="para">
+                {{submission.failedTestCases}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{!-- <div class="button-solid" {{action 'viewSubmission' submission}}>
+        <button>View Submission</button>
+      </div> --}}
+    </div>
+  {{/each}}
+
+</div>
