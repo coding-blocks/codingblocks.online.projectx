@@ -25,7 +25,7 @@
           {{selectedLanguage.name}}
           <span>&gt;</span>
         </div>
-        <div class="open-select-box {{if isLanguageSelectOpen 'show-block'}}">
+        <div class="open-select-box {{if isLanguageSelectOpen 'display-block'}}">
           <ul>
             {{#each allLanguages as |language|}}
               <li class="pointer" {{action selectLanguage language}}>

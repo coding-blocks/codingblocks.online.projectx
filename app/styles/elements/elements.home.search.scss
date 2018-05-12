@@ -1,5 +1,6 @@
 .input-search {
   display: flex;
+  @include border-radius(28px);
   @include dimensions(375px, 57px);
   background-color: $search-box-color;
   position: relative;
