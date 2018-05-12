@@ -14,7 +14,7 @@
 		</div>
 	{{/each}}
 
-        <div id="an-load-more" class="button-dashed {{if visible '' 'display-none'}}">
+        <div id="an-load-more" class="button-dashed {{if (and visible announcements) '' 'display-none'}}">
         <button onclick={{action 'updatePage'}}>Load More</button>
     </div>
 </div>

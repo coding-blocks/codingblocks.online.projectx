@@ -13,8 +13,9 @@ export default Route.extend({
   model (params) {
       return hash({
           announcement: this.store.query("announcement", {
-            runId: params.runId,
-            reload: true,
+            filter: {
+              runId: this.paramsFor('classroom.timeline').runId,
+            },
             page: {
               offset: params.offset,
               limit: params.limit
