@@ -16,6 +16,14 @@ export default DS.Model.extend({
   isDone: Ember.computed('progress.isDone', function () {
     return !! this.get('progress.isDone')
   }),
+  iconClass: Ember.computed('contentable', function () {
+    switch (this.get('contentable')) {
+      case 'document': return 'file-icon'; break;
+      case 'code-challenge': return 'code-icon'; break;
+      case 'lecture':
+      default: return 'play-icon'; break;
+    }
+  }),
   progress: DS.belongsTo('progress'),
   section: DS.belongsTo('section')
 })
