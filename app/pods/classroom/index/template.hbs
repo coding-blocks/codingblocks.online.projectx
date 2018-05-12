@@ -1,14 +1,20 @@
-<div class="grid-background">
+<div class="container-courses">
     <div class="heading">
         <p>My Courses</p>
     </div>
-    <div class="grid row">
+    <div class="row">
         {{#each runs as |run index|}}
             <div class="card-layout col-md-4 col-sm-6">
                 <div class="card o-layout-card ">
 
-                    <div class="expert-level"></div>
-                    <div class="expert-text">Expert</div>
+                  <div data-completed="false" class="status-circle offset-md-8 col-md-4">
+                    <div class="circle-back">
+                      <div class="circle-front">
+                        <p class="progress-text">{{percentage run.course
+                                                              .completedContents run.course.totalContents}}%</p>
+                      </div>
+                    </div>
+                  </div>
 
                     <div class="card-image o-image-card">
                         <img src="{{defaultTo run.course.logo '/images/c++'}}">
@@ -34,10 +40,7 @@
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="card-price-details">
                                 <div class="card-batches">
-                                    {{run.course.runs.length}} Batches Available
-                                </div>
-                                <div class="card-batch-details">
-                                    Starting from <span class="price">{{run.course.topRun.price}}</span>
+                                   Nov-Dec 2017
                                 </div>
                             </div>
                         </div>
