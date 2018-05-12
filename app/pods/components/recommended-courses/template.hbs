@@ -1,0 +1,64 @@
+<div class="grid-background">
+  <div class="custom-heading row justify-content-between">
+    <div class="heading-u">
+      Recommended Courses
+    </div>
+
+    <div class="button-dashed align-self-center">
+      {{#link-to 'courses' tagName='button'}}All Courses{{/link-to}}
+    </div>
+  </div>
+  <div class="grid row">
+    {{#if fetchRecommendedCoursesTask.isRunning}} Loading... {{!-- here we can show blank cards to indicate loading --}} {{else}}
+    {{#each recommendedCourses as |course|}}
+    <div class="card-layout col-md-4 col-sm-6">
+      <div class="card o-layout-card ">
+
+        <div class="expert-level"></div>
+        <div class="expert-text">Expert</div>
+
+        <div class="card-image o-image-card">
+          <img src="{{defaultTo course.logo '/images/c++'}}">
+        </div>
+
+        <div class="card-heading o-text-card">
+          {{course.title}}
+        </div>
+        <div class="card-text">
+          {{course.subtitle}}
+        </div>
+        <div class="card-mentor">
+          <div class="card-mentor-image">
+            <img class="card-mentors" src="{{course.instructor.photo}}">
+          </div>
+          <div class="card-mentor-text">
+            <span>Instructors</span>
+            <div class="card-mentor-name">{{course.instructor.name}}</div>
+          </div>
+        </div>
+        <div class="card-mentor-divider"></div>
+        <div class="price-detail row">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="card-price-details">
+              <div class="card-batches">
+                {{course.runs.length}} Batches Available
+              </div>
+              <div class="card-batch-details">
+                Starting from
+                <span class="price">{{moment-format (unix course.topRun .start) 'MMM Do YYYY'}}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="button-parent col-md-6 col-sm-12 col-xs-12">
+
+            <div class="button-solid">
+              {{#link-to 'courses.id' course.id tagName="button"}}Rs. {{course .topRun.price}} {{/link-to}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}} {{/if}}
+  </div>
+</div>
