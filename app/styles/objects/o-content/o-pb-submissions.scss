@@ -17,22 +17,20 @@
 
   .status-circle{
     position: relative;
-    padding-top: 100%;
   }
 
   .circle-back{
     @include dimensions(100%, 100%);
     position: absolute;
-    height: 50%;
     top: 0;
   }
 
   .circle-front{
-    @include dimensions(80%, 40%);
+    @include dimensions(75%, 75%);
     transform: none;
     position: absolute;
-    top: 5%;
-    left: 10%;
+    top: 12.5%;
+    left: 12.5%;
   }
 
   .circle-md{

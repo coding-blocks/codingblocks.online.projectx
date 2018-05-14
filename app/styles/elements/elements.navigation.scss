@@ -17,6 +17,7 @@ nav {
   display: inline-block;
   @include margin(null, 40px, null, null);
   text-transform: uppercase;
+  position: relative;
 }
 
 .nav-items:hover {
