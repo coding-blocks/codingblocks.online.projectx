@@ -5,12 +5,12 @@
     </div>
 
     <div class="button-dashed align-self-center">
-      {{#link-to 'courses' tagName='button'}}All Courses{{/link-to}}
+      {{#link-to 'courses' tagName='button' activeClass=""}}All Courses{{/link-to}}
     </div>
   </div>
   <div class="grid row">
-    {{#if fetchRecommendedCoursesTask.isRunning}} 
-     {{!-- here we can show blank cards to indicate loading --}} 
+    {{#if fetchRecommendedCoursesTask.isRunning}}
+     {{!-- here we can show blank cards to indicate loading --}}
      {{loader-component}}
     {{else}}
     {{#each recommendedCourses as |course|}}
@@ -46,7 +46,7 @@
                     {{instructor.name}}{{if (and (gt course.instructors.length 1) (eq index 0)) "," ""}}
                   {{/if}}
                 {{/each}}
-                
+
                 {{#if (gt course.instructors.length 2)}}
                   <span class="price"> +{{sub course.instructors.length 2}}</span> more
                 {{/if}}
