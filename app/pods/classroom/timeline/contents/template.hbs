@@ -7,7 +7,7 @@
                       <div data-completed="{{content.progress.isDone}}" class="accordian-li" {{action 'transitionToContent' content.id}}>
                           <div class="li-left flex-row">
                               <div class="accordian-li-type">
-                            <div class="content-icon code-icon-green"></div>
+                                <div class="content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
                           </div>
                               <div class="accordian-li-heading">
                                   {{content.payload.name}}
