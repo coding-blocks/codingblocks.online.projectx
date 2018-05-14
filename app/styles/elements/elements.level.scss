@@ -12,14 +12,14 @@
   margin: 2px auto 0;
 }
 
-.intermediate-level {
+.advanced-level {
   @include border-radius(50%);
   @include dimensions(30px,30px);
   border: 6px solid $intermediate-level;
   margin: 0 auto;
 }
 
-.intermediate-text {
+.advanced-text {
   font-size: 13px;
   margin: 2px auto 0;
 }
