@@ -1,32 +1,42 @@
-@media all and (max-width: 1334px){
-  .home-container{
-    .input-search{
+@media all and (max-width: 1334px) {
+  .home-container {
+    padding: 0 15px;
+    .input-search {
       display: block;
-      margin:0 auto;
+      margin: 0 auto;
     }
   }
-  
-  .home-heading{
+
+  .home-heading {
     text-align: center;
   }
-  
-  nav{
-    .input-search{
+
+  nav {
+    .input-search {
       display: none;
     }
   }
 
-  .home-column{
+  .home-column {
     display: none;
   }
 
-  .home-img{
-    margin: 0;
+  .home-img {
+    margin: 0 auto;
     left: 0;
     width: 100%;
   }
 }
 
-.testclass{
+@media all and (max-width: 767px) {
+  .home-container {
+    .input-search {
+      width: 50%;
+      min-width: 290px;
+    }
+  }
+}
+
+.testclass {
   width: 100px;
 }
