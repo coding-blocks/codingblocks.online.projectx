@@ -17,18 +17,18 @@
   top: 60px;
 }
 
-.intermediate-level {
+.advanced-level {
   @include border-radius(50%);
   @include dimensions(30px,30px);
   border: 6px solid $intermediate-level;
   position: absolute;
   top: 30px;
-  left: 87%;
+  left: 84%;
 }
 
-.intermediate-text {
+.advanced-text {
   font-size: 13px;
-  left: 87%;
+  left: 84%;
   margin-top: 2px;
   position: absolute;
   top: 60px;
