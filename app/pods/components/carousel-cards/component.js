@@ -114,14 +114,14 @@ export default class CarouselCards extends Component {
 
   @action
   prev () {
-    this._reRender(1)
-    this.incrementProperty('currentIndex')
+    this.decrementProperty('currentIndex')
+    this._reRender(-1)
   }
 
   @action
   next () {
-    this.decrementProperty('currentIndex')
-    this._reRender(-1)
+    this._reRender(1)
+    this.incrementProperty('currentIndex')    
   }
 
 
