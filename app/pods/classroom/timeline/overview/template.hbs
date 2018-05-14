@@ -9,67 +9,22 @@
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="heading">Recent Doubts</div>
-                    <div class="row">
-                        <div class="notify-type col-2 ">
-                            <div class="notify-icon">
-                                <span class="notify-dot new"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            Varun asked a doubt "<a class="faded" title="hello">sample text lorem ipsum let ips istim tum</a>"
-                        </div>
-
+                  <div class="row">
+                    <div class="notify-type col-2">
+                      <div class="notify-icon">
+                        <span class="notify-dot"></span>
+                        <img src="/images/doubt.png" alt="">
+                      </div>
                     </div>
-                    <div class="row">
-                        <div class="notify-type col-2">
-                            <div class="notify-icon">
-                                <span class="notify-dot new"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            Sid asked a doubt "<span class="faded">sample text lorem ipsum let ips istim tum</span>"
-                        </div>
+                    <div class="card-text col-10 align-self-center">
+                      All the recent doubts asked by your peers will be
+                      displayed here !
                     </div>
-                    <div class="row">
-                        <div class="notify-type col-2">
-                            <div class="notify-icon">
-                                <span class="notify-dot"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            Varun asked a doubt "<span class="faded">sample text lorem ipsum let ips istim tum</span>"
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="notify-type col-2">
-                            <div class="notify-icon">
-                                <span class="notify-dot"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            Varun asked a doubt "<span class="faded">sample text lorem ipsum let ips istim tum</span>"
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="notify-type col-2">
-                            <div class="notify-icon">
-                                <span class="notify-dot"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            Varun asked a doubt "<span class="faded">sample text lorem ipsum let ips istim tum</span>"
-                        </div>
-                    </div>
-
+                  </div>
                     <div class="pull-right">
-                        Browse All
+                      {{#link-to 'classroom.timeline.doubts' tagName='div'}}
+                        Browse
+                        All{{/link-to}}
                     </div>
                 </div>
 
@@ -105,7 +60,9 @@
                 </div>
                 {{/each}}
                 <div class="pull-right">
-                  Browse All
+                 {{#link-to 'classroom.timeline.announcements' tagName='div'}}
+                   Browse
+                   All{{/link-to}}
                 </div>
               </div>
 
