@@ -76,25 +76,38 @@
             </div>
 
             <div class="col-12 col-md-6">
-                <div class="card">
-                    <div class="heading">Announcements</div>
-	{{#each announcements as |announcement|}}
-                    <div class="row">
-                        <div class="notify-type col-2">
-                            <div class="notify-icon">
-                                <span class="notify-dot new"></span>
-                                <img src="/images/announcement.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            {{announcement.text}}
-                        </div>
+              <div class="card">
+                <div class="heading">Announcements</div>
+                {{#unless announcements.length}}
+                  <div class="row">
+                    <div class="notify-type col-2">
+                      <div class="notify-icon">
+                        <span class="notify-dot new"></span>
+                        <img src="/images/announcement.png" alt="">
+                      </div>
                     </div>
-{{/each}}
-                    <div class="pull-right">
-                        Browse All
+                    <div class="card-text col-10 align-self-center">
+                      Coding Blocks Online New Design Released!
                     </div>
+                  </div>
+                {{/unless}}
+                {{#each announcements as |announcement|}}
+                <div class="row">
+                  <div class="notify-type col-2">
+                    <div class="notify-icon">
+                      <span class="notify-dot new"></span>
+                      <img src="/images/announcement.png" alt="">
+                    </div>
+                  </div>
+                  <div class="card-text col-10 align-self-center">
+                    {{announcement.text}}
+                  </div>
                 </div>
+                {{/each}}
+                <div class="pull-right">
+                  Browse All
+                </div>
+              </div>
 
             </div>
 
@@ -130,7 +143,7 @@
 
           </div>
           <div class="para col-4 align-self-center">
-            Ri-visit and Revise topics
+            Re-visit and Revise topics
           </div>
         </div>
 
