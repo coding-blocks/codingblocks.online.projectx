@@ -1,0 +1,24 @@
+.o-notification{
+  padding-right: 10%;
+  padding-left: 40%;
+  text-transform: none;
+  right: 0;
+  left: unset;
+  display: none;
+  top: 74px;
+  
+  .notify-text{
+    color: $global-font-text-color;
+    font-size: $card-md;
+    text-align: justify;
+    padding-right: 20px;
+  }
+
+  .row{
+    padding: 0;
+  }
+
+  .dropdown-li{
+    padding: 20px 0;
+  }
+}
