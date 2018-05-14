@@ -40,7 +40,7 @@ export default DS.Model.extend({
         const runs = this.get('runs')
         const now = +new Date() / 1000.0
         const currentRun = runs.find( (run, index) => {
-            return run.get('start') < now && run.get('end') > now 
+            return run.get('start') < now && run.get('end') > now
         })
         return currentRun || runs.sortBy('start').objectAt(0)
     }),
@@ -73,9 +73,9 @@ export default DS.Model.extend({
       console.log(this.get('difficulty'))
       switch(+this.get('difficulty')) {
         case 0: return 'beginner' ; break;
-        case 1: return 'intermediate'; break;
-        case 2: 
-        default: return 'expert'; break;
+        case 1: return 'advanced'; break;
+        case 2: return 'expert'; break
+        default: return 'beginner'; break;
       }
     })
 });

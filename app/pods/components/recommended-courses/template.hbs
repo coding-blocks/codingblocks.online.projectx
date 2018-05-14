@@ -9,8 +9,8 @@
     </div>
   </div>
   <div class="grid row">
-    {{#if fetchRecommendedCoursesTask.isRunning}} 
-     {{!-- here we can show blank cards to indicate loading --}} 
+    {{#if fetchRecommendedCoursesTask.isRunning}}
+     {{!-- here we can show blank cards to indicate loading --}}
      {{loader-component}}
     {{else}}
     {{#each recommendedCourses as |course|}}
@@ -46,7 +46,7 @@
                     {{instructor.name}}{{if (and (gt course.instructors.length 1) (eq index 0)) "," ""}}
                   {{/if}}
                 {{/each}}
-                
+
                 {{#if (gt course.instructors.length 2)}}
                   <span class="price"> +{{sub course.instructors.length 2}}</span> more
                 {{/if}}
@@ -57,11 +57,8 @@
         <div class="price-detail row">
           <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="card-price-details">
-              <div class="card-batches">
-                {{course.runs.length}} Batches Available
-              </div>
               <div class="card-batch-details">
-                Starting from
+                Starting from <br>
                 <span class="price">{{moment-format (unix course.topRun .start) 'MMM Do YYYY'}}
                 </span>
               </div>

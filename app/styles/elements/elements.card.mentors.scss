@@ -22,7 +22,6 @@
     @extend #mentors;
     z-index: 100 - $i;
     margin-left: - multiply-px($i,20px);
-    opacity: 1 - multiply-px($i,.5);
   }
 }
 

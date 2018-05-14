@@ -24,6 +24,7 @@ Router.map(function() {
   this.route('error');
   this.route('loading');
   this.route('application-loading');
+  this.route('otp');
 });
 
 export default Router;
