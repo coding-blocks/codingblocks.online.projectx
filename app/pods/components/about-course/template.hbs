@@ -291,7 +291,11 @@
 			</div>
 
 			<div class="price">
-				Rs {{run.price}}
+        {{#if (eq run.price 0)}}
+          Free
+        {{else}}
+          Rs {{run.price}}
+        {{/if}}
 			</div>
 
 			<div class="my-course-enroll row no-gutters">
