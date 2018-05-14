@@ -36,7 +36,7 @@ export default class SearchBoxComponent extends Component {
       course.userEnrollment.runId
       )
     } else {
-      return this.get('router').transitionTo("courses.id", course.userEnrollment.courseId)
+      return this.get('router').transitionTo("courses.id", course.id)
     }
   }
 

@@ -317,7 +317,9 @@
 				</div>
 				<div class="button-parent col-4">
 					<div class="button-dashed">
-						<button>Start Free Trial</button>
+            {{#link-to "classroom.timeline.index" course.id run.id tagName="button"}}
+						  Start Free Trial
+            {{/link-to}}
 					</div>
 				</div>
 			</div>
