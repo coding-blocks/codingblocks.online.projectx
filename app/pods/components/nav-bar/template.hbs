@@ -33,9 +33,7 @@
     <i class="close fas fa-times" onclick={{action 'toggleSidebar'}}></i>
     <div class="upper-half">
       <div class="round-img">
-      </div>
-      <div class="para">
-        Hello, {{if session.isAuthenticated currentUser.user.firstname 'Guest'}}
+        <img src="{{user.photo}}">
       </div>
       <div class="button-solid">
         {{login-button}}
