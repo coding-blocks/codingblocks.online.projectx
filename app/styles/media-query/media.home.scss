@@ -1,13 +1,17 @@
 @media all and (max-width: 1334px){
   .home-container{
+    padding-left: 0;
+
     .input-search{
       display: block;
       margin:0 auto;
+      width: 80%;
     }
   }
   
   .home-heading{
     text-align: center;
+    font-size: $font-md;
   }
   
   nav{
