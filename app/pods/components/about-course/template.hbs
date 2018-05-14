@@ -27,7 +27,10 @@
           {{course.title}}
         </div>
         <div class="sub-h">
-          Mentor : {{course.instructor.name}}
+          Mentor :
+          {{#each course.instructors as |instructor index|}}
+             {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
+          {{/each}} 
         </div>
       </div>
     </div>
@@ -64,7 +67,10 @@
       {{rating-stars-static course=course}}
 
       <div class="para">
-        <span class="key">Mentor : </span> {{course.instructor.name}}
+        <span class="key">Mentor : </span> 
+        {{#each course.instructors as |instructor index|}}
+             {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
+          {{/each}} 
       </div>
 
       {{!-- <div class="button-solid">
@@ -213,34 +219,37 @@
 
   <div class="o-about-instructors container-fluid">
     <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <div class="img-desc row">
-          <div class="col-4">
-            <div class="img-container">
-              <div class="round-img">
-                <img src="{{course.instructor.photo}}" alt="photo of {{course.instructor.name}}">
+      {{#each course.instructors as |instructor|}}
+        <div class="col-md-6 col-sm-12">
+          <div class="img-desc row">
+            <div class="col-4">
+              <div class="img-container">
+                <div class="round-img">
+                  <img src="{{instructor.photo}}" alt="photo of {{instructor.name}}">
+                </div>
               </div>
+
             </div>
 
-          </div>
 
-
-          <div class="description col-8">
-            <div class="heading-d">
-              <div class="main-h">
-                {{course.instructor.name}}
+            <div class="description col-8">
+              <div class="heading-d">
+                <div class="main-h">
+                  {{instructor.name}}
+                </div>
+                <div class="sub-h">
+                  Mentor, Coding Blocks
+                </div>
               </div>
-              <div class="sub-h">
-                Mentor, Coding Blocks
-              </div>
-            </div>
 
-            <div class="classroom-para">
-              {{course.instructor.description}}
+              <div class="classroom-para">
+                {{instructor.description}}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      {{/each}}
+      
     </div>
   </div>
 </div>

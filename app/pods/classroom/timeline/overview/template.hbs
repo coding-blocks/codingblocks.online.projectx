@@ -176,32 +176,36 @@
 
     <div class="o-about-instructors">
         <div class="row no-gutters">
-            <div class="col-md-6 col-12">
-                <div class="img-desc row no-gutters">
-                    <div class="col-4">
+            {{#each course.instructors as |instructor|}}
+                <div class="col-md-6 col-sm-12">
+                    <div class="img-desc row no-gutters">
+                        <div class="col-4">
                         <div class="img-container">
                             <div class="round-img">
-                                <img src="{{course.instructor.photo}}" alt="Photo of {{course.instructor.name}}">
+                            <img src="{{instructor.photo}}" alt="photo of {{instructor.name}}">
                             </div>
                         </div>
-                    </div>
 
-                    <div class="description col-8">
+                        </div>
+
+
+                        <div class="description col-8">
                         <div class="heading-d">
                             <div class="main-h">
-                                {{course.instructor.name}}
+                            {{instructor.name}}
                             </div>
                             <div class="sub-h">
-                                Mentor, Coding Blocks
+                            Mentor, Coding Blocks
                             </div>
                         </div>
 
                         <div class="classroom-para">
-                            {{course.instructor.description}}
+                            {{instructor.description}}
+                        </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {{/each}}
         </div>
     </div>
 

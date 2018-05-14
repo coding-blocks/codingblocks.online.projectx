@@ -27,13 +27,27 @@
                     <div class="card-text">
                         {{run.course.subtitle}}
                     </div>
-                    <div class="card-mentor">
+                    <div class="card-mentor">                    
                         <div class="card-mentor-image">
-                            <img class="card-mentors" src="{{run.course.instructor.photo}}">
+                            {{#each run.course.instructors as |instructor index|}}
+                                {{#if (lt index 2) }}
+                                    <img class="card-mentors" src="{{instructor.photo}}">
+                                {{/if}}
+                            {{/each}}
                         </div>
                         <div class="card-mentor-text">
                             <span>Instructors</span>
-                            <div class="card-mentor-name">{{run.course.instructor.name}}</div>
+                            <div class="card-mentor-name">
+                                {{#each run.course.instructors as |instructor index|}}
+                                    {{#if (lt index 2)}}
+                                        {{instructor.name}}{{if (and (gt run.course.instructors.length 1) (eq index 0)) "," ""}}
+                                    {{/if}}
+                                {{/each}}
+                                
+                                {{#if (gt run.course.instructors.length 2)}}
+                                    <span class="price"> +{{sub course.instructors.length 2}}</span> more
+                                {{/if}}
+                            </div>
                         </div>
                     </div>
                     <div class="card-mentor-divider"></div>
