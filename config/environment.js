@@ -64,21 +64,21 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.apiHost = 'https://codingblocks-online-v2-staging.herokuapp.com'
-    ENV.publicUrl = 'https://online.codingblocks.xyz';
-    ENV.clientId = 5169892443
-    ENV.oneauthURL = 'https://account.codingblocks.com'
-    ENV.hackApiHost = 'https://api.codingblocks.xyz'
-    ENV.sentry.dsn = 'http://a1e58068dc5c48edb9b313b1efbe22ec@sentry.cb.lk/19'
-  }
-
-  if (environment === 'staging') {
     ENV.apiHost = 'https://api-online.cb.lk'
     ENV.publicUrl = 'https://online.codingblocks.com';
     ENV.clientId = 5633768694
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.cb.lk'
     ENV.sentry.dsn = 'http://28a62ac6a0194a8381f4a6df014fa5ed@sentry.cb.lk/21'
+  }
+
+  if (environment === 'staging') {
+    ENV.apiHost = 'https://codingblocks-online-v2-staging.herokuapp.com'
+    ENV.publicUrl = 'https://online.codingblocks.xyz';
+    ENV.clientId = 5169892443
+    ENV.oneauthURL = 'https://account.codingblocks.com'
+    ENV.hackApiHost = 'https://api.codingblocks.xyz' 
+    ENV.sentry.dsn = 'http://a1e58068dc5c48edb9b313b1efbe22ec@sentry.cb.lk/19'
   }
 
   ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'
