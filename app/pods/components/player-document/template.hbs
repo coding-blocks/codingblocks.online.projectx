@@ -16,10 +16,12 @@
   </div>
   <div class="row markdown">
     {{#if document.pdfLink}}
-      <iframe src="https://docs.google.com/gview?url={{document.pdfLink}}&embedded=true" style="width:100%" frameborder="0">
+      <iframe src="https://docs.google.com/gview?url={{document.pdfLink}}&embedded=true"
+              style="width:100%" frameborder="0">
       </iframe>
     {{else}}
       {{markdown-to-html document.markdown}}
     {{/if}}
   </div>
 </div>
+
