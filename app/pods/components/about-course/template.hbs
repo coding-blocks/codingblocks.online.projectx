@@ -43,7 +43,7 @@
         {{/link-to}}
       </div>
       <div class="button-solid col-6">
-        <button>BUY NOW</button>
+          <a href="#runs" style="color:white;"><button>BUY NOW</button></a>
       </div>
     </div>
   </div>
@@ -102,7 +102,7 @@
     </div>
     <div class="button-container row justify-content-center">
       <div class="button-solid col-6">
-        <button>BUY NOW</button>
+        <a href="#runs" style="color:white;"><button>BUY NOW</button></a>
       </div>
 
       <div class="button-dashed col-6">
@@ -221,7 +221,7 @@
     About Instructors
   </div>
 
-  <div class="o-about-instructors container-fluid">
+  <div class="o-about-instructors container-fluid" >
     <div class="row">
       {{#each course.instructors as |instructor|}}
         <div class="col-md-6 col-sm-12">
@@ -261,7 +261,7 @@
 {{!-- Available Batches --}}
 
 <div class="o-batches">
-<div class="heading-u">
+<div class="heading-u" id="runs">
   Choose from Available Batches
 </div>
 
@@ -306,7 +306,7 @@
 
 				<div class="button-parent col-4">
 					<div class="button-solid">
-						<button>Enroll Now</button>
+                                            <a href="{{course.buyNowLink}}" style="color:white;"><button>Enroll Now</button></a>
 					</div>
 				</div>
 
