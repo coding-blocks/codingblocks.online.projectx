@@ -42,9 +42,11 @@
           ENROLL VIA OTP
         {{/link-to}}
       </div>
-      <div class="button-solid col-6">
-          <a href="#runs" style="color:white;"><button>BUY NOW</button></a>
-      </div>
+      <a href="#runs">
+          <div class="button-solid col-6">
+              <button>BUY NOW</button>
+          </div>
+      </a>
     </div>
   </div>
 </div>
@@ -101,9 +103,11 @@
 
     </div>
     <div class="button-container row justify-content-center">
-      <div class="button-solid col-6">
-        <a href="#runs" style="color:white;"><button>BUY NOW</button></a>
-      </div>
+        <a href="#runs">
+            <div class="button-solid col-6">
+                <button>BUY NOW</button>
+            </div>
+        </a>
 
       <div class="button-dashed col-6">
         {{#link-to 'classroom' tagName="button"}}
@@ -305,9 +309,11 @@
 				</div>
 
 				<div class="button-parent col-4">
-					<div class="button-solid">
-                                            <a href="{{course.buyNowLink}}" style="color:white;"><button>Enroll Now</button></a>
-					</div>
+                                    <a href="{{course.buyNowLink}}">
+                                        <div class="button-solid">
+                                            <button>Enroll Now</button>
+                                        </div>
+                                    </a>
 				</div>
 
 			</div>
