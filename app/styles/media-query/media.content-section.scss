@@ -27,13 +27,14 @@
     .content{
       position: static;
       width: 100% !important;
-      height: calc(100vh - 180px);
+      height: unset;
     }
 
     .section{
       @include dimensions(100%, 100%);
       height: auto;
     }
+
 
     .main-h, .sub-h, .notify-text, .button-solid, .accordian-heading, .accordian-li, .accordian-status, .header{
       font-size: $global-font-size;
