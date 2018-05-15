@@ -22,8 +22,8 @@ export default Route.extend({
       return !section.get("isProgressCompleted");
     });
     let content ;
-    if (!section.id) {
-      // no sections
+    if (!section || !section.id) {
+      // no sections to resume
       section = course.get("sections").objectAt(0) 
       content = section.get("contents").objectAt(0)
     } else {
