@@ -33,10 +33,22 @@
   }
 }
 
+@media all and (min-width: 567px) {
+  .home-img-box {
+    text-align: center;
+    .home-img {
+      width: 50%;
+    }
+  }
+}
+
 @media all and (min-width: 1335px){
   .home-img-box {
     flex: 0 0 50%;
     max-width: 50%;
+    .home-img {
+     width: 85%;
+    }
   }
 }
 
