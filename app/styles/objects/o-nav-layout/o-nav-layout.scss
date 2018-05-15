@@ -13,7 +13,7 @@
     @include dimensions(8px, 8px);
   }
 
-  &>.notify-icon{
+  .notify-icon{
     transform: translateY(13px);
   }
 }
