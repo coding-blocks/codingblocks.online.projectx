@@ -4,6 +4,8 @@
     .input-search {
       display: block;
       margin: 0 auto;
+      width: 80%;
+      min-width: 290px;
     }
   }
 
@@ -21,19 +23,18 @@
     display: none;
   }
 
-  .home-img {
-    margin: 0 auto;
-    left: 0;
-    width: 100%;
+  .home-img-box {
+    .home-img {
+      margin: 0 auto;
+      left: 0;
+      width: 100%;
+    }
   }
 }
 
-@media all and (max-width: 767px) {
-  .home-container {
-    .input-search {
-      width: 50%;
-      min-width: 290px;
-    }
+@media all and (min-width: 1366px){
+  .home-img-box {
+    width: 50%;
   }
 }
 
