@@ -1,4 +1,7 @@
 <div class="o-doubt">
+  {{#if recent}}
+    Hi
+  {{else}}
   <div class="d-flex head">
     <div class="heading-u mr-auto">
       Solve your doubts ({{topic_list.topics.length}})
@@ -17,6 +20,5 @@
       {{/each}}
     </div>
   </div>
-
-
+  {{/if}}
 </div>
