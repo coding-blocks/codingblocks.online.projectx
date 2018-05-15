@@ -34,10 +34,9 @@
     <div class="upper-half">
       <div class="round-img">
         </div>
-+        <img src="{{user.photo}}">
--      <div class="para">
--        Hello, {{if session.isAuthenticated currentUser.user.firstname 'Guest'}}
-      </div>
+          <div class="para">
+            Hello, {{if session.isAuthenticated currentUser.user.firstname 'Guest'}}
+       </div>
       <div class="button-solid">
         {{login-button}}
       </div>
