@@ -55,8 +55,11 @@
             </div>
             <div class="button-parent col-md-6 col-sm-12 col-xs-12">
               <div class="button-solid">
-                {{#link-to 'courses.id' course.id tagName="button" activeClass=""}} Rs. {{course
-                .topRun.price}}{{/link-to}}
+                {{#if (eq course.topRun.price 0)}}
+                   {{#link-to 'courses.id' course.id tagName="button" activeClass=""}} Free {{/link-to}}
+                {{else}}
+                  {{#link-to 'courses.id' course.id tagName="button" activeClass=""}} Rs. {{course.topRun.price}}{{/link-to}}
+                {{/if}}
               </div>
             </div>
           </div>
