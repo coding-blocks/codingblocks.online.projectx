@@ -1,9 +1,9 @@
 <div class="o-code-editor">
   <div id="editor">
-    {{ember-ace 
+    {{ember-ace
       value=selectedLanguage.source
       update=(action (mut selectedLanguage.source))
-      editorClass="height-100" 
+      editorClass="height-100"
       classNames=classNames
       mode=selectedLanguage.mode
       theme='ace/theme/monokai'
@@ -18,7 +18,7 @@
   <div id="dragger-ce-rs"></div>
   <!-- code-editor -- result-->
 
-  <div>
+  <div class="options-result">
     <div class="editor-options row justify-content-between">
       <div class="select-list align-self-center">
         <div class="select-box pointer" onclick={{action 'openLanguageSelectBox'}}>
@@ -71,7 +71,7 @@
         </div>
         <div class="output  col-md-6 col-sm-6 col-xs-12">
           <div class="row">
-            <div class="heading col-md-6">
+            <div class="heading col-12">
               <p>
                 Output : &nbsp;
                 <span>
