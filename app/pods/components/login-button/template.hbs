@@ -2,9 +2,7 @@
 {{#if session.isAuthenticated}}
   <button onclick={{action 'invalidateSession'}}>Logout</button>
 {{else}} 
-    <a href="{{loginUrl}}">
         <button onclick={{action 'logIn'}}>
             Login
         </button>
-    </a>
 {{/if}}
