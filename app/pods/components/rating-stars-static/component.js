@@ -9,6 +9,7 @@ export default class RatingComponentStatic extends Component {
     this.get('api').request('/courses/' + this.get('course.id') + '/rating')
     .then(response => {
       this.set('rating', response.rating)
+      this.set('users', response.count)
     })
   }
 }
