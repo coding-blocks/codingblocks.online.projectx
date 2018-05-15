@@ -32,9 +32,10 @@
   }
 }
 
-@media all and (min-width: 1366px){
+@media all and (min-width: 1335px){
   .home-img-box {
-    width: 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 }
 
