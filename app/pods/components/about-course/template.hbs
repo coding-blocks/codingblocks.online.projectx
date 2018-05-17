@@ -38,7 +38,9 @@
   <div class="col-6 align-self-center">
     <div class="row justify-content-end">
       <div class="button-dashed col-6">
-        <button>ENROLL VIA OTP</button>
+        {{#link-to 'classroom' tagName="button"}}
+          ENROLL VIA OTP
+        {{/link-to}}
       </div>
       <div class="button-solid col-6">
         <button>BUY NOW</button>
@@ -104,7 +106,9 @@
       </div>
 
       <div class="button-dashed col-6">
-        <button>ENROLL VIA OTP</button>
+        {{#link-to 'classroom' tagName="button"}}
+          ENROLL VIA OTP
+        {{/link-to}}
       </div>
     </div>
 
@@ -131,7 +135,7 @@
 
         </div>
         <div class="para col-4 align-self-center">
-          Ri-visit and Revise topics
+          Re-visit and Revise topics
         </div>
       </div>
 
@@ -291,7 +295,7 @@
 			</div>
 
 			<div class="price">
-				Rs {{run.price}}
+				{{format-price run.price}}
 			</div>
 
 			<div class="my-course-enroll row no-gutters">

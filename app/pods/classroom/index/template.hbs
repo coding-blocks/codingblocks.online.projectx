@@ -11,8 +11,7 @@
                   <div data-completed="false" class="status-circle offset-md-8 col-md-4">
                     <div class="circle-back">
                       <div class="circle-front">
-                        <p class="progress-text">{{percentage run.course
-                                                              .completedContents run.course.totalContents}}%</p>
+                        <p class="progress-text">{{percent-complete runAttemptId=run.topRunAttempt.id}}%</p>
                       </div>
                     </div>
                   </div>

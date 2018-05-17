@@ -4,7 +4,7 @@
             <div class="button-dashed" {{action 'toggleSideBar'}}>
               <button>
                 X Table of Content
-              </button> 
+              </button>
             </div>
         </div>
         {{outlet "heading"}}
@@ -21,7 +21,6 @@
               <i class="fas {{if accordianCollapsed 'fa-chevron-down' 'fa-chevron-up'}}"></i>
             </div>
           </div>
-          {{#liquid-spacer growDuration=250 class="black-background"}}
             {{#unless accordianCollapsed}}
               <div class="o-accordian">
                   {{#each sections as |section|}}
@@ -50,7 +49,6 @@
                   {{/each}}
               </div>
             {{/unless}}
-          {{/liquid-spacer}}
         </div>
     </div>
 </div>
