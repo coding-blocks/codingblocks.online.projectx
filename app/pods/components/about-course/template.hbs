@@ -274,7 +274,12 @@
 
 <div class="o-batches">
 <div class="heading-u">
-  Choose from Available Batches
+  Choose from Available
+  {{#if (eq availableRuns.length 1)}}
+    Batch
+  {{else}}
+    Batches
+  {{/if}}
 </div>
 
 <div class="grid row">
