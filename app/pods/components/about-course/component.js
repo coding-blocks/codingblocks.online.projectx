@@ -7,9 +7,7 @@ export default Component.extend({
   availableRuns: [],
 
   loginUrl: `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
-  api: inject(),
   session: inject(),
-  currentUser: inject(),
 
   actions: {
     logIn() {
