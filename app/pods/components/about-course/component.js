@@ -1,8 +1,21 @@
 import Component from '@ember/component';
+import { inject } from '@ember/service';
 import $ from 'jquery';
+import env from "codingblocks-online/config/environment";
 
 export default Component.extend({
   availableRuns: [],
+
+  loginUrl: `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
+  api: inject(),
+  session: inject(),
+  currentUser: inject(),
+
+  actions: {
+    logIn() {
+        window.location.href = this.loginUrl
+    }
+  },
 
   init () {
     this._super (...arguments)
@@ -12,6 +25,7 @@ export default Component.extend({
     ;
 
     this.set ('availableRuns', runs)
+
   },
 
   didInsertElement () {
@@ -30,5 +44,8 @@ export default Component.extend({
         buyRight.removeClass("slide-right");
       }
     })
-  }
+  },
+
+
+
 });
