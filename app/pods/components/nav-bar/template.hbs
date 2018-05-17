@@ -35,20 +35,20 @@
       <div class="round-img">
         <img src="{{user.photo}}">
       </div>
-      <div class="button-solid">
+      <div class="button-solid" onclick={{action 'toggleSidebar'}}>
         {{login-button}}
       </div>
     </div>
     <div class="lower-half">
-      <div class="para">
+      <div class="para" onclick={{action 'toggleSidebar'}}>
         {{#link-to 'index'}}Home{{/link-to}}
       </div>
       {{#if session.isAuthenticated}}
-        <div class="para">
+        <div class="para" onclick={{action 'toggleSidebar'}}>
           {{#link-to 'classroom'}}My Courses{{/link-to}}
         </div>
       {{/if}}
-      <div class="para">
+      <div class="para" onclick={{action 'toggleSidebar'}}>
         {{#link-to 'courses'}}All Courses{{/link-to}}
       </div>
     </div>
