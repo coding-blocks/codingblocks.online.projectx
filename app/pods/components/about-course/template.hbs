@@ -30,7 +30,7 @@
           Mentor :
           {{#each course.instructors as |instructor index|}}
              {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
-          {{/each}} 
+          {{/each}}
         </div>
       </div>
     </div>
@@ -38,9 +38,15 @@
   <div class="col-6 align-self-center">
     <div class="row justify-content-end">
       <div class="button-dashed col-6">
-        {{#link-to 'classroom' tagName="button"}}
-          ENROLL VIA OTP
-        {{/link-to}}
+        {{#if session.isAuthenticated}}
+            {{#link-to 'classroom' tagName="button"}}
+                ENROLL VIA OTP
+            {{/link-to}}
+        {{else}}
+            <button onclick={{action 'logIn'}}>
+                ENROLL VIA OTP
+            </button>
+        {{/if}}
       </div>
       <div class="button-solid col-6">
         <button>BUY NOW</button>
@@ -69,10 +75,10 @@
       {{rating-stars-static course=course}}
 
       <div class="para">
-        <span class="key">Mentor : </span> 
+        <span class="key">Mentor : </span>
         {{#each course.instructors as |instructor index|}}
              {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
-          {{/each}} 
+          {{/each}}
       </div>
 
       {{!-- <div class="button-solid">
@@ -106,9 +112,15 @@
       </div>
 
       <div class="button-dashed col-6">
-        {{#link-to 'classroom' tagName="button"}}
-          ENROLL VIA OTP
-        {{/link-to}}
+          {{#if session.isAuthenticated}}
+              {{#link-to 'classroom' tagName="button"}}
+                  ENROLL VIA OTP
+              {{/link-to}}
+          {{else}}
+              <button onclick={{action 'logIn'}}>
+                  ENROLL VIA OTP
+              </button>
+          {{/if}}
       </div>
     </div>
 
@@ -253,7 +265,7 @@
           </div>
         </div>
       {{/each}}
-      
+
     </div>
   </div>
 </div>
@@ -262,7 +274,12 @@
 
 <div class="o-batches">
 <div class="heading-u">
-  Choose from Available Batches
+  Choose from Available
+  {{#if (eq availableRuns.length 1)}}
+    Batch
+  {{else}}
+    Batches
+  {{/if}}
 </div>
 
 <div class="grid row">
@@ -332,4 +349,3 @@
     {{/each}}
 </div>
 </div>
-
