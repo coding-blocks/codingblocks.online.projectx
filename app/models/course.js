@@ -30,6 +30,7 @@ export default DS.Model.extend({
     videosDuration: DS.attr(),
     type: DS.attr(),
     color: DS.attr(),
+    buyNowLink: DS.attr(),
     backgroundImage: DS.attr(),
     totalContents: computed('sections.@each.totalContents', function () {
       return this.get('sections').reduce( (acc, section) => {
