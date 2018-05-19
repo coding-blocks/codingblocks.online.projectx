@@ -1,0 +1,11 @@
+$list:  (red, $button-element-level)
+        (black, $global-font-text-color)
+        (white, $white )
+        (grey, $navLink)
+        (green, $font-complete);
+
+@each $type, $color in $list {
+  .#{$type}{
+      color: $color;
+  }
+}
