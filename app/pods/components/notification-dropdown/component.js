@@ -105,8 +105,19 @@ export default class NotificationDropdownComponent extends Component {
 
   @action
   markAsRead () {
-    // Update user's last read notification
-    // - When the user clicks "Mark as Read"
-    // - When the notifications box is open for more than ten seconds
+    let currentUser = this.get ('currentUser.user'),
+      notificationIds = this.get ('notifications').mapBy ('id').map (id => parseInt (id)),
+      maxNotificationId = Math.max (...notificationIds),
+      notifications = this.get ('notifications')
+    ;
+
+    if (currentUser.get ('lastReadNotification') < maxNotificationId) {
+      currentUser.set ('lastReadNotification', maxNotificationId)
+      currentUser.save ()
+
+      notifications.forEach (notification => {
+        notification.set ('isUnread', this.isUnread (notification))
+      })
+    }
   }
 }
