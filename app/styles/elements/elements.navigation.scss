@@ -6,7 +6,7 @@ nav {
   background: $white;
   width: 100%;
   max-height:100px;
-  z-index: 101;
+  z-index: 200;
 }
 .nav-list {
   @include float(right);

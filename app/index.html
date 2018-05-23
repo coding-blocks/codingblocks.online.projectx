@@ -13,6 +13,17 @@
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/codingblocks-online.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+	<link rel="manifest" href="/manifest.json" />
+
+	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	<script>
+	  var OneSignal = window.OneSignal || [];
+	  OneSignal.push(function() {
+		OneSignal.init({
+		  appId: "bdb58e80-92cd-4d59-aeff-af1c724a6e4b",
+		});
+	  });
+	</script>
     
     {{content-for "head-footer"}}
   </head>
