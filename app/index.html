@@ -20,9 +20,12 @@
 	  var OneSignal = window.OneSignal || [];
 	  OneSignal.push(function() {
 		OneSignal.init({
-		  appId: "bdb58e80-92cd-4d59-aeff-af1c724a6e4b",
+          allowLocalhostAsSecureOrigin: true,
+		  appId: "29d9df1d-85cf-4d41-b504-c6b166b91261",
 		});
 	  });
+
+	  OneSignal.on ('register', function () { console.log ("*hacker voice*: I'm in") })
 	</script>
     
     {{content-for "head-footer"}}
