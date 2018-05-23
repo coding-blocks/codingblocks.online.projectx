@@ -4,13 +4,13 @@ import { task } from 'ember-concurrency';
 import { service } from 'ember-decorators/service';
 
 // Notifications Dropdown
-// - Grab last N paginated requests
-// - Grab lastReadNotificationID from User
+// - Highlight unread
 // - Mark all as read
 // - Poll periodically and update UI
 // - There are no more notifications to display
 export default class NotificationDropdownComponent extends Component {
   @service store
+  @service currentUser
 
   active = false
   notifications = []
@@ -45,16 +45,24 @@ export default class NotificationDropdownComponent extends Component {
         url: 'me'
       }
     })
+      .then (notifications => {
+        notifications.forEach (notification => {
+          notification.set ('isUnread', this.isUnread (notification))
+        })
+
+        return notifications
+      })
 
     this.set ('notifications', notifications)
   })
 
-  // Mark notifications as read
-  // - if the user clicks mark as read
-  // - if the notifications box is active for more than five seconds
-  // - if the notification is clicked
+  isUnread (notification) {
+    let id = notification.get ('id'),
+      currentUser = this.get ('currentUser'),
+      lastReadNotificationID = currentUser.get ('user.lastReadNotification')
+    ;
 
-  updateLastReadNotifications () {
+    return (lastReadNotificationID < id)
   }
 
   @action
@@ -71,9 +79,6 @@ export default class NotificationDropdownComponent extends Component {
     ;
 
     let maxPageCount = Math.ceil (notificationCount / limit)
-
-    console.log ('maxPageCount', maxPageCount)
-    console.log ('page', page)
 
     if (page >= maxPageCount)
       return
@@ -96,12 +101,12 @@ export default class NotificationDropdownComponent extends Component {
     this.set ('offset', offset - limit)
     this.set ('page', page - 1)
     this.get ('loadNotifications').perform ()
-
-    console.log ('SET OFFSET: ', this.get ('offset'))
   }
 
   @action
   markAsRead () {
     // Update user's last read notification
+    // - When the user clicks "Mark as Read"
+    // - When the notifications box is open for more than ten seconds
   }
 }
