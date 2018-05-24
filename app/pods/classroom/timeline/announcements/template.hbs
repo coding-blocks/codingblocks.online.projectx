@@ -2,6 +2,15 @@
     <div class="heading-u">
 		Announcements ({{announcements.length}})
     </div>
+  {{#unless announcements.length}}
+    <div class="accordian-ul" data-show="true">
+        <div class="accordian-li">
+          <div class="classroom-para">
+            All announcements related to course will be shared here !
+          </div>
+        </div>
+    </div>
+  {{/unless}}
 	{{#each announcements as |announcement|}}
 		<div class="accordian-ul" data-show="true">
 			{{#accordian-head announcement=announcement course=course}}

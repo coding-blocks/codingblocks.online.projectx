@@ -27,7 +27,10 @@
           {{course.title}}
         </div>
         <div class="sub-h">
-          Mentor : {{course.instructor.name}}
+          Mentor :
+          {{#each course.instructors as |instructor index|}}
+             {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
+          {{/each}}
         </div>
       </div>
     </div>
@@ -35,10 +38,20 @@
   <div class="col-6 align-self-center">
     <div class="row justify-content-end">
       <div class="button-dashed col-6">
-        <button>ENROLL VIA OTP</button>
+        {{#if session.isAuthenticated}}
+            {{#link-to 'classroom' tagName="button"}}
+                ENROLL VIA OTP
+            {{/link-to}}
+        {{else}}
+            <button onclick={{action 'logIn'}}>
+                ENROLL VIA OTP
+            </button>
+        {{/if}}
       </div>
       <div class="button-solid col-6">
-        <button>BUY NOW</button>
+          <a href="#runs">
+              <button class="white">BUY NOW</button>
+          </a>
       </div>
     </div>
   </div>
@@ -64,7 +77,10 @@
       {{rating-stars-static course=course}}
 
       <div class="para">
-        <span class="key">Mentor : </span> {{course.instructor.name}}
+        <span class="key">Mentor : </span>
+        {{#each course.instructors as |instructor index|}}
+             {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
+          {{/each}}
       </div>
 
       {{!-- <div class="button-solid">
@@ -93,12 +109,22 @@
 
     </div>
     <div class="button-container row justify-content-center">
-      <div class="button-solid col-6">
-        <button>BUY NOW</button>
-      </div>
+        <div class="button-solid col-6">
+            <a href="#runs">
+                <button class="white">BUY NOW</button>
+            </a>
+        </div>
 
       <div class="button-dashed col-6">
-        <button>ENROLL VIA OTP</button>
+          {{#if session.isAuthenticated}}
+              {{#link-to 'classroom' tagName="button"}}
+                  ENROLL VIA OTP
+              {{/link-to}}
+          {{else}}
+              <button onclick={{action 'logIn'}}>
+                  ENROLL VIA OTP
+              </button>
+          {{/if}}
       </div>
     </div>
 
@@ -125,7 +151,7 @@
 
         </div>
         <div class="para col-4 align-self-center">
-          Ri-visit and Revise topics
+          Re-visit and Revise topics
         </div>
       </div>
 
@@ -211,36 +237,39 @@
     About Instructors
   </div>
 
-  <div class="o-about-instructors container-fluid">
+  <div class="o-about-instructors container-fluid" >
     <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <div class="img-desc row">
-          <div class="col-4">
-            <div class="img-container">
-              <div class="round-img">
-                <img src="{{course.instructor.photo}}" alt="photo of {{course.instructor.name}}">
+      {{#each course.instructors as |instructor|}}
+        <div class="col-md-6 col-sm-12">
+          <div class="img-desc row">
+            <div class="col-4">
+              <div class="img-container">
+                <div class="round-img">
+                  <img src="{{instructor.photo}}" alt="photo of {{instructor.name}}">
+                </div>
               </div>
+
             </div>
 
-          </div>
 
-
-          <div class="description col-8">
-            <div class="heading-d">
-              <div class="main-h">
-                {{course.instructor.name}}
+            <div class="description col-8">
+              <div class="heading-d">
+                <div class="main-h">
+                  {{instructor.name}}
+                </div>
+                <div class="sub-h">
+                  Mentor, Coding Blocks
+                </div>
               </div>
-              <div class="sub-h">
-                Mentor, Coding Blocks
-              </div>
-            </div>
 
-            <div class="classroom-para">
-              {{course.instructor.description}}
+              <div class="classroom-para">
+                {{instructor.description}}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      {{/each}}
+
     </div>
   </div>
 </div>
@@ -248,7 +277,7 @@
 {{!-- Available Batches --}}
 
 <div class="o-batches">
-<div class="heading-u">
+<div class="heading-u" id="runs">
   Choose from Available Batches
 </div>
 
@@ -282,7 +311,7 @@
 			</div>
 
 			<div class="price">
-				Rs {{run.price}}
+				{{format-price run.price}}
 			</div>
 
 			<div class="my-course-enroll row no-gutters">
@@ -292,9 +321,11 @@
 				</div>
 
 				<div class="button-parent col-4">
-					<div class="button-solid">
-						<button>Enroll Now</button>
-					</div>
+                                    <a href="{{course.buyNowLink}}">
+                                        <div class="button-solid">
+                                            <button>Enroll Now</button>
+                                        </div>
+                                    </a>
 				</div>
 
 			</div>
@@ -319,4 +350,3 @@
     {{/each}}
 </div>
 </div>
-

@@ -64,11 +64,12 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
-    /*ENV.publicUrl = 'https://online.codingblocks.com';
-    ENV.apiEndpoint = 'https://api-online.cb.lk';
+    ENV.apiHost = 'https://api-online.cb.lk'
+    ENV.publicUrl = 'https://online.codingblocks.com';
     ENV.clientId = 5633768694
-    ENV.oneauthURL = 'https://account.codingblocks.com/'*/
+    ENV.oneauthURL = 'https://account.codingblocks.com'
+    ENV.hackApiHost = 'https://api.cb.lk'
+    ENV.sentry.dsn = 'http://28a62ac6a0194a8381f4a6df014fa5ed@sentry.cb.lk/21'
   }
 
   if (environment === 'staging') {
@@ -76,7 +77,7 @@ module.exports = function(environment) {
     ENV.publicUrl = 'https://online.codingblocks.xyz';
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
-    ENV.hackApiHost = 'https://api.codingblocks.xyz'
+    ENV.hackApiHost = 'https://api.codingblocks.xyz' 
     ENV.sentry.dsn = 'http://a1e58068dc5c48edb9b313b1efbe22ec@sentry.cb.lk/19'
   }
 
