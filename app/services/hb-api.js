@@ -13,7 +13,7 @@ export default AjaxService.extend({
       console.log(this.get('currentUser.user.hackJwt'))
         return {
             Authorization: `JWT ${this.get('currentUser.user.hackJwt')}`,
-            'user-id': JSON.parse(window.atob(this.get('currentUser.user.hackJwt').split('.')[1])).user.id
+            'user-id': JSON.parse(window.atob((this.get('currentUser.user.hackJwt').split('.')[1]).replace (/-/g, '+').replace(/_/g, '/'))).user.id
         }
     })
 });
