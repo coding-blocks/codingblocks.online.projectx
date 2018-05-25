@@ -70,6 +70,9 @@ module.exports = function(environment) {
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.cb.lk'
     ENV.sentry.dsn = 'http://28a62ac6a0194a8381f4a6df014fa5ed@sentry.cb.lk/21'
+    ENV.googleAnalytics = {
+      webPropertyId: 'UA-83327907-9'
+    }
   }
 
   if (environment === 'staging') {
