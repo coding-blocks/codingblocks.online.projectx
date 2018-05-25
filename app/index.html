@@ -13,20 +13,6 @@
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/codingblocks-online.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-	<link rel="manifest" href="/manifest.json" />
-
-	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-	<script>
-	  var OneSignal = window.OneSignal || [];
-	  OneSignal.push(function() {
-		OneSignal.init({
-          allowLocalhostAsSecureOrigin: true,
-		  appId: "29d9df1d-85cf-4d41-b504-c6b166b91261",
-		});
-	  });
-
-	  OneSignal.on ('register', function () { console.log ("*hacker voice*: I'm in") })
-	</script>
     
     {{content-for "head-footer"}}
   </head>
