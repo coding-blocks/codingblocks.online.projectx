@@ -8,4 +8,5 @@ export default class AccordianHeadComponent extends Component {
     toggle () {
         this.toggleProperty("collapsed")
     }
+
 }
