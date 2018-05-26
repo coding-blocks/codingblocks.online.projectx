@@ -6,6 +6,7 @@ import { isNone } from '@ember/utils';
 export default Route.extend(ApplicationRouteMixin, {
     session: service(),
     currentUser: service(),
+    store: service (),
     queryParams: {
         code: {
             refreshModel: true
@@ -15,7 +16,7 @@ export default Route.extend(ApplicationRouteMixin, {
         if( !isNone(transition.queryParams.code) ) {
             if (this.get('session.isAuthenticated')) {
                 return this.transitionTo({queryParams: {code: undefined}})
-            }            
+            }
             // we have ?code qp
             const { code } = transition.queryParams
             return this.get('session').authenticate('authenticator:jwt', {identification: code, password: code, code})
@@ -32,7 +33,25 @@ export default Route.extend(ApplicationRouteMixin, {
     },
     model () {
         if (this.get('session.isAuthenticated')) {
-            return this.get('currentUser').load()
-        } 
+          return this.get('currentUser').load().then (user => {
+
+            OneSignal.getUserId ().then (userId => {
+              if (! userId) {
+                console.log("user id in application", userId);
+                throw new Error ('player ID not found')
+              }
+
+              const player = this.store.createRecord ('player')
+
+              player.set ('playerId', userId)
+
+              return player.save ()
+            })
+              .then (result => console.log ('playerId set!'))
+              .catch (error => console.error (error))
+
+            return user
+          })
+        }
     }
 })
