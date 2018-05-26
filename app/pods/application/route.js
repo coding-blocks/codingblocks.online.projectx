@@ -32,7 +32,11 @@ export default Route.extend(ApplicationRouteMixin, {
     },
     model () {
         if (this.get('session.isAuthenticated')) {
-            return this.get('currentUser').load()
+          return this.get('currentUser').load().then (user => {
+            OneSignal.sendTag ('user_id', user.get ('id'))
+              .then (result => console.log ('OneSignal user_id set!'))
+              .catch (result => console.error ('OneSignal user_id not set!'))
+          })
         } 
     }
 })
