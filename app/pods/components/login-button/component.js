@@ -16,12 +16,25 @@ export default class LoginButton extends Component {
 
   @action
   invalidateSession() {
+    let logout = () => {
+      this.get("api")
+      .request("/jwt/logout")
+      .then(() => {
+        this.get("session").invalidate()
+      });
+    }
+
+    let timeout = setTimeout (logout, 4000)
+
     OneSignal.getUserId ()
       .then (userId => {
+        clearTimeout (timeout)
+
         if (! userId) {
           return
         }
-        return this.get("store").queryRecord('player', {
+
+        return this.get ('store').queryRecord ('player', {
           playerId: userId,
           custom: {
             ext: 'url',
@@ -30,18 +43,14 @@ export default class LoginButton extends Component {
         })
       })
       .then ((player) => {
-        console.log("player", player);
         if (! player) {
           return
         }
+
         return player.destroyRecord ()
       })
-      .then (() => {
-        this.get("api")
-          .request("/jwt/logout")
-          .then(() => {
-            this.get("session").invalidate()
-          });
+      .then ((_) => {
+        logout ()
       })
   }
 

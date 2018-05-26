@@ -14,7 +14,7 @@ export default class NotificationDropdownComponent extends Component {
 
   active = false
   notifications = []
-  unreadNotifications = false
+  unreadNotifications = true
 
   refreshInterval = 60000
 
@@ -67,6 +67,7 @@ export default class NotificationDropdownComponent extends Component {
 
   @action
   toggle () {
+    this.get ('loadNotifications').perform ()
     return this.toggleProperty ("active")
   }
 
