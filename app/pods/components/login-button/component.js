@@ -18,11 +18,9 @@ export default class LoginButton extends Component {
   invalidateSession() {
     OneSignal.getUserId ()
       .then (userId => {
-        console.log("user id is ", userId);
         if (! userId) {
           return
         }
-
         return this.get("store").queryRecord('player', {
           playerId: userId,
           custom: {
