@@ -6,6 +6,7 @@ import { isNone } from '@ember/utils';
 export default Route.extend(ApplicationRouteMixin, {
     session: service(),
     currentUser: service(),
+    store: service (),
     queryParams: {
         code: {
             refreshModel: true
@@ -33,9 +34,18 @@ export default Route.extend(ApplicationRouteMixin, {
     model () {
         if (this.get('session.isAuthenticated')) {
           return this.get('currentUser').load().then (user => {
-            OneSignal.sendTag ('user_id', user.get ('id'))
-              .then (result => console.log ('OneSignal user_id set!'))
-              .catch (result => console.error ('OneSignal user_id not set!'))
+
+            OneSignal.getUserId ().then (userId => {
+              const player = this.store.createRecord ('player')
+
+              player.set ('playerId', userId)
+
+              player.save ()
+            })
+              .then (result => console.log ('playerId set!'))
+              .catch (error => console.error (error))
+
+            return user
           })
         } 
     }
