@@ -20,6 +20,11 @@
         {{#link-to 'classroom'}}My Courses{{/link-to}}
       </li>
       {{/if}}
+      {{#if session.isAuthenticated}}
+	  <li class="nav-items pointer">
+		  {{notification-dropdown}}
+	  </li>
+      {{/if}}
       <li class="nav-items pointer">
         <div class="button-solid">
           {{login-button}}
