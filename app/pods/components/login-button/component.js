@@ -30,7 +30,7 @@ export default class LoginButton extends Component {
         })
       })
       .then ((player) => {
-        if (! user) {
+        if (! player) {
           return
         }
 
