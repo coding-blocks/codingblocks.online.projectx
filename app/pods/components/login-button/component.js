@@ -23,7 +23,7 @@ export default class LoginButton extends Component {
           return
         }
 
-        return this.store.queryRecord ('player', {
+        return this.get("store").queryRecord('player', {
           playerId: userId,
           custom: {
             ext: 'url',
