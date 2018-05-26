@@ -16,7 +16,7 @@ export default Route.extend(ApplicationRouteMixin, {
         if( !isNone(transition.queryParams.code) ) {
             if (this.get('session.isAuthenticated')) {
                 return this.transitionTo({queryParams: {code: undefined}})
-            }            
+            }
             // we have ?code qp
             const { code } = transition.queryParams
             return this.get('session').authenticate('authenticator:jwt', {identification: code, password: code, code})
@@ -37,6 +37,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
             OneSignal.getUserId ().then (userId => {
               if (! userId) {
+                console.log("user id in application", userId);
                 throw new Error ('player ID not found')
               }
 
@@ -51,6 +52,6 @@ export default Route.extend(ApplicationRouteMixin, {
 
             return user
           })
-        } 
+        }
     }
 })

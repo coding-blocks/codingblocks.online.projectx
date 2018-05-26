@@ -17,6 +17,7 @@ export default class LoginButton extends Component {
   invalidateSession() {
     OneSignal.getUserId ()
       .then (userId => {
+        console.log("user id is ", userId);
         if (! userId) {
           return
         }
@@ -30,10 +31,10 @@ export default class LoginButton extends Component {
         })
       })
       .then ((player) => {
+        console.log("player", player);
         if (! player) {
           return
         }
-
         return player.destroyRecord ()
       })
       .then (() => {
