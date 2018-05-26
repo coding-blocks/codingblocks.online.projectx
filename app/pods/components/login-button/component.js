@@ -15,9 +15,34 @@ export default class LoginButton extends Component {
 
   @action
   invalidateSession() {
-    this.get("api")
-      .request("/jwt/logout")
-      .then(() => this.get("session").invalidate());
+    OneSignal.getUserId ()
+      .then (userId => {
+        if (! userId) {
+          return
+        }
+
+        return this.store.queryRecord ('player', {
+          playerId: userId,
+          custom: {
+            ext: 'url',
+            url: 'me'
+          }
+        })
+      })
+      .then ((player) => {
+        if (! user) {
+          return
+        }
+
+        return player.destroyRecord ()
+      })
+      .then (() => {
+        this.get("api")
+          .request("/jwt/logout")
+          .then(() => {
+            this.get("session").invalidate()
+          });
+      })
   }
 
   @action
