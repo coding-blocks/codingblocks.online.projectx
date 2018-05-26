@@ -26,11 +26,11 @@
 		<div class="notify-type">
 			<div class="notify-icon">
 				<span class="notify-dot new"></span>
-				<img src="/images/announcement.png" alt="">
+				<img src="/images/announcement-dark.png" alt="">
 			</div>
 		</div>
 	</div>
-	{{/if}}
+  {{else}}
 
     <div class="li-left flex-row">
         <div class="accordian-collapsar">
@@ -46,6 +46,7 @@
             <span class="completed">{{completed}}</span> / {{total}}
         </div>
     </div>
+  {{/if}}
 </div>
 
 {{#liquid-spacer growDuration=250 class="black-background"}}
