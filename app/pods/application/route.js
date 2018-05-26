@@ -36,11 +36,15 @@ export default Route.extend(ApplicationRouteMixin, {
           return this.get('currentUser').load().then (user => {
 
             OneSignal.getUserId ().then (userId => {
+              if (! userId) {
+                throw new Error ('player ID not found')
+              }
+
               const player = this.store.createRecord ('player')
 
               player.set ('playerId', userId)
 
-              player.save ()
+              return player.save ()
             })
               .then (result => console.log ('playerId set!'))
               .catch (error => console.error (error))
