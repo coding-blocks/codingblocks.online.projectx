@@ -7,6 +7,7 @@ export default class LoginButton extends Component {
   @service api;
   @service session;
   @service currentUser;
+  @service store;
 
   tagName = 'span'
   loginUrl = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${
