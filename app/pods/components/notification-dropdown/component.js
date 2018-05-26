@@ -19,7 +19,7 @@ export default class NotificationDropdownComponent extends Component {
   refreshInterval = 60000
 
   offset = 0
-  limit = 3
+  limit = 50
   page = 1
 
   constructor () {
