@@ -7,6 +7,7 @@ export default class LoginButton extends Component {
   @service api;
   @service session;
   @service currentUser;
+  @service store;
 
   tagName = 'span'
   loginUrl = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${
@@ -15,9 +16,42 @@ export default class LoginButton extends Component {
 
   @action
   invalidateSession() {
-    this.get("api")
+    let logout = () => {
+      this.get("api")
       .request("/jwt/logout")
-      .then(() => this.get("session").invalidate());
+      .then(() => {
+        this.get("session").invalidate()
+      });
+    }
+
+    let timeout = setTimeout (logout, 4000)
+
+    OneSignal.getUserId ()
+      .then (userId => {
+        clearTimeout (timeout)
+
+        if (! userId) {
+          return
+        }
+
+        return this.get ('store').queryRecord ('player', {
+          playerId: userId,
+          custom: {
+            ext: 'url',
+            url: 'me'
+          }
+        })
+      })
+      .then ((player) => {
+        if (! player) {
+          return
+        }
+
+        return player.destroyRecord ()
+      })
+      .then ((_) => {
+        logout ()
+      })
   }
 
   @action
