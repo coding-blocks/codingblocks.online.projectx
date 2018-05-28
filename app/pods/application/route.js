@@ -2,6 +2,7 @@ import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import { inject as service } from '@ember/service';
 import { isNone } from '@ember/utils';
+import { later } from '@ember/runloop';
 
 export default Route.extend(ApplicationRouteMixin, {
     session: service(),
@@ -19,7 +20,7 @@ export default Route.extend(ApplicationRouteMixin, {
             }
             // we have ?code qp
             const { code } = transition.queryParams
-            return this.get('session').authenticate('authenticator:jwt', {identification: code, password: code, code})
+            return this.get('session').authenticate('authenticator:jwt', {identification: code, password: code, code })
               .catch(error => {
               if(error.err === 'USER_EMAIL_NOT_VERIFIED') {
                 this.transitionTo('error', {
@@ -53,5 +54,14 @@ export default Route.extend(ApplicationRouteMixin, {
             return user
           })
         }
+    },
+
+    setupController(controller, model){
+      this._super(controller, model)
+      controller.set('model', model)
+
+      later(function(){
+        controller.set('code', undefined)
+      })
     }
 })
