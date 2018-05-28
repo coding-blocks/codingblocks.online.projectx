@@ -8,6 +8,7 @@ export default class LoginButton extends Component {
   @service session;
   @service currentUser;
   @service store;
+  @service raven;
 
   tagName = 'span'
   loginUrl = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${
@@ -26,32 +27,37 @@ export default class LoginButton extends Component {
 
     let timeout = setTimeout (logout, 4000)
 
-    OneSignal.getUserId ()
-      .then (userId => {
-        clearTimeout (timeout)
+    try {
+      OneSignal.getUserId ()
+        .then (userId => {
+          clearTimeout (timeout)
 
-        if (! userId) {
-          return
-        }
-
-        return this.get ('store').queryRecord ('player', {
-          playerId: userId,
-          custom: {
-            ext: 'url',
-            url: 'me'
+          if (! userId) {
+            return
           }
-        })
-      })
-      .then ((player) => {
-        if (! player) {
-          return
-        }
 
-        return player.destroyRecord ()
-      })
-      .then ((_) => {
-        logout ()
-      })
+          return this.get ('store').queryRecord ('player', {
+            playerId: userId,
+            custom: {
+              ext: 'url',
+              url: 'me'
+            }
+          })
+        })
+        .then ((player) => {
+          if (! player) {
+            return
+          }
+
+          return player.destroyRecord ()
+        })
+        .then ((_) => {
+          logout ()
+        })
+    }
+    catch (error) {
+      this.get ('raven').captureException (error)
+    }
   }
 
   @action
