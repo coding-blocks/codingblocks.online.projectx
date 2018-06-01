@@ -35,7 +35,7 @@
     "ember-cli-sass": "^7.1.7",
     "ember-cli-sentry": "^2.4.4",
     "ember-cli-shims": "^1.2.0",
-    "ember-cli-showdown": "^4.3.0",
+    "ember-cli-showdown": "^4.4.2",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
     "ember-composable-helpers": "^2.1.0",
