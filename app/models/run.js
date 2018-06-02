@@ -12,6 +12,7 @@ export default DS.Model.extend({
   runAttemptId: DS.attr(),
   course: DS.belongsTo('course'),
   user: DS.belongsTo('user'),
+  productId: DS.attr(),
   topRunAttempt: Ember.computed('runAttempts', function () {
     return this.get('runAttempts').objectAt(0)
   }),
