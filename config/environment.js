@@ -38,6 +38,8 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.dukkanUrl = 'https://dukaan.codingblocks.com'
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
