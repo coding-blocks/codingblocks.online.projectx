@@ -2,15 +2,24 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   api: Ember.inject.service(),
-  model() {
-    console.log("inside model hook ");
-    if(this.get('session.isAuthenticated')){
+  queryParams:{
+    transaction_id:{
+      refreshModel: true
+    },
+    products_id:{
+      refreshModel: true
+    }
+  },
+  model(params) {
+
+    console.log('here')
+    if(this.session()){
       return this.get('api').request('/run_attempts', {
         method: 'POST',
         data: {
-          oneauth_id : '1',
-          transaction_id: '12',
-          products_id : [1,2,3]
+          oneauth_id : req.user.oneauth_id,
+          transaction_id: params.transaction_id,
+          products_id : params.products_id
         }
       }).then((res)=>{
         this.transitionTo('courses');
@@ -22,7 +31,7 @@ export default Route.extend({
         })
       })
     }else{
-      window.location('accounts.codingblocks.com')
+      window.location.href('accounts.codingblocks.com')
     }
   }
 });
