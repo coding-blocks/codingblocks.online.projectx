@@ -38,7 +38,7 @@ module.exports = function(environment) {
     }
   };
 
-  ENV.dukkanUrl = 'https://dukaan.codingblocks.com'
+  ENV.dukkanUrl = 'https://dukaan.codingblocks.xyz'
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -82,7 +82,7 @@ module.exports = function(environment) {
     ENV.publicUrl = 'https://online.codingblocks.xyz';
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
-    ENV.hackApiHost = 'https://api.codingblocks.xyz' 
+    ENV.hackApiHost = 'https://api.codingblocks.xyz'
     ENV.sentry.dsn = 'https://a1e58068dc5c48edb9b313b1efbe22ec@sentry.cb.lk/19'
   }
 
