@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
+  session : Ember.inject.service(),
   api: Ember.inject.service(),
   queryParams:{
     transaction_id:{
@@ -11,18 +12,15 @@ export default Route.extend({
     }
   },
   model(params) {
-
-    console.log('here')
-    if(this.session()){
+    if(this.get('session.isAuthenticated')){
       return this.get('api').request('/run_attempts', {
         method: 'POST',
         data: {
-          oneauth_id : req.user.oneauth_id,
           transaction_id: params.transaction_id,
           products_id : params.products_id
         }
       }).then((res)=>{
-        this.transitionTo('courses');
+        this.transitionTo('classroom');
       }).catch((err) => {
         this.transitionTo('error', {
           queryParams: {
@@ -31,7 +29,7 @@ export default Route.extend({
         })
       })
     }else{
-      window.location.href('accounts.codingblocks.com')
+      window.location.href = this.get('loginUrl')
     }
   }
 });
