@@ -13,8 +13,9 @@
     .play {
       stroke: url(#grad);
       fill: url(#grad);
-      stroke-width:1;
+      stroke-width:25;
       stroke-linejoin: round;
+      stroke-linecap: round;
     }
     .circle {
       stroke: url(#grad);

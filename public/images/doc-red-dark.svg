@@ -42,7 +42,7 @@
   <path class="hide" d="M315,190 v-30z"/>
   <path class="hide" d="M223,108.5 h30z"/>
   <line class="page2" x1="230" y1="285" x2="200" y2="319" />
-  <line class="page" x1="170" y1="285" x2="200" y2="319" />
+  <line class="page1" x1="170" y1="285" x2="200" y2="319" />
   <rect x="193" y="220" width="15" height="105" rx="15" ry="15" fill="url(#gradient)"/>
   </g>
 </svg>
