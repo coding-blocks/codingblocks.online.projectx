@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewbox=" 0 0 600 800">
+  <defs>
+    <linearGradient id='grad'>
+    <stop stop-color='#FF5177'/>
+    <stop offset='100%' stop-color='#F18973'/>
+  </linearGradient>
+  </defs>
+  <style>
+  .box {
+    fill: white;
+  }
+  .code {
+    stroke: #7FBF3F;
+    stroke-width: 20;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  </style>
+<g>
+  <path class="box" d="M100,100 h230 a40,40 0 0 1 40,40 v210 a40,40 0 0 1 -40,40 h-260 a40,40 0 0 1 -40,-40 v-210 a40,40 0 0 1 40,-40 z" />
+  <line class="code" x1="150" y1="210"  x2="90" y2="250" 150,290z />
+  <line class="code" x1="90" y1="250" x2="150" y2="290" />
+  <line class="code" x1="185" y1="305"  x2="210" y2="180" />
+  <line class="code" x1="248" y1="185"  x2="308" y2="225" />
+  <line class="code" x1="308" y1="225" x2="248" y2="265" />
+  </g>
+</svg>

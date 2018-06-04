@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewbox=" 0 0 600 800">
+<style>
+.box {
+  fill: black;
+}
+.code {
+  stroke: #7FBF3F;
+  stroke-width: 20;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+</style>
+<g>
+  <path class="box" d="M100,100 h230 a40,40 0 0 1 40,40 v210 a40,40 0 0 1 -40,40 h-260 a40,40 0 0 1 -40,-40 v-210 a40,40 0 0 1 40,-40 z" />
+  <polyline class="code" points="150,210 90,250 150,290z" />
+  <polyline class="code" points="185,305 210,180z" />
+  <polyline class="code" points="248,185 308,225 248,265z" />
+  </g>
+</svg>
