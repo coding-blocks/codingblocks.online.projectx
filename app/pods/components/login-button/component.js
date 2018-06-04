@@ -27,6 +27,34 @@ export default class LoginButton extends Component {
 
     let timeout = setTimeout (logout, 4000)
 
+<<<<<<< HEAD
+    OneSignal.getUserId ()
+      .then (userId => {
+        clearTimeout (timeout)
+
+        if (! userId) {
+          return
+        }
+
+        return this.get ('store').queryRecord ('player', {
+          playerId: userId,
+          custom: {
+            ext: 'url',
+            url: 'me'
+          }
+        })
+      })
+      .then ((player) => {
+        if (! player) {
+          return
+        }
+
+        return player.destroyRecord ()
+      })
+      .then ((_) => {
+        logout ()
+      })
+=======
     try {
       OneSignal.getUserId ()
         .then (userId => {
@@ -58,6 +86,7 @@ export default class LoginButton extends Component {
     catch (error) {
       this.get ('raven').captureException (error)
     }
+>>>>>>> a01bafa3a3a69d6e66395aa036f06fe6238216f3
   }
 
   @action

@@ -37,6 +37,22 @@ export default Route.extend(ApplicationRouteMixin, {
         if (this.get('session.isAuthenticated')) {
           return this.get('currentUser').load().then (user => {
 
+<<<<<<< HEAD
+            OneSignal.getUserId ().then (userId => {
+              if (! userId) {
+                console.log("user id in application", userId);
+                throw new Error ('player ID not found')
+              }
+
+              const player = this.store.createRecord ('player')
+
+              player.set ('playerId', userId)
+
+              return player.save ()
+            })
+              .then (result => console.log ('playerId set!'))
+              .catch (error => console.error (error))
+=======
             try {
               OneSignal.getUserId ().then (userId => {
                 if (! userId) {
@@ -56,6 +72,7 @@ export default Route.extend(ApplicationRouteMixin, {
             catch (error) {
               this.get ('raven').captureException (error)
             }
+>>>>>>> a01bafa3a3a69d6e66395aa036f06fe6238216f3
 
             return user
           })
