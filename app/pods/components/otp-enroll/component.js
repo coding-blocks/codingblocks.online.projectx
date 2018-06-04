@@ -25,13 +25,7 @@ export default class otpEnrollComponent extends Component {
       this.set('errorString', null)
       this.set('otpSent', true);
     })
-    .catch(err => {
-      console.error(err)
-      const errorMsg = JSON.parse(err);
-      if (typeof errorMsg == Object)
-        this.set('errorString', err.msg);
-      else this.set('errorString', err);
-    })
+    .catch(err => displayError(err))
   })
 
   verifyOtpTask = task (function * () {
@@ -43,13 +37,7 @@ export default class otpEnrollComponent extends Component {
       }
     }).then( () => {
       window.location.reload()
-    }).catch(err => {
-      console.error(err)
-      const errorMsg = JSON.parse(err);
-      if (typeof errorMsg == Object)
-        this.set('errorString', err.msg);
-      else this.set('errorString', err);
-    })
+    }).catch(err => displayError(err))
   })
 
   @computed ('otpSent')
@@ -70,4 +58,16 @@ export default class otpEnrollComponent extends Component {
       return this.get('sendOtpTask').perform()
   }
   
+  displayError(err) {
+    console.error(err)
+    try{
+      const errorMsg = JSON.parse(err);
+      if (typeof errorMsg == Object)
+        this.set('errorString', err.msg);
+      else this.set('errorString', err);
+    }
+    catch(e){
+      this.set('errorString', err);
+    }
+  }
 }
