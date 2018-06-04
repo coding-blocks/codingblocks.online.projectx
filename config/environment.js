@@ -8,7 +8,7 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
     sentry: {
-      dsn: 'http://4847af8c7e2d4de8b5eafcb01093ac68@sentry.cb.lk/20'
+      dsn: 'https://4847af8c7e2d4de8b5eafcb01093ac68@sentry.cb.lk/20'
     },
     'ember-simple-auth-token': {
       identificationField: 'code',
@@ -38,6 +38,8 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.dukkanUrl = 'https://dukaan.codingblocks.xyz'
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -64,11 +66,15 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
-    /*ENV.publicUrl = 'https://online.codingblocks.com';
-    ENV.apiEndpoint = 'https://api-online.cb.lk';
+    ENV.apiHost = 'https://api-online.cb.lk'
+    ENV.publicUrl = 'https://online.codingblocks.com';
     ENV.clientId = 5633768694
-    ENV.oneauthURL = 'https://account.codingblocks.com/'*/
+    ENV.oneauthURL = 'https://account.codingblocks.com'
+    ENV.hackApiHost = 'https://api.cb.lk'
+    ENV.sentry.dsn = 'https://28a62ac6a0194a8381f4a6df014fa5ed@sentry.cb.lk/21'
+    ENV.googleAnalytics = {
+      webPropertyId: 'UA-83327907-9'
+    }
   }
 
   if (environment === 'staging') {
@@ -77,7 +83,7 @@ module.exports = function(environment) {
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.codingblocks.xyz'
-    ENV.sentry.dsn = 'http://a1e58068dc5c48edb9b313b1efbe22ec@sentry.cb.lk/19'
+    ENV.sentry.dsn = 'https://a1e58068dc5c48edb9b313b1efbe22ec@sentry.cb.lk/19'
   }
 
   ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'

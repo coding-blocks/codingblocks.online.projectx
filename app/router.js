@@ -1,7 +1,8 @@
 import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
+import googlePageview from './mixins/google-pageview';
 
-const Router = EmberRouter.extend({
+const Router = EmberRouter.extend(googlePageview, {
   location: config.locationType,
   rootURL: config.rootURL
 });
@@ -25,6 +26,8 @@ Router.map(function() {
   this.route('loading');
   this.route('application-loading');
   this.route('payment_webhook');
+  this.route('notifications', function() {});
+  this.route('otp');
 });
 
 export default Router;

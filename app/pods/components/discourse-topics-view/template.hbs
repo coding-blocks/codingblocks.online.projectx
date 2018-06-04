@@ -1,13 +1,16 @@
 <div class="o-doubt">
+  {{#if recent}}
+    Hi
+  {{else}}
   <div class="d-flex head">
     <div class="heading-u mr-auto">
       Solve your doubts ({{topic_list.topics.length}})
     </div>
-    <div class="button-solid right-head-button">
-      <a href="{{redirectLink}}" target="_blank" style="color: #fff">
-        <button>Ask a Question</button>
-      </a>
-    </div>
+    <a href="{{redirectLink}}" target="_blank">
+        <div class="button-solid right-head-button">
+            <button>Ask a Question</button>
+        </div>
+    </a>
   </div>
 
   <div class="row doubts-box">
@@ -17,6 +20,5 @@
       {{/each}}
     </div>
   </div>
-
-
+  {{/if}}
 </div>

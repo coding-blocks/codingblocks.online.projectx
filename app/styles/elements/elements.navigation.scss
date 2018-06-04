@@ -6,7 +6,7 @@ nav {
   background: $white;
   width: 100%;
   max-height:100px;
-  z-index: 101;
+  z-index: 200;
 }
 .nav-list {
   @include float(right);
@@ -17,6 +17,7 @@ nav {
   display: inline-block;
   @include margin(null, 40px, null, null);
   text-transform: uppercase;
+  position: relative;
 }
 
 .nav-items:hover {
@@ -45,4 +46,8 @@ nav {
 
 .active {
   color: $button-gradient;
+}
+
+.logo-parent{
+  text-align : center;
 }

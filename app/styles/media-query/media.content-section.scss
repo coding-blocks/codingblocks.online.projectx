@@ -27,7 +27,7 @@
     .content{
       position: static;
       width: 100% !important;
-      height: calc(100vh - 180px);
+      height: unset;
     }
 
     .section{

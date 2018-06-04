@@ -9,92 +9,78 @@
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="heading">Recent Doubts</div>
-                    <div class="row">
-                        <div class="notify-type col-2 ">
-                            <div class="notify-icon">
-                                <span class="notify-dot new"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            Varun asked a doubt "<a class="faded" title="hello">sample text lorem ipsum let ips istim tum</a>"
-                        </div>
-
+                    {{#if (eq doubts.length 0)}}
+                  <div class="row">
+                    <div class="notify-type col-2">
+                      <div class="notify-icon">
+                        <span class="notify-dot"></span>
+                        <img src="/images/doubt.png" alt="">
+                      </div>
                     </div>
-                    <div class="row">
-                        <div class="notify-type col-2">
-                            <div class="notify-icon">
-                                <span class="notify-dot new"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            Sid asked a doubt "<span class="faded">sample text lorem ipsum let ips istim tum</span>"
-                        </div>
+                    <div class="card-text col-10 align-self-center">
+                      All the recent doubts asked by your peers will be
+                      displayed here !
                     </div>
-                    <div class="row">
-                        <div class="notify-type col-2">
-                            <div class="notify-icon">
-                                <span class="notify-dot"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            Varun asked a doubt "<span class="faded">sample text lorem ipsum let ips istim tum</span>"
-                        </div>
+                  </div>
+              {{else}}
+                  {{#each doubts as |doubt|}}
+                  <div class="row">
+                    <div class="notify-type col-2">
+                      <div class="notify-icon">
+                        <span class="notify-dot"></span>
+                        <img src="/images/doubt.png" alt="">
+                      </div>
                     </div>
-
-                    <div class="row">
-                        <div class="notify-type col-2">
-                            <div class="notify-icon">
-                                <span class="notify-dot"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            Varun asked a doubt "<span class="faded">sample text lorem ipsum let ips istim tum</span>"
-                        </div>
+                    <div class="card-text col-10 align-self-center">
+                        {{doubt.title}}
                     </div>
-
-                    <div class="row">
-                        <div class="notify-type col-2">
-                            <div class="notify-icon">
-                                <span class="notify-dot"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            Varun asked a doubt "<span class="faded">sample text lorem ipsum let ips istim tum</span>"
-                        </div>
-                    </div>
-
+                  </div>
+              {{/each}}
+          {{/if}}
                     <div class="pull-right">
-                        Browse All
+                      {{#link-to 'classroom.timeline.doubts' tagName='div'}}
+                        Browse
+                        All{{/link-to}}
                     </div>
                 </div>
 
             </div>
 
             <div class="col-12 col-md-6">
-                <div class="card">
-                    <div class="heading">Announcements</div>
-	{{#each announcements as |announcement|}}
-                    <div class="row">
-                        <div class="notify-type col-2">
-                            <div class="notify-icon">
-                                <span class="notify-dot new"></span>
-                                <img src="/images/announcement.png" alt="">
-                            </div>
-                        </div>
-                        <div class="card-text col-10 align-self-center">
-                            {{announcement.text}}
-                        </div>
+              <div class="card">
+                <div class="heading">Announcements</div>
+                {{#unless announcements.length}}
+                  <div class="row">
+                    <div class="notify-type col-2">
+                      <div class="notify-icon">
+                        <span class="notify-dot new"></span>
+                        <img src="/images/announcement-dark.png" alt="">
+                      </div>
                     </div>
-{{/each}}
-                    <div class="pull-right">
-                        Browse All
+                    <div class="card-text col-10 align-self-center">
+                      Coding Blocks Online New Design Released!
                     </div>
+                  </div>
+                {{/unless}}
+                {{#each announcements as |announcement|}}
+                <div class="row">
+                  <div class="notify-type col-2">
+                    <div class="notify-icon">
+                      <span class="notify-dot new"></span>
+                      <img src="/images/announcement-dark.png" alt="">
+                    </div>
+                  </div>
+                  <div class="card-text col-10 align-self-center">
+                    {{announcement.text}}
+                  </div>
                 </div>
+                {{/each}}
+                <div class="pull-right">
+                 {{#link-to 'classroom.timeline.announcements' tagName='div'}}
+                   Browse
+                   All{{/link-to}}
+                </div>
+              </div>
 
             </div>
 
@@ -130,7 +116,7 @@
 
           </div>
           <div class="para col-4 align-self-center">
-            Ri-visit and Revise topics
+            Re-visit and Revise topics
           </div>
         </div>
 
@@ -176,32 +162,36 @@
 
     <div class="o-about-instructors">
         <div class="row no-gutters">
-            <div class="col-md-6 col-12">
-                <div class="img-desc row no-gutters">
-                    <div class="col-4">
+            {{#each course.instructors as |instructor|}}
+                <div class="col-md-6 col-sm-12">
+                    <div class="img-desc row no-gutters">
+                        <div class="col-4">
                         <div class="img-container">
                             <div class="round-img">
-                                <img src="{{course.instructor.photo}}" alt="Photo of {{course.instructor.name}}">
+                            <img src="{{instructor.photo}}" alt="photo of {{instructor.name}}">
                             </div>
                         </div>
-                    </div>
 
-                    <div class="description col-8">
+                        </div>
+
+
+                        <div class="description col-8">
                         <div class="heading-d">
                             <div class="main-h">
-                                {{course.instructor.name}}
+                            {{instructor.name}}
                             </div>
                             <div class="sub-h">
-                                Mentor, Coding Blocks
+                            Mentor, Coding Blocks
                             </div>
                         </div>
 
                         <div class="classroom-para">
-                            {{course.instructor.description}}
+                            {{instructor.description}}
+                        </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {{/each}}
         </div>
     </div>
 

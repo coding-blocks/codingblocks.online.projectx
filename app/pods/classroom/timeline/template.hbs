@@ -2,7 +2,7 @@
   <div class="classroom-header-box col-md-6 col-12">
     <div class="classroom-header row">
       <div class="classroom-image col-2">
-        <img src="/images/c++">
+        <img src={{run.course.logo}}>
       </div>
       <div class="classroom-text col-10">
         {{run.course.title}}
@@ -36,7 +36,8 @@
       <div class="course-progress-detail col-5 col-md-9">
         <p class="heading-mob">Course Progress</p>
         <p class="lectures-completed">{{run.course.completedContents}} of {{run.course.totalContents}} Content completed</p>
-        <p class="reset-progress" {{action 'resetProgress'}}>Reset Progress</p>
+        <p class="reset-progress pointer" {{action 'resetProgress'}}>Reset
+          Progress</p>
       </div>
       <div class="offset-md-5 col-4 col-md-5">
         <div class="button-solid">
