@@ -7,7 +7,7 @@ export default Route.extend({
     transaction_id:{
       refreshModel: true
     },
-    products_id:{
+    product_ids:{
       refreshModel: true
     }
   },
@@ -17,7 +17,7 @@ export default Route.extend({
         method: 'POST',
         data: {
           transaction_id: params.transaction_id,
-          products_id : params.products_id
+          product_ids : params.product_ids
         }
       }).then((res)=>{
         this.transitionTo('classroom');
