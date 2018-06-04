@@ -62,9 +62,7 @@ export default class otpEnrollComponent extends Component {
     console.error(err)
     try{
       const errorMsg = JSON.parse(err);
-      if (typeof errorMsg == Object)
-        this.set('errorString', err.msg);
-      else this.set('errorString', err);
+      this.set('errorString', err.msg);
     }
     catch(e){
       this.set('errorString', err);
