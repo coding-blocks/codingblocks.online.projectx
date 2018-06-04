@@ -9,18 +9,18 @@ const Router = EmberRouter.extend(googlePageview, {
 
 Router.map(function() {
   this.route('courses', function() {
-    this.route('id', {path: '/:courseId'});
+    this.route('id', {path: '/:course_id'});
   });
   this.route('classroom', function() {
-    this.route('timeline', {path: '/course/:courseId/run/:runId'}, function () {
+    this.route('timeline', {path: '/course/:course_id/run/:run_id'}, function () {
       this.route('overview');
       this.route('contents');
       this.route('announcements');
       this.route('doubts');
     })
   });
-  this.route('attempt', {path: '/player/:runAttemptId'}, function() {
-    this.route('content', {path: '/content/:contentId'}, function() {});
+  this.route('attempt', {path: '/player/:run_attempt_id'}, function() {
+    this.route('content', {path: '/content/:content_id'}, function() {});
   });
   this.route('error');
   this.route('loading');

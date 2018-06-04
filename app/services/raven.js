@@ -5,7 +5,7 @@ export default RavenLogger.extend({
   unhandledPromiseErrorMessage: '',
 
   captureException(/* error */) {
-    console.error(...arguments)
+  //  console.error(...arguments)
     this._super(...arguments);
   },
 

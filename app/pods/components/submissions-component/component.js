@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { service } from 'ember-decorators/service'
-import { action } from 'ember-decorators/object'
+// import { action } from 'ember-decorators/object'
 
 export default class SubmissionsComponent extends Component {
   @service hbApi

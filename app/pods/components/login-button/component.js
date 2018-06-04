@@ -51,7 +51,7 @@ export default class LoginButton extends Component {
 
           return player.destroyRecord ()
         })
-        .then ((_) => {
+        .then (() => {
           logout ()
         })
     }

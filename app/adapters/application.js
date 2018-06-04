@@ -3,6 +3,7 @@
 import DS from 'ember-data';
 import env from 'codingblocks-online/config/environment';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+import { underscore } from '@ember/string';
 
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
@@ -11,7 +12,7 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     namespace: 'api/v2',
     pathForType: function (type) {
       const original = this._super(...arguments)
-      return Ember.String.underscore(original)
+      return underscore(original)
     },
     urlForQueryRecord(query) {
         if(query.custom) {
@@ -25,7 +26,7 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
         } else  {
           return this._super(...arguments);
         }
-    
+
       },
       urlForQuery(query) {
         if(query.custom) {

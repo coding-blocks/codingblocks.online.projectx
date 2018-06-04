@@ -40,7 +40,6 @@ export default Route.extend(ApplicationRouteMixin, {
             try {
               OneSignal.getUserId ().then (userId => {
                 if (! userId) {
-                  console.log("user id in application", userId);
                   throw new Error ('player ID not found')
                 }
 
