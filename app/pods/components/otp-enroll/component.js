@@ -27,7 +27,10 @@ export default class otpEnrollComponent extends Component {
     })
     .catch(err => {
       console.error(err)
-      this.set('errorString', 'Cannot Send OTP to that email. Please use your registered email.')
+      const errorMsg = JSON.parse(err);
+      if (typeof errorMsg == Object)
+        this.set('errorString', err.msg);
+      else this.set('errorString', err);
     })
   })
 
@@ -42,7 +45,10 @@ export default class otpEnrollComponent extends Component {
       window.location.reload()
     }).catch(err => {
       console.error(err)
-      this.set('errorString', 'Incorrect OTP');
+      const errorMsg = JSON.parse(err);
+      if (typeof errorMsg == Object)
+        this.set('errorString', err.msg);
+      else this.set('errorString', err);
     })
   })
 
