@@ -38,7 +38,7 @@ module.exports = function(environment) {
     }
   };
 
-  ENV.dukkanUrl = 'https://dukaan.codingblocks.xyz'
+  ENV.dukaanUrl = 'https://dukaan.codingblocks.xyz'
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;

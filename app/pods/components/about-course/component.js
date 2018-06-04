@@ -17,7 +17,7 @@ export default Component.extend({
     },
     enrollNow (runId) {
       this.get('api').request(`/runs/${runId}/buy`).then(resp => {
-        window.location.href = env.dukkanUrl + '/mycart'
+        window.location.href = env.dukaanUrl
       }).catch (err => {
         this.get('router').transitionTo('error', {
           queryParams: {
