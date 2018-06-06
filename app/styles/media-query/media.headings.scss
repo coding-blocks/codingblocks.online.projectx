@@ -1,10 +1,14 @@
-@media all and (max-width: 768px){
+@media all and (max-width: 767px){
   .sub-h{
     font-weight: $font-normal;
     font-size: $global-font-size;
   }
 
   .main-h{
+    font-size: $font-xs;
+  }
+
+  .heading{
     font-size: $font-xs;
   }
 }

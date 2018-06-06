@@ -1,0 +1,34 @@
+@media screen and (min-width: 768px) and (max-width: 1200px){
+  .o-item-card{
+    .detail-row{
+      font-size: $global-font-size;
+    }
+
+    .price{
+      font-size: $font-sm;
+    }
+
+    .main-h{
+      font-size: $font-xs;
+    }
+
+    .sub-h{
+      font-size: $global-font-size;
+    }
+  }
+}
+
+@media screen and(max-width:  767px){
+  .o-item-card{
+    height: auto;
+    padding: 5% 3%;
+
+    .item-details{
+      border-right: none;
+      border-bottom: solid 1px $card-box-border;
+      margin-bottom: 4%;
+      padding-bottom: 4%;
+    }
+  }
+
+}
