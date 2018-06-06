@@ -1,15 +1,15 @@
 import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
-import { inject } from '@ember/service';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
-  api: inject.service('api'),
+  api: service('api'),
   model (params) {
     const courseId = this.modelFor('classroom.timeline').get("run.course.id")
     return hash({
         announcement: this.store.query("announcement", {
           filter: {
-            runId: this.paramsFor('classroom.timeline').runId,
+            runId: this.paramsFor('classroom.timeline').run_id,
           },
           page: {
             offset: 0,
@@ -18,7 +18,7 @@ export default Route.extend({
           order: '-updatedAt'
         }),
         run: this.modelFor('classroom.timeline').get("run"),
-        doubts: this.get('api').request(`/courses/${courseId}/doubts`, {
+        doubts: this.get('api').request(`/courses/${course_id}/doubts`, {
             data: {
                 order: "latest"
             }

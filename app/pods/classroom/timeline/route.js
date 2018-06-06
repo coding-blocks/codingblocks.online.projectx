@@ -10,7 +10,7 @@ export default Route.extend({
   model(params, transition) {
     return this.store
       .queryRecord("run-attempt", {
-        runId: params.runId
+        runId: params.run_id
       })
       .then(runAttempt => {
         if (isNone(runAttempt)) {
@@ -18,7 +18,7 @@ export default Route.extend({
 
           // try to enroll in preview
           return this.get("api")
-            .request(`runs/${params.runId}/enroll`)
+            .request(`runs/${params.run_id}/enroll`)
             .then(response => {
               transition.retry()
             })

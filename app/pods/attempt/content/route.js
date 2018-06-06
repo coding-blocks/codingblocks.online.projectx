@@ -7,7 +7,7 @@ export default Route.extend({
     currentUser: inject(),
 
     model (params) {
-        return this.store.peekRecord('content', params.contentId, {
+        return this.store.peekRecord('content', params.content_id, {
             include: 'lecture,video,document,code_challenge',
             reload: true
         })

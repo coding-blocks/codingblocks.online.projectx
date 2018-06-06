@@ -14,7 +14,7 @@ export default Route.extend({
       return hash({
           announcement: this.store.query("announcement", {
             filter: {
-              runId: this.paramsFor('classroom.timeline').runId,
+              runId: this.paramsFor('classroom.timeline').run_id,
             },
             page: {
               offset: params.offset,
