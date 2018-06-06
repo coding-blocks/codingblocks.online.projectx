@@ -16,15 +16,20 @@ export default Component.extend({
         window.location.href = this.loginUrl
     },
     enrollNow (runId) {
-      this.get('api').request(`/runs/${runId}/buy`).then(resp => {
-        window.location.href = env.dukaanUrl
-      }).catch (err => {
-        this.get('router').transitionTo('error', {
-          queryParams: {
-            errorCode: 'DUKKAN_ERROR'
-          }
+      if(this.get('session.isAuthenticated')){
+        this.get('api').request(`/runs/${runId}/buy`).then(resp => {
+          window.location.href = env.dukaanUrl
+        }).catch (err => {
+          this.get('router').transitionTo('error', {
+            queryParams: {
+              errorCode: 'DUKKAN_ERROR'
+            }
+          })
         })
-      })
+      }
+      else {
+        this.send('logIn')
+      }
     }
   },
 
