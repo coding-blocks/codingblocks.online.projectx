@@ -9,7 +9,7 @@ export default Route.extend({
     return hash({
         announcement: this.store.query("announcement", {
           filter: {
-            runId: this.paramsFor('classroom.timeline').run_id,
+            runId: this.paramsFor('classroom.timeline').runId,
           },
           page: {
             offset: 0,
@@ -18,7 +18,7 @@ export default Route.extend({
           order: '-updatedAt'
         }),
         run: this.modelFor('classroom.timeline').get("run"),
-        doubts: this.get('api').request(`/courses/${course_id}/doubts`, {
+        doubts: this.get('api').request(`/courses/${courseId}/doubts`, {
             data: {
                 order: "latest"
             }
