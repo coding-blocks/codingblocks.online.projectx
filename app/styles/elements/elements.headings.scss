@@ -3,10 +3,6 @@
 }
 
 // Heading with Sub-Description
-.heading-d{
-  @include margin(0,0, 25px, 0);
-}
-
 .main-h{
   font-size:$font-md;
   @extend %bold;

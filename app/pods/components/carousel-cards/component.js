@@ -25,13 +25,13 @@ class carouselCard {
   }
 
   showContent () {
-    $(this.element).children().removeClass('display-none')
-    $(this.element).children().addClass('display-block')
+    $(this.element).find('*').removeClass('display-none')
+    $(this.element).find('*').addClass('display-block')
   }
 
   hideContent () {
-    $(this.element).children().removeClass('display-block')
-    $(this.element).children().addClass('display-none')
+    $(this.element).find('*').removeClass('display-block')
+    $(this.element).find('*').addClass('display-none')
   }
 
   apply () {
