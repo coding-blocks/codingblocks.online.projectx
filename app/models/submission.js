@@ -1,5 +1,7 @@
 import DS from "ember-data";
 import { computed } from '@ember/object'
+import { isValidResult, isPassedTestcase } from "codingblocks-online/utils/testcases";
+import { pipe, not } from "codingblocks-online/utils/functional";
 
 export default DS.Model.extend({
   language: DS.attr(),
@@ -7,9 +9,26 @@ export default DS.Model.extend({
   'submit-at': DS.attr(),
   'judge-result': DS.attr(),
 
+  isErrored: computed('judge-result', function () {
+    return this.get('judge-result').result !== 'success'
+  }),
+
+  errorMessage: computed('judge-result', 'isErrored', function () {
+    if (!this.get('isErrored')) {
+      return ''
+    }
+    
+    switch (this.get('judge-result').result) {
+      case 'compile_error': return 'Compilation Error'
+    }
+  }),
+
   passedTestCasesArray: computed('judge-result', function () {
     const results = this.get('judge-result')
-    const passedTestcases =  results.data.testcases.filter(tc => tc.result === 'success')
+    if (!isValidResult(results)) {
+      return []
+    }
+    const passedTestcases =  results.data.testcases.filter(isPassedTestcase)
     return passedTestcases;
   }),
   passedTestCases: computed('passedTestCasesArray', function () {
@@ -18,7 +37,9 @@ export default DS.Model.extend({
   }),
   failedTestCasesArray: computed('judge-result', function () {
     const results = this.get('judge-result')
-    const failedTestCases =  results.data.testcases.filter(tc => tc.result !== 'success')
+    if (!isValidResult(results))
+      return []
+    const failedTestCases =  results.data.testcases.filter(not(isPassedTestcase))
     return failedTestCases
   }),
   failedTestCases: computed('failedTestCasesArray', function () {

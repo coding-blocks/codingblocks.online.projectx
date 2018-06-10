@@ -96,8 +96,7 @@
                 {{else if submitCodeTask.last.value.data}}
                   <code>
                     {{#each submitCodeTask.last.value.data.testcases as |testcase index|}}
-                      TESTCASE #{{inc index}}: {{testcase.result}} {{testcase.runtime}} <br>
-
+                      TESTCASE #{{inc index}}: {{testcase.result}} (Time: {{testcase.runtime}} s) <br>
                     {{/each}}
                   </code>
                 {{/if}}
