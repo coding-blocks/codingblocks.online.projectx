@@ -1,11 +1,11 @@
 import Route from "@ember/routing/route";
 import { inject } from '@ember/service'
-import config from 'codingblocks-online/config/environment'
+// import config from 'codingblocks-online/config/environment'
 
 export default Route.extend({
     api: inject(),
     currentUser: inject(),
-    
+
     model (params) {
         return this.store.peekRecord('content', params.contentId, {
             include: 'lecture,video,document,code_challenge',
@@ -19,7 +19,7 @@ export default Route.extend({
                 const progress = await content.get('progress')
                 progress.set("status", "DONE")
                 await progress.save().then(p => content.set('progress', p))
-                
+
             } else  {
                 const newProgress = this.store.createRecord('progress', {
                     status: 'DONE',

@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 
 export function getEmbeded(param) {
   if(param[0])
@@ -7,4 +7,4 @@ export function getEmbeded(param) {
     return null
 }
 
-export default Ember.Helper.helper(getEmbeded);
+export default helper(getEmbeded);

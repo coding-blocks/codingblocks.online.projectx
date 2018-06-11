@@ -27,7 +27,7 @@ export default Route.extend({
   setupController(controller, model) {
     controller.set("announcements", model.announcement)
     controller.set("meta",model.announcement.get("meta"))
-    console.log(model.announcement);
+    // console.log(model.announcement);
     controller.set("course", model.run.get("course"))
   },
 });
