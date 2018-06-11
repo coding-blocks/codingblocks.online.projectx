@@ -1,0 +1,56 @@
+/*--------------------------INPUT TEXT---------------------------*/
+.input-text {
+  @include dimensions(100%, 75px);
+  border: none;
+  font-size: $font-sm;
+  padding: 0 50px;
+  background-color: $nav-border;
+}
+
+.input-btn{
+  position: relative;
+
+  input{
+    padding-right: 95px;
+  }
+
+  button{
+    @include dimensions(auto, auto);
+    position: absolute;
+    right:30px;
+    top: 35%;
+  }
+}
+
+
+/*--------------------------INPUT CHECKBOX---------------------------*/
+.input-checkbox{
+  visibility: hidden;
+  position: relative;
+  margin-right: 6px;
+
+  &:checked::before{
+    @include dimensions(6px, 13px);
+    @include border(solid, 2px, $global-font-text-color);
+    content: '';
+    position: absolute;
+    z-index: 101;
+    left: 5px;
+    border-width: 0 2px 2px 0;
+    background: transparent;
+    transform: rotate(45deg) translate(1px, -1px);
+    visibility: visible;
+  }
+
+  &::after{
+    @include dimensions(19px, 19px);
+    content: '';
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    background: $nav-border;
+    visibility: visible;
+    cursor: pointer;
+    margin-top: -2px;
+  }
+}

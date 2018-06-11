@@ -8,10 +8,28 @@ export default Component.extend({
 
   loginUrl: `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
   session: inject(),
+  api: inject(),
+  router: inject(),
 
   actions: {
     logIn() {
         window.location.href = this.loginUrl
+    },
+    enrollNow (runId) {
+      if(this.get('session.isAuthenticated')){
+        this.get('api').request(`/runs/${runId}/buy`).then(resp => {
+          window.location.href = env.dukaanUrl
+        }).catch (err => {
+          this.get('router').transitionTo('error', {
+            queryParams: {
+              errorCode: 'DUKKAN_ERROR'
+            }
+          })
+        })
+      }
+      else {
+        this.send('logIn')
+      }
     }
   },
 

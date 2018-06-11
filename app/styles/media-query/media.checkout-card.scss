@@ -1,0 +1,35 @@
+@media screen{
+  .o-checkout-card{
+    height: auto;
+  }
+}
+
+@media screen and(max-width: 767px){
+  .o-checkout-card{
+    font-size: $font-xs;
+
+    .heading{
+      font-size: $font-xs;
+    }
+
+    .para{
+      font-size: $global-font-size;
+    }
+
+    .font-lg{
+      font-size: $font-md;
+    }
+
+    .font-sm{
+      font-size: $card-sm;
+    }
+
+    .faded-cont{
+      font-size: $font-xs;
+    }
+
+    .button-solid{
+      font-size: $font-xs;
+    }
+  }
+}

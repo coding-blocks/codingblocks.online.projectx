@@ -35,13 +35,15 @@ nav {
   margin-top: 1.1%;
 }
 
-.pointer {
+.pointer:hover {
+  cursor: pointer;
   color: $navLink;
 }
 
-.pointer:hover {
-  cursor: pointer;
-  color: $global-font-text-color;
+.pointer {
+  .notify-dot {
+    position: absolute;   
+  }
 }
 
 .active {
