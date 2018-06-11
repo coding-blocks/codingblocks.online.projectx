@@ -1,5 +1,5 @@
 import RavenLogger from 'ember-cli-sentry/services/raven';
-import config from '../../config/environment';
+import config from 'codingblocks-online/config/environment';
 
 export default RavenLogger.extend({
 
