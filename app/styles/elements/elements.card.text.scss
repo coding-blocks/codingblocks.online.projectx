@@ -3,6 +3,7 @@
 }
 
 .card {
+  //@include dimensions(403px, 500px);
   height: 560px;
   box-shadow: 0 20px 57px 0 $card-box-shadow;
   background: $white;
@@ -16,6 +17,7 @@
 }
 
 .card-heading {
+  max-width: 309px;
   height: 10%;
   overflow: hidden;
   @include font($global-font-family, $font-sm, 300);
