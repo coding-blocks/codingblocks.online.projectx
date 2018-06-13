@@ -4,49 +4,37 @@
   @include border-radius(50%);
   @include dimensions(30px,30px);
   border: 6px solid $button-element-level;
-  position: absolute;
-  top: 30px;
-  left: 87%;
+  margin: 0 auto;
+  position: relative;
 }
 
 .expert-text {
   font-size: 13px;
-  left: 87%;
-  margin-top: 2px;
-  position: absolute;
-  top: 60px;
+  margin: 2px auto 0;
 }
 
 .advanced-level {
   @include border-radius(50%);
   @include dimensions(30px,30px);
   border: 6px solid $intermediate-level;
-  position: absolute;
-  top: 30px;
-  left: 84%;
+  margin: 0 auto;
+  position: relative;
 }
 
 .advanced-text {
   font-size: 13px;
-  left: 84%;
-  margin-top: 2px;
-  position: absolute;
-  top: 60px;
+  margin: 2px auto 0;
 }
 
 .beginner-level {
   @include border-radius(50%);
   @include dimensions(30px,30px);
   border: 6px solid $status-front-complete;
-  position: absolute;
-  top: 30px;
-  left: 84%;
+  margin: 0 auto;
+  position: relative;
 }
 
 .beginner-text {
   font-size: 13px;
-  left: 84%;
-  margin-top: 2px;
-  position: absolute;
-  top: 60px;
+  margin: 2px auto 0;
 }

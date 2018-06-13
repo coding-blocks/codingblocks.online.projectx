@@ -7,16 +7,42 @@
 
   .button-solid {
     position: absolute;
-    top: 5px;
-    left: 39%;
+    position: absolute;
+    right: 0;
   }
 
   .button-parent {
     position: relative;
+    height: 50px;
   }
 
   .price-detail {
     margin-top: 25px;
+  }
+
+  .pos-rating, .neg-rating, .edit-rating{
+    font-size: $global-font-size;
+  }
+
+  .rating{
+    margin: 6% 0;
+  }
+
+  .edit-rating{
+    border: none;
+  }
+
+  .header{
+    margin-bottom: 30px;
+  }
+
+  .footer{
+    text-align: center;
+    font-size: $card-md;
+  }
+
+  .row{
+    padding: 0;
   }
 }
 
@@ -24,7 +50,7 @@
   margin: 0;
   padding:32px;
   .o-image-card {
-    margin-bottom: 27px;
+    margin-bottom: 15px;
     padding-top: 40px;
   }
   .o-layout-card {
@@ -39,4 +65,10 @@
 
 .o-text-card {
   margin-bottom: 11px;
+}
+
+.difficulty-div {
+  position: absolute;
+  right: 6%;
+  top: 30px;
 }
