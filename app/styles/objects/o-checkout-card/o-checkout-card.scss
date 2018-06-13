@@ -1,0 +1,62 @@
+.o-checkout-card{
+  @include padding-mixin(6%, 5%, 6%, 6%);
+  height: auto;
+  font-size: $font-sm;
+
+  .heading{
+    font-size: $font-sm;
+    font-weight: $font-normal;
+  }
+
+  .para{
+    margin-top: 3%;
+  }
+
+  .address{
+    margin-bottom: 9%;
+  }
+
+  .font-lg{
+    font-size: $font-lg;
+    font-weight: $font-medium;
+  }
+
+  .font-sm{
+    font-size: $global-font-size;
+  }
+
+  .no-promo{
+    font-size: $global-font-size;
+  }
+
+  .quantity-details{
+    margin-bottom: 7%;
+  }
+
+  .promo-img{
+    max-width: 70px;
+    padding-right: 2%;
+  }
+
+  .row{
+    padding: 0;
+  }
+
+  .faded-cont{
+    padding-left: 8%;
+    padding-right: 6%;
+    font-size: $font-sm;
+    background-color: $nav-border;
+    margin: 6% 0;
+  }
+
+  .button-solid{
+    @include dimensions(52%, 66px);
+    @include border-radius(63px);
+    margin: 0 auto;
+    max-width: unset;
+    font-size: $font-mds;
+    margin-top: 12%;
+  }
+
+}

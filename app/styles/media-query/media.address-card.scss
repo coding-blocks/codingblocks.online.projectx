@@ -1,0 +1,37 @@
+@media screen and (max-width: 772px){
+
+  .address-card {
+    h3 {
+      text-align: center;
+    }
+    .button-solid {
+      max-width: 180px;
+      margin: 0 auto;
+    }
+  }
+  .o-address-card{
+    padding: 40px 35px;
+
+    .para{
+      margin-bottom: 20px;
+    }
+
+    .button-dashed{
+      margin: 0;
+    }
+  }
+}
+
+@media screen and(max-width: 575px){
+  .o-address-card{
+    height: 280px;
+
+    .para, .button, .button-dashed{
+      font-size: $global-font-size;
+    }
+
+    .para{
+      height: 80px;
+    }
+  }
+}
