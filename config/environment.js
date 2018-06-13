@@ -46,7 +46,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.apiHost = 'http://localhost:3000'
     ENV.publicUrl = 'http://localhost:4200';
-    ENV.clientId = 7642172843
+    ENV.clientId =  7642172843
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.cb.lk'
   }
