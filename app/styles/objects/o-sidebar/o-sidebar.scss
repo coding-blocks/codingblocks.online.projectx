@@ -22,7 +22,7 @@
         top: -30px;
       }
   }
-  
+
   .sidebar {
     position: fixed;
     @include dimensions(55vw, 100%);
@@ -40,7 +40,7 @@
     }
 
     .upper-half {
-      @include padding-mixin(10%, 0, 10%, 0);
+      @include padding-mixin(20%, 0, 10%, 0);
       @include textalign(center);
       border-bottom: 1px solid #f6f6f6;
 
@@ -75,7 +75,3 @@
     }
   }
 }
-
-
-
-
