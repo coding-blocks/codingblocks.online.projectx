@@ -34,7 +34,7 @@
     z-index: 200;
     background-color: #ffffff;
     @include padding-mixin(7%, 5%, 7%, 5%);
-    transition: 0.5s;
+    transition: margin 0.5s;
     overflow-x: hidden;
 
     .close {
@@ -78,11 +78,13 @@
         bottom: 4%;
       }
     }
+
+    &.sidebar-none {
+      margin-left: -55vw;
+    }
   }
 
-  .sidebar-none {
-    margin-left: -55vw;
-  }
+
 }
 
 
