@@ -32,18 +32,6 @@
     .classroom-para{
       display: none;
     }
-
-    .rating{
-      display: none;
-
-      &.mob{
-        display: block;
-
-        .pos-rating, .neg-rating{
-          font-size: $global-font-size;
-        }
-      }
-    }
   }
 
   .course-progress-box{
@@ -89,6 +77,18 @@
     font-size: $font-xs;
     font-weight: $font-medium;
     display: block;
+  }
+
+  .rating{
+    display: none;
+
+    &.mob{
+      display: block;
+
+      .pos-rating, .neg-rating{
+        font-size: $global-font-size;
+      }
+    }
   }
 
   p{
