@@ -1,0 +1,33 @@
+.card-layout {
+  margin-top: 22.5px;
+}
+
+.card {
+  height: 560px;
+  box-shadow: 0 20px 57px 0 $card-box-shadow;
+  background: $white;
+}
+
+.card-text {
+  font-size: $global-font-size;
+  color: $global-font-text-color;
+  height: 7%;
+  overflow: hidden;
+}
+
+.card-heading {
+  height: 10%;
+  overflow: hidden;
+  @include font($global-font-family, $font-sm, 300);
+  color: $global-font-heading-color;
+
+}
+
+.card-image {
+  width: 17%;
+}
+
+.grid-background {
+  background-color: #f6f6f6;
+  padding: 5%;
+}

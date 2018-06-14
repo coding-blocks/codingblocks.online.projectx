@@ -1,0 +1,83 @@
+ <!-- Navigation Bar -->
+ <header>
+     <nav>
+         <span class="hamburger-parent">
+          <i class="hamburger fas fa-bars"></i>
+        </span>
+        <span class="logo-parent">
+             <a class=" logo-link">
+                <img src="images/online-logo.png" alt="online-logo" class="nav-logo pointer">
+            </a>         
+        </span>
+         <ul class="nav-list">
+             <li class="nav-items pointer">
+                 About us
+             </li>
+             <li class="nav-items pointer">
+                 All Courses
+             </li>
+             <li class="nav-items pointer">
+                 Contact us
+             </li>
+             <li class="nav-items pointer">
+                {{>button type='solid' text='Login'}}
+             </li>
+         </ul>
+
+         <div class="input-search nav-search">
+             <input type="text" placeholder="Search here">
+             <img src="images/searchicon.png" alt="search">
+             <div class="search-box">
+                 <div class="row search-content">
+                   <div class="img-container col-md-3">
+                       <img src="images/c++" alt="online-logo" class="nav-logo pointer">
+                   </div>
+                   <div class="heading-container col-md-9">
+                        <p>Web Development</p>
+                        <p>NOV-DEC 2017</p>
+                   </div>
+                 </div>
+                 <div class="row search-content">
+                     <div class="img-container col-md-3">
+                         <img src="images/c++" alt="online-logo" class="nav-logo pointer">
+                     </div>
+                     <div class="heading-container col-md-9">
+                         <p>Web Development</p>
+                         <p>NOV-DEC 2017</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </nav>
+     <div class="sidebar">
+         <i class="close fas fa-times"></i>
+         <div class="upper-half">
+             <div class="round-img">
+             </div>
+             <div class="para">
+                 Hello, Guest
+             </div>
+             {{>button type='solid' text='Login'}}
+         </div>
+         <div class="lower-half">
+             <div class="para">
+                 About Us
+             </div>
+             <div class="para">
+                 All Courses
+             </div>
+             <div class="para">
+                 Contact Us
+             </div>
+             <div class="para">
+                 About Us
+             </div>
+             <div class="para">
+                 All Courses
+             </div>
+             <div class="para">
+                 Contact Us
+             </div>
+         </div>
+     </div>
+ </header>
