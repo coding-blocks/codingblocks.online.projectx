@@ -213,7 +213,9 @@
         {{#each section.contents as |content|}}
           <div class="accordian-li">
             <div class="li-left flex-row">
-              <div class="accordian-li-type"></div>
+              <div class="accordian-li-type">
+                <div class="content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
+              </div>
               <div class="accordian-li-heading">
                 {{content.payload.name}}
               </div>
