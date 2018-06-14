@@ -2,8 +2,8 @@
   {{input type="text" placeholder="Search here" value=qs key-press=(perform searchTask) focusIn=(action 'showResult') focusOut=(action 'hideResult') }}
   <img src="/images/searchicon.png" alt="search">
 
-  {{#unless hideResultsBox}}
-  <div class="search-box">
+  {{#unless closeResultsBox}}
+  <div class="search-box" onmouseenter={{action 'keepBoxOpen'}} onmouseleave={{action 'allowBoxToBeClosed'}}>
     {{#if searchTask.isRunning}}
         {{loader-component}}
     {{else}}
