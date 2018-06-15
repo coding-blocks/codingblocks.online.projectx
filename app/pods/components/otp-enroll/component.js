@@ -25,10 +25,7 @@ export default class otpEnrollComponent extends Component {
       this.set('errorString', null)
       this.set('otpSent', true);
     })
-    .catch(err => {
-      console.error(err)
-      this.set('errorString', 'Cannot Send OTP to that email. Please use your registered email.')
-    })
+    .catch(err => displayError(err))
   })
 
   verifyOtpTask = task (function * () {
@@ -40,10 +37,7 @@ export default class otpEnrollComponent extends Component {
       }
     }).then( () => {
       window.location.reload()
-    }).catch(err => {
-      console.error(err)
-      this.set('errorString', 'Incorrect OTP');
-    })
+    }).catch(err => displayError(err))
   })
 
   @computed ('otpSent')
@@ -64,4 +58,14 @@ export default class otpEnrollComponent extends Component {
       return this.get('sendOtpTask').perform()
   }
   
+  displayError(err) {
+    console.error(err)
+    try{
+      const errorMsg = JSON.parse(err);
+      this.set('errorString', err.msg);
+    }
+    catch(e){
+      this.set('errorString', err);
+    }
+  }
 }
