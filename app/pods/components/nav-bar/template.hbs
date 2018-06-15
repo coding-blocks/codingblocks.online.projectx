@@ -34,11 +34,11 @@
 
    {{search-box}}
   </nav>
-  <div class="sidebar {{if showSidebar 'display-block' 'display-none'}}">
+  <div class="sidebar {{if showSidebar '' 'sidebar-none'}}">
     <i class="close fas fa-times" onclick={{action 'toggleSidebar'}}></i>
     <div class="upper-half">
       <div class="round-img">
-        <img src="{{user.photo}}">
+        <img src="{{currentUser.user.photo}}">
       </div>
       <div class="button-solid" onclick={{action 'toggleSidebar'}}>
         {{login-button}}

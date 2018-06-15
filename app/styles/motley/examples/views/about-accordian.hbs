@@ -1,0 +1,158 @@
+{{> nav-bar }}
+<div class="o-about-accordian">
+    <div class="custom-heading accordian-head">
+        <div class="heading-u">
+            What will you learn
+        </div>
+
+        <div class="flex-row">
+            <div class="lecture-count">
+                84 Lectures
+            </div>
+            <div class="duration">
+                54 Hours
+            </div>
+        </div>
+    </div>
+
+    <div class="o-accordian">
+        <div class="accordian-ul" data-show="true">
+            <div class="accordian-head">
+                <div class="flex-row">
+                    <div class="accordian-collapsar">
+                        -
+                    </div>
+                    <div class="accordian-heading">
+                        Mathematics 1.0
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="lecture-count">
+                        6 Lectures
+                    </div>
+                    <div class="duration">
+                        01:03:34
+                    </div>
+                </div>
+            </div>
+
+            <div data-completed="true" class="accordian-li">
+                <div class="li-left flex-row">
+                    <div class="accordian-li-type"></div>
+                    <div class="accordian-li-heading">
+                        Chewback and numbers system
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div>
+                        Preview
+                    </div>
+                    <div class="accordian-li-duration">
+                        01:03:34
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div data-completed="true" class="accordian-li">
+                <div class="li-left flex-row">
+                    <div class="accordian-li-type"></div>
+                    <div class="accordian-li-heading">
+                        Tavas and SaDDas, Codeforces 535-B
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div>
+                        Preview
+                    </div>
+                    <div class="accordian-li-duration">
+                        03:34
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div data-completed="false" class="accordian-li">
+                <div class="li-left flex-row">
+                    <div class="accordian-li-type"></div>
+                    <div class="accordian-li-heading">
+                        Fast Exponentiation
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="accordian-li-duration">
+                        03:34
+                    </div>
+                </div>
+            </div>
+
+            <div data-completed="false" class="accordian-li">
+                <div class="li-left flex-row">
+                    <div class="accordian-li-type"></div>
+                    <div class="accordian-li-heading">
+                        Unique Number-III, Hackerblocks, Bitmasking
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="accordian-li-duration">
+                        03:34
+                    </div>
+                </div>
+            </div>
+
+            <div data-completed="false" class="accordian-li">
+                <div class="li-left flex-row">
+                    <div class="accordian-li-type"></div>
+                    <div class="accordian-li-heading">
+                        Help Ramu, Bruteforce, Hackerblocks
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="accordian-li-duration">
+                        03:34
+                    </div>
+                </div>
+            </div>
+
+            <div data-completed="false" class="accordian-li">
+                <div class="li-left flex-row">
+                    <div class="accordian-li-type"></div>
+                    <div class="accordian-li-heading">
+                        Sanjay's New Job, Sorting, Hackerblocks
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="accordian-li-duration">
+                        03:34
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    var buyRight= document.getElementsByClassName('o-buy-right')[0];
+    var buyTop= document.getElementsByClassName('o-buy-top')[0];
+    var buyRightOffset= buyRight.offsetTop + buyRight.offsetHeight- 350;
+    window.onscroll= function(){
+        if(window.pageYOffset>= buyRightOffset){
+            buyTop.classList.remove('slide-up');
+            buyRight.classList.add('slide-right');
+        }else{
+            buyTop.classList.add('slide-up');
+            buyRight.classList.remove('slide-right');
+        }
+    }
+</script>

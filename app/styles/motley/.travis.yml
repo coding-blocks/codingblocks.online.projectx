@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "node"
+
+before_script: grunt build
+script: sh live.sh
+deploy:
+  local-dir: live
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: false
+  on:
+    branch: master
