@@ -32,6 +32,7 @@ export default DS.Model.extend({
     color: DS.attr(),
     buyNowLink: DS.attr(),
     backgroundImage: DS.attr(),
+    rating: DS.attr(),
     totalContents: computed('sections.@each.totalContents', function () {
       return this.get('sections').reduce( (acc, section) => {
         return acc + +section.get('totalContents')
