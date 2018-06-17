@@ -1,3 +1,5 @@
+<!--reviewCount: {type: bool, description: to show total number of reviews}-->
+
 {{#each (range 1 6) as |index|}}
   <span class="{{if (lte index course.rating) 'pos-rating' 'neg-rating'}}">
     <i class="fas fa-star"></i>
@@ -6,6 +8,6 @@
 <span class="edit-rating">{{course.rating}}</span>
 <br>
 
-{{#if reviewReq}}
+{{#if reviewCount}}
   {{users}} Reviews
 {{/if}}
