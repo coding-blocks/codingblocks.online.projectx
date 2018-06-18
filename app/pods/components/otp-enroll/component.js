@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { computed, action } from 'ember-decorators/object'
 import { service } from 'ember-decorators/service'
 import { task } from 'ember-concurrency'
+import {isBadRequestError, isServerError} from 'ember-ajax/errors'
 
 export default class otpEnrollComponent extends Component {
   @service api
@@ -25,7 +26,7 @@ export default class otpEnrollComponent extends Component {
       this.set('errorString', null)
       this.set('otpSent', true);
     })
-    .catch(err => displayError(err))
+    .catch(err => this.displayError(err))
   })
 
   verifyOtpTask = task (function * () {
@@ -37,7 +38,7 @@ export default class otpEnrollComponent extends Component {
       }
     }).then( () => {
       window.location.reload()
-    }).catch(err => displayError(err))
+    }).catch(err => this.displayError(err))
   })
 
   @computed ('otpSent')
@@ -59,16 +60,14 @@ export default class otpEnrollComponent extends Component {
   }
   
   displayError (error) {
-    try {
-      const err = JSON.parse(error);
-      if (err.code === 500)
-        this.set('errorString', 'Incorrect OTP');
-      else if (err.code === 400)
-        this.set('errorString', err.message);
-      else this.set('errorString', 'Unknown Error');
-    }  
-    catch(e) {
-      this.set('errorString', 'Unknown Error');
+    if (isBadRequestError(error)) {
+      this.set('errorString', error.response);
+      return;
     }
+    if (isServerError(error)) {
+      this.set('errorString', 'Incorrect OTP');
+      return;
+    }
+    this.set('errorString', 'Unknown Error');
   }
 }
