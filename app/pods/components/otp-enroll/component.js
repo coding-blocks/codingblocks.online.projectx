@@ -64,6 +64,7 @@ export default class otpEnrollComponent extends Component {
           this.set('errorString', 'Incorrect OTP');
         else if (err.code === 400)
           this.set('errorString', err.msg);
+        else this.set('errorString', 'Unknown Error');
     }  
     catch(e) {
         this.set('errorString', 'Unknown Error');
