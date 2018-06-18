@@ -58,16 +58,17 @@ export default class otpEnrollComponent extends Component {
       return this.get('sendOtpTask').perform()
   }
   
-  displayError (err) {
+  displayError (error) {
     try {
-        if (err.code === 500)
-          this.set('errorString', 'Incorrect OTP');
-        else if (err.code === 400)
-          this.set('errorString', err.msg);
-        else this.set('errorString', 'Unknown Error');
+      const err = JSON.parse(error);
+      if (err.code === 500)
+        this.set('errorString', 'Incorrect OTP');
+      else if (err.code === 400)
+        this.set('errorString', err.message);
+      else this.set('errorString', 'Unknown Error');
     }  
     catch(e) {
-        this.set('errorString', 'Unknown Error');
+      this.set('errorString', 'Unknown Error');
     }
   }
 }
