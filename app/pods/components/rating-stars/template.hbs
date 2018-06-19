@@ -1,17 +1,17 @@
 {{#if hasUserMarkedRating}}
   <div>
-    Your rating: {{ratingMarkedByUser}}
+    Your rating: {{ratingMarkedByUser}} <i class="fas fa-star"></i>
   </div>
 {{else}}
   <div>
     Rate this course:
-    
+
   </div>
 {{/if}}
 
 {{#each (range 1 (inc scale)) as |index|}}
-  <span 
-    class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}" 
+  <span
+    class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
     onMouseEnter={{action 'changeRating' index}}
     onMouseLeave={{action 'resetRating'}}
     onClick={{action 'markRating' index}}
@@ -19,3 +19,4 @@
     <i class="fas fa-star"></i>
   </span>
 {{/each}}
+{{rating}}
