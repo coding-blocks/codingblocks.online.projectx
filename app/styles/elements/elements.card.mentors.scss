@@ -5,18 +5,13 @@
   display: inline-block;
   background-color: $card-mentor;
 }
-.card-mentor {
-   padding-bottom: 10px;
-   max-height: 67px;
-   margin-top: 37px;
-   margin-bottom: 25px;
-}
 
 .card-mentor-image {
   display: inline-block;
   position: relative;
   min-width: 51.53px;
 }
+
 @for $i from 0 through 2 {
   .card-mentors:nth-child(#{$i+1}) {
     @extend #mentors;
@@ -27,18 +22,18 @@
 
 .card-mentor-text {
   display: inline-block;
-  margin-left: 10px;
   font-size: 14.1px;
   position: relative;
   top: -6px;
+  padding-left: 10px;
 }
 
 .card-mentor-name {
-  max-height: 25px;
   overflow: hidden;
   font-size: 17.1px;
 }
 
 .card-mentor-divider {
   border: .5px solid $card-mentor;
+  margin: 20px 0;
 }

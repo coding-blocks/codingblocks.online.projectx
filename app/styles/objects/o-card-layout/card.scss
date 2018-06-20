@@ -1,8 +1,7 @@
-
 .o-layout-card  {
   display: block;
   margin-left: -4%;
-  @include padding-mixin(25.5px , null, null, 19.5px);
+  padding: 20px 25px;
   position: relative;
 
   .button-solid {
@@ -33,12 +32,16 @@
   }
 
   .header{
-    margin-bottom: 30px;
+    margin-bottom: 45px;
   }
 
   .footer{
     text-align: center;
     font-size: $card-md;
+  }
+
+  .card-mentor{
+    margin-bottom: 40px;
   }
 
   .row{
@@ -51,16 +54,12 @@
   padding:32px;
   .o-image-card {
     margin-bottom: 15px;
-    padding-top: 40px;
-  }
-  .o-layout-card {
-    padding-right: 25px;
-    padding-left: 25px;
   }
 }
 
 .o-image-card {
   margin-bottom: 27px;
+  padding-top: 40px;
 }
 
 .o-text-card {

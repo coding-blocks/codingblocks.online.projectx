@@ -8,12 +8,12 @@
       width: 80%;
     }
   }
-  
+
   .home-heading{
     text-align: center;
     font-size: $font-md;
   }
-  
+
   nav{
     .input-search{
       display: none;
@@ -24,16 +24,23 @@
     display: none;
   }
 
+  .img-container{
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
   .home-img{
     margin: 0;
-    left: 0;
-    width: 100%;
+    left: unset;
+    width: 68%;
   }
 }
 
 .testclass{
   width: 100px;
-} 
+}
 
 @media all and (max-width: 875px){
   .logo-link{
