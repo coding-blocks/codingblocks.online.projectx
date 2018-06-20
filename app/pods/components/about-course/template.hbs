@@ -197,7 +197,7 @@
 
     <div class="flex-row">
       <div class="lecture-count">
-        {{course.totalContents}} Lectures
+        {{course.topRun.totalContents}} Lectures
       </div>
       {{!-- <div class="duration">
         54 Hours
@@ -206,7 +206,8 @@
   </div>
 
   <div class="o-accordian">
-    {{#each course.sortedSections as |section|}}
+    {{log course.topRun}}
+    {{#each course.topRun.sections as |section|}}
       <div class="accordian-ul" data-show="true">
         {{#accordian-head title=section.name total=section.totalContents}}
 

@@ -7,6 +7,6 @@ export default Route.extend({
     setupController(controller, model) {
         this._super(...arguments)
         controller.set("course", model.get('run.course'))
-        controller.set("sections", model.get("run.course.sections"))
+        controller.set("sections", model.get("run.sections"))
     }
 });
