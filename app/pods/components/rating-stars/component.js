@@ -3,7 +3,7 @@ import { action, computed } from 'ember-decorators/object'
 import { alias } from 'ember-decorators/object/computed'
 import { service } from 'ember-decorators/service'
 
-/* props 
+/* props
     course: {
         type: course
     }
