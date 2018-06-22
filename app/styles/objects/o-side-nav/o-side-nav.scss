@@ -1,0 +1,47 @@
+.nav-info {
+  font-size: $font-sm;
+
+  .card {
+    @include dimensions(100%, auto);
+    @include margin(0, 0, 30px, 0);
+    @include padding-mixin(90px, 0, 50px, 0);
+    text-align: center;
+  }
+
+  .profile-pic {
+    @include padding-mixin(60px, 0, 0, 0);
+  }
+
+  .faded {
+    color: $default-accordian-font;
+  }
+
+  p {
+    @include margin(0, 0, 0, 0);
+  }
+
+  .round-img {
+    @include dimensions(120px, 120px);
+    margin-right: 28px;
+  }
+
+  .profile-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+  }
+
+  .flex-row {
+    @include padding-mixin(30px, 0, 30px, 0);
+    width: 100%;
+    font-weight: $font-medium;
+    justify-content: space-between;
+  }
+
+  .separator {
+    width: 167px;
+    height: 1px;
+    opacity: 0.3;
+    background-color: #cccccc;
+  }
+}

@@ -1,0 +1,99 @@
+@media screen and (max-width: 1200px) {
+  .o-profile-edit {
+    .details {
+      @include padding-mixin(40px, 40px, 40px, 40px);
+      font-size: $font-xs;
+    }
+
+    .heading-u-red {
+      @include padding-mixin(0, 180px, 33px, 0);
+    }
+
+    .input-text {
+      font-size: $font-xs;
+    }
+
+    .attributes {
+      .flex-row {
+        @include padding-mixin(20px, 0, 0, 0);
+      }
+
+      .detail-row {
+        @include margin(20px, 0, 20px, 0);
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .o-profile-edit {
+    .details {
+      @include padding-mixin(55px, 10px, 25px, 30px);
+      font-size: $global-font-size;
+    }
+
+    .flex-row {
+      @include padding-mixin(0, 0, 20px, 0);
+      font-weight: $font-medium;
+    }
+
+    .heading-u-red {
+      @include padding-mixin(0, 180px, 10px, 0);
+      font-size: $font-mds;
+    }
+
+    .input-text{
+      @include margin(0, 20px, 0, 0);
+      height: 50px;
+    }
+
+    .button-solid {
+      @include margin(0, 20px, 0, 0);
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .o-profile-edit {
+    .details {
+      @include padding-mixin(25px, 0, 25px, 0);
+      font-size: $card-sm;
+      font-weight: $font-medium;
+    }
+
+    .button-solid {
+      font-size: $card-sm;
+    }
+
+    .heading-u-red {
+      @include padding-mixin(0, 150px, 13px, 0);
+      font-size: $font-xs;
+    }
+
+    .button-solid {
+      @include margin(0, 20px, 0, 0);
+      height: 35px;
+      font-size: $card-sm;
+    }
+
+    .attributes {
+      .input-text {
+        @include padding-mixin(0, 0, 0, 20px);
+        @include margin(0, 20px, 0, 0);
+        height: 40px;
+        font-size: $card-sm;
+        width: 60%;
+      }
+
+      .label-input {
+        width: 20%;
+      }
+
+      .detail-row {
+        @include margin(10px, 0, 10px, 0);
+        width: 100%;
+      }
+    }
+  }
+}

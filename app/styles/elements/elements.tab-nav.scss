@@ -1,21 +1,23 @@
 .tab-nav{
-  @include flexbox(column);
   @include dimensions(100%, 100px);
-  @include padding-mixin(0, 60px, 0, 60px);
-  justify-content: center;
+  @include flexbox(row);
   background-color: $global-font-heading-color;
   color: $white;
   font-size: $font-md;
   font-weight: $font-medium;
-}
-
-.tab-list{
-  @include flexbox(row);
   justify-content: space-around;
 }
 
-.tab-items{
+.tab-icons, .tab-items{
   cursor: pointer;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-items{
+  display: flex;
+
   &:hover{
     color: $button-element-level;
   }
@@ -23,9 +25,10 @@
 
 .tab-icons{
   display: none;
+  padding: 0 8%;
 }
 
 .active{
-  border-bottom: solid 2px $button-element-level;
+  border-bottom: solid 4px $button-element-level;
   color: $button-element-level;
 }

@@ -1,30 +1,50 @@
-.o-profile {
+.o-profile-edit {
   justify-content: space-evenly;
   font-size: $font-sm;
-  
+
   .card {
     @include dimensions(100%, auto);
     @include margin(0, 0, 30px, 0);
   }
 
   .details {
-      @include padding-mixin(40px, 60px, 40px, 60px);
+    @include padding-mixin(40px, 60px, 40px, 45px);
+  }
+
+  .input-text {
+    height: 60px;
+    color: $navLink;
+  }
+
+  .dropdown-ul {
+    box-shadow: unset;
+  }
+
+  .input-text[disabled]{
+    background: $disabled-input;
   }
 
   .heading-u-red {
-    @include padding-mixin(0, 160px, 33px, 0);
-    @include margin(0, 0, 0, 0);
+    @include padding-mixin(0, 380px, 33px, 0);
+    @include margin(0, 0, 0, 15px);
     font-size: $font-mds;
+  }
+
+  .row {
+    @include padding-mixin(0, 0, 0, 0);
   }
 
   .attributes {
     @include margin(0, 0, 10px, 0);
     height: auto;
-    justify-content: space-between;
     font-weight: $font-normal;
+
     .flex-row {
-      @include padding-mixin(40px, 0, 20px, 0);
-      justify-content: space-between;
+      @include padding-mixin(20px, 0, 20px, 0);
+    }
+    .detail-row {
+      @include margin(20px, 0, 20px, 0);
+      width: 48%;
     }
   }
 
@@ -39,24 +59,12 @@
     color: $default-accordian-font;
   }
 
-  .auth-link {
-    @include margin(0, 10%, 0, 0);
-    text-align: center;
-  }
-
-  .button-circle {
-    @include margin(0, 0, 30px, 0);
-    @include dimensions(70px, 70px);
-    text-align: center;
-    font-size: $font-sm;
-    font-weight: 600;
-  }
-
-  .links {
-    @include padding-mixin (30px, 0, 20px, 0);
+  .reset-button {
+    @include margin(0, 30px, 0, 0);
   }
 
   .flex-row {
+    @include padding-mixin(30px, 0, 30px, 0);
     width: 100%;
     font-weight: $font-medium;
     justify-content: space-between;
