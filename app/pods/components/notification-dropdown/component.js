@@ -33,6 +33,11 @@ export default class NotificationDropdownComponent extends Component {
     )
   }
 
+  focusOut() {
+    this.toggleProperty ("active")
+    return true;
+  }
+
   loadNotifications = task(function * () {
     const notifications = yield this.get ('store').query ('notification', {
       page: {
