@@ -35,13 +35,8 @@ export default class NotificationDropdownComponent extends Component {
   }
 
   didInsertElement() {
-    this.$(document).on("click", () => {
-      let present = this.get('active')
-      let target = this.get('iconWasClicked')
-      if (!target && present) {
-        return this.toggleProperty ("active")
-      }
-      this.toggleProperty('iconWasClicked') // Resets the flag so that we can use it on every click on notify-icon
+    this.$(document).on("click", ":not(#notfication-box)", () => {
+      this.toggleProperty('active') // toggle when clicked outside the notification box
     });
   }
 
@@ -80,9 +75,6 @@ export default class NotificationDropdownComponent extends Component {
   @action
   toggle () {
     this.get ('loadNotifications').perform ()
-    this.toggleProperty ("active")
-    this.toggleProperty("iconWasClicked")
-    return
   }
 
   @action
@@ -134,5 +126,5 @@ export default class NotificationDropdownComponent extends Component {
         notification.set ('isUnread', this.isUnread (notification))
       })
     }
-  }
+  } 
 }
