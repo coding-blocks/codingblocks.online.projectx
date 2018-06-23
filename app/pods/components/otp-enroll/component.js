@@ -2,6 +2,8 @@ import Component from '@ember/component';
 import { computed, action } from 'ember-decorators/object'
 import { service } from 'ember-decorators/service'
 import { task } from 'ember-concurrency'
+import { isBadRequestError } from 'ember-ajax/errors';
+
 
 export default class otpEnrollComponent extends Component {
   @service api
@@ -26,8 +28,12 @@ export default class otpEnrollComponent extends Component {
       this.set('otpSent', true);
     })
     .catch(err => {
+      if (isBadRequestError(err)) {
+        this.set('errorString', err.payload.message)
+      } else {
+        this.set('errorString', 'Cannot Sent OTP to that email, some internal error occured. Contact at support@codingblocks.com')
+      }
       console.error(err)
-      this.set('errorString', 'Cannot Send OTP to that email. Please use your registered email.')
     })
   })
 
@@ -41,8 +47,12 @@ export default class otpEnrollComponent extends Component {
     }).then( () => {
       window.location.reload()
     }).catch(err => {
+      if (isBadRequestError(err)) {
+        this.set('errorString', err.payload.message)
+      } else {
+        this.set('errorString', 'Incorrect OTP')
+      }
       console.error(err)
-      this.set('errorString', 'Incorrect OTP');
     })
   })
 
