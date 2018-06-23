@@ -27,6 +27,7 @@ Router.map(function() {
   this.route('application-loading');
   this.route('notifications', function() {});
   this.route('otp');
+  this.route('logout');
 });
 
 export default Router;
