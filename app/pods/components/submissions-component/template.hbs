@@ -33,51 +33,54 @@
       </div>
 
       <div class="divider"></div>
-
       <div class="test-cases row no-gutters">
-        <div class="col-6">
-          <div class="row no-gutters">
-            <div class="col-4">
-              <div class="circle-container">
-                <div class="circle-back circle-sm pass d-flex justify-content-center">
-                  <p class="progress-text align-self-center">{{submission.passedTestCasesArray.length}}</p>
-                </div>
-              </div>
-
-            </div>
-            <div class="col-8">
-              <div class="para">
-                Test Cases Passed
-              </div>
-              <div class="para">
-                {{submission.passedTestCases}}
-                <!-- MUST use spaces btw testcase number-->
-              </div>
-            </div>
+        {{#if submission.isErrored}}
+          <div class="col-12 d-flex justify-content-center">
+            Error: &nbsp; <em>{{submission.errorMessage}}</em>
           </div>
-        </div>
+        {{else}}
+          <div class="col-6">
+            <div class="row no-gutters">
+              <div class="col-4">
+                <div class="circle-container">
+                  <div class="circle-back circle-sm pass d-flex justify-content-center">
+                    <p class="progress-text align-self-center">{{submission.passedTestCasesArray.length}}</p>
+                  </div>
+                </div>
 
-        <div class="col-6">
-          <div class="row no-gutters">
-            <div class="col-4">
-              <div class="circle-container">
-                <div class="circle-back circle-sm fail d-flex justify-content-center">
-                  <p class="progress-text align-self-center">{{submission.failedTestCasesArray.length}}</p>
+              </div>
+              <div class="col-8">
+                <div class="para">
+                  Test Cases Passed
+                </div>
+                <div class="para">
+                  {{submission.passedTestCases}}
+                  <!-- MUST use spaces btw testcase number-->
                 </div>
               </div>
             </div>
-            <div class="col-8">
-              <div class="para">
-                Test Cases Failed
+          </div>
+          <div class="col-6">
+            <div class="row no-gutters">
+              <div class="col-4">
+                <div class="circle-container">
+                  <div class="circle-back circle-sm fail d-flex justify-content-center">
+                    <p class="progress-text align-self-center">{{submission.failedTestCasesArray.length}}</p>
+                  </div>
+                </div>
               </div>
-              <div class="para">
-                {{submission.failedTestCases}}
+              <div class="col-8">
+                <div class="para">
+                  Test Cases Failed
+                </div>
+                <div class="para">
+                  {{submission.failedTestCases}}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        {{/if}}
       </div>
-
       {{!-- <div class="button-solid" {{action 'viewSubmission' submission}}>
         <button>View Submission</button>
       </div> --}}
