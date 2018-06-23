@@ -13,6 +13,7 @@ export default class NotificationDropdownComponent extends Component {
   @service currentUser
 
   active = false
+  iconWasClicked = false
   notifications = []
   unreadNotifications = true
 
@@ -31,6 +32,17 @@ export default class NotificationDropdownComponent extends Component {
       this.get ('loadNotifications').perform (),
       this.get('refreshInterval')
     )
+  }
+
+  didInsertElement() {
+    this.$(document).on("click", () => {
+      let present = this.get('active')
+      let target = this.get('iconWasClicked')
+      if (!target && present) {
+        return this.toggleProperty ("active")
+      }
+      this.toggleProperty('iconWasClicked') // Resets the flag so that we can use it on every click on notify-icon
+    });
   }
 
   loadNotifications = task(function * () {
@@ -68,7 +80,9 @@ export default class NotificationDropdownComponent extends Component {
   @action
   toggle () {
     this.get ('loadNotifications').perform ()
-    return this.toggleProperty ("active")
+    this.toggleProperty ("active")
+    this.toggleProperty("iconWasClicked")
+    return
   }
 
   @action
