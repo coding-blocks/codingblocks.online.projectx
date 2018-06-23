@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="card-heading o-text-card">
-                            {{run.course.title}}
+                            {{#link-to 'run.courses.id' run.course.id activeClass=""}} {{run.course.title}} {{/link-to}}
                         </div>
 
                         <div class="card-text">
