@@ -13,7 +13,6 @@ export default class NotificationDropdownComponent extends Component {
   @service currentUser
 
   active = false
-  iconWasClicked = false
   notifications = []
   unreadNotifications = true
 
@@ -36,7 +35,7 @@ export default class NotificationDropdownComponent extends Component {
 
   didInsertElement() {
     this.$(document).on("click", ":not(#notfication-box)", () => {
-      this.toggleProperty('active') // toggle when clicked outside the notification box
+      this.set('active', false)
     });
   }
 
@@ -75,6 +74,7 @@ export default class NotificationDropdownComponent extends Component {
   @action
   toggle () {
     this.get ('loadNotifications').perform ()
+    this.set('active', true)
   }
 
   @action
