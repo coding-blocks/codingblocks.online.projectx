@@ -74,7 +74,7 @@ export default class NotificationDropdownComponent extends Component {
   @action
   toggle () {
     this.get ('loadNotifications').perform ()
-    this.set('active', true)
+    this.toggleProperty('active')
   }
 
   @action
