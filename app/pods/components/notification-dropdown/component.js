@@ -14,6 +14,7 @@ export default class NotificationDropdownComponent extends Component {
 
   active = false
   iconWasClicked = false
+  clickedOnNotifyBox = false
   notifications = []
   unreadNotifications = true
 
@@ -35,8 +36,31 @@ export default class NotificationDropdownComponent extends Component {
   }
 
   didInsertElement() {
-    this.$(document).on("click", ":not(#notfication-box)", () => {
-      this.toggleProperty('active') // toggle when clicked outside the notification box
+
+    // CHECKS IF NOTIFICATION BOX IS CLICKED OR NOT
+    // SETS FLAG ACCORDINGLY
+    this.$('#notification-box').on("click", () => {
+      this.toggleProperty("clickedOnNotifyBox")
+    });
+
+    // TOGGLES THE ACTIVE STATUS IF IT IS TRUE ALREADY
+    // AND NOTIFICATION ICON & NOTIFICATION BOX ARE NOT
+    // CLICKED!
+    this.$(document).on("click", () => {
+      let isPresent = this.get('active')
+      let avoidable2 = this.get('iconWasClicked')
+      let avoidable1 = this.get('clickedOnNotifyBox')
+      if (!avoidable2 && isPresent && !avoidable1) {
+        this.toggleProperty ("active")
+      }
+      // BELOW CODE RESETS THE FLAGS SO THAT THEY CAN
+      // BE USED FOR CLICK EVENTS IN FUTURE (NEXT CLICK EVENTS)
+      if (avoidable1) {
+        this.toggleProperty('clickedOnNotifyBox')  
+      }
+      if (avoidable2) {
+        this.toggleProperty('iconWasClicked')
+      }
     });
   }
 
@@ -74,7 +98,10 @@ export default class NotificationDropdownComponent extends Component {
 
   @action
   toggle () {
-    this.get ('loadNotifications').perform ()
+    this.get('loadNotifications').perform ()
+    this.toggleProperty ("active")
+    this.toggleProperty("iconWasClicked")
+    return
   }
 
   @action
