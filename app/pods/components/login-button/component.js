@@ -9,6 +9,7 @@ export default class LoginButton extends Component {
   @service currentUser;
   @service store;
   @service raven;
+  @service router;
 
   tagName = 'span'
   loginUrl = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${
@@ -23,6 +24,7 @@ export default class LoginButton extends Component {
 
   @action
   logIn () {
+    localStorage.setItem('redirectionPath', this.get('router.currentURL'))
     window.location.href = this.get('loginUrl')
   }
 }
