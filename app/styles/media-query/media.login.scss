@@ -1,0 +1,50 @@
+@media screen and (max-width: 767px){
+  .o-login{
+    padding: 35px 50px;
+  }
+}
+
+@media screen and (max-width:  575px){
+  .o-login{
+    padding: 35px 30px;
+    width: 90%;
+
+    .input-btn{
+      margin-bottom: 20px;
+    }
+
+    .input-checkbox{
+      margin-bottom: 28px;
+    }
+
+    .button-solid{
+      font-size: $card-md;
+      height: 45px;
+    }
+
+    .signup{
+      font-size: $global-font-size;
+    }
+
+    .divider{
+      margin: 25px 0;
+    }
+
+    .link-heading{
+      font-size: $global-font-size;
+    }
+
+    .links{
+      margin-top: 25px;
+    }
+
+    .auth-link{
+      margin-right: 9%;
+    }
+
+    .button-circle{
+      max-width: 40px;
+      height: 40px;
+    }
+  }
+}

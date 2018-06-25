@@ -75,6 +75,7 @@
 
 .course-progress-box {
   padding-left: 44px;
+  padding-top: 25px;
 
   .button-solid {
     @include dimensions(100%, 68px);
@@ -96,6 +97,10 @@
     @include dimensions(100%, 100%);
     position: absolute;
     top: 0;
+  }
+  
+  .divider-h{
+    display: none;
   }
 }
 

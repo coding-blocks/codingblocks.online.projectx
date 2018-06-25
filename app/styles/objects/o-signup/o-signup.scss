@@ -1,0 +1,45 @@
+.o-signup{
+  @include dimensions(90%, auto);
+  @include padding-mixin(60px, 65px, 55px, 60px);
+  @include margin-s(40px, auto);
+  max-width: 811px;
+
+  .input-text{
+    margin-bottom: 25px;
+    height: 90px;
+  }
+
+  .first-name{
+    padding-right: 12.5px;
+  }
+
+  .last-name{
+    padding-left: 12.5px;
+  }
+
+  .button-solid{
+    @include dimensions(35%, 70px);
+    max-width: 226px;
+    font-size: $font-sm;
+  }
+
+  .signup{
+    font-size: $font-sm;
+    margin-left: 5%;
+
+      button{
+        text-align: left;
+        padding: 0;
+        height: auto;
+        margin-top: 2px;
+      }
+  }
+
+  .footer{
+    margin-top: 25px;
+  }
+
+  .row{
+    padding:  0;
+  }
+}

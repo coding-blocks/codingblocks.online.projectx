@@ -51,31 +51,21 @@
   </div>
 </div>
 <div class="tab-nav">
-  <div class="tab-list">
-    {{link-to 'Overview' 'classroom.timeline.overview' class="tab-items" tagName="div"}}
-    {{#link-to 'classroom.timeline.overview' class="tab-icons" tagName="div"}}
-      <div class="d-flex flex-row justify-content-center height-100">
-        <img src="/images/overview.png" alt="Overview">
-      </div>
-    {{/link-to}}
-    {{link-to 'Course Content' 'classroom.timeline.contents'class="tab-items" tagName="div"}}
-    {{#link-to 'classroom.timeline.contents'class="tab-icons" tagName="div"}}
-      <div class="d-flex flex-row justify-content-center height-100">
-        <img src="/images/progress-ccordian.png" alt="Course Content">
-      </div>
-    {{/link-to}}
-    {{link-to 'Announcements' 'classroom.timeline.announcements'class="tab-items" tagName="div"}}
-    {{#link-to 'classroom.timeline.announcements'class="tab-icons" tagName="div"}}
-      <div class="d-flex flex-row justify-content-center height-100">
-      <img src="/images/announcement.png" alt="Announcements">
-      </div>
-    {{/link-to}}
-    {{link-to 'Ask Your Doubts' 'classroom.timeline.doubts' class="tab-items" tagName="div"}}
-    {{#link-to 'classroom.timeline.doubts' class="tab-icons" tagName="div"}}
-      <div class="d-flex flex-row justify-content-center height-100">
-        <img src="/images/solvedoubt.png" alt="Ask Your Doubts">
-      </div>
-    {{/link-to}}
-  </div>
+  {{link-to 'Overview' 'classroom.timeline.overview' class="tab-items" tagName="div"}}
+  {{#link-to 'classroom.timeline.overview' class="tab-icons" tagName="div"}}
+    <img src="/images/menu-white.svg" alt="Overview">
+  {{/link-to}}
+  {{link-to 'Course Content' 'classroom.timeline.contents'class="tab-items" tagName="div"}}
+  {{#link-to 'classroom.timeline.contents'class="tab-icons" tagName="div"}}
+    <img src="/images/docs-white.svg" alt="Course Content">
+  {{/link-to}}
+  {{link-to 'Announcements' 'classroom.timeline.announcements'class="tab-items" tagName="div"}}
+  {{#link-to 'classroom.timeline.announcements'class="tab-icons" tagName="div"}}
+  <img src="/images/announcement-white.svg" alt="Announcements">
+  {{/link-to}}
+  {{link-to 'Solve Your Doubts' 'classroom.timeline.doubts' class="tab-items" tagName="div"}}
+  {{#link-to 'classroom.timeline.doubts' class="tab-icons" tagName="div"}}
+    <img src="/images/support-white.svg" alt="Solve Your Doubts">
+  {{/link-to}}
 </div>
 {{liquid-outlet}}

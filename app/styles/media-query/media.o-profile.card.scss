@@ -1,0 +1,75 @@
+@media screen and (max-width: 1200px) {
+  .o-profile {
+    .card {
+      @include padding-mixin(40px, 40px, 40px, 40px);
+      font-size: $font-xs;
+    }
+
+    .button-circle {
+      @include margin(0, 0, 20px, 0);
+      @include dimensions(60px, 60px);
+      font-size: $card-sm;
+    }
+
+    .heading-u-red {
+      @include padding-mixin(0, 140px, 33px, 0);
+    }
+
+    .auth-link {
+      @include margin(0, 6%, 0, 0);
+      font-size: $font-xs;
+    }
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .o-profile {
+    .card {
+      @include padding-mixin(55px, 30px, 25px, 30px);
+      font-size: $font-xs;
+    }
+
+    .flex-row {
+      font-weight: $font-medium;
+    }
+
+    .heading-u-red {
+      @include padding-mixin(0, 180px, 10px, 0);
+      font-size: $font-mds;
+    }
+
+    .auth-link {
+      font-size: $font-xs;
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .o-profile {
+    .links {
+      @include padding-mixin (10px, 0, 10px, 0);
+    }
+
+    .card {
+      @include padding-mixin(25px, 20px, 25px, 20px);
+      font-size: $card-sm;
+      font-weight: $font-medium;
+    }
+
+    .button-solid {
+      font-size: $card-sm;
+    }
+
+    .heading-u-red {
+      @include padding-mixin(0, 103px, 13px, 0);
+      font-size: $font-xs;
+    }
+
+    .attributes {
+      .flex-row {
+        @include padding-mixin(20px, 0, 10px, 0);
+        justify-content: space-between;
+      }
+    }
+  }
+}

@@ -1,48 +1,60 @@
-.o-profile{
-  font-size: 27px;
-  .card{
-    @include  dimensions(854px, 1101px);
-    @include padding-mixin(106px, 100px, 0px, 100px);
-    box-shadow: 0px 14px 41px 0 rgba(51, 51, 51, 0.1);
-    border: none;
+.o-profile {
+  font-size: $font-sm;
+  
+  .card {
+    @include dimensions(100%, auto);
+    @include margin(0, 0, 30px, 0);
+    @include padding-mixin(40px, 60px, 40px, 60px);
   }
 
-  .round-img{
-    @include dimensions(151px, 151px);
+  .heading-u-red {
+    @include padding-mixin(0, 160px, 33px, 0);
+    @include margin(0, 0, 0, 0);
+    font-size: $font-mds;
   }
 
-  .edit{
-    @include margin(0, 0, 60px, 0);
-    justify-content: space-between;
-  }
-
-  .button-solid{
-    @include dimensions(254px, 79px);
-    font-size: $font-sm;
-    font-weight: $font-medium;
-  }
-
-  .attributes{
-    @include margin(0, 0, 55px, 0);
-    height: 400px;
+  .attributes {
+    @include margin(0, 0, 10px, 0);
+    height: auto;
     justify-content: space-between;
     font-weight: $font-normal;
-    .flex-row{
+    .flex-row {
+      @include padding-mixin(40px, 0, 20px, 0);
       justify-content: space-between;
     }
   }
 
-  .faded{
+  .button-solid {
+    width: 30%;
+    max-width: 162px;
+    font-size: $font-xs;
+    font-weight: $font-medium;
+  }
+
+  .faded {
     color: $default-accordian-font;
   }
 
-  .button-circle{
-    @include margin(0, 0, 23px, 0);
+  .auth-link {
+    @include margin(0, 10%, 0, 0);
     text-align: center;
   }
 
-  .flex-row{
+  .button-circle {
+    @include margin(0, 0, 30px, 0);
+    @include dimensions(70px, 70px);
+    text-align: center;
+    font-size: $font-sm;
+    font-weight: 600;
+  }
+
+  .links {
+    @include padding-mixin (30px, 0, 20px, 0);
+  }
+
+  .flex-row {
     width: 100%;
+    font-weight: $font-medium;
   }
 
 }
