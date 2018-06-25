@@ -2,7 +2,6 @@ import Component from '@ember/component';
 import { action } from 'ember-decorators/object'
 import { task } from 'ember-concurrency';
 import { service } from 'ember-decorators/service';
-import { once } from '@ember/runloop';
 
 // Notifications Dropdown
 // - Highlight unread
