@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { action } from 'ember-decorators/object'
 import { task } from 'ember-concurrency';
 import { service } from 'ember-decorators/service';
+import { once } from '@ember/runloop';
 
 // Notifications Dropdown
 // - Highlight unread
@@ -34,9 +35,13 @@ export default class NotificationDropdownComponent extends Component {
   }
 
   didInsertElement() {
-    this.$(document).on("click", ":not(#notfication-box)", () => {
+    this.$(document).on("click", e => {
       this.set('active', false)
     });
+
+    this.$('#notification-icon,#notification-box').on("click", e => {
+      e.stopPropagation();
+    })
   }
 
   loadNotifications = task(function * () {

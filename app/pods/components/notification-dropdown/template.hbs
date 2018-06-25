@@ -1,11 +1,11 @@
-<div class="notify-icon" onclick={{action 'toggle'}}>
+<div class="notify-icon" onclick={{action 'toggle'}} id="notification-icon">
 	{{#if unreadNotifications}}
 		<span class="notify-dot new"></span>
 	{{/if}}
 	<img src="/images/notif-icon.png" alt="">
 </div>
 
-<div class="dropdown-ul o-notification {{if active 'display-block'}}" id="notfication-box">
+<div class="dropdown-ul o-notification {{if active 'display-block'}}" id="notification-box">
 	{{#if notifications.length}}
 		{{#each notifications as |notification|}}
 		<a href="{{notification.url}}" target="_blank">
