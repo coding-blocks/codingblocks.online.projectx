@@ -284,71 +284,77 @@
 </div>
 
 <div class="grid row">
-    {{#each availableRuns as |run|}}
-	<div class="card-layout col-md-4 col-sm-6">
-		<div class="card my-course o-layout-card ">
-			<div class="card-heading o-text-card">
-				{{moment-format (unix run.end) 'MMM YY'}}
-			</div>
-			<div class="row">
-				<div class="batch">
-					<div class="card-text grey">
-						Batch Starts
-					</div>
-					<div class="card-text">
-						{{moment-format (unix run.start) 'MMM Do YYYY'}}
-					</div>
-				</div>
+  {{#each availableRuns as |run|}}
+    <div class="card-layout col-md-4 col-sm-6">
+      <div class="card my-course o-layout-card ">
+        <div class="card-heading o-text-card">
+          {{moment-format (unix run.end) 'MMM YY'}}
+        </div>
+        <div class="row">
+          <div class="batch">
+            <div class="card-text grey">
+              Batch Starts
+            </div>
+            <div class="card-text">
+              {{moment-format (unix run.start) 'MMM Do YYYY'}}
+            </div>
+          </div>
 
-				<div class="divider-v"></div>
+          <div class="divider-v"></div>
 
-				<div class="batch">
-					<div class="card-text grey">
-						Batch Ends
-					</div>
-					<div class="card-text">
-						{{moment-format (unix run.end) 'MMM Do YYYY'}}
-					</div>
-				</div>
-			</div>
+          <div class="batch">
+            <div class="card-text grey">
+              Batch Ends
+            </div>
+            <div class="card-text">
+              {{moment-format (unix run.end) 'MMM Do YYYY'}}
+            </div>
+          </div>
+        </div>
 
-			<div class="price">
-				{{format-price run.price}}
-			</div>
+        <div class="price">
+          {{format-price run.price}}
+        </div>
 
-			<div class="my-course-enroll row no-gutters">
-				<div class="col-8 align-self-end">
-					<div>HURRY UP!</div>
-					<div class="red">Enrollment ends {{moment-format (unix course.enrollmentEnd) 'MMM Do YYYY'}} </div>
-				</div>
+        <div class="my-course-enroll row no-gutters">
+          <div class="col-8 align-self-end">
+            <div>HURRY UP!</div>
+            <div class="red">Enrollment ends {{moment-format (unix course.enrollmentEnd) 'MMM Do YYYY'}} </div>
+          </div>
 
-				<div class="button-parent col-4">
-                                    <a href="{{course.buyNowLink}}">
-                                        <div class="button-solid">
-                                            <button>Enroll Now</button>
-                                        </div>
-                                    </a>
-				</div>
+          <div class="button-parent col-4">
+            <a href="{{course.buyNowLink}}">
+                <div class="button-solid">
+                    <button>Enroll Now</button>
+                </div>
+            </a>
+          </div>
 
-			</div>
+        </div>
 
-			<div class="card-mentor-divider"></div>
+        <div class="card-mentor-divider"></div>
 
-			<div class="row no-gutters">
-				<div class="col-8 align-self-center">
-					You may also try our
-					free lectures:
-				</div>
-				<div class="button-parent col-4">
-					<div class="button-dashed">
-            {{#link-to "classroom.timeline.index" course.id run.id tagName="button" activeClass=""}}
-						  Start Free Trial
-            {{/link-to}}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-    {{/each}}
+        <div class="row no-gutters">
+          <div class="col-8 align-self-center">
+            You may also try our
+            free lectures:
+          </div>
+          <div class="button-parent col-4">
+            <div class="button-dashed">
+              {{#if session.isAuthenticated}}
+                {{#link-to "classroom.timeline.index" course.id run.id tagName="button" activeClass=""}}
+                  Start Free Trial
+                {{/link-to}}
+              {{else}}
+                <button {{action 'logInAndStartTrial' course.id run.id}}>
+                  Start Free Trial 
+                </button>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
 </div>
 </div>
