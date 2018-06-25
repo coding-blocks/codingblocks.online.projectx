@@ -1,8 +1,7 @@
 @media screen and (max-width: 1200px) {
-  .o-profile-edit {
+  .o-add-address {
     .card {
       @include padding-mixin(40px, 40px, 40px, 40px);
-      font-size: $font-xs;
     }
 
     .heading-u-red {
@@ -14,10 +13,6 @@
     }
 
     .attributes {
-      .flex-row {
-        @include padding-mixin(20px, 0, 0, 0);
-      }
-
       .detail-row {
         @include margin(20px, 0, 20px, 0);
         width: 100%;
@@ -26,25 +21,18 @@
   }
 }
 
-@media screen and (min-width: 576px) and (max-width: 767px) {
-  .o-profile-edit {
+@media screen and (min-width: 575px) and (max-width: 767px) {
+  .o-add-address {
     .card {
-      @include padding-mixin(55px, 10px, 25px, 30px);
+      @include padding-mixin(55px, 30px, 25px, 30px);
       font-size: $global-font-size;
-    }
-
-    .flex-row {
-      @include padding-mixin(0, 0, 20px, 0);
-      font-weight: $font-medium;
     }
 
     .heading-u-red {
       @include padding-mixin(0, 180px, 10px, 0);
-      font-size: $font-mds;
     }
 
     .input-text{
-      @include margin(0, 20px, 0, 0);
       height: 50px;
     }
 
@@ -55,7 +43,7 @@
 }
 
 @media screen and (max-width: 575px) {
-  .o-profile-edit {
+  .o-add-address {
     .card {
       @include padding-mixin(25px, 20px, 25px, 20px);
       font-size: $card-sm;
@@ -78,13 +66,13 @@
 
     .attributes {
       .input-text {
-        height: 40px;
+        height: 50px;
         font-size: $card-sm;
         width: 70%;
       }
 
       .label-input {
-        width: 20%;
+        width: 30%;
       }
 
       .detail-row {

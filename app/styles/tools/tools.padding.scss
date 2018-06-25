@@ -1,6 +1,12 @@
+//Padding mixin (top, right, bottom, left)
 @mixin padding-mixin($top, $right, $bottom, $left) {
   padding-top: $top;
   padding-right: $right;
   padding-bottom: $bottom;
   padding-left: $left;
+}
+
+//Padding Shorthand mixin (top-bottom, right-left)
+@mixin padding-s($top-bottom, $right-left){
+  padding: $top-bottom $right-left;
 }

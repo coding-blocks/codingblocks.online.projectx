@@ -1,0 +1,35 @@
+@media screen and (max-width: 767px){
+  .o-signup{
+    .first-name, .last-name{
+      padding: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 575px){
+  .o-signup{
+    @include padding-s(35px, 25px);
+
+    .heading-u-red{
+      margin-bottom: 30px;
+    }
+
+    .input-text{
+      height: 50px;
+      margin-bottom: 15px;
+    }
+
+    .button-solid{
+      @include dimensions(30%, 45px);
+      font-size: $card-md;
+    }
+
+    .signup{
+      font-size: $global-font-size;
+    }
+
+    .footer{
+      margin-top: 15px;
+    }
+  }
+}

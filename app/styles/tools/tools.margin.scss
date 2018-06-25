@@ -1,8 +1,13 @@
 
-//Margin mixin
+//Margin mixin (top, right, bottom, left)
 @mixin margin($top, $right, $bottom, $left) {
   margin-top: $top;
   margin-right: $right;
   margin-bottom: $bottom;
   margin-left: $left;
+}
+
+//Margin Shorthand mixin (top-bottom, right-left)
+@mixin margin-s($top-bottom, $right-left){
+  margin: $top-bottom $right-left;
 }
