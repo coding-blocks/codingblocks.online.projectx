@@ -1,0 +1,5 @@
+.border-card {
+    @include dimensions(48%, auto);
+    border-radius: 10px;
+    border: solid 1px rgba(204, 204, 204, 0.21);
+}

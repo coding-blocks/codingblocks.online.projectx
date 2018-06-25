@@ -1,16 +1,16 @@
 @media screen and (max-width: 1200px) {
   .card-layout {
-    flex: 0 0 50% ;
-    max-width: 50% ;
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
-  .o-layout-card{
+  .o-layout-card {
     padding-top: 20px;
     padding-bottom: 20px;
 
-    .footer{
+    .footer {
       text-align: left;
       font-size: $global-font-size;
     }
@@ -20,11 +20,11 @@
       margin-left: 20px;
     }
 
-    .rating{
+    .rating {
       margin: 0;
     }
 
-    .card-mentor-divider{
+    .card-mentor-divider {
       margin-top: 0;
     }
   }
@@ -42,7 +42,7 @@
     }
 
     .row {
-      padding:0;
+      padding: 0;
     }
   }
 
@@ -81,75 +81,90 @@
     position: absolute !important;
     width: 50% !important;
   }
+  
+  .card-price-details {
+    float: right;
+  }
+
+  .card-image {
+    width: 10%;
+  }
 
   .button-dashed {
     margin: 20px auto;
   }
 
-  .card, .card-text, .card-heading{
+  .card, .card-text, .card-heading {
     height: auto;
   }
 
-  .o-course-card{
-    .card-price-details{
+  .o-course-card {
+    .card-price-details {
       float: right;
     }
 
-    .card-price-details{
-      text-align:  right;
+    .card-price-details {
+      text-align: right;
     }
 
-    .card-heading{
+    .card-heading {
       margin-bottom: 0;
     }
   }
 }
 
-
 @media screen and (max-width: 575px) {
-  .card-layout{
-    flex: 0 0 100% ;
-    max-width: 100% ;
 
-    .o-image-card{
-      width: 25%;
-    }
+  .card-layout {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 
-    .button-dashed {
-      margin: 20px auto;
-    }
+  .card-mentor-text {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    top: 1px;
+  }
 
-    .card-mentor-text {
-      text-align: center;
-      display: block;
-      margin: 0 auto;
-      padding-left: 0;
-    }
+  .o-image-card {
+    width: 25%;
+  }
 
-    .card-mentor-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+  .button-dashed {
+    margin: 20px auto;
+  }
 
-    .rating{
-      margin-top: 0;
-      margin-bottom: 25px;
-    }
+  .card-mentor-text {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    padding-left: 0;
+  }
 
-    .card{
-      height: auto;
-      padding-bottom: 20px;
-    }
+  .card-mentor-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 
-    .card-text, .card-heading{
-      height: auto;
-    }
+  .rating {
+    margin-top: 0;
+    margin-bottom: 25px;
+  }
 
-    .card-price-details {
-      text-align: left;
-      width: 100%;
-    }
+  .card {
+    height: auto;
+    padding-bottom: 20px;
+  }
+
+  .card-text, .card-heading {
+    height: auto;
+  }
+
+  .card-price-details {
+    text-align: left;
+    width: 100%;
   }
 }

@@ -13,3 +13,11 @@
   }
 }
 
+@media all and (max-width: 575px){
+  .heading-u-red{
+    font-size: $global-font-size;
+    padding-right: 15px;
+    margin-bottom: 30px;
+  }
+}
+

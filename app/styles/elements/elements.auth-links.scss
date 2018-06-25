@@ -1,10 +1,10 @@
 .links{
-  @include margin(55px, 0, 0, 0);
+  @include margin(50px, 0, 0, 0);
 }
 
 .auth-link{
-  @include margin(0, 80px, 0, 0);
-  font-size: 19.9px;
+  margin-right: 12%;
+  font-size: $font-xs;
   font-weight: 600;
   text-align: center;
 }
