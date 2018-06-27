@@ -35,6 +35,10 @@ export default Route.extend({
       "attempt.content",
       runAttempt.get("id"),
       content.get("id")
-    );
+    , {
+      queryParams: {
+        s: section.get('id')
+      }
+    });
   }
 });

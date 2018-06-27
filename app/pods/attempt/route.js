@@ -6,6 +6,7 @@ export default Route.extend({
     },
     setupController(controller, model) {
         this._super(...arguments)
+        controller.set("sectionId", this.paramsFor('attempt.content').sectionId)
         controller.set("course", model.get('run.course'))
         controller.set("sections", model.get("run.course.sections"))
     }
