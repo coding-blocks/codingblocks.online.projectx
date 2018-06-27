@@ -27,7 +27,7 @@
                       <div class="accordian-ul" data-show="true">
                           {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length collapsed=(not (eq section.id sectionId))}}
                               {{#each section.contents as |content|}}
-                                  <div data-completed="{{content.isDone}}" class="accordian-li" {{action (action 'transitionToContent' content.id section.id)}}>
+                                  <div data-completed="{{content.isDone}}" class="accordian-li" {{action 'transitionToContent' content.id section.id}}>
                                       <div class="li-left flex-row">
                                           <div class="accordian-li-type">
                                             <div class="content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
