@@ -8,6 +8,6 @@ export default Route.extend({
         this._super(...arguments)
         controller.set("sectionId", this.paramsFor('attempt.content').sectionId)
         controller.set("course", model.get('run.course'))
-        controller.set("sections", model.get("run.course.sections"))
+        controller.set("sections", model.get("run.sections"))
     }
 });

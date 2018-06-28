@@ -37,7 +37,6 @@ export default Route.extend({
   setupController(controller, model) {
     controller.set("run", model.get("run"));
     controller.set("runAttempt", model);
-    // controller.set("course", model.get("topRunAttempt.run.course"))
   },
   actions: {
     reloadRoute() {
