@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
 
 export default Route.extend({
-  api:Ember.inject.service('api'),
+  api: Ember.inject.service('api'),
   model (params) {
     const courseId = this.modelFor('classroom.timeline').get("run.course.id")
     return hash({
