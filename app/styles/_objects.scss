@@ -1,4 +1,5 @@
-@import "objects/o-grid/grid.scss";
+@import "objects/o-grid/grid";
+@import "objects/o-modal/o-modal";
 @import "objects/bootstrap-overwrite/overwrite";
 @import "objects/o-card-layout/card";
 @import "objects/o-button-layout/o-button";
@@ -51,3 +52,4 @@
 @import "objects/o-client-page/o-client-page";
 @import "objects/o-signup/o-signup";
 @import "objects/tab-nav/tab-nav";
+@import "objects/o-changedp/o-changedp";
