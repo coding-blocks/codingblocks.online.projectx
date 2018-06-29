@@ -22,5 +22,6 @@ export default Ember.Route.extend({
 
     setupController (controller, model) {
         controller.set ("courses", model)
+        controller.set("nextOffset", model.get('meta').pagination.nextOffset )
     }
 })
