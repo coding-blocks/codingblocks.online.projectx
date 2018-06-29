@@ -1,0 +1,23 @@
+@media screen and (max-width: 575px){
+  .o-changedp{
+    font-size: $card-sms;
+
+    .modal-content{
+      padding: 20px;
+    }
+
+    .heading{
+      font-size: $card-md;
+    }
+
+    .button-solid{
+      height: 35px;
+      font-size: $card-sms;
+    }
+
+    p{
+      @include margin-s(10px, 0);
+    }
+  }
+}
+
