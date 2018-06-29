@@ -21,7 +21,7 @@ export default class RecommendedTaskComponent extends Component {
       filter: {
         recommended: true
       },
-      include: "instructor,runs",
+      include: "instructors,runs",
       sort: 'difficulty'
     });
   });
