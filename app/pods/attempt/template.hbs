@@ -3,10 +3,10 @@
         <div class="section-toggler flex-row">
             <div class="button-dashed" {{action 'toggleSideBar'}}>
               <button>
-                {{#if accordianCollapsed}}
-                  <i class="fas fa-bars"></i>
-                {{else}}
+                {{#if (not sidebarCollapsed)}}
                   <i class="far fa-times-circle"></i>
+                {{else}}
+                  <i class="fas fa-bars"></i>
                 {{/if}}
                 Table of Content
               </button>
@@ -23,11 +23,6 @@
           <div class="section-collapsor row justify-content-between" {{action 'toggleAccordian'}}>
 
             <div class="col-10 align-self-center">
-              {{#if accordianCollapsed}}
-              <i class="far fa-times-circle"></i>
-              {{else}}
-                <i class="fas fa-bars"></i>
-              {{/if}}
               TABLE OF CONTENTS</div>
             <div class="align-self-center">
               <i class="fas {{if accordianCollapsed 'fa-chevron-down' 'fa-chevron-up'}}"></i>
