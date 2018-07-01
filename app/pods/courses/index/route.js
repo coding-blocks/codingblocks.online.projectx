@@ -1,14 +1,6 @@
 import Route from '@ember/routing/route';
 
 export default Ember.Route.extend({
-  queryParams: {
-    limit: {
-      refreshModel: true
-    },
-    offset: {
-      refreshModel: true
-    }
-  },
     model (params) {
         return this.store.query ('course', {
           include: 'runs',
@@ -21,7 +13,9 @@ export default Ember.Route.extend({
     },
 
     setupController (controller, model) {
-        controller.set ("courses", model)
-        controller.set("nextOffset", model.get('meta').pagination.nextOffset )
+      controller.set('courses', model.toArray())
+      controller.set("nextOffset", model.get('meta').pagination.nextOffset )
+      controller.set("count", model.get('meta').pagination.count )
+
     }
 })

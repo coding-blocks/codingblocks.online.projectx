@@ -87,13 +87,15 @@
       </div>
     {{/each}}
   </div>
-  <div class="row">
-    <div class="col-5"></div>
-    <div class="col-2">
-      <div class="button-solid">
-        <button {{action "loadMore"}}>Load More</button>
+  {{#if showLoadMore}}
+    <div class="row">
+      <div class="col-5"></div>
+      <div class="col-2">
+        <div class="button-solid">
+          <button {{action "loadMore"}}>Load More</button>
+        </div>
       </div>
+      <div class="col-5"></div>
     </div>
-    <div class="col-5"></div>
-  </div>
+  {{/if}}
 </div>
