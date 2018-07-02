@@ -5,12 +5,6 @@ import config from 'codingblocks-online/config/environment'
 export default Route.extend({
     api: inject(),
     currentUser: inject(),
-
-    queryParams: {
-      sectionId: {
-        as: 's'
-      }
-    },
     
     model (params) {
         return this.store.peekRecord('content', params.contentId, {

@@ -10,7 +10,7 @@ export default Route.extend({
         })
     },
     setupController(controller, model) {
-        controller.set("sectionId", this.paramsFor('attempt.content').sectionId)
+        controller.set("sectionId", this.paramsFor('attempt').sectionId)
         controller.set("runAttempt", model.runAttempt)
         controller.set("content", model.content)
         controller.set("payload", model.payload)

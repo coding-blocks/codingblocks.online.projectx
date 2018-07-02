@@ -5,7 +5,12 @@ export default Controller.extend({
     store: inject('store'),
     sidebarCollapsed: false,
     accordianCollapsed: false,
-
+    
+    queryParams: {
+		sectionId: {
+			as: 's'
+		}
+	},
     actions: {
         toggleSideBar () {
             this.toggleProperty("sidebarCollapsed")
