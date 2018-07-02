@@ -11,6 +11,7 @@ export default DS.Model.extend({
     promoVideo: DS.attr(),
     coverImage: DS.attr(),
     logo: DS.attr(),
+    slug: DS.attr('string'),
     difficulty: DS.attr('number'),
     categoryName: DS.attr(),
     categoryId: DS.attr('number'),
@@ -64,5 +65,8 @@ export default DS.Model.extend({
         case 2: return 'expert'; break
         default: return 'beginner'; break;
       }
+    }),
+    identifier: computed('slug', 'id', function () {
+      return this.get('slug') || this.get('id')
     })
 });
