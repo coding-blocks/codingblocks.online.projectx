@@ -3,7 +3,7 @@ import { service } from 'ember-decorators/service';
 import { task } from 'ember-concurrency';
 import { alias } from 'ember-decorators/object/computed';
 import { readOnly } from 'ember-decorators/object';
- 
+
 
 export default class RecommendedTaskComponent extends Component {
   @service store;
@@ -21,7 +21,8 @@ export default class RecommendedTaskComponent extends Component {
       filter: {
         recommended: true
       },
-      include: "instructor,runs"
+      include: "instructors,runs",
+      sort: 'difficulty'
     });
   });
 }

@@ -5,6 +5,7 @@ export default DS.Model.extend({
   username: DS.attr(),
   firstname: DS.attr(),
   lastname: DS.attr(),
+  photo: DS.attr(),
   email: DS.attr(),
   hackJwt: DS.attr(),
   lastReadNotification: DS.attr (),

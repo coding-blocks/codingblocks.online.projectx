@@ -27,6 +27,8 @@ Router.map(function() {
   this.route('application-loading');
   this.route('notifications', function() {});
   this.route('otp');
+  this.route('logout');
+  this.route('404');
 });
 
 export default Router;

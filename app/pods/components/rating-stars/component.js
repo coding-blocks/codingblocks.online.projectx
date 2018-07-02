@@ -3,7 +3,7 @@ import { action, computed } from 'ember-decorators/object'
 import { alias } from 'ember-decorators/object/computed'
 import { service } from 'ember-decorators/service'
 
-/* props 
+/* props
     course: {
         type: course
     }
@@ -13,6 +13,7 @@ export default class RatingStartComponent extends Component {
 
     scale = 5
     ratingMarkedByUser = null
+    isEditing = false
 
     constructor () {
         super(...arguments)
@@ -21,22 +22,6 @@ export default class RatingStartComponent extends Component {
 
     didReceiveAttrs () {
         this._super(...arguments)
-        this.get('api').request('/courses/'+ this.get('course.id') + '/rating').then(response => {
-            this.set('initialRating', response.rating)
-            this.set('rating', this.get('initialRating'))
-            if (response.userScore) {
-                //user has already voted
-                this.set('hasUserMarkedRating', true)
-                this.set('ratingMarkedByUser', response.userScore.value)
-            }
-        })
-    }
-
-    @alias('rating') numberOfGoldStars
-
-    @computed('rating', 'scale')
-    get numberOfGreyStars () {
-        return this.scale - this.rating
     }
 
     @action
@@ -46,16 +31,13 @@ export default class RatingStartComponent extends Component {
 
     @action
     resetRating () {
-        if (this.get('hasUserMarkedRating')) {
-            this.set('rating', this.get('ratingMarkedByUser'))
-        } else {
-            this.set('rating', this.get('initialRating'))
-        }
+        this.set('rating', this.get('initialRating'))
     }
 
     @action
     markRating (rating) {
         this.set('hasUserMarkedRating', true)
+        this.set('isEditing', false)
         this.set('ratingMarkedByUser', rating)
         this.get('api').request('/courses/' + this.get('course.id') + '/rating', {
             method: 'POST',
@@ -63,5 +45,11 @@ export default class RatingStartComponent extends Component {
                 value: this.get('ratingMarkedByUser'),
             }
         })
+    }
+
+    @action
+    toggleEditingMode () {
+        this.set('rating', 0)
+        this.toggleProperty('isEditing')
     }
 }

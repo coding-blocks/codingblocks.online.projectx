@@ -14,45 +14,35 @@ export default Route.extend(ApplicationRouteMixin, {
             refreshModel: true
         }
     },
+    sessionAuthenticated () {
+      const redirectionPath = localStorage.getItem('redirectionPath')
+      if (!isNone(redirectionPath))
+        this.transitionTo(redirectionPath)
+    },
     beforeModel (transition) {
-        if( !isNone(transition.queryParams.code) ) {
-            if (this.get('session.isAuthenticated')) {
-                return this.transitionTo({queryParams: {code: undefined}})
-            }
-            // we have ?code qp
-            const { code } = transition.queryParams
-            return this.get('session').authenticate('authenticator:jwt', {identification: code, password: code, code })
-              .catch(error => {
-              if(error.err === 'USER_EMAIL_NOT_VERIFIED') {
-                this.transitionTo('error', {
-                  queryParams: {
-                    errorCode: 'USER_EMAIL_NOT_VERIFIED'
-                  }
-                })
-              }
-            })
+
+      if (!isNone(transition.queryParams.code)) {
+        if (this.get('session.isAuthenticated')) {
+          return this.transitionTo({ queryParams: { code: undefined } })
         }
+        // we have ?code qp
+        const { code } = transition.queryParams
+        return this.get('session').authenticate('authenticator:jwt', { identification: code, password: code, code })
+          .catch(error => {
+            if (error.err === 'USER_EMAIL_NOT_VERIFIED') {
+              this.transitionTo('error', {
+                queryParams: {
+                  errorCode: 'USER_EMAIL_NOT_VERIFIED'
+                }
+              })
+            }
+          })
+      }
     },
     model () {
         if (this.get('session.isAuthenticated')) {
           return this.get('currentUser').load().then (user => {
 
-<<<<<<< HEAD
-            OneSignal.getUserId ().then (userId => {
-              if (! userId) {
-                console.log("user id in application", userId);
-                throw new Error ('player ID not found')
-              }
-
-              const player = this.store.createRecord ('player')
-
-              player.set ('playerId', userId)
-
-              return player.save ()
-            })
-              .then (result => console.log ('playerId set!'))
-              .catch (error => console.error (error))
-=======
             try {
               OneSignal.getUserId ().then (userId => {
                 if (! userId) {
@@ -72,7 +62,6 @@ export default Route.extend(ApplicationRouteMixin, {
             catch (error) {
               this.get ('raven').captureException (error)
             }
->>>>>>> a01bafa3a3a69d6e66395aa036f06fe6238216f3
 
             return user
           })

@@ -1,0 +1,84 @@
+@media screen and (max-width: 1200px) {
+  .o-add-address {
+    .card {
+      @include padding-mixin(40px, 40px, 40px, 40px);
+    }
+
+    .heading-u-red {
+      @include padding-mixin(0, 180px, 33px, 0);
+    }
+
+    .input-text {
+      font-size: $font-xs;
+    }
+
+    .attributes {
+      .detail-row {
+        @include margin(20px, 0, 20px, 0);
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 575px) and (max-width: 767px) {
+  .o-add-address {
+    .card {
+      @include padding-mixin(55px, 30px, 25px, 30px);
+      font-size: $global-font-size;
+    }
+
+    .heading-u-red {
+      @include padding-mixin(0, 180px, 10px, 0);
+    }
+
+    .input-text{
+      height: 50px;
+    }
+
+    .button-solid {
+      @include margin(0, 20px, 0, 0);
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .o-add-address {
+    .card {
+      @include padding-mixin(25px, 20px, 25px, 20px);
+      font-size: $card-sm;
+      font-weight: $font-medium;
+    }
+
+    .button-solid {
+      font-size: $card-sm;
+    }
+
+    .heading-u-red {
+      @include padding-mixin(0, 150px, 13px, 0);
+      font-size: $font-xs;
+    }
+
+    .button-solid {
+      height: 35px;
+      font-size: $card-sm;
+    }
+
+    .attributes {
+      .input-text {
+        height: 50px;
+        font-size: $card-sm;
+        width: 70%;
+      }
+
+      .label-input {
+        width: 30%;
+      }
+
+      .detail-row {
+        @include margin(10px, 0, 10px, 0);
+        width: 100%;
+      }
+    }
+  }
+}

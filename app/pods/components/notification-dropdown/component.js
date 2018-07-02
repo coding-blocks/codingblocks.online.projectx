@@ -33,6 +33,16 @@ export default class NotificationDropdownComponent extends Component {
     )
   }
 
+  didInsertElement() {
+    this.$(document).on("click", e => {
+      this.set('active', false)
+    });
+
+    this.$('#notification-icon,#notification-box').on("click", e => {
+      e.stopPropagation();
+    })
+  }
+
   loadNotifications = task(function * () {
     const notifications = yield this.get ('store').query ('notification', {
       page: {
@@ -68,7 +78,7 @@ export default class NotificationDropdownComponent extends Component {
   @action
   toggle () {
     this.get ('loadNotifications').perform ()
-    return this.toggleProperty ("active")
+    this.toggleProperty('active')
   }
 
   @action
@@ -120,5 +130,5 @@ export default class NotificationDropdownComponent extends Component {
         notification.set ('isUnread', this.isUnread (notification))
       })
     }
-  }
+  } 
 }

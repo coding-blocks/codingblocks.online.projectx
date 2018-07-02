@@ -30,8 +30,8 @@
 }
 
 .heading-u-red{
-  @include padding-mixin(0, 114px, 25px, 0);
-  @include margin(0,0, 59px, 0);
+  @include padding-mixin(0, 114px, 13px, 0);
+  @include margin(0,0, 45px, 0);
   display: inline-block;
   font-size: $font-md;
   border-bottom: solid 3px $button-element-level;

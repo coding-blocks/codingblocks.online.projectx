@@ -8,10 +8,20 @@ export default Component.extend({
 
   loginUrl: `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
   session: inject(),
+  router: inject(),
+
+  _redirectToOneauth () {
+    window.location.href = this.loginUrl
+  },
 
   actions: {
     logIn() {
-        window.location.href = this.loginUrl
+      localStorage.setItem('redirectionPath', this.get('router.currentURL'))
+      this._redirectToOneauth()
+    },
+    logInAndStartTrial (courseId, runId) {
+      localStorage.setItem('redirectionPath', this.get('router').urlFor('classroom.timeline.index', {courseId, runId}))
+      this._redirectToOneauth()
     }
   },
 

@@ -1,8 +1,11 @@
 import Controller from "@ember/controller";
 import { computed } from "@ember/object";
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   queryParams: ['tab'],
+
+  store: service(),
   tab: "problem",
 
   componentName: computed("model.contentable", function() {
@@ -29,23 +32,18 @@ export default Controller.extend({
       );
     },
     async transitonToNextContent() {
-      const section = await this.get("content.section");
-      let index = -1;
-      let sectionIndex = -1;
-      let nextContent = -1;
+      let section = await this.get('store').peekRecord('section', this.get('sectionId'));
+      let nextContent = null;
+
 
       const indexOfThisContent = section
         .get("contents")
         .indexOf(this.get("content"));
 
       if (indexOfThisContent === section.get("contents.length") - 1) {
-        const indexOfThisSection = this.get(
-          "runAttempt.run.course.sections"
-        ).indexOf(section);
-        nextContent = this.get("runAttempt.run.course.sections")
-          .objectAt(indexOfThisSection + 1)
-          .get("contents")
-          .objectAt(0);
+        const indexOfThisSection = this.get("runAttempt.run.course.sections").indexOf(section);
+        section = this.get("runAttempt.run.course.sections").objectAt(indexOfThisSection + 1)
+        nextContent = section.get("contents").objectAt(0);
       } else {
         nextContent = section.get("contents").objectAt(indexOfThisContent + 1);
       }
@@ -53,7 +51,11 @@ export default Controller.extend({
         "attempt.content",
         this.get("runAttempt.id"),
         nextContent.get("id")
-      );
+      , {
+        queryParams: {
+          s: section.get('id')
+        }
+      });
     }
   }
 });
