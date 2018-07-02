@@ -17,7 +17,7 @@ export default Route.extend({
     },
     title: function(model){
         let sectionName = model.runAttempt.get('sections').find(section => {
-            return section.id == this.paramsFor('attempt').sectionId;
+            return section.get('id') == this.paramsFor('attempt').sectionId;
         }).name;
         let contentName = model.payload.get('name');
         return sectionName + ' - '+ contentName;
