@@ -29,7 +29,7 @@
           </div>
 
           <div class="card-heading o-text-card">
-            {{#link-to 'courses.id' course.id activeClass=""}} {{course.title}} {{/link-to}}
+            {{#link-to 'courses.id' course.identifier activeClass=""}} {{course.title}} {{/link-to}}
           </div>
           <div class="card-text">
             {{course.subtitle}}
@@ -80,7 +80,7 @@
 
           <div class="button-parent col-md-6 col-sm-3 col-6 order-sm-3 order-md-1">
             <div class="button-solid">
-              {{#link-to 'courses.id' course.id tagName="button" activeClass=""}} {{format-price course .topRun.price}} {{/link-to}}
+              {{#link-to 'courses.id' course.identifier tagName="button" activeClass=""}} {{format-price course .topRun.price}} {{/link-to}}
             </div>
           </div>
 
