@@ -15,7 +15,7 @@ export default Route.extend({
         controller.set("content", model.content)
         controller.set("payload", model.payload)
     },
-    title: function(model){
+    title: function(tokens, model){
         let sectionName = model.runAttempt.get('sections').find(section => {
             return section.get('id') == this.paramsFor('attempt').sectionId;
         }).get('name');
