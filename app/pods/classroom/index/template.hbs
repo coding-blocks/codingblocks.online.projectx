@@ -74,7 +74,9 @@
                             </div>
                         </div>
                     </div>
-
+                  {{#unless run.premium}}
+                    <div class="short-heading red">Free Trial</div>
+                  {{/unless}}
                 </div>
             </div>
         {{/each}}
