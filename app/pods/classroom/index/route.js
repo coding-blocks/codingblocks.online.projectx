@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-    title: 'My Courses | CodingBlocksOnline',
+    title: 'My Courses | CodingBlocks Online',
     model () {
         return this.store.query('run', {
             enrolled: true
