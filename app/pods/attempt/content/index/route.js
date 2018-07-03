@@ -17,8 +17,8 @@ export default Route.extend({
     },
     titleToken: function(model){
         let contentName = model.payload.get('name');
-        let sectionName = model.runAttempt.get('run').get('sections')
-            .find(section => section.get('id') == this.paramsFor('attempt').sectionId).get('name');
+        let sectionId = this.paramsFor('attempt').sectionId;
+        let sectionName = this.get('store').peekRecord('section', sectionId);
         return sectionName + ' - '+ contentName;
     },
     renderTemplate(controller, model) {
