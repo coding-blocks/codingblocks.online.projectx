@@ -5,6 +5,7 @@ export default Route.extend({
     return this.modelFor("attempt");
   },
   afterModel(model) {
+
     const runAttempt = model;
 
     const run = runAttempt.get("run");
@@ -24,7 +25,7 @@ export default Route.extend({
     let content ;
     if (!section || !section.id) {
       // no sections to resume
-      section = run.get("sections").objectAt(0) 
+      section = run.get("sections").objectAt(0)
       content = section.get("contents").objectAt(0)
     } else {
       content = section.get("contents").find(content => {
