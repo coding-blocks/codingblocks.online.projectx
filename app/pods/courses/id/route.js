@@ -10,5 +10,8 @@ export default Route.extend({
     setupController(controller, model) {
         this._super(...arguments)
         controller.set("course", model)
-    }
+    },
+    titleToken: function(model){
+      return model.get('title')
+    },
  });

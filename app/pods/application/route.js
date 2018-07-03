@@ -6,7 +6,7 @@ import { later } from '@ember/runloop';
 
 export default Route.extend(ApplicationRouteMixin, {
     session: service(),
-    title: 'CodingblocksOnline',
+    title: 'CodingBlocks Online',
     currentUser: service(),
     store: service (),
     raven: service (),
