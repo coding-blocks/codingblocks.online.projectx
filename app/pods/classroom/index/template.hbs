@@ -62,6 +62,9 @@
                             <div class="card-price-details">
                                 <div class="card-batches">
                                    {{run.name}}
+                                  {{#unless run.premium}}
+                                    <div class="red">Free Trial</div>
+                                  {{/unless}}
                                 </div>
                             </div>
                         </div>
@@ -74,9 +77,6 @@
                             </div>
                         </div>
                     </div>
-                  {{#unless run.premium}}
-                    <div class="short-heading red">Free Trial</div>
-                  {{/unless}}
                 </div>
             </div>
         {{/each}}
