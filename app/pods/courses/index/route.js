@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-    title: 'All Courses | CodingblocksOnline', 
+    title: 'All Courses | CodingBlocks Online', 
     model () {
         return this.store.query ('course', {
           include: 'instructors,runs',
