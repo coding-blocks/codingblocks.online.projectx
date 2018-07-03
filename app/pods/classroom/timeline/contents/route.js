@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
+    titleToken: 'Contents ',
     model () {
         return this.modelFor('classroom.timeline').get("run")
     },

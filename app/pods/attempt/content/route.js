@@ -4,6 +4,10 @@ import config from 'codingblocks-online/config/environment'
 
 export default Route.extend({
     api: inject(),
+    title: function(tokens) {
+        tokens = Ember.makeArray(tokens);
+        return tokens[0] + ' | CodingBlocks Online';
+    },
     currentUser: inject(),
     
     model (params) {

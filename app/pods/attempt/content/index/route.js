@@ -15,6 +15,12 @@ export default Route.extend({
         controller.set("content", model.content)
         controller.set("payload", model.payload)
     },
+    titleToken: function(model){
+        let contentName = model.payload.get('name');
+        let sectionId = this.paramsFor('attempt').sectionId;
+        let sectionName = this.get('store').peekRecord('section', sectionId).get('name');
+        return sectionName + ' - '+ contentName;
+    },
     renderTemplate(controller, model) {
         this.render()
         this.render("attempt.content.index.heading", {

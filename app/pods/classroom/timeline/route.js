@@ -38,6 +38,9 @@ export default Route.extend({
     controller.set("run", model.get("run"));
     controller.set("runAttempt", model);
   },
+  titleToken: function(model){
+    return model.get('run').get('course').get('title');
+  },
   actions: {
     reloadRoute() {
       this.refresh();
