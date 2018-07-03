@@ -15,11 +15,10 @@ export default Route.extend({
         controller.set("content", model.content)
         controller.set("payload", model.payload)
     },
-    title: function(tokens, model){
-        let sectionName = model.runAttempt.get('sections').find(section => {
-            return section.get('id') == this.paramsFor('attempt').sectionId;
-        }).get('name');
+    titleToken: function(model){
         let contentName = model.payload.get('name');
+        let sectionName = model.runAttempt.get('run').get('sections')
+            .find(section => section.get('id') == this.paramsFor('attempt').sectionId).get('name');
         return sectionName + ' - '+ contentName;
     },
     renderTemplate(controller, model) {
