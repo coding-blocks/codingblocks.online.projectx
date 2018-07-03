@@ -9,6 +9,7 @@ export default Route.extend(ApplicationRouteMixin, {
     currentUser: service(),
     store: service (),
     raven: service (),
+    headData: service(),
     queryParams: {
         code: {
             refreshModel: true
@@ -75,5 +76,8 @@ export default Route.extend(ApplicationRouteMixin, {
       later(function(){
         controller.set('code', undefined)
       })
+    },
+    afterModel(model) {
+      this.set('headData.title', 'Coding Blocks Online')
     }
 })
