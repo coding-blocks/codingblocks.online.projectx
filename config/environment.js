@@ -73,6 +73,9 @@ module.exports = function(environment) {
     ENV.googleAnalytics = {
       webPropertyId: 'UA-83327907-9'
     }
+    ENV["ember-facebook-pixel"] = {
+      id: '1947467048859851'
+    };
   }
 
   if (environment === 'staging') {
