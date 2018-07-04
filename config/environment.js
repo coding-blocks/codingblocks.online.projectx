@@ -73,6 +73,9 @@ module.exports = function(environment) {
     ENV.googleAnalytics = {
       webPropertyId: 'UA-83327907-9'
     }
+    ENV["ember-facebook-pixel"] = {
+      id: '1947467048859851'
+    };
   }
 
   if (environment === 'staging') {
@@ -82,6 +85,11 @@ module.exports = function(environment) {
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.codingblocks.xyz'
     ENV.sentry.dsn = 'https://a1e58068dc5c48edb9b313b1efbe22ec@sentry.cb.lk/19'
+  }
+
+  if (process.env.oss) {
+    ENV.clientId = 8225714181
+    ENV.apiHost = 'https://amoeba-backend-public-dev.herokuapp.com'
   }
 
   ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'

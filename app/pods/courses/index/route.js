@@ -1,8 +1,13 @@
 import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default class CoursesRouter extends  Route {
+    constructor() {
+      super()
+      this.headData =  Ember.inject.service()
+    }
+
     model (params) {
-        return this.store.query ('course', {
+         return this.store.query ('course', {
           include: 'runs',
           sort: 'difficulty',
           page:{
@@ -18,4 +23,7 @@ export default Ember.Route.extend({
       controller.set("count", model.get('meta').pagination.count )
 
     }
-})
+    afterModel(model) {
+      this.set('headData.title', 'Coding Blocks Online | All Courses')
+    }
+}

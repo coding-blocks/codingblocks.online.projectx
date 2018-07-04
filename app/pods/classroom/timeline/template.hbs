@@ -5,9 +5,13 @@
         <img src={{run.course.logo}}>
       </div>
       <div class="classroom-text col-10">
-        {{#link-to 'courses.id' run.course.id activeClass=""}} {{run.course.title}} {{/link-to}}
+        {{#link-to 'courses.id' run.course.identifier activeClass=""}} {{run.course.title}} {{/link-to}}
         <div class="rating mob">
-          {{#rating-stars course=run.course}} {{/rating-stars}}
+          {{#if runAttempt.premium}}
+            {{#rating-stars course=run.course initialRating=run.course.userRating}} {{/rating-stars}}
+          {{else}}
+            {{rating-stars-static course=run.course reviewCount=true}}
+          {{/if}}
         </div>
       </div>
     </div>
@@ -15,7 +19,11 @@
       {{run.course.summary}}
     </p>
     <div class="rating">
-      {{#rating-stars course=run.course}} {{/rating-stars}}
+      {{#if runAttempt.premium}}
+        {{#rating-stars course=run.course initialRating=run.course.userRating}} {{/rating-stars}}
+      {{else}}
+        {{rating-stars-static course=run.course reviewCount=true}}
+      {{/if}}
     </div>
   </div>
   <div class="course-progress-box col-md-6 col-12">
@@ -29,13 +37,13 @@
         <div class="status-circle">
           <div class="circle-back"></div>
           <div class="circle-front d-flex flex-column justify-content-center">
-            <p class="progress-text">{{percentage run.course.completedContents run.course.totalContents}} %</p>
+            <p class="progress-text">{{percentage run.completedContents run.totalContents}} %</p>
           </div>
         </div>
       </div>
       <div class="course-progress-detail col-5 col-md-9">
         <p class="heading-mob">Course Progress</p>
-        <p class="lectures-completed">{{run.course.completedContents}} of {{run.course.totalContents}} Content completed</p>
+        <p class="lectures-completed">{{run.completedContents}} of {{run.totalContents}} Content completed</p>
         <p class="reset-progress pointer" {{action 'resetProgress'}}>Reset
           Progress</p>
       </div>

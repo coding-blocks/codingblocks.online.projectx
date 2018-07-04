@@ -14,14 +14,13 @@
     }
 
     .attributes {
-      .flex-row {
-        @include padding-mixin(20px, 0, 0, 0);
-      }
-
       .detail-row {
-        @include margin(20px, 0, 20px, 0);
         width: 100%;
       }
+    }
+
+    .round-img {
+      @include dimensions(100px, 100px);
     }
   }
 }
@@ -29,7 +28,7 @@
 @media screen and (min-width: 576px) and (max-width: 767px) {
   .o-profile-edit {
     .card {
-      @include padding-mixin(55px, 10px, 25px, 30px);
+      @include padding-mixin(55px, 30px, 25px, 30px);
       font-size: $global-font-size;
     }
 
@@ -40,17 +39,24 @@
 
     .heading-u-red {
       @include padding-mixin(0, 180px, 10px, 0);
-      font-size: $font-mds;
     }
 
     .input-text{
-      @include margin(0, 20px, 0, 0);
       height: 50px;
+    }
+
+    .round-img {
+      @include dimensions(80px, 80px);
     }
 
     .button-solid {
       @include margin(0, 20px, 0, 0);
     }
+
+    .profile-row {
+      @include margin(20px, 0, 40px, 0);
+    }
+
   }
 }
 
@@ -67,13 +73,17 @@
     }
 
     .heading-u-red {
-      @include padding-mixin(0, 150px, 13px, 0);
+      @include padding-mixin(0, 100px, 13px, 0);
       font-size: $font-xs;
     }
 
     .button-solid {
-      height: 35px;
+      height: 50px;
       font-size: $card-sm;
+    }
+    
+    .round-img {
+      @include dimensions(60px, 60px);
     }
 
     .attributes {
@@ -88,9 +98,14 @@
       }
 
       .detail-row {
-        @include margin(10px, 0, 10px, 0);
+        @include margin(0, 0, 10px, 0);
         width: 100%;
-      }
+      } 
     }
+    
+    .profile-row {
+      @include margin(10px, 0, 30px, 0);
+    }
+
   }
 }

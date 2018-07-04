@@ -2,6 +2,7 @@ import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
 
 export default Route.extend({
+    headData: Ember.inject.service(),
     model () {
         return hash({
             runAttempt: this.modelFor('attempt'),
@@ -10,6 +11,7 @@ export default Route.extend({
         })
     },
     setupController(controller, model) {
+        controller.set("sectionId", this.paramsFor('attempt').sectionId)
         controller.set("runAttempt", model.runAttempt)
         controller.set("content", model.content)
         controller.set("payload", model.payload)
@@ -21,5 +23,10 @@ export default Route.extend({
             controller: this.controllerFor("attempt.content.index"),
             into: "attempt"
         })
+    },
+    afterModel(model) {
+      const sectionId = this.paramsFor('attempt').sectionId
+      const section = this.get('store').peekRecord('section', sectionId)
+      this.set('headData.title', section.get('name') + " | " + model.payload.get('name'));
     }
 });

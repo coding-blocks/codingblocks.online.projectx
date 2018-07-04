@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="card-heading o-text-card">
-                            {{#link-to 'courses.id' run.course.id activeClass=""}} {{run.course.title}} {{/link-to}}
+                            {{#link-to 'courses.id' run.course.identifier activeClass=""}} {{run.course.title}} {{/link-to}}
                         </div>
 
                         <div class="card-text">
@@ -62,6 +62,9 @@
                             <div class="card-price-details">
                                 <div class="card-batches">
                                    {{run.name}}
+                                  {{#unless run.topRunAttempt.premium}}
+                                    <div class="red">Free Trial</div>
+                                  {{/unless}}
                                 </div>
                             </div>
                         </div>
@@ -74,7 +77,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         {{/each}}

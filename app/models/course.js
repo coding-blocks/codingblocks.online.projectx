@@ -11,6 +11,7 @@ export default DS.Model.extend({
     promoVideo: DS.attr(),
     coverImage: DS.attr(),
     logo: DS.attr(),
+    slug: DS.attr('string'),
     difficulty: DS.attr('number'),
     categoryName: DS.attr(),
     categoryId: DS.attr('number'),
@@ -46,26 +47,11 @@ export default DS.Model.extend({
         })
         return currentRun || runs.sortBy('start').objectAt(0)
     }),
-    totalContents: computed('sections.@each.contents.@each', function () {
-        //debugger;
-        return this.get('sections').reduce( (acc, section) => {
-            return acc + section.get('contents.length')
-        }, 0)
-    }),
-    completedContents: computed('sections.@each.doneContents', function () {
-        return this.get('sections').reduce( (acc, section) => {
-            return acc + section.get('doneContents.length')
-        }, 0)
-    }),
-    sections: DS.hasMany('section'),
     runs: DS.hasMany('run'),
     instructors: DS.hasMany('instructor'),
     feedbacks: DS.hasMany('feedback'),
     feedback: computed('feedbacks', function () {
       return this.get('feedbacks').objectAt(0)
-    }),
-    sortedSections: computed('sections.@each', function () {
-      return this.get('sections').sortBy('id')
     }),
     canHazDoubtsLink: computed.and('categoryId', 'doubtSubCategoryId'),
     doubtsLink: computed('categoryId', 'doubtSubCategoryId', function () {
@@ -79,5 +65,12 @@ export default DS.Model.extend({
         case 2: return 'expert'; break
         default: return 'beginner'; break;
       }
+    }),
+    identifier: computed('slug', 'id', function () {
+      return this.get('slug') || this.get('id')
+    }),
+    ratings: DS.hasMany('rating'),
+    userRating: computed('ratings', function () {
+      return this.get('ratings').objectAt(0)
     })
 });
