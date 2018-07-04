@@ -7,7 +7,11 @@
       <div class="classroom-text col-10">
         {{#link-to 'courses.id' run.course.identifier activeClass=""}} {{run.course.title}} {{/link-to}}
         <div class="rating mob">
-          {{#rating-stars course=run.course}} {{/rating-stars}}
+          {{#if runAttempt.premium}}
+            {{#rating-stars course=run.course initialRating=run.course.userRating}} {{/rating-stars}}
+          {{else}}
+            {{rating-stars-static course=run.course reviewCount=true}}
+          {{/if}}
         </div>
       </div>
     </div>
@@ -15,7 +19,11 @@
       {{run.course.summary}}
     </p>
     <div class="rating">
-      {{#rating-stars course=run.course}} {{/rating-stars}}
+      {{#if runAttempt.premium}}
+        {{#rating-stars course=run.course initialRating=run.course.userRating}} {{/rating-stars}}
+      {{else}}
+        {{rating-stars-static course=run.course reviewCount=true}}
+      {{/if}}
     </div>
   </div>
   <div class="course-progress-box col-md-6 col-12">

@@ -1,7 +1,8 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-    beforeModel () {
+  headData: Ember.inject.service(),
+  beforeModel () {
       window.scrollTo(0,0);
     },
     model (params) {
@@ -10,5 +11,8 @@ export default Route.extend({
     setupController(controller, model) {
         this._super(...arguments)
         controller.set("course", model)
+    },
+    afterModel(model) {
+      this.set('headData.title', model.get('title'))
     }
  });
