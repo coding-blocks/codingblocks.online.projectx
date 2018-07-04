@@ -9,36 +9,34 @@
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="heading">Recent Doubts</div>
-                    <div class="card-content">
-                      {{#if (eq doubts.length 0)}}
-                        <div class="row">
-                          <div class="notify-type col-2">
-                            <div class="notify-icon">
-                              <span class="notify-dot"></span>
-                              <img src="/images/doubt.png" alt="">
-                            </div>
-                          </div>
-                          <div class="card-text col-10 align-self-center">
-                            All the recent doubts asked by your peers will be
-                            displayed here !
-                          </div>
-                        </div>
-                      {{else}}
-                          {{#each doubts as |doubt|}}
-                            <div class="row">
-                              <div class="notify-type col-2">
-                                <div class="notify-icon">
-                                  <span class="notify-dot"></span>
-                                  <img src="/images/doubt.png" alt="">
-                                </div>
-                              </div>
-                              <div class="card-text col-10 align-self-center">
-                                  {{doubt.title}}
-                              </div>
-                            </div>
-                        {{/each}}
-                      {{/if}}
+                    {{#if (eq doubts.length 0)}}
+                  <div class="row">
+                    <div class="notify-type col-2">
+                      <div class="notify-icon">
+                        <span class="notify-dot"></span>
+                        <img src="/images/doubt.png" alt="">
+                      </div>
                     </div>
+                    <div class="card-text col-10 align-self-center">
+                      All the recent doubts asked by your peers will be
+                      displayed here !
+                    </div>
+                  </div>
+              {{else}}
+                  {{#each doubts as |doubt|}}
+                  <div class="row">
+                    <div class="notify-type col-2">
+                      <div class="notify-icon">
+                        <span class="notify-dot"></span>
+                        <img src="/images/doubt.png" alt="">
+                      </div>
+                    </div>
+                    <div class="card-text col-10 align-self-center">
+                        {{doubt.title}}
+                    </div>
+                  </div>
+              {{/each}}
+          {{/if}}
                     <div class="pull-right">
                       {{#link-to 'classroom.timeline.doubts' tagName='div'}}
                         Browse
@@ -51,7 +49,6 @@
             <div class="col-12 col-md-6">
               <div class="card">
                 <div class="heading">Announcements</div>
-                <div class="card-content">
                 {{#unless announcements.length}}
                   <div class="row">
                     <div class="notify-type col-2">
@@ -78,7 +75,6 @@
                   </div>
                 </div>
                 {{/each}}
-                </div>
                 <div class="pull-right">
                  {{#link-to 'classroom.timeline.announcements' tagName='div'}}
                    Browse

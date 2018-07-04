@@ -16,13 +16,10 @@
     {{#each recommendedCourses as |course|}}
     <div class="card-layout col-md-4 col-sm-6">
       <div class="card o-layout-card ">
-        <div class="difficulty-div">
-            <div class="{{course.difficultyName}}-level"></div>
-            <div class="{{course.difficultyName}}-text">
-              {{uppercase course.difficultyName}}
-            </div>
-        </div>
-        
+
+        <div class="{{course.difficultyName}}-level"></div>
+        <div class="{{course.difficultyName}}-text">{{uppercase course.difficultyName}}</div>
+
         <div class="card-image o-image-card">
           <img src="{{defaultTo course.logo '/images/c++'}}">
         </div>

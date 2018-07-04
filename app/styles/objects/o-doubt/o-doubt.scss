@@ -1,0 +1,54 @@
+.o-doubt {
+	background-color: $nav-border;
+	padding: 40px 7%;
+
+	.heading-u {
+	    font-size: $font-md;
+	    padding-bottom: 20px;
+	}
+
+	.right-head-button {
+		max-width: 200px;
+	}
+
+	.doubts-box {
+		padding: 0;
+		background-color: #fff;
+	}
+
+	.doubt {
+		min-height: 219px;
+		padding: 30px 2%;
+		border-bottom: 1px solid #f4f4f4;
+	}
+
+	.doubt-head {
+		width: 100%;
+
+		.round-img {
+			@include dimensions(50px, 50px)
+		}
+
+		.author-name {
+			font-size: 0.88rem;
+			margin-left: 13px;
+
+			.time {
+				font-size: 1rem;
+				color: $navLink;
+			}
+		}
+
+		.text {
+			margin-right: 10px;
+			font-size: 1.11rem;
+			color: #ff6666
+		}
+
+		.reply {
+			width: 11%;
+		}
+
+
+	}
+}
