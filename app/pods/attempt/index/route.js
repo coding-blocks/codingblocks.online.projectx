@@ -5,11 +5,12 @@ export default Route.extend({
     return this.modelFor("attempt");
   },
   afterModel(model) {
+
     const runAttempt = model;
 
-    const course = runAttempt.get("run.course");
+    const run = runAttempt.get("run");
 
-    if (!course.get("sections.length")) {
+    if (!run.get("sections.length")) {
       // empty length
       this.transitionTo("error", {
         queryParams: {
@@ -18,13 +19,13 @@ export default Route.extend({
       })
     }
 
-    let section = course.get("sections").find(section => {
+    let section = run.get("sections").find(section => {
       return !section.get("isProgressCompleted");
     });
     let content ;
     if (!section || !section.id) {
       // no sections to resume
-      section = course.get("sections").objectAt(0) 
+      section = run.get("sections").objectAt(0)
       content = section.get("contents").objectAt(0)
     } else {
       content = section.get("contents").find(content => {
@@ -35,6 +36,10 @@ export default Route.extend({
       "attempt.content",
       runAttempt.get("id"),
       content.get("id")
-    );
+    , {
+      queryParams: {
+        s: section.get('id')
+      }
+    });
   }
 });

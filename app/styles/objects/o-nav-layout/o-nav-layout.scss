@@ -17,3 +17,44 @@
     transform: translateY(13px);
   }
 }
+
+.main-nav{
+  .round-img{
+    @include dimensions(60px, 60px);
+    
+    float: right;
+    cursor: pointer;
+  }
+
+  .round-img:hover{
+      & + .card{
+        display: block;
+      }
+  }
+
+  .card{
+    @include dimensions(300px, auto);
+    @include padding-s(0, 40px);
+    background-color: $nav-info-bg;
+    display: none;
+    position: absolute;
+    right: 10px;
+
+    &:hover{
+      display: block;
+    }
+
+    .top-offset{
+      @include dimensions(100%, 30px);
+      position: absolute;
+      top: -30px;
+      background: transparent;
+    }
+  }
+
+  .nav-info{
+    .separator{
+      float: right;
+    }
+  }
+}

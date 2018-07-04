@@ -1,4 +1,5 @@
-@import "objects/o-grid/grid.scss";
+@import "objects/o-grid/grid";
+@import "objects/o-modal/o-modal";
 @import "objects/bootstrap-overwrite/overwrite";
 @import "objects/o-card-layout/card";
 @import "objects/o-button-layout/o-button";
@@ -8,6 +9,7 @@
 @import "objects/o-accordian-layout/o-accordian-layout";
 @import "objects/o-announcement/o-announcement";
 @import "objects/o-profile-page/o-profile-page";
+@import "objects/o-profile-page-edit/o-profile-page-edit";
 @import "objects/o-edit-profile/o-edit-profile";
 @import "objects/o-content/o-content";
 @import "objects/o-content/o-timeline";
@@ -40,3 +42,14 @@
 @import "objects/o-checkout-card/o-checkout-card";
 @import "objects/o-address-card/o-address-card";
 @import "objects/form-input/form-input";
+@import "objects/o-login/o-login";
+@import "objects/o-course-card/o-course-card";
+@import "objects/o-side-nav/o-side-nav";
+@import "objects/o-app-page/o-app-page";
+@import "objects/o-add-address/o-add-address";
+@import "objects/o-address-page/o-address-page";
+@import "objects/o-client-add/o-client-add";
+@import "objects/o-client-page/o-client-page";
+@import "objects/o-signup/o-signup";
+@import "objects/tab-nav/tab-nav";
+@import "objects/o-changedp/o-changedp";

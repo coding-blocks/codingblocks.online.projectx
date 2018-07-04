@@ -1,22 +1,50 @@
-
 .o-layout-card  {
   display: block;
-  margin-left: -4%;
-  @include padding-mixin(25.5px , null, null, 19.5px);
+  padding: 20px 25px;
   position: relative;
 
   .button-solid {
     position: absolute;
-    top: 5px;
-    left: 39%;
+    position: absolute;
+    right: 0;
   }
 
   .button-parent {
     position: relative;
+    height: 50px;
   }
 
   .price-detail {
     margin-top: 25px;
+  }
+
+  .pos-rating, .neg-rating, .edit-rating{
+    font-size: $global-font-size;
+  }
+
+  .rating{
+    margin: 6% 0;
+  }
+
+  .edit-rating{
+    border: none;
+  }
+
+  .header{
+    margin-bottom: 45px;
+  }
+
+  .footer{
+    text-align: center;
+    font-size: $card-md;
+  }
+
+  .card-mentor{
+    margin-bottom: 40px;
+  }
+
+  .row{
+    padding: 0;
   }
 }
 
@@ -24,19 +52,21 @@
   margin: 0;
   padding:32px;
   .o-image-card {
-    margin-bottom: 27px;
-    padding-top: 40px;
-  }
-  .o-layout-card {
-    padding-right: 25px;
-    padding-left: 25px;
+    margin-bottom: 15px;
   }
 }
 
 .o-image-card {
   margin-bottom: 27px;
+  padding-top: 40px;
 }
 
 .o-text-card {
   margin-bottom: 11px;
+}
+
+.difficulty-div {
+  position: absolute;
+  right: 6%;
+  top: 30px;
 }

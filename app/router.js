@@ -28,6 +28,8 @@ Router.map(function() {
   this.route('payment_webhook');
   this.route('notifications', function() {});
   this.route('otp');
+  this.route('logout');
+  this.route('404');
 });
 
 export default Router;

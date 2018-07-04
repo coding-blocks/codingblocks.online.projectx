@@ -1,13 +1,11 @@
 <div class="o-pb">
   <div class="pb-desk">
     <div class="tab-nav">
-      <div class="tab-list">
-        {{#link-to "attempt.content" (query-params tab="problem") tagName="div" class="tab-items"}} Problem {{/link-to}}
-        {{#link-to "attempt.content" (query-params tab="submissions") tagName="div" class="tab-items"}} Submissions {{/link-to}}
-        {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class="tab-items"}} Leaderboard {{/link-to}}
-      </div>
+      {{#link-to "attempt.content" (query-params tab="problem") tagName="div" class="tab-items"}} Problem {{/link-to}}
+      {{#link-to "attempt.content" (query-params tab="submissions") tagName="div" class="tab-items"}} Submissions {{/link-to}}
+      {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class="tab-items"}} Leaderboard {{/link-to}}
     </div>
-    
+
     {{#if (eq tabName 'problem')}}
       {{#problem-statement-component problem=problem}}{{/problem-statement-component}}
     {{else if (eq tabName 'leaderboard')}}
@@ -22,7 +20,7 @@
 </div>
 
 
-{{!-- 
+{{!--
 <div>
   {{textarea value=sourceCode placeholder="Source Code"}}
   {{textarea value=customInput placeholder="Custom Input"}}

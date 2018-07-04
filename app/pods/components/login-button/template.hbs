@@ -3,6 +3,10 @@
   <button onclick={{action 'invalidateSession'}}>Logout</button>
 {{else}} 
         <button onclick={{action 'logIn'}}>
+          {{#unless hasBlock}}
             Login
+          {{else}}
+            {{yield}}
+          {{/unless}}
         </button>
 {{/if}}

@@ -86,6 +86,11 @@ module.exports = function(environment) {
     ENV.sentry.dsn = 'https://a1e58068dc5c48edb9b313b1efbe22ec@sentry.cb.lk/19'
   }
 
+  if (process.env.oss) {
+    ENV.clientId = 8225714181
+    ENV.apiHost = 'https://amoeba-backend-public-dev.herokuapp.com'
+  }
+
   ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'
   ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.apiHost}/api/jwt/login/`
   ENV['ember-simple-auth-token'].serverTokenRefreshEndpoint = `${ENV.apiHost}/api/jwt/refresh/`

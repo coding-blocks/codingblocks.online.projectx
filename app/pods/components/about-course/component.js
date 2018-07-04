@@ -11,9 +11,18 @@ export default Component.extend({
   api: inject(),
   router: inject(),
 
+  _redirectToOneauth () {
+    window.location.href = this.loginUrl
+  },
+
   actions: {
     logIn() {
-        window.location.href = this.loginUrl
+      localStorage.setItem('redirectionPath', this.get('router.currentURL'))
+      this._redirectToOneauth()
+    },
+    logInAndStartTrial (courseId, runId) {
+      localStorage.setItem('redirectionPath', this.get('router').urlFor('classroom.timeline.index', {courseId, runId}))
+      this._redirectToOneauth()
     },
     enrollNow (runId) {
       if(this.get('session.isAuthenticated')){

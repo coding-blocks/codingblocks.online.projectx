@@ -5,7 +5,7 @@
         <img src={{run.course.logo}}>
       </div>
       <div class="classroom-text col-10">
-        {{run.course.title}}
+        {{#link-to 'courses.id' run.course.identifier activeClass=""}} {{run.course.title}} {{/link-to}}
         <div class="rating mob">
           {{#rating-stars course=run.course}} {{/rating-stars}}
         </div>
@@ -29,13 +29,13 @@
         <div class="status-circle">
           <div class="circle-back"></div>
           <div class="circle-front d-flex flex-column justify-content-center">
-            <p class="progress-text">{{percentage run.course.completedContents run.course.totalContents}} %</p>
+            <p class="progress-text">{{percentage run.completedContents run.totalContents}} %</p>
           </div>
         </div>
       </div>
       <div class="course-progress-detail col-5 col-md-9">
         <p class="heading-mob">Course Progress</p>
-        <p class="lectures-completed">{{run.course.completedContents}} of {{run.course.totalContents}} Content completed</p>
+        <p class="lectures-completed">{{run.completedContents}} of {{run.totalContents}} Content completed</p>
         <p class="reset-progress pointer" {{action 'resetProgress'}}>Reset
           Progress</p>
       </div>
@@ -51,31 +51,21 @@
   </div>
 </div>
 <div class="tab-nav">
-  <div class="tab-list">
-    {{link-to 'Overview' 'classroom.timeline.overview' class="tab-items" tagName="div"}}
-    {{#link-to 'classroom.timeline.overview' class="tab-icons" tagName="div"}}
-      <div class="d-flex flex-row justify-content-center height-100">
-        <img src="/images/overview.png" alt="Overview">
-      </div>
-    {{/link-to}}
-    {{link-to 'Course Content' 'classroom.timeline.contents'class="tab-items" tagName="div"}}
-    {{#link-to 'classroom.timeline.contents'class="tab-icons" tagName="div"}}
-      <div class="d-flex flex-row justify-content-center height-100">
-        <img src="/images/progress-ccordian.png" alt="Course Content">
-      </div>
-    {{/link-to}}
-    {{link-to 'Announcements' 'classroom.timeline.announcements'class="tab-items" tagName="div"}}
-    {{#link-to 'classroom.timeline.announcements'class="tab-icons" tagName="div"}}
-      <div class="d-flex flex-row justify-content-center height-100">
-      <img src="/images/announcement.png" alt="Announcements">
-      </div>
-    {{/link-to}}
-    {{link-to 'Solve Your Doubts' 'classroom.timeline.doubts' class="tab-items" tagName="div"}}
-    {{#link-to 'classroom.timeline.doubts' class="tab-icons" tagName="div"}}
-      <div class="d-flex flex-row justify-content-center height-100">
-        <img src="/images/solvedoubt.png" alt="Solve Your Doubts">
-      </div>
-    {{/link-to}}
-  </div>
+  {{link-to 'Overview' 'classroom.timeline.overview' class="tab-items" tagName="div"}}
+  {{#link-to 'classroom.timeline.overview' class="tab-icons" tagName="div"}}
+    <img src="/images/menu-white.svg" alt="Overview">
+  {{/link-to}}
+  {{link-to 'Course Content' 'classroom.timeline.contents'class="tab-items" tagName="div"}}
+  {{#link-to 'classroom.timeline.contents'class="tab-icons" tagName="div"}}
+    <img src="/images/docs-white.svg" alt="Course Content">
+  {{/link-to}}
+  {{link-to 'Announcements' 'classroom.timeline.announcements'class="tab-items" tagName="div"}}
+  {{#link-to 'classroom.timeline.announcements'class="tab-icons" tagName="div"}}
+  <img src="/images/announcement-white.svg" alt="Announcements">
+  {{/link-to}}
+  {{link-to 'Solve Your Doubts' 'classroom.timeline.doubts' class="tab-items" tagName="div"}}
+  {{#link-to 'classroom.timeline.doubts' class="tab-icons" tagName="div"}}
+    <img src="/images/support-white.svg" alt="Solve Your Doubts">
+  {{/link-to}}
 </div>
 {{liquid-outlet}}

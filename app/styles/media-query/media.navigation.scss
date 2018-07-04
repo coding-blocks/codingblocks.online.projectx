@@ -11,3 +11,44 @@
     background-image: url("/images/menu-icon.png");
   }
 }
+
+@media all and(max-width: 575px){
+  .nav-logo{
+    height: 30px;
+    margin: 0;
+  }
+
+  .hamburger-parent{
+    top: 8px;
+    margin: 0;
+    font-size: $global-font-size;
+  }
+
+  .logo-parent{
+    margin-left: 30px;
+  }
+
+  .logo-link{
+    min-width: unset;
+  }
+
+  .main-nav{
+    .card{
+      @include padding-s(5px, 25px);
+      width: 240px;
+    }
+
+    .nav-info{
+      font-size: $card-md;
+
+      .flex-row{
+        @include padding-s(20px, 0);
+      }
+    }
+
+    .round-img{
+      @include dimensions(40px, 40px);
+    }
+  }
+
+}

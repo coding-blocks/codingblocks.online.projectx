@@ -1,0 +1,27 @@
+@media screen and (max-width: 767px){
+  .auth-link{
+    font-size: $card-md;
+
+    .button-circle{
+      max-width: 55px;
+      height: 55px;
+      font-size: $card-md;
+    }
+  }
+}
+
+@media screen and (max-width: 575px){
+  .auth-link{
+    margin-right: 9%;
+
+    .button-circle{
+      max-width: 40px;
+      height: 40px;
+      font-size: $card-sms;
+    }
+    
+    .link-text{
+      display: none;
+    }
+  }
+}

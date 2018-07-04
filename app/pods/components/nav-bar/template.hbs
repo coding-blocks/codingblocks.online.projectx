@@ -1,11 +1,14 @@
 <header>
-  <nav>
+  <nav class="main-nav">
     <span class="hamburger-parent" onclick={{action 'toggleSidebar'}}>
             <i class="hamburger fas fa-bars"></i>
           </span>
     <span>
-      {{#link-to 'index' activeClass=''}}
-      <img src="/images/online-logo.png" alt="online-logo" class="nav-logo pointer"> {{/link-to}}
+      <span class="logo-parent">
+        {{#link-to 'index' activeClass=''}}
+          <img src="/images/online-logo.png" alt="online-logo" class="nav-logo pointer"> {{/link-to}}
+      </span>
+
     </span>
 
     <ul class="nav-list">

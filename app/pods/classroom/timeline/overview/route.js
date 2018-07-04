@@ -3,7 +3,8 @@ import { hash } from 'rsvp';
 import { inject as service } from '@ember/service';
 
 export default Route.extend({
-  api: service('api'),
+  api: Ember.inject.service('api'),
+  headData: Ember.inject.service(),
   model (params) {
     const courseId = this.modelFor('classroom.timeline').get("run.course.id")
     return hash({
@@ -30,5 +31,8 @@ export default Route.extend({
       controller.set("course", model.run.get('course'))
       controller.set("announcements", model.announcement)
       controller.set("doubts", model.doubts.topic_list? model.doubts.topic_list.topics : []);
+  },
+  afterModel(model) {
+    this.set('headData.title', model.run.get('course.title'))
   }
 });

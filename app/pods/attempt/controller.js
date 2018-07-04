@@ -5,6 +5,12 @@ export default Controller.extend({
     store: inject('store'),
     sidebarCollapsed: false,
     accordianCollapsed: false,
+    
+    queryParams: {
+		sectionId: {
+			as: 's'
+		}
+	},
     actions: {
         toggleSideBar () {
             this.toggleProperty("sidebarCollapsed")
@@ -12,8 +18,12 @@ export default Controller.extend({
         toggleAccordian () {
             this.toggleProperty("accordianCollapsed")
         },
-        transitionToContent (contentId) {
-            this.transitionToRoute('attempt.content', contentId)
+        transitionToContent (contentId, sectionId) {
+            this.transitionToRoute('attempt.content', contentId, {
+              queryParams: {
+                sectionId
+              }
+            })
         },
         async toggleProgress (content) {
             if (await content.get('progress')) {

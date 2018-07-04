@@ -22,15 +22,20 @@
         top: -30px;
       }
   }
-  
+
+
+
   .sidebar {
+    display: block;
     position: fixed;
     @include dimensions(55vw, 100%);
     top: 0;
     left: 0;
-    z-index: 102;
+    z-index: 200;
     background-color: #ffffff;
     @include padding-mixin(7%, 5%, 7%, 5%);
+    transition: margin 0.5s;
+    overflow-x: hidden;
 
     .close {
       font-size: 24px;
@@ -73,7 +78,13 @@
         bottom: 4%;
       }
     }
+
+    &.sidebar-none {
+      margin-left: -55vw;
+    }
   }
+
+
 }
 
 

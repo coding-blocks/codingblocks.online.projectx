@@ -1,0 +1,62 @@
+.login-signup{
+  @include dimensions(100%, auto);
+  background: url("/images/loginsvg.svg") no-repeat 50% -50px;
+  background-size: 1250px;
+}
+
+.o-login{
+  @include dimensions(80%, auto);
+  @include padding-mixin(60px, 72px, 60px, 80px);
+  @include margin(40px, auto, 0, auto);
+  max-width: 828px;
+
+  .input-btn{
+    margin-bottom: 28px;
+  }
+
+  .input-checkbox{
+    @include margin(7px, 28px, 45px, 0);
+  }
+
+  .button-solid{
+    @include dimensions(30%, 62px);
+    font-size: $font-sm;
+    max-width: 198px;
+  }
+
+  .signup{
+    font-size: $font-sm;
+    margin-left: 5%;
+
+    button{
+      text-align: left;
+      padding: 0;
+      height: auto;
+      margin-top: 2px;
+    }
+  }
+
+  .divider{
+    margin: 45px 0;
+
+    span{
+      @include dimensions(38%, 2px);
+      margin-left: 17px;
+    }
+  }
+
+  .link-heading{
+    font-size: $font-sm;
+  }
+
+  .button-circle{
+    width: 85px;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .row{
+    padding: 0;
+  }
+}
+

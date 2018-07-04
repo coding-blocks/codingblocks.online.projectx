@@ -9,29 +9,36 @@ export default Route.extend(ApplicationRouteMixin, {
     currentUser: service(),
     store: service (),
     raven: service (),
+    headData: service(),
     queryParams: {
         code: {
             refreshModel: true
         }
     },
+    sessionAuthenticated () {
+      const redirectionPath = localStorage.getItem('redirectionPath')
+      if (!isNone(redirectionPath))
+        this.transitionTo(redirectionPath)
+    },
     beforeModel (transition) {
-        if( !isNone(transition.queryParams.code) ) {
-            if (this.get('session.isAuthenticated')) {
-                return this.transitionTo({queryParams: {code: undefined}})
-            }
-            // we have ?code qp
-            const { code } = transition.queryParams
-            return this.get('session').authenticate('authenticator:jwt', {identification: code, password: code, code })
-              .catch(error => {
-              if(error.err === 'USER_EMAIL_NOT_VERIFIED') {
-                this.transitionTo('error', {
-                  queryParams: {
-                    errorCode: 'USER_EMAIL_NOT_VERIFIED'
-                  }
-                })
-              }
-            })
+
+      if (!isNone(transition.queryParams.code)) {
+        if (this.get('session.isAuthenticated')) {
+          return this.transitionTo({ queryParams: { code: undefined } })
         }
+        // we have ?code qp
+        const { code } = transition.queryParams
+        return this.get('session').authenticate('authenticator:jwt', { identification: code, password: code, code })
+          .catch(error => {
+            if (error.err === 'USER_EMAIL_NOT_VERIFIED') {
+              this.transitionTo('error', {
+                queryParams: {
+                  errorCode: 'USER_EMAIL_NOT_VERIFIED'
+                }
+              })
+            }
+          })
+      }
     },
     model () {
         if (this.get('session.isAuthenticated')) {
@@ -68,5 +75,8 @@ export default Route.extend(ApplicationRouteMixin, {
       later(function(){
         controller.set('code', undefined)
       })
+    },
+    afterModel(model) {
+      this.set('headData.title', 'Coding Blocks Online')
     }
 })

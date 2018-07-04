@@ -7,16 +7,16 @@
 }
 
 .o-buy-top{
-  @include dimensions(100%, auto);
+  @include dimensions(100%, 90px);
   position: fixed;
   z-index: 101;
   padding: 10px 4%;
   background-color: $vp-background;
   transition: all 0.35s ease;
 
-  .o-image-card{
+  .card-image{
     margin: 0;
-    max-width: 60px;
+    max-width: 70px;
     min-width: 60px;
   }
 
