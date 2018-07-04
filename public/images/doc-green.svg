@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewbox=" 0 0 600 800">
+  <style>
+  .box {
+    fill: white;
+  }
+  .page {
+    fill: white;
+    stroke: #7FBF3F;
+    stroke-width: 15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .hide {
+    stroke: white;
+    stroke-width: 8;
+  }
+  </style>
+  <g>
+  <path class="box" d="M100,100 h200 a40,40 0 0 1 40,40 v220 a40,40 0 0 1 -40,40 h-200 a40,40 0 0 1 -40,-40 v-220 a40,40 0 0 1 40,-40 z" />
+  <line class="page" x1="100" y1="120" x2="225" y2="120" />
+  <line class="page" x1="100" y1="120" x2="100" y2="360" />
+  <line class="page" x1="100" y1="360" x2="300" y2="360" />
+  <line class="page" x1="300" y1="360" x2="300" y2="180" />
+  <polyline class="page" points="225,120 300,180 225,180 225,120" />
+  <path class="hide" d="M315,190 v-30z"/>
+  <path class="hide" d="M223,108.5 h30z"/>
+  <line class="page" x1="170" y1="285" x2="200" y2="319" />
+  <line class="page" x1="230" y1="285" x2="200" y2="319" />
+  <line class="page" x1="200" y1="220" x2="200" y2="319" />
+  </g>
+</svg>

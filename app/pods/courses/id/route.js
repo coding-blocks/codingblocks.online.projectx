@@ -1,7 +1,8 @@
 import Route from '@ember/routing/route';
+import { inject } from '@ember/service';
 
 export default Route.extend({
-  headData: Ember.inject.service(),
+  headData: inject(),
   beforeModel () {
       window.scrollTo(0,0);
     },

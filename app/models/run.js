@@ -14,7 +14,7 @@ export default DS.Model.extend({
   course: DS.belongsTo('course'),
   sections: DS.hasMany('sections'),
   user: DS.belongsTo('user'),
-  topRunAttempt: Ember.computed('runAttempts', function () {
+  topRunAttempt: computed('runAttempts', function () {
     return this.get('runAttempts').objectAt(0)
   }),
   runAttempts: DS.hasMany('run-attempt'),
@@ -38,7 +38,7 @@ export default DS.Model.extend({
       return acc + +section.get('totalContents')
     }, 0)
   }),
-  isAvailable: Ember.computed ('enrollmentStart', 'enrollmentEnd', function () {
+  isAvailable: computed ('enrollmentStart', 'enrollmentEnd', function () {
     let enrollmentStart = this.get ('enrollmentStart'),
       enrollmentEnd = this.get ('enrollmentEnd'),
       now = Math.floor (moment.now () / 1000)

@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 
 export function defaultTo(params) {
     const [val, defaultVal] = params
     return val || defaultVal
 }
 
-export default Ember.Helper.helper(defaultTo);
+export default helper(defaultTo);
