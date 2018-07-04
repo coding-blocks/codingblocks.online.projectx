@@ -1,6 +1,5 @@
 import { computed } from '@ember/object';
 import DS from 'ember-data';
-import { computed } from '@ember/object';
 import moment from 'moment';
 
 export default DS.Model.extend({
@@ -22,7 +21,6 @@ export default DS.Model.extend({
   runAttempts: DS.hasMany('run-attempt'),
   announcements: DS.hasMany('announcement'),
   percentComplete: DS.attr(),
-  isAvailable: computed ('enrollmentStart', 'enrollmentEnd', function () {
   totalContents: computed('sections.@each.contents.@each', function () {
     return this.get('sections').reduce((acc, section) => {
       return acc + section.get('contents.length')
@@ -41,11 +39,11 @@ export default DS.Model.extend({
       return acc + +section.get('totalContents')
     }, 0)
   }),
+  isAvailable: computed ('enrollmentStart', 'enrollmentEnd', function () {
     let enrollmentStart = this.get ('enrollmentStart'),
       enrollmentEnd = this.get ('enrollmentEnd'),
       now = Math.floor (moment.now () / 1000)
     ;
-
     return (enrollmentStart <= now) && (now < enrollmentEnd)
   })
 })
