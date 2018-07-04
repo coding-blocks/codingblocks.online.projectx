@@ -1,7 +1,8 @@
 import Route from '@ember/routing/route';
+import { inject } from '@ember/service'
 
 export default Route.extend({
-    headData: Ember.inject.service(),
+    headData: inject(),
     model () {
         return this.store.query('run', {
             enrolled: true,

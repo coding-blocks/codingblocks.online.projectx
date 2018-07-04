@@ -1,11 +1,12 @@
 import DS from 'ember-data';
 import env from 'codingblocks-online/config/environment'
+import { computed } from '@ember/object';
 
 export default DS.Model.extend({
     name: DS.attr(),
     hbContestId: DS.attr(),
     hbProblemId: DS.attr(),
-    hbUrl: Ember.computed ('hbContestId', 'hbProblemId', function () {
+    hbUrl: computed ('hbContestId', 'hbProblemId', function () {
     const hbContestId = this.get('hbContestId'),
         hbProblemId = this.get('hbProblemId')
 

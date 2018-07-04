@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
+import { inject } from '@ember/service'
 
 export default Route.extend({
-    headData: Ember.inject.service(),
+    headData: inject(),
     model () {
         return hash({
             runAttempt: this.modelFor('attempt'),

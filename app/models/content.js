@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import { computed } from '@ember/object';
 
 export default DS.Model.extend({
   contentable: DS.attr(),
@@ -10,13 +11,13 @@ export default DS.Model.extend({
   document: DS.belongsTo('document'),
   //attachment: DS.belongsTo('attachment'),
   video: DS.belongsTo('video'),
-  payload: Ember.computed('contentable', 'quiz', 'lecture', 'code-challenge', 'document', 'video', function () {
+  payload: computed('contentable', 'quiz', 'lecture', 'code-challenge', 'document', 'video', function () {
     return this.get(this.get('contentable'))
   }),
-  isDone: Ember.computed('progress.isDone', function () {
+  isDone: computed('progress.isDone', function () {
     return !! this.get('progress.isDone')
   }),
-  iconClass: Ember.computed('contentable', function () {
+  iconClass: computed('contentable', function () {
     switch (this.get('contentable')) {
       case 'document': return 'file-icon'; break;
       case 'code-challenge': return 'code-icon'; break;
