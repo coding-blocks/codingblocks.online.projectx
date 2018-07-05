@@ -87,4 +87,11 @@
       </div>
     {{/each}}
   </div>
+  {{#if showLoadMore}}
+   <div class="offset-5">
+     <div class="button-solid">
+       <button {{action "loadMore"}}>Load More</button>
+     </div>
+   </div>
+  {{/if}}
 </div>
