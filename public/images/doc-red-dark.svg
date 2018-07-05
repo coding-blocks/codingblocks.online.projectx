@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewbox=" 0 0 600 800">
+  <defs>
+    <linearGradient id='grad'>
+    <stop offset="60%" stop-color="#FF5177" />
+    <stop offset='100%' stop-color="#F18973"/>
+  </linearGradient>
+
+     <linearGradient id='gradient'>
+    <stop offset="0%" stop-color="#FF5177" />
+    <stop offset='100%' stop-color="#F18973"/>
+  </linearGradient>
+  </defs>
+ <style>
+  .box {
+    fill: black;
+  }
+  .page1 {
+    stroke: #FF5177;
+    stroke-width: 15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .page2 {
+    stroke: #F18973;
+    stroke-width: 15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .hide {
+    stroke: black;
+    stroke-width: 8;
+  }
+  </style>
+  <g>
+  <path class="box" d="M100,100 h200 a40,40 0 0 1 40,40 v220 a40,40 0 0 1 -40,40 h-200 a40,40 0 0 1 -40,-40 v-220 a40,40 0 0 1 40,-40 z" />
+  <rect x="100" y="113" width="125" height="15" rx="5" ry="5" fill="url(#grad)"/>
+  <polyline class="page1" points="100,120.5 100,365.5z" />
+  <rect x="100" y="353" width="202" height="20" rx="5" ry="5" fill="url(#gradient)"/>
+  <line class="page2" x1="300" y1="365" x2="300" y2="180" />
+  <polyline class="page2" points="225,120 300,180 225,180 225,120" />
+  <path class="hide" d="M315,190 v-30z"/>
+  <path class="hide" d="M223,108.5 h30z"/>
+  <line class="page2" x1="230" y1="285" x2="200" y2="319" />
+  <line class="page1" x1="170" y1="285" x2="200" y2="319" />
+  <rect x="193" y="220" width="15" height="105" rx="15" ry="15" fill="url(#gradient)"/>
+  </g>
+</svg>
