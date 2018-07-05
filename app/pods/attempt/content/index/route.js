@@ -26,7 +26,11 @@ export default Route.extend({
     },
     afterModel(model) {
       const sectionId = this.paramsFor('attempt').sectionId
-      const section = this.get('store').peekRecord('section', sectionId)
-      this.set('headData.title', section.get('name') + " | " + model.payload.get('name'));
+      if (sectionId) {
+        const section = this.get('store').peekRecord('section', sectionId)
+        this.set('headData.title', section.get('name') + " | " + model.payload.get('name'));
+      } else  {
+        this.set('headData.title', model.payload.get('name'))
+      }
     }
 });
