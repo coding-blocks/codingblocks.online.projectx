@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewbox=" 0 0 600 800">
+  <defs>
+    <linearGradient id='grad'>
+    <stop stop-color='#FF5177'/>
+    <stop offset='100%' stop-color='#F18973'/>
+  </linearGradient>
+  </defs>
+  <style>
+  .box {
+    fill: black;
+  }
+  .code1 {
+    stroke: #FF5177;
+    stroke-width: 20;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .code2 {
+    stroke: url(#grad);
+    stroke-width: 20;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .code3 {
+    stroke: #F18973;
+    stroke-width: 20;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  </style>
+<g>
+  <path class="box" d="M100,100 h230 a40,40 0 0 1 40,40 v210 a40,40 0 0 1 -40,40 h-260 a40,40 0 0 1 -40,-40 v-210 a40,40 0 0 1 40,-40 z" />
+  <polyline class="code1" points="150,210 90,250 150,290z" />
+  <polyline class="code2" points="185,305 210,180z" />
+  <polyline class="code3" points="248,185 308,225 248,265z" />
+  </g>
+</svg>
