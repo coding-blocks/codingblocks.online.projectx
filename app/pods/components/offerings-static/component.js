@@ -9,7 +9,7 @@ export default Component.extend({
       img: 'images/learning.svg'
     },{
     name: '24x7 Mentor Support',
-    body: `Our programming courses online are a flexible alternative that provides access to our in-depth curriculum-complete
+    body: `Our online programming courses are a flexible alternative that provides access to our in-depth curriculum-complete
       with real-time support from instructors, our own industry-tested learning platform, hands-on assignments and much more, all from the comfort of your abode.`,
     img: 'images/24_7.svg'
   },{
