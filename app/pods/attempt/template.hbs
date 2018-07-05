@@ -4,11 +4,11 @@
             <div class="button-dashed" {{action 'toggleSideBar'}}>
               <button>
                 {{#if (not sidebarCollapsed)}}
-                  <i class="far fa-times-circle"></i>
+                  <i class="far fa-times-circle"></i>&nbsp;
                 {{else}}
-                  <i class="fas fa-bars"></i>
+                  <i class="fas fa-bars"></i>&nbsp;
                 {{/if}}
-                Table of Content
+                Course Content
               </button>
             </div>
         </div>
@@ -23,7 +23,7 @@
           <div class="section-collapsor row justify-content-between" {{action 'toggleAccordian'}}>
 
             <div class="col-10 align-self-center">
-              TABLE OF CONTENTS</div>
+              COURSE CONTENTS</div>
             <div class="align-self-center">
               <i class="fas {{if accordianCollapsed 'fa-chevron-down' 'fa-chevron-up'}}"></i>
             </div>
