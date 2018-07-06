@@ -43,7 +43,6 @@ export default DS.Model.extend({
       enrollmentEnd = this.get ('enrollmentEnd'),
       now = Math.floor (moment.now () / 1000)
     ;
-
     return (enrollmentStart <= now) && (now < enrollmentEnd)
   })
 })

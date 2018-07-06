@@ -88,10 +88,12 @@
     {{/each}}
   </div>
   {{#if showLoadMore}}
-   <div class="offset-5">
-     <div class="button-solid">
-       <button {{action "loadMore"}}>Load More</button>
-     </div>
-   </div>
+  <div class="row">
+    <div class="offset-5">
+    </div>
+    <div class="col-2 button-dashed align-self-center">
+        <button {{action "loadMore"}}>Load More</button>
+      </div>
+  </div>
   {{/if}}
 </div>
