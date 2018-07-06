@@ -15,7 +15,7 @@ export default class CoursesRouter extends  Route {
             offset:params.offset
           }
         })
-    },
+    }
 
     setupController (controller, model) {
       controller.set('courses', model.toArray())
