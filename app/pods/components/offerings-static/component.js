@@ -9,7 +9,7 @@ export default Component.extend({
       img: 'images/learning.svg'
     },{
     name: '24x7 Mentor Support',
-    body: `Our online programming courses are a flexible alternative that provides access to our in-depth curriculum—complete
+    body: `Our online programming courses are a flexible alternative that provides access to our in-depth curriculum-complete
       with real-time support from instructors, our own industry-tested learning platform, hands-on assignments and much more, all from the comfort of your abode.`,
     img: 'images/24_7.svg'
   },{
@@ -30,7 +30,7 @@ export default Component.extend({
   },{
       name: 'Evaluation and Certification',
       body: `You will be assessed weekly in your path to becoming a Coding Blocks at this online certification course and all the practice,
-       assignments and tests will be taken on our online automated code judge. Get instructor-signed certificate with our
+       assignments and tests will be taken on our online automated code judge. Get an instructor-signed certificate with our
        logo to accredit your achievement after the course completion and increase your job prospects!`,
       img: 'images/certification-i.svg'
     }]
