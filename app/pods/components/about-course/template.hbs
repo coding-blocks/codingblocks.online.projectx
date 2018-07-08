@@ -292,6 +292,9 @@
           {{run.name}}
         </div>
         <div class="row">
+          <div class="card-text">
+            {{run.description}}
+          </div>
           <div class="batch">
             <div class="card-text grey">
               Batch Starts
@@ -348,7 +351,7 @@
                 {{/link-to}}
               {{else}}
                 <button {{action 'logInAndStartTrial' course.id run.id}}>
-                  Start Free Trial 
+                  Start Free Trial
                 </button>
               {{/if}}
             </div>
@@ -356,7 +359,7 @@
         </div>
       </div>
     </div>
-  
+
   {{else}}
     No available runs right now ! Please check back later or drop a line at admissions.codingblocks.com.
   {{/each}}
