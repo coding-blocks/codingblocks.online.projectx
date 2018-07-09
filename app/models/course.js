@@ -67,5 +67,9 @@ export default DS.Model.extend({
     }),
     identifier: computed('slug', 'id', function () {
       return this.get('slug') || this.get('id')
+    }),
+    ratings: DS.hasMany('rating'),
+    userRating: computed('ratings', function () {
+      return this.get('ratings').objectAt(0)
     })
 });

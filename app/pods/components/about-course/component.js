@@ -49,7 +49,7 @@ export default Component.extend({
       availableRuns = runs.filter (run => run.get ('isAvailable'))
     ;
 
-    this.set ('availableRuns', runs)
+    this.set ('availableRuns', availableRuns)
 
   },
 

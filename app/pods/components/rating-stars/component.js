@@ -17,7 +17,12 @@ export default class RatingStartComponent extends Component {
 
     constructor () {
         super(...arguments)
-        this.set('hasUserMarkedRating', false);
+        if (this.get('initialRating')) {
+            this.set('hasUserMarkedRating', true)
+            this.set('ratingMarkedByUser', this.get('initialRating.value'))
+        } else {
+            this.set('hasUserMarkedRating', false)
+        }
     }
 
     didReceiveAttrs () {
