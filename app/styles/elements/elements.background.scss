@@ -1,0 +1,6 @@
+@each $type in
+  (fingerprint), (user), (mail), (lines){
+    .#{$type}-bg{
+      background-image: url("/images/#{$type}.svg");
+    }
+}

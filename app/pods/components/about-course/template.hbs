@@ -65,14 +65,14 @@
         <div class="classroom-image col-md-2 col-xs-2 col-sm-2">
           <img src="{{course.logo}}" alt="course logo">
         </div>
-        <div class="classroom-text col-md-10 col-xs-10 col-sm-10">
+        <h1 class="classroom-text col-md-10 col-xs-10 col-sm-10">
           {{course.title}}
-        </div>
+        </h1>
       </div>
 
-      <p class="classroom-para">
+      <h2 class="classroom-para">
         {{course.subtitle}}
-      </p>
+      </h2>
 
       {{rating-stars-static course=course reviewCount=true}}
 
@@ -348,7 +348,7 @@
                 {{/link-to}}
               {{else}}
                 <button {{action 'logInAndStartTrial' course.id run.id}}>
-                  Start Free Trial 
+                  Start Free Trial
                 </button>
               {{/if}}
             </div>
@@ -356,6 +356,9 @@
         </div>
       </div>
     </div>
+  
+  {{else}}
+    No available runs right now ! Please check back later or drop a line at admissions.codingblocks.com.
   {{/each}}
 </div>
 </div>
