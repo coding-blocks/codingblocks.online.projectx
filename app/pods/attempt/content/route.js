@@ -1,6 +1,5 @@
 import Route from "@ember/routing/route";
 import { inject } from '@ember/service'
-// import config from 'codingblocks-online/config/environment'
 
 export default Route.extend({
     api: inject(),
