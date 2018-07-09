@@ -1,10 +1,8 @@
 import Component from "@ember/component";
 import { alias } from "ember-decorators/object/computed";
 import { service } from "ember-decorators/service";
-// import { action } from "ember-decorators/object";
 import { computed } from "ember-decorators/object";
 import { task, timeout } from "ember-concurrency";
-// import config from "codingblocks-online/config/environment";
 
 export default class CodeChallengeComponent extends Component {
   @service api;
@@ -124,7 +122,6 @@ export default class CodeChallengeComponent extends Component {
           }
         }
       );
-    //  console.log(result);
       if (result && result.result) {
         return result;
       }
