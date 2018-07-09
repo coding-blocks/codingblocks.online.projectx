@@ -49,6 +49,9 @@ module.exports = function(environment) {
     ENV.clientId = 7642172843
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.cb.lk'
+    ENV["ember-facebook-pixel"] = {
+      id: ''
+    };
   }
 
   if (environment === 'test') {
