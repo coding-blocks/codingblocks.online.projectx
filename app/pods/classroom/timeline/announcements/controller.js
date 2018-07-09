@@ -7,9 +7,8 @@ export default Controller.extend({
   limit: 3,
   actions: {
     updatePage: function() {
-      this.set("limit",this.get("meta.pagination.nextOffset")+this.get('limit'));
+      this.set("limit", this.get("meta.pagination.nextOffset")+this.get('limit'));
       if(this.get("limit") >= this.get("meta.pagination.count")) {
-          console.log("HH")
           this.set('visible', false);
       }
     }
