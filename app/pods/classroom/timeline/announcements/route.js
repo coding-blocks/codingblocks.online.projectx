@@ -13,6 +13,7 @@ export default Route.extend({
   model (params) {
       return hash({
           announcement: this.store.query("announcement", {
+            include: 'user',
             filter: {
               runId: this.paramsFor('classroom.timeline').runId,
             },

@@ -6,7 +6,7 @@
 		</div>
 		<div class="img-desc flex-row">
 			<div class="round-img">
-				<img src="" alt="">
+				<img src="{{announcement.user.photo}}" alt="{{announcement.user.firstname}}">
 			</div>
 			<div>
 				<div class="heading-d">
@@ -14,7 +14,7 @@
 						{{announcement.title}}
 					</div>
 					<div class="sub-h">
-						{{announcement.user.firstname}} |
+						{{announcement.user.firstname}} {{announcement.user.lastname}} |
 						{{announcement.elapsedTime}}
 					</div>
 				</div>

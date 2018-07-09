@@ -290,35 +290,38 @@
 		<div class="card my-course o-layout-card ">
 			<div class="card-heading o-text-card">
           {{run.name}}
-      </div>
-			<div class="row">
-				<div class="batch">
-					<div class="card-text grey">
-						Batch Starts
-					</div>
-					<div class="card-text">
-						{{moment-format (unix run.start) 'MMM Do YYYY'}}
-					</div>
-				</div>
+        </div>
+        <div class="row">
+          <div class="card-text">
+            {{run.description}}
+          </div>
+          <div class="batch">
+            <div class="card-text grey">
+              Batch Starts
+            </div>
+            <div class="card-text">
+              {{moment-format (unix run.start) 'MMM Do YYYY'}}
+            </div>
+          </div>
 
-				<div class="divider-v"></div>
+          <div class="divider-v"></div>
 
-				<div class="batch">
-					<div class="card-text grey">
-						Batch Ends
-					</div>
-					<div class="card-text">
-						{{moment-format (unix run.end) 'MMM Do YYYY'}}
-					</div>
-				</div>
-			</div>
+          <div class="batch">
+            <div class="card-text grey">
+              Batch Ends
+            </div>
+            <div class="card-text">
+              {{moment-format (unix run.end) 'MMM Do YYYY'}}
+            </div>
+          </div>
+        </div>
 
-			<div class="price">
-				{{format-price run.price}}
-			</div>
+        <div class="price">
+          {{format-price run.price}}
+        </div>
 
-			<div class="my-course-enroll row no-gutters">
-        <div class="col-8 align-self-end">
+        <div class="my-course-enroll row no-gutters">
+          <div class="col-8 align-self-end">
             <div>HURRY UP!</div>
             <div class="red">Enrollment ends {{moment-format (unix run.enrollmentEnd) 'MMM Do YYYY'}} </div>
         </div>	

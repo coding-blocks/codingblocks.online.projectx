@@ -12,6 +12,7 @@ export default DS.Model.extend({
   price: DS.attr(),
   runAttemptId: DS.attr(),
   course: DS.belongsTo('course'),
+  description:DS.attr(),
   sections: DS.hasMany('sections'),
   user: DS.belongsTo('user'),
   productId: DS.attr(),

@@ -43,7 +43,7 @@ export default DS.Model.extend({
         const runs = this.get('runs')
         const now = +new Date() / 1000.0
         const currentRun = runs.find( (run, index) => {
-            return run.get('start') < now && run.get('end') > now
+            return run.get('enrollmentStart') < now && run.get('enrollmentEnd') > now
         })
         return currentRun || runs.sortBy('start').objectAt(0)
     }),
