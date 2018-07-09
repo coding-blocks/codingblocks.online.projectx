@@ -2,19 +2,16 @@ import Component from "@ember/component";
 import { later } from "@ember/runloop";
 import { task, timeout } from "ember-concurrency";
 import { action } from "ember-decorators/object";
-import { alias, and } from "ember-decorators/object/computed";
+import { alias } from "ember-decorators/object/computed";
 import { service } from "ember-decorators/service";
 
 export default class SearchBoxComponent extends Component {
   tagName = 'span'
   hideResultsBox = true
-  IsSearchBoxClosed = true
   qs = ''
 
   @service api
   @service router
-
-  @and ('hideResultsBox', 'IsSearchBoxClosed') closeResultsBox
 
   @alias('searchTask.lastSuccessful.value') results
 
@@ -33,7 +30,6 @@ export default class SearchBoxComponent extends Component {
 
   @action
   transitonToResult (course) {
-    this.send('allowBoxToBeClosed')
     if (course.userEnrollment && course.userEnrollment.courseId) {
       return this.get('router').transitionTo("classroom.timeline", 
       course.userEnrollment.courseId,
@@ -50,16 +46,6 @@ export default class SearchBoxComponent extends Component {
   }
   @action
   hideResult () {
-    this.set('hideResultsBox', true)
-  }
-
-  @action
-  allowBoxToBeClosed () {
-    this.set('IsSearchBoxClosed', true)
-  }
-
-  @action
-  keepBoxOpen () {
-    this.set('IsSearchBoxClosed', false)
+    later(this, () => this.set('hideResultsBox', true), 100);
   }
 }

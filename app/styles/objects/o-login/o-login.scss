@@ -1,4 +1,5 @@
 .login-signup{
+  @include dimensions(100%, auto);
   background: url("/images/loginsvg.svg") no-repeat 50% -50px;
   background-size: 1250px;
 }

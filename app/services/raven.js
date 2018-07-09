@@ -1,11 +1,14 @@
 import RavenLogger from 'ember-cli-sentry/services/raven';
+import config from 'codingblocks-online/config/environment';
 
 export default RavenLogger.extend({
 
   unhandledPromiseErrorMessage: '',
 
   captureException(/* error */) {
-    console.error(...arguments)
+    if (config.environment == 'development') {
+      console.error(...arguments);
+    }
     this._super(...arguments);
   },
 

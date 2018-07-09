@@ -37,7 +37,7 @@ export default Component.extend(KeyboardShortcuts, {
           })
           xhr.open('GET', `${url}?${encoded}`, true)
         } catch (e) {
-          console.error(e)
+        //  console.error(e)
         }
       }
     }

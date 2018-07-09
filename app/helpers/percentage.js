@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 
 export function percentage(params) {
     const [x, total] = params
@@ -6,4 +6,4 @@ export function percentage(params) {
     return result || 0
 }
 
-export default Ember.Helper.helper(percentage);
+export default helper(percentage);

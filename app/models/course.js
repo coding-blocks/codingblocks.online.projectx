@@ -58,7 +58,6 @@ export default DS.Model.extend({
       return `${env.discussBaseUrl}/c/${this.get('categoryId')}/${this.get('doubtSubCategoryId')}`
     }),
     difficultyName: computed('difficulty', function () {
-      console.log(this.get('difficulty'))
       switch(+this.get('difficulty')) {
         case 0: return 'beginner' ; break;
         case 1: return 'advanced'; break;

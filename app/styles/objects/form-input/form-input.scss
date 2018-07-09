@@ -1,7 +1,10 @@
 .input-text{
   &.icon{
-    background: $nav-border url("/images/fingerprint.png") no-repeat 30px center;
     background-size: 35px;
     padding-left: 95px;
+    background-color: $nav-border;
+    background-repeat: no-repeat;
+    background-position-x: 30px;
+    background-position-y: center;
   }
 }
