@@ -16,7 +16,7 @@
 			{{#accordian-head announcement=announcement course=course}}
 			<div class="accordian-li">
 				<div class="classroom-para">
-					{{announcement.text}}
+					{{markdown-to-html announcement.text}}
 				</div>
 			</div>
 			{{/accordian-head}}
