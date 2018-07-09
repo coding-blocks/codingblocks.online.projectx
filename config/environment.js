@@ -84,6 +84,7 @@ module.exports = function(environment) {
     ENV["ember-facebook-pixel"] = {
       id: '1947467048859851'
     };
+    ENV.dukaanUrl = 'https://dukaan.codingblocks.com'
   }
 
   if (environment === 'staging') {
