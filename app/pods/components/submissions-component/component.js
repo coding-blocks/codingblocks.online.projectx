@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { service } from 'ember-decorators/service'
-// import { action } from 'ember-decorators/object'
 
 export default class SubmissionsComponent extends Component {
   @service hbApi
@@ -16,9 +15,4 @@ export default class SubmissionsComponent extends Component {
       this.set('problem', this.get('store').peekAll('problem').objectAt(0))
     }
   }
-
-  // @action
-  // viewSubmission (submission) {
-  //   this.get('selectedLanguage').source = submission.get('source')
-  // }
 }
