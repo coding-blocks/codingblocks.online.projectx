@@ -13,6 +13,7 @@ export default Route.extend({
   model (params) {
       return hash({
           announcement: this.store.query("announcement", {
+            include: 'user',
             filter: {
               runId: this.paramsFor('classroom.timeline').runId,
             },
@@ -27,7 +28,6 @@ export default Route.extend({
   setupController(controller, model) {
     controller.set("announcements", model.announcement)
     controller.set("meta",model.announcement.get("meta"))
-    console.log(model.announcement);
     controller.set("course", model.run.get("course"))
   },
 });

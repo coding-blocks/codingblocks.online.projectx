@@ -4,7 +4,6 @@
   </div>
   <div class="grid row">
     {{#each courses as |course|}}
-
       <div class="card-layout col-md-4 col-sm-6">
         <div class="card o-layout-card o-course-card">
           <div class="difficulty-div">
@@ -19,12 +18,12 @@
               <img src="{{defaultTo course.logo '/images/c++'}}">
             </div>
 
-            <div class="card-heading o-text-card">
+            <h1 class="card-heading o-text-card">
               {{#link-to 'courses.id' course.identifier activeClass=""}} {{course.title}} {{/link-to}}
-            </div>
-            <div class="card-text">
+            </h1>
+            <h2 class="card-text">
               {{course.subtitle}}
-            </div>
+            </h2>
           </div>
 
           <div class="row no-gutters align-items-center">
@@ -87,4 +86,13 @@
       </div>
     {{/each}}
   </div>
+  {{#if showLoadMore}}
+  <div class="row">
+    <div class="offset-5">
+    </div>
+    <div class="col-2 button-dashed align-self-center">
+        <button {{action "loadMore"}}>Load More</button>
+      </div>
+  </div>
+  {{/if}}
 </div>

@@ -8,6 +8,7 @@ export default Component.extend({
 
   loginUrl: `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
   session: inject(),
+  api: inject(),
   router: inject(),
 
   _redirectToOneauth () {
@@ -22,6 +23,22 @@ export default Component.extend({
     logInAndStartTrial (courseId, runId) {
       localStorage.setItem('redirectionPath', this.get('router').urlFor('classroom.timeline.index', {courseId, runId}))
       this._redirectToOneauth()
+    },
+    enrollNow (runId) {
+      if(this.get('session.isAuthenticated')){
+        this.get('api').request(`/runs/${runId}/buy`).then(resp => {
+          window.location.href = env.dukaanUrl
+        }).catch (err => {
+          this.get('router').transitionTo('error', {
+            queryParams: {
+              errorCode: 'DUKKAN_ERROR'
+            }
+          })
+        })
+      }
+      else {
+        this.send('logIn')
+      }
     }
   },
 
@@ -32,7 +49,7 @@ export default Component.extend({
       availableRuns = runs.filter (run => run.get ('isAvailable'))
     ;
 
-    this.set ('availableRuns', runs)
+    this.set ('availableRuns', availableRuns)
 
   },
 

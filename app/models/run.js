@@ -1,5 +1,5 @@
-import DS from 'ember-data';
 import { computed } from '@ember/object';
+import DS from 'ember-data';
 import moment from 'moment';
 
 export default DS.Model.extend({
@@ -12,8 +12,10 @@ export default DS.Model.extend({
   price: DS.attr(),
   runAttemptId: DS.attr(),
   course: DS.belongsTo('course'),
+  description:DS.attr(),
   sections: DS.hasMany('sections'),
   user: DS.belongsTo('user'),
+  productId: DS.attr(),
   topRunAttempt: Ember.computed('runAttempts', function () {
     return this.get('runAttempts').objectAt(0)
   }),
@@ -38,12 +40,11 @@ export default DS.Model.extend({
       return acc + +section.get('totalContents')
     }, 0)
   }),
-  isAvailable: Ember.computed ('enrollmentStart', 'enrollmentEnd', function () {
+  isAvailable: computed ('enrollmentStart', 'enrollmentEnd', function () {
     let enrollmentStart = this.get ('enrollmentStart'),
       enrollmentEnd = this.get ('enrollmentEnd'),
       now = Math.floor (moment.now () / 1000)
     ;
-
     return (enrollmentStart <= now) && (now < enrollmentEnd)
   })
 })

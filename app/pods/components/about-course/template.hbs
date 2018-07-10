@@ -65,14 +65,14 @@
         <div class="classroom-image col-md-2 col-xs-2 col-sm-2">
           <img src="{{course.logo}}" alt="course logo">
         </div>
-        <div class="classroom-text col-md-10 col-xs-10 col-sm-10">
+        <h1 class="classroom-text col-md-10 col-xs-10 col-sm-10">
           {{course.title}}
-        </div>
+        </h1>
       </div>
 
-      <p class="classroom-para">
+      <h2 class="classroom-para">
         {{course.subtitle}}
-      </p>
+      </h2>
 
       {{rating-stars-static course=course reviewCount=true}}
 
@@ -285,13 +285,16 @@
 </div>
 
 <div class="grid row">
-  {{#each availableRuns as |run|}}
-    <div class="card-layout col-md-4 col-sm-6">
-      <div class="card my-course o-layout-card ">
-        <div class="card-heading o-text-card">
+    {{#each availableRuns as |run|}}
+	<div class="card-layout col-md-4 col-sm-6">
+		<div class="card my-course o-layout-card ">
+			<div class="card-heading o-text-card">
           {{run.name}}
         </div>
         <div class="row">
+          <div class="card-text">
+            {{run.description}}
+          </div>
           <div class="batch">
             <div class="card-text grey">
               Batch Starts
@@ -321,41 +324,42 @@
           <div class="col-8 align-self-end">
             <div>HURRY UP!</div>
             <div class="red">Enrollment ends {{moment-format (unix run.enrollmentEnd) 'MMM Do YYYY'}} </div>
-          </div>
+        </div>	
+				<div class="button-parent col-4">
+                                    <a href="#" {{action 'enrollNow' run.id}}>
+                                        <div class="button-solid">
+                                            <button>Enroll Now</button>
+                                        </div>
+                                    </a>
+				</div>
 
-          <div class="button-parent col-4">
-            <a href="{{course.buyNowLink}}">
-                <div class="button-solid">
-                    <button>Enroll Now</button>
-                </div>
-            </a>
-          </div>
+			</div>
 
-        </div>
+			<div class="card-mentor-divider"></div>
 
-        <div class="card-mentor-divider"></div>
-
-        <div class="row no-gutters">
-          <div class="col-8 align-self-center">
-            You may also try our
-            free lectures:
-          </div>
-          <div class="button-parent col-4">
-            <div class="button-dashed">
+			<div class="row no-gutters">
+				<div class="col-8 align-self-center">
+					You may also try our
+					free lectures:
+				</div>
+				<div class="button-parent col-4">
+					<div class="button-dashed">
               {{#if session.isAuthenticated}}
                 {{#link-to "classroom.timeline.index" course.id run.id tagName="button" activeClass=""}}
                   Start Free Trial
                 {{/link-to}}
               {{else}}
                 <button {{action 'logInAndStartTrial' course.id run.id}}>
-                  Start Free Trial 
+                  Start Free Trial
                 </button>
               {{/if}}
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+  {{else}}
+    No available runs right now ! Please check back later or drop a line at admissions.codingblocks.com.
   {{/each}}
 </div>
 </div>

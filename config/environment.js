@@ -4,7 +4,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'codingblocks-online',
     podModulePrefix: 'codingblocks-online/pods',
-    environment,
+    environment: environment,
     rootURL: '/',
     locationType: 'auto',
     sentry: {
@@ -38,6 +38,8 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.dukaanUrl = 'https://dukaan.codingblocks.xyz'
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -49,6 +51,9 @@ module.exports = function(environment) {
     ENV.clientId = 7642172843
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.cb.lk'
+    ENV["ember-facebook-pixel"] = {
+      id: ''
+    };
   }
 
   if (environment === 'test') {
@@ -61,6 +66,9 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+    ENV["ember-facebook-pixel"] = {
+      id: ''
+    };
   }
 
   if (environment === 'production') {
@@ -76,6 +84,7 @@ module.exports = function(environment) {
     ENV["ember-facebook-pixel"] = {
       id: '1947467048859851'
     };
+    ENV.dukaanUrl = 'https://dukaan.codingblocks.com'
   }
 
   if (environment === 'staging') {
@@ -85,6 +94,9 @@ module.exports = function(environment) {
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.codingblocks.xyz'
     ENV.sentry.dsn = 'https://a1e58068dc5c48edb9b313b1efbe22ec@sentry.cb.lk/19'
+    ENV["ember-facebook-pixel"] = {
+      id: ''
+    };
   }
 
   if (process.env.oss) {
