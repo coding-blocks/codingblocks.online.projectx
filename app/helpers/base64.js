@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 
 export function base64(param) {
   if(param[0] === 'decode')
@@ -9,4 +9,4 @@ export function base64(param) {
     return 'INVALID 1st argument, pass either "decode" or "encode"'
 }
 
-export default Ember.Helper.helper(base64);
+export default helper(base64);

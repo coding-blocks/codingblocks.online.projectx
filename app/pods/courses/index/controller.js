@@ -19,6 +19,9 @@ export default Ember.Controller.extend({
     const nextCourses = yield this.store.query ('course', {
       include: 'runs',
       sort: 'difficulty',
+      filter: {
+        unlisted: false
+      },
       page:{
         limit: this.get('limit'),
         offset: this.get('offset')

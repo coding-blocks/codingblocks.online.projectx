@@ -25,6 +25,7 @@ Router.map(function() {
   this.route('error');
   this.route('loading');
   this.route('application-loading');
+  this.route('payment_webhook');
   this.route('notifications', function() {});
   this.route('otp');
   this.route('logout');

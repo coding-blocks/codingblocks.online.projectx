@@ -10,6 +10,9 @@ export default class CoursesRouter extends  Route {
          return this.store.query ('course', {
           include: 'runs',
           sort: 'difficulty',
+          filter: {
+            unlisted: false
+          },
           page:{
             limit:params.limit,
             offset:params.offset

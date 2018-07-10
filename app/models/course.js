@@ -43,7 +43,7 @@ export default DS.Model.extend({
         const runs = this.get('runs')
         const now = +new Date() / 1000.0
         const currentRun = runs.find( (run, index) => {
-            return run.get('start') < now && run.get('end') > now
+            return run.get('enrollmentStart') < now && run.get('enrollmentEnd') > now
         })
         return currentRun || runs.sortBy('start').objectAt(0)
     }),
@@ -58,7 +58,6 @@ export default DS.Model.extend({
       return `${env.discussBaseUrl}/c/${this.get('categoryId')}/${this.get('doubtSubCategoryId')}`
     }),
     difficultyName: computed('difficulty', function () {
-      console.log(this.get('difficulty'))
       switch(+this.get('difficulty')) {
         case 0: return 'beginner' ; break;
         case 1: return 'advanced'; break;

@@ -4,7 +4,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'codingblocks-online',
     podModulePrefix: 'codingblocks-online/pods',
-    environment,
+    environment: environment,
     rootURL: '/',
     locationType: 'auto',
     sentry: {
@@ -37,6 +37,8 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+
+  ENV.dukaanUrl = 'https://dukaan.codingblocks.xyz'
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -82,6 +84,7 @@ module.exports = function(environment) {
     ENV["ember-facebook-pixel"] = {
       id: '1947467048859851'
     };
+    ENV.dukaanUrl = 'https://dukaan.codingblocks.com'
   }
 
   if (environment === 'staging') {

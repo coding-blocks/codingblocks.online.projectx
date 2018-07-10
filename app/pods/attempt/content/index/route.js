@@ -28,9 +28,9 @@ export default Route.extend({
       const sectionId = this.paramsFor('attempt').sectionId
       if (sectionId) {
         const section = this.get('store').peekRecord('section', sectionId)
-        this.set('headData.title', section.get('name') + " | " + model.payload.get('name'));
+        this.set('headData.title', section.get('name') + " | " + model.payload.get('name') + " player ");
       } else  {
-        this.set('headData.title', model.payload.get('name'))
+        this.set('headData.title', model.payload.get('name') + " player ")
       }
     }
 });
