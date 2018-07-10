@@ -8,37 +8,37 @@
         <div class="o-overview-recent row">
             <div class="col-12 col-md-6">
                 <div class="card">
-                    <div class="heading">Recent Doubts</div>
+                    <div class="heading">
+                        Recent Doubts
+                    </div>
                     <div class="card-content">
-                    {{#if (eq doubts.length 0)}}
-                  <div class="row">
-                    <div class="notify-type col-2">
-                      <div class="notify-icon">
-                        <span class="notify-dot"></span>
-                        <img src="/images/doubt.png" alt="">
-                      </div>
+                        {{#if (eq doubts.length 0)}}
+                            <div class="row">
+                              <div class="notify-type col-2"></div>
+                              <div class="notify-icon"></div>
+                                <span class="notify-dot"></span>
+                                <img src="/images/doubt.png" alt="">
+                            </div>
+                            <div class="card-text col-10 align-self-center">
+                              All the recent doubts asked by your peers will be
+                              displayed here !
+                            </div>
+                        {{else}}
+                            {{#each doubts as |doubt|}}
+                            <div class="row">
+                              <div class="notify-type col-2">
+                                <div class="notify-icon">
+                                  <span class="notify-dot"></span>
+                                  <img src="/images/doubt.png" alt="">
+                                </div>
+                              </div>
+                              <div class="card-text col-10 align-self-center">
+                                  {{doubt.title}}
+                              </div>
+                            </div>
+                            {{/each}}
+                        {{/if}}
                     </div>
-                    <div class="card-text col-10 align-self-center">
-                      All the recent doubts asked by your peers will be
-                      displayed here !
-                    </div>
-                  </div>
-              {{else}}
-                  {{#each doubts as |doubt|}}
-                  <div class="row">
-                    <div class="notify-type col-2">
-                      <div class="notify-icon">
-                        <span class="notify-dot"></span>
-                        <img src="/images/doubt.png" alt="">
-                      </div>
-                    </div>
-                    <div class="card-text col-10 align-self-center">
-                        {{doubt.title}}
-                    </div>
-                  </div>
-              {{/each}}
-              </div>
-          {{/if}}
                     <div class="pull-right">
                       {{#link-to 'classroom.timeline.doubts' tagName='div'}}
                         Browse
@@ -52,32 +52,32 @@
               <div class="card">
                 <div class="heading">Announcements</div>
                 <div class="card-content">
-                {{#unless announcements.length}}
-                  <div class="row">
-                    <div class="notify-type col-2">
-                      <div class="notify-icon">
-                        <span class="notify-dot new"></span>
-                        <img src="/images/announcement-dark.png" alt="">
+                  {{#unless announcements.length}}
+                    <div class="row">
+                      <div class="notify-type col-2">
+                        <div class="notify-icon">
+                          <span class="notify-dot new"></span>
+                          <img src="/images/announcement-dark.png" alt="">
+                        </div>
+                      </div>
+                      <div class="card-text col-10 align-self-center">
+                        Coding Blocks Online New Design Released!
                       </div>
                     </div>
-                    <div class="card-text col-10 align-self-center">
-                      Coding Blocks Online New Design Released!
+                  {{/unless}}
+                  {{#each announcements as |announcement|}}
+                    <div class="row">
+                      <div class="notify-type col-2">
+                        <div class="notify-icon">
+                          <span class="notify-dot new"></span>
+                          <img src="/images/announcement-dark.png" alt="">
+                        </div>
+                      </div>
+                      <div class="card-text col-10 align-self-center">
+                        {{announcement.text}}
+                      </div>
                     </div>
-                  </div>
-                {{/unless}}
-                {{#each announcements as |announcement|}}
-                <div class="row">
-                  <div class="notify-type col-2">
-                    <div class="notify-icon">
-                      <span class="notify-dot new"></span>
-                      <img src="/images/announcement-dark.png" alt="">
-                    </div>
-                  </div>
-                  <div class="card-text col-10 align-self-center">
-                    {{announcement.text}}
-                  </div>
-                </div>
-                {{/each}}
+                  {{/each}}
                 </div>
                 <div class="pull-right">
                  {{#link-to 'classroom.timeline.announcements' tagName='div'}}
@@ -85,9 +85,7 @@
                    All{{/link-to}}
                 </div>
               </div>
-
             </div>
-
         </div>
     </div>
 
@@ -110,7 +108,6 @@
           <div class="para col-4 align-self-center">
             100+ lecture Video Content
           </div>
-
           <div class="img-box col-2 align-self-center">
             <div class="img-container">
               <div class="round-img">
