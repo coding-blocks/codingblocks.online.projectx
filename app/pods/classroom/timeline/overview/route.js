@@ -34,5 +34,6 @@ export default Route.extend({
   },
   afterModel(model) {
     this.set('headData.title', model.run.get('course.title'))
+    $('.label_39').show()
   }
 });

@@ -36,7 +36,7 @@ export default Route.extend({
 						})
 				} else {
 					throw err
-				}		
+				}
 			})
 	},
 	setupController(controller, model) {
@@ -45,5 +45,8 @@ export default Route.extend({
 		// controller.set("sectionId", this.paramsFor('attempt.content').sectionId)
 		controller.set("course", model.get('run.course'))
 		controller.set("sections", model.get("run.sections"))
-	}
+	},
+  afterModel(){
+    $('.label_39').hide()
+  }
 });
