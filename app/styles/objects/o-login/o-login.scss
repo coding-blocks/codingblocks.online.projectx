@@ -6,9 +6,13 @@
 
 .o-login{
   @include dimensions(80%, auto);
-  @include padding-mixin(60px, 72px, 60px, 80px);
-  @include margin(40px, auto, 0, auto);
+  @include padding-mixin(40px, 72px, 60px, 80px);
+  @include margin(0, auto, 0, auto);
   max-width: 828px;
+
+  .input-text{
+    height: 60px;
+  }
 
   .input-btn{
     margin-bottom: 28px;
@@ -21,7 +25,8 @@
   .button-solid{
     @include dimensions(30%, 62px);
     font-size: $font-sm;
-    max-width: 198px;
+    max-width: 198px;    
+    min-width: 120px;
   }
 
   .signup{

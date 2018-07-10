@@ -13,6 +13,13 @@ body {
   @include font($global-font-family, 16px, normal);
   padding-top: 100px;
 }
+
+@media screen and (max-width:  575px) {
+  body {
+    padding-top: 50px;
+  }
+}
+
 @media print {
   *,
   *:before,

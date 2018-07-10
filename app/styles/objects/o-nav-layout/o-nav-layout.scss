@@ -19,9 +19,13 @@
 }
 
 .main-nav{
+  .nav-list {
+    margin-top: 21px;
+  }
+  
   .round-img{
-    @include dimensions(60px, 60px);
-    
+    @include dimensions(50px, 50px);
+    margin: 5px 10px 0 0;
     float: right;
     cursor: pointer;
   }
