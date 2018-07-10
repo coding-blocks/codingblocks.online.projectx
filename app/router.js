@@ -30,6 +30,7 @@ Router.map(function() {
   this.route('otp');
   this.route('logout');
   this.route('404');
+  this.route('payment-webhook-loading');
 });
 
 export default Router;
