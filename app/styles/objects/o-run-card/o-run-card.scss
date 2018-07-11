@@ -1,5 +1,5 @@
-.my-course {
-  padding: 10% 7%;
+.o-run-card {
+  padding: 8% 7%;
   height: auto;
 
   .card-heading{
@@ -65,12 +65,30 @@
 
   .divider-v{
     @include dimensions(1px, 35px);
-    margin: 0 18px;
+    margin: 0 3%;
     background: $global-font-text-color;
   }
 
   .card-mentor-divider{
-    margin: 40px 0;
+    margin: 25px 0;
+  }
+
+  .tag-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+
+  .pill{
+    @include margin(5px, 10px, 5px, 0);
+  }
+
+  .pill-sm{
+    @include margin(3px, 6px, 3px, 0);
+  }
+
+  .font-sm{
+    font-size: $card-md;
   }
 
   .row{
