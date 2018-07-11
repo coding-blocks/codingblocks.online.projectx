@@ -41,6 +41,13 @@ export default Route.extend({
   actions: {
     reloadRoute() {
       this.refresh();
-    }
+    },
+    didTransition () {
+			try {
+				jivo_init()
+			} finally {
+				return true
+			}
+		},
   }
 });

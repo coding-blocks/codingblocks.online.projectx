@@ -1,7 +1,8 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import DS from 'ember-data';
-import { isBadRequestError } from 'ember-ajax/errors'
+import { isBadRequestError } from 'ember-ajax/errors';
+import $ from 'jquery';
 
 export default Route.extend({
 	api: service(),
@@ -45,5 +46,14 @@ export default Route.extend({
 		// controller.set("sectionId", this.paramsFor('attempt.content').sectionId)
 		controller.set("course", model.get('run.course'))
 		controller.set("sections", model.get("run.sections"))
+	},
+	actions: {
+		didTransition () {
+			try {
+				jivo_init()
+			} finally {
+				return true
+			}
+		}
 	}
 });
