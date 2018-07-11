@@ -1,7 +1,7 @@
 .o-content-section{
     background-color: $vp-background;
     height: 100vh;//set according to height of navbar;
-    margin-top: -100px;
+    margin-top: -50px;
 
     .header{
         @include dimensions(100%, 100%);
