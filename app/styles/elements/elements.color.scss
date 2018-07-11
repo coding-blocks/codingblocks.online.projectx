@@ -6,6 +6,6 @@ $list:  (red, $button-element-level)
 
 @each $type, $color in $list {
   .#{$type}{
-      color: $color;
+      color: $color  !important;
   }
 }

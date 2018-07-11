@@ -1,0 +1,8 @@
+@media screen and (max-width: 575px){
+  .pill{
+    @include padding-s(0, 12px);
+
+    font-size: $card-sms;
+    height: 17px;
+  }
+}

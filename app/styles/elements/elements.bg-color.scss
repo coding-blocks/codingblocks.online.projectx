@@ -6,6 +6,6 @@ $list:  (red, $fail-red)
 
 @each $type, $color in $list {
   .bg-#{$type}{
-    background-color: $color;
+    background-color: $color  !important;
   }
 }

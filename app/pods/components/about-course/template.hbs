@@ -287,7 +287,7 @@
 <div class="grid row">
     {{#each availableRuns as |run|}}
 	<div class="card-layout col-md-4 col-sm-6">
-		<div class="card my-course o-layout-card ">
+		<div class="card o-run-card o-layout-card ">
 			<div class="card-heading o-text-card">
           {{run.description}}
         </div>
@@ -326,17 +326,29 @@
             <div class="red">Enrollment ends {{moment-format (unix run.enrollmentEnd) 'MMM Do YYYY'}} </div>
         </div>	
 				<div class="button-parent col-4">
-                                    <a href="#" {{action 'enrollNow' run.id}}>
-                                        <div class="button-solid">
-                                            <button>Enroll Now</button>
-                                        </div>
-                                    </a>
+          <a href="#" {{action 'enrollNow' run.id}}>
+              <div class="button-solid">
+                  <button>Enroll Now</button>
+              </div>
+          </a>
 				</div>
 
 			</div>
 
 			<div class="card-mentor-divider"></div>
+      {{#if run.tags.length}}
+        <div class="font-sm">Major topics covered</div>
+        <div class="tag-container">
+          {{#each run.tags as |tag|}}
+            <div class={{if (gt run.tags.length 6) "pill-sm" "pill"}}>
+              {{tag.name}}
+            </div>
+          {{/each}}
+        </div>
 
+        <div class="card-mentor-divider"></div>
+      {{/if}}
+      
 			<div class="row no-gutters">
 				<div class="col-8 align-self-center">
 					You may also try our
