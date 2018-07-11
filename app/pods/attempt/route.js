@@ -48,13 +48,12 @@ export default Route.extend({
 		controller.set("sections", model.get("run.sections"))
 	},
 	actions: {
-		willTransition (transition) {
-			$('.label_39').show()
-			return true
-		},
 		didTransition () {
-			$('.label_39').hide()
-			return true
+			try {
+				jivo_init()
+			} finally {
+				return true
+			}
 		}
 	}
 });
