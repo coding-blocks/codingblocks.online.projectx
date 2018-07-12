@@ -43,11 +43,11 @@ export default Route.extend({
       this.refresh();
     },
     didTransition () {
-			try {
-				jivo_init()
-			} finally {
-				return true
-			}
+			$(function () {
+        $('body > jdiv')[0].style.setProperty('display', 'block', 'important')
+        $('#jivo-iframe-container')[0].style.setProperty('display', 'block', 'important')
+      })
+      return true
 		},
   }
 });
