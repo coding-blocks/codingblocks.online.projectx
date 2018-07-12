@@ -326,11 +326,14 @@
             <div class="red">Enrollment ends {{moment-format (unix run.enrollmentEnd) 'MMM Do YYYY'}} </div>
         </div>	
 				<div class="button-parent col-4">
-          <a href="#" {{action 'enrollNow' run.id}}>
-              <div class="button-solid">
-                  <button>Enroll Now</button>
-              </div>
-          </a>
+                                    <a href="#" {{action (perform enrollNowTask run.id)}}>
+                                        <div class="button-solid">
+                                            <button>
+                                              {{if enrollNowTask.isRunning 'Enrolling...' 'Enroll Now'}}
+                                              
+                                            </button>
+                                        </div>
+                                    </a>
 				</div>
 
 			</div>
