@@ -7,8 +7,9 @@
       <h1 class="classroom-text col-10">
         {{#link-to 'courses.id' run.course.identifier activeClass=""}} {{run.course.title}} {{/link-to}}
         <div class="rating mob">
+          <br>
           {{#if runAttempt.premium}}
-            {{#rating-stars course=run.course initialRating=run.course.userRating}} {{/rating-stars}}
+            {{#rating-stars course=run.course}} {{/rating-stars}}
           {{else}}
             {{rating-stars-static course=run.course reviewCount=true}}
           {{/if}}
@@ -19,8 +20,9 @@
       {{run.course.summary}}
     </h2>
     <div class="rating">
+      <br>
       {{#if runAttempt.premium}}
-        {{#rating-stars course=run.course initialRating=run.course.userRating}} {{/rating-stars}}
+        {{#rating-stars course=run.course}} {{/rating-stars}}
       {{else}}
         {{rating-stars-static course=run.course reviewCount=true}}
       {{/if}}
