@@ -29,9 +29,9 @@ export default Component.extend({
     img: 'images/revise.svg'
   },{
       name: 'Evaluation and Certification',
-      body: `You will be assessed weekly in your path to becoming a Coding Blocks at this online certification course and all the practice,
+      body: `You will be assessed weekly in your path to becoming a programming expert at this online certification course and all the practice,
        assignments and tests will be taken on our online automated code judge. Get instructor-signed certificate with our
-       logo to accredit your achievement after the course completion and increase your job prospects!`,
+       seal to accredit your achievement after the course completion and increase your job prospects!`,
       img: 'images/certification-i.svg'
     }]
 });
