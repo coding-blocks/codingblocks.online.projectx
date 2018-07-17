@@ -30,6 +30,26 @@
           <li class="nav-items pointer">
             {{notification-dropdown}}
           </li>
+
+          <div class="round-img">
+              <img src="{{currentUser.user.photo}}" alt="">
+          </div>
+
+          <div class="card">
+              <div class="top-offset"></div>
+              <div class="nav-info">
+                  <div class="flex-row justify-content-end grey">
+                    <a href="https://account.codingblocks.com/users/me" target="_black">
+                      <span class="pointer">MY PROFILE</span>
+                    </a>
+                      
+                  </div>
+                  <div class="separator"></div>
+                  <div class="flex-row justify-content-end grey">
+                      <span class="pointer">{{login-button}}</span>
+                  </div>
+              </div>
+          </div>
           {{else}}
           <li class="nav-items pointer">
             <div class="button-solid">
@@ -38,28 +58,6 @@
           </li>
         {{/if}}
       </ul>
-
-      {{#if session.isAuthenticated}}
-        <div class="round-img">
-            <img src="{{currentUser.user.photo}}" alt="">
-        </div>
-
-        <div class="card">
-            <div class="top-offset"></div>
-            <div class="nav-info">
-                <div class="flex-row justify-content-end grey">
-                  <a href="https://account.codingblocks.com/users/me" target="_black">
-                    <span class="pointer">MY PROFILE</span>
-                  </a>
-                    
-                </div>
-                <div class="separator"></div>
-                <div class="flex-row justify-content-end grey">
-                    <span class="pointer">{{login-button}}</span>
-                </div>
-            </div>
-        </div>
-      {{/if}}
     </div>
 
   </nav>
