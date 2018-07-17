@@ -1,15 +1,21 @@
-nav {
+.main-nav {
   border-bottom: 1px solid $nav-border;
-  padding: 10px;
+  padding: 20px;
   position: fixed;
   top:0;
   background: $white;
   width: 100%;
   max-height:100px;
   z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.nav-list {
-  @include float(right);
+
+.nav-list{
+  margin:  0;
+  display: flex;
+  align-items: center;
 }
 
 .nav-items {
@@ -24,15 +30,12 @@ nav {
   color: $button-gradient;
 }
 
+.nav-search{
+  width: 350px;
+}
 
 .nav-logo {
   height: 50px;
-  @include margin(12px, null, null, 28px);
-}
-
-.nav-search{
-  float: right;
-  margin-top: 1.1%;
 }
 
 .pointer:hover {
@@ -52,4 +55,9 @@ nav {
 
 .logo-parent{
   text-align : center;
+}
+
+.nav-right, .nav-left{
+  display: flex;
+  align-items: center;
 }

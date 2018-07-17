@@ -22,6 +22,10 @@
   }
 }
 
+.input-text[disabled]{
+  background: $disabled-input;
+}
+
 
 /*--------------------------INPUT CHECKBOX---------------------------*/
 .input-checkbox{

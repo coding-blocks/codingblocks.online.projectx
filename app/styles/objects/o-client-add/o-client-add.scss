@@ -1,37 +1,5 @@
 .o-client-add {
-  justify-content: space-evenly;
-  font-size: $font-sm;
-
-  .card {
-    @include dimensions(100%, auto);
-    @include margin(0, 0, 30px, 0);
-    @include padding-mixin(40px, 60px, 40px, 45px);
-  }
-  
-  .input-text {
-    @include padding-mixin(0, 20px, 0, 20px);
-    height: 60px;
-    color: $navLink;
-  }
-
-  .input-text[disabled]{
-    background: $disabled-input;
-  }
-
-  .heading-u-red {
-    @include padding-mixin(0, 380px, 33px, 0);
-    @include margin(0, 0, 30px, 0);
-    font-size: $font-mds;
-  }
-
-  .row {
-    @include padding-mixin(0, 0, 0, 0);
-  }
-
   .attributes {
-    @include margin(0, 0, 10px, 0);
-    height: auto;
-    font-weight: $font-normal;
     .detail-row {
       @include margin(20px, 0, 20px, 0);
       width: 48%;
@@ -41,8 +9,6 @@
   .button-solid {
     width: 30%;
     max-width: 162px;
-    font-size: $font-xs;
-    font-weight: $font-medium;
   }
 
 }

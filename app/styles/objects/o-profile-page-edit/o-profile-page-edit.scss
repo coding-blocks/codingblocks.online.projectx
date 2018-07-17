@@ -1,46 +1,4 @@
 .o-profile-edit {
-  font-size: $font-sm;
-
-  .card {
-    @include dimensions(100%, auto);
-    @include margin(0, 0, 30px, 0);
-    @include padding-mixin(40px, 70px, 40px, 70px);
-  }
-
-  .input-text {
-    @include padding-mixin(0, 20px, 0, 20px);
-    height: 70px;
-    color: $navLink;
-  }
-
-  .dropdown-ul {
-    box-shadow: unset;
-  }
-
-  .input-text[disabled]{
-    background: $disabled-input;
-  }
-
-  .heading-u-red {
-    @include padding-mixin(0, 380px, 33px, 0);
-    @include margin(0, 0, 30px, 0);
-    font-size: $font-mds;
-  }
-
-  .row {
-    @include padding-mixin(0, 0, 0, 0);
-  }
-
-  .attributes {
-    @include margin(0, 0, 10px, 0);
-    height: auto;
-    font-weight: $font-normal;
-
-    .detail-row {
-      @include margin(0, 0, 20px, 0);
-    }
-  }
-
   .profile-row {
     @include margin(20px, 0, 60px, 0);
   }
@@ -52,15 +10,9 @@
   .button-solid { 
     @include dimensions(50%, 70px);
     max-width: 220px;
-    font-size: $font-xs;
-    font-weight: $font-medium;
   }
 
   .reset-button {
     @include margin(0, 30px, 0, 0);
-  }
-
-  .flex-row {
-    @include margin(20px, 0, 0, 0);
   }
 }

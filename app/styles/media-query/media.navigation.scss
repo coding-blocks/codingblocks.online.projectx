@@ -1,5 +1,14 @@
 @media all and (max-width: 875px) {
-
+  .main-nav{
+    .hamburger-parent {
+      display: inline-block;
+      opacity: .4;
+      font-size: $font-md;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+  }
+  
   .nav-list {
     display: none;
   }
@@ -18,21 +27,18 @@
     margin: 0;
   }
 
-  .hamburger-parent{
-    top: 8px;
-    margin: 0;
-    font-size: $global-font-size;
-  }
-
-  .logo-parent{
-    margin-left: 30px;
-  }
-
   .logo-link{
     min-width: unset;
   }
 
   .main-nav{
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .hamburger-parent{
+      font-size: $global-font-size;
+    }
+
     .card{
       @include padding-s(5px, 25px);
       width: 240px;

@@ -1,0 +1,50 @@
+%skeleton {
+  height: 20px;
+  border-radius: 20px;
+  background-color: $skeleton;
+ 
+}
+
+@keyframes shine {
+  to{
+    background-position: 100% 0;
+  }
+}
+
+.skeleton-lg {
+  @extend %skeleton;
+  width: 65%;
+}
+
+.skeleton-md {
+  @extend %skeleton;
+  width: 50%;
+}
+
+.skeleton-sm {
+  @extend %skeleton;
+  width: 40%;
+}
+
+.skeleton-animation {
+ 
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient( 
+      100deg,
+      rgba(255, 255, 255, 0), 
+      rgba(255, 255, 255, 0.5) 50%, 
+      rgba(255, 255, 255, 0) 80% 
+    );
+    background-position: 0 0;
+    background-size: 50px 100%;
+    background-repeat: no-repeat;
+    animation: shine 1s infinite;
+  }
+  
+}
