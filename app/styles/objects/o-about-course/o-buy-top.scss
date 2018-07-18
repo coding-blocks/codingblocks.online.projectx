@@ -9,6 +9,7 @@
 .o-buy-top{
   @include dimensions(100%, 90px);
   position: fixed;
+  top: 90px;
   z-index: 101;
   padding: 10px 4%;
   background-color: $vp-background;
