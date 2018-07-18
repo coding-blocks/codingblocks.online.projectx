@@ -2,8 +2,6 @@
   font-size: $font-sm;
 
   .card {
-    @include dimensions(100%, auto);
-    @include margin(0, 0, 30px, 0);
     @include padding-mixin(90px, 0, 50px, 0);
     text-align: center;
   }

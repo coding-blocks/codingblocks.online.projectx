@@ -1,38 +1,7 @@
 .o-profile {
-  font-size: $font-sm;
-  
-  .card {
-    @include dimensions(100%, auto);
-    @include margin(0, 0, 30px, 0);
-    @include padding-mixin(40px, 60px, 40px, 60px);
-  }
-
-  .heading-u-red {
-    @include padding-mixin(0, 160px, 33px, 0);
-    @include margin(0, 0, 0, 0);
-    font-size: $font-mds;
-  }
-
-  .attributes {
-    @include margin(0, 0, 10px, 0);
-    height: auto;
-    justify-content: space-between;
-    font-weight: $font-normal;
-    .flex-row {
-      @include padding-mixin(40px, 0, 20px, 0);
-      justify-content: space-between;
-    }
-  }
-
   .button-solid {
     width: 30%;
     max-width: 162px;
-    font-size: $font-xs;
-    font-weight: $font-medium;
-  }
-
-  .faded {
-    color: $default-accordian-font;
   }
 
   .auth-link {
@@ -50,11 +19,6 @@
 
   .links {
     @include padding-mixin (30px, 0, 20px, 0);
-  }
-
-  .flex-row {
-    width: 100%;
-    font-weight: $font-medium;
   }
 
 }

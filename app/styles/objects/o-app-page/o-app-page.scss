@@ -1,61 +1,15 @@
 .o-app-page {
-  font-size: $font-xs;
-
-  .card {
-    @include dimensions(100%, auto);
-    @include margin(0, 0, 30px, 0);
-    @include padding-mixin(40px, 60px, 40px, 60px);
-    border: none;
-  }
-
-  .border-card {
-    @include padding-mixin(30px, 30px, 120px, 30px);
-    @include margin(0, 0, 30px, 0);
-    position: relative;
-  }
-
   .app-row {
     @include padding-mixin(10px, 0, 10px, 0);
     overflow: hidden;
   }
 
-  .heading-u-red {
-    @include padding-mixin(0, 380px, 33px, 0);
-    @include margin(0, 0, 30px, 0);
-    font-size: $font-mds;
-  }
-
-  .heading {
-    font-size: $font-sm;
-  }
-
-  .row {
-    @include padding-mixin(0, 0, 0, 0);
-  }
-
-  .attributes {
-    @include margin(0, 0, 10px, 0);
-    height: auto;
-    font-weight: $font-normal;
-  }
-
-  .button-row {
-    @include padding-mixin(20px, 60px, 0, 0);
-    width: 100%;
-    bottom: 40px;
-    position: absolute;
-  }
-
   button {
     @include margin(0, 0, 20px, 0);
   }
-
-  .button-dashed {
-    @include margin(0, 0, 0, 0);
-    max-width: 136px;
-    min-width: 90px;
-    width: 40%;
-    font-size: $font-xs;
-    font-weight: $font-medium;
+  
+  .button-row {
+    @include padding-mixin(20px, 60px, 0, 0);
   }
+
 }

@@ -14,19 +14,25 @@
   }
 
   .notify-icon{
-    transform: translateY(13px);
+    width: 25px;
   }
 }
 
 .main-nav{
+  .hamburger-parent {
+    display: none;
+  }
+  
+  .nav-search{
+    width: 350px;
+  }
+  
   .nav-list {
-    margin-top: 21px;
+    margin-top: 0;
   }
   
   .round-img{
     @include dimensions(50px, 50px);
-    margin: 5px 10px 0 0;
-    float: right;
     cursor: pointer;
   }
 
@@ -43,6 +49,7 @@
     display: none;
     position: absolute;
     right: 10px;
+    top: 90%;
 
     &:hover{
       display: block;
