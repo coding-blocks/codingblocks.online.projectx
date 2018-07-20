@@ -12,18 +12,18 @@
   position: fixed;
   top: 145px;
   transition: all 0.35s ease;
-  right: -14px;
+  right: 0;
   z-index: 100;
   max-height: 730px;
 
   .card{
     @include dimensions(100%, 100%);
-    overflow-y: scroll;
+    overflow: hidden;
   }
 
   .button-container{
     margin-top: 23px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .button-solid{
@@ -37,7 +37,7 @@
   }
 
   .card-video{
-    @include dimensions(100%, 336px);
+    @include dimensions(100%, 300px);
     position: relative;
     cursor: pointer;
   }
@@ -81,7 +81,7 @@
 
   .course-features{
       &>.row{
-        margin-bottom: 30px;
+        padding-bottom: 6%;
       }
 
       .img-desc{
