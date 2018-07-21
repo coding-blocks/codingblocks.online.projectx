@@ -1,0 +1,43 @@
+@media screen and (max-width: 575px){
+    .o-doubt{
+        padding: 40px 0;
+
+        .head{
+            padding: 0 7%;
+        }
+
+        .doubt-head{
+            .round-img {
+                @include dimensions(35px, 35px)
+            }
+    
+            .author-name {
+                font-size: $card-md;
+                margin-left: 13px;
+    
+                .time {
+                    font-size: $card-sm;
+                    color: $navLink;
+                }
+            }
+    
+            .text {
+                margin-right: 10px;
+                font-size: $card-md;
+            }
+    
+            .reply {
+                width: 8%;
+                min-width: 73px;
+                font-size: $card-sm;
+                height: 28px;
+            }
+        }
+    }
+
+    .doubt-body{
+        text-align: justify;
+        font-size: $card-md;
+    }
+}
+
