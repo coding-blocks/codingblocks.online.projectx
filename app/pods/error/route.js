@@ -14,5 +14,14 @@ export default Route.extend({
   },
   model(params) {
     return this.errors[params.errorCode]
+  },
+  actions: {
+    didTransition () {
+      $(function () {
+        $('body > jdiv')[0].style.setProperty('display', 'block', 'important')
+        $('#jivo-iframe-container')[0].style.setProperty('display', 'block', 'important')
+      })
+      return true
+    }
   }
 });
