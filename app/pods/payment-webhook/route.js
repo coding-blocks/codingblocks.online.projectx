@@ -33,5 +33,14 @@ export default Route.extend({
     }else{
       window.location.href = this.get('loginUrl')
     }
+  },
+  actions: {
+    didTransition () {
+      $(function () {
+        $('body > jdiv')[0].style.setProperty('display', 'block', 'important')
+        $('#jivo-iframe-container')[0].style.setProperty('display', 'block', 'important')
+      })
+      return true
+    }
   }
 });

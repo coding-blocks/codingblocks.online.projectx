@@ -19,9 +19,15 @@
     position: relative;
     width: 100%;
     top: 0;
-      .button-dashed {
-        margin: 0;
-      }
+    margin-top: 35px;
+
+    &.slide-right{
+      transform: unset;
+    }
+    
+    .button-dashed {
+      margin: 0;
+    }
   }
 
   .o-summary .para {
@@ -96,5 +102,3 @@
     display: none;
   }
 }
-
-
