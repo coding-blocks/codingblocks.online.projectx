@@ -17,7 +17,9 @@
       </h1>
     </div>
     <h2 class="classroom-para">
-      {{run.course.summary}}
+      {{line-clamp
+        text=run.course.summary
+        lines=6}}
     </h2>
     <div class="rating">
       <br>

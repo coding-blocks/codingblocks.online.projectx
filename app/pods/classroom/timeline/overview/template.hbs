@@ -150,7 +150,9 @@
       </div>
 
       <div class="classroom-para col-12 offset-md-1 col-md-5">
-        {{run.course.summary}}
+        {{line-clamp
+          text=run.course.summary
+          lines=6}}
       </div>
     </div>
 
