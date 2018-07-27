@@ -11,7 +11,16 @@
   <div class="grid row">
     {{#if fetchRecommendedCoursesTask.isRunning}}
      {{!-- here we can show blank cards to indicate loading --}}
-     {{loader-component}}
+     <div class="skeletons col-md-4 col-sm-6"></div>
+     <div class="skeletons col-md-4 col-sm-6"></div>
+     <div class="skeletons col-md-4 col-sm-6"></div>
+     <div class="skeletons col-md-4 col-sm-6"></div>
+     <div class="skeletons col-md-4 col-sm-6"></div>
+     <div class="skeletons col-md-4 col-sm-6"></div>
+     <div class="skeletons col-md-4 col-sm-6"></div>
+     <div class="skeletons col-md-4 col-sm-6"></div>
+     <div class="skeletons col-md-4 col-sm-6"></div>
+     {{!-- {{loader-component}} --}}
     {{else}}
     {{#each recommendedCourses as |course|}}
     <div class="card-layout col-md-4 col-sm-6">
