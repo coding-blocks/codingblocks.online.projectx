@@ -1,16 +1,7 @@
-%button-config{
-  @include dimensions(100%, 52px);
-  @include border-radius(40px);
-  font-size: 0.937rem;
-  font-weight: $font-medium;
-  max-width: 191px;
-}
-
-
 .o-buy-right{
   @include dimensions(37%, 80%);
   position: fixed;
-  top: 145px;
+  top: 120px;
   transition: all 0.35s ease;
   right: 0;
   z-index: 100;

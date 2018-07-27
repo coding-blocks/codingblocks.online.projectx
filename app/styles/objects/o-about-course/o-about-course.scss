@@ -13,11 +13,11 @@
 }
 
 .o-summary{
-  padding: 3% 5%;
-  min-height: calc(100vh - 100px);
+  padding: 2% 5%;
+  min-height: calc(100vh - 70px);
 
   .classroom-container{
-    margin-bottom: 60px;
+    margin: 25px 0;
     padding: 0;
   }
 
@@ -34,11 +34,11 @@
   }
 
   .heading-u{
-    @include margin(67px, 0, 0, 0);
+    @include margin(30px, 0, 25px, 0);
   }
 
   .rating{
-    @include margin(0, 0, 38px, 0);
+    @include margin(0, 0, 20px, 0);
   }
 
   .key{

@@ -5,19 +5,19 @@
 
 .accordian-head{
     @include flexbox(row);
-    @include padding-mixin(10px, 5%, 10px, 3%);
+    @include padding-mixin(10px, 4%, 10px, 2%);
     @include dimensions(100%, auto);
     justify-content: space-between;
-    min-height: 79px;
+    min-height: 55px;
     background-color: $white;
     cursor: pointer;
 }
 
 .accordian-li{
-    @include padding-mixin(10px, 5%, 10px, 3%);
+    @include padding-mixin(10px, 4%, 10px, 2%);
     justify-content: space-between;
     border-bottom: solid 2px $search-box-color;
-    min-height: 79px;
+    min-height: 55px;
     background-color: $accordian-li;
     cursor: pointer;
     color: $default-accordian-font;
@@ -45,6 +45,8 @@
 
 .accordian-heading, .accordian-li-heading{
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .accordian-li-duration{

@@ -14,7 +14,7 @@
   }
 
   .notify-icon{
-    width: 25px;
+    width: unset;
   }
 }
 
@@ -32,7 +32,7 @@
   }
   
   .round-img{
-    @include dimensions(50px, 50px);
+    @include dimensions(40px, 40px);
     cursor: pointer;
   }
 

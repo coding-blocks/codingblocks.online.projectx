@@ -1,11 +1,23 @@
 @media all and (max-width: 768px){
   .o-about-instructors{
-    .description{
-      margin-left: -5%;
-    }
-
     .classroom-para{
       font-size: $global-font-size;
+    }
+  }
+}
+
+@media all and(max-width: 575px){
+  .o-about-instructors{
+    .heading-d{
+      margin-bottom: 15px;
+    }
+
+    .main-h{
+      margin: 0;
+    }
+
+    .sub-h{
+      font-size: $card-md;
     }
   }
 }

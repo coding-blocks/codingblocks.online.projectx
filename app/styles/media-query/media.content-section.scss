@@ -33,6 +33,7 @@
     .section{
       @include dimensions(100%, 100%);
       height: auto;
+      border-right: unset;
     }
 
     .main-h, .sub-h, .notify-text, .button-solid, .accordian-heading, .accordian-li, .accordian-status, .header{

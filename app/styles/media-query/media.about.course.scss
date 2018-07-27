@@ -15,6 +15,10 @@
     }
   }
 
+  .o-buy-top {
+    display: none;
+  }
+
   .o-buy-right {
     position: relative;
     width: 100%;
@@ -56,8 +60,10 @@
 
 }
 
-@media screen and (max-width: 503px) {
+@media screen and (max-width: 575px) {
   .o-summary {
+    height: auto;
+
     .classroom-text {
       font-size: 1rem;
     }
@@ -68,15 +74,11 @@
 
   .o-buy-right {
     margin-top: 15px;
+    height: auto;
   }
 
   .o-buy-right.slide-right {
     transform: none;
-  }
-  .heading-u {
-    width: 60%;
-    font-size: 1.25rem;
-    margin-bottom: 10px;
   }
 
   .rating {
@@ -93,12 +95,5 @@
   .para {
     font-size: 1rem;
     width: 100%;
-    float: right;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .o-buy-top {
-    display: none;
   }
 }

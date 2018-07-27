@@ -10,13 +10,14 @@
 }
 
 body {
-  @include font($global-font-family, 16px, normal);
-  padding-top: 100px;
+  @include font($global-font-family, 14px, normal);
+  padding-top: 70px;
 }
 
 @media screen and (max-width:  575px) {
   body {
     padding-top: 50px;
+    // font-size
   }
 }
 

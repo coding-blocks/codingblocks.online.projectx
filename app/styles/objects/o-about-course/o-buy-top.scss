@@ -1,15 +1,15 @@
 %button-config{
-  @include dimensions(100%, 52px);
+  @include dimensions(100%, 42px);
   @include border-radius(40px);
   font-size: $global-font-size;
   font-weight: $font-medium;
-  max-width: 216px;
+  max-width: 190px;
 }
 
 .o-buy-top{
-  @include dimensions(100%, 90px);
+  @include dimensions(100%, 70px);
   position: fixed;
-  top: 90px;
+  top: 70px;
   z-index: 101;
   padding: 10px 4%;
   background-color: $vp-background;
@@ -34,7 +34,6 @@
   .main-h{
     text-transform: uppercase;
     font-size: $font-md;
-    margin-bottom: 7px;
   }
 
   .sub-h{

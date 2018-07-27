@@ -7,7 +7,6 @@
       <h1 class="classroom-text col-10">
         {{#link-to 'courses.id' run.course.identifier activeClass=""}} {{run.course.title}} {{/link-to}}
         <div class="rating mob">
-          <br>
           {{#if runAttempt.premium}}
             {{#rating-stars course=run.course}} {{/rating-stars}}
           {{else}}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="43px" height="41px" viewBox="0 0 43 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>video-green-dark</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="video-green-dark">
+            <rect id="Rectangle" fill="#202020" x="0" y="0" width="43" height="41" rx="10"></rect>
+            <ellipse id="Oval" fill="#83BA6A" cx="31.0675" cy="10.3525" rx="1.8275" ry="1.7425"></ellipse>
+            <path d="M25.3062975,13.3444537 L33.2568182,28.2171222 L33.2568182,28.2171222 C33.7775553,29.1912407 33.410017,30.4030605 32.4358985,30.9237975 C32.1458118,31.0788699 31.8219551,31.16 31.4930208,31.16 L15.5919792,31.16 L15.5919792,31.16 C14.4874097,31.16 13.5919792,30.2645695 13.5919792,29.16 C13.5919792,28.8310657 13.6731093,28.507209 13.8281818,28.2171222 L21.7787025,13.3444537 L21.7787025,13.3444537 C22.2994395,12.3703353 23.5112593,12.002797 24.4853778,12.523534 C24.8341665,12.7099869 25.1198446,12.9956649 25.3062975,13.3444537 Z" id="Triangle" fill="#8DBF75" transform="translate(23.542500, 20.602500) rotate(90.000000) translate(-23.542500, -20.602500) "></path>
+        </g>
+    </g>
+</svg>
