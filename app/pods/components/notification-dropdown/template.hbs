@@ -9,8 +9,8 @@
 	{{#if notifications.length}}
 		{{#each notifications as |notification|}}
 		<a href="{{notification.url}}" target="_blank">
-			<div class="dropdown-li row no-gutters">
-				<div class="notify-type col-2 ">
+			<div class="dropdown-li row">
+				<div class="notify-type col-2 justify-content-center align-items-center">
 					<div class="notify-icon">
 						{{#if notification.isUnread}}
 						<span class="notify-dot new"></span>
@@ -23,8 +23,8 @@
 		</a>
 		{{/each}}
 	{{else}}
-	<div class="dropdown-li row no-gutters">
-		<div class="notify-type col-2 ">
+	<div class="dropdown-li row">
+		<div class="notify-type col-2 justify-content-center align-items-center">
 			<div class="notify-icon">
 					<span class="notify-dot new"></span>
 				<img src="/images/announcement.svg" alt="">

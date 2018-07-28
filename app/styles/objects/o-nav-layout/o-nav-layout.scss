@@ -12,10 +12,6 @@
   .notify-dot{
     @include dimensions(8px, 8px);
   }
-
-  .notify-icon{
-    width: unset;
-  }
 }
 
 .main-nav{
@@ -34,6 +30,7 @@
   .round-img{
     @include dimensions(40px, 40px);
     cursor: pointer;
+    margin-left: 40px;
   }
 
   .round-img:hover{
