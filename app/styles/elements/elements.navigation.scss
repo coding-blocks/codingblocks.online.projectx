@@ -17,12 +17,13 @@
   margin:  0;
   display: flex;
   align-items: center;
+  padding: 0;
 }
 
 .nav-items {
   @include font($global-font-family, $global-font-size, $global-font-weight);
   display: inline-block;
-  @include margin(null, 40px, null, null);
+  @include margin(null, null, null, 40px);
   text-transform: uppercase;
   position: relative;
 }
