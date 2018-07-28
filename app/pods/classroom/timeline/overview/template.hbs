@@ -14,27 +14,37 @@
                     <div class="card-content">
                         {{#if (eq doubts.length 0)}}
                             <div class="row">
-                              <div class="notify-type col-2"></div>
-                              <div class="notify-icon"></div>
-                                <span class="notify-dot"></span>
-                                <img src="/images/doubt.png" alt="">
-                            </div>
-                            <div class="card-text col-10 align-self-center">
-                              All the recent doubts asked by your peers will be
-                              displayed here !
-                            </div>
-                        {{else}}
-                            {{#each doubts as |doubt|}}
-                            <div class="row">
-                              <div class="notify-type col-2">
-                                <div class="notify-icon">
-                                  <span class="notify-dot"></span>
-                                  <img src="/images/doubt.png" alt="">
+                              <div class="col-2">
+                                <div class="notify-type">
+                                  <div class="notify-icon">
+                                    <span class="notify-dot"></span>
+                                    <img src="/images/support.svg" alt="">
+                                  </div>
                                 </div>
                               </div>
                               <div class="card-text col-10 align-self-center">
+                                All the recent doubts asked by your peers will be
+                                displayed here !
+                              </div>
+                            </div>
+                      
+                        {{else}}
+                            {{#each doubts as |doubt|}}
+                            <div class="row">
+                              <div class="col-2">
+                                <div class="notify-type">
+                                  <div class="notify-icon">
+                                    <span class="notify-dot"></span>
+                                    <img src="/images/support.svg" alt="">
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="card-text col-10 align-self-center">
                                   {{doubt.title}}
                               </div>
+                              
+                              
                             </div>
                             {{/each}}
                         {{/if}}
@@ -54,12 +64,15 @@
                 <div class="card-content">
                   {{#unless announcements.length}}
                     <div class="row">
-                      <div class="notify-type col-2">
-                        <div class="notify-icon">
-                          <span class="notify-dot new"></span>
-                          <img src="/images/announcement-dark.png" alt="">
+                      <div class="col-2">
+                        <div class="notify-type">
+                          <div class="notify-icon">
+                            <span class="notify-dot new"></span>
+                            <img src="/images/announcement.svg" alt="">
+                          </div>
                         </div>
                       </div>
+                      
                       <div class="card-text col-10 align-self-center">
                         Coding Blocks Online New Design Released!
                       </div>
@@ -67,12 +80,15 @@
                   {{/unless}}
                   {{#each announcements as |announcement|}}
                     <div class="row">
-                      <div class="notify-type col-2">
-                        <div class="notify-icon">
-                          <span class="notify-dot new"></span>
-                          <img src="/images/announcement-dark.png" alt="">
+                      <div class="col-2">
+                        <div class="notify-type col-2">
+                          <div class="notify-icon">
+                            <span class="notify-dot new"></span>
+                            <img src="/images/announcement.svg" alt="">
+                          </div>
                         </div>
                       </div>
+                      
                       <div class="card-text col-10 align-self-center">
                         {{announcement.text}}
                       </div>
@@ -168,7 +184,7 @@
             {{#each course.instructors as |instructor|}}
                 <div class="col-md-6 col-sm-12">
                     <div class="img-desc row no-gutters">
-                        <div class="col-4">
+                        <div class="col-3">
                         <div class="img-container">
                             <div class="round-img">
                             <img src="{{instructor.photo}}" alt="photo of {{instructor.name}}">

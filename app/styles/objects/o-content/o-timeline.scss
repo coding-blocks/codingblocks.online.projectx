@@ -11,7 +11,6 @@
   .accordian-head{
     @include padding-mixin(0, 19px, 0, 5px);
     background-color: $vp-acc-head;
-    min-height: 79px;
     border-bottom: solid 1px $vp-border;
   }
 
@@ -31,17 +30,14 @@
     @include padding-mixin(10px, 14px, 10px, 5px);
     border-bottom: solid 1px $vp-border;
     background-color: $vp-background;
-    min-height: 79px;
-    font-size: $global-font-size;
   }
 
   .accordian-li-type{
-    @include dimensions(39px, 39px);
     margin-right: 12px;
   }
 
   .accordian-heading, .accordian-status, .main-h, .sub-h{
-    font-size: $font-xs;
+    // font-size: $font-xs;
   }
 
   .accordian-heading {

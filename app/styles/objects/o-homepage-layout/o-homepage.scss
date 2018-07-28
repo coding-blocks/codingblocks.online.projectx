@@ -1,5 +1,5 @@
 .home-container {
-  margin-top: 65px;
+  margin-top: 50px;
   padding-left: 50px;
   
   .input-search{
@@ -10,7 +10,6 @@
 
 .home-heading {
   font-size: $font-xl;
-  margin-left: -0.6%;
   color: $button-element-level;
   margin-bottom: 30px;
 }
@@ -19,6 +18,7 @@
   position: relative;
   margin-top: -190px;
   width: 85%;
+  max-width: 600px !important;
   left: 65px;
 }
 
@@ -38,6 +38,10 @@
 .custom-heading{
   .heading-u{
     margin-bottom: 5px;
+  }
+
+  .button-dashed{
+    float: right;
   }
 }
 

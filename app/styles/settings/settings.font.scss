@@ -1,4 +1,4 @@
-$global-font-size: 16px;
+$global-font-size: 14px;
 @font-face {
   font-family: $global-font-family;
   font-style: $global-font-style;
@@ -11,14 +11,26 @@ $font-medium: 600;
 
 //Size
 
-$font-xs: 1.125rem; // 18px
-$font-sm: 1.25rem;  // 20px
-$font-mds: 1.375rem;// 22px
-$font-md: 1.5rem;   // 24px
-$font-lg: 1.625rem; // 26px
-$font-xl: 1.75rem;  // 28px
+// $font-xs: 1.125rem; // 18px
+// $font-sm: 1.25rem;  // 20px
+// $font-mds: 1.375rem;// 22px
+// $font-md: 1.5rem;   // 24px
+// $font-lg: 1.625rem; // 26px
+// $font-xl: 1.75rem;  // 28px
 
-$card-md: 0.875rem; // 14px
-$card-sm: 0.75rem;  // 12px
-$card-sms: 0.625rem;// 10px
-$card-xs: 0.5rem;   // 8px
+// $card-md: 0.875rem; // 14px
+// $card-sm: 0.75rem;  // 12px
+// $card-sms: 0.625rem;// 10px
+// $card-xs: 0.5rem;   // 8px
+
+$font-xs: 1rem;     //14px
+$font-sm: 1.143rem; // 16px
+$font-mds: 1.286rem;  // 18px
+$font-md: 1.428rem;// 20px
+$font-lg: 1.57rem;   // 22px
+$font-xl: 1.713rem; // 24px
+
+$card-md: 0.875rem; // 12px
+$card-sm: 0.75rem;  // 10px
+$card-sms: 0.625rem;// 9px
+$card-xs: 0.5rem;   // 7px

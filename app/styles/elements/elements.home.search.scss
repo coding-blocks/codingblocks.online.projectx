@@ -1,7 +1,7 @@
 .input-search {
   display: flex;
   @include border-radius(28px);
-  @include dimensions(20%, 57px);
+  @include dimensions(20%, 43px);
   background-color: $search-box-color;
   position: relative;
 }
@@ -16,8 +16,8 @@
 }
 
 .input-search > img {
-  width: 23px;
-  height: 23px;
+  width: 18px;
+  height: 18px;
   top: 30%;
   left: 89%;
   position: absolute;

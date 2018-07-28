@@ -1,29 +1,27 @@
 .o-otp-enroll{
   @include dimensions(100%, auto);
+  @include padding-s(15px, 50px);
   background: $nav-border;
   font-size: $global-font-size;
   font-weight: $font-medium;
-  @include padding-mixin(20px, 0px, 20px, 40px);
 
   .input-search{
-    @include dimensions(100%, 60px);
     @include border-radius(37px);
     background-color: $otp-input-bg;
+    width: 100%;
     max-width: 365px;
     float: right;
   }
 
   .button-solid{
-    @include dimensions(100%, 60px);
     font-size: $global-font-size;
     font-weight: $font-medium;
-    max-width: 178px;
+    max-width: 125px;
     float: right;
   }
 
   .red{
     color: $button-element-level;
-    margin-top: 10px;
   }
 
   .text-center {
@@ -37,5 +35,9 @@
   .p-1 {
     padding-top: 10px;
     padding-bottom: 10px;
+  }
+
+  .row{
+    padding:  0;
   }
 }

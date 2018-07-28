@@ -5,14 +5,5 @@ export default Route.extend({
   headData: Ember.inject.service(),
   afterModel(model) {
     this.set('headData.title', 'Coding Blocks Online | Home')
-  },
-  actions: {
-		didTransition () {
-		  $(function () {
-		    $('body > jdiv')[0].style.setProperty('display', 'block', 'important')
-		    $('#jivo-iframe-container')[0].style.setProperty('display', 'block', 'important')
-		  })
-		  return true
-		}
-	}
+  }
 });

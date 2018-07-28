@@ -21,14 +21,5 @@ export default Route.extend({
     },
     afterModel(model) {
       this.set('headData.title', model.get('title'))
-    },
-    actions: {
-      didTransition () {
-        $(function () {
-          $('body > jdiv')[0].style.setProperty('display', 'block', 'important')
-          $('#jivo-iframe-container')[0].style.setProperty('display', 'block', 'important')
-        })
-        return true
-      }
     }
  });

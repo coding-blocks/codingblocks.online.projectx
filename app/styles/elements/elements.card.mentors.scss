@@ -22,7 +22,7 @@
 
 .card-mentor-text {
   display: inline-block;
-  font-size: 14.1px;
+  font-size: $card-md;
   position: relative;
   top: -6px;
   padding-left: 10px;
@@ -30,7 +30,7 @@
 
 .card-mentor-name {
   overflow: hidden;
-  font-size: 17.1px;
+  font-size: $font-sm;
 }
 
 .card-mentor-divider {
