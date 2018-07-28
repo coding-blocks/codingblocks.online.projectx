@@ -16,18 +16,18 @@
                             <div class="row">
                               <div class="col-2">
                                 <div class="notify-type">
-                                  <div class="notify-icon"></div>
+                                  <div class="notify-icon">
                                     <span class="notify-dot"></span>
-                                    <img src="/images/doubt.png" alt="">
+                                    <img src="/images/support.svg" alt="">
                                   </div>
                                 </div>
                               </div>
-                              
-                              
-                            <div class="card-text col-10 align-self-center">
-                              All the recent doubts asked by your peers will be
-                              displayed here !
+                              <div class="card-text col-10 align-self-center">
+                                All the recent doubts asked by your peers will be
+                                displayed here !
+                              </div>
                             </div>
+                      
                         {{else}}
                             {{#each doubts as |doubt|}}
                             <div class="row">
@@ -35,14 +35,16 @@
                                 <div class="notify-type">
                                   <div class="notify-icon">
                                     <span class="notify-dot"></span>
-                                    <img src="/images/doubt.png" alt="">
+                                    <img src="/images/support.svg" alt="">
                                   </div>
                                 </div>
                               </div>
-                              
+
                               <div class="card-text col-10 align-self-center">
                                   {{doubt.title}}
                               </div>
+                              
+                              
                             </div>
                             {{/each}}
                         {{/if}}
@@ -66,7 +68,7 @@
                         <div class="notify-type">
                           <div class="notify-icon">
                             <span class="notify-dot new"></span>
-                            <img src="/images/announcement-dark.png" alt="">
+                            <img src="/images/announcement.svg" alt="">
                           </div>
                         </div>
                       </div>
@@ -82,7 +84,7 @@
                         <div class="notify-type col-2">
                           <div class="notify-icon">
                             <span class="notify-dot new"></span>
-                            <img src="/images/announcement-dark.png" alt="">
+                            <img src="/images/announcement.svg" alt="">
                           </div>
                         </div>
                       </div>

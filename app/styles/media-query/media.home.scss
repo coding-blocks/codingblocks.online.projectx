@@ -41,6 +41,12 @@
   width: 100px;
 }
 
+@media all and(max-width: 767px){
+  .home-img{
+    max-width: unset;
+  }
+}
+
 @media all and (max-width: 575px){
   .o-offerings{
     .left{
