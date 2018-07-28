@@ -6,12 +6,12 @@
 
 @media all and (max-width: 767px){
   .o-announcement{
-    .main-h, .classroom-para{
-      font-size: $card-md;
-    }
-
     .sub-h{
       font-size: $card-sm;
+    }
+
+    .round-img{
+      @include dimensions(45px, 45px);
     }
 
     .notify-icon{

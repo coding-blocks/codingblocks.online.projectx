@@ -2,20 +2,22 @@
   @include  flexbox(row);
   align-items: flex-start;
   flex: none;
+  position: relative;
 }
 
 .notify-icon{
-  width: 40px;
+  width: 20px;
 }
 
 
 .notify-dot{
-  @include dimensions(10px, 10px);
+  @include dimensions(6px, 6px);
   @include border-radius(50%);
   background-color: $button-element-level;
   display: none;
-  position: relative;
+  position: absolute;
   left: 100%;
+  top: -7px;
 }
 
 .new{
@@ -23,6 +25,7 @@
 }
 
 .notify-text{
-  font-size: $font-xs;
+  font-size: $font-sm;
   color: $white;
+  position: relative;
 }

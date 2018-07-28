@@ -12,6 +12,10 @@
 .search-content {
   height: 100%;
   padding: 30px;
+
+  &:not(:first-of-type){
+    border-top: 1px solid $nav-border;
+  }
 }
 
 .img-container > img {

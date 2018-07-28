@@ -1,32 +1,33 @@
 .o-content-section{
     background-color: $vp-background;
     height: 100vh;//set according to height of navbar;
-    margin-top: -100px;
+    margin-top: -70px;
 
     .header{
         @include dimensions(100%, 100%);
-        max-height: 90px;
+        max-height: 80px;
         border-bottom: solid 1px $vp-border;
+        font-size: $font-sm;
     }
 
     .section-toggler{
-        @include dimensions(20%, 100%);
+        @include dimensions(22%, 100%);
         min-width: 20%;
         justify-content: center;
         border-right: 1px solid $vp-border;
     }
 
     .dashboard{
-        @include dimensions(80%, auto);
+        @include dimensions(78%, auto);
         padding-left: 40px;
     }
 
     .button-dashed{
-        @include dimensions(211px, 48px);
+        @include dimensions(180px, 43px);
         @include border-radius(27px);
         background-color: $vp-background;
         color: $white;
-        font-size: $font-xs;
+        font-size: $font-sm;
         max-width: 239px;
     }
 
@@ -36,7 +37,7 @@
     }
 
     .main-h, .sub-h{
-        font-size: $font-xs;
+        font-size: $font-sm;
         font-weight: $font-normal;
     }
 
@@ -50,16 +51,16 @@
     }
 
     .button-solid{
-        @include dimensions(100%, 53px);
+        @include dimensions(100%, 44px);
         text-align: center;
-        font-size: $font-xs;
-        max-width: 233px;
+        font-size: $font-sm;
+        max-width: 175px;
         overflow: hidden;
     }
 
     .notify-text{
         cursor: pointer;
-        margin-left: 44%;
+        margin-left: 20%;
     }
 
     .new{
@@ -68,12 +69,12 @@
 
     .content-section{
         position: relative;
-        height: calc(100% - 90px);//set according to .lecture-header;
+        height: calc(100% - 80px);//set according to .lecture-header;
         overflow: hidden;
     }
 
     .section{
-        @include dimensions(20%, 100%);
+        @include dimensions(22%, 100%);
         overflow-y: auto;
         border-right: solid 1px $vp-border;
         background-color: $vp-background;
@@ -90,10 +91,10 @@
 
     .section-collapsor{
       display: none;
-      height: 90px;
+      height: 60px;
       cursor: pointer;
       font-size: $global-font-size;
-      padding-left: 11%;
+      padding-left: 8%;
       padding-right: 4%;
     }
 
@@ -108,7 +109,7 @@
 
         &.collapse{
             right: 0;
-            width: 80%;
+            width: 78%;
         }
     }
 

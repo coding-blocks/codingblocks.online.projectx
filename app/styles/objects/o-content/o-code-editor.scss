@@ -60,7 +60,7 @@
   }
 
   .button-solid{
-    @include dimensions(168px, 50px);
+    @include dimensions(140px, 45px);
   }
 }
 
@@ -72,7 +72,7 @@
   @include dimensions(100%, calc(100% - 100px));
 
   .button-solid {
-    @include dimensions(116px, 42px);
+    @include dimensions(100px, 40px);
     font-size: 1rem;
     float: right;
   }

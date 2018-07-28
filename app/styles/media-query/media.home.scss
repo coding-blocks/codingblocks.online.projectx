@@ -28,7 +28,6 @@
     flex: 0 0 100%;
     max-width: 100%;
     text-align: center;
-    margin-top: 20px;
   }
 
   .home-img{
@@ -40,4 +39,26 @@
 
 .testclass{
   width: 100px;
+}
+
+@media all and(max-width: 767px){
+  .home-img{
+    max-width: unset;
+  }
+}
+
+@media all and (max-width: 575px){
+  .o-offerings{
+    .left{
+      width: 85%;
+    }
+  
+    .right{
+      width: 90px;
+    }
+  
+    .offering-card-heading{
+      margin-bottom: 15px;
+    }
+  }
 }

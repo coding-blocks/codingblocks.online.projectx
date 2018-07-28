@@ -1,10 +1,10 @@
 .classroom-container {
-  margin-bottom: 77px;
+  margin: 40px 0;
 
   .classroom-header-box {
     padding-right: 44px;
     padding-left: 44px;
-    border-right: 2px solid $classroom-border;
+    border-right: 1px solid $classroom-border;
   }
   .classroom-header {
     padding: 0;
@@ -17,13 +17,12 @@
   .classroom-text {
     text-transform: uppercase;
     font-size: $font-xl;
-    transform: translateY(50%);
+    transform: translateY(35%);
     font-weight: $font-medium;
   }
 
   .classroom-image {
     position: relative;
-    top: 18px;
     padding-left: 0;
   }
 
@@ -31,7 +30,7 @@
     font-size: $font-sm;
     @include textalign(left);
     word-wrap: break-word;
-    margin-top: 43px;
+    margin-top: 30px;
   }
 }
 
@@ -49,7 +48,7 @@
 .reset-progress {
   color: $reset-progress;
   font-weight: 500;
-  font-size: 20px;
+  font-size: $font-sm;
   margin-top: 0;
   padding: 0;
   text-align: left;
@@ -75,11 +74,10 @@
 
 .course-progress-box {
   padding-left: 44px;
-  padding-top: 25px;
 
   .button-solid {
-    @include dimensions(100%, 68px);
-    max-width: 258px;
+    @include dimensions(100%, 55px);
+    max-width: 190px;
     font-size: $font-md;
     margin-top: 22px;
   }
@@ -115,7 +113,7 @@
 }
 
 .edit-rating{
-  font-size: $font-mds;
+  font-size: $font-sm;
   border-bottom: solid 1px $global-font-text-color;
   cursor: pointer;
   margin-left: 3%;

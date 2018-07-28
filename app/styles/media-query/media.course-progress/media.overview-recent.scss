@@ -21,3 +21,12 @@
     }
   }
 }
+
+@media all and (max-width: 575px){
+  .o-overview-recent{
+    .card{
+      padding-left: 5%;
+      padding-right: 4%;
+    }
+  }
+}

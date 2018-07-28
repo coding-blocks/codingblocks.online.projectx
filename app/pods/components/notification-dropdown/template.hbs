@@ -2,7 +2,7 @@
 	{{#if unreadNotifications}}
 		<span class="notify-dot new"></span>
 	{{/if}}
-	<img src="/images/notif-icon.png" alt="">
+	<i class="fas fa-bell"></i>
 </div>
 
 <div class="dropdown-ul o-notification {{if active 'display-block'}}" id="notification-box">
@@ -15,7 +15,7 @@
 						{{#if notification.isUnread}}
 						<span class="notify-dot new"></span>
 						{{/if}}
-						<img src="images/announcement-dark.png" alt="">
+						<img src="/images/announcement.svg" alt="">
 					</div>
 				</div>
 				<div class="notify-text col-10">{{markdown-to-html notification.message}}</div>
@@ -27,7 +27,7 @@
 		<div class="notify-type col-2 ">
 			<div class="notify-icon">
 					<span class="notify-dot new"></span>
-				<img src="images/announcement-dark.png" alt="">
+				<img src="/images/announcement.svg" alt="">
 			</div>
 		</div>
 		<div class="notify-text col-10">You have no notifications! Check out our

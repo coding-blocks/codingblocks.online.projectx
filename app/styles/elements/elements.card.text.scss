@@ -16,7 +16,7 @@
 
 .card-heading {
   overflow: hidden;
-  @include font($global-font-family, $font-sm, 300);
+  @include font($global-font-family, $font-mds, 300);
   color: $global-font-heading-color;
 
 }
@@ -27,5 +27,5 @@
 
 .grid-background {
   background-color: #f6f6f6;
-  padding: 5%;
+  padding: 2% 5%;
 }

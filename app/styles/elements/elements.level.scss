@@ -1,5 +1,3 @@
-
-
 .expert-level {
   @include border-radius(50%);
   @include dimensions(30px,30px);
@@ -8,8 +6,8 @@
   position: relative;
 }
 
-.expert-text {
-  font-size: 13px;
+.expert-text, .advanced-text, .beginner-text {
+  font-size: $card-md;
   margin: 2px auto 0;
 }
 
@@ -21,20 +19,10 @@
   position: relative;
 }
 
-.advanced-text {
-  font-size: 13px;
-  margin: 2px auto 0;
-}
-
 .beginner-level {
   @include border-radius(50%);
   @include dimensions(30px,30px);
   border: 6px solid $status-front-complete;
   margin: 0 auto;
   position: relative;
-}
-
-.beginner-text {
-  font-size: 13px;
-  margin: 2px auto 0;
 }
