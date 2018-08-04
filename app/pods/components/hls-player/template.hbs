@@ -1,3 +1,36 @@
+{{#if isModalOpen}}
+  {{#modal-dialog onClose=(action (mut isModalOpen) false) translucentOverlay=true clickOutsideToClose=false}}
+		<div class="o-player-modal">
+		  <div class="row">
+	       <div class="justify-content-center">
+          <div class="row justify-content-between no-gutters">
+            <div class="col-3"><img src="/images/udarrow.png"></div>
+            <div class="col-1"></div>
+            <div class="col-8"><h3 class="red">  To Change Playback Speed</h3></div>
+          </div>
+          <div class="row justify-content-between no-gutters">
+            <div class="col-3"><img src="/images/lrarrow.png"></div>
+            <div class="col-1"></div>
+            <div class="col-8"><h3 class="red">  To Seek +/- 5 seconds into Video</h3></div>
+          </div>
+          <div class="row justify-content-between no-gutters">
+            <div class="col-3 mt-auto mb-auto"><img src="/images/spacebar.png"></div>
+            <div class="col-1"></div>
+            <div class="col-8"><h3 class="red">  To Toggle Play/Pause Video</h3></div>
+          </div>
+	      </div>
+	    </div>
+	    <div class="footer row justify-content-end no-gutters">
+				<div class="col-8 mb-auto mt-auto">
+					{{input type='checkbox' checked=isChecked}} <label class="red"> Don't show this again</label>
+				</div>
+	      <div class="button-solid col-4">
+	        <button {{action "closeModal"}}>Got It!</button>
+	      </div>
+	    </div>
+		</div>
+  {{/modal-dialog}}
+{{/if}}
 <video id="video" class="w-100" controls onended={{onVideoCompleted}}></video>
 <div class="select-box">
 	<div class="open-select-box">
@@ -8,5 +41,5 @@
 	    <i class="fa fa-fast-forward"></i>
 	    </button>
 	</div>
-    <label id="playback-speed">{{pr}}X</label>
+    <label id="playback-speed">{{pr}}x</label>
 </div>

@@ -5,6 +5,7 @@ import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
 
 
 export default Component.extend(KeyboardShortcuts, {
+  isModalOpen: true,
   classNames: ['height-100'],
   keyboardShortcuts: {
     space: 'toggleVideoPlayback',
@@ -129,7 +130,11 @@ export default Component.extend(KeyboardShortcuts, {
     if (isNone(video))
       return ;
     video.currentTime += 5
-   }
+  },
+    closeModal() {
+      let check = this.get("isChecked")
+      this.set('isModalOpen', false)
+    }
   }
 
 })
