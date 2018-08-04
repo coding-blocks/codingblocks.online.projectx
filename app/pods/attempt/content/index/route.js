@@ -32,5 +32,9 @@ export default Route.extend({
       } else  {
         this.set('headData.title', model.payload.get('name') + " player ")
       }
+
+      if (model.content.get('contentable') === 'qna') {
+        this.transitionTo('attempt.content.quiz', model.content.get('payload.qId'))
+      }
     }
 });
