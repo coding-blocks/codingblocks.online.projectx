@@ -1,15 +1,15 @@
 {{#if (and hasUserMarkedRating (not isEditing))}}
   <div>
-    You rated: {{ratingMarkedByUser}}
-    <a href="#" {{action 'toggleEditingMode'}}>(Edit your rating)</a>
+    Thanks for rating us! &nbsp;&nbsp;
+    <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
     <br>
     {{#each (range 1 (inc scale)) as |index|}}
       <span
-        class="{{if (lte index course.rating) 'pos-rating' 'neg-rating'}}"
+        class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
       >
         <i class="fas fa-star"></i>
       </span>
-    {{/each}} Average Rating: {{course.rating}}
+    {{/each}}
   </div>
 {{else}}
   <div>
@@ -24,6 +24,6 @@
       >
         <i class="fas fa-star"></i>
       </span>
-    {{/each}} Average Rating: {{course.rating}}
+    {{/each}}
   </div>
 {{/if}}
