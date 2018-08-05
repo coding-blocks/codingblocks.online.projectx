@@ -39,6 +39,7 @@ export default DS.Model.extend({
     const results = this.get('judge-result')
     if (!isValidResult(results))
       return []
+
     const failedTestCases =  results.data.testcases.filter(not(isPassedTestcase))
     return failedTestCases
   }),

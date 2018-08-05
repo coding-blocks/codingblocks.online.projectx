@@ -1,16 +1,16 @@
 ---
 language: node_js
 node_js:
-  - "6"
+  - "8"
 
 sudo: false
 dist: trusty
 
-addons:
-  chrome: stable
-
 cache:
   yarn: true
+  directories:
+    - ~/.npm
+    - ~/.bower
 
 env:
   global:
@@ -23,7 +23,12 @@ before_install:
 
 install:
   - yarn install --non-interactive
+  - yarn global add bower
+  - bower install
+
+
+before_script: 
+  - openssl aes-256-cbc -d -in key.pem.enc -out key.pem -k $ENC_KEY
 
 script:
-  - yarn lint:js
-  - yarn test
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then bash ./deployToProduction.sh; fi

@@ -1,8 +1,0 @@
-
-@mixin border-radius($radius: $global-border-radius, $moz: true, $webkit: true, $ms:true){
-  @if $moz    { -moz-border-radius:    $radius; }
-  @if $webkit { -webkit-border-radius: $radius; }
-  @if $ms     { -ms-border-radius:     $radius; }
-  border-radius: $radius;
-}
-

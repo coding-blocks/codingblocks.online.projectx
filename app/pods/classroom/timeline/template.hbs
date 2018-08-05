@@ -8,21 +8,24 @@
         {{#link-to 'courses.id' run.course.identifier activeClass=""}} {{run.course.title}} {{/link-to}}
         <div class="rating mob">
           {{#if runAttempt.premium}}
-            {{#rating-stars course=run.course initialRating=run.course.userRating}} {{/rating-stars}}
+            {{#rating-stars course=run.course}} {{/rating-stars}}
           {{else}}
-            {{rating-stars-static course=run.course reviewCount=true}}
+            {{rating-stars-static rating=run.course.rating showValue=true}}
           {{/if}}
         </div>
       </h1>
     </div>
     <h2 class="classroom-para">
-      {{run.course.summary}}
+      {{line-clamp
+        text=run.course.summary
+        lines=6}}
     </h2>
     <div class="rating">
+      <br>
       {{#if runAttempt.premium}}
-        {{#rating-stars course=run.course initialRating=run.course.userRating}} {{/rating-stars}}
+        {{#rating-stars course=run.course}} {{/rating-stars}}
       {{else}}
-        {{rating-stars-static course=run.course reviewCount=true}}
+        {{rating-stars-static rating=run.course.rating showValue=true}}
       {{/if}}
     </div>
   </div>
