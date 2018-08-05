@@ -60,7 +60,7 @@
 {{!-- Summary Section --}}
 <div class="o-summary">
   <div class="classroom-container row">
-    <div class="classroom-header-box col-md-7 col-sm-12 col-xs-12">
+    <div class="classroom-header-box col-md-8 col-sm-12 col-xs-12">
       <div class="classroom-header row">
         <div class="classroom-image col-md-2 col-xs-2 col-sm-2">
           <img src="{{course.logo}}" alt="course logo">
@@ -75,9 +75,7 @@
       </h2>
 
       <br>
-
-      {{rating-stars-static course=course reviewCount=true}}
-      <br>
+      
       <div class="para">
         <span class="key">Mentor : </span>
         {{#each course.instructors as |instructor index|}}
@@ -93,11 +91,73 @@
         Summary
       </div>
 
-      <div class="para">
+      <div class="para summary">
         {{markdown-to-html course.summary}}
       </div>
     </div>
   </div>
+
+  {{#if getRatingStats.isRunning}}
+  {{else}}
+    <div class="heading-u">
+      Student Feedback
+    </div>
+
+
+    <div class="row o-rating-stats no-gutters">
+      <div class="col-1 score">
+        <span class="font-lg bold">{{course.rating}}</span><span class="bold">out of 5</span>
+
+        {{rating-stars-static rating=course.rating}}
+
+        <div>
+          {{course.reviewCount}} Ratings
+        </div>
+      </div>
+      <div class="col-7 col-sm-9 col-md-7 col-lg-5 stats">
+        {{#each (range 5 0) as |index|}}
+          <div class="row">
+            <div class="col-12 col-sm-9">
+              <progress value="{{get stats (sub index 1)}}" max="{{course.reviewCount}}"></progress>
+            </div>
+            <div class="col-3 rating">
+              {{#each (range 0 index)}}
+                <span class="pos-rating">
+                  <i class="fas fa-star"></i>
+                </span>
+              {{/each}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="row rating-carousel">
+      {{#each course.ratingCarousel as |rating|}}
+        {{#if rating.shown}}
+          <div class="col-8 col-md-4 col-lg-3">
+            <div class="card round o-rating-card">
+              <div class="row justify-content-between">
+                <div>{{rating.user.firstname}} {{rating.user.lastname}}</div>
+                <div class="grey font-sm i">{{moment-from rating.updatedAt}}</div>
+              </div>
+
+              <div class="heading">
+                {{rating.heading}}
+              </div>
+
+              {{rating-stars-static rating=rating.value}}
+
+              <div class="review grey i">
+                {{rating.review}}
+              </div>
+            </div>
+          </div>
+        {{/if}}
+        
+      {{/each}}
+    </div>
+  {{/if}}
 </div>
 
 {{!-- Buy right --}}

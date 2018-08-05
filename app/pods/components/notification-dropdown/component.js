@@ -131,4 +131,9 @@ export default class NotificationDropdownComponent extends Component {
       })
     }
   } 
+
+  willDestroyElement () {
+    this.$(document).off("click")
+    this.$('#notification-icon,#notification-box').off("click")
+  }
 }
