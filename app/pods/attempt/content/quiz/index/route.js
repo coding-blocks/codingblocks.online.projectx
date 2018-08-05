@@ -15,5 +15,9 @@ export default Route.extend({
       })
 
     })
+  },
+  setupController (controller, model) {
+    controller.set("quiz", model.quiz)
+    this._super(...arguments)
   }
 });
