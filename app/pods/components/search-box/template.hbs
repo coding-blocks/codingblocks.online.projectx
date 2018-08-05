@@ -8,14 +8,14 @@
         {{loader-component}}
     {{else}}
       {{#each results as |course|}}
-      <div class="row search-content pointer" {{action transitonToResult
+      <div class="row search-content pointer align-items-center" {{action transitonToResult
                                                       course}}>
         <div class="img-container col-md-3">
           <img src="{{course.logo}}" alt="online-logo" class="nav-logo pointer">
         </div>
         <div class="heading-container col-md-9">
-          <p>{{course.title}}</p>
-          <p>{{course.subtitle}}</p>
+          <div>{{course.title}}</div>
+          <div class="red font-sm">{{course.subtitle}}</div>
         </div>
       </div>
       {{/each}}

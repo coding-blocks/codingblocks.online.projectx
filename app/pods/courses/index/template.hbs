@@ -1,5 +1,5 @@
 <div class="grid-background">
-  <div class="heading">
+  <div class="heading-u">
     <p>All Courses</p>
   </div>
   <div class="grid row">
@@ -52,7 +52,7 @@
             </div>
 
             <div class="rating col-12 col-sm-4 col-md-12 d-flex justify-content-sm-end justify-content-center justify-content-md-start">
-              {{rating-stars-static course=course}}
+              {{rating-stars-static rating=course.rating showValue=true}}
             </div>
 
           </div>
@@ -87,12 +87,10 @@
     {{/each}}
   </div>
   {{#if showLoadMore}}
-  <div class="row">
-    <div class="offset-5">
-    </div>
-    <div class="col-2 button-dashed align-self-center">
+  <div class="row justify-content-center">
+      <div class="button-dashed">
         <button {{action "loadMore"}}>Load More</button>
-      </div>
+      </div>        
   </div>
   {{/if}}
 </div>

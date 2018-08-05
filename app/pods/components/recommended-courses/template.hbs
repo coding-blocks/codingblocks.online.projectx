@@ -1,12 +1,19 @@
 <div class="grid-background">
   <div class="custom-heading row justify-content-between">
-    <div class="heading-u">
-      Recommended Courses
+    <div class="col-8">
+      <div class="heading-u">
+        Recommended Courses
+      </div>
     </div>
+    
+    <div class="col-4">
+      <div class="button-dashed align-self-center">
+        {{#link-to 'courses' tagName='button' activeClass=""}}All Courses{{/link-to}}
+      </div>
+    </div>
+    
 
-    <div class="button-dashed align-self-center">
-      {{#link-to 'courses' tagName='button' activeClass=""}}All Courses{{/link-to}}
-    </div>
+    
   </div>
   <div class="grid row">
     {{#if fetchRecommendedCoursesTask.isRunning}}
@@ -62,7 +69,7 @@
           </div>
 
           <div class="rating col-12 col-sm-4 col-md-12 d-flex justify-content-sm-end justify-content-center justify-content-md-start">
-            {{rating-stars-static course=course}}
+            {{rating-stars-static rating=course.rating showValue=true}}
           </div>
 
         </div>
