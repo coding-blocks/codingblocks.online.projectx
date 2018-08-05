@@ -21,11 +21,6 @@ export default class DoubtViewComponent extends Component {
     return env.discussBaseUrl + '/' + avatar_template.replace('{size}', '150')
   }
 
-  @computed('topicResponse.posts_count')
-  get numberOfPosts () {
-    return this.get('topicResponse.posts_count') - 1
-  }
-
   @computed('topicResponse.id')
   get redirectLink () {
     return env.discussBaseUrl + '/t/' + this.get('topicResponse.id')
