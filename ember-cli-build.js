@@ -29,6 +29,7 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
   app.import('./bower_components/hls.js/dist/hls.light.min.js')
+  app.import('node_modules/@coding-blocks/motley/dist/app.css')
 
   return app.toTree();
 };

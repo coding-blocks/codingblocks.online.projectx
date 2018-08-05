@@ -27,7 +27,7 @@ export default DS.Model.extend({
     isFree: DS.attr(),
     duration: DS.attr(),
     lecturesCount: DS.attr(),
-    ratingCount: DS.attr(),
+    reviewCount: DS.attr(),
     videosDuration: DS.attr(),
     type: DS.attr(),
     color: DS.attr(),
@@ -69,6 +69,16 @@ export default DS.Model.extend({
       return this.get('slug') || this.get('id')
     }),
     ratings: DS.hasMany('rating'),
+    ratingCarousel: computed('ratings', function(){
+      return this.get('ratings').map(rating=>{
+        if(Ember.isEmpty(rating.get('heading')) && Ember.isEmpty(rating.get('review'))){
+          rating.setProperties({shown: false})
+        }else{
+          rating.setProperties({shown: true})
+        }
+        return rating;
+      })
+    }),
     userRating: computed('ratings', function () {
       return this.get('ratings').objectAt(0)
     })
