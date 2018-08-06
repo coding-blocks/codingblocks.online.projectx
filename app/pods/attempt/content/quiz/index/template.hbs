@@ -36,7 +36,7 @@
     </table>
   </div>
 
-  {{!-- 
+  
   <div class="attempts">
     <div class="heading">
       Previous Attempts
@@ -49,20 +49,30 @@
           <td>Score</td>
           <td>Action</td>
         </thead>
-        <tr>
-          <td>1</td>
-          <td>12:02:1</td>
-          <td class="green">70</td>
-          <td class="red">View Quiz</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>12:02:1</td>
-          <td class="green">70</td>
-          <td class="red">View Quiz</td>
-        </tr>
+        {{#each previousAttempts as |attempt index|}}
+          <tr>
+            <td>{{inc index 1}}</td>
+            <td>
+              {{moment-format attempt.createdAt 'MMM Do YYYY'}}
+              <br>
+              {{moment-format attempt.createdAt 'hh:m a'}}
+            </td>
+            <td class="green">{{defaultTo attempt.result.score 'NA'}}</td>
+            <td class="red">
+              {{#if (eq attempt.status 'FINAL')}}
+                {{#link-to 'attempt.content.quiz.view' attempt.id class="red"}}
+                  View
+                {{/link-to}}
+              {{else}}
+                {{#link-to 'attempt.content.quiz.attempt' attempt.id class="red"}}
+                  Resume
+                {{/link-to}}
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
       </table>
     </div>
   </div> 
-  --}}
+ 
 </div>

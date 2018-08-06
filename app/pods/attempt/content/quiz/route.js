@@ -8,9 +8,7 @@ export default Route.extend({
       runAttempt: this.modelFor('attempt'),
       content: this.modelFor('attempt.content'),
       payload: this.modelFor('attempt.content').get('payload'),
-      quiz: this.store.findRecord('quiz', params.quizId, {
-        include: 'questions'
-      })
+      quiz: this.store.findRecord('quiz', params.quizId)
     })
   },
   setupController(controller, model) {

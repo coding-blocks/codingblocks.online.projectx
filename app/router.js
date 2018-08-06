@@ -25,6 +25,7 @@ Router.map(function() {
         this.route('attempt', {path: '/s/:quizAttemptId'}, function() {
           this.route('done');
         });
+        this.route('view', {path: '/v/:viewQuizAttemptId'}, function() {});
       });
     });
   });
