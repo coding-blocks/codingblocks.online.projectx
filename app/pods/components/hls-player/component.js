@@ -2,9 +2,12 @@ import Component from '@ember/component';
 import { isNone } from '@ember/utils';
 import $ from 'jquery'
 import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
+import { storageFor } from 'ember-local-storage';
 
 
 export default Component.extend(KeyboardShortcuts, {
+  playerPreference: storageFor('player-prefs'),
+  isShowingInstructions: true,
   classNames: ['height-100'],
   keyboardShortcuts: {
     space: 'toggleVideoPlayback',
@@ -129,7 +132,12 @@ export default Component.extend(KeyboardShortcuts, {
     if (isNone(video))
       return ;
     video.currentTime += 5
-   }
+   },
+    closeInstructions () {
+      let val = this.get("checkboxVal")
+      this.set('playerPreference.showInstructions', !val)
+      this.set('isShowingInstructions', false)
+    }
   }
 
 })
