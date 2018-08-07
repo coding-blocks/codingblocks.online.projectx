@@ -2,9 +2,11 @@ import Component from '@ember/component';
 import { isNone } from '@ember/utils';
 import $ from 'jquery'
 import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
+import { storageFor } from 'ember-local-storage';
 
 
 export default Component.extend(KeyboardShortcuts, {
+  preference: storageFor('preference'),
   isModalOpen: true,
   classNames: ['height-100'],
   keyboardShortcuts: {
@@ -133,6 +135,7 @@ export default Component.extend(KeyboardShortcuts, {
   },
     closeModal() {
       let check = this.get("isChecked")
+      this.set('preference.showModal', !check)
       this.set('isModalOpen', false)
     }
   }
