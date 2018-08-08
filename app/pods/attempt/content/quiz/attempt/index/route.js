@@ -13,6 +13,11 @@ export default Route.extend({
       quiz: this.modelFor('attempt.content.quiz').quiz
     })
   },
+  afterModel(model, transition){
+    if(model.quizAttempt.get('status')=== 'FINAL'){
+      this.transitionTo('attempt.content.quiz');
+    }
+  },
   setupController (controller, model) {
     controller.set("quizAttempt", model.quizAttempt)
     controller.set("quiz", model.quiz)
