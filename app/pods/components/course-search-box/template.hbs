@@ -8,13 +8,13 @@
         {{loader-component}}
       {{else}}
         {{#each results as |result|}}
-          <div class="row search-content pointer align-items-center" {{action 'transitonToResult' result.contentId result.sectionId}}>
+          <div class="row search-content pointer align-items-center" {{action 'transitionToContent' result.contentId result.sectionId}}>
             <div class="img-container col-md-3">
               <div class="content-icon {{result.iconClass}}-{{if result.isDone 'green-dark' 'red-dark'}}"></div>
             </div>
             <div class="heading-container col-md-9">
               <div>{{result.title}}</div>
-              <div class="red font-sm">{{result.section}}</div>
+              <div class="font-sm">{{result.section}}</div>
             </div>
           </div>
         {{/each}}
