@@ -11,7 +11,6 @@ export default class SearchBoxComponent extends Component {
   qs = ''
   @alias('searchTask.lastSuccessful.value') results
 
-  @service raven
   @service router
   @service store
 
@@ -37,11 +36,11 @@ export default class SearchBoxComponent extends Component {
           results.push(a);
         }
       } catch (error) {
-        // this.get("raven").captureException(error);
+        console.log(error);
       }
     });
     return results;
-  });
+  }).restartable()
 
   @action
   transitionToContent(contentId, sectionId) {
