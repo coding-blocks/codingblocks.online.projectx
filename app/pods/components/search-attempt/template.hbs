@@ -1,0 +1,24 @@
+<div class="input-search nav-search d-flex justify-content-end w-100 bg-dark-search-bar white">
+  {{input type="text" placeholder="Search Modules" value=qs key-press=(perform searchTask) focusIn=(action 'showResult') focusOut=(action 'hideResult')}}
+  <img src="/images/searchicon-w.png" alt="search">
+  
+  {{#unless hideResultsBox}}
+  <div class="search-box bg-dark-search-box white mt-2">
+    {{#if searchTask.isRunning}}
+        {{loader-component}}
+    {{else}}
+      {{#each response as |content|}}
+      <div class="row search-content pointer align-items-center">
+        <div class="img-container col-md-3">
+          <div class="content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
+        </div>
+        <div class="heading-container col-lg-9 col-12">
+          <div>{{content.title}}</div>
+          <div class="red font-sm">{{content.section}}</div>
+        </div>
+      </div>
+      {{/each}}
+    {{/if}}
+  </div>
+  {{/unless}}
+</div>
