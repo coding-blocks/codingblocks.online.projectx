@@ -6,12 +6,12 @@ export default Controller.extend({
   q: 1,
   incorrectIds: computed('quizAttempt.result', 'question.id',function () {
     const result = this.get('quizAttempt.result')
-    const question = result.questions.find(el => el.id === this.get('question.id'))
+    const question = result.questions.find(el => el.id == this.get('question.id'))
     return question.incorrectlyAnswered.mapBy('id')
   }),
   correctIds: computed('quizAttempt.result', 'question.id', function () {
     const result = this.get('quizAttempt.result')
-    const question = result.questions.find(el => el.id === this.get('question.id'))
+    const question = result.questions.find(el => el.id == this.get('question.id'))
     const set = new Set([...question.correctlyAnswered.mapBy('id'), ...question.answers])
     return [...set.values()]
   }),
