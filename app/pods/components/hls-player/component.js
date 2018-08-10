@@ -14,10 +14,10 @@ export default Component.extend(KeyboardShortcuts, {
     left: 'seekBack',
     right: 'seekForward',
     up () {
-      this.send("changeSpeed", 0.5)
+      this.send("changeSpeed", 0.25)
     },
     down () {
-      this.send("changeSpeed", -0.5)
+      this.send("changeSpeed", -0.25)
     }
   },
 
