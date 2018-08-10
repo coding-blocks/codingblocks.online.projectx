@@ -1,0 +1,27 @@
+<div class="input-search nav-search d-flex justify-content-end w-100 bg-dark-search-bar white">
+  {{input type="text" placeholder="Search contents here" value=qs key-press=(perform searchTask) focusIn=(action 'showResult') }}
+  <img src="/images/searchicon-w.png" alt="search">
+
+  {{#unless hideResultsBox}}
+  <div class="search-box bg-dark-search-box white mt-2">
+    {{#if searchTask.isRunning}}
+        {{loader-component}}
+    {{else}}
+      {{#each results as |course|}}
+       {{!-- {{action transitonToResult
+                                                      course}} --}}
+      <div class="row search-content pointer align-items-center">
+        <div class="img-container col-md-3">
+          <div class="content-icon {{course.iconClass}}-green-dark"></div>
+          {{!-- <img src="{{course.logo}}" alt="online-logo" class="nav-logo pointer"> --}}
+        </div>
+        <div class="heading-container col-lg-9 col-12">
+          <div>{{course.title}}</div>
+          <div class="red font-sm">{{course.section}}</div>
+        </div>
+      </div>
+      {{/each}}
+    {{/if}}
+  </div>
+  {{/unless}}
+</div>
