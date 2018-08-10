@@ -1,5 +1,5 @@
 <div class="input-search nav-search d-flex justify-content-end w-100 bg-dark-search-bar white">
-  {{input type="text" placeholder="Search contents here" value=qs key-press=(perform searchTask) focusIn=(action 'showResult') }}
+  {{input type="text" placeholder="Search contents here" value=qs key-press=(perform searchTask) focusIn=(action 'showResult') focusOut=(action 'hideResult') }}
   <img src="/images/searchicon-w.png" alt="search">
 
   {{#unless hideResultsBox}}
@@ -7,17 +7,15 @@
     {{#if searchTask.isRunning}}
         {{loader-component}}
     {{else}}
-      {{#each results as |course|}}
-       {{!-- {{action transitonToResult
-                                                      course}} --}}
-      <div class="row search-content pointer align-items-center">
+      {{#each results as |result|}}
+      <div class="row search-content pointer align-items-center" {{action 'transitionToContent' result.contentId result.sectionId}}>
         <div class="img-container col-md-3">
-          <div class="content-icon {{course.iconClass}}-green-dark"></div>
+          <div class="content-icon {{result.iconClass}}-green-dark"></div>
           {{!-- <img src="{{course.logo}}" alt="online-logo" class="nav-logo pointer"> --}}
         </div>
         <div class="heading-container col-lg-9 col-12">
-          <div>{{course.title}}</div>
-          <div class="red font-sm">{{course.section}}</div>
+          <div>{{result.title}}</div>
+          <div class="red font-sm">{{result.section}}</div>
         </div>
       </div>
       {{/each}}

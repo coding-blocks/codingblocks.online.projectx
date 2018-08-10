@@ -4,7 +4,6 @@ import { task, timeout } from "ember-concurrency";
 import { action } from "ember-decorators/object";
 import { alias } from "ember-decorators/object/computed";
 import { service } from "ember-decorators/service";
-import $ from 'jquery';
 
 export default class SearchBoxComponent extends Component {
   tagName = 'span'
@@ -12,49 +11,54 @@ export default class SearchBoxComponent extends Component {
   qs = ''
   @alias('searchTask.lastSuccessful.value') results
 
+  @service raven
   @service router
   @service store
 
-  searchTask = task(function* () {
-    const searchQuery = yield this.get('qs')
-    const contents = this.get('store').peekAll('content');
-    let results = []
-    contents.forEach(function (content) {
+  searchTask = task(function*() {
+    // yield timeout(1000);
+    const searchQuery = this.get("qs");
+    const contents = this.get("store").peekAll("content");
+    let results = [];
+    contents.forEach(function(content) {
       try {
-        let name = content.get("payload").get("name")
-        name = name.toLowerCase();
-        if (name.indexOf(searchQuery.toLowerCase()) !== -1) {
+        let title = content.get("payload").get("name");
+        title = title.toLowerCase();
+        if (title.indexOf(searchQuery.toLowerCase()) !== -1) {
+          let section = content.get("section");
           let a = {
-            title: name,
-            section: content.get("section").get("name"),
-            iconClass: content.get("iconClass")
-          }
-          results.push(a)
+            title: title,
+            section: section.get("name"),
+            iconClass: content.get("iconClass"),
+            contentId: content.get("id"),
+            sectionId: section.get("id")
+          };
+          results.push(a);
         }
       } catch (error) {
+        // this.get("raven").captureException(error);
       }
-    })
-    console.log(results)
-    return results
-  })
-  // @action
-  // transitonToResult (course) {
-  //   if (course.userEnrollment && course.userEnrollment.courseId) {
-  //     return this.get('router').transitionTo("classroom.timeline", 
-  //     course.userEnrollment.courseId,
-  //     course.userEnrollment.runId
-  //     )
-  //   } else {
-  //     return this.get('router').transitionTo("courses.id", course.id)
-  //   }
-  // }
+    });
+    console.log(results);
+    return results;
+  });
 
   @action
-  showResult () {
-    this.set('hideResultsBox', false);
+  transitionToContent(contentId, sectionId) {
+    console.log(contentId, sectionId);
+    return this.get('router').transitionTo('attempt.content', contentId, {
+      queryParams: {
+        s: sectionId
+      }
+    });
+  }
+
+  @action
+  showResult() {
+    this.set("hideResultsBox", false);
   }
   @action
-  hideResult () {
-    later(this, () => this.set('hideResultsBox', true), 100);
+  hideResult() {
+    later(this, () => this.set("hideResultsBox", true), 100);
   }
 }
