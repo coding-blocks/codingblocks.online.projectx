@@ -26,6 +26,8 @@ export default class SearchComponent extends Component {
       if (name.indexOf(searchQuery.toLowerCase()) !== -1) {
         let result = {
           title: name,
+          contentId: content.get("id"),
+          sectionId: content.get("section").get("id"),
           section: content.get("section").get("name"),
           iconClass: content.get("iconClass"),
           isDone: content.get("isDone")
@@ -35,6 +37,15 @@ export default class SearchComponent extends Component {
     })
     return response
   }).restartable()
+  
+  @action
+  transitionToContent(contentId, sectionId) {
+    this.get('router').transitionTo('attempt.content', contentId, {
+      queryParams: {
+        s: sectionId
+      }
+    });
+  }
 
   @action
   showResult () {
