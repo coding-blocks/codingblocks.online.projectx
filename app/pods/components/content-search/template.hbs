@@ -10,7 +10,7 @@
       {{#each results as |result|}}
       <div class="row search-content pointer align-items-center" {{action 'transitionToContent' result.contentId result.sectionId}}>
         <div class="img-container col-md-3">
-          <div class="content-icon {{result.iconClass}}-green-dark"></div>
+          <div class="content-icon {{result.iconClass}}-{{if result.isDone 'green-dark' 'red-dark'}}"></div>
           {{!-- <img src="{{course.logo}}" alt="online-logo" class="nav-logo pointer"> --}}
         </div>
         <div class="heading-container col-lg-9 col-12">

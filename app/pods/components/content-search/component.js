@@ -16,7 +16,7 @@ export default class SearchBoxComponent extends Component {
   @service store
 
   searchTask = task(function*() {
-    // yield timeout(1000);
+    yield timeout(1000);
     const searchQuery = this.get("qs");
     const contents = this.get("store").peekAll("content");
     let results = [];
@@ -31,7 +31,8 @@ export default class SearchBoxComponent extends Component {
             section: section.get("name"),
             iconClass: content.get("iconClass"),
             contentId: content.get("id"),
-            sectionId: section.get("id")
+            sectionId: section.get("id"),
+            isDone: content.get("isDone")
           };
           results.push(a);
         }
@@ -39,14 +40,12 @@ export default class SearchBoxComponent extends Component {
         // this.get("raven").captureException(error);
       }
     });
-    console.log(results);
     return results;
   });
 
   @action
   transitionToContent(contentId, sectionId) {
-    console.log(contentId, sectionId);
-    return this.get('router').transitionTo('attempt.content', contentId, {
+    this.get('router').transitionTo('attempt.content', contentId, {
       queryParams: {
         s: sectionId
       }
@@ -59,6 +58,6 @@ export default class SearchBoxComponent extends Component {
   }
   @action
   hideResult() {
-    later(this, () => this.set("hideResultsBox", true), 100);
+    later(this, () => this.set("hideResultsBox", true), 1000);
   }
 }
