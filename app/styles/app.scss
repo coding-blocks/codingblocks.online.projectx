@@ -4,5 +4,16 @@
     margin-left: 40px;
   }
 }
+
+.content-search-container {
+  .input-search {
+    width: 100%;
+    z-index: 102;
+  }
+  img {
+    right: 5%;
+    left: unset;
+  }
+}
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
