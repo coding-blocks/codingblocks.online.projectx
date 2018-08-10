@@ -4,32 +4,5 @@
     margin-left: 40px;
   }
 }
-
-.content-search-container {
-  .input-search {
-    width: 100%;
-    z-index: 102;
-    background-color: #4C4B4B;
-    color: #d5d5d5;
-  }
-  img {
-    right: 5%;
-    left: unset;
-    filter: invert(100%);
-  }
-  ::placeholder {
-    color: #a0a0a0;
-    opacity: 1;
-  }
-  .search-content {
-    background-color: #3B3838;
-  }
-  .loader {
-    background-color: #3B3838;
-  }
-  .pointer:hover {
-    color: #ffffff;
-  }
-}
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";

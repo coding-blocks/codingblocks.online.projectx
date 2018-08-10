@@ -26,7 +26,6 @@ export default class SearchBoxComponent extends Component {
         .map(section => section.get('contents'))
         .reduce((acc, val) => [...acc, ...val.toArray()], [])
         .filter(content => {
-          //return true
           return (content.get('payload.name')
             .toLowerCase()
             .indexOf(searchQuery) > -1)
