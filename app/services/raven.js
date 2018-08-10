@@ -8,8 +8,9 @@ export default RavenLogger.extend({
   captureException(/* error */) {
     if (config.environment == 'development') {
       console.error(...arguments);
+    } else {
+      this._super(...arguments);
     }
-    this._super(...arguments);
   },
 
   captureMessage(/* message */) {
