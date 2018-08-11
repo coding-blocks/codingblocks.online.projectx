@@ -16,25 +16,34 @@ export default class SearchBoxComponent extends Component {
   @alias('searchTask.lastSuccessful.value') results
 
   searchTask = task(function * () {
-    yield timeout (1000)
+    yield timeout (100)
     const searchQuery = this.get('qs').trim().toLowerCase()
 
     try {
       const sections = this.get('run.sections')
 
       let contents = sections
-        .map(section => section.get('contents'))
+        .map(section => {
+          return section.get('contents').map(content => {
+            return {
+              content: content,
+              section: section
+            }
+          })
+        })
         .reduce((acc, val) => [...acc, ...val.toArray()], [])
-        .filter(content => {
-          return (content.get('payload.name')
+        .filter(result => {
+          return (result.content.get('payload.name')
             .toLowerCase()
             .indexOf(searchQuery) > -1)
         })
-        .map((content) => {
+        .map((result) => {
+          let content = result.content
+          let section = result.section
           return {
             title: content.get('payload.name'),
-            sectionId: content.get('section.id'),
-            section: content.get('section.name'),
+            sectionId: section.get('id'),
+            section: section.get('name'),
             contentId: content.get('id'),
             isDone: content.get('isDone'),
             iconClass: content.get('iconClass')
@@ -49,7 +58,6 @@ export default class SearchBoxComponent extends Component {
         ]
       }
 
-      console.log(contents)
       return contents
 
     } catch (e) {
@@ -60,7 +68,7 @@ export default class SearchBoxComponent extends Component {
         }
       ]
     }
-  }).restartable()
+  })
 
   @action
   transitionToContent(contentId, sectionId) {
@@ -79,6 +87,6 @@ export default class SearchBoxComponent extends Component {
     later(this, () => {
       this.set('qs', '')
       this.set('hideResultsBox', true)
-    }, 100);
+    }, 400);
   }
 }
