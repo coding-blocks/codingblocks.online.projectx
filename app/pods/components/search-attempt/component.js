@@ -1,6 +1,6 @@
 import Component from "@ember/component";
 import { later } from "@ember/runloop";
-import { task } from "ember-concurrency";
+import { task, timeout } from "ember-concurrency";
 import { action } from "ember-decorators/object";
 import { alias } from "ember-decorators/object/computed";
 import { service } from "ember-decorators/service";
@@ -15,27 +15,40 @@ export default class SearchComponent extends Component {
   @service store
   
   searchTask = task(function* () {
+    yield timeout(500);
     const searchQuery = yield this.get('qs')
-    const contents = this.get('store').peekAll('content');
     let response = []
+    let sections = this.get('run.sections')
     
-    contents.forEach(function (content) {
-      let name = content.get("payload").get("name");
-      name = name.toLowerCase();
-      
-      if (name.indexOf(searchQuery.toLowerCase()) !== -1) {
+    try {
+        sections.forEach((section) => {
+          let contents = section.get('contents')
+          
+          contents.forEach((content) => {
+            let title = content.get('payload.name').toLowerCase();
+            
+            if (name.indexOf(searchQuery.toLowerCase()) !== -1) {
+              let result = {
+                title: title,
+                contentId: content.get('id'),
+                sectionId: content.get('section.id'),
+                section: content.get('section.name'),
+                iconClass: content.get('iconClass'),
+                isDone: content.get('isDone')
+              }
+              response.push(result)
+            }
+          })
+        })
+        return response
+    } catch(e) {
+        console.error(e)
         let result = {
-          title: name,
-          contentId: content.get("id"),
-          sectionId: content.get("section").get("id"),
-          section: content.get("section").get("name"),
-          iconClass: content.get("iconClass"),
-          isDone: content.get("isDone")
+          title: 'Your search doesn\'t match any results!'
         }
         response.push(result)
-      }
-    })
-    return response
+        return response
+    }
   }).restartable()
   
   @action
