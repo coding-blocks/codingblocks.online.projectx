@@ -46,19 +46,30 @@
       </div>
       <div class="course-progress-detail col-5 col-md-9">
         <p class="heading-mob">Course Progress</p>
+        {{#unless run.topRunAttempt.premium}}
+          <div class="red">Free Trial</div>
+        {{/unless}}
         <p class="lectures-completed">{{run.completedContents}} of {{run.totalContents}} Content completed</p>
         <p class="reset-progress pointer" {{action 'resetProgress'}}>Reset
           Progress</p>
       </div>
-      <div class="offset-md-5 col-4 col-md-5">
-        <div class="button-solid">
-          {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass=""}} Resume Learning {{/link-to}}
+      {{#if run.topRunAttempt.premium}}
+        <div class="offset-md-5 col-4 col-md-5">
+          <div class="button-solid">
+            {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass=""}} Resume Learning {{/link-to}}
+          </div>
         </div>
-      </div>
+      {{else}}
+        <div class="d-flex col-12 justify-content-around">
+          <div class="button-solid">
+            {{#link-to 'courses.id' run.course.identifier tagName="button" activeClass=""}} Buy Now {{/link-to}}
+          </div>
+          <div class="button-solid">
+            {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass=""}} Resume Learning {{/link-to}}
+          </div>
+        </div>
+      {{/if}}
     </div>
-
-
-
   </div>
 </div>
 <div class="tab-nav">
