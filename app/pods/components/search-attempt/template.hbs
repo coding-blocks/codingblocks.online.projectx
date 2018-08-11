@@ -1,5 +1,5 @@
 <div class="input-search nav-search d-flex justify-content-end w-100 bg-dark-search-bar white">
-  {{input type="text" placeholder="Search Modules" value=qs key-press=(perform searchTask) focusIn=(action 'showResult') focusOut=(action 'hideResult')}}
+  {{input type="text" placeholder="Search" value=qs key-press=(perform searchTask) focusIn=(action 'showResult') focusOut=(action 'hideResult')}}
   <img src="/images/searchicon-w.png" alt="search">
   
   {{#unless hideResultsBox}}
