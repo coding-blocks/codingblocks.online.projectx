@@ -12,32 +12,30 @@ export default class SearchBoxComponent extends Component {
   @alias('searchTask.lastSuccessful.value') results
 
   @service router
-  @service store
 
   searchTask = task(function*() {
     yield timeout(1000);
     const searchQuery = this.get("qs");
-    const contents = this.get("store").peekAll("content");
-    let results = [];
-    contents.forEach(function(content) {
-      try {
-        let title = content.get("payload").get("name");
-        title = title.toLowerCase();
-        if (title.indexOf(searchQuery.toLowerCase()) !== -1) {
-          let section = content.get("section");
-          let a = {
-            title: title,
-            section: section.get("name"),
-            iconClass: content.get("iconClass"),
-            contentId: content.get("id"),
-            sectionId: section.get("id"),
-            isDone: content.get("isDone")
-          };
-          results.push(a);
+    let sections = this.get("run.sections")
+    let results = []
+    sections.forEach(section => {
+      section.get("contents").forEach(content => {
+        try {
+          let title = content.get("payload.name").toLowerCase();
+          if (title.indexOf(searchQuery.toLowerCase()) !== -1) {
+            results.push({
+              title: title,
+              section: content.get("section.name"),
+              iconClass: content.get("iconClass"),
+              contentId: content.get("id"),
+              sectionId: content.get("section.id"),
+              isDone: content.get("isDone")
+            })
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
-      }
+      })
     });
     return results;
   }).restartable()
