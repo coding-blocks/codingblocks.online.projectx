@@ -25,10 +25,10 @@ export default class SearchBoxComponent extends Component {
           if (title.indexOf(searchQuery.toLowerCase()) !== -1) {
             results.push({
               title: title,
-              section: content.get("section.name"),
+              section: section.get("name"),
               iconClass: content.get("iconClass"),
               contentId: content.get("id"),
-              sectionId: content.get("section.id"),
+              sectionId: section.get("id"),
               isDone: content.get("isDone")
             })
           }
