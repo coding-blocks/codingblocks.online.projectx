@@ -18,7 +18,7 @@ module('Integration | Component | search-attempt', function(hooks) {
     await render(hbs`
       {{#search-attempt}}
         template block text
-      {{/search attempt}}
+      {{/search-attempt}}
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
