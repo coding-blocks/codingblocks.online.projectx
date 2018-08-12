@@ -25,5 +25,5 @@ export default DS.Model.extend({
     }
   }),
   progress: DS.belongsTo('progress'),
-  //section: DS.belongsTo('section')
+  // section: DS.belongsTo('section')
 })
