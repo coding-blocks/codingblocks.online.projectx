@@ -25,6 +25,7 @@ export default Controller.extend({
     }
   }),
   course: computed.alias('runAttempt.run.course'),
+  run: computed.alias('runAttempt.run'),
   actions: {
     transitionToDashboard() {
       this.transitionToRoute(

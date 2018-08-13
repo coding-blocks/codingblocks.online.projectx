@@ -8,10 +8,11 @@ export default Route.extend({
     }
   },
   model (params) {
+    const quiz = this.modelFor('attempt.content.quiz.view').quiz
     return hash({
-      question: this.store.findRecord('question', params.q),
+      question: this.store.findRecord('question', quiz.get('questions').objectAt(params.q - 1).id),
       quizAttempt: this.modelFor('attempt.content.quiz.view').quizAttempt,
-      quiz: this.modelFor('attempt.content.quiz.view').quiz
+      quiz
     })
   },
   setupController (controller, model) {

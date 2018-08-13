@@ -5,20 +5,20 @@
         Recommended Courses
       </div>
     </div>
-    
+
     <div class="col-4">
       <div class="button-dashed align-self-center">
         {{#link-to 'courses' tagName='button' activeClass=""}}All Courses{{/link-to}}
       </div>
     </div>
-    
 
-    
+
+
   </div>
   <div class="grid row">
     {{#if fetchRecommendedCoursesTask.isRunning}}
      {{!-- here we can show blank cards to indicate loading --}}
-     {{loader-component}}
+     {{loading-card}}
     {{else}}
     {{#each recommendedCourses as |course|}}
     <div class="card-layout col-md-4 col-sm-6">

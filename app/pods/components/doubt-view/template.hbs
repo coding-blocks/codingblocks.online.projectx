@@ -10,8 +10,13 @@
         <span class="time">{{moment-from-now topic.created_at}}</span>
       </div>
     </div>
-    <div class="text"> {{topicResponse.posts_count}} Replies</div>
-
+    <div class="text">
+      {{#if (eq topicResponse.posts_count 1)}}
+        {{topicResponse.posts_count}} Reply
+      {{else}}
+        {{topicResponse.posts_count}} Replies
+      {{/if}}
+    </div>
     <div class="button-dashed reply">
       <a href="{{redirectLink}}" target="_blank" style="color: #ff6666">
         <button>Reply Now</button>
