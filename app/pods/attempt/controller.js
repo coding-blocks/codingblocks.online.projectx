@@ -18,12 +18,14 @@ export default Controller.extend({
         toggleAccordian () {
             this.toggleProperty("accordianCollapsed")
         },
-        transitionToContent (contentId, sectionId) {
+        transitionToContent (contentId, sectionId, event) {
             this.transitionToRoute('attempt.content', contentId, {
               queryParams: {
                 sectionId
               }
             })
+            Ember.$('.active').removeClass('active');
+            Ember.$(event.target).addClass('active');
         },
         async toggleProgress (content) {
             if (await content.get('progress')) {
