@@ -104,7 +104,7 @@ export default Component.extend(KeyboardShortcuts, {
     changeSpeed(val) {
      const rate = +this.get('pr') +val;
      const video = this.get('playerElement')
-     if ( rate >= -0.5 && rate <= 2) {
+     if ( rate > 0 && rate <= 2) {
         video.playbackRate = +rate;
         this.set('pr', rate)
       }

@@ -23,7 +23,7 @@ export default class DoubtViewComponent extends Component {
 
   @computed('topicResponse.id')
   get redirectLink () {
-    return env.discussBaseUrl + '/t/' + this.get('topicResponse.id') 
+    return env.discussBaseUrl + '/t/' + this.get('topicResponse.id')
   }
 
   fetchTopicTask = task(function * () {
