@@ -38,13 +38,13 @@
             <div>
               <div class="title">
                 How would you rate this course overall?
-              </div> &nbsp;&nbsp;
+              </div> &nbsp;
               {{#each (range 1 (inc scale)) as |index|}}
                 <span class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}">
                   <i class="fas fa-star"></i>
                 </span>
               {{/each}}
-              <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
+              <a href="#" {{action 'toggleEditingMode'}}>&nbsp;&nbsp;<i class="fas fa-edit" style="color:#fc4f4f"></i></a>
             </div>
           {{else}}
             <div>
