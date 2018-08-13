@@ -102,6 +102,9 @@ module.exports = function(environment) {
   if (process.env.oss) {
     ENV.clientId = 8225714181
     ENV.apiHost = 'https://amoeba-backend-public-dev.herokuapp.com'
+    ENV["ember-facebook-pixel"] = {
+      id: '1947467048859851'
+    };
   }
 
   ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'
