@@ -8,6 +8,10 @@ module.exports = function(defaults) {
     'ember-composable-helpers': {
       only: ['range', 'pipe', 'inc'],
     },
+    sourcemaps: {
+      enabled: true,
+      extensions: ['js', 'css']
+    },
     ace: {
       themes: ['ambiance', 'chaos', 'monokai', 'solarized_dark'],
       modes: ['javascript', 'c_cpp', 'python', 'java'],
