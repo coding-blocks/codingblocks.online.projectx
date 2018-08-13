@@ -6,7 +6,7 @@
     <div class="row">
         {{#each runs as |run index|}}
             <div class="card-layout col-md-4 col-sm-6">
-                <div class="card o-layout-card ">
+                <div class="card o-layout-card o-mycourse-card">
 
                     <div data-completed="false" class="status-circle">
                         <div class="circle-back">
@@ -30,42 +30,42 @@
                         </h2>
                     </div>
 
-
-                    <div class="card-mentor">
-                        <div class="card-mentor-image">
-                            {{#each run.course.instructors as |instructor index|}}
-                                {{#if (lt index 2) }}
-                                    <img class="card-mentors" src="{{instructor.photo}}">
-                                {{/if}}
-                            {{/each}}
-                        </div>
-                        <div class="card-mentor-text">
-                            <span>Instructors</span>
-                            <div class="card-mentor-name">
+                    <div class="row no-gutters">
+                        <div class="card-mentor col-9 col-md-12">
+                            <div class="card-mentor-image">
                                 {{#each run.course.instructors as |instructor index|}}
-                                    {{#if (lt index 2)}}
-                                        {{instructor.name}}{{if (and (gt run.course.instructors.length 1) (eq index 0)) "," ""}}
+                                    {{#if (lt index 2) }}
+                                        <img class="card-mentors" src="{{instructor.photo}}">
                                     {{/if}}
                                 {{/each}}
+                            </div>
+                            <div class="card-mentor-text">
+                                <span>Instructors</span>
+                                <div class="card-mentor-name">
+                                    {{#each run.course.instructors as |instructor index|}}
+                                        {{#if (lt index 2)}}
+                                            {{instructor.name}}{{if (and (gt run.course.instructors.length 1) (eq index 0)) "," ""}}
+                                        {{/if}}
+                                    {{/each}}
 
-                                {{#if (gt run.course.instructors.length 2)}}
-                                    <span class="price"> +{{sub course.instructors.length 2}}</span> more
-                                {{/if}}
+                                    {{#if (gt run.course.instructors.length 2)}}
+                                        <span class="price"> +{{sub run.course.instructors.length 2}}</span> more
+                                    {{/if}}
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
 
                     <div class="card-mentor-divider"></div>
 
                     <div class="price-detail row align-items-center no-gutters">
                         <div class="col-6">
-                            <div class="card-price-details">
-                                <div class="card-batches">
-                                   {{run.name}}
-                                  {{#unless run.topRunAttempt.premium}}
-                                    <div class="red">Free Trial</div>
-                                  {{/unless}}
-                                </div>
+                            <div class="card-batches">
+                                {{run.name}}
+                                {{#unless run.topRunAttempt.premium}}
+                                <div class="red">Free Trial</div>
+                                {{/unless}}
                             </div>
                         </div>
 

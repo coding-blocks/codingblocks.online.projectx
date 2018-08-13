@@ -44,7 +44,7 @@
         </div>
 
         <div class="row no-gutters align-items-center">
-          <div class="card-mentor col-12 col-sm-8 col-md-12">
+          <div class="card-mentor col-9 col-md-12">
             <div class="card-mentor-image">
               {{#each course.instructors as |instructor index|}}
                 {{#if (lt index 2) }}
@@ -68,16 +68,16 @@
             </div>
           </div>
 
-          <div class="rating col-12 col-sm-4 col-md-12 d-flex justify-content-sm-end justify-content-center justify-content-md-start">
+          <div class="col-3 col-md-12 d-flex justify-content-sm-end justify-content-end justify-content-md-start">
             {{rating-stars-static rating=course.rating showValue=true}}
           </div>
 
         </div>
 
         <div class="row no-gutters">
-          <div class="col-md-6 col-sm-4 col-6 order-sm-2 order-md-0">
+          <div class="col-md-6 col-4 col-sm-5 order-2 order-md-0">
             <div class="card-price-details">
-              <div class="card-batch-details">
+              <div class="card-batches">
                 Starting from <br>
                 <span class="price">{{moment-format (unix course.topRun .start) 'MMM Do YYYY'}}
                 </span>
@@ -85,7 +85,7 @@
             </div>
           </div>
 
-          <div class="button-parent col-md-6 col-sm-3 col-6 order-sm-3 order-md-1">
+          <div class="button-parent col-md-6 col-3 col-sm-2 order-3 order-md-1">
             <div class="button-solid">
               {{#link-to 'courses.id' course.identifier tagName="button" activeClass=""}} {{format-price course .topRun.price}} {{/link-to}}
             </div>
@@ -93,7 +93,7 @@
 
           <div class="card-mentor-divider col-12 order-sm-0 order-md-2"></div>
 
-          <div class="footer col-md-12 col-sm-5 col-12 order-sm-1 order-md-3">
+          <div class="footer col-md-12 col-5 order-1 order-md-3">
             <div class="red">Hurry Up!</div>
             Enrollment ends {{moment-format (unix course.topRun.enrollmentEnd) 'MMM Do YYYY'}}
           </div>
