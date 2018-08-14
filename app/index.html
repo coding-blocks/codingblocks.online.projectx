@@ -47,4 +47,12 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     {{content-for "body-footer"}}
   </body>
+  <script>
+    $(document).ready(function () {
+      if ($(window).width < 700){
+        var url = "https://code.jivosite.com/script/widget/ASYGLZQ6UC";
+        $.getScript(url);
+      }
+    });
+  </script>
 </html>
