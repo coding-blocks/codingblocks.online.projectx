@@ -3,6 +3,8 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   contentable: DS.attr(),
+  title: DS.attr(),
+  sectionContent: DS.attr(),
   course: DS.belongsTo('course'),
   qna: DS.belongsTo('qna'),
   lecture: DS.belongsTo('lecture'),
