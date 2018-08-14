@@ -1,0 +1,46 @@
+<div class="o-qna">
+  <div class="result-box">
+    <div class="title">
+      Your quiz has been submitted!
+    </div>
+    <div>
+      <b>Score Card</b>
+    </div>
+    <div class="card score-card">
+
+      <div class="circle-container color-green">
+        <div class="status-circle">
+          <div class="circle-back"></div>
+          <div class="circle-front d-flex justify-content-center">
+            <p class="progress-text align-self-center">{{totalCorrect}}</p>
+          </div>
+        </div>
+        <div class="sub">
+          Correct Answers
+        </div>
+      </div>
+      <div class="circle-container color-black">
+        <div class="status-circle">
+          <div class="circle-back"></div>
+          <div class="circle-front d-flex justify-content-center">
+            <p class="progress-text align-self-center">{{model.result.score}}</p>
+          </div>
+        </div>
+        <div class="sub">
+          Total Score
+        </div>
+      </div>
+      <div class="circle-container">
+        <div class="status-circle">
+          <div class="circle-back"></div>
+          <div class="circle-front d-flex justify-content-center">
+            <p class="progress-text align-self-center">{{totalIncorrect}}</p>
+          </div>
+        </div>
+        <div class="sub">
+          Wrong Answers
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

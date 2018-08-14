@@ -1,10 +1,33 @@
+{{#if playerPreference.showInstructions}}
+  {{#if isShowingInstructions}}
+    {{#modal-dialog
+      onClose=(action (mut isShowingInstructions) false)
+      translucentOverlay=true
+      overlayClass="o-player-modal"
+    }}
+        <div class="row">
+          <img src="/images/player-control.png">
+          <div class="justify-content-center">
+            <h3 class="red">Up/Down: Change Video Speed</h3>
+            <h3 class="red">Left/Right: Seeks 5 seconds Backward/Forward</h3>
+          </div>
+        </div>
+        <div class="footer row justify-content-end no-gutters">
+          <label class="red">{{input type='checkbox' checked=checkboxVal}}Don't show again</label>
+          <div class="button-solid">
+            <button {{action "closeInstructions"}}>Close</button>
+          </div>
+        </div>
+    {{/modal-dialog}}
+  {{/if}}
+{{/if}}
 <video id="video" class="w-100" controls onended={{onVideoCompleted}}></video>
 <div class="select-box">
 	<div class="open-select-box">
-	    <button type="video-fast-fwd" {{action 'changeSpeed' -0.5}} id="video-fbwd">
+	    <button type="video-fast-fwd" {{action 'changeSpeed' -0.25}} id="video-fbwd">
 	      <i class="fa fa-fast-backward"></i>
 	    </button>
-	      <button type="video-fast-back" {{action 'changeSpeed' 0.5}} id="video-ffwd">
+	      <button type="video-fast-back" {{action 'changeSpeed' 0.25}} id="video-ffwd">
 	    <i class="fa fa-fast-forward"></i>
 	    </button>
 	</div>

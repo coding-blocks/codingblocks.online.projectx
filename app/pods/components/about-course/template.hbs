@@ -39,12 +39,12 @@
     <div class="row justify-content-end">
       <div class="button-dashed col-6">
         {{#if session.isAuthenticated}}
-            {{#link-to 'classroom' tagName="button"}}
-                ENROLL VIA OTP
+            {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button"}}
+                START FREE TRIAL
             {{/link-to}}
         {{else}}
             <button onclick={{action 'logIn'}}>
-                ENROLL VIA OTP
+                START FREE TRIAL
             </button>
         {{/if}}
       </div>
@@ -177,14 +177,14 @@
             </a>
         </div>
 
-      <div class="button-dashed col-5">
+      <div class="button-dashed col-5 p-0">
           {{#if session.isAuthenticated}}
-              {{#link-to 'classroom' tagName="button"}}
-                  ENROLL VIA OTP
+              {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button"}}
+                  START FREE TRIAL
               {{/link-to}}
           {{else}}
               <button onclick={{action 'logIn'}}>
-                  ENROLL VIA OTP
+                  START FREE TRIAL
               </button>
           {{/if}}
       </div>
@@ -380,6 +380,12 @@
 
         <div class="price">
           {{format-price run.price}}
+
+          {{#unless (eq run.mrp run.price)}}
+            <span class="grey">
+              &nbsp;&nbsp;<strike style="font-size: 0.9rem">{{format-price run.mrp}}</strike>
+            </span>
+          {{/unless}}
         </div>
 
         <div class="my-course-enroll row no-gutters">

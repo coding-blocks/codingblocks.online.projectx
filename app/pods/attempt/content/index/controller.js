@@ -20,9 +20,12 @@ export default Controller.extend({
         return "player-video";
       case "code-challenge":
         return "player-code-challenge";
+      case "qna":
+        return "player-qna"
     }
   }),
   course: computed.alias('runAttempt.run.course'),
+  run: computed.alias('runAttempt.run'),
   actions: {
     transitionToDashboard() {
       this.transitionToRoute(

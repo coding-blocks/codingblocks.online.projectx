@@ -47,6 +47,8 @@
     "ember-facebook-pixel": "^0.1.0",
     "ember-keyboard-shortcuts": "^1.0.6",
     "ember-load-initializers": "^1.0.0",
+    "ember-local-storage": "^1.4.1",
+    "ember-modal-dialog": "^3.0.0-beta.0",
     "ember-moment": "^7.7.0",
     "ember-resolver": "^4.0.0",
     "ember-simple-auth": "^1.4.2",
@@ -62,7 +64,7 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "dependencies": {
-    "@coding-blocks/motley": "^0.3.1",
+    "@coding-blocks/motley": "0.3.7",
     "ember-cli-google-analytics": "^1.5.0",
     "ember-line-clamp": "^0.2.15"
   }
