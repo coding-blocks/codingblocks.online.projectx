@@ -5,6 +5,7 @@ export default DS.Model.extend({
   name: DS.attr(),
   premium: DS.attr(),
   end: DS.attr(),
+  revoked: DS.attr(),
   isExpired: computed('end', function () {
     return this.get('end') < +new Date()/1000
   }),
