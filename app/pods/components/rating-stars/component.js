@@ -3,7 +3,7 @@ import { action, computed } from 'ember-decorators/object'
 import { alias } from 'ember-decorators/object/computed'
 import { service } from 'ember-decorators/service'
 
-export default class FeedbackRatingComponent extends Component {
+export default class RatingStarsComponent extends Component {
 
 @service api
   
