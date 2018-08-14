@@ -75,9 +75,13 @@
 
                         <div class="button-parent col-6">
                             <div class="button-solid">
-                                {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}}
-                                    Resume
-                                {{/link-to}}
+                                {{#if run.topRunAttempt.isExpired}}
+                                    {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}}
+                                        Resume
+                                    {{/link-to}}
+                                {{else}}
+                                    <button disabled>Expired</button>
+                                {{/if}}
                             </div>
                         </div>
                     </div>
