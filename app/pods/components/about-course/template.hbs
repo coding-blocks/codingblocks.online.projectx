@@ -380,6 +380,12 @@
 
         <div class="price">
           {{format-price run.price}}
+
+          {{#unless (eq run.mrp run.price)}}
+            <span class="grey">
+              &nbsp;&nbsp;<strike style="font-size: 0.9rem">{{format-price run.mrp}}</strike>
+            </span>
+          {{/unless}}
         </div>
 
         <div class="my-course-enroll row no-gutters">
