@@ -8,7 +8,7 @@
         {{#link-to 'courses.id' run.course.identifier activeClass=""}} {{run.course.title}} {{/link-to}}
         <div class="rating mob">
           {{#if runAttempt.premium}}
-            {{#rating-stars-feedback course=run.course}} {{/rating-stars-feedback}}
+            {{#rating-stars course=run.course showModal=true}} {{/rating-stars}}
           {{else}}
             {{rating-stars-static rating=run.course.rating showValue=true}}
           {{/if}}
@@ -23,7 +23,7 @@
     <div class="rating">
       <br>
       {{#if runAttempt.premium}}
-        {{#rating-stars-feedback course=run.course}} {{/rating-stars-feedback}}
+        {{#rating-stars course=run.course showModal=true}} {{/rating-stars}}
       {{else}}
         {{rating-stars-static rating=run.course.rating showValue=true}}
       {{/if}}
