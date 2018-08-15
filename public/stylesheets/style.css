@@ -1111,22 +1111,22 @@ body {
   .hidden-print {
     display: none !important; } }
 
-.o-layout-card {
+.c-layout-card {
   display: block;
   padding-top: 25.5px;
   padding-left: 19.5px;
   position: relative;
   top: 252px;
   margin-left: -32px; }
-  .o-layout-card .button-solid {
+  .c-layout-card .button-solid {
     margin-left: 140px;
     position: relative;
     top: 10px; }
 
-.o-image-card {
+.c-image-card {
   margin-bottom: 22.5px; }
 
-.o-text-card {
+.c-text-card {
   margin-bottom: 18.5px; }
 
 .button-dashed {
