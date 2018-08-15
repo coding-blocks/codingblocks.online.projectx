@@ -1,10 +1,10 @@
 {{!-- {{course.title}}
 <div class="card-layout col-md-4">
-    <div class="card o-layout-card ">
-        <div class="card-image o-image-card">
+    <div class="card c-layout-card ">
+        <div class="card-image c-image-card">
             <img src="images/c++">
         </div>
-        <div class="card-heading o-text-card">
+        <div class="card-heading c-text-card">
             Registration Open for Launchpad online
         </div>
         <div class="card-text">
@@ -16,7 +16,7 @@
     </div>
 </div> --}}
 
-<div class="o-buy-top slide-up row no-gutters justify-content-between">
+<div class="c-buy-top slide-up row no-gutters justify-content-between">
   <div class="col-6 align-self-center">
     <div class="row no-gutters">
       <div class="card-image col-sm-2">
@@ -58,7 +58,7 @@
 </div>
 
 {{!-- Summary Section --}}
-<div class="o-summary">
+<div class="c-summary">
   <div class="classroom-container row">
     <div class="classroom-header-box col-md-8 col-sm-12 col-xs-12">
       <div class="classroom-header row">
@@ -104,7 +104,7 @@
     </div>
 
 
-    <div class="row o-rating-stats no-gutters">
+    <div class="row c-rating-stats no-gutters">
       <div class="col-1 score">
         <span class="font-lg bold">{{course.rating}}</span><span class="bold">out of 5</span>
 
@@ -136,7 +136,7 @@
       {{#each course.ratingCarousel as |rating|}}
         {{#if rating.shown}}
           <div class="col-8 col-md-4 col-lg-3">
-            <div class="card round o-rating-card">
+            <div class="card round c-rating-card">
               <div class="row justify-content-between">
                 <div>{{rating.user.firstname}} {{rating.user.lastname}}</div>
                 <div class="grey font-sm i">{{moment-from rating.updatedAt}}</div>
@@ -162,7 +162,7 @@
 
 {{!-- Buy right --}}
 
-<div class="o-buy-right">
+<div class="c-buy-right">
   <div class="card">
     <div class="card-video">
       <div class="preview">
@@ -251,7 +251,7 @@
 
 {{!-- Accordian --}}
 
-<div class="o-about-accordian">
+<div class="c-about-accordian">
   <div class="custom-heading accordian-head">
     <div class="heading-u">
       What will you learn
@@ -267,7 +267,7 @@
     </div>
   </div>
 
-  <div class="o-accordian">
+  <div class="c-accordian">
     {{log course.topRun}}
     {{#each course.topRun.sections as |section|}}
       <div class="accordian-ul" data-show="true">
@@ -297,12 +297,12 @@
 
 {{!-- Instructor --}}
 
-<div class="o-instructor">
+<div class="c-instructor">
   <div class="heading-u">
     About Instructors
   </div>
 
-  <div class="o-about-instructors" >
+  <div class="c-about-instructors" >
     <div class="row no-gutters">
       {{#each course.instructors as |instructor|}}
         <div class="col-md-6 col-sm-12">
@@ -341,7 +341,7 @@
 
 {{!-- Available Batches --}}
 
-<div class="o-batches">
+<div class="c-batches">
 <div class="heading-u" id="runs">
   Choose from Available Batches
 </div>
@@ -349,8 +349,8 @@
 <div class="grid row">
     {{#each availableRuns as |run|}}
 	<div class="card-layout col-md-4 col-sm-6">
-		<div class="card o-run-card o-layout-card ">
-			<div class="card-heading o-text-card">
+		<div class="card c-run-card c-layout-card ">
+			<div class="card-heading c-text-card">
           {{run.description}}
         </div>
         <div class="row">
