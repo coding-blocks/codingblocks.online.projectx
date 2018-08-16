@@ -1,4 +1,4 @@
-<div class="o-content-section">
+<div class="c-content-section">
     <div class="header flex-row">
         <div class="section-toggler flex-row">
             <div class="button-dashed" {{action 'toggleSideBar'}}>
@@ -29,7 +29,7 @@
             </div>
           </div>
             {{#unless accordianCollapsed}}
-              <div class="o-accordian">
+              <div class="c-accordian">
                   {{#each sections as |section|}}
                       <div class="accordian-ul" data-show="true">
                           {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length collapsed=(not (eq section.id sectionId))}}
