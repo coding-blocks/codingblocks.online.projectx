@@ -33,7 +33,7 @@ export default Route.extend({
           );
         }
       }).then(async (runAttempt) => {
-        await this.get('api').request('courses/' + 33 + '/rating', {
+        await this.get('api').request('courses/' + runAttempt.get('run.course.id') + '/rating', {
           method: 'GET'
         }).then((rating) => {
           runAttempt.set("rating", rating.userScore)
@@ -45,7 +45,6 @@ export default Route.extend({
     controller.set("run", model.get("run"));
     controller.set("runAttempt", model);
     controller.set("userRating", model.get("rating"));
-
   },
   actions: {
     reloadRoute() {
