@@ -51,8 +51,11 @@ export default class RatingStartComponent extends Component {
 
   @action
   toggleEditingMode () {
-    this.set('rating', 0)
+    // this.set('rating', 0)
     this.toggleProperty('isEditing')
+    if (this.get('showModal') == true) {
+      this.set('isShowingModal', true)
+    }
   }
 
   @action
