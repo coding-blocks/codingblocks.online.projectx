@@ -22,7 +22,7 @@
     {{else}}
     {{#each recommendedCourses as |course|}}
     <div class="card-layout col-md-4 col-sm-6">
-      <div class="card o-layout-card o-course-card">
+      <div class="card c-layout-card c-course-card">
         <div class="difficulty-div">
             <div class="{{course.difficultyName}}-level"></div>
             <div class="{{course.difficultyName}}-text">
@@ -31,11 +31,11 @@
         </div>
 
         <div class="header">
-          <div class="card-image o-image-card">
+          <div class="card-image c-image-card">
             <img src="{{defaultTo course.logo '/images/c++'}}">
           </div>
 
-          <h1 class="card-heading o-text-card">
+          <h1 class="card-heading c-text-card">
             {{#link-to 'courses.id' course.identifier activeClass=""}} {{course.title}} {{/link-to}}
           </h1>
           <h2 class="card-text">

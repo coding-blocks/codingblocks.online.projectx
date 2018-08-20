@@ -35,30 +35,41 @@
       <div class="divider-h col-6 align-self-center"></div>
     </div>
 
-    <div class="progress row no-gutters justify-content-around align-items-center">
-      <div class="progress-circle col-3 col-md-3">
+    <div class="progress row no-gutters justify-content-start justify-content-md-around align-items-center">
+      <div class="progress-circle col-3 col-md-3 ml-4 ml-md-0">
         <div class="status-circle">
           <div class="circle-back"></div>
           <div class="circle-front d-flex flex-column justify-content-center">
-            <p class="progress-text">{{percentage run.completedContents run.totalContents}} %</p>
+            <p class="progress-text">{{percentage run.completedContents run.totalContents}}%</p>
           </div>
         </div>
       </div>
-      <div class="course-progress-detail col-5 col-md-9">
+      <div class="course-progress-detail col-6 col-md-9">
         <p class="heading-mob">Course Progress</p>
+        {{#unless run.topRunAttempt.premium}}
+          <div class="red">Free Trial</div>
+        {{/unless}}
         <p class="lectures-completed">{{run.completedContents}} of {{run.totalContents}} Content completed</p>
         <p class="reset-progress pointer" {{action 'resetProgress'}}>Reset
           Progress</p>
       </div>
-      <div class="offset-md-5 col-4 col-md-5">
-        <div class="button-solid">
-          {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass=""}} Resume Learning {{/link-to}}
+      {{#if run.topRunAttempt.premium}}
+        <div class="offset-md-5 col-4 col-md-5">
+          <div class="button-solid">
+            {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass=""}} Resume Learning {{/link-to}}
+          </div>
         </div>
-      </div>
+      {{else}}
+        <div class="d-flex col-12 justify-content-md-end justify-content-center mt-2">
+          <div class="button-solid mr-2">
+            {{#link-to 'courses.id' run.course.identifier tagName="button" activeClass=""}} Buy Now {{/link-to}}
+          </div>
+          <div class="button-dashed">
+            {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass=""}} Resume Learning {{/link-to}}
+          </div>
+        </div>
+      {{/if}}
     </div>
-
-
-
   </div>
 </div>
 <div class="tab-nav">
@@ -74,9 +85,9 @@
   {{#link-to 'classroom.timeline.announcements'class="tab-icons" tagName="div"}}
   <img src="/images/announcement-white.svg" alt="Announcements">
   {{/link-to}}
-  {{link-to 'Solve Your Doubts' 'classroom.timeline.doubts' class="tab-items" tagName="div"}}
+  {{link-to 'Ask Your Doubts' 'classroom.timeline.doubts' class="tab-items" tagName="div"}}
   {{#link-to 'classroom.timeline.doubts' class="tab-icons" tagName="div"}}
-    <img src="/images/support-white.svg" alt="Solve Your Doubts">
+    <img src="/images/support-white.svg" alt="Ask Your Doubts">
   {{/link-to}}
 </div>
 {{liquid-outlet}}

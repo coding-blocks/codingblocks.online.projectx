@@ -13,5 +13,11 @@ export default DS.Model.extend({
   isProgressCompleted: computed("doneContents", function() {
     return this.get("doneContents.length") === this.get("contents.length");
   }),
-  contents: DS.hasMany("content")
+  contents: DS.hasMany("content"),
+  sortContents: function () {
+    const contents = this.get('contents')
+    Promise.resolve(contents).then(contents => {
+      this.set('contents', contents.sortBy('sectionContent.order'))
+    })
+  }.on('didLoad')
 });

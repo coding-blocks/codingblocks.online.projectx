@@ -10,6 +10,7 @@ export default DS.Model.extend({
   enrollmentEnd: DS.attr (),
   isFree: DS.attr(),
   price: DS.attr(),
+  mrp: DS.attr(),
   runAttemptId: DS.attr(),
   course: DS.belongsTo('course'),
   description:DS.attr(),

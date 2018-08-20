@@ -42,10 +42,10 @@ export default DS.Model.extend({
     topRun: computed('runs', function () {
         const runs = this.get('runs')
         const now = +new Date() / 1000.0
-        const currentRun = runs.find( (run, index) => {
+        const currentRuns = runs.filter( (run, index) => {
             return run.get('enrollmentStart') < now && run.get('enrollmentEnd') > now
         })
-        return currentRun || runs.sortBy('start').objectAt(0)
+        return currentRuns.sortBy('price').objectAt(0) || runs.sortBy('price').objectAt(0)
     }),
     runs: DS.hasMany('run'),
     instructors: DS.hasMany('instructor'),
