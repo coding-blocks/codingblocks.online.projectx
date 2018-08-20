@@ -2,7 +2,7 @@
   <div>
     Thanks for rating us! &nbsp;&nbsp;
     <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
-    <br>
+    <br><br>
     {{#each (range 1 (inc scale)) as |index|}}
       <span
         class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
@@ -14,7 +14,7 @@
 {{else}}
   <div>
     Rate this course:
-    <br>
+    <br><br>
     {{#each (range 1 (inc scale)) as |index|}}
       <span
         class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
