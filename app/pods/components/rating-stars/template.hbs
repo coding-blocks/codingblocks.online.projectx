@@ -10,18 +10,6 @@
         <i class="fas fa-star"></i>
       </span>
     {{/each}}
-    <div class="title">
-      How was the overall experience?
-    </div>
-    <div class="card-text">
-    {{textExperience}}
-    </div>
-    <div class="title">
-      Write a public review.
-    </div>
-    <div class="card-text">
-    {{textPublic}}
-    </div>
   </div>
 {{else}}
   <div>
@@ -41,7 +29,7 @@
 {{/if}}
 {{#if isShowingModal}}
   {{#modal-dialog
-    onClose=(action (mut isShowingModal) false)
+    onClose=(action 'afterFeedback')
     translucentOverlay=true
     targetAttachment='none'
     containerClass='centered-scrolling-container'

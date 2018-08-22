@@ -39,7 +39,7 @@ export default class RatingStartComponent extends Component {
 
   @action
   resetRating () {
-    this.set('rating', this.get('initialRating'))
+    this.set('rating', this.get('ratingMarkedByUser'))
   }
 
   @action
@@ -60,7 +60,6 @@ export default class RatingStartComponent extends Component {
 
   @action
   submitFeedback() {
-
     this.get('api').request('/courses/' + this.get('course.id') + '/rating', {
       method: 'POST',
       data: {
@@ -69,7 +68,14 @@ export default class RatingStartComponent extends Component {
         review: this.get('textPublic')
       }
     })
+    this.afterFeedback()
+    return true
+  }
+
+  @action
+  afterFeedback() {
     this.set('isShowingModal', false)
+    this.set('isEditing', false)
   }
 
   @action
