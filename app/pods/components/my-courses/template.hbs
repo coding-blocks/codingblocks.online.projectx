@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="button-parent col-6">
-                                {{#if (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
+                                {{#unless (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
                                 <div class="button-solid">
                                   {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}}
                                         Resume
@@ -84,7 +84,7 @@
                                 <div class="button-solid disabled">
                                     <button>Expired</button>
                                 </div>
-                                {{/if}}
+                                {{/unless}}
                         </div>
                     </div>
                 </div>
