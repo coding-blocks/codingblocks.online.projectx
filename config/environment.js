@@ -51,6 +51,9 @@ module.exports = function(environment) {
     ENV.clientId = 7642172843
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.cb.lk'
+    ENV.googleAnalytics = {
+      webPropertyId: 'UA-83327907-12'
+    };
     ENV["ember-facebook-pixel"] = {
       id: ''
     };
@@ -79,7 +82,7 @@ module.exports = function(environment) {
     ENV.hackApiHost = 'https://api.cb.lk'
     ENV.sentry.dsn = 'https://28a62ac6a0194a8381f4a6df014fa5ed@sentry.cb.lk/21'
     ENV.googleAnalytics = {
-      webPropertyId: 'UA-83327907-9'
+      webPropertyId: 'UA-83327907-12'
     }
     ENV["ember-facebook-pixel"] = {
       id: '1947467048859851'
