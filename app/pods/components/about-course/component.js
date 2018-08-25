@@ -40,7 +40,6 @@ export default Component.extend({
       this.set('stats', response.stats);
     })
   }),
-
   actions: {
     logIn() {
       localStorage.setItem('redirectionPath', this.get('router.currentURL'))
@@ -81,7 +80,7 @@ export default Component.extend({
         buyTop.classList.add("slide-up");
       }
     })
-  },
+  }
 
 
 
