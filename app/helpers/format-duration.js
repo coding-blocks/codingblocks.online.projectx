@@ -1,15 +1,5 @@
 import { helper } from '@ember/component/helper';
-
-function msToTime(s) {
-  var ms = s % 1000;
-  s = (s - ms) / 1000;
-  var secs = s % 60;
-  s = (s - secs) / 60;
-  var mins = s % 60;
-  var hrs = (s - mins) / 60;
-
-  return (hrs?hrs + ':':'') + mins + ':' + secs;
-}
+import moment from 'moment';
 
 export function formatPrice(params/*, hash*/) {
 	let duration = parseInt(params[0]);
@@ -17,7 +7,10 @@ export function formatPrice(params/*, hash*/) {
 			return "--";
 		}
 		else{
-			return `${msToTime(duration)}`;
+			let res = moment.duration(duration)._data;
+      return (res.hours?`0${res.hours}`.slice(-2) + ':':'00:')
+        + (res.minutes?`0${res.minutes}`.slice(-2) + ':':'00:')
+        + (res.seconds?`0${res.seconds}`.slice(-2) :'00');
 		}
 }
 
