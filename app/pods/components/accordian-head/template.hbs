@@ -40,7 +40,13 @@
             {{title}}
         </div>
     </div>
-
+    {{#if duration}}
+      <div class="flex-row">
+        <div class="accordian-status">
+          <span>{{format-duration duration 'humanize'}}</span>
+        </div>
+      </div>
+    {{/if}}
     <div class="flex-row">
         <div class="accordian-status">
             <span class="completed">{{completed}}</span> / {{total}}

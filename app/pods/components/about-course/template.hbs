@@ -271,7 +271,7 @@
     {{log course.topRun}}
     {{#each course.topRun.sections as |section|}}
       <div class="accordian-ul" data-show="true">
-        {{#accordian-head title=section.name total=section.totalContents}}
+        {{#accordian-head title=section.name total=section.totalContents duration=section.duration}}
 
         {{#each section.contents as |content|}}
           <div class="accordian-li">
