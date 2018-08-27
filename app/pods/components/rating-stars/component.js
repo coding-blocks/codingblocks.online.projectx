@@ -69,7 +69,6 @@ export default class RatingStartComponent extends Component {
       }
     })
     this.afterFeedback()
-    return true
   }
 
   @action
