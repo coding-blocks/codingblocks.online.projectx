@@ -11,4 +11,5 @@ export default DS.Model.extend({
   }),
   run: DS.belongsTo('run'),
   user: DS.belongsTo('user'),
+  rating: DS.attr()
 })
