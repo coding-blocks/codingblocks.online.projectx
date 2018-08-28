@@ -21,7 +21,39 @@
     {{/modal-dialog}}
   {{/if}}
 {{/if}}
-<video id="video" class="w-100" controls onended={{onVideoCompleted}}></video>
+  <video id="video" class="w-100 video-overlay" controls onended={{onVideoCompleted}}></video>
+  <div class="overlay-content">
+    <p style="color: gray">{{currentUser.user.email}}</p>
+  </div>
+
+<style>
+
+  video{
+    z-index: 0;
+  }
+
+</style>
+
+<script>
+
+  let overlay = document.getElementById("overlay")
+  let topPos = Math.floor(Math.random() * 100)
+  let leftPos = Math.floor(Math.random() * 100)
+
+  overlay.style.top = topPos + "%";
+  overlay.style.left = leftPos + "%";
+
+  setInterval(function () {
+    let topPos = Math.floor(Math.random() * 100)
+    let leftPos = Math.floor(Math.random() * 100)
+
+    overlay.style.top = topPos + "%";
+    overlay.style.left = leftPos + "%";
+
+  },5000)
+
+</script>
+
 <div class="select-box">
 	<div class="open-select-box">
 	    <button type="video-fast-fwd" {{action 'changeSpeed' -0.25}} id="video-fbwd">

@@ -3,9 +3,11 @@ import { isNone } from '@ember/utils';
 import $ from 'jquery'
 import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
 import { storageFor } from 'ember-local-storage';
+import {inject as service} from '@ember/service';
 
 
 export default Component.extend(KeyboardShortcuts, {
+  currentUser : service(),
   playerPreference: storageFor('player-prefs'),
   isShowingInstructions: true,
   classNames: ['height-100'],
