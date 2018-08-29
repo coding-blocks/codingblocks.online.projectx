@@ -23,6 +23,7 @@ export default class RecommendedTaskComponent extends Component {
         unlisted: false
       },
       include: "instructors,runs",
+      exclude: "ratings",
       sort: 'difficulty'
     });
   });
