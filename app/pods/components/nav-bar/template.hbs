@@ -25,6 +25,10 @@
           <li class="nav-items pointer">
             {{#link-to 'classroom'}}My Courses{{/link-to}}
           </li>
+        {{else}}
+          <li class="nav-items pointer">
+            <a href="https://codingblocks.com/centres/" target="_blank">Contact Us</a>
+          </li>
         {{/if}}
         {{#if session.isAuthenticated}}
           <li class="nav-items pointer">
