@@ -26,26 +26,6 @@
     <p class="grey">{{currentUser.user.email}}</p>
   </div>
 
-<script>
-
-  let overlay = document.getElementById("overlay")
-  let topPos = Math.floor(Math.random() * 100)
-  let leftPos = Math.floor(Math.random() * 100)
-
-  overlay.style.top = topPos + "%";
-  overlay.style.left = leftPos + "%";
-
-  setInterval(function () {
-    let topPos = Math.floor(Math.random() * 100)
-    let leftPos = Math.floor(Math.random() * 100)
-
-    overlay.style.top = topPos + "%";
-    overlay.style.left = leftPos + "%";
-
-  },5000)
-
-</script>
-
 <div class="select-box">
 	<div class="open-select-box">
 	    <button type="video-fast-fwd" {{action 'changeSpeed' -0.25}} id="video-fbwd">
