@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { inject } from '@ember/service';
 import $ from 'jquery';
+import { task } from 'ember-concurrency';
 import env from "codingblocks-online/config/environment";
 
 export default Component.extend({
@@ -15,6 +16,31 @@ export default Component.extend({
     window.location.href = this.loginUrl
   },
 
+  enrollNowTask: task(function *(runId) {
+    if(this.get('session.isAuthenticated')) {
+      try {
+        yield this.get('api').request(`/runs/${runId}/buy`)
+        window.location.href = env.dukaanUrl
+      } catch (err) {
+        this.get('router').transitionTo('error', {
+          queryParams: {
+            errorCode: 'DUKKAN_ERROR'
+          }
+        })
+      }
+    }
+    else {
+      this.send('logIn')
+    }
+  }).drop(),
+
+  getRatingStats: task(function * (){
+    yield this.get('api').request(`/courses/${this.get('course.id')}/rating`)
+    .then(response=>{
+      this.set('stats', response.stats);
+    })
+  }),
+
   actions: {
     logIn() {
       localStorage.setItem('redirectionPath', this.get('router.currentURL'))
@@ -23,22 +49,6 @@ export default Component.extend({
     logInAndStartTrial (courseId, runId) {
       localStorage.setItem('redirectionPath', this.get('router').urlFor('classroom.timeline.index', {courseId, runId}))
       this._redirectToOneauth()
-    },
-    enrollNow (runId) {
-      if(this.get('session.isAuthenticated')){
-        this.get('api').request(`/runs/${runId}/buy`).then(resp => {
-          window.location.href = env.dukaanUrl
-        }).catch (err => {
-          this.get('router').transitionTo('error', {
-            queryParams: {
-              errorCode: 'DUKKAN_ERROR'
-            }
-          })
-        })
-      }
-      else {
-        this.send('logIn')
-      }
     }
   },
 
@@ -53,20 +63,22 @@ export default Component.extend({
 
   },
 
+  didReceiveAttrs(){
+    this._super(...arguments);
+    this.get('getRatingStats').perform();
+  },
+
   didInsertElement () {
     this._super(...arguments)
     // hide buy-right and pull buy-top when user scrolls to the top of accrodian
-    const buyRight = $(".o-buy-right");
-    const buyTop = $(".o-buy-top")[0];
-    const accordian = $(".o-about-accordian");
+    const buyTop = $(".c-buy-top")[0];
+    const accordian = $(".c-about-accordian");
     const accordOffsetTop = accordian.offset().top - 350;
     $(window).on('scroll', function() {
       if (window.pageYOffset >= accordOffsetTop) {
-        buyRight.addClass("slide-right");
         buyTop.classList.remove("slide-up");
       } else {
         buyTop.classList.add("slide-up");
-        buyRight.removeClass("slide-right");
       }
     })
   },

@@ -1,0 +1,15 @@
+<div class="c-review-pad">
+  <div class="title">
+    Review Questions
+  </div>
+  <div class="options">
+    {{#each questions as |question index|}}
+    <div 
+    class="circle {{get circleClassNames index}}"
+    {{action onCircleClick (inc index 1)}}
+    >
+      {{inc index 1}}
+    </div>
+    {{/each}}
+  </div>
+</div>

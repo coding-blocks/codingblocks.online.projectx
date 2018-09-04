@@ -27,7 +27,7 @@ export default DS.Model.extend({
     isFree: DS.attr(),
     duration: DS.attr(),
     lecturesCount: DS.attr(),
-    ratingCount: DS.attr(),
+    reviewCount: DS.attr(),
     videosDuration: DS.attr(),
     type: DS.attr(),
     color: DS.attr(),
@@ -42,10 +42,10 @@ export default DS.Model.extend({
     topRun: computed('runs', function () {
         const runs = this.get('runs')
         const now = +new Date() / 1000.0
-        const currentRun = runs.find( (run, index) => {
+        const currentRuns = runs.filter( (run, index) => {
             return run.get('enrollmentStart') < now && run.get('enrollmentEnd') > now
         })
-        return currentRun || runs.sortBy('start').objectAt(0)
+        return currentRuns.sortBy('price').objectAt(0) || runs.sortBy('price').objectAt(0)
     }),
     runs: DS.hasMany('run'),
     instructors: DS.hasMany('instructor'),
@@ -69,6 +69,16 @@ export default DS.Model.extend({
       return this.get('slug') || this.get('id')
     }),
     ratings: DS.hasMany('rating'),
+    ratingCarousel: computed('ratings', function(){
+      return this.get('ratings').map(rating=>{
+        if(Ember.isEmpty(rating.get('heading')) && Ember.isEmpty(rating.get('review'))){
+          rating.setProperties({shown: false})
+        }else{
+          rating.setProperties({shown: true})
+        }
+        return rating;
+      })
+    }),
     userRating: computed('ratings', function () {
       return this.get('ratings').objectAt(0)
     })

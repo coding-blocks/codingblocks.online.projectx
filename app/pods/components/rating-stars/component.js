@@ -9,52 +9,83 @@ import { service } from 'ember-decorators/service'
     }
 */
 export default class RatingStartComponent extends Component {
-    @service api
+  @service api
 
-    scale = 5
-    ratingMarkedByUser = null
-    isEditing = false
+  scale = 5
+  ratingMarkedByUser = null
+  isEditing = false
+  isShowingModal = false
 
-    constructor () {
-        super(...arguments)
-        if (this.get('initialRating')) {
-            this.set('hasUserMarkedRating', true)
-            this.set('ratingMarkedByUser', this.get('initialRating.value'))
-        } else {
-            this.set('hasUserMarkedRating', false)
-        }
+  constructor () {
+    super(...arguments)
+    this.set('hasUserMarkedRating', false)
+  }
+
+  didReceiveAttrs () {
+    this._super(...arguments)
+    if (this.get('initialRating')) {
+      this.set('hasUserMarkedRating', true)
+      this.set('ratingMarkedByUser', this.get('initialRating.value'))
+      this.set('rating', this.get('initialRating.value'))
+      this.set('textExperience', this.get('initialRating.heading'))
+      this.set('textPublic', this.get('initialRating.review'))
     }
+  }
 
-    didReceiveAttrs () {
-        this._super(...arguments)
-    }
+  @action
+  changeRating (val) {
+    this.set('rating', val)
+  }
 
-    @action
-    changeRating (val) {
-        this.set('rating', val)
-    }
+  @action
+  resetRating () {
+    this.set('rating', this.get('ratingMarkedByUser'))
+  }
 
-    @action
-    resetRating () {
-        this.set('rating', this.get('initialRating'))
-    }
+  @action
+  markRating (rating) {
+    this.set('hasUserMarkedRating', true)
+    this.set('isEditing', false)
+    this.set('ratingMarkedByUser', rating)
+  }
 
-    @action
-    markRating (rating) {
-        this.set('hasUserMarkedRating', true)
-        this.set('isEditing', false)
-        this.set('ratingMarkedByUser', rating)
-        this.get('api').request('/courses/' + this.get('course.id') + '/rating', {
-            method: 'POST',
-            data: {
-                value: this.get('ratingMarkedByUser'),
-            }
-        })
+  @action
+  toggleEditingMode () {
+    // this.set('rating', 0)
+    this.toggleProperty('isEditing')
+    if (this.get('showModal') == true) {
+      this.set('isShowingModal', true)
     }
+  }
 
-    @action
-    toggleEditingMode () {
-        this.set('rating', 0)
-        this.toggleProperty('isEditing')
+  @action
+  submitFeedback() {
+    this.get('api').request('/courses/' + this.get('course.id') + '/rating', {
+      method: 'POST',
+      data: {
+        value: this.get('ratingMarkedByUser'),
+        experience: this.get('textExperience'),
+        review: this.get('textPublic')
+      }
+    })
+    this.afterFeedback()
+  }
+
+  @action
+  afterFeedback() {
+    this.set('isShowingModal', false)
+    this.set('isEditing', false)
+  }
+
+  @action
+  toggleModal (rating) {
+    this.markRating(rating)
+    if (this.get('showModal') == true) {
+      this.toggleProperty('isShowingModal')
+    } else {
+      this.set('textExperience', '')
+      this.set('textPublic', '')
+      this.submitFeedback()
     }
+  }
 }

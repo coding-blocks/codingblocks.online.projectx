@@ -7,7 +7,7 @@ export default class navBarComponent extends Component {
     @service currentUser
 
     showSidebar = false
-    
+
     @action
     toggleSidebar () {
       this.toggleProperty('showSidebar')

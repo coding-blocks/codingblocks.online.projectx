@@ -3,14 +3,16 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   contentable: DS.attr(),
+  title: DS.attr(),
+  sectionContent: DS.attr(),
   course: DS.belongsTo('course'),
-  //quiz: DS.belongsTo('quiz'),
+  qna: DS.belongsTo('qna'),
   lecture: DS.belongsTo('lecture'),
   "code-challenge": DS.belongsTo('code-challenge'),
   document: DS.belongsTo('document'),
   //attachment: DS.belongsTo('attachment'),
   video: DS.belongsTo('video'),
-  payload: computed('contentable', 'quiz', 'lecture', 'code-challenge', 'document', 'video', function () {
+  payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', function () {
     return this.get(this.get('contentable'))
   }),
   isDone: computed('progress.isDone', function () {
@@ -25,5 +27,5 @@ export default DS.Model.extend({
     }
   }),
   progress: DS.belongsTo('progress'),
-  //section: DS.belongsTo('section')
+  // section: DS.belongsTo('section')
 })

@@ -2,19 +2,24 @@ import Component from '@ember/component';
 import { isNone } from '@ember/utils';
 import $ from 'jquery'
 import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
+import { storageFor } from 'ember-local-storage';
+import {inject as service} from '@ember/service';
 
 
 export default Component.extend(KeyboardShortcuts, {
+  currentUser : service(),
+  playerPreference: storageFor('player-prefs'),
+  isShowingInstructions: true,
   classNames: ['height-100'],
   keyboardShortcuts: {
     space: 'toggleVideoPlayback',
     left: 'seekBack',
     right: 'seekForward',
     up () {
-      this.send("changeSpeed", 0.5)
+      this.send("changeSpeed", 0.25)
     },
     down () {
-      this.send("changeSpeed", -0.5)
+      this.send("changeSpeed", -0.25)
     }
   },
 
@@ -66,6 +71,22 @@ export default Component.extend(KeyboardShortcuts, {
     const video = this.$('#video')[0];
     const spinner = this.$('.spinner');
     const lecture = this.$('.lecture');
+    const overlay = this.$('.overlay-content');
+
+    let topPos = Math.floor(Math.random() * 100)
+    let leftPos = Math.floor(Math.random() * 100)
+
+    overlay[0].style.top = topPos + "%";
+    overlay[0].style.left = leftPos + "%";
+
+    setInterval(function () {
+      let topPos = Math.floor(Math.random() * 100)
+      let leftPos = Math.floor(Math.random() * 100)
+
+      overlay[0].style.top = topPos + "%";
+      overlay[0].style.left = leftPos + "%";
+
+    },5000)
 
     const hls = this.get('hls');
 
@@ -101,7 +122,7 @@ export default Component.extend(KeyboardShortcuts, {
     changeSpeed(val) {
      const rate = +this.get('pr') +val;
      const video = this.get('playerElement')
-     if ( rate >= -0.5 && rate <= 2) {
+     if ( rate > 0 && rate <= 2) {
         video.playbackRate = +rate;
         this.set('pr', rate)
       }
@@ -129,7 +150,12 @@ export default Component.extend(KeyboardShortcuts, {
     if (isNone(video))
       return ;
     video.currentTime += 5
-   }
+   },
+    closeInstructions () {
+      let val = this.get("checkboxVal")
+      this.set('playerPreference.showInstructions', !val)
+      this.set('isShowingInstructions', false)
+    }
   }
 
 })

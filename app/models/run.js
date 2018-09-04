@@ -10,12 +10,14 @@ export default DS.Model.extend({
   enrollmentEnd: DS.attr (),
   isFree: DS.attr(),
   price: DS.attr(),
+  mrp: DS.attr(),
   runAttemptId: DS.attr(),
   course: DS.belongsTo('course'),
   description:DS.attr(),
   sections: DS.hasMany('sections'),
   user: DS.belongsTo('user'),
   productId: DS.attr(),
+  tags: DS.hasMany('tag'),
   topRunAttempt: Ember.computed('runAttempts', function () {
     return this.get('runAttempts').objectAt(0)
   }),

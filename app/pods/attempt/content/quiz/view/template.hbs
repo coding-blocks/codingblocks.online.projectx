@@ -1,0 +1,31 @@
+<div class="c-qna-attempt">
+  <div class="left col-9">
+    <div class="heading p-4">
+      {{quiz.title}}
+    </div>
+
+    {{outlet}}
+  </div>
+  <div class="right col-3">
+
+    <div class="c-review-pad">
+      <div class="title">
+        Result
+      </div>
+      <div class="options">
+        {{#each quiz.questions as |question index|}}
+          {{log question.id incorrectQuestionIds}}
+          <div 
+            class="circle
+              {{if (find question.id correctQuestionIds) 'bg-green'}}
+              {{if (find question.id incorrectQuestionIds) 'bg-incorrect'}}
+            "
+            {{action 'setQuestion' index}}
+          >
+            {{inc index 1}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

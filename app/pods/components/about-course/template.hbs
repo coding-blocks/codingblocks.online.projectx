@@ -1,10 +1,10 @@
 {{!-- {{course.title}}
 <div class="card-layout col-md-4">
-    <div class="card o-layout-card ">
-        <div class="card-image o-image-card">
+    <div class="card c-layout-card ">
+        <div class="card-image c-image-card">
             <img src="images/c++">
         </div>
-        <div class="card-heading o-text-card">
+        <div class="card-heading c-text-card">
             Registration Open for Launchpad online
         </div>
         <div class="card-text">
@@ -16,7 +16,7 @@
     </div>
 </div> --}}
 
-<div class="o-buy-top slide-up row no-gutters justify-content-between">
+<div class="c-buy-top slide-up row no-gutters justify-content-between">
   <div class="col-6 align-self-center">
     <div class="row no-gutters">
       <div class="card-image col-sm-2">
@@ -39,12 +39,12 @@
     <div class="row justify-content-end">
       <div class="button-dashed col-6">
         {{#if session.isAuthenticated}}
-            {{#link-to 'classroom' tagName="button"}}
-                ENROLL VIA OTP
+            {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button"}}
+                START FREE TRIAL
             {{/link-to}}
         {{else}}
             <button onclick={{action 'logIn'}}>
-                ENROLL VIA OTP
+                START FREE TRIAL
             </button>
         {{/if}}
       </div>
@@ -58,9 +58,9 @@
 </div>
 
 {{!-- Summary Section --}}
-<div class="o-summary">
+<div class="c-summary">
   <div class="classroom-container row">
-    <div class="classroom-header-box col-md-7 col-sm-12 col-xs-12">
+    <div class="classroom-header-box col-md-8 col-sm-12 col-xs-12">
       <div class="classroom-header row">
         <div class="classroom-image col-md-2 col-xs-2 col-sm-2">
           <img src="{{course.logo}}" alt="course logo">
@@ -74,7 +74,7 @@
         {{course.subtitle}}
       </h2>
 
-      {{rating-stars-static course=course reviewCount=true}}
+      <br>
 
       <div class="para">
         <span class="key">Mentor : </span>
@@ -91,16 +91,78 @@
         Summary
       </div>
 
-      <div class="para">
-        {{course.summary}}
+      <div class="para summary">
+        {{markdown-to-html course.summary}}
       </div>
     </div>
   </div>
+
+  {{#if getRatingStats.isRunning}}
+  {{else}}
+    <div class="heading-u">
+      Student Feedback
+    </div>
+
+
+    <div class="row c-rating-stats no-gutters">
+      <div class="col-1 score">
+        <span class="font-lg bold">{{course.rating}}</span><span class="bold">out of 5</span>
+
+        {{rating-stars-static rating=course.rating}}
+
+        <div>
+          {{course.reviewCount}} Ratings
+        </div>
+      </div>
+      <div class="col-7 col-sm-9 col-md-7 col-lg-5 stats">
+        {{#each (range 5 0) as |index|}}
+          <div class="row">
+            <div class="col-12 col-sm-9">
+              <progress value="{{get stats (sub index 1)}}" max="{{course.reviewCount}}"></progress>
+            </div>
+            <div class="col-3 rating">
+              {{#each (range 0 index)}}
+                <span class="pos-rating">
+                  <i class="fas fa-star"></i>
+                </span>
+              {{/each}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="row rating-carousel">
+      {{#each course.ratingCarousel as |rating|}}
+        {{#if rating.shown}}
+          <div class="col-8 col-md-4 col-lg-3">
+            <div class="card round c-rating-card">
+              <div class="row justify-content-between">
+                <div>{{rating.user.firstname}} {{rating.user.lastname}}</div>
+                <div class="grey font-sm i">{{moment-from rating.updatedAt}}</div>
+              </div>
+
+              <div class="heading">
+                {{rating.heading}}
+              </div>
+
+              {{rating-stars-static rating=rating.value}}
+
+              <div class="review grey i">
+                {{rating.review}}
+              </div>
+            </div>
+          </div>
+        {{/if}}
+
+      {{/each}}
+    </div>
+  {{/if}}
 </div>
 
 {{!-- Buy right --}}
 
-<div class="o-buy-right">
+<div class="c-buy-right">
   <div class="card">
     <div class="card-video">
       <div class="preview">
@@ -109,20 +171,20 @@
 
     </div>
     <div class="button-container row justify-content-center">
-        <div class="button-solid col-6">
+        <div class="button-solid col-5">
             <a href="#runs">
                 <button class="white">BUY NOW</button>
             </a>
         </div>
 
-      <div class="button-dashed col-6">
+      <div class="button-dashed col-5 p-0">
           {{#if session.isAuthenticated}}
-              {{#link-to 'classroom' tagName="button"}}
-                  ENROLL VIA OTP
+              {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button"}}
+                  START FREE TRIAL
               {{/link-to}}
           {{else}}
               <button onclick={{action 'logIn'}}>
-                  ENROLL VIA OTP
+                  START FREE TRIAL
               </button>
           {{/if}}
       </div>
@@ -189,7 +251,7 @@
 
 {{!-- Accordian --}}
 
-<div class="o-about-accordian">
+<div class="c-about-accordian">
   <div class="custom-heading accordian-head">
     <div class="heading-u">
       What will you learn
@@ -205,7 +267,7 @@
     </div>
   </div>
 
-  <div class="o-accordian">
+  <div class="c-accordian">
     {{log course.topRun}}
     {{#each course.topRun.sections as |section|}}
       <div class="accordian-ul" data-show="true">
@@ -215,10 +277,10 @@
           <div class="accordian-li">
             <div class="li-left flex-row">
               <div class="accordian-li-type">
-                <div class="content-icon {{content.iconClass}}-green-dark"></div>
+                <div class="content-icon {{content.iconClass}}-green"></div>
               </div>
               <div class="accordian-li-heading">
-                {{content.payload.name}}
+                {{content.title}}
               </div>
             </div>
 
@@ -235,17 +297,17 @@
 
 {{!-- Instructor --}}
 
-<div class="o-instructor">
+<div class="c-instructor">
   <div class="heading-u">
     About Instructors
   </div>
 
-  <div class="o-about-instructors container-fluid" >
-    <div class="row">
+  <div class="c-about-instructors" >
+    <div class="row no-gutters">
       {{#each course.instructors as |instructor|}}
         <div class="col-md-6 col-sm-12">
-          <div class="img-desc row">
-            <div class="col-4">
+          <div class="img-desc row no-gutters">
+            <div class="col-3">
               <div class="img-container">
                 <div class="round-img">
                   <img src="{{instructor.photo}}" alt="photo of {{instructor.name}}">
@@ -279,7 +341,7 @@
 
 {{!-- Available Batches --}}
 
-<div class="o-batches">
+<div class="c-batches">
 <div class="heading-u" id="runs">
   Choose from Available Batches
 </div>
@@ -287,14 +349,14 @@
 <div class="grid row">
     {{#each availableRuns as |run|}}
 	<div class="card-layout col-md-4 col-sm-6">
-		<div class="card my-course o-layout-card ">
-			<div class="card-heading o-text-card">
-          {{run.name}}
+		<div class="card c-run-card c-layout-card ">
+			<div class="card-heading c-text-card">
+          {{run.description}}
         </div>
         <div class="row">
-          <div class="card-text">
+          {{!-- <div class="card-text">
             {{run.description}}
-          </div>
+          </div> --}}
           <div class="batch">
             <div class="card-text grey">
               Batch Starts
@@ -318,6 +380,12 @@
 
         <div class="price">
           {{format-price run.price}}
+
+          {{#unless (eq run.mrp run.price)}}
+            <span class="grey">
+              &nbsp;&nbsp;<strike style="font-size: 0.9rem">{{format-price run.mrp}}</strike>
+            </span>
+          {{/unless}}
         </div>
 
         <div class="my-course-enroll row no-gutters">
@@ -326,9 +394,12 @@
             <div class="red">Enrollment ends {{moment-format (unix run.enrollmentEnd) 'MMM Do YYYY'}} </div>
         </div>	
 				<div class="button-parent col-4">
-                                    <a href="#" {{action 'enrollNow' run.id}}>
+                                    <a href="#" {{action (perform enrollNowTask run.id)}}>
                                         <div class="button-solid">
-                                            <button>Enroll Now</button>
+                                            <button>
+                                              {{if enrollNowTask.isRunning 'Enrolling...' 'Enroll Now'}}
+                                              
+                                            </button>
                                         </div>
                                     </a>
 				</div>
@@ -336,7 +407,19 @@
 			</div>
 
 			<div class="card-mentor-divider"></div>
+      {{#if run.tags.length}}
+        <div class="font-sm">Major topics covered</div>
+        <div class="tag-container">
+          {{#each run.tags as |tag|}}
+            <div class={{if (gt run.tags.length 6) "pill-sm" "pill"}}>
+              {{tag.name}}
+            </div>
+          {{/each}}
+        </div>
 
+        <div class="card-mentor-divider"></div>
+      {{/if}}
+      
 			<div class="row no-gutters">
 				<div class="col-8 align-self-center">
 					You may also try our

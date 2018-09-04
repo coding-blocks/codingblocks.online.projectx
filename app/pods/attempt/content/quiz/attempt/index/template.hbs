@@ -1,0 +1,59 @@
+<div class="c-qna-attempt">
+  <div class="left col-9">
+    <div class="heading p-4">
+      Quiz - Assignment: Mathematics 2.0
+    </div>
+
+    <div class="question p-4">
+      <span class="sno">Q{{q}}.</span>
+      <span class="text">
+        {{currentQuestion.title}}
+      </span>
+    </div>
+
+    <div class="choices p-4">
+      {{#each currentQuestion.choices as |choice|}}
+        <div 
+        class="choice {{if (find choice.id currentQuestion.markedChoices) 'marked'}}"
+        onclick={{perform markChoice currentQuestion choice}}
+        >
+          <div class="circle"></div>
+          <div class="text">
+            {{choice.title}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="navigation">
+      {{#if (gt q 1)}}
+        <a href="#" {{action 'changeQuestion' -1}} >Previous</a>
+      {{else}}
+        <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Previous</a>
+      {{/if}}
+      {{#if (lt q quiz.questions.length)}}
+        <a href="#"  {{action 'changeQuestion' 1}}>Next</a>
+      {{else}}
+        <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Next</a>
+      {{/if}}
+    </div>
+  </div>
+  <div class="right col-3">
+    {{!-- <div class="c-clock">
+      <div class="item hrs">01</div>
+      <div class="seprator">:</div>
+      <div class="item mins">45</div>
+      <div class="seprator">:</div>
+      <div class="item secs">54</div>
+    </div> --}}
+    
+    {{review-pad submission=quizAttempt.submission questions=questions onCircleClick=(action 'goToQuestion')}}
+
+    <div class="d-flex justify-content-center">
+      <div class="button-solid" {{action 'submitQuiz'}}>
+        <button>Submit Quiz</button>
+      </div>
+
+    </div>
+  </div>
+</div>

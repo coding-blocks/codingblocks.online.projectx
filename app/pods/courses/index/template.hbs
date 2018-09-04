@@ -1,98 +1,96 @@
 <div class="grid-background">
-  <div class="heading">
+  <div class="heading-u">
     <p>All Courses</p>
   </div>
   <div class="grid row">
     {{#each courses as |course|}}
       <div class="card-layout col-md-4 col-sm-6">
-        <div class="card o-layout-card o-course-card">
-          <div class="difficulty-div">
+      <div class="card c-layout-card c-course-card">
+        <div class="difficulty-div">
             <div class="{{course.difficultyName}}-level"></div>
             <div class="{{course.difficultyName}}-text">
               {{uppercase course.difficultyName}}
             </div>
+        </div>
+
+        <div class="header">
+          <div class="card-image c-image-card">
+            <img src="{{defaultTo course.logo '/images/c++'}}">
           </div>
 
-          <div class="header">
-            <div class="card-image o-image-card">
-              <img src="{{defaultTo course.logo '/images/c++'}}">
+          <h1 class="card-heading c-text-card">
+            {{#link-to 'courses.id' course.identifier activeClass=""}} {{course.title}} {{/link-to}}
+          </h1>
+          <h2 class="card-text">
+            {{course.subtitle}}
+          </h2>
+        </div>
+
+        <div class="row no-gutters align-items-center">
+          <div class="card-mentor col-9 col-md-12">
+            <div class="card-mentor-image">
+              {{#each course.instructors as |instructor index|}}
+                {{#if (lt index 2) }}
+                  <img class="card-mentors" src="{{instructor.photo}}">
+                {{/if}}
+              {{/each}}
             </div>
-
-            <h1 class="card-heading o-text-card">
-              {{#link-to 'courses.id' course.identifier activeClass=""}} {{course.title}} {{/link-to}}
-            </h1>
-            <h2 class="card-text">
-              {{course.subtitle}}
-            </h2>
-          </div>
-
-          <div class="row no-gutters align-items-center">
-            <div class="card-mentor col-12 col-sm-8 col-md-12">
-              <div class="card-mentor-image">
+            <div class="card-mentor-text">
+              <span>Instructors</span>
+              <div class="card-mentor-name">
                 {{#each course.instructors as |instructor index|}}
-                  {{#if (lt index 2) }}
-                    <img class="card-mentors" src="{{instructor.photo}}">
+                  {{#if (lt index 2)}}
+                    {{instructor.name}}{{if (and (gt course.instructors.length 1) (eq index 0)) "," ""}}
                   {{/if}}
                 {{/each}}
-              </div>
-              <div class="card-mentor-text">
-                <span>Instructors</span>
-                <div class="card-mentor-name">
-                  {{#each course.instructors as |instructor index|}}
-                    {{#if (lt index 2)}}
-                      {{instructor.name}}{{if (and (gt course.instructors.length 1) (eq index 0)) "," ""}}
-                    {{/if}}
-                  {{/each}}
 
-                  {{#if (gt course.instructors.length 2)}}
-                    <span class="price"> +{{sub course.instructors.length 2}}</span> more
-                  {{/if}}
-                </div>
+                {{#if (gt course.instructors.length 2)}}
+                  <span class="price"> +{{sub course.instructors.length 2}}</span> more
+                {{/if}}
               </div>
             </div>
-
-            <div class="rating col-12 col-sm-4 col-md-12 d-flex justify-content-sm-end justify-content-center justify-content-md-start">
-              {{rating-stars-static course=course}}
-            </div>
-
           </div>
 
-          <div class="row no-gutters">
-            <div class="col-md-6 col-sm-4 col-6 order-sm-2 order-md-0">
-              <div class="card-price-details">
-                <div class="card-batch-details">
-                  Starting from <br>
-                  <span class="price">{{moment-format (unix course.topRun .start) 'MMM Do YYYY'}}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="button-parent col-md-6 col-sm-3 col-6 order-sm-3 order-md-1">
-              <div class="button-solid">
-                {{#link-to 'courses.id' course.identifier tagName="button" activeClass=""}} {{format-price course .topRun.price}} {{/link-to}}
-              </div>
-            </div>
-
-            <div class="card-mentor-divider col-12 order-sm-0 order-md-2"></div>
-
-            <div class="footer col-md-12 col-sm-5 col-12 order-sm-1 order-md-3">
-              <div class="red">Hurry Up!</div>
-              Enrollment ends {{moment-format (unix course.topRun.enrollmentEnd) 'MMM Do YYYY'}}
-            </div>
+          <div class="col-3 col-md-12 d-flex justify-content-sm-end justify-content-end justify-content-md-start">
+            {{rating-stars-static rating=course.rating showValue=true}}
           </div>
 
         </div>
+
+        <div class="row no-gutters">
+          <div class="col-md-6 col-4 col-sm-5 order-2 order-md-0">
+            <div class="card-price-details">
+              <div class="card-batches">
+                Starting from <br>
+                <span class="price">{{moment-format (unix course.topRun .start) 'MMM Do YYYY'}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-parent col-md-6 col-3 col-sm-2 order-3 order-md-1">
+            <div class="button-solid">
+              {{#link-to 'courses.id' course.identifier tagName="button" activeClass=""}} {{format-price course .topRun.price}} {{/link-to}}
+            </div>
+          </div>
+
+          <div class="card-mentor-divider col-12 order-sm-0 order-md-2"></div>
+
+          <div class="footer col-md-12 col-5 order-1 order-md-3">
+            <div class="red">Hurry Up!</div>
+            Enrollment ends {{moment-format (unix course.topRun.enrollmentEnd) 'MMM Do YYYY'}}
+          </div>
+        </div>
+
       </div>
+    </div>
     {{/each}}
   </div>
   {{#if showLoadMore}}
-  <div class="row">
-    <div class="offset-5">
-    </div>
-    <div class="col-2 button-dashed align-self-center">
+  <div class="row justify-content-center">
+      <div class="button-dashed">
         <button {{action "loadMore"}}>Load More</button>
-      </div>
+      </div>        
   </div>
   {{/if}}
 </div>

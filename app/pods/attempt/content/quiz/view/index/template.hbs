@@ -1,0 +1,32 @@
+<div class="question p-4">
+  <span class="sno">Q{{q}}.</span>
+  <span class="text">
+    {{question.title}}
+  </span>
+</div>
+
+<div class="choices p-4">
+  {{#each question.choices as |choice|}}
+    <div class="choice
+      {{if (find choice.id incorrectIds) 'incorrect'}}
+      {{if (find choice.id correctIds) 'correct'}}
+    ">
+      <div class="circle"></div>
+      <div class="text">
+        {{choice.title}}
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+<div class="navigation">
+      {{#if (gt q 1)}}
+      <a href="#" {{action 'changeQuestion' -1}}>Previous</a>
+      {{else}}
+      <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Previous</a>
+      {{/if}} {{#if (lt q quiz.questions.length)}}
+      <a href="#" {{action 'changeQuestion' 1}}>Next</a>
+      {{else}}
+      <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Next</a>
+      {{/if}}
+    </div>

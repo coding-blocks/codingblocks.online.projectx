@@ -8,6 +8,10 @@ module.exports = function(defaults) {
     'ember-composable-helpers': {
       only: ['range', 'pipe', 'inc'],
     },
+    sourcemaps: {
+      enabled: true,
+      extensions: ['js', 'css']
+    },
     ace: {
       themes: ['ambiance', 'chaos', 'monokai', 'solarized_dark'],
       modes: ['javascript', 'c_cpp', 'python', 'java'],
@@ -29,6 +33,7 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
   app.import('./bower_components/hls.js/dist/hls.light.min.js')
+  app.import('node_modules/@coding-blocks/motley/dist/app.css')
 
   return app.toTree();
 };

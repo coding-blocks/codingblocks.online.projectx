@@ -1,5 +1,5 @@
-<div class="o-progress">
-  <div class="o-accordian">
+<div class="c-progress">
+  <div class="c-accordian">
       {{#if sections}}
         {{#each sections as |section|}}
                 <div class="accordian-ul" data-show="true">
@@ -8,7 +8,7 @@
                             <div data-completed="{{content.progress.isDone}}" class="accordian-li" {{action 'transitionToContent' content.id section.id}}>
                                 <div class="li-left flex-row">
                                     <div class="accordian-li-type">
-                                        <div class="content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
+                                        <div class="content-icon {{content.iconClass}}-{{if content.isDone 'green' 'red'}}"></div>
                                 </div>
                                     <div class="accordian-li-heading">
                                         {{content.payload.name}}
