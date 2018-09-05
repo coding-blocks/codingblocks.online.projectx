@@ -3,9 +3,11 @@ import { isNone } from '@ember/utils';
 import $ from 'jquery'
 import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
 import { storageFor } from 'ember-local-storage';
+import {inject as service} from '@ember/service';
 
 
 export default Component.extend(KeyboardShortcuts, {
+  currentUser : service(),
   playerPreference: storageFor('player-prefs'),
   isShowingInstructions: true,
   classNames: ['height-100'],
@@ -69,6 +71,22 @@ export default Component.extend(KeyboardShortcuts, {
     const video = this.$('#video')[0];
     const spinner = this.$('.spinner');
     const lecture = this.$('.lecture');
+    const overlay = this.$('.overlay-content');
+
+    let topPos = Math.floor(Math.random() * 100)
+    let leftPos = Math.floor(Math.random() * 100)
+
+    overlay[0].style.top = topPos + "%";
+    overlay[0].style.left = leftPos + "%";
+
+    setInterval(function () {
+      let topPos = Math.floor(Math.random() * 100)
+      let leftPos = Math.floor(Math.random() * 100)
+
+      overlay[0].style.top = topPos + "%";
+      overlay[0].style.left = leftPos + "%";
+
+    },5000)
 
     const hls = this.get('hls');
 
