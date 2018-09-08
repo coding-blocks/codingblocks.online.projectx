@@ -1,0 +1,10 @@
+<!--difficulty: {type: integer, description: to show the difficulty of course}-->
+<!--difficultyName: {type: string, description: the level of difficulty-->
+<div class="difficulty-dots">
+  {{#each (range 0 3) as |index|}}
+    <div class="{{if (lte index difficulty) 'pos-diff' 'neg-diff'}}"></div>
+  {{/each}}
+  <div>{{uppercase difficultyName}}</div>
+</div>
+
+
