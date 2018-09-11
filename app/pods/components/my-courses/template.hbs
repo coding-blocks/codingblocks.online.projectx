@@ -7,7 +7,7 @@
       {{loading-card}}
     {{else}}
         {{#each runs as |run index|}}
-            <div class="card-layout col-md-4 col-sm-6">
+            {{!-- <div class="card-layout col-md-4 col-sm-6">
                 <div class="card c-layout-card c-mycourse-card">
 
                     <div data-completed="false" class="status-circle">
@@ -35,24 +35,15 @@
                     <div class="row no-gutters">
                         <div class="card-mentor col-12">
                             <div class="card-mentor-image">
-                                {{#each run.course.instructors as |instructor index|}}
-                                    {{#if (lt index 2) }}
-                                        <img class="card-mentors" src="{{instructor.photo}}">
-                                    {{/if}}
-                                {{/each}}
+                            {{#each run.course.instructors as |instructor index|}} {{#if (lt index 2) }}
+                            <img class="card-mentors" src="{{instructor.photo}}"> {{/if}} {{/each}}
                             </div>
                             <div class="card-mentor-text">
                                 <span>Instructors</span>
                                 <div class="card-mentor-name">
-                                    {{#each run.course.instructors as |instructor index|}}
-                                        {{#if (lt index 2)}}
-                                            {{instructor.name}}{{if (and (gt run.course.instructors.length 1) (eq index 0)) "," ""}}
-                                        {{/if}}
-                                    {{/each}}
-
-                                    {{#if (gt run.course.instructors.length 2)}}
-                                        <span class="price"> +{{sub course.instructors.length 2}}</span> more
-                                    {{/if}}
+                                {{#each run.course.instructors as |instructor index|}} {{#if (lt index 2)}} {{instructor.name}}{{if (and (gt run.course.instructors.length
+                                1) (eq index 0)) "," ""}} {{/if}} {{/each}} {{#if (gt run.course.instructors.length 2)}}
+                                <span class="price"> +{{sub course.instructors.length 2}}</span> more {{/if}}
                                 </div>
                             </div>
                         </div>
@@ -65,8 +56,7 @@
                         <div class="col-6">
                             <div class="card-price-details">
                                 <div class="card-batches">
-                                   {{run.name}}
-                                  {{#unless run.topRunAttempt.premium}}
+                                {{run.name}} {{#unless run.topRunAttempt.premium}}
                                     <div class="red">Free Trial</div>
                                   {{/unless}}
                                 </div>
@@ -76,9 +66,7 @@
                         <div class="button-parent col-6">
                                 {{#unless (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
                                 <div class="button-solid">
-                                  {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}}
-                                        Resume
-                                  {{/link-to}}
+                            {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}} Resume {{/link-to}}
                                 </div>
                                 {{else}}
                                 <div class="button-solid disabled">
@@ -88,8 +76,83 @@
                         </div>
                     </div>
                 </div>
+            </div> --}}
+
+        <div class="c-layout-card col-12 col-sm-12   col-md-6 col-lg-4">
+            <div class="card online-card my-course-card">
+                <div class="head d-flex justify-content-center">
+                    <img class="back-img" src="{{run.course.coverImage}}">
+                    <div class="front-text flex-col align-item-center">
+                        <div class="round-img-b">
+                            <img src="{{run.course.logo}}">
+                        </div>
+                        <div class="course-name center-text">
+                            {{run.course.title}}
+                        </div>
+                        <div class="i course-description center-text">
+                            {{run.course.subtitle}}
+                        </div>
+                        <div class="rating">
+                            <span class="pos-rating">
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span class="pos-rating">
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span class="pos-rating">
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span class="pos-rating">
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span class="neg-rating">
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span class="edit-rating">4.7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="foot">
+                    <div class="course-progress">
+                        <label>Course Progress</label>
+                        <div class="row justify-content-between align-items-center">
+                            {{percent-complete runAttemptId=run.topRunAttempt.id showBar=true}}
+                        </div>
+                    </div>
+                    <div class="card-mentor">
+                        <!--<div class="row no-gutters">-->
+                        <div class="card-mentor-image">
+                            {{#each run.course.instructors as |instructor index|}} {{#if (lt index 2) }}
+                            <img class="card-mentors" src="{{instructor.photo}}"> {{/if}} {{/each}}
+                        </div>
+                        <div class="card-mentor-text">
+                            <span>Instructors</span>
+                            <div class="card-mentor-name">
+                                {{#each run.course.instructors as |instructor index|}} {{#if (lt index 2)}} {{instructor.name}}{{if (and (gt run.course.instructors.length
+                                1) (eq index 0)) "," ""}} {{/if}} {{/each}} {{#if (gt run.course.instructors.length 2)}}
+                                <span class="price"> +{{sub course.instructors.length 2}}</span> more {{/if}}
+                            </div>
+                        </div>
+                        <!--</div>-->
+                    </div>
+                    <div class="row button-row no-gutters align-items-center justify-content-between">
+                        <div class="no-gutters">
+                            Nov-Dec 2018
+                        </div>
+
+                        {{#unless (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
+                                <div class="button-solid no-gutters">
+                            {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}} <i class="fas fa-play"></i>Resume Learning {{/link-to}}
+                                </div>
+                                {{else}}
+                                <div class="button-solid no-gutters disabled">
+                                    <button>Expired</button>
+                                </div>
+                                {{/unless}}
+                    </div>
+                </div>
             </div>
-        {{/each}}
-      {{/if}}  
+        </div>
+        {{/each}} {{/if}}
   </div>
 </div>

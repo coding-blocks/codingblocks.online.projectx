@@ -28,7 +28,7 @@
                   <img src="{{defaultTo course.logo '/images/c++'}}">
                 </div>
                 <div class="course-name center-text">
-                  {{course.title}}
+                  {{#link-to 'courses.id' course.identifier activeClass=""}} {{course.title}} {{/link-to}}
                 </div>
                 <div class="i course-description center-text">
                   {{course.subtitle}}

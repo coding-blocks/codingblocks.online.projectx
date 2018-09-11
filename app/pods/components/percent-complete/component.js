@@ -4,9 +4,8 @@ import { service } from 'ember-decorators/service';
 
 export default class PercentComplete extends Component {
   @service api
-
   percent = 0
-  tagName = 'span'
+  classNames = ['w-100', 'd-flex', 'align-items-center', 'justify-content-between']
 
   fetchPercentTask = task(function * () {
     const response = yield this.get('api').request(`run_attempts/${this.get('runAttemptId')}/progress`)
@@ -16,6 +15,15 @@ export default class PercentComplete extends Component {
   constructor () {
     super(...arguments)
     this.get('fetchPercentTask').perform()
+  }
+
+  didReceiveAttrs(){
+    this._super(...arguments);
+    if(this.get('showBar')){
+      this.set('classNames', this.get('classes'));
+    }else{
+      this.set('tagName', 'span')
+    }
   }
   
 }
