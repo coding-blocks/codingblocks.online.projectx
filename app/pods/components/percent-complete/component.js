@@ -19,9 +19,7 @@ export default class PercentComplete extends Component {
 
   didReceiveAttrs(){
     this._super(...arguments);
-    if(this.get('showBar')){
-      this.set('classNames', this.get('classes'));
-    }else{
+    if(!this.get('showBar')){
       this.set('tagName', 'span')
     }
   }
