@@ -12,6 +12,7 @@ export default DS.Model.extend({
   document: DS.belongsTo('document'),
   //attachment: DS.belongsTo('attachment'),
   video: DS.belongsTo('video'),
+  duration: DS.attr(),
   payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', function () {
     return this.get(this.get('contentable'))
   }),
@@ -26,6 +27,6 @@ export default DS.Model.extend({
       default: return 'play-icon'; break;
     }
   }),
-  progress: DS.belongsTo('progress'),
+  progress: DS.belongsTo('progress')
   // section: DS.belongsTo('section')
 })

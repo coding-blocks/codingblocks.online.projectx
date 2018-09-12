@@ -271,7 +271,7 @@
     {{log course.topRun}}
     {{#each course.topRun.sections as |section|}}
       <div class="accordian-ul" data-show="true">
-        {{#accordian-head title=section.name total=section.totalContents}}
+        {{#accordian-head title=section.name total=section.totalContents duration=section.duration}}
 
         {{#each section.contents as |content|}}
           <div class="accordian-li">
@@ -279,12 +279,12 @@
               <div class="accordian-li-type">
                 <div class="content-icon {{content.iconClass}}-green"></div>
               </div>
-              <div class="accordian-li-heading">
+              <div class="accordian-li-heading flex-row">
                 {{content.title}}
               </div>
             </div>
-
-            <div class="flex-row">
+            <div class="flex-row accordian-li-length">
+              {{format-duration content.duration}}
             </div>
           </div>
         {{/each}}
