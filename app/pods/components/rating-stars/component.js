@@ -14,7 +14,6 @@ export default class RatingStartComponent extends Component {
   scale = 5
   ratingMarkedByUser = null
   isEditing = false
-  isShowingModal = false
 
   constructor () {
     super(...arguments)

@@ -1,1 +1,6 @@
-{{percent}}
+{{#if showBar}}
+  <progress max="100" value="{{percent}}"></progress>
+  <span>{{percent}}%</span>
+{{else}}
+  {{percent}} 
+{{/if}}

@@ -7,6 +7,7 @@ import { readOnly } from 'ember-decorators/object';
 
 export default class MyCoursesTaskComponent extends Component {
   @service store;
+  @service api;
   @readOnly
   @alias("fetchMyCoursesTask.lastSuccessful.value")
   runs;
@@ -22,4 +23,6 @@ export default class MyCoursesTaskComponent extends Component {
       enrolled: true
     });
   });
+
+    
 }

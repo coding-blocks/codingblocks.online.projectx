@@ -54,8 +54,14 @@ export default class CarouselCards extends Component {
   }
 
   getCarouselCardsTask = task(function * () {
-    const cards = yield this.get('store').findAll('carousel_card')
-    this.set('cards', cards)
+    const cards = yield this.get('store').query('carousel_card', {
+      sort: 'order'
+    })
+    const cardArr = cards.toArray()
+    let x = cardArr[0] 
+    cardArr[0] = cardArr[1]
+    cardArr[1] = x
+    this.set('cards', cardArr)
   })
 
   didRender () {
