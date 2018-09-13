@@ -40,18 +40,22 @@
             {{title}}
         </div>
     </div>
-    {{!--{{#if duration}}
+    <div class="flex-row">
+      <div class="accordian-status">
+        {{#if (eq type "info")}}
+          {{total}} Lectures
+        {{else}}
+          <span class="completed">{{completed}}</span> / {{total}}
+        {{/if}}
+      </div>
+    </div>
+    {{#if duration}}
       <div class="flex-row">
-        <div class="accordian-status">
-          <span>{{format-duration duration 'humanize'}}</span>
+        <div class="accordian-status accordian-li-length">
+          <span>{{format-duration duration}}</span>
         </div>
       </div>
-    {{/if}}--}}
-    <div class="flex-row">
-        <div class="accordian-status">
-            <span class="completed">{{completed}}</span> / {{total}}
-        </div>
-    </div>
+    {{/if}}
   {{/if}}
 </div>
 
