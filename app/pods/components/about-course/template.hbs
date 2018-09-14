@@ -261,9 +261,9 @@
       <div class="lecture-count">
         {{course.topRun.totalContents}} Lectures
       </div>
-      {{!-- <div class="duration">
-        54 Hours
-      </div> --}}
+      <div class="duration">
+        {{format-duration course.topRun.totalDuration 'humanizeShort'}}
+      </div>
     </div>
   </div>
 
