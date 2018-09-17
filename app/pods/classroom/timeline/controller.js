@@ -3,6 +3,9 @@ import { action } from 'ember-decorators/object';
 import { service } from 'ember-decorators/service';
 
 export default class TimelineController extends Controller {
+    queryParams = ['showFeedback']
+    showFeedback = false
+
     @service api
 
     @action
