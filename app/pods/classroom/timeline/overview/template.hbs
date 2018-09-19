@@ -61,17 +61,8 @@
 
             <div class="col-12 col-md-6">
               <div class="card">
-                <div class="heading">Certificates</div>
-                <div class="card-content">
-                  <button {{action 'requestCertificate'}}>
-                    Get yo certificate here
-                  </button>
-                </div>
-                <div class="pull-right">
-                 {{#link-to 'classroom.timeline.announcements' tagName='div'}}
-                   Browse
-                   All{{/link-to}}
-                </div>
+
+                {{certificate-comp runAttempt=runAttempt}}
               </div>
             </div>
         </div>
