@@ -43,9 +43,15 @@
     <div class="flex-row">
 
         {{#if (eq type "info")}}
-        <div class="lecture-count">
-          {{total}} Lectures
-        </div>
+        	{{#if total}}
+	        <div class="lecture-count">
+	          {{total}} Lectures
+	        </div>
+	        {{else}}
+	        <div class="lecture-count">
+	          More content to be added
+	        </div>
+	        {{/if}}
         {{else}}
         <div class="lecture-count">
           <span class="completed">{{completed}}</span> / {{total}}
@@ -55,6 +61,10 @@
         {{#if duration}}
             <div class="duration">
               <span>{{format-duration duration 'humanizeShort'}}</span>
+            </div>
+        {{else}}
+        	<div class="duration">
+              <span>User-Specific</span>
             </div>
         {{/if}}
     </div>
