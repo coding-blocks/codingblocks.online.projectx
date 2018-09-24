@@ -36,8 +36,9 @@ Router.map(function() {
   this.route('notifications', function() {});
   this.route('otp');
   this.route('logout');
-  this.route('404', { path: '*:' });
   this.route('payment-webhook-loading');
+  this.route('certificate', {path: '/certificates/:licenseKey'});
+  this.route('404', { path: '/*:' });
 });
 
 export default Router;
