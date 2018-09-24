@@ -39,7 +39,7 @@
                             <div class="card-mentor-name">
                                 {{#each run.course.instructors as |instructor index|}} {{#if (lt index 2)}} {{instructor.name}}{{if (and (gt run.course.instructors.length
                                 1) (eq index 0)) "," ""}} {{/if}} {{/each}} {{#if (gt run.course.instructors.length 2)}}
-                                <span class="price"> +{{sub course.instructors.length 2}}</span> more {{/if}}
+                                <span class="price"> +{{sub run.course.instructors.length 2}}</span> more {{/if}}
                             </div>
                         </div>
                     </div>
