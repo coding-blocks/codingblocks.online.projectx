@@ -278,7 +278,7 @@
               <div class="accordian-li-type">
                 <div class="content-icon {{content.iconClass}}-green"></div>
               </div>
-              <div class="accordian-li-heading flex-row {{if (not section.premium) 'red'}}">
+              <div class="accordian-li-heading {{if (not section.premium) 'red'}}">
                 {{content.title}}
               </div>
             </div>
@@ -292,7 +292,7 @@
                   {{/link-to}}
                 {{/if}}
               </div>
-              <div class="duration accordian-li-length">
+              <div class="duration accordian-li-heading">
                 {{format-duration content.duration}}
               </div>
             </div>
