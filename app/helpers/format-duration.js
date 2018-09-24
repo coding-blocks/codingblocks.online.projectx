@@ -16,6 +16,17 @@ export function formatDuration(params) {
 
     if (options == 'humanize') {
       return (hours ? `${hours} Hours `:'') + (mins ? `${mins} Minutes`:'')
+    } else if(options == 'humanizeShort') {
+      if (hours) {
+        if (mins >=30) {
+          ++hours
+        }
+        if (hours == 1) return `1 Hour`
+        return `${hours} Hours`
+      } else if (mins) {
+        return (mins>=40)?`1 Hour`:`30 Mins`
+      }
+      return (hours ? `${hours}`:'')
     } else {
       hours = fixedDigits(hours)
       mins = fixedDigits(mins)
