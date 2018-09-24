@@ -4,55 +4,54 @@
       <span class="hamburger-parent" onclick={{action 'toggleSidebar'}}>
         <i class="hamburger fas fa-bars"></i>
       </span>
-      
+
       <span class="logo-parent">
         {{#link-to 'index' activeClass=''}}
-          <img src="/images/online-logo.png" alt="online-logo" class="nav-logo pointer"> {{/link-to}}
+        <img src="/images/online-logo.png" alt="online-logo" class="nav-logo pointer"> {{/link-to}}
       </span>
     </div>
+    <div class="dsp-none-sm">
+      <div class="nav-right">
+        {{search-box}}
 
-    <div class="nav-right">
-      {{search-box}}
-
-      <ul class="nav-list">
-        <li class="nav-items pointer">
-          {{#link-to 'index'}}Home{{/link-to}}
-        </li>
-        <li class="nav-items pointer">
-          {{#link-to 'courses'}}All Courses{{/link-to}}
-        </li>
-        {{#if session.isAuthenticated}}
+        <ul class="nav-list">
+          <li class="nav-items pointer">
+            {{#link-to 'index'}}Home{{/link-to}}
+          </li>
+          <li class="nav-items pointer">
+            {{#link-to 'courses'}}All Courses{{/link-to}}
+          </li>
+          {{#if session.isAuthenticated}}
           <li class="nav-items pointer">
             {{#link-to 'classroom'}}My Courses{{/link-to}}
           </li>
-        {{else}}
+          {{else}}
           <li class="nav-items pointer">
             <a href="https://codingblocks.com/centres/" target="_blank">Contact Us</a>
           </li>
-        {{/if}}
-        {{#if session.isAuthenticated}}
+          {{/if}} {{#if session.isAuthenticated}}
           <li class="nav-items pointer">
             {{notification-dropdown}}
           </li>
-          
+
           <div class="round-img">
-              <img src="{{currentUser.user.photo}}" alt="">
+            <img src="{{currentUser.user.photo}}" alt="">
           </div>
 
           <div class="card">
-              <div class="top-offset"></div>
-              <div class="nav-info">
-                  <div class="flex-row justify-content-end grey">
-                    <a href="https://account.codingblocks.com/users/me" target="_black">
-                      <span class="pointer">MY PROFILE</span>
-                    </a>
-                      
-                  </div>
-                  <div class="separator"></div>
-                  <div class="flex-row justify-content-end grey">
-                      <span class="pointer">{{login-button}}</span>
-                  </div>
+            <div class="top-offset"></div>
+            <div class="nav-info">
+              <div class="flex-row justify-content-end grey">
+                <a href="https://account.codingblocks.com/users/me" target="_black">
+                  <span class="pointer">MY PROFILE</span>
+                </a>
+
               </div>
+              <div class="separator"></div>
+              <div class="flex-row justify-content-end grey">
+                <span class="pointer">{{login-button}}</span>
+              </div>
+            </div>
           </div>
           {{else}}
           <li class="nav-items pointer">
@@ -60,9 +59,11 @@
               {{login-button}}
             </div>
           </li>
-        {{/if}}
-      </ul>
+          {{/if}}
+        </ul>
+      </div>
     </div>
+
 
   </nav>
 
@@ -81,9 +82,9 @@
         {{#link-to 'index'}}Home{{/link-to}}
       </div>
       {{#if session.isAuthenticated}}
-        <div class="para" onclick={{action 'toggleSidebar'}}>
-          {{#link-to 'classroom'}}My Courses{{/link-to}}
-        </div>
+      <div class="para" onclick={{action 'toggleSidebar'}}>
+        {{#link-to 'classroom'}}My Courses{{/link-to}}
+      </div>
       {{/if}}
       <div class="para" onclick={{action 'toggleSidebar'}}>
         {{#link-to 'courses'}}All Courses{{/link-to}}
