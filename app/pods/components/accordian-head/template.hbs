@@ -52,23 +52,22 @@
 	          More content to be added
 	        </div>
 	        {{/if}}
+	        {{#unless hideDuration}}
+			{{#if duration}}
+				<div class="duration">
+					<span>{{format-duration duration 'humanizeShort'}}</span>
+				</div>
+			{{else}}
+				<div class="duration">
+					<span>User-Specific</span>
+				</div>
+			{{/if}}
+		{{/unless}}
         {{else}}
         <div class="lecture-count">
           <span class="completed">{{completed}}</span> / {{total}}
         </div>
         {{/if}}
-
-				{{#unless hideDuration}}
-					{{#if duration}}
-							<div class="duration">
-								<span>{{format-duration duration 'humanizeShort'}}</span>
-							</div>
-					{{else}}
-						<div class="duration">
-								<span>User-Specific</span>
-							</div>
-					{{/if}}
-				{{/unless}}
     </div>
   {{/if}}
 </div>
