@@ -58,15 +58,17 @@
         </div>
         {{/if}}
 
-        {{#if duration}}
-            <div class="duration">
-              <span>{{format-duration duration 'humanizeShort'}}</span>
-            </div>
-        {{else}}
-        	<div class="duration">
-              <span>User-Specific</span>
-            </div>
-        {{/if}}
+				{{#unless hideDuration}}
+					{{#if duration}}
+							<div class="duration">
+								<span>{{format-duration duration 'humanizeShort'}}</span>
+							</div>
+					{{else}}
+						<div class="duration">
+								<span>User-Specific</span>
+							</div>
+					{{/if}}
+				{{/unless}}
     </div>
   {{/if}}
 </div>
