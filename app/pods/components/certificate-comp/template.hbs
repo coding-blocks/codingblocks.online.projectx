@@ -1,0 +1,50 @@
+{{#if run.certificateTemplate}}
+  <div class="c-certificate">
+    <div class="top-row">
+      <img src="/images/certification-i.svg" alt="">
+      <div class="right">
+        <div class="heading">Generate Certificate</div>
+        <div class="text">
+          <img src="/images/warning.svg" alt="">
+          Generate only when you are satisfied with your
+          current score. You are not allowed to regenerate it.
+        </div>
+      </div>
+    </div>
+  
+    <div class="checklist">
+      <div class="option {{if courseCompleted 'correct'}}"> Course Completion: 90%+</div>
+      <div class="option {{if runAttempt.certificateApproved 'correct'}}"> Mentor Approval</div>
+      <div class="option {{if runAttempt.certificate 'correct'}}"> Verify your details <a href="https://account.codingblocks.com/users/me"
+          target="_blank"> &nbsp; here </a> </div>
+    </div>
+  
+    <div class="cta justify-content-center justify-content-md-end">
+      {{#if canGenerate}}
+        <div class="button-solid" onClick={{perform generateCertificateTask}}>
+          <button>Generate Now!</button>
+        </div>
+      {{else if runAttempt.certificate}}
+        <div class="red">
+          {{log runAttempt.certificate}}
+          Certificate Already Requested!
+        </div>
+      {{else if generationRequested}}
+        <div class="red">
+          Certificate Requested !
+        </div>
+      {{else}}
+        <div class="button-solid disabled">
+          <button>Generate Now!</button>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+{{else}}
+  <div class="c-certificate locked">
+    <img src="/images/certification-i.svg" alt="">
+    <div class="title">Unlock Certificate</div>
+    <div class="text">Complete 90% of your course to unlock and
+      generate the certificate</div>
+  </div>
+{{/if}}

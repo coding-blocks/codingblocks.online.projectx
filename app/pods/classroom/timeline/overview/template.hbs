@@ -1,18 +1,15 @@
 <div class="overview-container">
     <!-------------------------------------------Recent Activity----------------------------------->
-    <div class="heading-u">
-        Recent Activity
-    </div>
 
     <div class="container-fluid pl-0 pr-0">
         <div class="c-overview-recent row">
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="heading">
-                        Recent Doubts
+                        Recent Activity
                     </div>
                     <div class="card-content">
-                        {{#if (eq doubts.length 0)}}
+                        {{#if (eq recentEvents.length 0)}}
                             <div class="row">
                               <div class="col-2">
                                 <div class="notify-type">
@@ -29,19 +26,23 @@
                             </div>
                       
                         {{else}}
-                            {{#each doubts as |doubt|}}
+                            {{#each recentEvents as |event|}}
                             <div class="row">
                               <div class="col-2">
                                 <div class="notify-type">
                                   <div class="notify-icon">
                                     <span class="notify-dot"></span>
-                                    <img src="/images/support.svg" alt="">
+                                    <img src="/images/{{event.icon}}" alt="">
                                   </div>
                                 </div>
                               </div>
 
                               <div class="card-text col-10 align-self-center">
-                                  {{doubt.title}}
+                                {{#if (eq event.type 'announcement')}}
+                                  {{event.payload.text}}
+                                {{else}}
+                                  {{event.payload.title}}
+                                {{/if}}
                               </div>
                               
                               
@@ -60,46 +61,8 @@
 
             <div class="col-12 col-md-6">
               <div class="card">
-                <div class="heading">Announcements</div>
-                <div class="card-content">
-                  {{#unless announcements.length}}
-                    <div class="row">
-                      <div class="col-2">
-                        <div class="notify-type">
-                          <div class="notify-icon">
-                            <span class="notify-dot new"></span>
-                            <img src="/images/announcement.svg" alt="">
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="card-text col-10 align-self-center">
-                        Coding Blocks Online New Design Released!
-                      </div>
-                    </div>
-                  {{/unless}}
-                  {{#each announcements as |announcement|}}
-                    <div class="row">
-                      <div class="col-2">
-                        <div class="notify-type">
-                          <div class="notify-icon">
-                            <span class="notify-dot new"></span>
-                            <img src="/images/announcement.svg" alt="">
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="card-text col-10 align-self-center">
-                        {{announcement.text}}
-                      </div>
-                    </div>
-                  {{/each}}
-                </div>
-                <div class="pull-right">
-                 {{#link-to 'classroom.timeline.announcements' tagName='div'}}
-                   Browse
-                   All{{/link-to}}
-                </div>
+
+                {{certificate-comp runAttempt=runAttempt}}
               </div>
             </div>
         </div>
@@ -214,8 +177,4 @@
         </div>
     </div>
 
-    {{!-- <div class="container">
-      {{#feedback-component feedback=course.feedback course=course}}
-      {{/feedback-component}}
-    </div> --}}
 </div>

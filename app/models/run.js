@@ -12,6 +12,7 @@ export default DS.Model.extend({
   price: DS.attr(),
   mrp: DS.attr(),
   runAttemptId: DS.attr(),
+  certificateTemplate: DS.attr(),
   course: DS.belongsTo('course'),
   description:DS.attr(),
   sections: DS.hasMany('sections'),
