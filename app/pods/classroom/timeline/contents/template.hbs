@@ -3,7 +3,7 @@
       {{#if sections}}
         {{#each sections as |section|}}
                 <div class="accordian-ul" data-show="true">
-                    {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length}}
+                    {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length hideDuration=true}}
                         {{#each section.contents as |content|}}
                             <div data-completed="{{content.progress.isDone}}" class="accordian-li" {{action 'transitionToContent' content.id section.id}}>
                                 <div class="li-left flex-row">

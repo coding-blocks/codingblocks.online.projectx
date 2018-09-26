@@ -49,5 +49,10 @@ export default DS.Model.extend({
       now = Math.floor (moment.now () / 1000)
     ;
     return (enrollmentStart <= now) && (now < enrollmentEnd)
+  }),
+  totalDuration: computed ('sections.@each.contents.@each', function () {
+    return this.get('sections').reduce((acc, section) => {
+      return acc + section.get('duration')
+    }, 0)
   })
 })

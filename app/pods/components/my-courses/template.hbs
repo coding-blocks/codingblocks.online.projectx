@@ -39,21 +39,27 @@
                             <div class="card-mentor-name">
                                 {{#each run.course.instructors as |instructor index|}} {{#if (lt index 2)}} {{instructor.name}}{{if (and (gt run.course.instructors.length
                                 1) (eq index 0)) "," ""}} {{/if}} {{/each}} {{#if (gt run.course.instructors.length 2)}}
-                                <span class="price"> +{{sub course.instructors.length 2}}</span> more {{/if}}
+                                <span class="price"> +{{sub run.course.instructors.length 2}}</span> more {{/if}}
                             </div>
                         </div>
                     </div>
                     <div class="row button-row no-gutters align-items-center justify-content-end">
-                        {{!--
-                        <div class="no-gutters">
-                            Nov-Dec 2018
-                        </div> --}} {{#unless (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
-                        <div class="button-solid">
+                        
+                        <div class="no-gutters col-6">
+                            {{run.name}}
+                            {{#unless run.topRunAttempt.premium}}
+                                <div class="red">
+                                    Free Trial
+                                </div>
+                            {{/unless}}
+                        </div> 
+                        {{#unless (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
+                        <div class="button-solid offset-1 col-5">
                             {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}} <i class="fas fa-play"></i>Resume
-                            Learning {{/link-to}}
+                            {{/link-to}}
                         </div>
                         {{else}}
-                        <div class="button-solid disabled">
+                        <div class="button-solid disabled offset-1 col-5">
                             <button>Expired</button>
                         </div>
                         {{/unless}}
