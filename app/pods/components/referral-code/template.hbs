@@ -1,0 +1,24 @@
+{{#unless (or getReferralCodeTask.last.isError getReferralCodeTask.isRunning)}}
+<div class="c-referral-code">
+  <div class="coupon">
+    <div class="text">Refer and Earn: </div>
+    <div class="code">
+      {{code}}
+    </div>
+  </div>
+  <div class="description">
+    Share your referral code directly with friends or email them. For every friend who purchases a course using your code, you earn Rs. 500 credit in your wallet.
+  </div>
+  <div class="shares">
+    <span {{action 'shareFacebook'}}>
+      <i class="fab fa-facebook-square"></i>
+    </span>
+    <span {{action 'shareTwitter'}}>
+      <i class="fab fa-twitter-square"></i>
+    </span>
+    <span {{action 'shareWhatsapp'}}>
+      <i class="fab fa-whatsapp-square"></i>
+    </span>
+  </div>
+</div>
+{{/unless}}

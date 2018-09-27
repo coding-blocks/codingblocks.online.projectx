@@ -19,6 +19,7 @@ export default Route.extend({
           order: '-updatedAt'
         }),
         run: this.modelFor('classroom.timeline').get("run"),
+        runAttempt: this.modelFor('classroom.timeline'),
         doubts: this.get('api').request(`/courses/${courseId}/doubts`, {
             data: {
                 order: "latest"
@@ -27,6 +28,7 @@ export default Route.extend({
     });
   },
   setupController (controller, model) {
+      controller.set("runAttempt", model.runAttempt)
       controller.set("run", model.run)
       controller.set("course", model.run.get('course'))
       controller.set("announcements", model.announcement)

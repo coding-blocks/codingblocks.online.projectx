@@ -12,6 +12,7 @@ export default DS.Model.extend({
   price: DS.attr(),
   mrp: DS.attr(),
   runAttemptId: DS.attr(),
+  certificateTemplate: DS.attr(),
   course: DS.belongsTo('course'),
   description:DS.attr(),
   sections: DS.hasMany('sections'),
@@ -48,5 +49,10 @@ export default DS.Model.extend({
       now = Math.floor (moment.now () / 1000)
     ;
     return (enrollmentStart <= now) && (now < enrollmentEnd)
+  }),
+  totalDuration: computed ('sections.@each.contents.@each', function () {
+    return this.get('sections').reduce((acc, section) => {
+      return acc + section.get('duration')
+    }, 0)
   })
 })
