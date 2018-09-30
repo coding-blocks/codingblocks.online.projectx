@@ -1,13 +1,13 @@
 <div class="c-qna-attempt">
   <div class="left col-9">
     <div class="heading p-4">
-      Quiz - Assignment: Mathematics 2.0
+      {{currentQuestion.title}}
     </div>
 
     <div class="question p-4">
       <span class="sno">Q{{q}}.</span>
       <span class="text">
-        {{currentQuestion.title}}
+        {{markdown-to-html currentQuestion.description class="d-inline"}}
       </span>
     </div>
 
