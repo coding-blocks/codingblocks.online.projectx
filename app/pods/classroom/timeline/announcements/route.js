@@ -20,7 +20,8 @@ export default Route.extend({
             page: {
               offset: params.offset,
               limit: params.limit
-            }
+            },
+            sort: '-createdAt'
           }),
           run: this.modelFor('classroom.timeline')
       });
