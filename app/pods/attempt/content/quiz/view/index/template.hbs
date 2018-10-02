@@ -17,7 +17,10 @@
     ">
       <div class="circle"></div>
       <div class="text">
-        {{choice.title}}
+        {{markdown-to-html choice.title}}
+        <div class="explaination">
+          {{choice.description}}
+        </div>
       </div>
     </div>
   {{/each}}
