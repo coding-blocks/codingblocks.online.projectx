@@ -14,10 +14,8 @@ export default class CoursesRouter extends  Route {
           filter: {
             unlisted: false
           },
-          page:{
-            limit:params.limit,
-            offset:params.offset
-          }
+          limit:params.limit,
+          offset:params.offset
         })
     }
 
