@@ -9,7 +9,7 @@
     {{#if (eq tabName 'problem')}}
       {{#problem-statement-component problem=problem}}{{/problem-statement-component}}
     {{else if (eq tabName 'leaderboard')}}
-      {{#leaderboard-component code=code}}{{/leaderboard-component}}
+      {{#leaderboard-component code=code run=run}}{{/leaderboard-component}}
     {{else if (eq tabName 'submissions')}}
       {{#submissions-component problemPayload=problemJsonApiPayload}}{{/submissions-component}}
     {{/if}}

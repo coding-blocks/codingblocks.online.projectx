@@ -68,13 +68,14 @@ export default class CodeChallengeComponent extends Component {
   didReceiveAttrs() {
     this._super(...arguments);
     const code = this.get("code");
+    const run = this.get("run");
     if (this.get('problemJsonApiPayload') && +this.get('problemJsonApiPayload.data.id') === code.get("hbProblemId")) {
       return
     }
     this.get("hbApi")
       .request("problems", {
         data: {
-          contest_id: code.get("hbContestId"),
+          contest_id: run.get("contestId"),
           problem_id: code.get("hbProblemId")
         },
       })
@@ -100,10 +101,11 @@ export default class CodeChallengeComponent extends Component {
 
   submitCodeTask = task(function*(config) {
     const code = this.get("code");
+    const run = this.get("run");
     const { submissionId } = yield this.get("hbApi").request("submissions", {
       method: "POST",
       data: {
-        contestId: code.get("hbContestId"),
+        contestId: run.get("contestId"),
         problemId: code.get("hbProblemId"),
         language: config.lang,
         source: config.source
