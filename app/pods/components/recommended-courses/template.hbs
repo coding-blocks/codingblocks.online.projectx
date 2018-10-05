@@ -65,10 +65,10 @@
               <div class="row button-row justify-content-between no-gutters align-items-center">
                 <div class="details">
                   <div class="price">
-                    <span class="red"> {{format-price course .topRun.price}} </span>
+                    <span class="red"> {{format-price course.topRun.price}} </span>
                     <!--<span class="grey"><strike>Rs 12000</strike></span>-->
                   </div>
-                  <div>Batches starting {{moment-format (unix course.topRun .start) 'MMM Do'}} </div>
+                  <div>Batches starting {{moment-format (unix course.topRun.start) 'MMM Do'}} </div>
                 </div>
                 <div class="button-solid">
                   {{#link-to 'courses.id' course.identifier tagName="button" activeClass=""}} Explore {{/link-to}}

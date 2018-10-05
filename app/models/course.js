@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 import { computed } from '@ember/object';
 import env from 'codingblocks-online/config/environment';
+import { isNone } from '@ember/utils';
 
 export default DS.Model.extend({
     name: DS.attr(),
@@ -34,8 +35,13 @@ export default DS.Model.extend({
     buyNowLink: DS.attr(),
     backgroundImage: DS.attr(),
     rating: DS.attr(),
-    topRun: computed('activeRuns', function () {
-        const runs = this.get('activeRuns')
+    topRun: computed('activeRuns', 'runs', function () {
+        let runs = this.get('activeRuns')
+
+        // if we don't have activeRuns
+        if (isNone(runs) || !runs.get('length')) {
+          runs = this.get('runs')
+        }
         const now = +new Date() / 1000.0
         const currentRuns = runs.filter( (run, index) => {
             return run.get('enrollmentStart') < now && run.get('enrollmentEnd') > now
