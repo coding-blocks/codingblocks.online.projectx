@@ -44,7 +44,7 @@ export default DS.Model.extend({
         }
         const now = +new Date() / 1000.0
         const currentRuns = runs.filter( (run, index) => {
-            return run.get('enrollmentStart') < now && run.get('enrollmentEnd') > now
+            return run.get('enrollmentStart') < now && run.get('enrollmentEnd') > now && !run.get('unlisted')
         })
         return currentRuns.sortBy('price').objectAt(0) || runs.sortBy('price').objectAt(0)
     }),

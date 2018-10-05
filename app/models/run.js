@@ -11,6 +11,7 @@ export default DS.Model.extend({
   isFree: DS.attr(),
   price: DS.attr(),
   mrp: DS.attr(),
+  unlisted: DS.attr(),
   runAttemptId: DS.attr(),
   certificateTemplate: DS.attr(),
   course: DS.belongsTo('course', {inverse: 'runs'}),
