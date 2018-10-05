@@ -13,7 +13,7 @@ export default DS.Model.extend({
   mrp: DS.attr(),
   runAttemptId: DS.attr(),
   certificateTemplate: DS.attr(),
-  course: DS.belongsTo('course'),
+  course: DS.belongsTo('course', {inverse: 'runs'}),
   description:DS.attr(),
   sections: DS.hasMany('sections'),
   user: DS.belongsTo('user'),

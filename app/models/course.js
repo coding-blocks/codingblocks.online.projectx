@@ -34,13 +34,8 @@ export default DS.Model.extend({
     buyNowLink: DS.attr(),
     backgroundImage: DS.attr(),
     rating: DS.attr(),
-    totalContents: computed('sections.@each.totalContents', function () {
-      return this.get('sections').reduce( (acc, section) => {
-        return acc + +section.get('totalContents')
-      }, 0)
-    }),
-    topRun: computed('runs', function () {
-        const runs = this.get('runs')
+    topRun: computed('activeRuns', function () {
+        const runs = this.get('activeRuns')
         const now = +new Date() / 1000.0
         const currentRuns = runs.filter( (run, index) => {
             return run.get('enrollmentStart') < now && run.get('enrollmentEnd') > now
@@ -48,6 +43,7 @@ export default DS.Model.extend({
         return currentRuns.sortBy('price').objectAt(0) || runs.sortBy('price').objectAt(0)
     }),
     runs: DS.hasMany('run'),
+    activeRuns: DS.hasMany('run', {inverse: null}),
     instructors: DS.hasMany('instructor'),
     feedbacks: DS.hasMany('feedback'),
     feedback: computed('feedbacks', function () {
