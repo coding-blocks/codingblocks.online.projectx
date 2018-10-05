@@ -19,6 +19,7 @@ export default DS.Model.extend({
   user: DS.belongsTo('user'),
   productId: DS.attr(),
   tags: DS.hasMany('tag'),
+  contestId: DS.attr(),
   topRunAttempt: Ember.computed('runAttempts', function () {
     return this.get('runAttempts').objectAt(0)
   }),

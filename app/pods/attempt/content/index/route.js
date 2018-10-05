@@ -7,12 +7,14 @@ export default Route.extend({
         return hash({
             runAttempt: this.modelFor('attempt'),
             content: this.modelFor('attempt.content'),
-            payload: this.modelFor('attempt.content').get('payload')
+            payload: this.modelFor('attempt.content').get('payload'),
+            run: this.modelFor('attempt').get('run')
         })
     },
     setupController(controller, model) {
         controller.set("sectionId", this.paramsFor('attempt').sectionId)
         controller.set("runAttempt", model.runAttempt)
+        controller.set("run", model.run)
         controller.set("content", model.content)
         controller.set("payload", model.payload)
     },

@@ -44,6 +44,7 @@ export default Route.extend({
 		this._super(...arguments)
 		// console.log("inside setupController for attempt")
 		// controller.set("sectionId", this.paramsFor('attempt.content').sectionId)
+    controller.set("run", model.get('run'))
 		controller.set("course", model.get('run.course'))
 		controller.set("sections", model.get("run.sections"))
 	},
