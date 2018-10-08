@@ -6,9 +6,7 @@
 
   <div class="heading">Input Format:</div>
   <div class="para">
-    <pre>
-      {{problem.content.sample-output}}
-    </pre>
+      {{markdown-to-html problem.content.sample-output}}
   </div>
 
   <div class="heading">Constraints:</div>
@@ -18,22 +16,20 @@
 
   <div class="heading"> output format</div>
   <div class="para">
-    <pre>
-      {{problem.content.output-format}}
-    </pre>
+    {{markdown-to-html problem.content.output-format}}
   </div>
 
   <div class="heading">sample input</div>
   <div class="faded-cont">
     <pre>
-      {{problem.content.sample-input}}
+      {{trim problem.content.sample-input}}
     </pre>
   </div>
 
   <div class="heading">sample output</div>
   <div class="faded-cont">
     <pre>
-      {{problem.content.sample-output}}
+      {{trim problem.content.sample-output}}
     </pre>
   </div>
 </div>
