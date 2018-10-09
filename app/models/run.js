@@ -11,14 +11,16 @@ export default DS.Model.extend({
   isFree: DS.attr(),
   price: DS.attr(),
   mrp: DS.attr(),
+  unlisted: DS.attr(),
   runAttemptId: DS.attr(),
   certificateTemplate: DS.attr(),
-  course: DS.belongsTo('course'),
+  course: DS.belongsTo('course', {inverse: 'runs'}),
   description:DS.attr(),
   sections: DS.hasMany('sections'),
   user: DS.belongsTo('user'),
   productId: DS.attr(),
   tags: DS.hasMany('tag'),
+  contestId: DS.attr(),
   topRunAttempt: Ember.computed('runAttempts', function () {
     return this.get('runAttempts').objectAt(0)
   }),

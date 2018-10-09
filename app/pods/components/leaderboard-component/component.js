@@ -9,9 +9,10 @@ export default class LeaderboardComponent extends Component {
   didReceiveAttrs () {
     this._super(...arguments)
     const code = this.get('code')
+    const run = this.get('run')
     this.get('hbApi').request('submissions/leaderboard', {
       data: {
-        contest_id: code.get("hbContestId"),
+        contest_id: run.get("contestId"),
         problem_id: code.get("hbProblemId")
       }
     }).then(result => {
