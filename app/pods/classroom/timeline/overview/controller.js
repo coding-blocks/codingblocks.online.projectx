@@ -1,9 +1,11 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
+import config from 'codingblocks-online/config/environment'
 
 export default Controller.extend({
   api: service(),
+  discussBaseUrl: config.discussBaseUrl,
   queryParams: ['offset', 'limit'],
   visible: true,
   offset: 0, 

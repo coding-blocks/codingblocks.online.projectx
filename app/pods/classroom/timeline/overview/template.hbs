@@ -39,9 +39,13 @@
 
                               <div class="card-text col-10 align-self-center">
                                 {{#if (eq event.type 'announcement')}}
-                                  {{event.payload.text}}
+                                  {{#link-to 'classroom.timeline.announcements' activeClass=""}}
+                                    {{event.payload.text}}
+                                  {{/link-to}}
                                 {{else}}
-                                  {{event.payload.title}}
+                                  <a href="{{discussBaseUrl}}/t/{{event.payload.id}}" target="_blank">
+                                     {{event.payload.title}}
+                                  </a>
                                 {{/if}}
                               </div>
                               
