@@ -39,9 +39,13 @@
 
                               <div class="card-text col-10 align-self-center">
                                 {{#if (eq event.type 'announcement')}}
-                                  {{event.payload.text}}
+                                  {{#link-to 'classroom.timeline.announcements' activeClass=""}}
+                                    {{event.payload.text}}
+                                  {{/link-to}}
                                 {{else}}
-                                  {{event.payload.title}}
+                                  <a href="{{discussBaseUrl}}/t/{{event.payload.id}}" target="_blank">
+                                     {{event.payload.title}}
+                                  </a>
                                 {{/if}}
                               </div>
                               
@@ -158,12 +162,15 @@
 
 
                         <div class="description col-8">
-                        <div class="heading-d">
+                        <div>
                             <div class="main-h">
                             {{instructor.name}}
                             </div>
                             <div class="sub-h">
                             Mentor, Coding Blocks
+                            </div>
+                            <div class="classroom-para">
+                              <a href="mailto:{{instructor.email}}">{{instructor.email}}</a>
                             </div>
                         </div>
 
