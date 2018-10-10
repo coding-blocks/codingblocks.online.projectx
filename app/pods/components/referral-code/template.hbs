@@ -2,12 +2,12 @@
 <div class="c-referral-code">
   <div class="coupon">
     <div class="text">Refer and Earn: </div>
-    <div class="code">
+    <div id="coupon-code" class="code" {{action "selectText" "coupon-code"}}>
       {{code}}
     </div>
   </div>
-  <div class="description">
-    Share your referral code directly with friends or email them. For every friend who purchases a course using your code, you earn Rs. 500 credit in your wallet.
+  <div class="description" {{action "selectText" "coupon-code"}}>
+    Share your referral code directly. For every friend who purchases a course using your code, you earn Rs. 500 credit in your wallet. Click code to copy.
   </div>
   <div class="shares">
     <span {{action 'shareFacebook'}}>
