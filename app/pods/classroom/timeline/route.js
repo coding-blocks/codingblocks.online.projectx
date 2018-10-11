@@ -23,7 +23,16 @@ export default Route.extend({
               transition.retry()
             })
             .catch(err => {
-              throw new Error("Cannot enroll you in preview")
+              if (err.status == 400 && err.payload.err == "TRIAL_WITHOUT_MOBILE") {
+                // trial creation denined because user has no mobile number
+                this.transitionTo('error', {
+                  queryParams: {
+                    errorCode: 'NO_USER_MOBILE_NUMBER'
+                  }
+                })
+              } else {
+                throw new Error("Cannot enroll you in preview")
+              }
             });
         } else {
           return this.store.findRecord("run-attempt",
