@@ -8,6 +8,7 @@ import {inject as service} from '@ember/service';
 
 export default Component.extend(KeyboardShortcuts, {
   currentUser : service(),
+  lecturePlayer: service(),
   playerPreference: storageFor('player-prefs'),
   isShowingInstructions: true,
   classNames: ['height-100'],
@@ -112,10 +113,15 @@ export default Component.extend(KeyboardShortcuts, {
       lecture.addClass('spinner');
     };
 
+    // set the lecture-player service know about the current player
+    this.get('lecturePlayer').activate()
+    this.get('lecturePlayer').setElement(video)
+
   },
   willDestroyElement() {
     this.get('hls').destroy()
     this.get('playerElement').pause()
+    this.get('lecturePlayer').deactivate()
     this._super(...arguments)
   },
   actions: {
