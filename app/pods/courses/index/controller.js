@@ -13,9 +13,10 @@ export default Ember.Controller.extend({
       filter: {
         unlisted: false
       },
-      limit: this.get('limit'),
-      offset: this.get('offset')
-      
+      page:{
+        limit: this.get('limit'),
+        offset: this.get('offset')
+      }
     })
     this.get('courses').addObjects(nextCourses)
   }),
