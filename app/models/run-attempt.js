@@ -13,5 +13,6 @@ export default DS.Model.extend({
   run: DS.belongsTo('run'),
   user: DS.belongsTo('user'),
   certificate: DS.belongsTo('certificate'),
-  rating: DS.attr()
+  rating: DS.attr(),
+  notes: DS.hasMany('note')
 })

@@ -1,0 +1,36 @@
+<div class="list-item">
+  <div class="row">
+    
+    {{#if isEditing}}
+      <div class="col-12">
+        {{textarea class="invert font-sm" value=note.text}}
+      </div>
+    {{else}}
+      <div class="li-left col-8 font-sm">
+        {{note.text}}
+      </div>
+      <div class="li-right col-4 col-sm-3 col-md-4 no-gutters">
+        <div class="red col-6 bold"><button class="t-align-r" {{action (perform deleteNote)}}>Delete</button></div>
+        <div class="red col-6 bold"><button class="t-align-r" {{action 'toggleEdit'}} >Edit</button></div>
+      </div>
+    {{/if}}
+  </div>
+  
+  <div class="row green i mb-2">
+    <div class="li-left col-8">
+      {{note.content.title}}
+    </div>
+    <div class="li-right col-4">
+      {{format-video-time note.duration}}
+    </div>
+  </div>
+
+  {{#if isEditing}}
+    <div class="row red">
+      <div class="li-right col-4 col-sm-3 col-md-4 no-gutters">
+        <div class="red col-6 bold"><button class="t-align-r" {{action 'toggleEdit'}}>Cancel</button></div>
+        <div class="red col-6 bold"><button class="t-align-r" {{action (perform saveNoteTask)}}>Save</button></div>
+      </div>
+    </div>
+  {{/if}}
+</div>

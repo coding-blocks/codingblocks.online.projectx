@@ -1,61 +1,75 @@
 <div class="c-content-section">
-    <div class="header flex-row">
-        <div class="section-toggler flex-row">
-            <div class="button-dashed" {{action 'toggleSideBar'}}>
-              <button>
-                {{#if (not sidebarCollapsed)}}
-                  <i class="far fa-times-circle"></i>
-                {{else}}
-                  <i class="fas fa-bars"></i>
-                {{/if}}
-                Course Content
-              </button>
-            </div>
+  <div class="content-section">
+    <div class="content {{if (not sidebarCollapsed) 'collapse'}}">
+      <div class="header flex-row">
+        <div class="dashboard row no-gutters justify-content-between">
+          <div class="flex-row white pointer dsp-none-sm" {{action 'toggleSideBar'}}>
+              {{#if (not sidebarCollapsed)}}
+                <i class="far fa-times-circle"></i>
+              {{else}}
+                <i class="fas fa-bars"></i>
+              {{/if}}
+          </div>
+          {{outlet "heading"}}
         </div>
-        {{outlet "heading"}}
-    </div>
-
-    <div class="content-section">
-      <div class="content {{if (not sidebarCollapsed) 'collapse'}}">
+      </div>
+      <div class="content-container">
         {{outlet}}
       </div>
-        <div class="section {{if sidebarCollapsed 'collapse'}}">
-          <div class="section-collapsor row justify-content-between" {{action 'toggleAccordian'}}>
-
-            <div class="col-10 align-self-center">
-              COURSE CONTENTS</div>
-            <div class="align-self-center">
-              <i class="fas {{if accordianCollapsed 'fa-chevron-down' 'fa-chevron-up'}}"></i>
-            </div>
-          </div>
-            {{#unless accordianCollapsed}}
-              <div class="c-accordian">
-                  {{#each sections as |section|}}
-                      <div class="accordian-ul" data-show="true">
-                          {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length collapsed=(not (eq section.id sectionId))}}
-                              {{#each section.contents as |content|}}
-                                  <div data-completed="{{content.isDone}}" class="accordian-li" {{action 'transitionToContent' content.id section.id}}>
-                                      <div class="li-left flex-row">
-                                          <div class="accordian-li-type">
-                                            <div class="content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
-                                          </div>
-                                          <div class="accordian-li-heading">
-                                              {{content.payload.name}}
-                                          </div>
-                                      </div>
-
-                                      <div class="flex-row">
-                                          <div class="circle-back">
-                                              <div class="circle-front" {{action 'toggleProgress' content bubbles=false}}></div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              {{/each}}
-                          {{/accordian-head}}
-                      </div>
-                  {{/each}}
-              </div>
-            {{/unless}}
-        </div>
     </div>
+    <div class="section {{if sidebarCollapsed 'collapse'}}">
+      <div class="tab-nav">
+          <div 
+            class="tab-items {{if isContentsTabActive 'active'}}"
+            {{action "setActiveTab" "contents"}}
+          >
+            Table Of Content
+          </div>
+          <div class="tab-items {{if isNotesTabActive 'active'}}" {{action "setActiveTab" "notes"}} >
+            Notes
+            {{#if runAttempt.notes.length}}
+              (0{{runAttempt.notes.length}})
+            {{/if}}
+          </div>
+        </div>
+      <div class="section-tabs">
+        {{!-- {{#unless accordianCollapsed}} --}}
+        {{#liquid-if isContentsTabActive class="slide"}}
+          <div class="c-accordian">
+            {{#each sections as |section|}}
+            <div class="accordian-ul" data-show="true">
+              {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length
+              collapsed=(not (eq section.id sectionId))}}
+              {{#each section.contents as |content|}}
+              <div data-completed="{{content.isDone}}" class="accordian-li"
+                {{action 'transitionToContent' content.id section.id}}>
+                <div class="li-left flex-row">
+                  <div class="accordian-li-type">
+                    <div class="content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
+                  </div>
+                  <div class="accordian-li-heading">
+                    {{content.payload.name}}
+                  </div>
+                </div>
+
+                <div class="flex-row">
+                  <div class="circle-back">
+                    <div class="circle-front" {{action 'toggleProgress' content bubbles=false}}></div>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+              {{/accordian-head}}
+            </div>
+            {{/each}}
+          </div>
+        {{else}}
+          {{notes-view runAttempt=model}}
+        {{/liquid-if}}
+      </div>
+      
+      
+      
+    </div>
+  </div>
 </div>
