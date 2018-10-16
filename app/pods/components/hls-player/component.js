@@ -13,7 +13,10 @@ export default Component.extend(KeyboardShortcuts, {
   isShowingInstructions: true,
   classNames: ['height-100'],
   keyboardShortcuts: {
-    space: 'toggleVideoPlayback',
+    space: {
+      action: 'toggleVideoPlayback',
+      preventDefault: false
+    },
     left: 'seekBack',
     right: 'seekForward',
     up () {
