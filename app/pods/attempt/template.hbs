@@ -27,8 +27,8 @@
           </div>
           <div class="tab-items {{if isNotesTabActive 'active'}}" {{action "setActiveTab" "notes"}} >
             Notes
-            {{#if runAttempt.notes.length}}
-              (0{{runAttempt.notes.length}})
+            {{#if model.notes.length}}
+              ({{model.notes.length}})
             {{/if}}
           </div>
         </div>
