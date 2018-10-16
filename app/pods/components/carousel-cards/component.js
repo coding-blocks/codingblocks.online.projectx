@@ -48,6 +48,8 @@ export default class CarouselCards extends Component {
 
   currentIndex = 2
 
+  classNames = ['h-100']
+  
   didInsertElement () {
     this._super(...arguments)
     this.get('getCarouselCardsTask').perform()
