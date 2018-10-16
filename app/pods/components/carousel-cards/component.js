@@ -48,6 +48,8 @@ export default class CarouselCards extends Component {
 
   currentIndex = 2
 
+  classNames = ['h-100']
+  
   didInsertElement () {
     this._super(...arguments)
     this.get('getCarouselCardsTask').perform()
@@ -91,24 +93,24 @@ export default class CarouselCards extends Component {
       let card = carouselCards[i]
       let normalize = factor == -1 ? 1 : 0
       if (i < currentIndex) {
-        card.setHeight(325)
+        card.setHeight(265)
         card.setTranslateY(0)
         card.addTranslateX(-110*factor)
         card.showContent()
         
       } else if (i == currentIndex-normalize) {
-        card.setHeight(325)
+        card.setHeight(265)
         card.setTranslateY(0)
         card.addTranslateX(-16*factor)
         card.showContent()
       } else if (i <= currentIndex+1-normalize ) {
-        card.setHeight(239)
+        card.setHeight(192)
         card.addTranslateX(-16*factor)
         card.setTranslateY(20)
         card.hideContent()
       } else if (i <= currentIndex+2-normalize) {
         card.setHeight(142)
-        card.setTranslateY(72)
+        card.setTranslateY(45)
         card.addTranslateX(-16*factor)
         card.hideContent()
       }
