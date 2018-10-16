@@ -25,7 +25,12 @@
           >
             Table Of Content
           </div>
-          <div class="tab-items {{if isNotesTabActive 'active'}}" {{action "setActiveTab" "notes"}} >Notes(08)</div>
+          <div class="tab-items {{if isNotesTabActive 'active'}}" {{action "setActiveTab" "notes"}} >
+            Notes
+            {{#if runAttempt.notes.length}}
+              (0{{runAttempt.notes.length}})
+            {{/if}}
+          </div>
         </div>
       <div class="section-tabs">
         {{!-- {{#unless accordianCollapsed}} --}}
