@@ -4,8 +4,9 @@ import { inject } from '@ember/service'
 export default Route.extend({
     api: inject(),
     currentUser: inject(),
-
+    currentContent: inject(),
     model (params) {
+        this.get('currentContent').setContentId(params.contentId)
         return this.store.peekRecord('content', params.contentId, {
             include: 'lecture,video,document,code_challenge',
             reload: true

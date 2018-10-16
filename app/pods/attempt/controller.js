@@ -1,16 +1,20 @@
 import Controller from '@ember/controller';
 import { inject } from '@ember/service';
+import { computed } from '@ember/object';
+import { equal }  from '@ember/object/computed';
 
 export default Controller.extend({
     store: inject('store'),
     sidebarCollapsed: false,
     accordianCollapsed: false,
-    
+    activeTab: 'contents',
     queryParams: {
 		sectionId: {
 			as: 's'
 		}
-	},
+    },
+    isContentsTabActive: equal('activeTab', 'contents'),
+    isNotesTabActive: equal('activeTab', 'notes'),
     actions: {
         toggleSideBar () {
             this.toggleProperty("sidebarCollapsed")
@@ -41,6 +45,9 @@ export default Controller.extend({
                 await newProgress.save().then(p => content.set('progress', p))
             }
             return false
+        },
+        setActiveTab (tab) {
+            this.set("activeTab", tab)
         }
     }
 });
