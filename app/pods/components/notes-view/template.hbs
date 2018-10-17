@@ -8,11 +8,9 @@
     </div>
   {{/unless}}
 
-  <div class="notes-list-container">
     {{#each runAttempt.notes as |note|}}
       {{note-view note=note}}
     {{/each}}
-  </div>
 
   <div class="footer">
     <div class="list-item">
