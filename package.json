@@ -24,11 +24,11 @@
     "ember-ajax": "^3.0.0",
     "ember-cli": "~2.18.1",
     "ember-cli-app-version": "^3.0.0",
-    "ember-cli-babel": "^6.6.0",
+    "ember-cli-babel": "^6.17.2",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-head": "^0.4.1",
-    "ember-cli-htmlbars": "^2.0.1",
+    "ember-cli-htmlbars": "^2.0.5",
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-moment-shim": "^3.7.1",
@@ -48,7 +48,7 @@
     "ember-keyboard-shortcuts": "^1.0.6",
     "ember-load-initializers": "^1.0.0",
     "ember-local-storage": "^1.4.1",
-    "ember-modal-dialog": "^3.0.0-beta.0",
+    "ember-modal-dialog": "^3.0.0",
     "ember-moment": "^7.7.0",
     "ember-resolver": "^4.0.0",
     "ember-simple-auth": "^1.4.2",
@@ -64,8 +64,8 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "dependencies": {
-    "@coding-blocks/motley": "0.3.20",
-    "ember-line-clamp": "^0.2.15",
+    "@coding-blocks/motley": "^0.3.22",
+    "ember-line-clamp": "^0.2.18",
     "moment": "^2.22.2"
   }
 }
