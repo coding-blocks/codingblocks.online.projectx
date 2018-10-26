@@ -10,7 +10,7 @@
 
   <div class="notes-list-container">
     {{#each runAttempt.notes as |note|}}
-      {{note-view note=note}}
+      {{note-view note=note runAttempt=runAttempt}}
     {{/each}}
   </div>
 
