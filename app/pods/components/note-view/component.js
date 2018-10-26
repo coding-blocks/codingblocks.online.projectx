@@ -15,7 +15,10 @@ export default class NoteViewComponent extends Component {
   }).drop()
 
   deleteNote = task(function * () {
-    yield this.get('note').destroyRecord()
+    yield this.get('api').request('/notes/'+ this.get('note.id'), {
+      method: 'DELETE',
+    })
+    this.get('note').deleteRecord()
     this.set('deleted', true)
   }).drop()
 
@@ -30,10 +33,7 @@ export default class NoteViewComponent extends Component {
     this.get('api').request(`/notes/${noteId}/undo`).then(payload => {
       this.set("deleted", false)
 
-      // See: https://github.com/emberjs/data/issues/4972
-      this.get('store')._removeFromIdMap(this.get('note')._internalModel);
-      this.get('store').pushPayload(payload)
-      this.set('note', this.get('store').peekRecord('note', noteId))
+      this.get('note').rollbackAttributes()
     })
   }
 
