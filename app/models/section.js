@@ -13,6 +13,9 @@ export default DS.Model.extend({
   doneContents: computed("contents.@each.isDone", function() {
     return this.get("contents").filter(content => content.get("isDone"));
   }),
+  doneFeedbackContents: computed("contents.@each.isFeedbackDone", function() {
+    return this.get("contents".filter(content => content.get("isFeedbackDone")))
+  }),
   isProgressCompleted: computed("doneContents", function() {
     return this.get("doneContents.length") === this.get("contents.length");
   }),
