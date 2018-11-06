@@ -8,7 +8,9 @@ export default Component.extend({
   video: computed.alias("payload"),
   didInsertElement () {
     this._super(...arguments)
-    this.get('youtubePlayer').initialize('ext-video')
+    this.get('youtubePlayer').initialize('ext-video').then(() => {
+      this.get('youtubePlayer').seek(this.get('start'))
+    })
   },
   willDestroyElement () {
     this.get('youtubePlayer').destroy()

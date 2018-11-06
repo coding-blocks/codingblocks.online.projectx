@@ -6,6 +6,7 @@ import { task } from 'ember-concurrency'
 export default class NoteViewComponent extends Component {
   @service api
   @service store
+  @service router
   isEditing = false
   deleted = false
 
@@ -37,5 +38,21 @@ export default class NoteViewComponent extends Component {
     })
   }
 
+  @action
+  goToContent () {
+    const contentId = this.get('note.content.id')
+    
+    const transition = this.get('router').transitionTo('attempt.content', contentId, {
+      queryParams: {
+        start: this.get('note.duration')
+      }
+    })
+
+    if (transition.isActive) {
+      // if we are already at this route, force refresh it 
+      Ember.getOwner(this).lookup(`route:attempt.content`).refresh()
+    }
+    
+  }
   
 }

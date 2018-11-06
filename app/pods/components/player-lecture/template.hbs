@@ -3,6 +3,7 @@
         {{#hls-player src=lecture.videoUrl
             awsData=awsDataTask.lastSuccessful.value
             title=lecture.name
+            start=start
             onVideoCompleted=onVideoCompleted
         }}
         {{/hls-player}}
