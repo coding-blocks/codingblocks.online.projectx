@@ -7,7 +7,6 @@ export default Component.extend({
     api: inject(),
     classNames: ['height-100'],
     lecture: computed.alias('payload'),
-    feedbackState: 'COLLAPSED',
     didReceiveAttrs () {
         this.get('awsDataTask').perform()
         this._super(...arguments)
@@ -21,15 +20,5 @@ export default Component.extend({
         }).catch(err => err)
     }),
     actions: {
-        changeState(newState) {
-            this.set('feedbackState', newState)
-        },
-        submitFeedback(feed) {
-            this.get('onFeedbackSubmit')(feed)
-            this.send('changeState', 'SUBMITTED')
-            setTimeout(() => {
-                this.set('showFeedback', false)
-            }, 2000)
-        }
     }
 })

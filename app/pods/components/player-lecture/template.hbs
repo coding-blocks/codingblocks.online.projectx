@@ -1,33 +1,6 @@
-{{showFeedback}}
 {{#unless awsDataTask.isRunning}}
     <div class="video-player d-flex flex-column justify-content-around {{unless sidebarCollapsed 'collapse'}}">
-        
-        {{#if showFeedback}}
-            {{#if (eq feedbackState 'COLLAPSED')}}
-                                <div class="feed-box collapsed" {{action 'changeState' 'EXPANDED'}}>
-                                    <img src="/images/love.svg" alt="" class="love-ico">
-                                </div>
-            {{else if (eq feedbackState 'EXPANDED')}}
-                                <div class="feed-overlay"></div>
-                                <div class="feed-box expanded">
-                                    <div class="feed-text">Did you like the video?</div>
-                                    <form>
-                                        <input type="radio" name="gender" value="UP" {{action 'submitFeedback' 'UP'}}> Yes
-                                        <input type="radio" name="gender" value="DOWN" {{action 'submitFeedback' 'DOWN'}}> No
-                                    </form>
-                                    <img src="/images/love.svg" alt="" class="love-ico">
-                                </div>
-            {{else if (eq feedbackState 'SUBMITTED')}}
-                                <div class="feed-overlay"></div>
-                                <div class="feed-box">
-                                    <div class="feed-text">Feedback Submitted</div>
-                                    <img src="/images/love.svg" alt="" class="love-ico">
-                                </div>
-            {{else}}
-
-            {{/if}}
-        {{/if}}
-        
+        {{#content-feedback onFeedbackSubmit=onFeedbackSubmit showFeedback=showFeedback}} {{/content-feedback}}
         
         {{!-- <div class="feed-overlay">
                             <div class="feed-box collapsed" style="bottom: 190px;" {{action 'meow'}}>
