@@ -11,7 +11,7 @@
                                         <input type="radio" name="gender" value="UP" {{action 'submitFeedback' 'UP'}}> Yes
                                         <input type="radio" name="gender" value="DOWN" {{action 'submitFeedback' 'DOWN'}}> No
                                     </form>
-                                    <img src="/images/love.svg" alt="" class="love-ico">
+                                    <img src="/images/love.svg" alt="" class="love-ico"  {{action 'changeState' 'COLLAPSED'}}>
                                 </div>
             {{else if (eq feedbackState 'SUBMITTED')}}
                                 <div class="feed-overlay"></div>
