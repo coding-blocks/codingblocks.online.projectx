@@ -104,9 +104,7 @@ export default Component.extend(KeyboardShortcuts, {
 
     video.oncanplay = function() {
        lecture.addClass('spinner');
-
     };
-
 
     video.oncanplaythrough = function() {
        lecture.removeClass('spinner');
@@ -119,7 +117,9 @@ export default Component.extend(KeyboardShortcuts, {
     // set the lecture-player service know about the current player
     this.get('lecturePlayer').activate()
     this.get('lecturePlayer').setElement(video)
-
+    if (this.get('start')) {
+      this.get('lecturePlayer').seek(this.get('start'))
+    }
   },
   willDestroyElement() {
     this.get('hls').destroy()

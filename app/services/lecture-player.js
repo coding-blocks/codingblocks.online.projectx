@@ -14,5 +14,12 @@ export default Service.extend({
   },
   getCurrentTime () {
     return this.get('element').currentTime
+  },
+  seek (time) {
+    if (!this.element) {
+      throw new Error('Cannot seek lecture-player, no element is present!')
+    }
+    
+    this.element.currentTime = time
   }
 });

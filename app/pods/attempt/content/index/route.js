@@ -3,6 +3,11 @@ import { hash } from 'rsvp';
 
 export default Route.extend({
     headData: Ember.inject.service(),
+    queryParams: {
+        start: {
+            replace: true
+        }
+    },
     model () {
         return hash({
             runAttempt: this.modelFor('attempt'),

@@ -3,10 +3,11 @@ import { computed } from "@ember/object";
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-  queryParams: ['tab'],
+  queryParams: ['tab', 'start'],
 
   store: service(),
   tab: "problem",
+  start: 0,
 
   componentName: computed("model.contentable", function() {
     const contentable = this.get("model.contentable");
