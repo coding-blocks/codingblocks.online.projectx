@@ -19,6 +19,9 @@ export default DS.Model.extend({
   isDone: computed('progress.isDone', function () {
     return !! this.get('progress.isDone')
   }),
+  isFeedbackDone: computed('progress.isFeedbackDone', function () {
+    return !! this.get('progress.isFeedbackDone')
+  }),
   iconClass: computed('contentable', function () {
     switch (this.get('contentable')) {
       case 'document': return 'file-icon'; break;

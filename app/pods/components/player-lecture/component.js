@@ -7,7 +7,6 @@ export default Component.extend({
     api: inject(),
     classNames: ['height-100'],
     lecture: computed.alias('payload'),
-
     didReceiveAttrs () {
         this.get('awsDataTask').perform()
         this._super(...arguments)
@@ -19,5 +18,7 @@ export default Component.extend({
                 url: this.get('lecture.videoUrl')
             }
         }).catch(err => err)
-    })
+    }),
+    actions: {
+    }
 })
