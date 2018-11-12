@@ -24,7 +24,7 @@
                 {{row.userName}}
               </td>
               <td>
-                {{row.collegeName}}
+                {{if (or (not row.collegeName) (eq row.collegeName '---OTHER / NOT LISTED / NO COLLEGE ---')) 'N/A' row.collegeName}}
               </td>
               <td>{{row.score}}</td>
             </tr>
