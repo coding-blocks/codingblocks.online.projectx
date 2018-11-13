@@ -4,6 +4,7 @@ export default DS.Model.extend({
     name: DS.attr(),
     description: DS.attr(),
     photo: DS.attr(),
+    sub: DS.attr(),
     courses: DS.hasMany('course'),
     email: DS.attr()
 })

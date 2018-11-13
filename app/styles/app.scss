@@ -40,3 +40,7 @@ body.centered-modal-showing {
   box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
 }
 
+.notes-list-container {
+  height: calc(100% - 75px);
+  overflow: auto;
+}

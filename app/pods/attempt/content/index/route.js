@@ -3,6 +3,11 @@ import { hash } from 'rsvp';
 
 export default Route.extend({
     headData: Ember.inject.service(),
+    queryParams: {
+        start: {
+            replace: true
+        }
+    },
     model () {
         return hash({
             runAttempt: this.modelFor('attempt'),
@@ -31,7 +36,7 @@ export default Route.extend({
       if (sectionId) {
         const section = this.get('store').peekRecord('section', sectionId)
         this.set('headData.title', section.get('name') + " | " + model.payload.get('name') + " player ");
-      } else  {
+      } else {
         this.set('headData.title', model.payload.get('name') + " player ")
       }
 

@@ -1,4 +1,4 @@
-<div class="accordian-head" {{action 'toggle'}}>
+<div class="accordian-head no-gutters" {{action 'toggle'}}>
 	{{#if announcement}}
 	<div class="flex-row">
 		<div class="accordian-collapsar">
@@ -40,12 +40,12 @@
             {{title}}
         </div>
     </div>
-    <div class="flex-row">
+    <div class="d-flex flex-column align-items-end justify-content-center col-3">
 
         {{#if (eq type "info")}}
         	{{#if total}}
 	        <div class="lecture-count">
-	          {{total}} Lectures
+	          {{total}} Contents
 	        </div>
 	        {{else}}
 	        <div class="lecture-count">
@@ -67,6 +67,11 @@
         <div class="lecture-count">
           <span class="completed">{{completed}}</span> / {{total}}
         </div>
+		{{#if deadline}}
+			<div class="red card-md">
+				Deadline {{moment-format deadline 'DD-MMM-YY'}}
+			</div>
+		{{/if}}
         {{/if}}
     </div>
   {{/if}}

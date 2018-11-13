@@ -11,6 +11,7 @@ export default Component.extend({
   session: inject(),
   api: inject(),
   router: inject(),
+  currentUser: inject(),
 
   _redirectToOneauth () {
     window.location.href = this.loginUrl
@@ -22,10 +23,16 @@ export default Component.extend({
         yield this.get('api').request(`/runs/${runId}/buy`)
         window.location.href = env.dukaanUrl
       } catch (err) {
+        let errorCode;
+
+        if (err.status == 400 && err.payload.err == 'TRIAL_WITHOUT_MOBILE') {
+          errorCode = 'NO_USER_MOBILE_NUMBER'
+        } else {
+          errorCode = 'DUKKAN_ERROR'
+        }
+
         this.get('router').transitionTo('error', {
-          queryParams: {
-            errorCode: 'DUKKAN_ERROR'
-          }
+          queryParams: { errorCode }
         })
       }
     }

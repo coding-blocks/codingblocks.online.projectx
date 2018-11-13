@@ -3,10 +3,11 @@ import { computed } from "@ember/object";
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-  queryParams: ['tab'],
+  queryParams: ['tab', 'start'],
 
   store: service(),
   tab: "problem",
+  start: 0,
 
   componentName: computed("model.contentable", function() {
     const contentable = this.get("model.contentable");
@@ -26,6 +27,9 @@ export default Controller.extend({
   }),
   course: computed.alias('runAttempt.run.course'),
   run: computed.alias('runAttempt.run'),
+  showFeedback: computed('content', function() {
+    return !this.get('content.isFeedbackDone')
+  }),
   actions: {
     transitionToDashboard() {
       this.transitionToRoute(
@@ -59,6 +63,11 @@ export default Controller.extend({
           s: section.get('id')
         }
       });
+    },
+    async submitFeedback(feedback) {
+      let progress = await this.get('content.progress')
+      progress.set('feedbackStatus', feedback)
+      progress.save()
     }
   }
 });

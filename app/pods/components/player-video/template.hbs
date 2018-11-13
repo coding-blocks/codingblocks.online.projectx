@@ -1,3 +1,4 @@
 <div class="video-player">
+  {{#content-feedback onFeedbackSubmit=onFeedbackSubmit showFeedback=showFeedback}} {{/content-feedback}}
   <iframe id="ext-video" class="external-video" width="100%" src="{{embed video.url}}" frameborder="0" allowfullscreen></iframe>
 </div>

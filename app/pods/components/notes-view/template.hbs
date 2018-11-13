@@ -1,0 +1,29 @@
+
+<div class="notes-list list-shaded spaced invert">
+  {{#unless runAttempt.notes.length}}
+    <div class="list-item">
+      <div class="row justify-content-center">
+        You have no notes for this course.
+      </div>
+    </div>
+  {{/unless}}
+
+    {{#each runAttempt.notes as |note|}}
+      {{note-view note=note runAttempt=runAttempt}}
+    {{/each}}
+
+  <div class="footer">
+    <div class="list-item">
+      <div class="row">
+        <div class="li-left col-9">
+          {{textarea class="invert font-sm" placeholder="Add a Note" value=newNoteText}}
+        </div>
+        <div class="li-right col-3 align-self-start">
+          <div class="button-solid card-md">
+            <button {{action 'addNote'}} >Save Note</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

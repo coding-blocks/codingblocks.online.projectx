@@ -1,0 +1,38 @@
+{{#if showLeaderboard}}
+<div class="heading-u">
+  Leaderboard
+</div>
+
+<div class="c-overview-leaderboard">
+  <div class="card">
+    <div class="generate-scroll-y">
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th data-field="rank">Rank</th>
+            <th data-field="user">User</th>
+            <th data-field="college">College</th>
+            <th data-field="score">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each leaderboard as |row index|}}
+            <tr>
+              <td>{{inc index 1}}</td>
+              <td>
+                <img src="{{defaultPhoto row.photo row.id}}" class="img-circle marginR10" width="25">
+                {{row.userName}}
+              </td>
+              <td>
+                {{if (or (not row.collegeName) (eq row.collegeName '---OTHER / NOT LISTED / NO COLLEGE ---')) 'N/A' row.collegeName}}
+              </td>
+              <td>{{row.score}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{{/if}}
