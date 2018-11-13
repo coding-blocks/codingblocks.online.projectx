@@ -6,12 +6,14 @@ import $ from 'jquery';
 
 export default Route.extend({
 	api: service(),
+	runAttemptService: service('run-attempt'),
 	queryParams: {
 		sectionId: {
 			as: 's'
 		}
 	},
 	model(params, transition) {
+		this.get('runAttemptService').setRunAttempt(params.runAttemptId)
 		return this.store.findRecord('runAttempt', params.runAttemptId, { reload: true })
 			.catch(err => {
 				if (err instanceof DS.AdapterError) {
