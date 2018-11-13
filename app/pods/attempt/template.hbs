@@ -38,7 +38,7 @@
           <div class="c-accordian">
             {{#each sections as |section|}}
             <div class="accordian-ul" data-show="true">
-              {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length
+              {{#accordian-head title=section.name completed=section.doneContents.length deadline=section.deadlineDate total=section.contents.length
               collapsed=(not (eq section.id sectionId))}}
               {{#each section.contents as |content|}}
               <div data-completed="{{content.isDone}}" class="accordian-li"
