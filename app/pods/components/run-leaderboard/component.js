@@ -5,6 +5,12 @@ import { computed } from '@ember/object'
 
 export default Component.extend({
   api: service(),
+
+  limit: 20,
+
+  displayedLeaderboard: computed('leaderboard', 'limit', function () {
+    return this.get('leaderboard').slice(0, this.get('limit'))
+  }),
   // don't show leaderboard if we are fetching the leaderboard or the request errored
   showLeaderboard: computed('getLeaderBoardTask.isRunning', 'isErrored', function () {
     if (this.get('getLeaderBoardTask.isRunning') || this.get('isErrored')) {
@@ -23,5 +29,10 @@ export default Component.extend({
       this.set("isErrored", true)
     })
     this.set("leaderboard", leaderboard)
-  }).restartable()
+  }).restartable(),
+  actions: {
+    loadMore () {
+      this.incrementProperty('limit', 30)
+    }
+  }
 });
