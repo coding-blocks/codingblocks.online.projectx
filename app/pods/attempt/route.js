@@ -49,6 +49,7 @@ export default Route.extend({
     controller.set("run", model.get('run'))
 		controller.set("course", model.get('run.course'))
 		controller.set("sections", model.get("run.sections"))
+		controller.set("currentSectionId", this.paramsFor('attempt').sectionId)
 	},
 	actions: {
 		didTransition () {

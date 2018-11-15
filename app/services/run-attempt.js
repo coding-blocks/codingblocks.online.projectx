@@ -1,14 +1,23 @@
 import Service from '@ember/service'
 
 export default class RunAttemptService extends Service {
-    _runAttemptId = null
+
+    //current run attempt
+    runAttemptId = null
+
+    //current section
+    sectionId = null
 
     setRunAttempt (runAttemptId) {
-        this._runAttemptId = runAttemptId
+        this.set('runAttemptId', runAttemptId)
+    }
+
+    setCurrentSection (sectionId) {
+        this.set('sectionId', sectionId)
     }
 
     getRunAttempt () {
-        return this._runAttemptId
+        return this.get('runAttemptId')
     }
 
 }

@@ -5,14 +5,11 @@ import { equal }  from '@ember/object/computed';
 
 export default Controller.extend({
     store: inject('store'),
+    runAttemptService: inject('run-attempt'),
+    currentSectionId: computed.alias('runAttemptService.sectionId'),
     sidebarCollapsed: false,
     accordianCollapsed: false,
     activeTab: 'contents',
-    queryParams: {
-		sectionId: {
-			as: 's'
-		}
-    },
     isContentsTabActive: equal('activeTab', 'contents'),
     isNotesTabActive: equal('activeTab', 'notes'),
     actions: {
@@ -23,10 +20,11 @@ export default Controller.extend({
             this.toggleProperty("accordianCollapsed")
         },
         transitionToContent (contentId, sectionId) {
+            this.get('runAttemptService').setCurrentSection(sectionId)
             this.transitionToRoute('attempt.content', contentId, {
-              queryParams: {
-                sectionId
-              }
+                queryParams: {
+                    sectionId
+                }
             })
         },
         async toggleProgress (content) {
