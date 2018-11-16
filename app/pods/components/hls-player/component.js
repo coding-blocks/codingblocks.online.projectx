@@ -15,10 +15,17 @@ export default Component.extend(KeyboardShortcuts, {
   keyboardShortcuts: {
     space: {
       action: 'toggleVideoPlayback',
+      global: false,
       preventDefault: false
     },
-    left: 'seekBack',
-    right: 'seekForward',
+    left: {
+      action: 'seekBack',
+      global: false
+    },
+    right: {
+      action: 'seekForward',
+      global: false
+    },
     up () {
       this.send("changeSpeed", 0.25)
     },
