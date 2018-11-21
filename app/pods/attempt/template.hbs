@@ -3,7 +3,7 @@
     <div class="content {{if (not sidebarCollapsed) 'collapse'}}">
       <div class="header flex-row">
         <div class="dashboard row no-gutters justify-content-between">
-          <div class="flex-row white pointer dsp-none-sm" {{action 'toggleSideBar'}}>
+          <div class="flex-row white pointer dsp-none-sm font-lg" {{action 'toggleSideBar'}}>
               {{#if (not sidebarCollapsed)}}
                 <i class="far fa-times-circle"></i>
               {{else}}
@@ -36,40 +36,48 @@
         {{!-- {{#unless accordianCollapsed}} --}}
         {{#liquid-if isContentsTabActive class="slide"}}
           <div class="c-accordian">
-            {{#each sections as |section|}}
-            <div class="accordian-ul" data-show="true">
-              {{#accordian-head title=section.name completed=section.doneContents.length deadline=section.deadlineDate total=section.contents.length
-              collapsed=(not (eq section.id currentSectionId))}}
-              {{#each section.contents as |content|}}
-              <div data-completed="{{content.isDone}}" class="accordian-li"
-                {{action 'transitionToContent' content.id section.id}}>
-                <div class="li-left flex-row">
-                  <div class="accordian-li-type">
-                    <div class="content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
+            <div class="list-shaded invert">
+              {{#each sections as |section|}}
+                <div> 
+                  {{#accordian-head title=section.name completed=section.doneContents.length deadline=section.deadlineDate
+                  total=section.contents.length
+                  collapsed=(not (eq section.id currentSectionId))}}
+                  <div class="bellows pb-4 pt-4">
+                    {{#each section.contents as |content|}}
+                    <div class="row no-gutters pointer {{if content.isDone 'green'}}" {{action 'transitionToContent' content.id section.id}}>
+                      <div class="li-left col-10">
+                        <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
+                        <div class="col-10">
+                          {{content.payload.name}}
+                        </div>
+                      </div>
+                      <div class="li-right  col-2">
+                        {{#if (and section.premium (not model.premium))}}
+                          {{!-- <div class="t-align-c"> --}}
+                            <i class="fas fa-lock grey"></i>
+                          {{!-- </div> --}}
+                        {{else}}
+                          <div class="status-circle">
+                            <div class="circle-back"></div>
+                            <div class="circle-front" {{action 'toggleProgress' content bubbles=false}}></div>
+                          </div>
+                        {{/if}}
+                        
+                    
+                      </div>
+                    </div>
+                    {{/each}}
                   </div>
-                  <div class="accordian-li-heading">
-                    {{content.payload.name}}
-                  </div>
+                 
+                  {{/accordian-head}}
                 </div>
-
-                <div class="flex-row">
-                  <div class="circle-back">
-                    <div class="circle-front" {{action 'toggleProgress' content bubbles=false}}></div>
-                  </div>
-                </div>
-              </div>
               {{/each}}
-              {{/accordian-head}}
             </div>
-            {{/each}}
           </div>
         {{else}}
           {{notes-view runAttempt=model}}
         {{/liquid-if}}
       </div>
-      
-      
-      
     </div>
   </div>
 </div>

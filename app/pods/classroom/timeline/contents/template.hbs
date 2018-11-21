@@ -1,40 +1,53 @@
 <div class="c-progress">
-  <div class="c-accordian">
-      {{#if sections}}
-        {{#each sections as |section|}}
-                <div class="accordian-ul" data-show="true">
-                    {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length deadline=section.deadlineDate hideDuration=true}}
-                        {{#each section.contents as |content|}}
-                            <div data-completed="{{content.progress.isDone}}" class="accordian-li" {{action 'transitionToContent' content.id section.id}}>
-                                <div class="li-left flex-row">
-                                    <div class="accordian-li-type">
-                                        <div class="content-icon {{content.iconClass}}-{{if content.isDone 'green' 'red'}}"></div>
-                                </div>
-                                    <div class="accordian-li-heading">
-                                        {{content.payload.name}}
-                                    </div>
-                                </div>
-
-                                <div class="flex-row">
-                                        <div class="circle-back">
-                                            <div class="circle-front"></div>
-                                        </div>
-                                </div>
-                            </div>
-                        {{/each}}
-                    {{/accordian-head}}
+<div class="card accordian-card">
+    <div class="c-accordian c-content-accordian">
+        <div class="list-divided border-none">
+            {{#if sections}}
+            {{#each sections as |section|}}
+            {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length
+            deadline=section.deadlineDate hideDuration=true listType="divided"}}
+            <div class="pb-4 pt-4">
+                {{#each section.contents as |content|}}
+                <div class="row no-gutters pointer {{if content.isDone 'green' 'red'}}"
+                    {{action 'transitionToContent' content.id section.id}}>
+                    <div class="li-left col-10 col-sm-8">
+                        <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green' 'red'}}"></div>
+                        <div class="col-10">
+                            {{content.payload.name}}
+                        </div>
+                    </div>
+                    <div class="li-right col-2 col-sm-4">
+                        {{#if content.payload.duration}}
+                        <div class="dsp-none-xs {{if content.isDone 'green' 'grey'}}">
+                            {{format-duration content.payload.duration}}
+                        </div>
+                        {{/if}}
+        
+                        <div class="status-circle">
+                            <div class="circle-back"></div>
+                            <div class="circle-front"></div>
+                        </div>
+        
+                    </div>
                 </div>
+                {{/each}}
+            </div>
+        
+            {{/accordian-head}}
             {{/each}}
-      {{else}}
-        <div class="accordian-ul" data-show="true">
-            <div class="accordian-li">
-                <div class="li-left flex-row">
-                    Sorry, currently there are no available contents for this course.
+            {{else}}
+            <div class="accordian-ul" data-show="true">
+                <div class="accordian-li">
+                    <div class="li-left flex-row">
+                        Sorry, currently there are no available contents for this course.
+                    </div>
                 </div>
             </div>
+            {{/if}}
+            <div class="row" style="min-height:50px">
+            </div>
         </div>
-      {{/if}}
-      <div class="row" style="min-height:50px">
-      </div>
+    </div>
+    
   </div>
 </div>

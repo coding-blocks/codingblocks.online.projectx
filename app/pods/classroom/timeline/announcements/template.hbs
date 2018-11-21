@@ -1,29 +1,27 @@
-<div class="c-announcement">
-    <div class="heading-u">
-		Announcements ({{announcements.length}})
-    </div>
-  {{#unless announcements.length}}
-    <div class="accordian-ul" data-show="true">
-        <div class="accordian-li">
-          <div class="classroom-para">
-            All announcements related to course will be shared here !
+<div class="card accordian-card mt-5 mb-5">
+  <div class="c-accordian c-announcement">
+    <div class="list-divided border-none">
+      {{#unless announcements.length}}
+        <div class="classroom-para">
+          All announcements related to course will be shared here !
+        </div>
+      {{/unless}}
+      {{#each announcements as |announcement|}}
+      <div class="list-divided border-none">
+        {{#accordian-head announcement=announcement course=course}}
+        <div class="row no-gutters">
+          <div class="classroom-para col-12 grey i">
+            {{markdown-to-html announcement.text}}
           </div>
         </div>
-    </div>
-  {{/unless}}
-	{{#each announcements as |announcement|}}
-		<div class="accordian-ul" data-show="true">
-			{{#accordian-head announcement=announcement course=course}}
-			<div class="accordian-li">
-				<div class="classroom-para">
-					{{markdown-to-html announcement.text}}
-				</div>
-			</div>
-			{{/accordian-head}}
-		</div>
-	{{/each}}
-
-        <div id="an-load-more" class="button-dashed {{if (and visible announcements) '' 'display-none'}}">
+          
+        {{/accordian-head}}
+      </div>
+      {{/each}}
+      
+      <div id="an-load-more" class="button-dashed {{if (and visible announcements) '' 'display-none'}}">
         <button onclick={{action 'updatePage'}}>Load More</button>
+      </div>
     </div>
+  </div>
 </div>

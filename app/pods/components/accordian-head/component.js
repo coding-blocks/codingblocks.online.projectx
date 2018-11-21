@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { action } from 'ember-decorators/object'
+import { action, computed } from 'ember-decorators/object'
 import { isBlank } from '@ember/utils'
 
 export default class AccordianHeadComponent extends Component {
@@ -10,6 +10,13 @@ export default class AccordianHeadComponent extends Component {
         this.set('collapsed', true)
       }
     }
+    classNameBindings= ['listTypeClass']
+
+    @computed ('listType')
+    get listTypeClass () {
+      return this.get('listType') == 'divided' ? 'list-divided border-none border-radius-none': '';
+    }
+  
 
     @action
     toggle () {
