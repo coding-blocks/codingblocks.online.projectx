@@ -33,13 +33,13 @@
           </div>
         </div>
       <div class="section-tabs">
-        {{!-- {{#unless accordianCollapsed}} --}}
+        {{!-- {{#unless accordionCollapsed}} --}}
         {{#liquid-if isContentsTabActive class="slide"}}
-          <div class="c-accordian">
+          <div class="c-accordion">
             <div class="list-shaded invert">
               {{#each sections as |section|}}
                 <div> 
-                  {{#accordian-head title=section.name completed=section.doneContents.length deadline=section.deadlineDate
+                  {{#accordion-head title=section.name completed=section.doneContents.length deadline=section.deadlineDate
                   total=section.contents.length
                   collapsed=(not (eq section.id currentSectionId))}}
                   <div class="bellows pb-4 pt-4">
@@ -69,7 +69,7 @@
                     {{/each}}
                   </div>
                  
-                  {{/accordian-head}}
+                  {{/accordion-head}}
                 </div>
               {{/each}}
             </div>

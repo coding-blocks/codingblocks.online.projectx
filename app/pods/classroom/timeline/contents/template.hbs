@@ -1,10 +1,10 @@
 <div class="c-progress">
-<div class="card accordian-card">
-    <div class="c-accordian c-content-accordian">
+<div class="card accordion-card">
+    <div class="c-accordion c-content-accordion">
         <div class="list-divided border-none">
             {{#if sections}}
             {{#each sections as |section|}}
-            {{#accordian-head title=section.name completed=section.doneContents.length total=section.contents.length
+            {{#accordion-head title=section.name completed=section.doneContents.length total=section.contents.length
             deadline=section.deadlineDate hideDuration=true listType="divided"}}
             <div class="pb-4 pt-4">
                 {{#each section.contents as |content|}}
@@ -33,11 +33,11 @@
                 {{/each}}
             </div>
         
-            {{/accordian-head}}
+            {{/accordion-head}}
             {{/each}}
             {{else}}
-            <div class="accordian-ul" data-show="true">
-                <div class="accordian-li">
+            <div class="accordion-ul" data-show="true">
+                <div class="accordion-li">
                     <div class="li-left flex-row">
                         Sorry, currently there are no available contents for this course.
                     </div>

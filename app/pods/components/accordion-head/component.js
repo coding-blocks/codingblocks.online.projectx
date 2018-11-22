@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { action, computed } from 'ember-decorators/object'
 import { isBlank } from '@ember/utils'
 
-export default class AccordianHeadComponent extends Component {
+export default class AccordionHeadComponent extends Component {
 
     constructor () {
       super(...arguments)
@@ -14,7 +14,7 @@ export default class AccordianHeadComponent extends Component {
 
     @computed ('listType')
     get listTypeClass () {
-      return this.get('listType') == 'divided' ? 'list-divided border-none border-radius-none': '';
+      return this.get('listType') == 'divided' ? 'list-divided border-radius-none': '';
     }
   
 

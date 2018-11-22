@@ -1,5 +1,5 @@
-<div class="card accordian-card mt-5 mb-5">
-  <div class="c-accordian c-announcement">
+<div class="card accordion-card mt-5 mb-5">
+  <div class="c-accordion c-announcement">
     <div class="list-divided border-none">
       {{#unless announcements.length}}
         <div class="classroom-para">
@@ -8,14 +8,14 @@
       {{/unless}}
       {{#each announcements as |announcement|}}
       <div class="list-divided border-none">
-        {{#accordian-head announcement=announcement course=course}}
+        {{#accordion-head announcement=announcement course=course}}
         <div class="row no-gutters">
           <div class="classroom-para col-12 grey i">
             {{markdown-to-html announcement.text}}
           </div>
         </div>
           
-        {{/accordian-head}}
+        {{/accordion-head}}
       </div>
       {{/each}}
       

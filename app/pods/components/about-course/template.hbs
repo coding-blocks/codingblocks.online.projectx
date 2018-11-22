@@ -223,19 +223,19 @@
   </div>
 </div>
 
-{{!-- Accordian --}}
+{{!-- Accordion --}}
 
-<div class="custom-heading accordian-head">
+<div class="custom-heading accordion-head">
   <div class="heading-u mb-5">
     What will you learn
   </div>
 </div>
 
-<div class="card accordian-card">
-  <div class="c-accordian c-about-accordian">
+<div class="card accordion-card">
+  <div class="c-accordion c-about-accordion">
     <div class="list-divided border-none">
       {{#each course.topRun.sections as |section|}}
-      {{#accordian-head title=section.name total=section.totalContents duration=section.duration type="info" listType="divided"}}
+      {{#accordion-head title=section.name total=section.totalContents duration=section.duration type="info" listType="divided"}}
       <div class="pb-4 pt-4">
         {{#each section.contents as |content|}}
           <div class="row no-gutters {{if (not section.premium) 'red' 'grey'}}">
@@ -265,7 +265,7 @@
         {{/each}}
       </div>
       
-      {{/accordian-head}}
+      {{/accordion-head}}
       {{/each}}
     </div>
   </div>
