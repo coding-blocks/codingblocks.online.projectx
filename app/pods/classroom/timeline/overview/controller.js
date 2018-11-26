@@ -14,14 +14,14 @@ export default Controller.extend({
     const announcementsObjs = this.get('announcements').map(a => ({
       type: 'announcement',
       payload: a,
-      icon: 'support.svg',
+      icon: 'announcement.svg',
       createdAt: new Date(a.get('createdAt'))
     }))
 
     const doubtsObjs = this.get('doubts').map(d => ({
       type: 'doubt',
       payload: d,
-      icon: 'announcement.svg',
+      icon: 'support.svg',
       createdAt: new Date(d.created_at)
     }))
 

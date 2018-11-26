@@ -25,10 +25,16 @@
           <button>Generate Now!</button>
         </div>
       {{else if runAttempt.certificate}}
-        <div class="red">
-          {{log runAttempt.certificate}}
-          Certificate Already Requested!
-        </div>
+        {{#if (eq runAttempt.certificate.status 'published')}}
+          <div class="button-solid" {{action 'downloadCertificate'}}>
+            <button>Download Certificate</button>
+          </div>
+        {{else}}
+          <div class="red">
+            Certificate Already Requested!
+          </div>
+        {{/if}}
+
       {{else if generationRequested}}
         <div class="red">
           Certificate Requested !
