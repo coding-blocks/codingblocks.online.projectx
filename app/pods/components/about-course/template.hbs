@@ -19,14 +19,14 @@
   <div class="col-6 align-self-center">
     <div class="row no-gutters">
       <div class="card-image col-sm-2">
-        <img src="{{course.logo}}" alt="course image">
+        <img class="round" src="{{course.logo}}" alt="course image">
       </div>
       <div class="heading-d col-10 align-self-center">
         <div class="main-h">
           {{course.title}}
         </div>
         <div class="sub-h">
-          Mentor :
+          Taught By :
           {{#each course.instructors as |instructor index|}}
              {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
           {{/each}}
@@ -36,21 +36,21 @@
   </div>
   <div class="col-6 align-self-center">
     <div class="row justify-content-end">
+      <div class="button-solid col-6">
+          <a href="#runs">
+              <button class="white">Buy Now</button>
+          </a>
+      </div>
       <div class="button-dashed col-6">
         {{#if session.isAuthenticated}}
             {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button"}}
-                START FREE TRIAL
+                Start Free Trial
             {{/link-to}}
         {{else}}
             <button onclick={{action 'logIn'}}>
-                START FREE TRIAL
+                Start Free Trial
             </button>
         {{/if}}
-      </div>
-      <div class="button-solid col-6">
-          <a href="#runs">
-              <button class="white">BUY NOW</button>
-          </a>
       </div>
     </div>
   </div>
@@ -61,24 +61,22 @@
   <div class="classroom-container row">
     <div class="classroom-header-box col-md-8 col-sm-12 col-xs-12">
       <div class="classroom-header row">
-        <div class="classroom-image col-md-2 col-xs-2 col-sm-2">
-          <img src="{{course.logo}}" alt="course logo">
+        <div class="classroom-image col-md-2 col-2 col-sm-2">
+          <img class="round" src="{{course.logo}}" alt="course logo">
         </div>
-        <h1 class="classroom-text col-md-10 col-xs-10 col-sm-10">
+        <h1 class="classroom-text col-md-10 col-10 col-sm-10 d-flex flex-column justify-content-center">
           {{course.title}}
         </h1>
       </div>
 
-      <h2 class="classroom-para">
+      <h2 class="classroom-para grey">
         {{course.subtitle}}
       </h2>
 
-      <br>
-
-      <div class="para">
-        <span class="key">Mentor : </span>
+      <div class="para mt-4 mb-4 mb-md-5 mt-md-5">
+        <span class="bold">Taught By : </span>
         {{#each course.instructors as |instructor index|}}
-             {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
+             <span class="grey">{{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}</span>
           {{/each}}
       </div>
 
@@ -90,7 +88,7 @@
         Summary
       </div>
 
-      <div class="para summary">
+      <div class="para summary grey">
         {{markdown-to-html course.summary}}
       </div>
     </div>
@@ -147,18 +145,18 @@
     <div class="button-container row justify-content-center">
         <div class="button-solid col-5">
             <a href="#runs">
-                <button class="white">BUY NOW</button>
+                <button class="white">Buy Now</button>
             </a>
         </div>
 
       <div class="button-dashed col-5 p-0">
           {{#if session.isAuthenticated}}
               {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button"}}
-                  START FREE TRIAL
+                  Start Free Trial
               {{/link-to}}
           {{else}}
               <button onclick={{action 'logIn'}}>
-                  START FREE TRIAL
+                  Start Free Trial
               </button>
           {{/if}}
       </div>
@@ -315,7 +313,7 @@
                 </div>
               </div>
 
-              <div class="classroom-para">
+              <div class="classroom-para i">
                 {{markdown-to-html instructor.description}}
               </div>
             </div>
