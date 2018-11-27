@@ -178,7 +178,7 @@
                             </div>
                         </div>
 
-                        <div class="classroom-para">
+                        <div class="classroom-para i">
                             {{markdown-to-html instructor.description}}
                         </div>
                         </div>
@@ -187,6 +187,51 @@
             {{/each}}
         </div>
     </div>
+
+    <!-------------------------------------------About TAs----------------------------------->
+    {{#if run.ta.length}}
+      <div class="heading-u">
+          About Teaching Assistants
+      </div>
+
+      <div class="c-about-instructors">
+          <div class="row no-gutters">
+              {{#each run.ta as |ta|}}
+                  <div class="col-md-6 col-sm-12">
+                      <div class="img-desc row no-gutters">
+                          <div class="col-3">
+                          <div class="img-container">
+                              <div class="round-img">
+                              <img src="{{ta.photo}}" alt="photo of {{ta.name}}">
+                              </div>
+                          </div>
+
+                          </div>
+
+
+                          <div class="description col-8">
+                          <div>
+                              <div class="main-h">
+                              {{ta.name}}
+                              </div>
+                              <div class="sub-h">
+                              Teaching Assistant, Coding Blocks
+                              </div>
+                              <div class="classroom-para">
+                                <a href="mailto:{{ta.email}}">{{ta.email}}</a>
+                              </div>
+                          </div>
+
+                          <div class="classroom-para">
+                              {{markdown-to-html ta.description}}
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+              {{/each}}
+          </div>
+      </div>
+    {{/if}}
 
   <!------------------------------------------FAQs-------------------------------------------->
     <div class="heading-u mt-5 mb-5">

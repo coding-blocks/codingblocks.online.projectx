@@ -56,5 +56,6 @@ export default DS.Model.extend({
     return this.get('sections').reduce((acc, section) => {
       return acc + section.get('duration')
     }, 0)
-  })
+  }),
+  ta: DS.hasMany('ta')
 })
