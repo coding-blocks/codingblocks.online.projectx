@@ -1,0 +1,80 @@
+<div class="row no-gutters pointer {{if collapsed 'border-none' ''}}" {{action 'toggle'}}>
+	{{#if announcement}}
+	<div class="li-left col-10 col-md-8">
+		<div class="col-1">{{if collapsed '+' '-'}}</div>
+		<div class="col-10 d-flex">
+			<div class="round-img">
+				<img src="{{announcement.user.photo}}" alt="{{announcement.user.firstname}}">
+			</div>
+				
+			<div class="heading-d pl-2">
+				<div class="main-h">
+					{{announcement.title}}
+				</div>
+				<div class="sub-h">
+					{{announcement.user.firstname}} {{announcement.user.lastname}} |
+					{{announcement.elapsedTime}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="li-right col-2">
+		<div class="notify-type">
+			<div class="notify-icon">
+				<span class="notify-dot new"></span>
+				<img src="/images/announcement-dark.png" alt="">
+			</div>
+		</div>
+	</div>
+  {{else}}
+
+	<div class="li-left col-8">
+		<div class="col-1">
+			{{if collapsed '+' '-'}}
+		</div>
+		<div class="col-10">
+			{{title}}
+		</div>
+	</div>
+
+	{{#if (eq type "info")}}
+		<div class="li-right col-4">
+			{{#if total}}
+				<div class="col-12 col-sm-6">
+					{{total}} Lectures
+				</div>
+			{{else}}
+				<div class="col-12 col-sm-6">
+				More content to be added
+				</div>
+			{{/if}}
+			{{#unless hideDuration}}
+				{{#if duration}}
+					<div class="col-6 dsp-none-xs">
+						{{format-duration duration 'humanizeShort'}}
+					</div>
+				{{else}}
+					<div class="col-6 dsp-none-xs">
+						User-Specific
+					</div>
+				{{/if}}
+			{{/unless}}
+		</div>		
+	{{else}}
+		<div class="li-right col-4">
+			<div class="d-flex flex-column align-items-end">
+				<div class="{{if (eq completed total) 'green'}}">{{completed}}/{{total}} Lectures Completed</div>
+				{{#if (and deadline (not (eq completed total)))}}
+				<div class="red mt-2 deadline">Due {{moment-format deadline 'DD-MMM-YY'}}</div>
+				{{/if}}
+			</div>
+		</div>
+	{{/if}}
+  {{/if}}
+</div>
+
+{{#liquid-spacer growDuration=250 growWidth=false class="black-background"}}
+{{#unless collapsed}}
+    {{yield}}
+{{/unless}}
+{{/liquid-spacer}}

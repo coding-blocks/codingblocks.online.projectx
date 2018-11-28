@@ -80,6 +80,11 @@
           {{/each}}
       </div>
 
+      <div class="para">
+        <span class="key">Language : </span>
+        <span> {{course.language}} </span>
+      </div>
+
       {{!-- <div class="button-solid">
         <button>BUY NOW TO ENROLL</button>
       </div> --}}
@@ -221,60 +226,51 @@
   </div>
 </div>
 
-{{!-- Accordian --}}
+{{!-- Accordion --}}
 
-<div class="c-about-accordian">
-  <div class="custom-heading accordian-head">
-    <div class="heading-u">
-      What will you learn
-    </div>
-
-    <div class="flex-row">
-      <div class="lecture-count">
-        {{course.topRun.totalContents}} Lectures
-      </div>
-      <div class="duration">
-        {{format-duration course.topRun.totalDuration 'humanizeShort'}}
-      </div>
-    </div>
+<div class="custom-heading accordion-head">
+  <div class="heading-u mb-5">
+    What will you learn
   </div>
+</div>
 
-  <div class="c-accordian">
-    {{log course.topRun}}
-    {{#each course.topRun.sections as |section|}}
-      <div class="accordian-ul" data-show="true">
-        {{#accordian-head title=section.name total=section.totalContents duration=section.duration type="info"}}
-
+<div class="card accordion-card">
+  <div class="c-accordion c-about-accordion">
+    <div class="list-divided border-none">
+      {{#each course.topRun.sections as |section|}}
+      {{#accordion-head title=section.name total=section.totalContents duration=section.duration type="info" listType="divided"}}
+      <div class="pb-4 pt-4">
         {{#each section.contents as |content|}}
-          <div class="accordian-li inactive">
-            <div class="li-left flex-row">
-              <div class="accordian-li-type">
-                <div class="content-icon {{content.iconClass}}-green"></div>
-              </div>
-              <div class="accordian-li-heading {{if (not section.premium) 'red'}}">
+          <div class="row no-gutters {{if (not section.premium) 'red' 'grey'}}">
+            <div class="li-left col-10 col-sm-8">
+              <div class="col-1 {{content.iconClass}}-red content-icon"></div>
+              <div class="col-11 col-sm-8">
                 {{content.title}}
               </div>
             </div>
-            <div class="flex-row">
-              <div class="lecture-count {{if (not section.premium) 'red'}}">
-                {{#if section.premium}}
-                  <i style="width: 53px; padding-left: 15px" class="fas fa-lock"></i>
-                {{else}}
-                  {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button"}}
-                    Preview
+            <div class="li-right no-gutters col-2 col-sm-4">
+              {{#if section.premium}}
+                <div class="t-align-c">
+                  <i class="fas fa-lock"></i>
+                </div>
+              {{else}}
+                <div class="col-12 col-sm-6">
+                  {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button" class="t-align-r"}}
+                  Preview
                   {{/link-to}}
-                {{/if}}
-              </div>
-              <div class="duration accordian-li-heading">
+                </div>
+              {{/if}}
+              <div class="grey col-6 dsp-none-xs">
                 {{format-duration content.duration}}
               </div>
             </div>
           </div>
         {{/each}}
-
-        {{/accordian-head}}
       </div>
-    {{/each}}
+      
+      {{/accordion-head}}
+      {{/each}}
+    </div>
   </div>
 </div>
 

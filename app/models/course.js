@@ -12,6 +12,7 @@ export default DS.Model.extend({
     promoVideo: DS.attr(),
     coverImage: DS.attr(),
     logo: DS.attr(),
+    language: DS.attr(),
     slug: DS.attr('string'),
     difficulty: DS.attr('number'),
     categoryName: DS.attr(),

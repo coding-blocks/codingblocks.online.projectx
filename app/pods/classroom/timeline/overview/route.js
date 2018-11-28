@@ -24,7 +24,7 @@ export default Route.extend({
             data: {
                 order: "latest"
             }
-        })
+        }).catch(err => console.error(err)).then(() => [])
     });
   },
   setupController (controller, model) {
