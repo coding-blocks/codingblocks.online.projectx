@@ -1,8 +1,7 @@
 {{#if (and hasUserMarkedRating (not isEditing))}}
   <div>
     Thanks for rating us! &nbsp;&nbsp;
-    <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
-    <br><br>
+    
     {{#each (range 1 (inc scale)) as |index|}}
       <span
         class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
@@ -10,11 +9,11 @@
         <i class="fas fa-star"></i>
       </span>
     {{/each}}
+    <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
   </div>
 {{else}}
   <div>
-    Rate this course:
-    <br><br>
+    <span class="bold">Loving this course? &nbsp;&nbsp;</span>
     {{#each (range 1 (inc scale)) as |index|}}
       <span
         class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
