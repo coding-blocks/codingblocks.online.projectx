@@ -6,7 +6,7 @@
       </div>
       <div class="classroom-text col-10 d-flex flex-column justify-content-center">
         <h3 class="m-0">{{#link-to 'courses.id' run.course.identifier activeClass="" class="bold"}} {{run.course.title}} {{/link-to}}</h3>
-        <h6 class="red normal m-0">Batch Ends {{moment-format run.endUnix "DD-MMM-YY"}}</h6>
+        <h6 class="red normal m-0">Batch Ends {{moment-format run.topRunAttempt.endDate "DD-MMM-YY"}}</h6>
       </div>
       <div class="rating mob">
         {{#if runAttempt.premium}}
