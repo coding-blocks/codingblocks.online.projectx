@@ -54,14 +54,14 @@
                     <span class="red"> {{format-price course .topRun.price}} </span>
                     <!--<span class="grey"><strike>Rs 12000</strike></span>-->
                   </div>
-                  <div>Batches starting {{moment-format (unix course.topRun .start) 'MMM Do'}} </div>
+                  <div class="grey">Batches starting {{moment-format (unix course.topRun .start) 'MMM Do'}} </div>
                 </div>
                 <div class="button-solid">
                   {{#link-to 'courses.id' course.identifier tagName="button" activeClass=""}} Explore {{/link-to}}
                   </div>
               </div>
               <div class="divider">
-                <div class="card-mentor-divider col-12 order-0 order-md-2"></div>
+                <div class="divider-h col-12 order-0 order-md-2"></div>
               </div>
               <div class="row justify-content-center enrollment no-gutters">
                 <div class="col-12 center-text">Hurry Up! Enrollment ends {{moment-format (unix course.topRun.enrollmentEnd) 'MMM Do YYYY'}} </div>

@@ -47,11 +47,16 @@
                         
                         <div class="no-gutters col-6">
                             {{run.description}}
-                            {{#unless run.topRunAttempt.premium}}
-                                <div class="red">
+                            <div class="red">
+                                {{#if run.topRunAttempt.premium}}
+                                    {{#if (not run.topRunAttempt.isExpired)}}
+                                    Batch Ends {{moment-format run.topRunAttempt.endDate 'DD-MMM-YY'}}
+                                    {{/if}}
+                                {{else}}
                                     Free Trial
-                                </div>
-                            {{/unless}}
+                                {{/if}}
+                            </div>
+
                         </div> 
                         {{#unless (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
                         <div class="button-solid offset-1 col-5">

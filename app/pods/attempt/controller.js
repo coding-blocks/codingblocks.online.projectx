@@ -8,7 +8,7 @@ export default Controller.extend({
     runAttemptService: inject('run-attempt'),
     currentSectionId: computed.alias('runAttemptService.sectionId'),
     sidebarCollapsed: false,
-    accordianCollapsed: false,
+    accordionCollapsed: false,
     activeTab: 'contents',
     isContentsTabActive: equal('activeTab', 'contents'),
     isNotesTabActive: equal('activeTab', 'notes'),
@@ -16,8 +16,8 @@ export default Controller.extend({
         toggleSideBar () {
             this.toggleProperty("sidebarCollapsed")
         },
-        toggleAccordian () {
-            this.toggleProperty("accordianCollapsed")
+        toggleAccordion () {
+            this.toggleProperty("accordionCollapsed")
         },
         transitionToContent (contentId, sectionId) {
             this.get('runAttemptService').setCurrentSection(sectionId)

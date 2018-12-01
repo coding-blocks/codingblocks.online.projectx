@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | accordian-head', function(hooks) {
+module('Integration | Component | accordion-head', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{accordian-head}}`);
+    await render(hbs`{{accordion-head}}`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#accordian-head}}
+      {{#accordion-head}}
         template block text
-      {{/accordian-head}}
+      {{/accordion-head}}
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

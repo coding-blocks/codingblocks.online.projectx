@@ -78,8 +78,8 @@ export default Component.extend({
     this._super(...arguments)
     // hide buy-right and pull buy-top when user scrolls to the top of accrodian
     const buyTop = $(".c-buy-top")[0];
-    const accordian = $(".c-about-accordian");
-    const accordOffsetTop = accordian.offset().top - 350;
+    const accordion = $(".c-about-accordion");
+    const accordOffsetTop = accordion.offset().top - 350;
     $(window).on('scroll', function() {
       if (window.pageYOffset >= accordOffsetTop) {
         buyTop.classList.remove("slide-up");
