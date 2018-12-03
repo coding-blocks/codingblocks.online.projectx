@@ -10,6 +10,7 @@ export default Component.extend(KeyboardShortcuts, {
   currentUser : service(),
   lecturePlayer: service(),
   playerPreference: storageFor('player-prefs'),
+  isSafari: /^((?!chrome|android).)*safari/i.test(navigator.userAgent),
   isShowingInstructions: true,
   classNames: ['height-100'],
   keyboardShortcuts: {
@@ -32,6 +33,11 @@ export default Component.extend(KeyboardShortcuts, {
     down () {
       this.send("changeSpeed", -0.25)
     }
+  },
+  seekTo (ms) {
+    console.log(ms)
+    this.get('playerElement').currentTime = ms
+    this.seekTo = Function.prototype
   },
 
   didReceiveAttrs () {
@@ -105,17 +111,24 @@ export default Component.extend(KeyboardShortcuts, {
 
     hls.loadSource(this.get('src'));
     hls.attachMedia(video);
-    hls.on(Hls.Events.MANIFEST_PARSED, function () {
-      video.play()
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      if (!this.get('isSafari'))
+        video.play()
     });
 
     video.oncanplay = function() {
        lecture.addClass('spinner');
     };
 
-    video.oncanplaythrough = function() {
+    video.oncanplaythrough = () => {
        lecture.removeClass('spinner');
+       if (this.get('isSafari'))
+        this.seekTo.call(this, 1)
     };
+    
+    if (this.get('isSafari'))
+      video.onplay = () => this.seekTo.call(this, 1)
+    
 
     video.onwaiting = function() {
       lecture.addClass('spinner');
