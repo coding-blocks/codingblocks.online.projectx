@@ -19,11 +19,16 @@ export default class RecommendedTaskComponent extends Component {
 }
 
   fetchRecommendedCoursesTask = task(function*() {
+    const filter = {
+      recommended: true,
+      unlisted: false
+    }
+
+    if (this.get('organization')) {
+      filter.organization = this.get('organization')
+    }
     return yield this.get("store").query("course", {
-      filter: {
-        recommended: true,
-        unlisted: false
-      },
+      filter,
       include: "instructors,runs",
       exclude: "ratings",
       sort: 'difficulty'

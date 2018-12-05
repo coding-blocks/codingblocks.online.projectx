@@ -28,7 +28,15 @@ export default Route.extend(ApplicationRouteMixin, {
         }
         // we have ?code qp
         const { code } = transition.queryParams
+        
         return this.get('session').authenticate('authenticator:jwt', { identification: code, password: code, code })
+          .then(() => this.get('currentUser').load())
+          .then(user => {
+            // if user belongs to an org, redirect to the domain
+            if(user.get('organization')) {
+              this.transitionTo(user.get('organization'))
+            }
+          })
           .catch(error => {
             if (error.err === 'USER_EMAIL_NOT_VERIFIED') {
               this.transitionTo('error', {
@@ -43,7 +51,6 @@ export default Route.extend(ApplicationRouteMixin, {
     model () {
         if (this.get('session.isAuthenticated')) {
           return this.get('currentUser').load().then (user => {
-
             try {
               OneSignal.getUserId ().then (userId => {
                 if (! userId) {
@@ -62,7 +69,6 @@ export default Route.extend(ApplicationRouteMixin, {
             catch (error) {
               this.get ('raven').captureException (error)
             }
-
             return user
           })
         }
