@@ -1,5 +1,41 @@
-Your doubts are:
+{{!-- <div>
+  {{input type="text" value=title}}
+  {{input type="text" value=body}}
+</div>
+<button class="button-solid" {{action 'askDoubt'}}>Post Doubt</button>
 
 {{#each doubts as |doubt|}}
-  <p>{{doubt.title}}</p>
-{{/each}}
+  {{doubt-view-attempt doubt=doubt}}
+{{/each}} --}}
+  <div class="top">
+    <div class="new-doubt">
+      <div class="head">
+        <span>Ask a Doubt</span>
+        <div class="button-solid">
+          <button {{action 'askDoubt'}}>Post Doubt</button>
+        </div>
+      </div>
+  
+      {{#if err}}
+      <div class="red t-align-c p-3">{{err}}</div>
+      {{/if}}
+
+      <div class="input-group">
+        {{input type="text" value=title}}
+        {{textarea placeholder="Description" rows="2" value=body}}
+      </div>
+    </div>
+  
+    <div class="nav">
+      <div class="tab {{if (eq activeTab 'PENDING') 'active'}}" {{action 'setActiveTab' 'PENDING'}}>Unresolved({{unresolved}})</div>
+      <div class="tab {{if (eq activeTab 'RESOLVED') 'active'}}" {{action 'setActiveTab' 'RESOLVED'}}>Resolved({{sub doubts.length unresolved}})</div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    {{#each doubts as |doubt|}}
+      {{#if (eq activeTab doubt.status)}}
+        {{doubt-view-attempt doubt=doubt comments=doubt.comments}}
+      {{/if}}
+    {{/each}}
+  </div>

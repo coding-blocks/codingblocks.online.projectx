@@ -7,14 +7,15 @@ export default Controller.extend({
     store: inject('store'),
     runAttemptService: inject('run-attempt'),
     currentSectionId: computed.alias('runAttemptService.sectionId'),
-    sidebarCollapsed: false,
+    sideBarCollapsed: {left: false, right: true},
     accordionCollapsed: false,
     activeTab: 'contents',
     isContentsTabActive: equal('activeTab', 'contents'),
     isNotesTabActive: equal('activeTab', 'notes'),
     actions: {
-        toggleSideBar () {
-            this.toggleProperty("sidebarCollapsed")
+        toggleSideBar() {
+            this.toggleProperty("sideBarCollapsed.left")
+            this.set('sideBarCollapsed.right', true)
         },
         toggleAccordion () {
             this.toggleProperty("accordionCollapsed")

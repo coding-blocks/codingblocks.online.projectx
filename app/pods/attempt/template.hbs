@@ -1,6 +1,6 @@
 <div class="c-content-section">
   <div class="curtains">
-    <div class="left {{if (not sidebarCollapsed) 'collapse'}}">
+    <div class="left {{if sideBarCollapsed.left 'collapse'}} order-1 order-md-0">
       <div class="tab-nav">
         <div class="tab-items {{if isContentsTabActive 'active'}}" {{action "setActiveTab" "contents"}}>
           Table Of Content
@@ -60,14 +60,14 @@
         {{/liquid-if}}
       </div>
     </div>
-    <div class="main">
+    <div class="main order-0 order-md-1">
       <div class="header flex-row">
         <div class="dashboard row no-gutters justify-content-between">
           <div class="flex-row white pointer dsp-none-sm font-lg" {{action 'toggleSideBar'}}>
-              {{#if (not sidebarCollapsed)}}
-                <i class="far fa-times-circle"></i>
-              {{else}}
+              {{#if sideBarCollapsed.left}}
                 <i class="fas fa-bars"></i>
+              {{else}}
+                <i class="far fa-times-circle"></i>
               {{/if}}
           </div>
           {{outlet "heading"}}
@@ -77,7 +77,10 @@
         {{outlet}}
       </div>
     </div>
+    <div class="right {{if sideBarCollapsed.right 'collapse'}} dsp-none-sm order-md-2">
+      {{doubts-view doubts=model.doubts runAttempt=model}}
+    </div>
   </div>
-  {{doubts-view doubts=model.doubts}}
+  
 </div>
 
