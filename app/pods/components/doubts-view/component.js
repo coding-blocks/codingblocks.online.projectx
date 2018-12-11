@@ -23,6 +23,15 @@ export default class DoubtsViewComponent extends Component {
 
   @action
     askDoubt(){
+
+      if(this.get('title.length') < 15){
+        return this.set('err', 'Title length must be atleast 15 characters.')
+      }
+      if (this.get('body.length') < 20) {
+        return this.set('err', 'Description length must be atleast 20 characters.')
+      }
+      this.set('err', '')
+      
       const contentId = this.get('currentContent').getContentId()
       const content = this.get('store').peekRecord('content', contentId);
 
@@ -35,11 +44,10 @@ export default class DoubtsViewComponent extends Component {
         runAttempt: this.get('runAttempt')
       })
       doubt.save().then(r=>{
-        this.get('doubts').pushObject(doubt);
         this.set('title', '')
         this.set('body', '')
-        this.set('err', '')
       }).catch(err=>{
+        doubt.deleteRecord();
         this.set('err', 'Something went wrong!');
       })
     }

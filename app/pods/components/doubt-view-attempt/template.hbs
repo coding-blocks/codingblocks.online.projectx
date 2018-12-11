@@ -18,8 +18,9 @@
     <form {{action "comment" on="submit"}}>
       {{input type="text" value=commentBody placeholder="Comment Now (Press enter to post)"}}
     </form>
-    
-
+    {{#if err}}
+      <div class="red card-md"><i class="fas fa-exclamation-triangle"></i> {{err}}</div>
+    {{/if}}
     <div class="horizontal-half">
       {{#if (eq doubt.status 'PENDING')}}
       <div class="green">

@@ -15,6 +15,11 @@ export default class DoubtViewAttemptComponent extends Component{
 
   @action
   comment(){
+    if(this.get('commentBody.length')<20){
+      return this.set('err', 'Comment length must be atleast 20 characters.')
+    }
+    this.set('err', '');
+    
     const doubt = this.get('doubt');
     let comment = this.get('store').createRecord('comment', 
     {
@@ -24,6 +29,9 @@ export default class DoubtViewAttemptComponent extends Component{
     })
     comment.save().then(result=>{
       this.set('commentBody', '');
+    }).catch(err=>{
+      comment.deleteRecord();
+      return this.set('err', 'Something went wrong!')
     })
   }
 
