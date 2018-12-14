@@ -30,8 +30,8 @@ export default class DoubtViewAttemptComponent extends Component{
     comment.save().then(result=>{
       this.set('commentBody', '');
     }).catch(err=>{
-      comment.deleteRecord();
-      return this.set('err', 'Something went wrong!')
+      comment.rollbackAttributes();
+      return this.set('err', err.errors[0].detail[0]);
     })
   }
 

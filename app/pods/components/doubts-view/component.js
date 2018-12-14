@@ -47,8 +47,8 @@ export default class DoubtsViewComponent extends Component {
         this.set('title', '')
         this.set('body', '')
       }).catch(err=>{
-        doubt.deleteRecord();
-        this.set('err', 'Something went wrong!');
+        doubt.rollbackAttributes();
+        this.set('err', err.errors[0].detail[0]);
       })
     }
 

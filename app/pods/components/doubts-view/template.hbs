@@ -33,6 +33,16 @@
   </div>
 
   <div class="bottom">
+    {{#if  (eq activeTab 'PENDING')}}
+      {{#if (not unresolved)}}
+      <div class="p-3 t-align-c">You have no unresolved doubts.</div> 
+      {{/if}}
+    {{else}}
+      {{#if (not (sub doubts.length unresolved))}}
+        <div class="p-3 t-align-c">You have no resolved doubts.</div>
+      {{/if}}
+    {{/if}}
+
     {{#each doubts as |doubt|}}
       {{#if (eq activeTab doubt.status)}}
         {{doubt-view-attempt doubt=doubt comments=doubt.comments}}
