@@ -20,6 +20,14 @@ export default DS.Model.extend({
   isProgressCompleted: computed("doneContents", function() {
     return this.get("doneContents.length") === this.get("contents.length");
   }),
+  contentIcons: computed("contents.@each", function () {
+    let icons = []
+    this.get("contents").forEach((x) => {
+      const icon = x.get("iconClass")
+      if (icons.indexOf(icon) === -1) icons.push(icon)
+    })
+    return icons
+  }),
   contents: DS.hasMany("content"),
   run: DS.belongsTo('run'),
   deadline: DS.attr(),

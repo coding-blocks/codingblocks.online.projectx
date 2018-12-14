@@ -238,7 +238,7 @@
   <div class="c-accordion c-about-accordion">
     <div class="list-divided border-none">
       {{#each course.topRun.sections as |section|}}
-      {{#accordion-head title=section.name total=section.totalContents duration=section.duration type="info" listType="divided"}}
+      {{#accordion-head title=section.name total=section.totalContents duration=section.duration type="info" listType="divided" contentIcons=section.contentIcons}}
       <div class="pb-4 pt-4">
         {{#each section.contents as |content|}}
           <div class="row no-gutters {{if (not section.premium) 'red' 'grey'}}">

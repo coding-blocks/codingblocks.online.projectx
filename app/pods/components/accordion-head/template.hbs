@@ -28,7 +28,7 @@
 	</div>
   {{else}}
 
-	<div class="li-left col-8">
+	<div class="li-left col-7">
 		<div class="col-1">
 			{{if collapsed '+' '-'}}
 		</div>
@@ -38,10 +38,15 @@
 	</div>
 
 	{{#if (eq type "info")}}
-		<div class="li-right col-4">
+		<div class="li-right col-5">
 			{{#if total}}
 				<div class="col-12 col-sm-6">
-					{{total}} Lectures
+					<div class="row li-right">
+						{{#each contentIcons as |iconClass|}}
+							<div class="content-icon {{iconClass}}-green mr-2"></div>
+						{{/each}}
+						{{total}} Lectures
+					</div>
 				</div>
 			{{else}}
 				<div class="col-12 col-sm-6">
