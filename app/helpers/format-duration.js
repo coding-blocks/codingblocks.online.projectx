@@ -18,7 +18,7 @@ export function formatDuration(params) {
       return (hours ? `${hours} Hours `:'') + (mins ? `${mins} Minutes`:'')
     } else if(options == 'humanizeShort') {
       if (hours) {
-        if (mins >=30) {
+        if (mins >= 15) {
           ++hours
         }
         if (hours == 1) return `1 Hour`
