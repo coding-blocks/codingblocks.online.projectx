@@ -46,18 +46,17 @@ export default Route.extend({
 		this._super(...arguments)
 		// console.log("inside setupController for attempt")
 		// controller.set("sectionId", this.paramsFor('attempt.content').sectionId)
-    controller.set("run", model.get('run'))
+        controller.set("run", model.get('run'))
 		controller.set("course", model.get('run.course'))
 		controller.set("sections", model.get("run.sections"))
 		controller.set("currentSectionId", this.paramsFor('attempt').sectionId)
 	},
 	actions: {
+		willTransition () {
+			window.setTimeout( () => jivo_init(), 5000)
+		},
 		didTransition () {
-			$(function () {
-        $('body > jdiv')[0].style.setProperty('display', 'none', 'important')
-				$('#jivo-iframe-container')[0].style.setProperty('display', 'none', 'important')
-      })
-			return true
+			jivo_init();
 		}
 	}
 });
