@@ -84,5 +84,6 @@ export default DS.Model.extend({
     }),
     userRating: computed('ratings', function () {
       return this.get('ratings').objectAt(0)
-    })
+    }),
+    organization: DS.attr()
 });

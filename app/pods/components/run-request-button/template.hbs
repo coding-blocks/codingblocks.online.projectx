@@ -1,0 +1,18 @@
+{{#if request}}
+  {{#if isPending}}
+    <div class="button-solid disabled pointer">
+      <button>Request Pending</button>
+    </div>
+  {{else if  isDeclined}}
+    <div class="button-solid disabled pointer">
+      <button>Request Declined</button>
+    </div>
+  {{/if}}
+
+{{else}} {{! we don't have any request by this user}}
+  <div class="button-solid pointer">
+    <button {{action 'addRequest'}}>
+      Request
+    </button>
+  </div>
+{{/if}}
