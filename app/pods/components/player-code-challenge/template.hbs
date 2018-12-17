@@ -1,11 +1,11 @@
 <div class="c-pb">
   <div class="pb-desk">
     <div class="tab-nav">
-      {{#link-to "attempt.content" (query-params tab="problem") tagName="div" class="tab-items {{if (eq tabName 'problem') 'active'}}"}} Problem {{/link-to}}
-      {{#link-to "attempt.content" (query-params tab="submissions") tagName="div" class="tab-items"}} Submissions {{/link-to}}
-      {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class="tab-items"}} Leaderboard {{/link-to}}
+      {{#link-to "attempt.content" (query-params tab="problem") tagName="div" class=(concat "tab-items " (if (eq tabName 'problem') 'active') )}} Problem {{/link-to}}
+      {{#link-to "attempt.content" (query-params tab="submissions") tagName="div" class=(concat "tab-items " (if (eq tabName 'submissions') 'active') )}} Submissions {{/link-to}}
+      {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class=(concat "tab-items " (if (eq tabName 'leaderboard') 'active') )}} Leaderboard {{/link-to}}
     </div>
-
+    {{log 'tabname' tabName}}
     {{#if (eq tabName 'problem')}}
       {{#problem-statement-component problem=problem}}{{/problem-statement-component}}
     {{else if (eq tabName 'leaderboard')}}
