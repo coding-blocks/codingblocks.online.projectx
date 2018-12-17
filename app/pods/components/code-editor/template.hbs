@@ -3,7 +3,7 @@
     {{ember-ace
       value=selectedLanguage.source
       update=(action (mut selectedLanguage.source))
-      editorClass="height-100"
+      editorClass="height-100 m-0"
       classNames=classNames
       mode=selectedLanguage.mode
       theme='ace/theme/monokai'
@@ -21,7 +21,7 @@
   <div class="options-result">
     <div class="editor-options row justify-content-between">
       <div class="select-list align-self-center">
-        <div class="select-box pointer" onclick={{action 'openLanguageSelectBox'}}>
+        <div class="select-box pointer row justify-content-between" onclick={{action 'openLanguageSelectBox'}}>
           {{selectedLanguage.name}}
           {{#if isLanguageSelectOpen}}
           <span><i class="fas fa-angle-up"></i></span>

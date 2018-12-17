@@ -1,7 +1,7 @@
 <div class="c-pb">
   <div class="pb-desk">
     <div class="tab-nav">
-      {{#link-to "attempt.content" (query-params tab="problem") tagName="div" class="tab-items"}} Problem {{/link-to}}
+      {{#link-to "attempt.content" (query-params tab="problem") tagName="div" class="tab-items {{if (eq tabName 'problem') 'active'}}"}} Problem {{/link-to}}
       {{#link-to "attempt.content" (query-params tab="submissions") tagName="div" class="tab-items"}} Submissions {{/link-to}}
       {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class="tab-items"}} Leaderboard {{/link-to}}
     </div>
