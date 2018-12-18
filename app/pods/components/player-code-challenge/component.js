@@ -111,13 +111,15 @@ export default class CodeChallengeComponent extends Component {
         source: config.source
       }
     });
-    yield this.get("_pollForSubmissionTask").perform(submissionId);
+    const payload = yield this.get("_pollForSubmissionTask").perform(submissionId);
     
     //invalidate leaderboard cache
     const runId = this.get('run.id')
-    return this.get('api').request(`/runs/${runId}/leaderboard/invalidate`, {
-      method: 'POST'
+    yield this.get('api').raw(`/runs/${runId}/leaderboard/invalidate`, {
+      method: 'POST',
     })
+
+    return payload
   });
 
   _pollForSubmissionTask = task(function*(submissionId) {

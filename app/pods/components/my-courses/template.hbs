@@ -49,7 +49,9 @@
                             {{run.description}}
                             <div class="red">
                                 {{#if run.topRunAttempt.premium}}
-                                    Batch Ends {{moment-format run.endUnix 'DD-MMM-YY'}}
+                                    {{#if (not run.topRunAttempt.isExpired)}}
+                                    Batch Ends {{moment-format run.topRunAttempt.endDate 'DD-MMM-YY'}}
+                                    {{/if}}
                                 {{else}}
                                     Free Trial
                                 {{/if}}
