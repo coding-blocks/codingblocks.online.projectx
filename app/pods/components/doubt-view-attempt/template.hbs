@@ -32,10 +32,10 @@
       </div> --}}
     </div>
 
-    {{#if comments.length}}
+    {{#if existingComments.length}}
     <div class="comment-toggle">
       <button {{action 'toggleThreadsCollapse'}}>
-        {{if collapseThreads "Show" "Hide"}} {{comments.length}} Comments
+        {{if collapseThreads "Show" "Hide"}} {{existingComments.length}} Comments
         <i class="fas {{if collapseThreads "fa-caret-down" "fa-caret-up"}}"></i>
       </button>
     </div>
@@ -45,7 +45,7 @@
   {{#liquid-spacer growDuration=250 growWidth=false}}
   {{#unless collapseThreads}}
   <div class="threads">
-    {{#each comments as |comment|}}
+    {{#each existingComments as |comment|}}
       <div class="thread">
         <div class="horizontal-half">
           <div class="title">{{comment.username}}</div>

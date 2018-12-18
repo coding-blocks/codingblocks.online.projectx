@@ -1,10 +1,9 @@
 import Component from '@ember/component';
 import { task } from 'ember-concurrency';
 import { service } from 'ember-decorators/service';
-import { computed } from 'ember-decorators/object';
 import env from 'codingblocks-online/config/environment';
 import { action } from 'ember-decorators/object'
-import comment from '../../../models/comment';
+import { filterBy } from '@ember/object/computed';
 
 export default class DoubtViewAttemptComponent extends Component{
   @service api
@@ -12,6 +11,8 @@ export default class DoubtViewAttemptComponent extends Component{
   @service currentContent
 
   collapseThreads = true;
+
+  existingComments = filterBy('comments', 'isNew', false)
 
   commentTask = task(function * (){
     if (this.get('commentBody.length') < 20) {
@@ -24,8 +25,8 @@ export default class DoubtViewAttemptComponent extends Component{
       {
         body: this.get('commentBody'),
         discourseTopicId: doubt.get('discourseTopicId'),
-        doubt: doubt
       })
+    comment.set('doubt', this.get('doubt'))//aisa isliye kiya hai kyoki https://github.com/emberjs/ember.js/issues/16258
     yield comment.save().then(result => {
       this.set('commentBody', '');
     }).catch(err => {

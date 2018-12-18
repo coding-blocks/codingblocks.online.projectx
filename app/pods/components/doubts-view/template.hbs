@@ -21,14 +21,14 @@
       {{/if}}
 
       <div class="input-group">
-        {{input type="text" value=title}}
+        {{input type="text" placeholder="Title" value=title}}
         {{textarea placeholder="Description" rows="2" value=body}}
       </div>
     </div>
   
     <div class="nav">
       <div class="tab {{if (eq activeTab 'PENDING') 'active'}}" {{action 'setActiveTab' 'PENDING'}}>Unresolved({{unresolved}})</div>
-      <div class="tab {{if (eq activeTab 'RESOLVED') 'active'}}" {{action 'setActiveTab' 'RESOLVED'}}>Resolved({{sub doubts.length unresolved}})</div>
+      <div class="tab {{if (eq activeTab 'RESOLVED') 'active'}}" {{action 'setActiveTab' 'RESOLVED'}}>Resolved({{sub existingDoubts.length unresolved}})</div>
     </div>
   </div>
 
@@ -42,8 +42,8 @@
         <div class="p-3 t-align-c">You have no resolved doubts.</div>
       {{/if}}
     {{/if}}
-
-    {{#each doubts as |doubt|}}
+    
+    {{#each existingDoubts as |doubt|}}
       {{#if (eq activeTab doubt.status)}}
         {{doubt-view-attempt doubt=doubt comments=doubt.comments}}
       {{/if}}

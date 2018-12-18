@@ -1,9 +1,9 @@
 import Component from '@ember/component';
 import { service } from 'ember-decorators/service'
 import { action } from 'ember-decorators/object'
+import { filterBy } from '@ember/object/computed';
 import { computed } from 'ember-decorators/object';
 import {task} from 'ember-concurrency';
-import course from '../../../models/course';
 
 
 export default class DoubtsViewComponent extends Component {
@@ -15,13 +15,14 @@ export default class DoubtsViewComponent extends Component {
   activeTab = 'PENDING'
   err = ''
 
-  @computed ('doubts.@each.status')
-  unresolved(){
-    return this.get('doubts').reduce((acc, val)=>{
+  existingDoubts = filterBy('doubts', 'isNew', false)
+
+  @computed('existingDoubts.@each.status')
+  unresolved() {
+    return this.get('existingDoubts').reduce((acc, val) => {
       return val.get('status') === 'PENDING' ? ++acc : acc;
     }, 0)
   }
-
 
   askDoubtTask = task(function * (){
     if (this.get('title.length') < 15) {
@@ -40,9 +41,9 @@ export default class DoubtsViewComponent extends Component {
       body: this.get('body'),
       category: this.get('runAttempt.run.course.categoryId'),
       content,
-      status: "PENDING",
-      runAttempt: this.get('runAttempt')
+      status: "PENDING"
     })
+    doubt.set("runAttempt", this.get('runAttempt'))//aisa isliye kiya hai kyoki https://github.com/emberjs/ember.js/issues/16258
     yield doubt.save()
     .then(r => {
       this.set('title', '')
