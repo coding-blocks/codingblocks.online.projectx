@@ -13,26 +13,30 @@ export default class DoubtViewAttemptComponent extends Component{
 
   collapseThreads = true;
 
-  @action
-  comment(){
-    if(this.get('commentBody.length')<20){
+  commentTask = task(function * (){
+    if (this.get('commentBody.length') < 20) {
       return this.set('err', 'Comment length must be atleast 20 characters.')
     }
     this.set('err', '');
-    
+
     const doubt = this.get('doubt');
-    let comment = this.get('store').createRecord('comment', 
-    {
-      body: this.get('commentBody'),
-      discourseTopicId: doubt.get('discourseTopicId'),
-      doubt: doubt
-    })
-    comment.save().then(result=>{
+    let comment = this.get('store').createRecord('comment',
+      {
+        body: this.get('commentBody'),
+        discourseTopicId: doubt.get('discourseTopicId'),
+        doubt: doubt
+      })
+    yield comment.save().then(result => {
       this.set('commentBody', '');
-    }).catch(err=>{
+    }).catch(err => {
       comment.rollbackAttributes();
       return this.set('err', err.errors[0].detail[0]);
     })
+  })
+
+  @action
+  comment(){
+    this.get('commentTask').perform();
   }
 
   @action
