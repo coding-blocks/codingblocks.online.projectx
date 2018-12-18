@@ -9,10 +9,14 @@ import env from "codingblocks-online/config/environment";
 export default class RecommendedTaskComponent extends Component {
   @service store;
   @service session;
+  @service currentUser
+
   @readOnly
   @alias("fetchRecommendedCoursesTask.lastSuccessful.value")
   recommendedCourses;
 
+  @alias("currentUser.user.organization") organization
+  
   constructor () {
     super(...arguments)
     this.get('fetchRecommendedCoursesTask').perform()

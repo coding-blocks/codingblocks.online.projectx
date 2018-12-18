@@ -16,11 +16,19 @@
 
         <ul class="nav-list">
           <li class="nav-items pointer">
-            {{#link-to 'index'}}Home{{/link-to}}
+            {{#if isOrgView}}
+              {{#link-to user.organization}}Home{{/link-to}}
+            {{else}}
+              {{#link-to 'index'}}Home{{/link-to}}
+            {{/if}}
           </li>
-          <li class="nav-items pointer">
-            {{#link-to 'courses'}}All Courses{{/link-to}}
-          </li>
+          
+          {{#unless isOrgView}}
+            <li class="nav-items pointer">
+              {{#link-to 'courses'}}All Courses{{/link-to}}
+            </li>
+          {{/unless}}
+
           {{#if session.isAuthenticated}}
           <li class="nav-items pointer">
             {{#link-to 'classroom'}}My Courses{{/link-to}}
@@ -35,7 +43,7 @@
           </li>
 
           <div class="round-img">
-            <img src="{{currentUser.user.photo}}" alt="">
+            <img src="{{user.photo}}" alt="">
           </div>
 
           <div class="card">
@@ -71,7 +79,7 @@
     <i class="close fas fa-times" onclick={{action 'toggleSidebar'}}></i>
     <div class="upper-half">
       <div class="round-img">
-        <img src="{{currentUser.user.photo}}">
+        <img src="{{user.photo}}">
       </div>
       <div class="button-solid" onclick={{action 'toggleSidebar'}}>
         {{login-button}}
