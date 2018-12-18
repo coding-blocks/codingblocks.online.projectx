@@ -17,11 +17,14 @@ export default Route.extend({
         })
     },
     setupController(controller, model) {
+        this._super(...arguments)
         controller.set("sectionId", this.paramsFor('attempt').sectionId)
         controller.set("runAttempt", model.runAttempt)
         controller.set("run", model.run)
         controller.set("content", model.content)
         controller.set("payload", model.payload)
+        controller.set("sideBarCollapsed", true);
+        controller.set("attemptController", this.controllerFor('attempt'))
     },
     renderTemplate(controller, model) {
         this.render()

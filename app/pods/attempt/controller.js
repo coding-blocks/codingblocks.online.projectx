@@ -6,15 +6,21 @@ import { equal }  from '@ember/object/computed';
 export default Controller.extend({
     store: inject('store'),
     runAttemptService: inject('run-attempt'),
+    currentContent: inject('current-content'),
     currentSectionId: computed.alias('runAttemptService.sectionId'),
-    sidebarCollapsed: false,
+    sideBarCollapsed: computed('currentContent',function(){
+        let contentId = this.get('currentContent').getContentId()
+        let content = this.get('store').peekRecord('content', contentId);
+        return { left: content.get('contentable') === 'code-challenge', right: true }
+    }),
     accordionCollapsed: false,
     activeTab: 'contents',
     isContentsTabActive: equal('activeTab', 'contents'),
     isNotesTabActive: equal('activeTab', 'notes'),
     actions: {
-        toggleSideBar () {
-            this.toggleProperty("sidebarCollapsed")
+        toggleSideBar() {
+            this.toggleProperty("sideBarCollapsed.left")
+            this.set('sideBarCollapsed.right', true)
         },
         toggleAccordion () {
             this.toggleProperty("accordionCollapsed")
