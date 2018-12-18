@@ -4,11 +4,13 @@ import { service } from 'ember-decorators/service';
 import env from 'codingblocks-online/config/environment';
 import { action } from 'ember-decorators/object'
 import { filterBy } from '@ember/object/computed';
+import Router from '../../../router';
 
 export default class DoubtViewAttemptComponent extends Component{
   @service api
   @service store
   @service currentContent
+  @service router
 
   collapseThreads = true;
 
@@ -50,4 +52,17 @@ export default class DoubtViewAttemptComponent extends Component{
   toggleThreadsCollapse(){
     this.toggleProperty('collapseThreads')
   }
-};
+
+  @action 
+  goToContent(){
+    console.log('going');
+    const contentId = this.get('doubt.content.id')
+
+    const transition = this.get('router').transitionTo('attempt.content', contentId)
+
+    if (transition.isActive) {
+      // if we are already at this route, force refresh it 
+      Ember.getOwner(this).lookup(`route:attempt.content`).refresh()
+    }
+  }
+}
