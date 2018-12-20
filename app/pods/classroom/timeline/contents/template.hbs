@@ -8,7 +8,25 @@
             deadline=section.deadlineDate hideDuration=true listType="divided"}}
             <div class="pb-4 pt-4">
                 {{#each section.contents as |content|}}
-                <div class="row no-gutters pointer {{if content.isDone 'green' 'red'}}"
+                {{#if section.premium}}
+                  <div class="row no-gutters pointer grey">
+                    <div class="li-left col-10 col-sm-8">
+                      <div class="col-1 {{content.iconClass}}-red content-icon"></div>
+                      <div class="col-11 col-sm-8">
+                        {{content.title}}
+                      </div>
+                    </div>
+                    <div class="li-right no-gutters col-2 col-sm-4">
+                        <div class="t-align-c">
+                          <i class="fas fa-lock"></i>
+                        </div>
+                      <div class="grey col-6 dsp-none-xs">
+                        {{format-duration content.duration}}
+                      </div>
+                    </div>
+                  </div>
+                  {{else}}
+                    <div class="row no-gutters pointer {{if content.isDone 'green' 'red'}}"
                     {{action 'transitionToContent' content.id section.id}}>
                     <div class="li-left col-10 col-sm-8">
                         <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green' 'red'}}"></div>
@@ -29,6 +47,7 @@
         
                     </div>
                 </div>
+                 {{/if}}
                 {{/each}}
             </div>
         
