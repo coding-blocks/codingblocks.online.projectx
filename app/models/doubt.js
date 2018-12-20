@@ -9,5 +9,6 @@ export default DS.Model.extend({
   runAttempt: DS.belongsTo('run-attempt'),
   category: DS.attr(),
   discourseTopicId: DS.attr(),
-  comments: DS.hasMany('comment')
+  comments: DS.hasMany('comment'),
+  resolvedById: DS.attr()
 })
