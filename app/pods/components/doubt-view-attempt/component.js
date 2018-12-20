@@ -11,6 +11,7 @@ export default class DoubtViewAttemptComponent extends Component{
   @service store
   @service currentContent
   @service router
+  @service currentUser
 
   collapseThreads = true;
 
@@ -45,6 +46,7 @@ export default class DoubtViewAttemptComponent extends Component{
   @action
   markResolved(){
     this.set('doubt.status', 'RESOLVED')
+    this.set('doubt.resolvedById', this.get('currentUser.user.id'))
     this.get('doubt').save();
   }
 
