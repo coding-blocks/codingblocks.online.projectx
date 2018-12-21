@@ -23,11 +23,9 @@
             {{/if}}
           </li>
           
-          {{#unless isOrgView}}
-            <li class="nav-items pointer">
-              {{#link-to 'courses'}}All Courses{{/link-to}}
-            </li>
-          {{/unless}}
+          <li class="nav-items pointer">
+            {{#link-to 'courses'}}All Courses{{/link-to}}
+          </li>
 
           {{#if session.isAuthenticated}}
           <li class="nav-items pointer">
