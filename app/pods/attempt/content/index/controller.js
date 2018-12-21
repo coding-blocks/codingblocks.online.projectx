@@ -31,6 +31,10 @@ export default Controller.extend({
     return !this.get('content.isFeedbackDone')
   }),
   actions: {
+    toggleSideBar(){
+      this.get('attemptController').toggleProperty('sideBarCollapsed.right')
+      this.get('attemptController').set('sideBarCollapsed.left', true);
+    },
     transitionToDashboard() {
       this.transitionToRoute(
         "classroom.timeline",

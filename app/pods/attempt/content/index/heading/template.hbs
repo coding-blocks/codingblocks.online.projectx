@@ -12,19 +12,11 @@
 
 <div class="col-4">
   <div class="row justify-content-end">
-    <div class="col-md-6 notify-type align-self-center">
-      {{#if course.canHazDoubtsLink}}
-      <a href="{{course.doubtsLink}}" target="_blank">
-        <div class="notify-text">
-          <span class="notify-dot new"></span>
-          Ask Doubts
-        </div>
-      </a>
-      {{/if}}
-    </div>
-
     <div class="button-solid col-12 col-md-6 align-self-center">
       <button {{action 'transitionToDashboard'}}> &#60; Go to Dashboard</button>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center dsp-none-sm">
+      <button class="red" {{action 'toggleSideBar'}}>X Ask Doubts</button>
     </div>
   </div>
 </div>
