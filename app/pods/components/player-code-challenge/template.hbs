@@ -6,7 +6,7 @@
       {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class=(concat "tab-items " (if (eq tabName 'leaderboard') 'active') )}} Leaderboard {{/link-to}}
     </div>
     {{#if (eq tabName 'problem')}}
-      {{#problem-statement-component problem=problem}}{{/problem-statement-component}}
+      {{#problem-statement-component  problem=problem contestId=run.contestId problemId=code.hbProblemId}}{{/problem-statement-component}}
     {{else if (eq tabName 'leaderboard')}}
       {{#leaderboard-component code=code run=run}}{{/leaderboard-component}}
     {{else if (eq tabName 'submissions')}}
