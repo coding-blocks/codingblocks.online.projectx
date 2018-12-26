@@ -81,10 +81,10 @@
           </div>
         {{/if}}
       </div>
-      {{!-- <div class="button-solid" {{action 'viewSubmission' submission}}>
+      <div class="button-solid" {{action 'viewSubmission' submission}}>
         <button>View Submission</button>
-      </div> --}}
+      </div>
     </div>
+    {{view-submissions-modal submission=submission open=showSubmissionModal}}
   {{/each}}
-
 </div>

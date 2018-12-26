@@ -17,36 +17,3 @@
   {{#code-editor runCodeTask=runCodeTask submitCodeTask=submitCodeTask stubs=codeStubs}}
   {{/code-editor}}
 </div>
-
-
-{{!--
-<div>
-  {{textarea value=sourceCode placeholder="Source Code"}}
-  {{textarea value=customInput placeholder="Custom Input"}}
-  <button type="button" class="button-solid" onclick={{action 'runCode'}}>
-    Run
-  </button>
-    <button type="button" class="button-solid" onclick={{action 'submitCode'}}>
-    Submit
-  </button>
-</div>
-
-
-  {{#if customOutput}}
-    <p> Output: {{customOutput}} </p>
-  {{else if runError}}
-    <p> Output: {{runError}} </p>
-  {{/if}}
-</div>
-
-{{#if problemJsonApiPayload}}
-  <p>
-    {{problem.name}}
-    {{problem.content.description}}
-  </p>
-
-  {{#each codeStubs as |stub|}}
-    <p>{{stub.body}}</p>
-  {{/each}}
-{{/if}}
---}}
