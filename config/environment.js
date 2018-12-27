@@ -109,7 +109,7 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'
   ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.apiHost}/api/jwt/login/`
-  ENV['ember-simple-auth-token'].serverTokenRefreshEndpoint = `${ENV.apiHost}/api/jwt/refresh/`
+  ENV['ember-simple-auth-token'].serverTokenRefreshEndpoint = `${ENV.apiHost}/api/jwt/refresh/?client=web`
 
   return ENV;
 };
