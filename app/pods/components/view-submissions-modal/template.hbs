@@ -1,0 +1,23 @@
+{{#if open}}
+  {{#modal-dialog
+    onClose=(action (mut open) value=false)
+    translucentOverlay=true
+    targetAttachment='none'
+    containerClass='centered-scrolling-container'
+    overlayClass='centered-scrolling-overlay'
+    wrapperClass='centered-scrolling-wrapper'
+  }}
+  <div class="px-2">
+    <h1>Submission #{{submission.id}}</h1>
+    <hr>
+
+    <h3>Source Code</h3>
+    <div class="faded-cont">
+      <pre>{{source}}</pre>
+    </div>
+
+    <button class="button-solid mt-3" {{action (mut open) value=false}} >Close</button>
+  </div>
+  {{/modal-dialog}}
+{{/if}}
+

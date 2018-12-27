@@ -1,6 +1,11 @@
 <div class="c-pb-statement">
-  <div class="heading-U">{{problem.name}}</div>
+  <div class="heading-U">{{problem.name}} 
+    <p style="color: grey; font-size: 0.9rem; text-transform: capitalize">
+      Stuck at this problem? <a href="{{editorialLink}}" target="_blank" style="color:blue; text-decoration: underline">Read Editorial here. </a> 
+    </p>
+  </div>
   <div class="para">
+    
     {{markdown-to-html problem.content.description}}
   </div>
 
