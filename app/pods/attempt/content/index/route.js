@@ -1,7 +1,11 @@
 import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
+import { inject } from '@ember/service'
 
 export default Route.extend({
+    api: inject(),
+    currentUser: inject(),
+    store: inject(),
     headData: Ember.inject.service(),
     queryParams: {
         start: {
@@ -34,7 +38,7 @@ export default Route.extend({
             into: "attempt"
         })
     },
-    afterModel(model) {
+    async afterModel(model) {
       const sectionId = this.paramsFor('attempt').sectionId
       if (sectionId) {
         const section = this.get('store').peekRecord('section', sectionId)
@@ -46,5 +50,18 @@ export default Route.extend({
       if (model.content.get('contentable') === 'qna') {
         this.transitionTo('attempt.content.quiz', model.content.get('payload.qId'))
       }
-    }
+
+        if (model.content.get('contentable') === 'code-challenge') {
+            this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
+            try{
+                let response = await this.get('api').request(`/code_challenges/editorials?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
+                const editorial  = this.get('store').createRecord('editorial', response.data.attributes);
+                model.payload.set('editorial', editorial);
+            }
+            catch(err){
+                console.log(err)
+            }
+            
+        }
+    },
 });

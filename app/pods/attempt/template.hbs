@@ -40,7 +40,7 @@
                     {{else}}
                     <div class="status-circle">
                       <div class="circle-back"></div>
-                      <div class="circle-front" {{action 'toggleProgress' content bubbles=false}}></div>
+                      <div class="circle-front {{if content.isActive 'bg-red'}}" {{action 'toggleProgress' content bubbles=false}}></div>
                     </div>
                     {{/if}}
       

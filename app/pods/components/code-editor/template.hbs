@@ -39,14 +39,22 @@
           </ul>
         </div>
       </div>
-
-      <div class="align-self-center">
-        <div class="button-solid">
-          {{#if isTaskRunning}}
-            <button disabled>Executing your code</button>
+      <div class="row">
+        <button class="red" {{action 'toggle'}}>
+          {{#if code.editorial}}
+          <i class="fas fa-book-open"></i> View Editorial
           {{else}}
-            <button onclick={{action 'submitCode'}}>Submit Code</button>
+          <i class="fas fa-lock"></i> Unlock Editorial
           {{/if}}
+        </button>
+        <div class="align-self-center pl-3">
+          <div class="button-solid">
+            {{#if isTaskRunning}}
+            <button disabled>Executing your code</button>
+            {{else}}
+            <button onclick={{action 'submitCode'}}>Submit Code</button>
+            {{/if}}
+          </div>
         </div>
       </div>
     </div>

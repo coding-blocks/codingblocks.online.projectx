@@ -3,7 +3,6 @@ import DS from 'ember-data';
 import env from 'codingblocks-online/config/environment'
 
 export default DS.Model.extend({
-    name: DS.attr(),
-    hbProblemId: DS.attr(),
-    content: DS.belongsTo('content')
+  content: DS.attr(),
+  "code-challenge": DS.belongsTo('code-challenge')
 })

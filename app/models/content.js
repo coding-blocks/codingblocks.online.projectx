@@ -19,6 +19,9 @@ export default DS.Model.extend({
   isDone: computed('progress.isDone', function () {
     return !! this.get('progress.isDone')
   }),
+  isActive: computed('progress.isActive', function() {
+    return !!this.get('progress.isActive')
+  }),
   isFeedbackDone: computed('progress.isFeedbackDone', function () {
     return !! this.get('progress.isFeedbackDone')
   }),

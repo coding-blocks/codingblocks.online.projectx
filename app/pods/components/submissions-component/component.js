@@ -7,6 +7,7 @@ export default class SubmissionsComponent extends Component {
 
   didReceiveAttrs () {
     this._super(...arguments)
+    console.log('didreceiveAttr  here')
     let payload = this.get('problemPayload')
     if (payload) {
       payload = JSON.parse(JSON.stringify(payload))
