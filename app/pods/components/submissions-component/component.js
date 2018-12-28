@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { service } from 'ember-decorators/service';
 import { action } from 'ember-decorators/object';
+import { later } from '@ember/runloop'
 
 export default class SubmissionsComponent extends Component {
   @service hbApi
@@ -10,13 +11,14 @@ export default class SubmissionsComponent extends Component {
 
   didReceiveAttrs () {
     this._super(...arguments)
-    console.log('didreceiveAttr  here')
     let payload = this.get('problemPayload')
     if (payload) {
       payload = JSON.parse(JSON.stringify(payload))
       this.get('store').unloadAll('problem')
-      this.get('store').pushPayload(payload)
-      this.set('problem', this.get('store').peekAll('problem').objectAt(0))
+      later(() => {
+        this.get('store').pushPayload(payload)
+        this.set('problem', this.get('store').peekAll('problem').objectAt(0))
+      })
     }
   }
 

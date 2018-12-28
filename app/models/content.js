@@ -16,12 +16,8 @@ export default DS.Model.extend({
   payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', function () {
     return this.get(this.get('contentable'))
   }),
-  isDone: computed('progress.isDone', function () {
-    return !! this.get('progress.isDone')
-  }),
-  isActive: computed('progress.isActive', function() {
-    return !!this.get('progress.isActive')
-  }),
+  isDone: computed.bool('progress.isDone'),
+  isActive: computed.bool('progress.isActive'),
   isFeedbackDone: computed('progress.isFeedbackDone', function () {
     return !! this.get('progress.isFeedbackDone')
   }),
