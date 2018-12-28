@@ -7,9 +7,6 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
-    sentry: {
-      dsn: 'https://4847af8c7e2d4de8b5eafcb01093ac68@sentry.cb.lk/20'
-    },
     'ember-simple-auth-token': {
       identificationField: 'code',
       passwordField: 'code',
@@ -80,7 +77,6 @@ module.exports = function(environment) {
     ENV.clientId = 5633768694
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.cb.lk'
-    ENV.sentry.dsn = 'https://28a62ac6a0194a8381f4a6df014fa5ed@sentry.cb.lk/21'
     ENV.googleAnalytics = {
       webPropertyId: 'UA-83327907-12'
     }
@@ -96,7 +92,6 @@ module.exports = function(environment) {
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.codingblocks.xyz'
-    ENV.sentry.dsn = 'https://a1e58068dc5c48edb9b313b1efbe22ec@sentry.cb.lk/19'
     ENV["ember-facebook-pixel"] = {
       id: ''
     };
@@ -109,7 +104,7 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'
   ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.apiHost}/api/jwt/login/`
-  ENV['ember-simple-auth-token'].serverTokenRefreshEndpoint = `${ENV.apiHost}/api/jwt/refresh/`
+  ENV['ember-simple-auth-token'].serverTokenRefreshEndpoint = `${ENV.apiHost}/api/jwt/refresh/?client=web`
 
   return ENV;
 };

@@ -8,7 +8,6 @@ export default Route.extend(ApplicationRouteMixin, {
     session: service(),
     currentUser: service(),
     store: service (),
-    raven: service (),
     headData: service(),
     queryParams: {
         code: {
@@ -60,7 +59,7 @@ export default Route.extend(ApplicationRouteMixin, {
                 .catch (error => console.error (error))
             }
             catch (error) {
-              this.get ('raven').captureException (error)
+              console.error(error)
             }
 
             return user
