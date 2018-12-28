@@ -3,10 +3,15 @@ import { computed, action } from 'ember-decorators/object'
 import { service } from 'ember-decorators/service'
 import { task } from 'ember-concurrency'
 import { isBadRequestError } from 'ember-ajax/errors';
+import { not } from 'ember-decorators/object/computed';
 
 
 export default class otpEnrollComponent extends Component {
   @service api
+  @service currentUser
+
+  // hide this component if user belongs to an org
+  @not('currentUser.organization') isVisible
 
   otpSent = false
   otpVerified = false

@@ -9,21 +9,30 @@ import env from "codingblocks-online/config/environment";
 export default class RecommendedTaskComponent extends Component {
   @service store;
   @service session;
+  @service currentUser
+
   @readOnly
   @alias("fetchRecommendedCoursesTask.lastSuccessful.value")
   recommendedCourses;
 
+  @alias("currentUser.user.organization") organization
+  
   constructor () {
     super(...arguments)
     this.get('fetchRecommendedCoursesTask').perform()
 }
 
   fetchRecommendedCoursesTask = task(function*() {
+    const filter = {
+      recommended: true,
+      unlisted: false
+    }
+
+    if (this.get('organization')) {
+      filter.organization = this.get('organization')
+    }
     return yield this.get("store").query("course", {
-      filter: {
-        recommended: true,
-        unlisted: false
-      },
+      filter,
       include: "instructors,runs",
       exclude: "ratings",
       sort: 'difficulty'

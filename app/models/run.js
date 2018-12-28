@@ -57,5 +57,6 @@ export default DS.Model.extend({
       return acc + section.get('duration')
     }, 0)
   }),
-  ta: DS.hasMany('ta')
+  ta: DS.hasMany('ta'),
+  runRequests: DS.hasMany('run-request')
 })

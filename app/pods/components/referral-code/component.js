@@ -2,12 +2,15 @@ import Component from '@ember/component';
 import { task } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
+import { not }  from '@ember/object/computed';
 
 export default Component.extend({
   shareText: computed('code', function () {
     return 'Purchase any course from online.codingblocks.com and get 500Rs OFF using my referral code at checkout: ' + this.get('code')
   }),
   api: service(),
+  currentUser: service(),
+  isVisible: not('currentUser.user.organization'),
   getReferralCodeTask: task(function  * () {
     const resp = yield this.get('api').request('users/myReferral')
     this.set('code', resp.code)
