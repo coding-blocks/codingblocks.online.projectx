@@ -1,9 +1,12 @@
 import Component from '@ember/component';
-import { service } from 'ember-decorators/service'
+import { service } from 'ember-decorators/service';
+import { action } from 'ember-decorators/object';
 
 export default class SubmissionsComponent extends Component {
   @service hbApi
   @service store
+
+  showSubmissionModal = false
 
   didReceiveAttrs () {
     this._super(...arguments)
@@ -14,5 +17,10 @@ export default class SubmissionsComponent extends Component {
       this.get('store').pushPayload(payload)
       this.set('problem', this.get('store').peekAll('problem').objectAt(0))
     }
+  }
+
+  @action
+  viewSubmission (submission) {
+    this.set('showSubmissionModal', true)
   }
 }

@@ -1,13 +1,73 @@
 <div class="c-content-section">
-  <div class="content-section">
-    <div class="content {{if (not sidebarCollapsed) 'collapse'}}">
+  <div class="curtains">
+    <div class="left {{if sideBarCollapsed.left 'collapse'}} order-1 order-md-0">
+      <div class="tab-nav">
+        <div class="tab-items {{if isContentsTabActive 'active'}}" {{action "setActiveTab" "contents"}}>
+          Table Of Content
+        </div>
+        <div class="tab-items {{if isNotesTabActive 'active'}}" {{action "setActiveTab" "notes"}}>
+          Notes
+          {{#if model.notes.length}}
+          ({{persistedNotes.length}})
+          {{/if}}
+        </div>
+      </div>
+      <div class="section-tabs">
+        {{!-- {{#unless accordionCollapsed}} --}}
+        {{#liquid-if isContentsTabActive class="slide"}}
+        <div class="c-accordion">
+          <div class="list-shaded invert">
+            {{#each sections as |section|}}
+            <div>
+              {{#accordion-head title=section.name completed=section.doneContents.length deadline=section.deadlineDate
+              total=section.contents.length
+              collapsed=(not (eq section.id currentSectionId))}}
+              <div class="bellows pb-4 pt-4">
+                {{#each section.contents as |content|}}
+                <div class="row no-gutters pointer {{if content.isDone 'green'}}"
+                  {{action 'transitionToContent' content.id section.id}}>
+                  <div class="li-left col-10">
+                    <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
+                    <div class="col-10">
+                      {{content.payload.name}}
+                    </div>
+                  </div>
+                  <div class="li-right  col-2">
+                    {{#if (and section.premium (not model.premium))}}
+                    {{!-- <div class="t-align-c"> --}}
+                      <i class="fas fa-lock grey"></i>
+                      {{!-- </div> --}}
+                    {{else}}
+                    <div class="status-circle">
+                      <div class="circle-back"></div>
+                      <div class="circle-front" {{action 'toggleProgress' content bubbles=false}}></div>
+                    </div>
+                    {{/if}}
+      
+      
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+      
+              {{/accordion-head}}
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        {{else}}
+        {{notes-view runAttempt=model}}
+        {{/liquid-if}}
+      </div>
+    </div>
+    <div class="main order-0 order-md-1">
       <div class="header flex-row">
         <div class="dashboard row no-gutters justify-content-between">
           <div class="flex-row white pointer dsp-none-sm font-lg" {{action 'toggleSideBar'}}>
-              {{#if (not sidebarCollapsed)}}
-                <i class="far fa-times-circle"></i>
-              {{else}}
+              {{#if sideBarCollapsed.left}}
                 <i class="fas fa-bars"></i>
+              {{else}}
+                <i class="far fa-times-circle"></i>
               {{/if}}
           </div>
           {{outlet "heading"}}
@@ -17,67 +77,10 @@
         {{outlet}}
       </div>
     </div>
-    <div class="section {{if sidebarCollapsed 'collapse'}}">
-      <div class="tab-nav">
-          <div 
-            class="tab-items {{if isContentsTabActive 'active'}}"
-            {{action "setActiveTab" "contents"}}
-          >
-            Table Of Content
-          </div>
-          <div class="tab-items {{if isNotesTabActive 'active'}}" {{action "setActiveTab" "notes"}} >
-            Notes
-            {{#if model.notes.length}}
-              ({{model.notes.length}})
-            {{/if}}
-          </div>
-        </div>
-      <div class="section-tabs">
-        {{!-- {{#unless accordionCollapsed}} --}}
-        {{#liquid-if isContentsTabActive class="slide"}}
-          <div class="c-accordion">
-            <div class="list-shaded invert">
-              {{#each sections as |section|}}
-                <div> 
-                  {{#accordion-head title=section.name completed=section.doneContents.length deadline=section.deadlineDate
-                  total=section.contents.length
-                  collapsed=(not (eq section.id currentSectionId))}}
-                  <div class="bellows pb-4 pt-4">
-                    {{#each section.contents as |content|}}
-                    <div class="row no-gutters pointer {{if content.isDone 'green'}}" {{action 'transitionToContent' content.id section.id}}>
-                      <div class="li-left col-10">
-                        <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
-                        <div class="col-10">
-                          {{content.payload.name}}
-                        </div>
-                      </div>
-                      <div class="li-right  col-2">
-                        {{#if (and section.premium (not model.premium))}}
-                          {{!-- <div class="t-align-c"> --}}
-                            <i class="fas fa-lock grey"></i>
-                          {{!-- </div> --}}
-                        {{else}}
-                          <div class="status-circle">
-                            <div class="circle-back"></div>
-                            <div class="circle-front" {{action 'toggleProgress' content bubbles=false}}></div>
-                          </div>
-                        {{/if}}
-                        
-                    
-                      </div>
-                    </div>
-                    {{/each}}
-                  </div>
-                 
-                  {{/accordion-head}}
-                </div>
-              {{/each}}
-            </div>
-          </div>
-        {{else}}
-          {{notes-view runAttempt=model}}
-        {{/liquid-if}}
-      </div>
+    <div class="right {{if sideBarCollapsed.right 'collapse'}} dsp-none-sm order-md-2">
+      {{doubts-view doubts=model.doubts runAttempt=model}}
     </div>
   </div>
+  
 </div>
+

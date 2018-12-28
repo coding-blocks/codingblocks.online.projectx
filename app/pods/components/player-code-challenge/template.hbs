@@ -1,13 +1,12 @@
 <div class="c-pb">
   <div class="pb-desk">
     <div class="tab-nav">
-      {{#link-to "attempt.content" (query-params tab="problem") tagName="div" class="tab-items"}} Problem {{/link-to}}
-      {{#link-to "attempt.content" (query-params tab="submissions") tagName="div" class="tab-items"}} Submissions {{/link-to}}
-      {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class="tab-items"}} Leaderboard {{/link-to}}
+      {{#link-to "attempt.content" (query-params tab="problem") tagName="div" class=(concat "tab-items " (if (eq tabName 'problem') 'active') )}} Problem {{/link-to}}
+      {{#link-to "attempt.content" (query-params tab="submissions") tagName="div" class=(concat "tab-items " (if (eq tabName 'submissions') 'active') )}} Submissions {{/link-to}}
+      {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class=(concat "tab-items " (if (eq tabName 'leaderboard') 'active') )}} Leaderboard {{/link-to}}
     </div>
-
     {{#if (eq tabName 'problem')}}
-      {{#problem-statement-component problem=problem}}{{/problem-statement-component}}
+      {{#problem-statement-component  problem=problem contestId=run.contestId problemId=code.hbProblemId}}{{/problem-statement-component}}
     {{else if (eq tabName 'leaderboard')}}
       {{#leaderboard-component code=code run=run}}{{/leaderboard-component}}
     {{else if (eq tabName 'submissions')}}
@@ -18,36 +17,3 @@
   {{#code-editor runCodeTask=runCodeTask submitCodeTask=submitCodeTask stubs=codeStubs}}
   {{/code-editor}}
 </div>
-
-
-{{!--
-<div>
-  {{textarea value=sourceCode placeholder="Source Code"}}
-  {{textarea value=customInput placeholder="Custom Input"}}
-  <button type="button" class="button-solid" onclick={{action 'runCode'}}>
-    Run
-  </button>
-    <button type="button" class="button-solid" onclick={{action 'submitCode'}}>
-    Submit
-  </button>
-</div>
-
-
-  {{#if customOutput}}
-    <p> Output: {{customOutput}} </p>
-  {{else if runError}}
-    <p> Output: {{runError}} </p>
-  {{/if}}
-</div>
-
-{{#if problemJsonApiPayload}}
-  <p>
-    {{problem.name}}
-    {{problem.content.description}}
-  </p>
-
-  {{#each codeStubs as |stub|}}
-    <p>{{stub.body}}</p>
-  {{/each}}
-{{/if}}
---}}

@@ -1,0 +1,63 @@
+<div class="doubt-card">
+  <div class="body">
+    <div class="title">
+      {{doubt.title}}
+    </div>
+    <div class="text">
+      {{doubt.body}}
+    </div>
+
+    <div class="horizontal-half">
+      <div class="pointer" {{action 'goToContent'}}>
+        {{doubt.content.title}}
+      </div>
+      <div>
+        {{doubt.updatedAt}}
+      </div>
+    </div>
+    <form {{action "comment" on="submit"}}>
+      {{input type="text" value=commentBody placeholder="Comment Now (Press enter to post)" disabled=commentTask.isRunning}}
+    </form>
+    {{#if err}}
+      <div class="red card-md"><i class="fas fa-exclamation-triangle"></i> {{{err}}}</div>
+    {{/if}}
+    <div class="horizontal-half">
+      {{#if (eq doubt.status 'PENDING')}}
+      <div class="green">
+        <button {{action 'markResolved'}}><i class="fas fa-check"></i> Mark Resolved</button>
+      </div>
+      {{/if}}
+      {{!-- <div class="button-solid">
+        <button>Chat with TA</button>
+      </div> --}}
+    </div>
+
+    {{#if existingComments.length}}
+    <div class="comment-toggle">
+      <button {{action 'toggleThreadsCollapse'}}>
+        {{if collapseThreads "Show" "Hide"}} {{existingComments.length}} Comments
+        <i class="fas {{if collapseThreads "fa-caret-down" "fa-caret-up"}}"></i>
+      </button>
+    </div>
+    {{/if}}
+  </div>
+ 
+  {{#liquid-spacer growDuration=250 growWidth=false}}
+  {{#unless collapseThreads}}
+  <div class="threads">
+    {{#each existingComments as |comment|}}
+      <div class="thread">
+        <div class="horizontal-half">
+          <div class="title">{{comment.username}}</div>
+          <div class="time">{{moment-from comment.updatedAt}}</div>
+        </div>
+      
+        <div class="text">
+          {{{comment.body}}}
+        </div>
+      </div>
+    {{/each }}
+  </div>
+  {{/unless}}
+  {{/liquid-spacer}}
+</div>
