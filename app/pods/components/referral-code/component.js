@@ -10,7 +10,7 @@ export default Component.extend({
   }),
   api: service(),
   currentUser: service(),
-  isVisible: not('currentUser.user.organization'),
+  isVisible: not('currentUser.organization'),
   getReferralCodeTask: task(function  * () {
     const resp = yield this.get('api').request('users/myReferral')
     this.set('code', resp.code)
