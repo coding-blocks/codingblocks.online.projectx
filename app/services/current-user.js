@@ -18,14 +18,11 @@ export default Service.extend({
         }
         return this.get('store').queryRecord('user', { custom: {ext: 'url', url: 'me' }}).then(user => {
             this.set('user', user)
-            console.log('Org', user.get('organization'))
             this.setOrg(user.get('organization'))
             return user
         })
     },
     setOrg (org) {
-        console.log("Called setOrg with", org)
         this.set('organization', org)
-        window.localStorage.setItem('org', org)
     }
 });

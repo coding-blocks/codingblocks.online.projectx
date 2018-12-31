@@ -6,5 +6,6 @@ export default Route.extend({
   activate () {
     this._super(...arguments)
     this.get('currentUser').setOrg('nagarro');
+    window.localStorage.setItem('org', 'nagarro')
   }
 });
