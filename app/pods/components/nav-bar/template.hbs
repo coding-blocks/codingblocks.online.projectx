@@ -17,14 +17,14 @@
         <ul class="nav-list">
           <li class="nav-items pointer">
             {{#if isOrgView}}
-              {{#link-to user.organization}}Home{{/link-to}}
+              {{#link-to currentUser.organization}}Home{{/link-to}}
             {{else}}
               {{#link-to 'index'}}Home{{/link-to}}
             {{/if}}
           </li>
           
           <li class="nav-items pointer">
-            {{#link-to 'courses'}}All Courses{{/link-to}}
+            {{#link-to 'courses' (query-params org=organization)}}All Courses{{/link-to}}
           </li>
 
           {{#if session.isAuthenticated}}

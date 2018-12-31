@@ -3,6 +3,12 @@ import { service } from 'ember-decorators/service'
 
 export default class CoursesRouter extends Route {
   @service currentUser
+  
+  queryParams = {
+    org: {
+      replace: true
+    }
+  }
 
   constructor() {
     super()
@@ -10,7 +16,7 @@ export default class CoursesRouter extends Route {
   }
 
   model(params) {
-    const organization = this.get('currentUser.user.organization')
+    const organization = this.get('currentUser.organization') || params.org
     const extraWhere = {}
 
     if (organization) {

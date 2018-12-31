@@ -7,6 +7,10 @@ export default Service.extend({
     store: service(),
     user: {},
     organization: alias('user.organization'),
+    init () {
+        // restore org from store
+        this.set("organization", window.localStorage.getItem('org'))
+    },
     load () {
         const currentUser = this.get('user')
         if (currentUser) {
@@ -16,5 +20,9 @@ export default Service.extend({
             this.set('user', user)
             return user
         })
+    },
+    setOrg (org) {
+        this.set('organization', org)
+        window.localStorage.setItem('org', org)
     }
 });

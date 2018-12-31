@@ -13,7 +13,7 @@ export default class RecommendedTaskComponent extends Component {
   @reads("fetchRecommendedCoursesTask.lastSuccessful.value")  
   recommendedCourses;
 
-  @reads("currentUser.user.organization") organization
+  @reads("currentUser.organization") organization
   
   constructor () {
     super(...arguments)
