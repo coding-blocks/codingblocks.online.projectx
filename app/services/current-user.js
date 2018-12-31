@@ -5,7 +5,7 @@ import { alias }  from '@ember/object/computed';
 export default Service.extend({
     api: service(),
     store: service(),
-    user: null,
+    user: {},
     organization: alias('user.organization'),
     load () {
         const currentUser = this.get('user')
