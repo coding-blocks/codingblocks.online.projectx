@@ -18,7 +18,7 @@ export default class SubmissionsComponent extends Component {
       later(() => {
         this.get('store').pushPayload(payload)
         this.set('problem', this.get('store').peekAll('problem').objectAt(0))
-      })
+      }, 0)
     }
   }
 

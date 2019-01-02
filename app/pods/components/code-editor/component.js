@@ -115,7 +115,7 @@ export default class EditorClass extends Component {
   }
 
   @action 
-  toggle(){
-    this.sendAction('toggleModal');
+  toggle(modalContentType){
+    this.sendAction('toggleModal', modalContentType);
   }
 }

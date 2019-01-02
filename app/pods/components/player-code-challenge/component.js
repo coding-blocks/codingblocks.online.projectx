@@ -90,9 +90,10 @@ export default class CodeChallengeComponent extends Component {
   }
 
   @action
-  toggleModal() {
-    this.toggleProperty('isShowingModal');
-    this.set('err', '');
+  toggleModal(modalContentType) {
+    this.set("modalContentType", modalContentType)
+    this.toggleProperty('isShowingModal')
+    this.set('err', '')
   }
   
   runCodeTask = task(function*(config) {
@@ -155,20 +156,37 @@ export default class CodeChallengeComponent extends Component {
 
   @action
   fetchEditorial(){
-    this.get("fetchEditorialTask").perform();
+    this.get("fetchEditorialTestcases").perform('editorials').then(response=>{
+      const editorial = this.get('store').createRecord('editorial', response.data.attributes)
+      this.set('code.editorial', editorial)
+    });
   }
 
-  fetchEditorialTask = task(function *(){
+  @action
+  fetchTestcases(){
+    this.get("fetchEditorialTestcases").perform('testcases').then(response=>{
+      const testcases = response.data.attributes.urls.map(t => {
+        return this.get('store').createRecord('testcase', { input: t.input, expectedOutput: t['expected-output'] })
+      })
+      this.set('code.testcases', testcases)
+    })
+    
+  }
+
+  fetchEditorialTestcases = task(function *(which){
     try{
       this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
       const run = this.get("run")
       const code = this.get('code')
-      const response = yield this.get("api").request(`code_challenges/editorials?contest_id=${run.get("contestId")}&p_id=${code.get("hbProblemId")}&force=true`)
-      const editorial = this.get('store').createRecord('editorial', response.data.attributes)
-      this.set('code.editorial', editorial)
+      return yield this.get("api").request(`code_challenges/`+ which +`?contest_id=${run.get("contestId")}&p_id=${code.get("hbProblemId")}&force=true`)
     }
     catch(err){
-      this.set("err", 'An editorial does not exist for this problem');
+      switch(which){
+        case 'editorials': this.set("err", 'An editorial does not exist for this problem')
+                           break;
+        case 'testcases': this.set("err", 'Testcase unlock is blocked for this problem')
+                          break;                       
+      }
     }
   })
 

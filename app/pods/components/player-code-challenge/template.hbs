@@ -23,46 +23,42 @@
 
 translucentOverlay=true
 targetAttachment='none'
-containerClass='centered-scrolling-container'
+containerClass='centered-scrolling-container p-4 pb-5'
 overlayClass='centered-scrolling-overlay'
 wrapperClass='centered-scrolling-wrapper'
 }}
-{{#if code.editorial}}
-<div class="p-3">
-  <div class="red row justify-content-between">
-    <div>
-      Editorial: {{code.name}}
-    </div>
-    <div class="grey">
-      <button {{action 'toggleModal'}}>X</button>
-    </div>
-  </div>
-  
-  <div>
-    {{{code.editorial.content}}}
-  </div>
-</div>
+{{#if (and code.editorial (eq modalContentType 'editorial'))}}
+  {{editorial-view code=code toggleModal=(action 'toggleModal')}}
 {{else}}
-  <div class="t-align-c pl-5 pr-5 pt-4 pb-4">
-    <i class="fas fa-lock fa-3x mb-4"></i>
-    <div class="font-md mb-3">
-      Unlock Editorial
+  {{#if (and code.testcases (eq modalContentType 'testcases'))}}
+    {{testcases-view code=code toggleModal=(action 'toggleModal')}}
+  {{else}}
+    <div class="t-align-c pl-5 pr-5 pt-4 pb-4">
+      <i class="fas fa-lock fa-3x mb-4"></i>
+      <div class="font-md mb-3">
+        Unlock {{if (eq modalContentType 'editorial') "Editorial" "Testcases"}}
+      </div>
+      <div class="grey mb-4">
+        You will not be awarded any points for solutions to this particular
+        problem once you unlock the editorial!
+      </div>
+      <div class="red mb-4">
+        Do you want to continue?
+      </div>
+      <div class="row justify-content-center">
+        <button class="pr-3 pointer" {{action 'toggleModal'}}>No, Go Back</button>
+        {{#if (eq modalContentType 'editorial')}}
+        <button class="button-solid" {{action 'fetchEditorial'}}>Yes, Continue</button>
+        {{else}}
+        <button class="button-solid" {{action 'fetchTestcases'}}>Yes, Continue</button>
+        {{/if}}
+    
+      </div>
+      {{#if err}}
+      <div class="red mt-4">{{{err}}}</div>
+      {{/if}}
     </div>
-    <div class="grey mb-4">
-      You will not be awarded any points for solutions to this particular
-      problem once you unlock the editorial!
-    </div>
-    <div class="red mb-4">
-      Do you want to continue?
-    </div>
-    <div class="row justify-content-center">
-      <button class="pr-3 pointer" {{action 'toggleModal'}}>No, Go Back</button>
-      <button class="button-solid" {{action 'fetchEditorial'}}>Yes, Continue</button>
-    </div>
-    {{#if err}}
-    <div class="red mt-4">{{{err}}}</div>
-    {{/if}}
-  </div>
+  {{/if}}
 {{/if}}
 {{/modal-dialog}}
 {{/if}}
