@@ -55,6 +55,9 @@ export default Component.extend({
     logInAndStartTrial (courseId, runId) {
       localStorage.setItem('redirectionPath', this.get('router').urlFor('classroom.timeline.index', {courseId, runId}))
       this._redirectToOneauth()
+    },
+    goToTimeline (runId) {
+      this.get('router').transitionTo(`/classroom/course/${this.get('course.id')}/run/${runId}`)
     }
   },
 
