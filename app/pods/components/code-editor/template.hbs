@@ -53,7 +53,7 @@
           {{/if}}
         </button>
         <div class="align-self-center pl-3">
-          <div class="button-solid">
+          <div class="button-solid {{if isTaskRunning 'disabled'}}">
             {{#if isTaskRunning}}
             <button disabled>Executing your code</button>
             {{else}}
@@ -72,7 +72,7 @@
               <p>Custom Input</p>
             </div>
             <div class="col-md-6">
-              <div class="button-solid">
+              <div class="button-solid {{if isTaskRunning 'disabled'}}">
                 {{#if isTaskRunning}}
                   <button disbaled>Running Code</button>
                 {{else}}
