@@ -1,71 +1,98 @@
 <div class="c-progress">
-<div class="card accordion-card">
-    <div class="c-accordion c-content-accordion">
-        <div class="list-divided border-none">
-            {{#if sections}}
-            {{#each sections as |section|}}
-            {{#accordion-head title=section.name completed=section.doneContents.length total=section.contents.length
-            deadline=section.deadlineDate hideDuration=true listType="divided"}}
-            <div class="pb-4 pt-4">
-                {{#each section.contents as |content|}}
-                {{#if section.premium}}
-                  <div class="row no-gutters pointer grey">
-                    <div class="li-left col-10 col-sm-8">
-                      <div class="col-1 {{content.iconClass}}-red content-icon"></div>
-                      <div class="col-11 col-sm-8">
-                        {{content.title}}
-                      </div>
-                    </div>
-                    <div class="li-right no-gutters col-2 col-sm-4">
-                        <div class="t-align-c">
-                          <i class="fas fa-lock"></i>
-                        </div>
-                      <div class="grey col-6 dsp-none-xs">
-                        {{format-duration content.duration}}
-                      </div>
-                    </div>
-                  </div>
-                  {{else}}
+    <div class="card accordion-card">
+        <div class="c-accordion c-content-accordion">
+            <div class="list-divided border-none">
+                {{#if sections}}
+                {{#each sections as |section|}}
+                {{#accordion-head title=section.name completed=section.doneContents.length
+                total=section.contents.length
+                deadline=section.deadlineDate hideDuration=true listType="divided"}}
+                <div class="pb-4 pt-4">
+                    {{#each section.contents as |content|}}
+                    {{#if run.topRunAttempt.premium}}
                     <div class="row no-gutters pointer {{if content.isDone 'green' 'red'}}"
-                    {{action 'transitionToContent' content.id section.id}}>
-                    <div class="li-left col-10 col-sm-8">
-                        <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green' 'red'}}"></div>
-                        <div class="col-10">
-                            {{content.title}}
+                        {{action 'transitionToContent' content.id section.id}}>
+                        <div class="li-left col-10 col-sm-8">
+                            <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green' 'red'}}"></div>
+                            <div class="col-10">
+                                {{content.title}}
+                            </div>
+                        </div>
+                        <div class="li-right col-2 col-sm-4">
+                            {{#if content.payload.duration}}
+                            <div class="dsp-none-xs {{if content.isDone 'green' 'grey'}}">
+                                {{format-duration content.payload.duration}}
+                            </div>
+                            {{/if}}
+
+                            <div class="status-circle">
+                                <img class="jugaadu-img" src="{{if content.isDone '/images/green.svg' '/images/white.svg'}}"
+                                    alt="">
+                            </div>
+
                         </div>
                     </div>
-                    <div class="li-right col-2 col-sm-4">
-                        {{#if content.payload.duration}}
-                        <div class="dsp-none-xs {{if content.isDone 'green' 'grey'}}">
-                            {{format-duration content.payload.duration}}
+                    {{else}}
+                    {{#if section.premium}}
+                    <div class="row no-gutters pointer grey">
+                        <div class="li-left col-10 col-sm-8">
+                            <div class="col-1 {{content.iconClass}}-red content-icon"></div>
+                            <div class="col-11 col-sm-8">
+                                {{content.title}}
+                            </div>
                         </div>
-                        {{/if}}
-        
-                        <div class="status-circle">
-                            <img class="jugaadu-img" src="{{if content.isDone '/images/green.svg' '/images/white.svg'}}" alt="">
+                        <div class="li-right no-gutters col-2 col-sm-4">
+                            <div class="t-align-c">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="grey col-6 dsp-none-xs">
+                                {{format-duration content.duration}}
+                            </div>
                         </div>
-        
                     </div>
+                    {{else}}
+                    <div class="row no-gutters pointer {{if content.isDone 'green' 'red'}}"
+                        {{action 'transitionToContent' content.id section.id}}>
+                        <div class="li-left col-10 col-sm-8">
+                            <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green' 'red'}}"></div>
+                            <div class="col-10">
+                                {{content.title}}
+                            </div>
+                        </div>
+                        <div class="li-right col-2 col-sm-4">
+                            {{#if content.payload.duration}}
+                            <div class="dsp-none-xs {{if content.isDone 'green' 'grey'}}">
+                                {{format-duration content.payload.duration}}
+                            </div>
+                            {{/if}}
+
+                            <div class="status-circle">
+                                <img class="jugaadu-img" src="{{if content.isDone '/images/green.svg' '/images/white.svg'}}"
+                                    alt="">
+                            </div>
+
+                        </div>
+                    </div>
+                    {{/if}}
+                    {{/if}}
+                    {{/each}}
                 </div>
-                 {{/if}}
+
+                {{/accordion-head}}
                 {{/each}}
-            </div>
-        
-            {{/accordion-head}}
-            {{/each}}
-            {{else}}
-            <div class="accordion-ul" data-show="true">
-                <div class="accordion-li">
-                    <div class="li-left flex-row">
-                        Sorry, currently there are no available contents for this course.
+                {{else}}
+                <div class="accordion-ul" data-show="true">
+                    <div class="accordion-li">
+                        <div class="li-left flex-row">
+                            Sorry, currently there are no available contents for this course.
+                        </div>
                     </div>
                 </div>
-            </div>
-            {{/if}}
-            <div class="row" style="min-height:50px">
+                {{/if}}
+                <div class="row" style="min-height:50px">
+                </div>
             </div>
         </div>
+
     </div>
-    
-  </div>
 </div>
