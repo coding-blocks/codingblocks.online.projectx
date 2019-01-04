@@ -3,7 +3,6 @@ import { action, computed } from "ember-decorators/object";
 
 export default class EditorClass extends Component {
   classNames = ["height-100"];
-
   isLanguageSelectOpen = false;
   allLanguages = [
     {
@@ -113,5 +112,10 @@ export default class EditorClass extends Component {
     };
     this.get("submitCodeTask").perform(config);
     this.set("isRunOutput", false);
+  }
+
+  @action 
+  toggle(modalContentType){
+    this.sendAction('toggleModal', modalContentType);
   }
 }

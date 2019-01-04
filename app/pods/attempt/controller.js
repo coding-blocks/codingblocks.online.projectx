@@ -38,12 +38,13 @@ export default Controller.extend({
             if (await content.get('progress')) {
                 // if progress exits
                 const progress = await content.get('progress')
-                progress.set("status", progress.get('status') === 'DONE' ? 'UNDONE': 'DONE')
+                const currentStatus = progress.get('status')
+                progress.set("status", currentStatus !== 'UNDONE' ? 'UNDONE': content.get("contentable") === 'code-challenge'? 'ACTIVE': 'DONE')
                 await progress.save().then(p => content.set('progress', p))
                 
             } else  {
                 const newProgress = this.get('store').createRecord('progress', {
-                    status: 'DONE',
+                    status: content.get('contentable') ==='code-challenge'? 'ACTIVE': 'DONE',
                     runAttempt: this.get('model'),
                     content
                 })

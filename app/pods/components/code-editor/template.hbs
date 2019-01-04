@@ -20,33 +20,46 @@
 
   <div class="options-result">
     <div class="editor-options row justify-content-between">
-      <div class="select-list align-self-center">
-        <div class="select-box pointer row justify-content-between" onclick={{action 'openLanguageSelectBox'}}>
-          {{selectedLanguage.name}}
-          {{#if isLanguageSelectOpen}}
-          <span><i class="fas fa-angle-up"></i></span>
-          {{else}}
-          <span><i class="fas fa-angle-down"></i></span>
-          {{/if}}
-        </div>
-        <div class="open-select-box {{if isLanguageSelectOpen 'display-block'}}">
-          <ul>
-            {{#each allLanguages as |language|}}
+      <div class="row">
+        <div class="select-list align-self-center">
+          <div class="select-box pointer row justify-content-between" onclick={{action 'openLanguageSelectBox'}}>
+            {{selectedLanguage.name}}
+            {{#if isLanguageSelectOpen}}
+            <span><i class="fas fa-angle-up"></i></span>
+            {{else}}
+            <span><i class="fas fa-angle-down"></i></span>
+            {{/if}}
+          </div>
+          <div class="open-select-box {{if isLanguageSelectOpen 'display-block'}}">
+            <ul>
+              {{#each allLanguages as |language|}}
               <li class="pointer" {{action selectLanguage language}}>
                 {{language.name}}
               </li>
-            {{/each}}
-          </ul>
+              {{/each}}
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div class="align-self-center">
-        <div class="button-solid">
-          {{#if isTaskRunning}}
-            <button disabled>Executing your code</button>
+        <button class="white pl-5" {{action 'toggle' 'testcases'}}><i class="fas fa-arrow-down"></i> Download Testcases</button>
+      </div>
+      
+      <div class="row">
+        <button class="red" {{action 'toggle' 'editorial'}}>
+          {{#if code.editorial}}
+          <i class="fas fa-book-open"></i> View Editorial
           {{else}}
-            <button onclick={{action 'submitCode'}}>Submit Code</button>
+          <i class="fas fa-lock"></i> Unlock Editorial
           {{/if}}
+        </button>
+        <div class="align-self-center pl-3">
+          <div class="button-solid {{if isTaskRunning 'disabled'}}">
+            {{#if isTaskRunning}}
+            <button disabled>Executing your code</button>
+            {{else}}
+            <button onclick={{action 'submitCode'}}>Submit Code</button>
+            {{/if}}
+          </div>
         </div>
       </div>
     </div>
@@ -59,7 +72,7 @@
               <p>Custom Input</p>
             </div>
             <div class="col-md-6">
-              <div class="button-solid">
+              <div class="button-solid {{if isTaskRunning 'disabled'}}">
                 {{#if isTaskRunning}}
                   <button disbaled>Running Code</button>
                 {{else}}
