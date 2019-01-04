@@ -10,6 +10,7 @@ export default Component.extend({
   request: alias('run.runRequests.firstObject'),
   isPending: equal('request.status', 'PENDING'),
   isDeclined: equal('request.status', 'DECLINED'),
+  isAccepted: equal('request.status', 'ACCEPTED'),
   actions: {
     addRequest () {
       // if user is not loggedIn; have him logged In
