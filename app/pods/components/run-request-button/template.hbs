@@ -7,6 +7,11 @@
     <div class="button-solid disabled pointer">
       <button>Request Declined</button>
     </div>
+  {{else if  isAccepted}}
+    <button class="button-solid">
+      {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}} <i class="fas fa-play"></i> Resume
+      {{/link-to}}
+    </button>
   {{/if}}
 
 {{else}} {{! we don't have any request by this user}}
