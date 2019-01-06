@@ -17,6 +17,11 @@ module.exports = function(defaults) {
       modes: ['javascript', 'c_cpp', 'python', 'java'],
       workers: ['javascript'],
       exts: ['language_tools']
+    },
+    babel: {
+      plugins: [
+        'transform-object-rest-spread'
+      ]
     }
   });
 

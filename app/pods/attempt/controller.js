@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { inject } from '@ember/service';
 import { computed } from '@ember/object';
-import { equal }  from '@ember/object/computed';
+import { equal, filterBy }  from '@ember/object/computed';
 
 export default Controller.extend({
     store: inject('store'),
@@ -17,6 +17,7 @@ export default Controller.extend({
     activeTab: 'contents',
     isContentsTabActive: equal('activeTab', 'contents'),
     isNotesTabActive: equal('activeTab', 'notes'),
+    persistedNotes: filterBy('model.notes', 'isNew', false),
     actions: {
         toggleSideBar() {
             this.toggleProperty("sideBarCollapsed.left")

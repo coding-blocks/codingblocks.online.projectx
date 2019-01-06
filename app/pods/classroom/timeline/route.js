@@ -9,10 +9,13 @@ export default Route.extend({
   },
   model(params, transition) {
     return this.store
-      .queryRecord("run-attempt", {
-        runId: params.runId
+      .query("run-attempt", {
+        filter: {
+          runId: params.runId
+        }
       })
-      .then(runAttempt => {
+      .then(runAttempts => {
+        const runAttempt = Ember.get(runAttempts, 'firstObject')
         if (isNone(runAttempt)) {
           transition.abort();
 

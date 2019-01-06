@@ -8,7 +8,7 @@
         <div class="tab-items {{if isNotesTabActive 'active'}}" {{action "setActiveTab" "notes"}}>
           Notes
           {{#if model.notes.length}}
-          ({{model.notes.length}})
+          ({{persistedNotes.length}})
           {{/if}}
         </div>
       </div>

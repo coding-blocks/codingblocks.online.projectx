@@ -1,4 +1,4 @@
-<div class="grid-background">
+<div class="grid-background" id="recommended-courses">
   <div class="custom-heading row justify-content-between m-0">
     <div class="col-8">
       <div class="heading-u">
@@ -64,15 +64,17 @@
               </div>
               <div class="row button-row justify-content-between no-gutters align-items-center">
                 <div class="details">
-                  <div class="price">
-                    <span class="red"> {{format-price course.topRun.price}} </span>
-                    {{#unless (eq course.topRun.mrp course.topRun.price)}}
-                      <span class="grey">
-                        <strike style="font-size: 0.9rem">{{format-price course.topRun.mrp}}</strike>
-                      </span>
-                    {{/unless}}
-                    <!--<span class="grey"><strike>Rs 12000</strike></span>-->
-                  </div>
+                  {{#unless organization}}
+                    <div class="price">
+                      <span class="red"> {{format-price course.topRun.price}} </span>
+                      {{#unless (eq course.topRun.mrp course.topRun.price)}}
+                        <span class="grey">
+                          <strike style="font-size: 0.9rem">{{format-price course.topRun.mrp}}</strike>
+                        </span>
+                      {{/unless}}
+                      <!--<span class="grey"><strike>Rs 12000</strike></span>-->
+                    </div>
+                  {{/unless}}
                   <div class="grey">Batches starting {{moment-format (unix course.topRun.start) 'MMM Do'}} </div>
                 </div>
                 <div class="button-solid">
