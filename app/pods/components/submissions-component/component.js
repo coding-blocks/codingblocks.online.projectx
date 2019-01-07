@@ -8,6 +8,7 @@ export default class SubmissionsComponent extends Component {
   @service store
 
   showSubmissionModal = false
+  submissionToView = null
 
   didReceiveAttrs () {
     this._super(...arguments)
@@ -24,6 +25,7 @@ export default class SubmissionsComponent extends Component {
 
   @action
   viewSubmission (submission) {
+    this.set('submissionToView', submission)
     this.set('showSubmissionModal', true)
   }
 }
