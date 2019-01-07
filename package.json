@@ -67,6 +67,7 @@
   "dependencies": {
     "@coding-blocks/motley": "0.3.31",
     "ember-line-clamp": "^0.2.15",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "showdown-katex-studdown": "^0.4.0"
   }
 }
