@@ -8,7 +8,6 @@ export default Route.extend({
       qna: this.modelFor('attempt.content.quiz').payload,
       sectionId: this.paramsFor('attempt').sectionId,
       newQuizAttempt: this.store.createRecord('quiz_attempt', {
-        submission: {},
         status: 'draft',
         runAttempt: this.store.peekRecord('run_attempt', this.paramsFor('attempt').runAttemptId),
         qna: this.store.peekRecord('content', this.paramsFor('attempt.content').contentId).get('payload')

@@ -5,7 +5,7 @@
 
 <div class="question p-4">
   <span class="text">
-    {{markdown-to-html question.description class="d-inline"}}
+    {{markdown-to-html question.description class="d-inline" extensions='katex'}}
   </span>
 </div>
 
@@ -17,7 +17,7 @@
     ">
       <div class="circle"></div>
       <div class="text">
-        {{markdown-to-html choice.title}}
+        {{markdown-to-html choice.title extensions='katex'}}
         <div class="explaination">
           {{choice.description}}
         </div>

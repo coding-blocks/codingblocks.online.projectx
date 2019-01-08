@@ -1,6 +1,6 @@
 
 <div class="notes-list list-shaded spaced invert">
-  {{#unless runAttempt.notes.length}}
+  {{#unless savedNotes.length}}
     <div class="list-item">
       <div class="row justify-content-center">
         You have no notes for this course.
@@ -8,9 +8,17 @@
     </div>
   {{/unless}}
 
-    {{#each runAttempt.notes as |note|}}
-      {{note-view note=note runAttempt=runAttempt}}
-    {{/each}}
+  {{#liquid-if requestErrored}}
+    <div class="list-item">
+      <div class="row justify-content-center red">
+        There was some error saving this note. Please try again
+      </div>
+    </div>
+  {{/liquid-if}}
+
+  {{#each savedNotes as |note|}}
+    {{note-view note=note runAttempt=runAttempt}}
+  {{/each}}
 
   <div class="footer">
     <div class="list-item">
@@ -20,7 +28,14 @@
         </div>
         <div class="li-right col-3 align-self-start">
           <div class="button-solid card-md">
-            <button {{action 'addNote'}} >Save Note</button>
+            {{!-- <button {{action 'addNote'}} >Save Note</button> --}}
+            {{task-button
+              task=addNoteTask
+              click=(perform addNoteTask)
+              idleText="Save Note"
+              runningText="Saving.."
+              type="button"
+              runningClass="disabled"}}
           </div>
         </div>
       </div>

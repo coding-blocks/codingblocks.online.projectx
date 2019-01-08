@@ -3,75 +3,82 @@
         <p>My Courses</p>
     </div>
     <div class="grid row">
-        {{#if fetchMyCoursesTask.isRunning}} {{loading-card}} {{else}} {{#each runs as |run index|}}
-        <div class="c-layout-card col-12 col-sm-12   col-md-6 col-lg-4">
-            <div class="card online-card my-course-card">
-                <div class="head d-flex justify-content-center">
-                    <img class="back-img" src="{{run.course.coverImage}}">
-                    <div class="front-text flex-col align-item-center">
-                        <div class="round-img-b">
-                            <img src="{{run.course.logo}}">
-                        </div>
-                        <div class="course-name center-text">
-                            {{run.course.title}}
-                        </div>
-                        <div class="i course-description center-text">
-                            {{run.course.subtitle}}
-                        </div>
-
-                        {{rating-stars-static rating=run.course.rating showValue=true}}
-                    </div>
-                </div>
-                <div class="foot">
-                    <div class="course-progress">
-                        <label>Course Progress</label>
-                        <div class="row justify-content-between align-items-center">
-                            {{percent-complete runAttemptId=run.topRunAttempt.id showBar=true}}
-                        </div>
-                    </div>
-                    <div class="card-mentor">
-                        <div class="card-mentor-image">
-                            {{#each run.course.instructors as |instructor index|}} {{#if (lt index 2) }}
-                            <img class="card-mentors" src="{{instructor.photo}}"> {{/if}} {{/each}}
-                        </div>
-                        <div class="card-mentor-text">
-                            <span>Instructors</span>
-                            <div class="card-mentor-name">
-                                {{#each run.course.instructors as |instructor index|}} {{#if (lt index 2)}} {{instructor.name}}{{if (and (gt run.course.instructors.length
-                                1) (eq index 0)) "," ""}} {{/if}} {{/each}} {{#if (gt run.course.instructors.length 2)}}
-                                <span class="price"> +{{sub run.course.instructors.length 2}}</span> more {{/if}}
+        {{#if fetchMyCoursesTask.isRunning}} {{loading-card}} {{else}}
+            {{#if runs.length}}
+                {{#each runs as |run index|}}
+                <div class="c-layout-card col-12 col-sm-12   col-md-6 col-lg-4">
+                    <div class="card online-card my-course-card">
+                        <div class="head d-flex justify-content-center">
+                            <img class="back-img" src="{{run.course.coverImage}}">
+                            <div class="front-text flex-col align-item-center">
+                                <div class="round-img-b">
+                                    <img src="{{run.course.logo}}">
+                                </div>
+                                <div class="course-name center-text">
+                                    {{run.course.title}}
+                                </div>
+                                <div class="i course-description center-text">
+                                    {{run.course.subtitle}}
+                                </div>
+                
+                                {{rating-stars-static rating=run.course.rating showValue=true}}
                             </div>
                         </div>
-                    </div>
-                    <div class="row button-row no-gutters align-items-center justify-content-between">
-                        
-                        <div class="no-gutters col-6">
-                            {{run.description}}
-                            <div class="red">
-                                {{#if run.topRunAttempt.premium}}
-                                    {{#if (not run.topRunAttempt.isExpired)}}
-                                    Batch Ends {{moment-format run.topRunAttempt.endDate 'DD-MMM-YY'}}
-                                    {{/if}}
+                        <div class="foot">
+                            <div class="course-progress">
+                                <label>Course Progress</label>
+                                <div class="row justify-content-between align-items-center">
+                                    {{percent-complete runAttemptId=run.topRunAttempt.id showBar=true}}
+                                </div>
+                            </div>
+                            <div class="card-mentor">
+                                <div class="card-mentor-image">
+                                    {{#each run.course.instructors as |instructor index|}} {{#if (lt index 2) }}
+                                    <img class="card-mentors" src="{{instructor.photo}}"> {{/if}} {{/each}}
+                                </div>
+                                <div class="card-mentor-text">
+                                    <span>Instructors</span>
+                                    <div class="card-mentor-name">
+                                        {{#each run.course.instructors as |instructor index|}} {{#if (lt index 2)}}
+                                        {{instructor.name}}{{if (and (gt run.course.instructors.length
+                                        1) (eq index 0)) "," ""}} {{/if}} {{/each}} {{#if (gt run.course.instructors.length 2)}}
+                                        <span class="price"> +{{sub run.course.instructors.length 2}}</span> more {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row button-row no-gutters align-items-center justify-content-between">
+                
+                                <div class="no-gutters col-6">
+                                    {{run.description}}
+                                    <div class="red">
+                                        {{#if run.topRunAttempt.premium}}
+                                        {{#if (not run.topRunAttempt.isExpired)}}
+                                        Batch Ends {{moment-format run.topRunAttempt.endDate 'DD-MMM-YY'}}
+                                        {{/if}}
+                                        {{else}}
+                                        Free Trial
+                                        {{/if}}
+                                    </div>
+                
+                                </div>
+                                {{#unless (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
+                                <div class="button-solid offset-1 col-5">
+                                    {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}} <i class="fas fa-play"></i>Resume
+                                    {{/link-to}}
+                                </div>
                                 {{else}}
-                                    Free Trial
-                                {{/if}}
+                                <div class="button-solid disabled offset-1 col-5">
+                                    <button>Expired</button>
+                                </div>
+                                {{/unless}}
                             </div>
-
-                        </div> 
-                        {{#unless (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
-                        <div class="button-solid offset-1 col-5">
-                            {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}} <i class="fas fa-play"></i>Resume
-                            {{/link-to}}
                         </div>
-                        {{else}}
-                        <div class="button-solid disabled offset-1 col-5">
-                            <button>Expired</button>
-                        </div>
-                        {{/unless}}
                     </div>
                 </div>
-            </div>
-        </div>
-        {{/each}} {{/if}}
+                {{/each}} 
+            {{else}}
+                <div class="font-sm">You are not enrolled in any course currently.</div>
+            {{/if}}
+        {{/if}}
     </div>
 </div>

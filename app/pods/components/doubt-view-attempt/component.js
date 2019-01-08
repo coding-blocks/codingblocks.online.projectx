@@ -34,7 +34,7 @@ export default class DoubtViewAttemptComponent extends Component{
       this.set('commentBody', '');
     }).catch(err => {
       comment.rollbackAttributes();
-      return this.set('err', err.errors[0].detail[0]);
+      return this.set('err', err.errors[0].detail);
     })
   })
 
@@ -57,7 +57,6 @@ export default class DoubtViewAttemptComponent extends Component{
 
   @action 
   goToContent(){
-    console.log('going');
     const contentId = this.get('doubt.content.id')
 
     const transition = this.get('router').transitionTo('attempt.content', contentId)

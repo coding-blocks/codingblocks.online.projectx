@@ -7,6 +7,9 @@ export default DS.Model.extend({
   isDone: computed('status', function () {
     return this.get('status') === 'DONE'
   }),
+  isActive: computed('status', function(){
+    return this.get('status') === 'ACTIVE'
+  }),
   isFeedbackDone: computed('feedbackStatus', function() {
     return !(this.get('feedbackStatus') == null)
   }),

@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { inject } from '@ember/service';
 import { computed } from '@ember/object';
-import { equal }  from '@ember/object/computed';
+import { equal, filterBy }  from '@ember/object/computed';
 
 export default Controller.extend({
     store: inject('store'),
@@ -17,6 +17,7 @@ export default Controller.extend({
     activeTab: 'contents',
     isContentsTabActive: equal('activeTab', 'contents'),
     isNotesTabActive: equal('activeTab', 'notes'),
+    persistedNotes: filterBy('model.notes', 'isNew', false),
     actions: {
         toggleSideBar() {
             this.toggleProperty("sideBarCollapsed.left")
@@ -37,12 +38,13 @@ export default Controller.extend({
             if (await content.get('progress')) {
                 // if progress exits
                 const progress = await content.get('progress')
-                progress.set("status", progress.get('status') === 'DONE' ? 'UNDONE': 'DONE')
+                const currentStatus = progress.get('status')
+                progress.set("status", currentStatus !== 'UNDONE' ? 'UNDONE': content.get("contentable") === 'code-challenge'? 'ACTIVE': 'DONE')
                 await progress.save().then(p => content.set('progress', p))
                 
             } else  {
                 const newProgress = this.get('store').createRecord('progress', {
-                    status: 'DONE',
+                    status: content.get('contentable') ==='code-challenge'? 'ACTIVE': 'DONE',
                     runAttempt: this.get('model'),
                     content
                 })

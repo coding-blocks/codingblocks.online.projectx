@@ -39,6 +39,7 @@ Router.map(function() {
   this.route('payment-webhook-loading');
   this.route('certificate', {path: '/certificates/:licenseKey'});
   this.route('404', { path: '/*:' });
+  this.route('nagarro', function() {});
 });
 
 export default Router;
