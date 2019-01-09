@@ -1,0 +1,24 @@
+<div class="row justify-content-between no-gutters">
+  <div>
+    Test Cases: {{code.name}}
+  </div>
+  <div class="grey">
+    <button {{action 'toggleModal'}}>X</button>
+  </div>
+</div>
+
+{{#each code.testcases as |testcase index|}}
+<div class="row pt-3 pb-3 no-gutters">
+  <div class="col-2">
+    Test Case {{inc index 1}}
+  </div>
+  <div class="col-4 t-align-r">
+    <a class="red" href="{{testcase.input}}" download><i class="fas fa-arrow-down"></i> Download Input</a>
+  </div>
+  <div class="col-4 t-align-r">
+    <a class="red" href="{{testcase.expectedOutput}}" download><i class="fas fa-arrow-down"></i> Download Output</a>
+  </div>
+</div>
+<div class="divider-h"></div>
+
+{{/each}}

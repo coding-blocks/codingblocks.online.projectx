@@ -1,5 +1,33 @@
-<h1>Nagarro</h1>
+<div class="nagarro-banner row">
+  <img class="logo" src="/images/naggaro-logo.png" alt="nagarro-logo">
 
-{{recommended-courses organization=currentUser.organization}}
+  <div class="information col-12 col-lg-6">
+    <div class="title">The destination for workplace learning</div>
+    <div class="sub">Keep up with technology with expert-led courses, assessments and tools that 
+help you build the skills you need, when you need them.</div>
+    <div class="highlights">
+      <div class="highlight">
+        <img src="/images/ng-icon-1.png">
+        <div> Learn latest technologies </div>
+      </div>
+      <div class="highlight">
+        <img src="/images/ng-icon-2.png">
+        <div> Learn latest technologies </div>
+      </div>
+      <div class="highlight">
+        <img src="/images/ng-icon-3.png">
+        <div> Learn latest technologies </div>
+      </div>
+    </div>
+    
+    <button class="button-solid" {{action 'goToRecommendedCourses'}} >Explore</button>
+  </div>
+  
+  <div class="col-12 col-lg-6 banner-image">
+    <img src="/images/nagarro-banner.jpg" alt="nagarro-banner-image">
+  </div>
+</div>
+
+{{recommended-courses organization='nagarro'}}
 
 {{offerings-static}}

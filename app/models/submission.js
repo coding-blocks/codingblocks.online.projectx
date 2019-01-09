@@ -6,6 +6,7 @@ import { pipe, not } from "codingblocks-online/utils/functional";
 export default DS.Model.extend({
   language: DS.attr(),
   score: DS.attr(),
+  source: DS.attr(),
   'submit-at': DS.attr(),
   'judge-result': DS.attr(),
 

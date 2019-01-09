@@ -8,7 +8,6 @@ export default class LoginButton extends Component {
   @service session;
   @service currentUser;
   @service store;
-  @service raven;
   @service router;
 
   tagName = 'span'
@@ -57,7 +56,7 @@ export default class LoginButton extends Component {
         })
     }
     catch (error) {
-      this.get ('raven').captureException (error)
+      console.error (error)
     }
     const logoutUrl = env.oneauthURL + '/logout?redirect=' + env.publicUrl + '/logout'
     window.location.href = logoutUrl

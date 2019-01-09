@@ -1,18 +1,20 @@
 import Component from '@ember/component';
 import { service } from 'ember-decorators/service';
 import { task } from 'ember-concurrency';
-import { alias } from 'ember-decorators/object/computed';
-import { readOnly } from 'ember-decorators/object';
+import { alias, reads } from 'ember-decorators/object/computed';
 import { action } from 'ember-decorators/object';
 import env from "codingblocks-online/config/environment";
 
 export default class RecommendedTaskComponent extends Component {
   @service store;
   @service session;
-  @readOnly
-  @alias("fetchRecommendedCoursesTask.lastSuccessful.value")
+  @service currentUser
+
+  @reads("fetchRecommendedCoursesTask.lastSuccessful.value")  
   recommendedCourses;
 
+  @reads("currentUser.organization") organization
+  
   constructor () {
     super(...arguments)
     this.get('fetchRecommendedCoursesTask').perform()
