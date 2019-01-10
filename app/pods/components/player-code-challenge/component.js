@@ -136,8 +136,8 @@ export default class CodeChallengeComponent extends Component {
         this.get('store').unloadAll('problem')
         this.get('store').pushPayload(payload)
         const problem = this.get('store').peekAll('problem').objectAt(0)
-        
-        if(await problem.get('mostSuccessfullSubmission.score')==100){
+        const currentScore = problem.get('submissions').objectAt(0).get('score')
+        if(currentScore==100 || await problem.get('mostSuccessfullSubmission.score')==100 ){
           const progress = await this.get('code.content').get('progress')
           progress.set("status", 'DONE')
           progress.save();
