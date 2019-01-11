@@ -3,6 +3,7 @@ import { alias } from "ember-decorators/object/computed";
 import { service } from "ember-decorators/service";
 import { action, computed } from "ember-decorators/object";
 import { task, timeout } from "ember-concurrency";
+import { later } from '@ember/runloop';
 
 export default class CodeChallengeComponent extends Component {
   @service api;
@@ -122,28 +123,28 @@ export default class CodeChallengeComponent extends Component {
       }
     });
 
-    if(!payload.error){
-      this.get('api').request('code_challenges/problems',{
-        data: {
-          contest_id: run.get("contestId"),
-          problem_id: code.get("hbProblemId")
-        },
-      }).then(async result=>{
-        result.content = this.get('code.content.id');
-        this.set("problemJsonApiPayload", result);
+    this.get('api').request('code_challenges/problems',{
+      data: {
+        contest_id: run.get("contestId"),
+        problem_id: code.get("hbProblemId")
+      },
+    }).then(async result=>{
+      this.set("problemJsonApiPayload", result);
+      const payload = JSON.parse(JSON.stringify(result))
+      this.get('store').unloadAll('problem')
 
-        const payload = JSON.parse(JSON.stringify(result))
-        this.get('store').unloadAll('problem')
+      later(async() => {
         this.get('store').pushPayload(payload)
-        const problem = this.get('store').peekAll('problem').objectAt(0)
-        
-        if(await problem.get('mostSuccessfullSubmission.score')==100){
+        const problem = this.get('store').peekRecord('problem', code.get('hbProblemId'))
+
+        if (await problem.get('hasTopSubmissionPassed') && await problem.get('mostSuccessfullSubmission.score') == 100) {
           const progress = await this.get('code.content').get('progress')
           progress.set("status", 'DONE')
           progress.save();
         }
-      })
-    }
+      }, 0)
+    })
+  
     
     //invalidate leaderboard cache
     const runId = this.get('run.id')

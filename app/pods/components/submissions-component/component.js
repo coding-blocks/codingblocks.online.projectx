@@ -11,13 +11,15 @@ export default class SubmissionsComponent extends Component {
 
   didReceiveAttrs () {
     this._super(...arguments)
+    const code = this.get('code')
     let payload = this.get('problemPayload')
+    
     if (payload) {
       payload = JSON.parse(JSON.stringify(payload))
       this.get('store').unloadAll('problem')
       later(() => {
         this.get('store').pushPayload(payload)
-        this.set('problem', this.get('store').peekAll('problem').objectAt(0))
+        this.set('problem', this.get('store').peekRecord('problem', code.get('hbProblemId')))
       }, 0)
     }
   }

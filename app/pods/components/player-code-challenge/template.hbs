@@ -10,7 +10,7 @@
     {{else if (eq tabName 'leaderboard')}}
       {{#leaderboard-component code=code run=run}}{{/leaderboard-component}}
     {{else if (eq tabName 'submissions')}}
-      {{#submissions-component problemPayload=problemJsonApiPayload}}{{/submissions-component}}
+      {{#submissions-component problemPayload=problemJsonApiPayload code=code}}{{/submissions-component}}
     {{/if}}
   </div>
   <div id="dragger-ps-ce"></div>
