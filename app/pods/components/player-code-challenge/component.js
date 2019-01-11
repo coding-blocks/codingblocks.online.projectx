@@ -136,7 +136,6 @@ export default class CodeChallengeComponent extends Component {
       later(async() => {
         this.get('store').pushPayload(payload)
         const problem = this.get('store').peekRecord('problem', code.get('hbProblemId'))
-
         if (await problem.get('hasTopSubmissionPassed') && await problem.get('mostSuccessfullSubmission.score') == 100) {
           const progress = await this.get('code.content').get('progress')
           progress.set("status", 'DONE')
