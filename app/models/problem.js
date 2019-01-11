@@ -12,7 +12,7 @@ export default DS.Model.extend({
   hasTopSubmissionPassed: computed('submissions', function(){
     const topSubmission = this.get('submissions').objectAt(0)
     
-    if(topSubmission.get('judge-result.result') === 'success'){
+    if(!topSubmission.get('isErrored')){
       return !topSubmission.get('judge-result.data.testcases').reduce((acc, val)=> acc = val.result !== 'correct'? ++acc: acc, 0)
     }
     return false;
