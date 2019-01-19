@@ -15,29 +15,26 @@
     <div class="checklist">
       <div class="option {{if courseCompleted 'correct'}}"> Course Completion: 90%+</div>
       <div class="option {{if runAttempt.certificateApproved 'correct'}}"> Mentor Approval</div>
-      <div class="option {{if runAttempt.certificate 'correct'}}"> Verify your details <a href="https://account.codingblocks.com/users/me"
+      <div class="option correct"> Verify your details <a href="https://account.codingblocks.com/users/me"
           target="_blank"> &nbsp; here </a> </div>
     </div>
   
     <div class="cta justify-content-center justify-content-md-end">
-      {{#if canGenerate}}
-        <div class="button-solid" onClick={{perform generateCertificateTask}}>
-          <button>Generate Now!</button>
+      {{#if generationRequested}}
+        <div class="red">
+          Certificate Requested !
         </div>
       {{else if runAttempt.certificate}}
         {{#if (eq runAttempt.certificate.status 'published')}}
-          <div class="button-solid" {{action 'downloadCertificate'}}>
-            <button>Download Certificate</button>
-          </div>
+          <a href="{{runAttempt.certificate.url}}" class="red">Download Certificate</a>
         {{else}}
           <div class="red">
-            Certificate Already Requested!
+            Certificate Already Requested !
           </div>
         {{/if}}
-
-      {{else if generationRequested}}
-        <div class="red">
-          Certificate Requested !
+      {{else if canGenerate}}
+        <div class="button-solid" onClick={{perform generateCertificateTask}}>
+          <button>Generate Now!</button>
         </div>
       {{else}}
         <div class="button-solid disabled">

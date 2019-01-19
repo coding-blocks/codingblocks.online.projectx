@@ -15,7 +15,7 @@ export default Component.extend({
     return (this.get('run.completedContents') / this.get('run.totalContents')) > 0.9
   }),
   certificateNotPresent: not('runAttempt.certificate'),
-  canGenerate: and('courseCompleted', 'runAttempt.certificateApproved', 'certificateNotPresent'),
+  canGenerate: and('courseCompleted', 'runAttempt.certificateApproved'),
   generateCertificateTask: task(function * () {
     yield this.get('api').request('certificates', {
       method: 'POST',
