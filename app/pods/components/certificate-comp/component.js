@@ -12,7 +12,7 @@ export default Component.extend({
 
   run: alias('runAttempt.run'),
   courseCompleted: computed('run.completedContents', 'run.totalContents', function () {
-    return (this.get('run.completedContents') / this.get('run.totalContents')) > 0.9
+    return (this.get('run.completedContents') / this.get('run.totalContents')) > (this.get('run.completionThreshold')/100)
   }),
   certificateNotPresent: not('runAttempt.certificate'),
   canGenerate: and('courseCompleted', 'runAttempt.certificateApproved'),
