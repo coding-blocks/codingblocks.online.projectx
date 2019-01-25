@@ -26,7 +26,7 @@
         </div>
       {{else if runAttempt.certificate}}
         {{#if (eq runAttempt.certificate.status 'published')}}
-          <a href="{{runAttempt.certificate.url}}" class="red">Download Certificate</a>
+          <a href="{{runAttempt.certificate.url}}" class="button-solid white" target="_blank">Download Certificate</a>
         {{else}}
           <div class="red">
             Certificate Already Requested !
