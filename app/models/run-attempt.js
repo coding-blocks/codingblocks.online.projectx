@@ -11,6 +11,7 @@ export default DS.Model.extend({
   }),
   revoked: DS.attr(),
   certificateApproved: DS.attr(),
+  approvalRequested: DS.attr(),
   isExpired: computed('end', function () {
     return this.get('end') < +new Date()/1000
   }),
