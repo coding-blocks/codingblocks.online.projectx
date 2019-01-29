@@ -1,0 +1,78 @@
+<div class="c-csv">
+  <div class="top">
+    <h2 class="mb-3">{{csv.name}}</h2>
+    <div class="description mb-3">
+      {{markdown-to-html csv.description extensions='katex'}}
+    </div>
+    <hr>
+    <div class="d-flex align-items-center mt-2 mb-3">
+      <h3 class="mr-3">UPLOAD SOLUTION: </h3> {{file-input onComplete=(action 'onUploadComplete')}}
+     
+    </div>
+  </div>
+
+  <div class="bottom row">
+    <div class="testcase center-flex">
+      <span class="pointer" {{action 'download' csv.datasetUrl}}>
+          <i class="fas fa-download"></i>
+          Download Dataset
+      </span>
+      <span class="pointer" {{action 'download' csv.testcasesUrl}}>
+          <i class="fas fa-download"></i>
+          Download Testcases
+      </span>
+    </div>
+    <div class="submission center-flex m-auto">
+      <span class="pointer" {{action (mut showSubmissions) true}}>
+        View Old Submissions
+      </span>
+      <span>
+        {{task-button
+              task=submissionTask
+              click=(perform submissionTask)
+              idleText="Submit"
+              runningText="Submitting.."
+              type="button"
+              class="button-solid"
+              runningClass="disabled"}}
+      </span>
+    </div>
+  </div>
+</div>
+
+{{#if submitSuccess}}
+  {{#modal-dialog
+        onClose=(action (mut submitSuccess) false)
+        translucentOverlay=true
+        overlayClass="c-player-modal"
+
+    }}
+      <div class="c-csv-submission">
+        <h2 class="mb-3">{{csv.name}}</h2>  
+        <hr class="mb-4">
+        <h2 class="green">
+          {{#if currentSubmission.isPending}}
+            {{currentSubmission.score}}%
+          {{else}}
+            Calculating .... 
+          {{/if}}
+        </h2>
+        <div class="mb-4">Your Answer’s Accuracy</div>
+        <div>
+          <button class="button-solid" {{action (mut showSubmissions) true}}>View Old Submissions</button>
+        </div>
+      </div>
+    {{/modal-dialog}}
+{{/if}}
+
+{{#if showSubmissions}}
+  {{#modal-dialog
+      onClose=(action (mut showSubmissions) false)
+      translucentOverlay=true
+      overlayClass="c-player-modal"
+      containerClass="w-33 modal-container"
+
+  }}
+    {{csv-submissions csvId=csv.id}}
+  {{/modal-dialog}}
+{{/if}}

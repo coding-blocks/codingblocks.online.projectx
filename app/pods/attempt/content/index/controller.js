@@ -23,6 +23,8 @@ export default Controller.extend({
         return "player-code-challenge";
       case "qna":
         return "player-qna"
+      case "csv":
+        return "player-csv"
     }
   }),
   course: computed.alias('runAttempt.run.course'),

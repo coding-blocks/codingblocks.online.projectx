@@ -1,0 +1,7 @@
+{{#if link}}
+  <a href="{{link}}" download>Download Submission</a>
+  <i class="fa fa-times" {{action 'reset'}} ></i>
+{{else}}
+  {{file-upload-minio triggerUpload=triggerUpload onComplete=(action 'uploaded') onError=(action 'uploadFailed')}}
+  <button class="button-dashed display-inline" {{action (mut triggerUpload) true}}>Upload</button>
+{{/if}}

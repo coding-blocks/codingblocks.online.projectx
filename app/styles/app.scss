@@ -44,3 +44,12 @@ body.centered-modal-showing {
   height: calc(100% - 75px);
   overflow: auto;
 }
+
+.w-33 {
+  width: 33%
+}
+
+.modal-container {
+  max-height: 80vh;
+  overflow: auto;
+}

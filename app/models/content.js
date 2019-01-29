@@ -10,10 +10,11 @@ export default DS.Model.extend({
   lecture: DS.belongsTo('lecture'),
   "code-challenge": DS.belongsTo('code-challenge'),
   document: DS.belongsTo('document'),
+  csv: DS.belongsTo('csv'),
   //attachment: DS.belongsTo('attachment'),
   video: DS.belongsTo('video'),
   duration: DS.attr(),
-  payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', function () {
+  payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', 'csv', function () {
     return this.get(this.get('contentable'))
   }),
   isDone: computed.bool('progress.isDone'),
