@@ -51,10 +51,8 @@
               collapsed=(not (eq section.id currentSectionId))}}
               <div class="bellows pb-4 pt-4">
                 {{#each section.contents as |content|}}
-                <div class="row no-gutters pointer {{if content.isDone 'green'}}"
-                  {{action 'transitionToContent' content.id section.id}}>
+                <div class="row no-gutters pointer">
                   <div class="li-left col-10">
-                    <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
                     <div class="col-10">
                       {{content.title}}
                     </div>
