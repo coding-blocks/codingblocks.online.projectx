@@ -4,5 +4,7 @@ import env from 'codingblocks-online/config/environment'
 
 export default DS.Model.extend({
     name: DS.attr(),
-    hbProblemId: DS.attr()
+    hbProblemId: DS.attr(),
+    content: DS.belongsTo('content'),
+    testcases: DS.hasMany('testcase')
 })

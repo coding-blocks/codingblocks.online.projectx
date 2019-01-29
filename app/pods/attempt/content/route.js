@@ -17,12 +17,12 @@ export default Route.extend({
             // create progress for this
             if (await content.get('progress')) {
                 const progress = await content.get('progress')
-                progress.set("status", "DONE")
+                content.get("contentable") === 'code-challenge' ? progress.set("status", "ACTIVE"):  progress.set("status", "DONE");
                 await progress.save().then(p => content.set('progress', p))
 
             } else  {
                 const newProgress = this.store.createRecord('progress', {
-                    status: 'DONE',
+                    status: content.get('contentable') === 'code-challenge' ? 'ACTIVE' : 'DONE',
                     runAttempt: this.modelFor('attempt'),
                     content
                 })

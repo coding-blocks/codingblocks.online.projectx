@@ -1,5 +1,5 @@
 <div class="c-qna-attempt">
-  <div class="left col-9">
+  <div class="quiz-content col-9">
     <div class="heading p-4">
       <span class="sno">Q{{q}}.</span>
       {{currentQuestion.title}}
@@ -7,7 +7,7 @@
 
     <div class="question p-4">
       <span class="text">
-        {{markdown-to-html currentQuestion.description class="d-inline"}}
+        {{markdown-to-html currentQuestion.description class="d-inline" extensions='katex'}}
       </span>
     </div>
 
@@ -19,7 +19,7 @@
         >
           <div class="circle"></div>
           <div class="text">
-            {{markdown-to-html choice.title}}
+            {{markdown-to-html choice.title extensions='katex'}}
           </div>
         </div>
       {{/each}}
@@ -38,7 +38,7 @@
       {{/if}}
     </div>
   </div>
-  <div class="right col-3">
+  <div class="quiz-status col-3">
     {{!-- <div class="c-clock">
       <div class="item hrs">01</div>
       <div class="seprator">:</div>

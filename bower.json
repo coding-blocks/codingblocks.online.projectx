@@ -1,7 +1,6 @@
 {
   "name": "codingblocks-online",
   "dependencies": {
-    "raven-js": "~3.3",
     "hls.js": "^0.8.9"
   }
 }

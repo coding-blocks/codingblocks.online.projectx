@@ -1,7 +1,7 @@
 import Component from "@ember/component";
 import { alias } from "ember-decorators/object/computed";
 import { service } from "ember-decorators/service";
-import { computed } from "ember-decorators/object";
+import { action, computed } from "ember-decorators/object";
 import { task, timeout } from "ember-concurrency";
 
 export default class CodeChallengeComponent extends Component {
@@ -9,6 +9,7 @@ export default class CodeChallengeComponent extends Component {
   @service ajax;
   @service hbApi;
   @service currentUser;
+  @service store;
   @alias("payload") code;
 
   sourceCode = "";
@@ -17,8 +18,8 @@ export default class CodeChallengeComponent extends Component {
   runError = "";
   language = "cpp";
   classNames = ["height-100"];
-
-  maxPollCount = 20;
+  err = "";
+  isShowingModal = false;
 
   @computed("sourceCode")
   sourceCodeBase64() {
@@ -69,11 +70,12 @@ export default class CodeChallengeComponent extends Component {
     this._super(...arguments);
     const code = this.get("code");
     const run = this.get("run");
+    this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     if (this.get('problemJsonApiPayload') && +this.get('problemJsonApiPayload.data.id') === code.get("hbProblemId")) {
       return
     }
-    this.get("hbApi")
-      .request("problems", {
+    this.get("api")
+      .request("code_challenges/problems", {
         data: {
           contest_id: run.get("contestId"),
           problem_id: code.get("hbProblemId")
@@ -87,22 +89,30 @@ export default class CodeChallengeComponent extends Component {
       });
   }
 
+  @action
+  toggleModal(modalContentType) {
+    this.set("modalContentType", modalContentType)
+    this.toggleProperty('isShowingModal')
+    this.set('err', '')
+  }
+  
   runCodeTask = task(function*(config) {
-    const { submissionId } = yield this.get("hbApi").request("submissions", {
+    this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
+    return yield this.get("api").request("code_challenges/submit", {
       method: "POST",
       data: {
         custom_input: config.input,
         source: config.source,
-        language: config.lang
-      }
+        language: config.lang,
+      },
     });
-    return yield this.get("_pollForSubmissionTask").perform(submissionId);
   });
 
-  submitCodeTask = task(function*(config) {
+  submitCodeTask = task(function * (config) {
+    this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     const code = this.get("code");
     const run = this.get("run");
-    const { submissionId } = yield this.get("hbApi").request("submissions", {
+    const payload = yield this.get("api").request("code_challenges/submit", {
       method: "POST",
       data: {
         contestId: run.get("contestId"),
@@ -111,7 +121,29 @@ export default class CodeChallengeComponent extends Component {
         source: config.source
       }
     });
-    const payload = yield this.get("_pollForSubmissionTask").perform(submissionId);
+
+    if(!payload.error){
+      this.get('api').request('code_challenges/problems',{
+        data: {
+          contest_id: run.get("contestId"),
+          problem_id: code.get("hbProblemId")
+        },
+      }).then(async result=>{
+        result.content = this.get('code.content.id');
+        this.set("problemJsonApiPayload", result);
+
+        const payload = JSON.parse(JSON.stringify(result))
+        this.get('store').unloadAll('problem')
+        this.get('store').pushPayload(payload)
+        const problem = this.get('store').peekAll('problem').objectAt(0)
+        
+        if(await problem.get('mostSuccessfullSubmission.score')==100){
+          const progress = await this.get('code.content').get('progress')
+          progress.set("status", 'DONE')
+          progress.save();
+        }
+      })
+    }
     
     //invalidate leaderboard cache
     const runId = this.get('run.id')
@@ -122,21 +154,40 @@ export default class CodeChallengeComponent extends Component {
     return payload
   });
 
-  _pollForSubmissionTask = task(function*(submissionId) {
-    for (let i = 0; i < this.get("maxPollCount"); i++) {
-      const result = yield this.get("hbApi").request(
-        "submissions/result/" + submissionId,
-        {
-          xhrFields: {
-            withCredentials: true
-          }
-        }
-      );
-      if (result && result.result) {
-        return result;
-      }
-      yield timeout(3000);
+  @action
+  fetchEditorial(){
+    this.get("fetchEditorialTestcases").perform('editorials').then(response=>{
+      const editorial = this.get('store').createRecord('editorial', response.data.attributes)
+      this.set('code.editorial', editorial)
+    });
+  }
+
+  @action
+  fetchTestcases(){
+    this.get("fetchEditorialTestcases").perform('testcases').then(response=>{
+      const testcases = response.data.attributes.urls.map(t => {
+        return this.get('store').createRecord('testcase', { input: t.input, expectedOutput: t['expected-output'] })
+      })
+      this.set('code.testcases', testcases)
+    })
+    
+  }
+
+  fetchEditorialTestcases = task(function *(which){
+    try{
+      this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
+      const run = this.get("run")
+      const code = this.get('code')
+      return yield this.get("api").request(`code_challenges/`+ which +`?contest_id=${run.get("contestId")}&p_id=${code.get("hbProblemId")}&force=true`)
     }
-    return { err: "Cannot Connect to HB" };
-  });
+    catch(err){
+      switch(which){
+        case 'editorials': this.set("err", 'An editorial does not exist for this problem')
+                           break;
+        case 'testcases': this.set("err", 'Testcase unlock is blocked for this problem')
+                          break;                       
+      }
+    }
+  })
+
 }

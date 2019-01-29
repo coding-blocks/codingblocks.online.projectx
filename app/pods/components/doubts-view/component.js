@@ -50,7 +50,7 @@ export default class DoubtsViewComponent extends Component {
       this.set('body', '')
     }).catch(err => {
       doubt.rollbackAttributes();
-      this.set('err', err.errors[0].detail[0]);
+      this.set('err', err.errors[0].detail);
     })
   })
 
