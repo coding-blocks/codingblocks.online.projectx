@@ -1,0 +1,15 @@
+<div class="c-csv-submission">
+  <h2 class="mb-3">{{name}}</h2>
+  <hr class="mb-4">
+  <h2 class="green">
+    {{#if submission.isPending}}
+      Calculating ....
+    {{else}}
+      {{submission.score}}%
+    {{/if}}
+  </h2>
+  <div class="mb-4">Your Answer’s Accuracy</div>
+  <div>
+    <button class="button-solid" {{action showOldSubmissions}}>View Old Submissions</button>
+  </div>
+</div>

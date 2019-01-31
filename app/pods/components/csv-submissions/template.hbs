@@ -6,8 +6,10 @@
         <div class="percentage">
           {{#if submission.isSuccess}}
             {{submission.score}}%
-          {{else}}
+          {{else if submission.isSuccess}}
             <div class="red"> Errored </div>
+          {{else}}
+            <div class="yellow"> Calculating </div>
           {{/if}}
         </div>
         <div class="sub">

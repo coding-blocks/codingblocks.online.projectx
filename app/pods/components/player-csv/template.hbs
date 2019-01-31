@@ -6,7 +6,7 @@
     </div>
     <hr>
     <div class="d-flex align-items-center mt-2 mb-3">
-      <h3 class="mr-3">UPLOAD SOLUTION: </h3> {{file-input onComplete=(action 'onUploadComplete')}}
+      <h3 class="mr-3">UPLOAD SOLUTION: </h3> {{file-input link=url onComplete=(action 'onUploadComplete')}}
      
     </div>
   </div>
@@ -47,21 +47,7 @@
         overlayClass="c-player-modal"
 
     }}
-      <div class="c-csv-submission">
-        <h2 class="mb-3">{{csv.name}}</h2>  
-        <hr class="mb-4">
-        <h2 class="green">
-          {{#if currentSubmission.isPending}}
-            {{currentSubmission.score}}%
-          {{else}}
-            Calculating .... 
-          {{/if}}
-        </h2>
-        <div class="mb-4">Your Answer’s Accuracy</div>
-        <div>
-          <button class="button-solid" {{action (mut showSubmissions) true}}>View Old Submissions</button>
-        </div>
-      </div>
+      {{csv-submission-success name=csv.name submission=currentSubmission showOldSubmissions=(action (mut showSubmissions) true)}}
     {{/modal-dialog}}
 {{/if}}
 
@@ -71,7 +57,6 @@
       translucentOverlay=true
       overlayClass="c-player-modal"
       containerClass="w-33 modal-container"
-
   }}
     {{csv-submissions csvId=csv.id}}
   {{/modal-dialog}}

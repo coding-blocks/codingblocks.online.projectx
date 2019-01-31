@@ -43,6 +43,6 @@ export default class PlayerCsvComponent extends Component {
     yield submission.save()
     this.set('submitSuccess', true)
     this.set('currentSubmission', submission)
-    
+    this.set('url', null)
   })
 }
