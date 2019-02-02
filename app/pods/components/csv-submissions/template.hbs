@@ -1,0 +1,22 @@
+<div class="c-csv-submissions">
+  <h3 class="mb-5">SUBMISSIONS</h3>
+  <div class="submissions">
+    {{#each submissions as |submission|}}
+      <div class="submission">
+        <div class="percentage">
+          {{#if submission.isSuccess}}
+            {{submission.score}}%
+          {{else if submission.isSuccess}}
+            <div class="red"> Errored </div>
+          {{else}}
+            <div class="yellow"> Calculating </div>
+          {{/if}}
+        </div>
+        <div class="sub">
+          <span>{{if submission.isSuccess 'Your Answer’s Accuracy' 'We were unable to judge that submission'}}</span>
+          <span class="time">{{moment-from submission.createdAt}}</span>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
