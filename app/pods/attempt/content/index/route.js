@@ -47,7 +47,7 @@ export default Route.extend({
         this.set('headData.title', model.content.get('title') + " player ")
       }
 
-      if (!model.content.get('payload')) {
+      if (!model.content.get('payload.id')) {
           return ;
       }
 
