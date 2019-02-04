@@ -25,6 +25,12 @@ export default DS.Model.extend({
   topRunAttempt: Ember.computed('runAttempts', function () {
     return this.get('runAttempts').objectAt(0)
   }),
+  isStarted: Ember.computed('start', function () {
+    return this.get('start') < +new Date()/1000
+  }),
+  startString: Ember.computed('start', function () {
+    return new Date(this.get('start')*1000).toISOString().substring(0, 10)
+  }),
   runAttempts: DS.hasMany('run-attempt'),
   announcements: DS.hasMany('announcement'),
   percentComplete: DS.attr(),
