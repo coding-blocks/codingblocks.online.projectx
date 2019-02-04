@@ -51,18 +51,26 @@
               collapsed=(not (eq section.id currentSectionId))}}
               <div class="bellows pb-4 pt-4">
                 {{#each section.contents as |content|}}
-                <div class="row no-gutters pointer">
+                {{#if section.premium}}
+                  <div class="row no-gutters pointer">
                   <div class="li-left col-10">
                     <div class="col-10">
                       {{content.title}}
                     </div>
                   </div>
                   <div class="li-right  col-2">
-                    {{#if (and section.premium (not model.premium))}}
-                    {{!-- <div class="t-align-c"> --}}
                       <i class="fas fa-lock grey"></i>
-                      {{!-- </div> --}}
-                    {{else}}
+                  </div>
+                </div>
+                {{else}}
+                  <div class="row no-gutters pointer {{if content.isDone 'green' 'red'}}">
+                  {{action 'transitionToContent' content.id section.id}}>
+                  <div class="li-left col-10">
+                    <div class="col-10">
+                      {{content.title}}
+                    </div>
+                  </div>
+                  <div class="li-right  col-2">
                     <div class="status-circle">
                       <div class="circle-back"></div>
                       <div class="circle-front {{if content.isActive 'bg-red'}}" {{action 'toggleProgress' content bubbles=false}}></div>
@@ -70,6 +78,7 @@
                     {{/if}}
                   </div>
                 </div>
+                {{/if}}
                 {{/each}}
               </div>
               {{/accordion-head}}
