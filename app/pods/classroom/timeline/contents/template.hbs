@@ -13,7 +13,7 @@
                     <div class="li-left col-10 col-sm-8">
                         <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green' 'red'}}"></div>
                         <div class="col-10">
-                            {{content.payload.name}}
+                            {{content.title}}
                         </div>
                     </div>
                     <div class="li-right col-2 col-sm-4">
@@ -24,7 +24,11 @@
                         {{/if}}
         
                         <div class="status-circle">
-                            <img class="jugaadu-img" src="{{if content.isDone '/images/green.svg' '/images/white.svg'}}" alt="">
+                            {{#if (and section.premium (not model.premium))}}
+                                <i class="fas fa-lock grey"></i>
+                            {{else}}
+                                <img class="jugaadu-img" src="{{if content.isDone '/images/green.svg' '/images/white.svg'}}" alt="">
+                            {{/if}}
                         </div>
         
                     </div>

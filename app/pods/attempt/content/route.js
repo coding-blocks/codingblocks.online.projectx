@@ -5,6 +5,7 @@ export default Route.extend({
     api: inject(),
     currentUser: inject(),
     currentContent: inject(),
+    runAttemptService: inject('run-attempt'),
     model (params) {
         this.get('currentContent').setContentId(params.contentId)
         return this.store.peekRecord('content', params.contentId, {
@@ -13,7 +14,10 @@ export default Route.extend({
         })
     },
     async afterModel (content) {
-        if ( !content.get('isDone') ) {
+        const currentSection = this.store.peekRecord('section', this.paramsFor('attempt').sectionId)
+        const runAttempt = this.store.peekRecord('run_attempt', this.get('runAttemptService.runAttemptId'))
+        const shouldMarkProgress = ! (currentSection.get('premium') && !runAttempt.get('premium'))
+        if ( !content.get('isDone') && shouldMarkProgress) {
             // create progress for this
             if (await content.get('progress')) {
                 const progress = await content.get('progress')
