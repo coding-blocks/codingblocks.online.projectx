@@ -1,2 +1,6 @@
 {{!-- Render a component based upon payload --}}
-{{component componentName payload=payload onVideoCompleted=(action 'transitonToNextContent') tab=tab run=run start=start showFeedback=(unbound showFeedback) onFeedbackSubmit=(action 'submitFeedback')}}
+{{#if payload}}
+  {{component componentName payload=payload onVideoCompleted=(action 'transitonToNextContent') tab=tab run=run start=start showFeedback=(unbound showFeedback) onFeedbackSubmit=(action 'submitFeedback')}}
+{{else}}
+  <h1>Locked!</h1>
+{{/if}}

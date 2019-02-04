@@ -42,37 +42,41 @@ export default Route.extend({
       const sectionId = this.paramsFor('attempt').sectionId
       if (sectionId) {
         const section = this.get('store').peekRecord('section', sectionId)
-        this.set('headData.title', section.get('name') + " | " + model.payload.get('name') + " player ");
+        this.set('headData.title', section.get('name') + " | " + model.content.get('title') + " player ");
       } else {
-        this.set('headData.title', model.payload.get('name') + " player ")
+        this.set('headData.title', model.content.get('title') + " player ")
+      }
+
+      if (!model.content.get('payload')) {
+          return ;
       }
 
       if (model.content.get('contentable') === 'qna') {
         this.transitionTo('attempt.content.quiz', model.content.get('payload.qId'))
       }
 
-        if (model.content.get('contentable') === 'code-challenge') {
-            this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
-            try{
-                let editorialPromise = this.get('api').request(`/code_challenges/editorials?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
-                let testcasePromise = this.get('api').request(`/code_challenges/testcases?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
-                const [editorialPayload, testcasesPayload] = await allSettled([editorialPromise, testcasePromise])
-                
-                if(editorialPayload.state === 'fulfilled'){
-                    const editorialRecord = this.get('store').createRecord('editorial', editorialPayload.value.data.attributes);
-                    model.payload.set('editorial', editorialRecord)
-                }
-                if (testcasesPayload.state === 'fulfilled') {
-                    const testcases = testcasesPayload.value.data.attributes.urls.map(t=>{
-                        return this.get('store').createRecord('testcase', {input: t.input, expectedOutput: t['expected-output']})
-                    })
-                    model.payload.set('testcases', testcases);
-                }
-            }
-            catch(err){
-                console.log(err)
-            }
-            
-        }
+      if (model.content.get('contentable') === 'code-challenge') {
+          this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
+          try{
+              let editorialPromise = this.get('api').request(`/code_challenges/editorials?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
+              let testcasePromise = this.get('api').request(`/code_challenges/testcases?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
+              const [editorialPayload, testcasesPayload] = await allSettled([editorialPromise, testcasePromise])
+              
+              if(editorialPayload.state === 'fulfilled'){
+                  const editorialRecord = this.get('store').createRecord('editorial', editorialPayload.value.data.attributes);
+                  model.payload.set('editorial', editorialRecord)
+              }
+              if (testcasesPayload.state === 'fulfilled') {
+                  const testcases = testcasesPayload.value.data.attributes.urls.map(t=>{
+                      return this.get('store').createRecord('testcase', {input: t.input, expectedOutput: t['expected-output']})
+                  })
+                  model.payload.set('testcases', testcases);
+              }
+          }
+          catch(err){
+              console.log(err)
+          }
+          
+      }
     },
 });
