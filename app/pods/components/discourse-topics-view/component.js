@@ -14,7 +14,7 @@ export default class DiscourseTopicsView extends Component {
     })
   }
 
-  @computed('course.{catgoryId, doubtSubCategoryId}')
+  @computed('course.{catgoryId,doubtSubCategoryId}')
   get redirectLink () {
     const categoryId = this.get('course.categoryId')
     const subCategoryId = this.get('course.doubtSubCategoryId')
