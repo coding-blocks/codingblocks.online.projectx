@@ -16,6 +16,12 @@ export default Component.extend({
   }),
   certificateNotPresent: not('runAttempt.certificate'),
   canGenerate: and('courseCompleted', 'runAttempt.certificateApproved'),
+  requestApprovalTask: task(function *() {
+    yield this.get('api').request(`run_attempts/${this.get('runAttempt.id')}/requestApproval`, {
+      method: 'GET',
+    })
+    this.set('runAttempt.approvalRequested', true)
+  }),
   generateCertificateTask: task(function * () {
     yield this.get('api').request('certificates', {
       method: 'POST',
