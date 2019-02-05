@@ -17,7 +17,7 @@
       <div class="option {{if runAttempt.certificateApproved 'correct'}}">
         <p>Mentor Approval</p>
         {{#if courseCompleted}}
-          {{#if runAttempt.approvalRequested }}
+          {{#if (or runAttempt.approvalRequested runAttempt.certificateApproved) }}
             <div class="button-solid disabled">
               <button>Requested</button>
             </div>
