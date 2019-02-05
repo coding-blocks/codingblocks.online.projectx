@@ -16,17 +16,17 @@
       <div class="option {{if courseCompleted 'correct'}}"> Course Completion: {{ run.completionThreshold }}%+</div>
       <div class="option {{if runAttempt.certificateApproved 'correct'}}">
         <p>Mentor Approval</p>
-        {{#unless courseCompleted}}
-          {{#unless runAttempt.approvalRequested }}
-            <div class="button-solid ml-4" onClick="{{perform requestApprovalTask}}">
-              <button>Request</button>
-            </div>
-          {{else}}
+        {{#if courseCompleted}}
+          {{#if runAttempt.approvalRequested }}
             <div class="button-solid disabled">
               <button>Requested</button>
             </div>
-          {{/unless}}
-        {{/unless}}
+          {{else}}
+            <div class="button-solid ml-4" onClick="{{perform requestApprovalTask}}">
+              <button>Request</button>
+            </div>
+          {{/if}}
+        {{/if}}
       </div>
       <div class="option correct"> Verify your details <a href="https://account.codingblocks.com/users/me"
           target="_blank"> &nbsp; here </a> </div>
