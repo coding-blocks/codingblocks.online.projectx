@@ -20,7 +20,7 @@ export default DS.Model.extend({
   isProgressCompleted: computed("doneContents", function() {
     return this.get("doneContents.length") === this.get("contents.length");
   }),
-  contents: DS.hasMany("content"),
+  contents: DS.hasMany("content", {async: true}),
   run: DS.belongsTo('run'),
   deadline: DS.attr(),
   deadlineDate: computed('deadline', 'run', function(){
