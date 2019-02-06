@@ -19,10 +19,12 @@ export default Route.extend({
         })
     },
     async afterModel (content) {
-        const currentSection = this.store.peekRecord('section', this.paramsFor('attempt').sectionId)
-        const runAttempt = this.store.peekRecord('run_attempt', this.get('runAttemptService.runAttemptId'))
-        const shouldMarkProgress = ! (currentSection.get('premium') && !runAttempt.get('premium'))
-        if ( !content.get('isDone') && shouldMarkProgress) {
+        if(!content.get('payload.id')) {
+            // we don't have content; so a locked page will be shown
+            return ;
+        }
+
+        if ( !content.get('isDone')) {
             // create progress for this
             if (await content.get('progress')) {
                 const progress = await content.get('progress')
