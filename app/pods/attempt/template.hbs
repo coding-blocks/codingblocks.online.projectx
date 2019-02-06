@@ -33,7 +33,7 @@
                     </div>
                   </div>
                   <div class="li-right  col-2">
-                    {{#if (and section.premium (not model.premium))}}
+                    {{#if (not content.payload)}}
                     {{!-- <div class="t-align-c"> --}}
                       <i class="fas fa-lock grey"></i>
                       {{!-- </div> --}}
