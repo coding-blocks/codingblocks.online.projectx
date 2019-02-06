@@ -14,7 +14,20 @@
   
     <div class="checklist">
       <div class="option {{if courseCompleted 'correct'}}"> Course Completion: {{ run.completionThreshold }}%+</div>
-      <div class="option {{if runAttempt.certificateApproved 'correct'}}"> Mentor Approval</div>
+      <div class="option {{if runAttempt.certificateApproved 'correct'}}">
+        <p>Mentor Approval</p>
+        {{#if courseCompleted}}
+          {{#if (or runAttempt.approvalRequested runAttempt.certificateApproved) }}
+            <div class="button-solid disabled">
+              <button>Requested</button>
+            </div>
+          {{else}}
+            <div class="button-solid ml-4" {{action (perform requestApprovalTask)}}>
+              <button>Request</button>
+            </div>
+          {{/if}}
+        {{/if}}
+      </div>
       <div class="option correct"> Verify your details <a href="https://account.codingblocks.com/users/me"
           target="_blank"> &nbsp; here </a> </div>
     </div>
