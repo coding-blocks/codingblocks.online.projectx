@@ -9,8 +9,11 @@ export default Controller.extend({
     currentContent: inject('current-content'),
     currentSectionId: computed.alias('runAttemptService.sectionId'),
     sideBarCollapsed: computed('currentContent',function(){
-        let contentId = this.get('currentContent').getContentId()
-        let content = this.get('store').peekRecord('content', contentId);
+        let content = this.get('currentContent').getContent()
+        // if there is no current content; use these defaults 
+        if (!content) {
+            return { left: false, right: true}
+        }
         return { left: content.get('contentable') === 'code-challenge', right: true }
     }),
     accordionCollapsed: false,

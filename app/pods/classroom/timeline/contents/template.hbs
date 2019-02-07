@@ -8,31 +8,58 @@
             deadline=section.deadlineDate hideDuration=true listType="divided"}}
             <div class="pb-4 pt-4">
                 {{#each section.contents as |content|}}
-                <div class="row no-gutters pointer {{if content.isDone 'green' 'red'}}"
-                    {{action 'transitionToContent' content.id section.id}}>
-                    <div class="li-left col-10 col-sm-8">
-                        <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green' 'red'}}"></div>
-                        <div class="col-10">
-                            {{content.title}}
+                    {{#if (or run.isStarted (not section.premium))}}
+                    <div class="row no-gutters pointer {{if content.isDone 'green' 'red'}}"
+                        {{action 'transitionToContent' content.id section.id}}>
+                        <div class="li-left col-10 col-sm-8">
+                            <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green' 'red'}}"></div>
+                            <div class="col-10">
+                                {{content.title}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="li-right col-2 col-sm-4">
-                        {{#if content.payload.duration}}
-                        <div class="dsp-none-xs {{if content.isDone 'green' 'grey'}}">
-                            {{format-duration content.payload.duration}}
-                        </div>
-                        {{/if}}
-        
-                        <div class="status-circle">
-                            {{#if (and section.premium (not model.premium))}}
-                                <i class="fas fa-lock grey"></i>
-                            {{else}}
-                                <img class="jugaadu-img" src="{{if content.isDone '/images/green.svg' '/images/white.svg'}}" alt="">
+                        <div class="li-right col-2 col-sm-4">
+                            {{#if content.payload.duration}}
+                            <div class="dsp-none-xs {{if content.isDone 'green' 'grey'}}">
+                                {{format-duration content.payload.duration}}
+                            </div>
                             {{/if}}
+            
+                            <div class="status-circle">
+                                {{#if (and section.premium (not model.premium))}}
+                                    <i class="fas fa-lock grey"></i>
+                                {{else}}
+                                    <img class="jugaadu-img" src="{{if content.isDone '/images/green.svg' '/images/white.svg'}}" alt="">
+                                {{/if}}
+                            </div>
+            
                         </div>
-        
                     </div>
-                </div>
+                    {{else}}
+                    <div class="row no-gutters red">
+                        <div class="li-left col-10 col-sm-8">
+                            <div class="col-1 content-icon {{content.iconClass}}-red"></div>
+                            <div class="col-10">
+                                {{content.title}}
+                            </div>
+                        </div>
+                        <div class="li-right col-2 col-sm-4">
+                            {{#if content.payload.duration}}
+                            <div class="dsp-none-xs {{if content.isDone 'green' 'grey'}}">
+                                {{format-duration content.payload.duration}}
+                            </div>
+                            {{/if}}
+            
+                            <div class="status-circle">
+                                {{#if (or (and section.premium (not model.premium)) (not run.isStarted))}}
+                                    <i class="fas fa-lock grey"></i>
+                                {{else}}
+                                    <img class="jugaadu-img" src="{{if content.isDone '/images/green.svg' '/images/white.svg'}}" alt="">
+                                {{/if}}
+                            </div>
+            
+                        </div>
+                    </div>
+                    {{/if}}
                 {{/each}}
             </div>
         

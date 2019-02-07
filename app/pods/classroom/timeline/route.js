@@ -12,7 +12,8 @@ export default Route.extend({
       .query("run-attempt", {
         filter: {
           runId: params.runId
-        }
+        },
+        exclude: 'progresses,quiz_attempts,certificates,csv_submissions,doubts,notes'
       })
       .then(runAttempts => {
         const runAttempt = Ember.get(runAttempts, 'firstObject')
