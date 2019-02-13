@@ -40,6 +40,9 @@ Router.map(function() {
   this.route('certificate', {path: '/certificates/:licenseKey'});
   this.route('404', { path: '/*:' });
   this.route('nagarro', function() {});
+  this.route('mini-cart', function() {
+    this.route('id', {path: '/:runId'});
+  });
 });
 
 export default Router;

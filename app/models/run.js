@@ -64,6 +64,12 @@ export default DS.Model.extend({
       return acc + section.get('duration')
     }, 0)
   }),
+  finalAmount: computed('price', function () {
+    return this.get('price') * 1.18
+  }),
+  tax: computed('price', function () {
+    return this.get('price') * 0.18
+  }),
   ta: DS.hasMany('ta'),
   runRequests: DS.hasMany('run-request')
 })

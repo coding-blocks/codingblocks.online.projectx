@@ -387,14 +387,13 @@
           </div>
         {{else}}
           <div class="button-parent col-4">
-            <a href="#" {{action (perform enrollNowTask run.id)}}>
-                <div class="button-solid">
+            {{#link-to 'mini-cart.id' run.id}}
+              <div class="button-solid">
                     <button>
-                      {{if enrollNowTask.isRunning 'Enrolling...' 'Enroll Now'}}
-                      
+                      Enroll Now
                     </button>
                 </div>
-            </a>
+            {{/link-to}}
           </div>
         {{/if}}
 

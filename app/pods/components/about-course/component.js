@@ -17,30 +17,6 @@ export default Component.extend({
     window.location.href = this.loginUrl
   },
 
-  enrollNowTask: task(function *(runId) {
-    if(this.get('session.isAuthenticated')) {
-      try {
-        yield this.get('api').request(`/runs/${runId}/buy`)
-        window.location.href = env.dukaanUrl
-      } catch (err) {
-        let errorCode;
-
-        if (err.status == 400 && err.payload.err == 'TRIAL_WITHOUT_MOBILE') {
-          errorCode = 'NO_USER_MOBILE_NUMBER'
-        } else {
-          errorCode = 'DUKKAN_ERROR'
-        }
-
-        this.get('router').transitionTo('error', {
-          queryParams: { errorCode }
-        })
-      }
-    }
-    else {
-      this.send('logIn')
-    }
-  }).drop(),
-
   getRatingStats: task(function * (){
     yield this.get('api').request(`/courses/${this.get('course.id')}/rating`)
     .then(response=>{

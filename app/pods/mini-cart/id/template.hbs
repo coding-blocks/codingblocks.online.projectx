@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12 d-flex flex-column justify-content-center">
+          <div class="row align-items-center">
+            <div class="heading-u mb-0">
+              Product you are trying to buy
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="card c-item-card">
+            <div class="row">
+              <div class="item-details col-12 col-sm-12 col-md-6">
+                <div class="header row no-gutters align-items-center">
+                  <div class="item-img col-3">
+                    <img src="{{run.course.logo}}" alt="">
+                  </div>
+                  <div class="heading-d col-9">
+                    <div class="main-h">{{run.course.title}}</div>
+                    <div class="sub-h black">Any meta information</div>
+                  </div>
+                </div>
+
+                <div class="row align-items-center">
+                  <span class="font-lg">Rs {{run.price}}</span>
+                  <span>+18% Tax</span>
+                </div>
+                <div class="line-through">Rs {{run.mrp}}</div>
+
+              </div>
+
+              <div class="quantity-details col-12 col-sm-12 col-md-6">
+                <div class="detail-row row justify-content-between">
+                  <span>Quantity</span>
+                  <span class="total-items">1</span>
+                </div>
+
+                <div class="detail-row row justify-content-between">
+                  <span>Tax</span>
+                  <span>Rs {{run.tax}}</span>
+                </div>
+
+                <div class="detail-row row justify-content-between">
+                  <span>Final Amount</span>
+                  <span>Rs {{run.finalAmount}}</span>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="button-solid ml-5">
+                <button {{action 'swapCart'}}>Add to cart and checkout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12 d-flex flex-column justify-content-center">
+          <div class="row align-items-center">
+            <div class="heading-u mb-0">
+              Product already in cart
+            </div>
+          </div>
+        </div>
+      </div>
+      {{#each dukaanCart.cartItems as |item|}}
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="card c-item-card">
+            <div class="row">
+              <div class="item-details col-12 col-sm-12 col-md-6">
+                <div class="header row no-gutters align-items-center">
+                  <div class="item-img col-3">
+                    <img src="{{item.image_url}}" alt="">
+                  </div>
+                  <div class="heading-d col-9">
+                    <div class="main-h">{{item.productName}}</div>
+                  </div>
+                </div>
+
+                <div class="row align-items-center">
+                  <span class="font-lg">Rs {{item.final_price}}</span>
+                  <span>+{{item.tax_percentage}}% Tax</span>
+                </div>
+                <div class="line-through">Rs {{item.list_price}}</div>
+
+              </div>
+
+              <div class="quantity-details col-12 col-sm-12 col-md-6">
+                <div class="detail-row row justify-content-between">
+                  <span>Quantity</span>
+                  <span class="total-items">{{item.quantity}}</span>
+                </div>
+
+                <div class="detail-row row justify-content-between">
+                  <span>Tax</span>
+                  <span>Rs {{item.tax}}</span>
+                </div>
+
+                <div class="detail-row row justify-content-between">
+                  <span>Final Amount</span>
+                  <span>Rs {{item.amount}}</span>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="button-solid ml-5">
+                <a href="{{dukaanUrl}}" class="white">Proceed to Checkout &gt;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
