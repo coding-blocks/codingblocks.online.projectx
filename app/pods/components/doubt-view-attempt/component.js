@@ -44,10 +44,11 @@ export default class DoubtViewAttemptComponent extends Component{
   }
 
   @action
-  markResolved(){
-    this.set('doubt.status', 'RESOLVED')
-    this.set('doubt.resolvedById', this.get('currentUser.user.id'))
-    this.get('doubt').save();
+  markStatus (status) {
+    this.set('doubt.status', status)
+    if (status == 'RESOLVED')
+      this.set('doubt.resolvedById', this.get('currentUser.user.id'))
+      this.get('doubt').save()
   }
 
   @action

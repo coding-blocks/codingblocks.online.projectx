@@ -23,9 +23,19 @@
     {{/if}}
     <div class="horizontal-half">
       {{#if (eq doubt.status 'PENDING')}}
-      <div class="green">
-        <button {{action 'markResolved'}}><i class="fas fa-check"></i> Mark Resolved</button>
-      </div>
+        <div class="green">
+          <button {{action 'markStatus' 'RESOLVED'}}>
+            <i class="fas fa-check"></i>
+            Mark as Resolved
+          </button>
+        </div>
+      {{else}}
+        <div class="red">
+          <button {{action 'markStatus' 'PENDING'}}>
+            <i class="fas fa-check"></i>
+            Reopen Doubt
+          </button>
+        </div>
       {{/if}}
       {{!-- <div class="button-solid">
         <button>Chat with TA</button>
