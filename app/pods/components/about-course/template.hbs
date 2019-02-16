@@ -294,6 +294,10 @@
 
 {{!-- Available Batches --}}
 
+{{#if showCartModal}}
+  {{cart-dialog dukaanCart=dukaanCart run=runToBuy}}
+{{/if}}
+
 <div class="c-batches">
 <div class="heading-u" id="runs">
   Choose from Available Batches

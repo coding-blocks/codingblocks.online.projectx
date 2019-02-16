@@ -6,10 +6,14 @@ import env from "codingblocks-online/config/environment";
 
 export default Component.extend({
   availableRuns: [],
+  showCartModal: false,
+  runToBuy: null,
+  dukaanCart: null,
 
   loginUrl: `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
   session: inject(),
   api: inject(),
+  store: inject(),
   router: inject(),
   currentUser: inject(),
 
@@ -21,14 +25,30 @@ export default Component.extend({
     if(this.get('session.isAuthenticated')) {
       try {
         yield this.api.request(`/runs/${runId}/buy`)
-        window.location.href = env.dukaanUrl
+        // window.location.href = env.dukaanUrl
       } catch (err) {
         let errorCode;
 
         if (err.status == 400 && err.payload.err == 'TRIAL_WITHOUT_MOBILE') {
           errorCode = 'NO_USER_MOBILE_NUMBER'
+          this.get('router').transitionTo('error', {
+            queryParams: { errorCode }
+          })
         } else {
           errorCode = 'DUKKAN_ERROR'
+          const cart = yield this.get('api').request(`/runs/cart`)
+          console.log(cart)
+          const run = yield this.get('store').queryRecord("run", {
+              custom: {
+                ext: 'url',
+                url: `/${runId}?exclude=courses.*`
+              }
+            })
+          console.log(run.get('course'))
+          this.set('dukaanCart', cart.cartItems[0])
+          this.set('runToBuy', run)
+
+          this.set('showCartModal', true)
         }
 
         this.router.transitionTo('error', {
