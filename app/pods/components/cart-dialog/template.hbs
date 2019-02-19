@@ -1,5 +1,5 @@
 {{#modal-dialog
-  onClose=(action (mut isShowingInstructions) false)
+  onClose=(action 'onClose')
   translucentOverlay=true
 }}
 <div class="container p-4">
@@ -18,30 +18,33 @@
         Existing Cart
       </div>
       <div class="row justify-content-center align-items-center no-gutters">
-        <div class="col-4">
-          <div class="card-image">
+        <div class="col-lg-4 col-md-12">
+          <div class="round-img">
             <img src="{{dukaanCart.image_url}}" alt="">
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-lg-8 col-md-12">
           <p>{{dukaanCart.productName}}</p>
         </div>
         
       </div>
     </div>
     <div class="col-2">
+      <div class="row justify-content-center align-items-center no-gutters">
+        <img src="/images/swap.svg" alt="swap-icon">
+      </div>
     </div>
     <div class="col-5">
       <div class="heading-u">
         New Cart
       </div>
       <div class="row justify-content-center align-items-center no-gutters">
-        <div class="col-4">
-          <div class="card-image">
+        <div class="col-lg-4 col-md-12">
+          <div class="round-img">
             <img src="{{run.course.logo}}" alt="">
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-lg-8 col-md-12">
           <p>{{run.course.title}}</p>
         </div>
         

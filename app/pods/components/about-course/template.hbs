@@ -295,7 +295,7 @@
 {{!-- Available Batches --}}
 
 {{#if showCartModal}}
-  {{cart-dialog dukaanCart=dukaanCart run=runToBuy}}
+  {{cart-dialog dukaanCart=dukaanCart run=runToBuy onClose=(action (mut showCartModal) false)}}
 {{/if}}
 
 <div class="c-batches">

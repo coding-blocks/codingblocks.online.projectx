@@ -37,14 +37,12 @@ export default Component.extend({
         } else {
           errorCode = 'DUKKAN_ERROR'
           const cart = yield this.get('api').request(`/runs/cart`)
-          console.log(cart)
           const run = yield this.get('store').queryRecord("run", {
               custom: {
                 ext: 'url',
                 url: `/${runId}?exclude=courses.*`
               }
             })
-          console.log(run.get('course'))
           this.set('dukaanCart', cart.cartItems[0])
           this.set('runToBuy', run)
 

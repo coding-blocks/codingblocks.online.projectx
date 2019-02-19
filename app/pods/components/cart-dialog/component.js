@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { task } from 'ember-concurrency';
 import { service } from 'ember-decorators/service';
+import { action } from 'ember-decorators/object'
 import env from 'codingblocks-online/config/environment';
 
 export default class extends Ember.Component {
@@ -16,7 +17,12 @@ export default class extends Ember.Component {
   })
 
   didReceiveAttrs() {
-    this.set('dukaanCart', this.get('dukaanCart'))
     this.set('run', this.get('run'))
+    this.set('dukaanCart', this.get('dukaanCart'))
+  }
+
+  @action
+  onClose() {
+    this.get('onClose')()
   }
 }

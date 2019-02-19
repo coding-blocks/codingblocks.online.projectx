@@ -53,3 +53,12 @@ body.centered-modal-showing {
   max-height: 80vh;
   overflow: auto;
 }
+
+.ember-modal-overlay {
+  z-index: 500;
+}
+
+.ember-modal-overlay .round-img {
+  width: 100%;
+  height: 100%;
+}
