@@ -35,7 +35,6 @@ export default Component.extend({
             queryParams: { errorCode }
           })
         } else {
-          errorCode = 'DUKKAN_ERROR'
           const cart = yield this.get('api').request(`/runs/cart`)
           const run = yield this.get('store').queryRecord("run", {
               custom: {
