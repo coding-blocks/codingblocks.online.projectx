@@ -20,7 +20,7 @@ export default Route.extend({
     }
 
     let section = run.get("sections").find(section => {
-      return !section.get("isProgressCompleted") && (runAttempt.get('premium') || !(section.get('premium')));
+      return !section.get("isProgressCompleted") && ((runAttempt.get('premium')&&(run.get('isStarted'))) || !(section.get('premium')));
     });
     let content ;
     if (!section || !section.id) {
