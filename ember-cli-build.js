@@ -10,7 +10,7 @@ module.exports = function(defaults) {
     },
     sourcemaps: {
       enabled: true,
-      extensions: ['js', 'css']
+      extensions: ['js']
     },
     ace: {
       themes: ['ambiance', 'chaos', 'monokai', 'solarized_dark'],
@@ -22,9 +22,6 @@ module.exports = function(defaults) {
       plugins: [
         'transform-object-rest-spread'
       ]
-    },
-    minifyCSS: {
-      enabled: false
     }
   });
 
