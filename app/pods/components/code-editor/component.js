@@ -24,6 +24,12 @@ export default class EditorClass extends Component {
       source: ""
     },
     {
+      name: "Python 3",
+      code: "py3",
+      mode: "ace/mode/python",
+      source: ""
+    },
+    {
       name: "Node",
       code: "js",
       mode: "ace/mode/javascript",

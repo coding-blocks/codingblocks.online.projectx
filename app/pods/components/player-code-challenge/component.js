@@ -47,6 +47,7 @@ export default class CodeChallengeComponent extends Component {
       cpp: true,
       c: true,
       py2: true,
+      py3: true,
       csharp: true,
       js: true
     };
