@@ -22,6 +22,9 @@ module.exports = function(defaults) {
       plugins: [
         'transform-object-rest-spread'
       ]
+    },
+    minifyCSS: {
+      enabled: false
     }
   });
 
