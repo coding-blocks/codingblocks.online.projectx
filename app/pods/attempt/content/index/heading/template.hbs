@@ -16,7 +16,9 @@
       <button {{action 'transitionToDashboard'}}> &#60; Go to Dashboard</button>
     </div>
     <div class="col-md-6 d-flex justify-content-end align-items-center dsp-none-sm">
-      <button class="red" {{action 'toggleSideBar'}}>X Ask Doubts</button>
+      <button class="red" {{action 'toggleSideBar'}}> 
+        <i class="{{if attemptController.sideBarCollapsed.right 'fas fa-bars' 'far fa-times-circle'}}"></i> Ask Doubts
+      </button>
     </div>
   </div>
 </div>
