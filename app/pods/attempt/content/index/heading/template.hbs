@@ -17,7 +17,10 @@
     </div>
     <div class="col-md-6 d-flex justify-content-end align-items-center dsp-none-sm">
       <button class="red" {{action 'toggleSideBar'}}> 
-        <i class="{{if attemptController.sideBarCollapsed.right 'fas fa-question fa-2x' 'far fa-times-circle'}}"></i> Ask Doubts
+        {{#unless attemptController.sideBarCollapsed.right}}
+          <i class="far fa-times-circle"></i>
+        {{/unless}}
+        Ask Doubts
       </button>
     </div>
   </div>
