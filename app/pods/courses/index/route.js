@@ -40,7 +40,6 @@ export default class CoursesRouter extends Route {
 
   setupController(controller, model) {
     controller.set('courses', model.toArray())
-    controller.set("nextOffset", model.get('meta').pagination.nextOffset)
     controller.set("count", model.get('meta').pagination.count)
 
   }
