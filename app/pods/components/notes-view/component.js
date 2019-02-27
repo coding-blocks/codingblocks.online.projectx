@@ -29,10 +29,11 @@ export default class NotesViewComponent extends Component {
 
     const note = store.createRecord('note', {
       text: this.get('newNoteText'),
-      runAttempt: this.get('runAttempt'),
       content,
       duration
     })
+
+    note.set('runAttempt', this.get('runAttempt'))
 
     try {
       yield note.save()
