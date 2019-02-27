@@ -57,7 +57,7 @@ export default DS.Model.extend({
       enrollmentEnd = this.get ('enrollmentEnd'),
       now = Math.floor (moment.now () / 1000)
     ;
-    return (enrollmentStart <= now) && (now < enrollmentEnd)
+    return (enrollmentStart <= now) && (now < enrollmentEnd) && !this.get('unlisted')
   }),
   totalDuration: computed ('sections.@each.contents.@each', function () {
     return this.get('sections').reduce((acc, section) => {
