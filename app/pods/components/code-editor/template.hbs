@@ -103,13 +103,13 @@
             <div class="input-box col-md-12">
               {{#if isRunOutput}}
                 {{#if runCodeTask.last.value.error}}
-                  <code>{{base64 'decode' runCodeTask.last.value.error}}</code>
+                  <pre>{{base64 'decode' runCodeTask.last.value.error}}</pre>
                 {{else if runCodeTask.last.value.data}}
-                  <code>{{base64 'decode' runCodeTask.last.value.data.output}}</code>
+                  <pre>{{base64 'decode' runCodeTask.last.value.data.output}}</pre>
                 {{/if}}
               {{else}}
                 {{#if submitCodeTask.last.value.error}}
-                  <code>{{base64 'decode' submitCodeTask.last.value.error}}</code>
+                  <pre>{{base64 'decode' submitCodeTask.last.value.error}}</pre>
                 {{else if submitCodeTask.last.value.data}}
                   <code>
                     {{#each submitCodeTask.last.value.data.testcases as |testcase index|}}
