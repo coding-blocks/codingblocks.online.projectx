@@ -1,5 +1,5 @@
-<div class="input-search nav-search">
-  {{input type="text" placeholder="Search Contents.." value=qs key-press=(perform searchTask) focusIn=(action 'showResult') focusOut=(action 'hideResult') class="dsp-none-sm"}}
+<div class="input-search nav-search dsp-none-sm">
+  {{input type="text" placeholder="Search Contents.." value=qs key-press=(perform searchTask) focusIn=(action 'showResult') focusOut=(action 'hideResult')"}}
   <img src="/images/searchicon.png" alt="search">
 
   {{#unless hideResultsBox}}
