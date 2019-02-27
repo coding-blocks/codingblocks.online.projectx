@@ -1,11 +1,12 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 import $ from 'jquery';
 import { task } from 'ember-concurrency';
 import env from "codingblocks-online/config/environment";
 
 export default Component.extend({
+  availableRuns: [],
+
   loginUrl: `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
   session: inject(),
   api: inject(),
@@ -15,10 +16,6 @@ export default Component.extend({
   _redirectToOneauth () {
     window.location.href = this.loginUrl
   },
-
-  availableRuns: computed('course.runs', function() {
-    return this.get('course.runs').filter (run => run.get('isAvailable'))
-  }),
 
   enrollNowTask: task(function *(runId) {
     if(this.get('session.isAuthenticated')) {
@@ -62,6 +59,17 @@ export default Component.extend({
     goToTimeline (runId) {
       this.get('router').transitionTo(`/classroom/course/${this.get('course.id')}/run/${runId}`)
     }
+  },
+
+  init () {
+    this._super (...arguments)
+
+    let runs = this.get ('course.runs'),
+      availableRuns = runs.filter (run => run.get ('isAvailable'))
+    ;
+
+    this.set ('availableRuns', availableRuns)
+
   },
 
   didReceiveAttrs(){
