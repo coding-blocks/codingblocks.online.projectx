@@ -16,7 +16,12 @@
       <button {{action 'transitionToDashboard'}}> &#60; Go to Dashboard</button>
     </div>
     <div class="col-md-6 d-flex justify-content-end align-items-center dsp-none-sm">
-      <button class="red" {{action 'toggleSideBar'}}>X Ask Doubts</button>
+      <button class="red" {{action 'toggleSideBar'}}> 
+        {{#unless attemptController.sideBarCollapsed.right}}
+          <i class="far fa-times-circle"></i>
+        {{/unless}}
+        Ask Doubts
+      </button>
     </div>
   </div>
 </div>
