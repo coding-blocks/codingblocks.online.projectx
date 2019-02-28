@@ -15,14 +15,4 @@ export default class extends Ember.Component {
     yield this.get('api').request(`/runs/${runId}/buy`);
     window.location.href = this.get('dukaanUrl')
   })
-
-  didReceiveAttrs() {
-    this.set('run', this.get('run'))
-    this.set('dukaanCart', this.get('dukaanCart'))
-  }
-
-  @action
-  onClose() {
-    this.get('onClose')()
-  }
 }
