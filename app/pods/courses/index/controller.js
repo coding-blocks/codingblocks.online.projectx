@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
   }),
 
   actions:{
-    loadMore: function() {
+    loadMore () {
       this.set('limit', Math.min(this.get('limit') + 9, this.get('count')))
       this.get('taskMoreCourses').perform()
     }
