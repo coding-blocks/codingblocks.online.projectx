@@ -25,7 +25,7 @@ export default Component.extend({
     if(this.get('session.isAuthenticated')) {
       try {
         yield this.api.request(`/runs/${runId}/buy`)
-        // window.location.href = env.dukaanUrl
+        window.location.href = env.dukaanUrl
       } catch (err) {
         let errorCode;
 
