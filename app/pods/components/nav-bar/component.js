@@ -12,8 +12,26 @@ export default class navBarComponent extends Component {
     @bool('organization')  isOrgView
     showSidebar = false
 
+    activeTab = null
+
     @action
     toggleSidebar () {
       this.toggleProperty('showSidebar')
+    }
+
+    @action
+    toggleNotification() {
+      if (this.get('activeTab') === 'notification')
+        this.set('activeTab', null)
+      else
+        this.set('activeTab', 'notification')
+    }
+
+    @action
+    toggleCart() {
+      if (this.get('activeTab') === 'cart')
+        this.set('activeTab', null)
+      else
+        this.set('activeTab', 'cart')
     }
 }

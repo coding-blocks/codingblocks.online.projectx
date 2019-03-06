@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { action } from '@ember-decorators/object'
+import { action, computed } from '@ember-decorators/object'
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember-decorators/service';
 
@@ -12,7 +12,6 @@ export default class NotificationDropdownComponent extends Component {
   @service store
   @service currentUser
 
-  active = false
   notifications = []
   unreadNotifications = true
 
@@ -35,7 +34,7 @@ export default class NotificationDropdownComponent extends Component {
 
   didInsertElement() {
     this.$(document).on("click", e => {
-      this.set('active', false)
+      this.set('activeTab', false)
     });
 
     this.$('#notification-icon,#notification-box').on("click", e => {
@@ -67,6 +66,11 @@ export default class NotificationDropdownComponent extends Component {
     this.set ('notifications', notifications)
   }
 
+  @computed('activeTab')
+  showDialog() {
+    return this.get('activeTab') === 'notification'
+  }
+
   isUnread (notification) {
     let id = notification.get ('id'),
       currentUser = this.get ('currentUser'),
@@ -74,12 +78,6 @@ export default class NotificationDropdownComponent extends Component {
     ;
 
     return (lastReadNotificationID < id)
-  }
-
-  @action
-  toggle () {
-    this.get ('loadNotifications').perform ()
-    this.toggleProperty('active')
   }
 
   @action

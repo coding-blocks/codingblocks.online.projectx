@@ -1,0 +1,32 @@
+<div onclick={{action toggleAction}} id="cart-icon">
+  {{#if cartItem}}
+    <span class="notify-dot new"></span>
+  {{/if}}
+	<i class="fas fa-shopping-cart"></i>
+</div>
+
+<div class="dropdown-ul c-notification {{if showDialog 'display-block'}}" id="cart-box">
+  {{#if cartItem}}
+    <a href="#" target="_blank">
+      <div class="dropdown-li row">
+        <div class="notify-type col-2 justify-content-center align-items-center">
+          <div class="w-100">
+            <img src="{{ cartItem.image_url }}" alt="">
+          </div>
+        </div>
+        <div class="notify-text col-10">{{ cartItem.productName }}</div>
+      </div>
+    </a>
+    <a href="{{ dukaanUrl }}" target="_blank">
+      <div class="row justify-content-end mx-4">
+        <button class="button-solid">Checkout</button>
+      </div>
+    </a>
+  {{else}}
+    <a href="#" target="_blank">
+      <div class="dropdown-li row">
+        <div class="notify-text font-xs col-12">Your Cart is empty</div>
+      </div>
+    </a>
+  {{/if}}
+</div>
