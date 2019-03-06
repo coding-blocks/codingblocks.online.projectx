@@ -7,25 +7,38 @@
 
 <div class="dropdown-ul c-notification {{if showDialog 'display-block'}}" id="cart-box">
   {{#if cartItem}}
-    <a href="#" target="_blank">
-      <div class="dropdown-li row">
-        <div class="notify-type col-2 justify-content-center align-items-center">
-          <div class="w-100">
-            <img src="{{ cartItem.image_url }}" alt="">
-          </div>
+    <div class="dropdown-li row align-items-center">
+      <div class="col-3 justify-content-center">
+        <div class="w-100 round-image">
+          <img src="{{ cartItem.image_url }}" alt="">
         </div>
-        <div class="notify-text col-10">{{ cartItem.productName }}</div>
       </div>
-    </a>
-    <a href="{{ dukaanUrl }}" target="_blank">
-      <div class="row justify-content-end mx-4">
-        <button class="button-solid">Checkout</button>
+      <div class="col-9 align-">
+        <div class="row">
+          {{ cartItem.productName }}
+        </div>
+        <div class="row">
+          Rs {{ cartItem.final_price }}
+          <strike class="grey ml-2 font-xs">Rs {{ cartItem.list_price }}</strike>
+        </div>
       </div>
-    </a>
+    </div>
+    <div class="row m-4 align-items-center">
+      <div class="col font-xs">
+          <button onclick={{action (perform clearCartTask)}}>X Remove Product</button>
+      </div>
+      <div class="col">
+        <a href="{{ dukaanUrl }}">
+          <button class="button-solid">Checkout</button>
+        </a>
+      </div>
+    </div>
   {{else}}
     <a href="#" target="_blank">
-      <div class="dropdown-li row">
-        <div class="notify-text font-xs col-12">Your Cart is empty</div>
+      <div class="dropdown-li row align-items-center">
+        <div class="col-12">
+          Your Cart is empty
+        </div>
       </div>
     </a>
   {{/if}}

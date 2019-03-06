@@ -33,10 +33,6 @@ export default class NotificationDropdownComponent extends Component {
   }
 
   didInsertElement() {
-    this.$(document).on("click", e => {
-      this.set('activeTab', false)
-    });
-
     this.$('#notification-icon,#notification-box').on("click", e => {
       e.stopPropagation();
     })

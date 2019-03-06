@@ -19,6 +19,13 @@ export default class navBarComponent extends Component {
       this.toggleProperty('showSidebar')
     }
 
+    didInsertElement () {
+      this._super(...arguments)
+      this.$(document).on("click", e => {
+        this.set('activeTab', false)
+      });
+    }
+
     @action
     toggleNotification() {
       if (this.get('activeTab') === 'notification')

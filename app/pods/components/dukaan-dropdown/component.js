@@ -5,7 +5,6 @@ import { service } from 'ember-decorators/service';
 import env from 'codingblocks-online/config/environment';
 
 export default class DukaanDropdown extends Component {
-  @service store
   @service api
 
   cartItem = null
@@ -19,10 +18,6 @@ export default class DukaanDropdown extends Component {
   }
 
   didInsertElement() {
-    this.$(document).on("click", e => {
-      this.set('activeTab', false)
-    });
-
     this.$('#cart-icon,#cart-box').on("click", e => {
       e.stopPropagation();
     })
@@ -35,6 +30,7 @@ export default class DukaanDropdown extends Component {
   @computed('activeTab')
   showDialog() {
     return this.get('activeTab') === 'cart'
+    // return true
   }
 
   fetchCart = task(function *() {
@@ -42,7 +38,13 @@ export default class DukaanDropdown extends Component {
       const cart = yield this.get('api').request('/runs/cart')
       this.set('cartItem', cart.cartItems[0])
     } catch (err) {
+      this.set('cartIttems', null)
     }
+  })
+
+  clearCartTask = task(function *() {
+    yield this.get('api').request('/runs/clear_cart')
+    this.set('cartItem', false)
   })
 
 }
