@@ -8,6 +8,7 @@ export default Mixin.create({
   session: service(),
   currentUser: service(),
   headData: service(),
+  metrics: service(),
 
   userPageviewToGA: on('didTransition', function() {
     let page = this.url;
@@ -23,6 +24,8 @@ export default Mixin.create({
         page: page,
         title: title
       });
+
+      this.get('metrics').trackPage({ page, title });
     }
   })
 
