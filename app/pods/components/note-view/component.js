@@ -1,8 +1,8 @@
 import { getOwner } from '@ember/application';
 import Component from '@ember/component'
-import { action } from 'ember-decorators/object'
-import { service } from 'ember-decorators/service'
-import { task } from 'ember-concurrency'
+import { action } from '@ember-decorators/object'
+import { inject as service } from '@ember-decorators/service';
+import { dropTask } from 'ember-concurrency-decorators';
 
 export default class NoteViewComponent extends Component {
   @service api
@@ -11,18 +11,20 @@ export default class NoteViewComponent extends Component {
   isEditing = false
   deleted = false
 
-  saveNoteTask = task(function * () {
+  @dropTask
+  *saveNoteTask () {
     yield this.get('note').save()
     this.set("isEditing", false)
-  }).drop()
+  }
 
-  deleteNote = task(function * () {
+  @dropTask
+  *deleteNote () {
     yield this.get('api').request('/notes/'+ this.get('note.id'), {
       method: 'DELETE',
     })
     this.get('note').deleteRecord()
     this.set('deleted', true)
-  }).drop()
+  }
 
   @action
   toggleEdit () {

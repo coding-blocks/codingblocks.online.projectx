@@ -10,8 +10,8 @@ export default Controller.extend({
   tab: "problem",
   start: 0,
 
-  componentName: computed("model.contentable", function() {
-    const contentable = this.get("model.contentable");
+  componentName: computed("content.contentable", function() {
+    const contentable = this.get("content.contentable");
 
     switch (contentable) {
       case "lecture":

@@ -1,6 +1,5 @@
-import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
-import { service } from 'ember-decorators/service'
+import { inject as service } from '@ember-decorators/service';
 
 export default class CoursesRouter extends Route {
   @service currentUser
