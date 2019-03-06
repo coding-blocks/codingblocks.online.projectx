@@ -7,13 +7,13 @@ export default DS.Model.extend({
   premium: DS.attr(),
   end: DS.attr(),
   endDate: computed('end', function(){
-    return moment.unix(this.get('end')).toDate();
+    return moment.unix(this.end).toDate();
   }),
   revoked: DS.attr(),
   certificateApproved: DS.attr(),
   approvalRequested: DS.attr('boolean'),
   isExpired: computed('end', function () {
-    return this.get('end') < +new Date()/1000
+    return this.end < +new Date()/1000;
   }),
   run: DS.belongsTo('run'),
   user: DS.belongsTo('user'),

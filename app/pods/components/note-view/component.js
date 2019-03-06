@@ -1,3 +1,4 @@
+import { getOwner } from '@ember/application';
 import Component from '@ember/component'
 import { action } from 'ember-decorators/object'
 import { service } from 'ember-decorators/service'
@@ -50,7 +51,7 @@ export default class NoteViewComponent extends Component {
 
     if (transition.isActive) {
       // if we are already at this route, force refresh it 
-      Ember.getOwner(this).lookup(`route:attempt.content`).refresh()
+      getOwner(this).lookup(`route:attempt.content`).refresh()
     }
     
   }

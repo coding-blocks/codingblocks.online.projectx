@@ -1,10 +1,11 @@
+import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
 import DS from 'ember-data';
 
-const { NotFoundError } = DS; 
+const { NotFoundError } = DS;
 
 export default Route.extend({
-  headData: Ember.inject.service(),
+  headData: service(),
   beforeModel () {
       window.scrollTo(0,0);
     },

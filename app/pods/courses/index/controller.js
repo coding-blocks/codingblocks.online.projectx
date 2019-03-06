@@ -1,9 +1,9 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import { task } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 import { alias }  from '@ember/object/computed';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   queryParams: ['limit', 'offset', 'org'],
   limit: 9,
   offset: 0,
@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
   organization: alias('currentUser.organization'),
   taskMoreCourses: task(function * () {
     const extraWhere = {}
-    const organization = this.get('organization') || this.get('org')
+    const organization = this.organization || this.org
     
     if (organization) {
       extraWhere.organization = organization
@@ -25,17 +25,17 @@ export default Ember.Controller.extend({
         ...extraWhere
       },
       page:{
-        limit: this.get('limit'),
-        offset: this.get('offset')
+        limit: this.limit,
+        offset: this.offset
       }
     })
-    this.get('courses').addObjects(nextCourses)
+    this.courses.addObjects(nextCourses)
   }),
 
   actions:{
     loadMore () {
-      this.set('limit', Math.min(this.get('limit') + 9, this.get('count')))
-      this.get('taskMoreCourses').perform()
+      this.set('limit', Math.min(this.limit + 9, this.count))
+      this.taskMoreCourses.perform()
     }
   }
 })

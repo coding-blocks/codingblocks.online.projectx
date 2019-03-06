@@ -1,3 +1,4 @@
+import { alias } from '@ember/object/computed';
 import Controller from "@ember/controller";
 import { computed } from "@ember/object";
 import { inject as service } from '@ember/service';
@@ -27,15 +28,15 @@ export default Controller.extend({
         return "player-csv"
     }
   }),
-  course: computed.alias('runAttempt.run.course'),
-  run: computed.alias('runAttempt.run'),
+  course: alias('runAttempt.run.course'),
+  run: alias('runAttempt.run'),
   showFeedback: computed('content', function() {
     return !this.get('content.isFeedbackDone')
   }),
   actions: {
     toggleSideBar(){
-      this.get('attemptController').toggleProperty('sideBarCollapsed.right')
-      this.get('attemptController').set('sideBarCollapsed.left', true);
+      this.attemptController.toggleProperty('sideBarCollapsed.right')
+      this.attemptController.set('sideBarCollapsed.left', true);
     },
     transitionToDashboard() {
       this.transitionToRoute(
@@ -45,13 +46,13 @@ export default Controller.extend({
       );
     },
     async transitonToNextContent() {
-      let section = await this.get('store').peekRecord('section', this.get('sectionId'));
+      let section = await this.store.peekRecord('section', this.sectionId);
       let nextContent = null;
 
 
       const indexOfThisContent = section
         .get("contents")
-        .indexOf(this.get("content"));
+        .indexOf(this.content);
 
       if (indexOfThisContent === section.get("contents.length") - 1) {
         const indexOfThisSection = this.get("runAttempt.run.course.sections").indexOf(section);

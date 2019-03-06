@@ -3,7 +3,7 @@ import { service } from 'ember-decorators/service'
 import { action } from 'ember-decorators/object'
 import { filterBy } from '@ember/object/computed';
 import { computed } from 'ember-decorators/object';
-import {task} from 'ember-concurrency';
+import { task } from 'ember-concurrency';
 
 
 export default class DoubtsViewComponent extends Component {

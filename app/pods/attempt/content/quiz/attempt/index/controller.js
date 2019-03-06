@@ -11,7 +11,7 @@ export default Controller.extend({
   store: service(),
   api: service(),
   getQuestionTask: task(function * (id) {
-    const question = yield this.get('store').findRecord('question', id, {
+    const question = yield this.store.findRecord('question', id, {
       include: 'choices',
       reload: true
     })
@@ -32,11 +32,11 @@ export default Controller.extend({
     return question
   }),
   currentQuestion: computed('q', function () {
-    const question = this.get('questions').objectAt(this.get('q')-1)
+    const question = this.questions.objectAt(this.q-1)
 
     return DS.PromiseObject.create({
-      promise: this.get('getQuestionTask').perform(question.id)
-    })
+      promise: this.getQuestionTask.perform(question.id)
+    });
   }),
 
   markChoice: task( function *(question, choice) {
@@ -67,7 +67,7 @@ export default Controller.extend({
     }
 
     this.set('quizAttempt.submission', [...submission])
-    yield this.get('quizAttempt').save()
+    yield this.quizAttempt.save()
 
     
   }),
@@ -81,10 +81,10 @@ export default Controller.extend({
     },
     submitQuiz () {
       const quizAttemptId = this.get('quizAttempt.id')
-      this.get('api').request(`/quiz_attempts/${quizAttemptId}/submit`, {
+      this.api.request(`/quiz_attempts/${quizAttemptId}/submit`, {
         method: 'POST'
       }).then(response => {
-        this.get('store').pushPayload(response)
+        this.store.pushPayload(response)
         this.transitionToRoute('attempt.content.quiz.attempt.done')
       })
     }

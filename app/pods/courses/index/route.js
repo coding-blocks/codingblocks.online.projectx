@@ -1,3 +1,4 @@
+import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
 import { service } from 'ember-decorators/service'
 
@@ -12,7 +13,7 @@ export default class CoursesRouter extends Route {
 
   constructor() {
     super()
-    this.headData = Ember.inject.service()
+    this.headData = service()
   }
 
   model(params) {

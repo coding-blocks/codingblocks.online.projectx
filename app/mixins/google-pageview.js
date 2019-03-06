@@ -1,16 +1,19 @@
-import Ember from 'ember';
+import { get } from '@ember/object';
+import { on } from '@ember/object/evented';
+import { inject as service } from '@ember/service';
+import Mixin from '@ember/object/mixin';
 import ENV from '../config/environment';
 
-export default Ember.Mixin.create({
-  session: Ember.inject.service(),
-  currentUser: Ember.inject.service(),
-  headData: Ember.inject.service(),
+export default Mixin.create({
+  session: service(),
+  currentUser: service(),
+  headData: service(),
 
-  userPageviewToGA: Ember.on('didTransition', function() {
-    let page = this.get('url');
+  userPageviewToGA: on('didTransition', function() {
+    let page = this.url;
     let title = this.get('headData.title');
 
-    if (Ember.get(ENV, 'googleAnalytics.webPropertyId') != null) {
+    if (get(ENV, 'googleAnalytics.webPropertyId') != null) {
       if(this.get('session.isAuthenticated')){
         let userId = this.get('currentUser.user.oneauthId')
         window['ga']('set', 'userId', userId);

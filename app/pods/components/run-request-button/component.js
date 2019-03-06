@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import {inject as service} from '@ember/service';
+import { inject as service } from '@ember/service';
 import { alias, equal }  from '@ember/object/computed';
 import { forceLogin } from 'codingblocks-online/utils/session'
 
@@ -18,8 +18,8 @@ export default Component.extend({
         return forceLogin()
       }
 
-      const request = this.get('store').createRecord('run-request', {
-        run: this.get('run'),
+      const request = this.store.createRecord('run-request', {
+        run: this.run,
         user: this.get('currentUser.user')
       })
       request.save()

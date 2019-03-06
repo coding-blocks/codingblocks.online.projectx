@@ -12,7 +12,7 @@ export default Route.extend({
         return section.get('contents')
     },
     model (params) {
-        this.get('currentContent').setContentId(params.contentId)
+        this.currentContent.setContentId(params.contentId)
         return this.store.peekRecord('content', params.contentId, {
             include: 'lecture,video,document,code_challenge',
             reload: true
@@ -41,7 +41,7 @@ export default Route.extend({
             }
         }
         if (content.get('contentable') === 'code-challenge') {
-            const response = await this.get('api').request('hb/jwt')
+            const response = await this.api.request('hb/jwt')
             this.set('currentUser.user.hackJwt', response.jwt)
         }
     }

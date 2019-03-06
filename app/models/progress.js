@@ -5,13 +5,13 @@ export default DS.Model.extend({
   status: DS.attr(),
   feedbackStatus: DS.attr(),
   isDone: computed('status', function () {
-    return this.get('status') === 'DONE'
+    return this.status === 'DONE';
   }),
   isActive: computed('status', function(){
-    return this.get('status') === 'ACTIVE'
+    return this.status === 'ACTIVE';
   }),
   isFeedbackDone: computed('feedbackStatus', function() {
-    return !(this.get('feedbackStatus') == null)
+    return !(this.feedbackStatus == null);
   }),
   runAttempt: DS.belongsTo('runAttempt'),
   content: DS.belongsTo('content'),

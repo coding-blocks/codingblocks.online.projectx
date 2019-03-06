@@ -1,10 +1,11 @@
+import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
 import env from "codingblocks-online/config/environment";
 
 export default Route.extend({
   loginUrl : `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
-  session : Ember.inject.service(),
-  api: Ember.inject.service(),
+  session : service(),
+  api: service(),
   queryParams:{
     transaction_id:{
       refreshModel: true
@@ -15,7 +16,7 @@ export default Route.extend({
   },
   model(params) {
     if(this.get('session.isAuthenticated')){
-      return this.get('api').request('/run_attempts', {
+      return this.api.request('/run_attempts', {
         method: 'POST',
         data: {
           transaction_id: params.transaction_id,
@@ -29,9 +30,9 @@ export default Route.extend({
             errorCode: 'PAYMENT_FAILED'
           }
         })
-      })
+      });
     }else{
-      window.location.href = this.get('loginUrl')
+      window.location.href = this.loginUrl
     }
   }
 });

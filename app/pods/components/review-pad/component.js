@@ -3,8 +3,8 @@ import EmberObject, { computed } from '@ember/object';
 
 export default Component.extend({
   circleClassNames: computed('submission', function () {
-    const submission = this.get('submission')
-    return this.get('questions').map(question => {
+    const submission = this.submission
+    return this.questions.map(question => {
       if (!Array.isArray(submission)) {
         return ''
       }
@@ -15,6 +15,6 @@ export default Component.extend({
       } else {
         return 'bg-green'
       }
-    })
+    });
   })
 });
