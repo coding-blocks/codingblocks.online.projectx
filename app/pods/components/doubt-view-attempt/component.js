@@ -1,8 +1,9 @@
+import { getOwner } from '@ember/application';
 import Component from '@ember/component';
-import { task } from 'ember-concurrency';
-import { service } from 'ember-decorators/service';
+import { restartableTask } from 'ember-concurrency-decorators';
+import { inject as service } from '@ember-decorators/service';
 import env from 'codingblocks-online/config/environment';
-import { action } from 'ember-decorators/object'
+import { action } from '@ember-decorators/object'
 import { filterBy } from '@ember/object/computed';
 import Router from '../../../router';
 
@@ -17,7 +18,8 @@ export default class DoubtViewAttemptComponent extends Component{
 
   existingComments = filterBy('comments', 'isNew', false)
 
-  commentTask = task(function * (){
+  @restartableTask
+  *commentTask () {
     if (this.get('commentBody.length') < 20) {
       return this.set('err', 'Comment length must be atleast 20 characters.')
     }
@@ -36,7 +38,7 @@ export default class DoubtViewAttemptComponent extends Component{
       comment.rollbackAttributes();
       return this.set('err', err.errors[0].detail);
     })
-  })
+  }
 
   @action
   comment(){
@@ -64,7 +66,7 @@ export default class DoubtViewAttemptComponent extends Component{
 
     if (transition.isActive) {
       // if we are already at this route, force refresh it 
-      Ember.getOwner(this).lookup(`route:attempt.content`).refresh()
+      getOwner(this).lookup(`route:attempt.content`).refresh()
     }
   }
 }

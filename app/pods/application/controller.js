@@ -1,16 +1,16 @@
 import Controller from '@ember/controller';
-import { computed } from 'ember-decorators/object';
-import { or, alias } from 'ember-decorators/object/computed';
-import { service } from 'ember-decorators/service';
+import { computed } from '@ember-decorators/object';
+import { or, alias } from '@ember-decorators/object/computed';
+import { inject as service } from '@ember-decorators/service';
 
-export default class  ApplicationController extends Controller {
+export default class ApplicationController extends Controller {
   @service router
   @computed ('router.currentRouteName')
-  isInsideAttemptRoute () {
+  get isInsideAttemptRoute () {
     return ['attempt'].includes(this.get('router.currentRouteName').split('.')[0])
   }
   @computed ('router.currentRouteName')
-  isInsidePlayer () {
+  get isInsidePlayer () {
     return ['player'].includes(this.get('router.currentRouteName').split('.')[0])
   }
 

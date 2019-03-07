@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { action, computed } from 'ember-decorators/object'
+import { action, computed } from '@ember-decorators/object'
 import { isBlank } from '@ember/utils'
 
 export default class AccordionHeadComponent extends Component {

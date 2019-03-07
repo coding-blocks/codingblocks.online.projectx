@@ -20,7 +20,7 @@ export default Component.extend({
   enrollNowTask: task(function *(runId) {
     if(this.get('session.isAuthenticated')) {
       try {
-        yield this.get('api').request(`/runs/${runId}/buy`)
+        yield this.api.request(`/runs/${runId}/buy`)
         window.location.href = env.dukaanUrl
       } catch (err) {
         let errorCode;
@@ -31,7 +31,7 @@ export default Component.extend({
           errorCode = 'DUKKAN_ERROR'
         }
 
-        this.get('router').transitionTo('error', {
+        this.router.transitionTo('error', {
           queryParams: { errorCode }
         })
       }
@@ -42,7 +42,7 @@ export default Component.extend({
   }).drop(),
 
   getRatingStats: task(function * (){
-    yield this.get('api').request(`/courses/${this.get('course.id')}/rating`)
+    yield this.api.request(`/courses/${this.get('course.id')}/rating`)
     .then(response=>{
       this.set('stats', response.stats);
     })
@@ -53,11 +53,11 @@ export default Component.extend({
       this._redirectToOneauth()
     },
     logInAndStartTrial (courseId, runId) {
-      localStorage.setItem('redirectionPath', this.get('router').urlFor('classroom.timeline.index', {courseId, runId}))
+      localStorage.setItem('redirectionPath', this.router.urlFor('classroom.timeline.index', {courseId, runId}))
       this._redirectToOneauth()
     },
     goToTimeline (runId) {
-      this.get('router').transitionTo(`/classroom/course/${this.get('course.id')}/run/${runId}`)
+      this.router.transitionTo(`/classroom/course/${this.get('course.id')}/run/${runId}`)
     }
   },
 
@@ -74,7 +74,7 @@ export default Component.extend({
 
   didReceiveAttrs(){
     this._super(...arguments);
-    this.get('getRatingStats').perform();
+    this.getRatingStats.perform();
   },
 
   didInsertElement () {

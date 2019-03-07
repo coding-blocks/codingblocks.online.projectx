@@ -1,7 +1,7 @@
 import Component from '@ember/component';
-import { task } from 'ember-concurrency';
-import { service } from 'ember-decorators/service';
-import { action } from 'ember-decorators/object'
+import { restartableTask } from 'ember-concurrency-decorators';
+import { inject as service } from '@ember-decorators/service';
+import { action } from '@ember-decorators/object'
 import $ from 'jquery';
 
 class carouselCard {
@@ -55,7 +55,8 @@ export default class CarouselCards extends Component {
     this.get('getCarouselCardsTask').perform()
   }
 
-  getCarouselCardsTask = task(function * () {
+  @restartableTask	
+  *getCarouselCardsTask () {
     const cards = yield this.get('store').query('carousel_card', {
       sort: 'order'
     })
@@ -64,7 +65,7 @@ export default class CarouselCards extends Component {
     cardArr[0] = cardArr[1]
     cardArr[1] = x
     this.set('cards', cardArr)
-  })
+  }
 
   didRender () {
     this._super(...arguments)

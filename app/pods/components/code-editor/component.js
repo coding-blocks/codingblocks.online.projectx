@@ -1,5 +1,6 @@
 import Component from "@ember/component";
-import { action, computed } from "ember-decorators/object";
+import { action, computed } from "@ember-decorators/object";
+import { set } from '@ember/object';
 
 export default class EditorClass extends Component {
   classNames = ["height-100"];
@@ -65,14 +66,14 @@ export default class EditorClass extends Component {
 
     allLanguages.forEach(lang => {
       if (!lang.aliases) {
-        lang.aliases = [];
+        set(lang, 'aliases', [])
       }
       const stub = stubs.find(stub => {
         return (
           stub.language === lang.code || lang.aliases.includes(stub.language)
         );
       });
-      if (stub && stub.body) lang.source = stub.body;
+      if (stub && stub.body) set(lang, 'source', stub.body)
     });
   }
 

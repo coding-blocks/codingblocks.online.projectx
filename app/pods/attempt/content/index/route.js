@@ -6,7 +6,7 @@ export default Route.extend({
     api: inject(),
     currentUser: inject(),
     store: inject(),
-    headData: Ember.inject.service(),
+    headData: inject(),
     queryParams: {
         start: {
             replace: true
@@ -41,7 +41,7 @@ export default Route.extend({
     async afterModel(model) {
       const sectionId = this.paramsFor('attempt').sectionId
       if (sectionId) {
-        const section = this.get('store').peekRecord('section', sectionId)
+        const section = this.store.peekRecord('section', sectionId)
         this.set('headData.title', section.get('name') + " | " + model.content.get('title') + " player ");
       } else {
         this.set('headData.title', model.content.get('title') + " player ")
@@ -58,17 +58,17 @@ export default Route.extend({
       if (model.content.get('contentable') === 'code-challenge') {
           this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
           try{
-              let editorialPromise = this.get('api').request(`/code_challenges/editorials?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
-              let testcasePromise = this.get('api').request(`/code_challenges/testcases?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
+              let editorialPromise = this.api.request(`/code_challenges/editorials?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
+              let testcasePromise = this.api.request(`/code_challenges/testcases?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
               const [editorialPayload, testcasesPayload] = await allSettled([editorialPromise, testcasePromise])
               
               if(editorialPayload.state === 'fulfilled'){
-                  const editorialRecord = this.get('store').createRecord('editorial', editorialPayload.value.data.attributes);
+                  const editorialRecord = this.store.createRecord('editorial', editorialPayload.value.data.attributes);
                   model.payload.set('editorial', editorialRecord)
               }
               if (testcasesPayload.state === 'fulfilled') {
                   const testcases = testcasesPayload.value.data.attributes.urls.map(t=>{
-                      return this.get('store').createRecord('testcase', {input: t.input, expectedOutput: t['expected-output']})
+                      return this.store.createRecord('testcase', {input: t.input, expectedOutput: t['expected-output']});
                   })
                   model.payload.set('testcases', testcases);
               }

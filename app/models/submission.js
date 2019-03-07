@@ -11,21 +11,21 @@ export default DS.Model.extend({
   'judge-result': DS.attr(),
 
   isErrored: computed('judge-result', function () {
-    return this.get('judge-result').result !== 'success'
+    return this['judge-result'].result !== 'success';
   }),
 
   errorMessage: computed('judge-result', 'isErrored', function () {
-    if (!this.get('isErrored')) {
+    if (!this.isErrored) {
       return ''
     }
     
-    switch (this.get('judge-result').result) {
+    switch (this['judge-result'].result) {
       case 'compile_error': return 'Compilation Error'
     }
   }),
 
   passedTestCasesArray: computed('judge-result', function () {
-    const results = this.get('judge-result')
+    const results = this['judge-result']
     if (!isValidResult(results)) {
       return []
     }
@@ -33,11 +33,11 @@ export default DS.Model.extend({
     return passedTestcases;
   }),
   passedTestCases: computed('passedTestCasesArray', function () {
-    const passedTestcases = this.get('passedTestCasesArray')
+    const passedTestcases = this.passedTestCasesArray
     return passedTestcases.length ? passedTestcases.map((tc, index) => index + 1).toString() : '[]'
   }),
   failedTestCasesArray: computed('judge-result', function () {
-    const results = this.get('judge-result')
+    const results = this['judge-result']
     if (!isValidResult(results))
       return []
 
@@ -45,7 +45,7 @@ export default DS.Model.extend({
     return failedTestCases
   }),
   failedTestCases: computed('failedTestCasesArray', function () {
-    const failedTestCases = this.get('failedTestCasesArray')
+    const failedTestCases = this.failedTestCasesArray
     return failedTestCases.length ? failedTestCases.map((tc, index) => index + 1).toString() : '[]' 
   }),
   user: DS.belongsTo('user')

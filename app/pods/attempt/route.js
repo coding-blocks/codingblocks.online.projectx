@@ -13,7 +13,7 @@ export default Route.extend({
 		}
 	},
 	model(params, transition) {
-		this.get('runAttemptService').setRunAttempt(params.runAttemptId)
+		this.runAttemptService.setRunAttempt(params.runAttemptId)
 		return this.store.findRecord('runAttempt', params.runAttemptId, { reload: true })
 			.catch(err => {
 				if (err instanceof DS.AdapterError) {
@@ -23,7 +23,7 @@ export default Route.extend({
 					transition.abort()
 
 					//get a corrected RunAttempt
-					return this.get('api').request('/users/correctRunAttempt/'+ params.runAttemptId)
+					return this.api.request('/users/correctRunAttempt/'+ params.runAttemptId)
 						.then(result => {
 
 							// replace url param with corrected runAttemptId
@@ -36,11 +36,11 @@ export default Route.extend({
 							if(isBadRequestError(err)) {
 								this.transitionTo('404')
 							}
-						})
+						});
 				} else {
 					throw err
 				}		
-			})
+			});
 	},
 	setupController(controller, model) {
 		this._super(...arguments)

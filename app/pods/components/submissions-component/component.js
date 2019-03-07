@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import { service } from 'ember-decorators/service';
-import { action } from 'ember-decorators/object';
+import { inject as service } from '@ember-decorators/service';
+import { action } from '@ember-decorators/object';
 import { later } from '@ember/runloop'
 
 export default class SubmissionsComponent extends Component {
