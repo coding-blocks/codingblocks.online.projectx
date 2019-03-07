@@ -3,7 +3,7 @@ import { isNone } from '@ember/utils';
 import $ from 'jquery'
 import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
 import { storageFor } from 'ember-local-storage';
-import {inject as service} from '@ember/service';
+import { inject as service } from '@ember/service';
 
 
 export default Component.extend(KeyboardShortcuts, {
@@ -36,14 +36,14 @@ export default Component.extend(KeyboardShortcuts, {
   },
   seekTo (ms) {
     console.log(ms)
-    this.get('playerElement').currentTime = ms
+    this.playerElement.currentTime = ms
     this.seekTo = Function.prototype
   },
 
   didReceiveAttrs () {
     this._super(...arguments)
 
-    if (this.get('copySrc') === this.get('src'))
+    if (this.copySrc === this.src)
       return ;
 
     const self = this
@@ -68,11 +68,11 @@ export default Component.extend(KeyboardShortcuts, {
     this.set('isPlaying', false)
 
     const hls = new Hls(config)
-    const video = this.get('playerElement');
+    const video = this.playerElement;
 
     if (!isNone(video)) {
       // already have the element
-      hls.loadSource(this.get('src'));
+      hls.loadSource(this.src);
       hls.attachMedia(video);
       hls.on(Hls.Events.MANIFEST_PARSED, function () {
         video.play()
@@ -80,7 +80,7 @@ export default Component.extend(KeyboardShortcuts, {
       })
     }
     this.set('hls', hls)
-    this.set('copySrc', this.get('src'))
+    this.set('copySrc', this.src)
   },
 
   didInsertElement () {
@@ -105,14 +105,14 @@ export default Component.extend(KeyboardShortcuts, {
 
     },5000)
 
-    const hls = this.get('hls');
+    const hls = this.hls;
 
     this.set('playerElement', video);
 
-    hls.loadSource(this.get('src'));
+    hls.loadSource(this.src);
     hls.attachMedia(video);
     hls.on(Hls.Events.MANIFEST_PARSED, () => {
-      if (!this.get('isSafari'))
+      if (!this.isSafari)
         video.play()
     });
 
@@ -122,11 +122,11 @@ export default Component.extend(KeyboardShortcuts, {
 
     video.oncanplaythrough = () => {
        lecture.removeClass('spinner');
-       if (this.get('isSafari'))
+       if (this.isSafari)
         this.seekTo.call(this, 1)
     };
     
-    if (this.get('isSafari'))
+    if (this.isSafari)
       video.onplay = () => this.seekTo.call(this, 1)
     
 
@@ -135,33 +135,33 @@ export default Component.extend(KeyboardShortcuts, {
     };
 
     // set the lecture-player service know about the current player
-    this.get('lecturePlayer').activate()
-    this.get('lecturePlayer').setElement(video)
-    if (this.get('start')) {
-      this.get('lecturePlayer').seek(this.get('start'))
+    this.lecturePlayer.activate()
+    this.lecturePlayer.setElement(video)
+    if (this.start) {
+      this.lecturePlayer.seek(this.start)
     }
   },
   willDestroyElement() {
-    this.get('hls').destroy()
-    this.get('playerElement').pause()
-    this.get('lecturePlayer').deactivate()
+    this.hls.destroy()
+    this.playerElement.pause()
+    this.lecturePlayer.deactivate()
     this._super(...arguments)
   },
   actions: {
     changeSpeed(val) {
-     const rate = +this.get('pr') +val;
-     const video = this.get('playerElement')
+     const rate = +this.pr +val;
+     const video = this.playerElement
      if ( rate > 0 && rate <= 2) {
         video.playbackRate = +rate;
         this.set('pr', rate)
       }
    },
    toggleVideoPlayback () {
-    const video = this.get("playerElement")
+    const video = this.playerElement
     if (isNone(video))
       return ;
     this.toggleProperty("isPlaying")
-    const isPlaying = this.get("isPlaying")
+    const isPlaying = this.isPlaying
     if (isPlaying) {
       video.play()
     } else {
@@ -169,19 +169,19 @@ export default Component.extend(KeyboardShortcuts, {
     }
    },
    seekBack () {
-    const video = this.get("playerElement")
+    const video = this.playerElement
     if (isNone(video))
       return ;
     video.currentTime -= 5
    },
    seekForward () {
-    const video = this.get("playerElement")
+    const video = this.playerElement
     if (isNone(video))
       return ;
     video.currentTime += 5
    },
     closeInstructions () {
-      let val = this.get("checkboxVal")
+      let val = this.checkboxVal
       this.set('playerPreference.showInstructions', !val)
       this.set('isShowingInstructions', false)
     }

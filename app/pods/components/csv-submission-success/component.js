@@ -7,8 +7,8 @@ export default Component.extend({
     this._super(...arguments)
 
     // get a polling task for polling submission
-    const task = this.get('taskPoller').getPollTask(
-      () => this.get('submission').reload(),
+    const task = this.taskPoller.getPollTask(
+      () => this.submission.reload(),
       result => !result.get('isPending')
     )
 
@@ -16,6 +16,6 @@ export default Component.extend({
     this.set('pollingTask', task)
 
     // start polling
-    this.get('pollingTask').perform()
+    this.pollingTask.perform()
   }
 });

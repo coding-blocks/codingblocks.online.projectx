@@ -1,9 +1,10 @@
 import Component from "@ember/component";
 import { later } from "@ember/runloop";
-import { task, timeout } from "ember-concurrency";
-import { action } from "ember-decorators/object";
-import { alias } from "ember-decorators/object/computed";
-import { service } from "ember-decorators/service";
+import { restartableTask } from 'ember-concurrency-decorators';
+import { timeout } from "ember-concurrency";
+import { action } from "@ember-decorators/object";
+import { alias } from "@ember-decorators/object/computed";
+import { inject as service } from '@ember-decorators/service';
 
 export default class SearchBoxComponent extends Component {
   tagName = 'span'
@@ -15,7 +16,8 @@ export default class SearchBoxComponent extends Component {
 
   @alias('searchTask.lastSuccessful.value') results
 
-  searchTask = task(function * () {
+  @restartableTask
+  *searchTask () {
     yield timeout (100)
     const searchQuery = this.get('qs').trim().toLowerCase()
 
@@ -68,7 +70,7 @@ export default class SearchBoxComponent extends Component {
         }
       ]
     }
-  })
+  }
 
   @action
   transitionToContent(contentId, sectionId) {

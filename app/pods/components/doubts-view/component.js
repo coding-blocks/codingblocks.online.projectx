@@ -1,10 +1,9 @@
 import Component from '@ember/component';
-import { service } from 'ember-decorators/service'
-import { action } from 'ember-decorators/object'
-import { filterBy } from '@ember/object/computed';
-import { computed } from 'ember-decorators/object';
-import {task} from 'ember-concurrency';
-
+import { inject as service } from '@ember-decorators/service';
+import { action } from '@ember-decorators/object'
+import { filterBy } from '@ember-decorators/object/computed';
+import { computed } from '@ember-decorators/object';
+import { restartableTask } from 'ember-concurrency-decorators';
 
 export default class DoubtsViewComponent extends Component {
   @service store 
@@ -14,17 +13,19 @@ export default class DoubtsViewComponent extends Component {
 
   activeTab = 'PENDING'
   err = ''
-
-  existingDoubts = filterBy('doubts', 'isNew', false)
+  
+  @filterBy('doubts', 'isNew', false)
+  existingDoubts
 
   @computed('existingDoubts.@each.status')
-  unresolved() {
+  get unresolved() {
     return this.get('existingDoubts').reduce((acc, val) => {
       return val.get('status') === 'PENDING' ? ++acc : acc;
     }, 0)
   }
 
-  askDoubtTask = task(function * (){
+  @restartableTask
+  *askDoubtTask (){
     if (this.get('title.length') < 15) {
       return this.set('err', 'Title length must be atleast 15 characters.')
     }
@@ -52,7 +53,7 @@ export default class DoubtsViewComponent extends Component {
       doubt.rollbackAttributes();
       this.set('err', err.errors[0].detail);
     })
-  })
+  }
 
   @action
     askDoubt(){

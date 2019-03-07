@@ -11,14 +11,14 @@ export default Controller.extend({
   offset: 0, 
   limit: 5,
   recentEvents: computed('announcements', 'doubts', function () {
-    const announcementsObjs = this.get('announcements').map(a => ({
+    const announcementsObjs = this.announcements.map(a => ({
       type: 'announcement',
       payload: a,
       icon: 'announcement.svg',
       createdAt: new Date(a.get('createdAt'))
     }))
 
-    const doubtsObjs = this.get('doubts').map(d => ({
+    const doubtsObjs = this.doubts.map(d => ({
       type: 'doubt',
       payload: d,
       icon: 'support.svg',
@@ -29,7 +29,7 @@ export default Controller.extend({
   }),
   actions: {
     requestCertificate () {
-      this.get('api').request('/certificates', {
+      this.api.request('/certificates', {
         method: 'POST',
         data: {
           runAttemptId: this.get('runAttempt.id')

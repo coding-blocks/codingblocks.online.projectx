@@ -6,7 +6,7 @@ export default Service.extend({
   active: false,
   initialize (playerElementId) {
     this.set('active', true)
-    if (!this.get('isYoutubeApiReady')) {
+    if (!this.isYoutubeApiReady) {
       var tag = document.createElement('script');
       tag.id = 'iframe-demo';
       tag.src = 'https://www.youtube.com/iframe_api';
@@ -38,20 +38,20 @@ export default Service.extend({
     return playerPromise
   },
   destroy () {
-    if (this.get('player')) {
-      this.get('player').destroy()
+    if (this.player) {
+      this.player.destroy()
     }
     this.set('active', false)
   },
   getCurrentTime () {
-    if (this.get('player'))
-      return this.get('player').getCurrentTime()
+    if (this.player)
+      return this.player.getCurrentTime();
     else 
       throw new Error('player: is not set!, Maybe you forgot to initialize first!')
   },
   seek (time) {
     try {
-      this.get("player").seekTo(time, true)
+      this.player.seekTo(time, true)
     } catch (e) {
       console.log("Error: Cannot seek youtube player", e)
     }

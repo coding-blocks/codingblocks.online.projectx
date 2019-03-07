@@ -1,7 +1,7 @@
 import Component from '@ember/component'
-import { service } from 'ember-decorators/service'
-import { task } from 'ember-concurrency'
-import { filterBy } from 'ember-decorators/object/computed'
+import { inject as service } from '@ember-decorators/service';
+import { restartableTask } from 'ember-concurrency-decorators';
+import { filterBy } from '@ember-decorators/object/computed'
 import { later } from '@ember/runloop'
 
 export default class NotesViewComponent extends Component {
@@ -15,7 +15,8 @@ export default class NotesViewComponent extends Component {
 
   requestErrored = false
 
-  addNoteTask = task(function * () {
+  @restartableTask
+  *addNoteTask () {
     const contentId = this.get('currentContent').getContentId()
     const store = this.get('store')
 
@@ -43,5 +44,5 @@ export default class NotesViewComponent extends Component {
       this.set('requestErrored', true)
       later(() => this.set("requestErrored", false), 1000)
     }
-  })
+  }
 }

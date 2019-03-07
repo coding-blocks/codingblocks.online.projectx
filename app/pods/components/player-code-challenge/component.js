@@ -1,8 +1,10 @@
 import Component from "@ember/component";
-import { alias } from "ember-decorators/object/computed";
-import { service } from "ember-decorators/service";
-import { action, computed } from "ember-decorators/object";
-import { task, timeout } from "ember-concurrency";
+import { alias } from "@ember-decorators/object/computed";
+import { inject as service } from '@ember-decorators/service';
+import { action, computed } from "@ember-decorators/object";
+import { timeout } from "ember-concurrency";
+import { restartableTask } from 'ember-concurrency-decorators';
+
 import { later } from '@ember/runloop';
 
 export default class CodeChallengeComponent extends Component {
@@ -23,23 +25,23 @@ export default class CodeChallengeComponent extends Component {
   isShowingModal = false;
 
   @computed("sourceCode")
-  sourceCodeBase64() {
+  get sourceCodeBase64() {
     return window.btoa(this.get("sourceCode"));
   }
 
   @computed("problemJsonApiPayload")
-  problem() {
+  get problem() {
     const payload = this.get("problemJsonApiPayload");
     return payload ? payload.data.attributes : {};
   }
 
   @computed("tab")
-  tabName() {
+  get tabName() {
     return this.get('tab') || "problem"
   }
 
   @computed("problemJsonApiPayload")
-  codeStubs() {
+  get codeStubs() {
     const payload = this.get("problemJsonApiPayload");
     if (!payload) return [];
     const checkList = {
@@ -64,7 +66,7 @@ export default class CodeChallengeComponent extends Component {
   }
 
   @computed("customInput")
-  customInputBase64() {
+  get customInputBase64() {
     return window.btoa(this.get("customInput"));
   }
 
@@ -98,7 +100,8 @@ export default class CodeChallengeComponent extends Component {
     this.set('err', '')
   }
   
-  runCodeTask = task(function*(config) {
+  @restartableTask
+  *runCodeTask (config) {
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     return yield this.get("api").request("code_challenges/submit", {
       method: "POST",
@@ -108,9 +111,10 @@ export default class CodeChallengeComponent extends Component {
         language: config.lang,
       },
     });
-  });
+  }
 
-  submitCodeTask = task(function * (config) {
+  @restartableTask
+  *submitCodeTask (config) {
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     const code = this.get("code");
     const run = this.get("run");
@@ -153,7 +157,7 @@ export default class CodeChallengeComponent extends Component {
     })
 
     return payload
-  });
+  }
 
   @action
   fetchEditorial(){
@@ -174,7 +178,8 @@ export default class CodeChallengeComponent extends Component {
     
   }
 
-  fetchEditorialTestcases = task(function *(which){
+  @restartableTask
+  *fetchEditorialTestcases (which) {
     try{
       this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
       const run = this.get("run")
@@ -189,6 +194,6 @@ export default class CodeChallengeComponent extends Component {
                           break;                       
       }
     }
-  })
+  }
 
 }

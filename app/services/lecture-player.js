@@ -13,7 +13,7 @@ export default Service.extend({
     this.set('active', false)
   },
   getCurrentTime () {
-    return this.get('element').currentTime
+    return this.element.currentTime;
   },
   seek (time) {
     if (!this.element) {

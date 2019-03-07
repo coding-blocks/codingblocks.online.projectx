@@ -28,8 +28,8 @@ export default Route.extend(ApplicationRouteMixin, {
         // we have ?code qp
         const { code } = transition.queryParams
         
-        return this.get('session').authenticate('authenticator:jwt', { identification: code, password: code, code })
-          .then(() => this.get('currentUser').load())
+        return this.session.authenticate('authenticator:jwt', { identification: code, password: code, code })
+          .then(() => this.currentUser.load())
           .then(user => {
             // if user belongs to an org, redirect to the domain
             if(user.get('organization')) {
@@ -44,12 +44,12 @@ export default Route.extend(ApplicationRouteMixin, {
                 }
               })
             }
-          })
+          });
       }
     },
     model () {
         if (this.get('session.isAuthenticated')) {
-          return this.get('currentUser').load().then (user => {
+          return this.currentUser.load().then (user => {
             try {
               OneSignal.getUserId ().then (userId => {
                 if (! userId) {
@@ -69,7 +69,7 @@ export default Route.extend(ApplicationRouteMixin, {
               console.error(error)
             }
             return user
-          })
+          });
         }
     },
 

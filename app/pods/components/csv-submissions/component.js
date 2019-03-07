@@ -9,9 +9,9 @@ export default Component.extend({
   submissions: [],
 
   fetchSubmissionsTask: task(function * () {
-    const submissions = yield this.get('store').query('csv-submission', {
+    const submissions = yield this.store.query('csv-submission', {
       filter: {
-        csvId: this.get('csvId'),
+        csvId: this.csvId,
         runAttemptId: this.get('runAttempt.runAttemptId')
       },
       sort: '-createdAt'
@@ -21,7 +21,7 @@ export default Component.extend({
 
   init() {
     this._super(...arguments)
-    this.get('fetchSubmissionsTask').perform()
+    this.fetchSubmissionsTask.perform()
   }
 
 })
