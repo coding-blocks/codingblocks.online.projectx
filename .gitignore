@@ -25,3 +25,6 @@ bower.json.ember-try
 package.json.ember-try
 .DS_Store
 .vscode
+
+*.swp
+

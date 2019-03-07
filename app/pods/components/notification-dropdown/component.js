@@ -1,5 +1,6 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember-decorators/object'
+import { action } from '@ember-decorators/object';
+import { equal } from '@ember-decorators/object/computed';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember-decorators/service';
 
@@ -62,10 +63,7 @@ export default class NotificationDropdownComponent extends Component {
     this.set ('notifications', notifications)
   }
 
-  @computed('activeTab')
-  showDialog() {
-    return this.get('activeTab') === 'notification'
-  }
+  @equal('activeTab', 'notification') showDialog
 
   isUnread (notification) {
     let id = notification.get ('id'),
