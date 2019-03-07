@@ -86,5 +86,6 @@ export default DS.Model.extend({
     userRating: computed('ratings', function () {
       return this.ratings.objectAt(0);
     }),
-    organization: DS.attr()
+    organization: DS.attr(),
+    coursefeatures: DS.attr(),
 });
