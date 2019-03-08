@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { computed, action } from '@ember-decorators/object'
 import { inject as service } from '@ember-decorators/service';
-import { task } from 'ember-concurrency'
+import { restartableTask } from 'ember-concurrency-decorators';
 import { isBadRequestError } from 'ember-ajax/errors';
 import { not } from '@ember-decorators/object/computed';
 
@@ -19,7 +19,8 @@ export default class otpEnrollComponent extends Component {
   email = null
   errorString = null
 
-  sendOtpTask = task (function * () {
+  @restartableTask
+  *sendOtpTask() {
     return this.get('api').request('otp/request', {
       method: 'POST',
       data: {
@@ -40,9 +41,10 @@ export default class otpEnrollComponent extends Component {
       }
       console.error(err)
     })
-  })
+  }
 
-  verifyOtpTask = task (function * () {
+  @restartableTask
+  *verifyOtpTask() {
     return this.get('api').request('otp/verify', {
       method: "POST",
       data: {
@@ -59,7 +61,7 @@ export default class otpEnrollComponent extends Component {
       }
       console.error(err)
     })
-  })
+  }
 
   @computed ('otpSent')
   get placeholderText () {
