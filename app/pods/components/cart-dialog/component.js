@@ -1,17 +1,18 @@
-import Ember from 'ember';
-import { task } from 'ember-concurrency';
-import { service } from 'ember-decorators/service';
+import Component from '@ember/component';
+import { restartableTask } from 'ember-concurrency-decorators';
+import { inject as service } from '@ember-decorators/service';
 import env from 'codingblocks-online/config/environment';
 
-export default class extends Ember.Component {
+export default class CartDialog extends Component {
   @service api
 
   dukaanUrl = env.dukaanUrl
 
-  addCartTask = task(function *(){
+  @restartableTask
+  *addCartTask() {
     yield this.get('api').request('/runs/clear_cart');
     const runId = this.get('run.id');
     yield this.get('api').request(`/runs/${runId}/buy`);
     window.location.href = this.get('dukaanUrl')
-  })
+  }
 }
