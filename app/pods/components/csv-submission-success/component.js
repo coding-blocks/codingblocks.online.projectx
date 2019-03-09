@@ -1,21 +1,25 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember/service';
+import { timeout } from "ember-concurrency";
+import { restartableTask } from 'ember-concurrency-decorators';
 
-export default Component.extend({
-  taskPoller: service(),
-  init () {
-    this._super(...arguments)
+export default class extends Component{
+  maxTries = 10
+  gap = 2000
 
-    // get a polling task for polling submission
-    const task = this.taskPoller.getPollTask(
-      () => this.submission.reload(),
-      result => !result.get('isPending')
-    )
-
-    // it is important to set it as property of this component, so that it can hook onto lifecycle
-    this.set('pollingTask', task)
-
+  constructor () {
+    super(...arguments)
     // start polling
     this.pollingTask.perform()
   }
-});
+
+  @restartableTask
+  *pollingTask() {
+    while (this.maxTries--) {
+      yield timeout(this.gap)
+      const result = yield this.submission.reload()
+      if (!result.get('isPending')) return result;
+    }
+
+    throw new Error('TIMEOUT')
+  }
+}
