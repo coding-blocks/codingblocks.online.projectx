@@ -29,7 +29,7 @@
         <div class="li-right col-3 align-self-start">
           <div class="button-solid card-md">
             {{!-- <button {{action 'addNote'}} >Save Note</button> --}}
-              <button {{action (perform addNoteTask)}}>
+              <button {{action (perform addNoteTask)}} class="{{if submissionTask.isRunning 'disabled'}}">
                 {{#if addNoteTask.isRunning }}
                   Saving..
                 {{else}}

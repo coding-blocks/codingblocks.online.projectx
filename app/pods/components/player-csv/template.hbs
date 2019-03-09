@@ -27,7 +27,7 @@
         View Old Submissions
       </span>
       <span>
-        <button {{action (perform submissionTask)}}>
+        <button {{action (perform submissionTask)}} class="button-solid {{if submissionTask.isRunning 'disabled'}}">
           {{#if submissionTask.isRunning }}
             Submitting..
           {{else}}
