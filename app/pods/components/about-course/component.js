@@ -39,7 +39,7 @@ export default Component.extend({
           const run = yield this.get('store').queryRecord("run", {
               custom: {
                 ext: 'url',
-                url: `/${runId}?exclude=courses.*`
+                url: `${runId}?exclude=courses.*`
               }
             })
           this.set('dukaanCart', cart.cartItems[0])
@@ -48,9 +48,9 @@ export default Component.extend({
           this.set('showCartModal', true)
         }
 
-        this.router.transitionTo('error', {
-          queryParams: { errorCode }
-        })
+        // this.router.transitionTo('error', {
+        //   queryParams: { errorCode }
+        // })
       }
     }
     else {
