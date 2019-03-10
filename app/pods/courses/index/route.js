@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { service } from 'ember-decorators/service'
+import { inject as service } from '@ember-decorators/service';
 
 export default class CoursesRouter extends Route {
   @service currentUser
@@ -12,7 +12,7 @@ export default class CoursesRouter extends Route {
 
   constructor() {
     super()
-    this.headData = Ember.inject.service()
+    this.headData = service()
   }
 
   model(params) {
@@ -40,7 +40,6 @@ export default class CoursesRouter extends Route {
 
   setupController(controller, model) {
     controller.set('courses', model.toArray())
-    controller.set("nextOffset", model.get('meta').pagination.nextOffset)
     controller.set("count", model.get('meta').pagination.count)
 
   }

@@ -1,3 +1,4 @@
+import { alias } from '@ember/object/computed';
 import Component from "@ember/component";
 import { computed } from "@ember/object";
 import { inject as service } from '@ember/service';
@@ -5,15 +6,15 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   classNames: ['height-100'],
   youtubePlayer: service(),
-  video: computed.alias("payload"),
+  video: alias("payload"),
   didInsertElement () {
     this._super(...arguments)
-    this.get('youtubePlayer').initialize('ext-video').then(() => {
-      this.get('youtubePlayer').seek(this.get('start'))
+    this.youtubePlayer.initialize('ext-video').then(() => {
+      this.youtubePlayer.seek(this.start)
     })
   },
   willDestroyElement () {
-    this.get('youtubePlayer').destroy()
+    this.youtubePlayer.destroy()
     this._super(...arguments)
   }
 });

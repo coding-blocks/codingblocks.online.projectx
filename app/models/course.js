@@ -1,7 +1,8 @@
+import { and } from '@ember/object/computed';
 import DS from 'ember-data';
 import { computed } from '@ember/object';
 import env from 'codingblocks-online/config/environment';
-import { isNone } from '@ember/utils';
+import { isNone, isEmpty } from '@ember/utils';
 
 export default DS.Model.extend({
     name: DS.attr(),
@@ -19,10 +20,10 @@ export default DS.Model.extend({
     categoryId: DS.attr('number'),
     doubtSubCategoryId: DS.attr('number'),
     price: computed('fees', 'isFree', function () {
-    if (this.get('isFree'))
+    if (this.isFree)
         return 0
     else
-        return this.get('fees').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return this.fees.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }),
     popularity: DS.attr(),
     hoursPerDay: DS.attr(),
@@ -37,11 +38,11 @@ export default DS.Model.extend({
     backgroundImage: DS.attr(),
     rating: DS.attr(),
     topRun: computed('activeRuns', 'runs', function () {
-        let runs = this.get('activeRuns')
+        let runs = this.activeRuns
 
         // if we don't have activeRuns
         if (isNone(runs) || !runs.get('length')) {
-          runs = this.get('runs')
+          runs = this.runs
         }
         const now = +new Date() / 1000.0
         const currentRuns = runs.filter( (run, index) => {
@@ -54,14 +55,14 @@ export default DS.Model.extend({
     instructors: DS.hasMany('instructor'),
     feedbacks: DS.hasMany('feedback'),
     feedback: computed('feedbacks', function () {
-      return this.get('feedbacks').objectAt(0)
+      return this.feedbacks.objectAt(0);
     }),
-    canHazDoubtsLink: computed.and('categoryId', 'doubtSubCategoryId'),
+    canHazDoubtsLink: and('categoryId', 'doubtSubCategoryId'),
     doubtsLink: computed('categoryId', 'doubtSubCategoryId', function () {
-      return `${env.discussBaseUrl}/c/${this.get('categoryId')}/${this.get('doubtSubCategoryId')}`
+      return `${env.discussBaseUrl}/c/${this.categoryId}/${this.doubtSubCategoryId}`;
     }),
     difficultyName: computed('difficulty', function () {
-      switch(+this.get('difficulty')) {
+      switch(+this.difficulty) {
         case 0: return 'beginner' ; break;
         case 1: return 'advanced'; break;
         case 2: return 'expert'; break
@@ -69,21 +70,22 @@ export default DS.Model.extend({
       }
     }),
     identifier: computed('slug', 'id', function () {
-      return this.get('slug') || this.get('id')
+      return this.slug || this.id;
     }),
     ratings: DS.hasMany('rating'),
     ratingCarousel: computed('ratings', function(){
-      return this.get('ratings').map(rating=>{
-        if(Ember.isEmpty(rating.get('heading')) && Ember.isEmpty(rating.get('review'))){
+      return this.ratings.map(rating=>{
+        if(isEmpty(rating.get('heading')) && isEmpty(rating.get('review'))){
           rating.setProperties({shown: false})
         }else{
           rating.setProperties({shown: true})
         }
         return rating;
-      })
+      });
     }),
     userRating: computed('ratings', function () {
-      return this.get('ratings').objectAt(0)
+      return this.ratings.objectAt(0);
     }),
-    organization: DS.attr()
+    organization: DS.attr(),
+    coursefeatures: DS.attr(),
 });

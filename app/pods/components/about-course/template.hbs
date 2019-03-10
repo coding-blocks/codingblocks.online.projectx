@@ -172,59 +172,26 @@
     </div>
 
     <div class="course-features">
-      <div class="row justify-content-center">
-        <div class="col-2 align-self-center">
-          <div class="img-container">
-            <div class="round-img">
-              <img src="/images/content-2.png" alt="">
-            </div>
-          </div>
+       {{#if course.coursefeatures}}
+       <div class="row justify-content-center">
+         {{#each course.coursefeatures as |feature|}}
 
-        </div>
-        <div class="para col-4 align-self-center">
-          100+ lecture Video Content
-        </div>
+               <div class="col-2 mb-4 align-self-center">
+                 <div class="img-container">
+                   <div class="round-img">
+                     <img src="{{feature.icon}}" alt="">
+                   </div>
+                 </div>
 
-        <div class="col-2 align-self-center">
-          <div class="img-container">
-            <div class="round-img">
-              <img src="/images/revise-2.png" alt="">
-            </div>
-          </div>
+               </div>
+               <div class="para col-4 align-self-center">
+                 {{feature.text}}
+               </div>
 
-        </div>
-        <div class="para col-4 align-self-center">
-          Re-visit and Revise topics
-        </div>
-      </div>
+         {{/each}}
+       </div>
 
-      <div class="row justify-content-center">
-        <div class="col-2 align-self-center">
-          <div class="img-container">
-            <div class="round-img">
-              <img src="/images/certificate-2.png" alt="">
-            </div>
-          </div>
-
-        </div>
-        <div class="para col-4 align-self-center">
-          Certification of Completion
-        </div>
-
-        <div class="col-2 align-self-center">
-          <div class="img-container">
-            <div class="round-img">
-              <img src="/images/support-2.png" alt="">
-            </div>
-          </div>
-
-        </div>
-        <div class="para col-4 align-self-center">
-          24x7 mentor support
-        </div>
-      </div>
-
-
+       {{/if}}
     </div>
 
   </div>

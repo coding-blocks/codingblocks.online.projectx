@@ -1,7 +1,7 @@
 import Component from '@ember/component';
-import { task } from 'ember-concurrency';
-import { service } from 'ember-decorators/service';
-import { computed } from 'ember-decorators/object';
+import { restartableTask } from 'ember-concurrency-decorators';
+import { inject as service } from '@ember-decorators/service';
+import { computed } from '@ember-decorators/object';
 import env from 'codingblocks-online/config/environment';
 
 export default class DoubtViewComponent extends Component {
@@ -26,9 +26,10 @@ export default class DoubtViewComponent extends Component {
     return env.discussBaseUrl + '/t/' + this.get('topicResponse.id')
   }
 
-  fetchTopicTask = task(function * () {
+  @restartableTask
+  *fetchTopicTask () {
     const topicResponse = yield this.get('api').request(`/courses/doubts/${this.get('topicId')}`)
     this.set('topic', topicResponse.post_stream.posts[0])
     this.set('topicResponse', topicResponse)
-  })
+  }
 }

@@ -29,13 +29,13 @@
         <div class="li-right col-3 align-self-start">
           <div class="button-solid card-md">
             {{!-- <button {{action 'addNote'}} >Save Note</button> --}}
-            {{task-button
-              task=addNoteTask
-              click=(perform addNoteTask)
-              idleText="Save Note"
-              runningText="Saving.."
-              type="button"
-              runningClass="disabled"}}
+              <button {{action (perform addNoteTask)}} class="{{if submissionTask.isRunning 'disabled'}}">
+                {{#if addNoteTask.isRunning }}
+                  Saving..
+                {{else}}
+                  Save
+                {{/if}}
+              </button>
           </div>
         </div>
       </div>

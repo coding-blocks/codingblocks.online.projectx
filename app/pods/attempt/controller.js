@@ -1,15 +1,15 @@
 import Controller from '@ember/controller';
 import { inject } from '@ember/service';
 import { computed } from '@ember/object';
-import { equal, filterBy }  from '@ember/object/computed';
+import { equal, filterBy, alias } from '@ember/object/computed';
 
 export default Controller.extend({
     store: inject('store'),
     runAttemptService: inject('run-attempt'),
     currentContent: inject('current-content'),
-    currentSectionId: computed.alias('runAttemptService.sectionId'),
+    currentSectionId: alias('runAttemptService.sectionId'),
     sideBarCollapsed: computed('currentContent',function(){
-        let content = this.get('currentContent').getContent()
+        let content = this.currentContent.getContent()
         // if there is no current content; use these defaults 
         if (!content) {
             return { left: false, right: true}
@@ -30,7 +30,7 @@ export default Controller.extend({
             this.toggleProperty("accordionCollapsed")
         },
         transitionToContent (contentId, sectionId) {
-            this.get('runAttemptService').setCurrentSection(sectionId)
+            this.runAttemptService.setCurrentSection(sectionId)
             this.transitionToRoute('attempt.content', contentId, {
                 queryParams: {
                     sectionId
@@ -46,9 +46,9 @@ export default Controller.extend({
                 await progress.save().then(p => content.set('progress', p))
                 
             } else  {
-                const newProgress = this.get('store').createRecord('progress', {
+                const newProgress = this.store.createRecord('progress', {
                     status: content.get('contentable') ==='code-challenge'? 'ACTIVE': 'DONE',
-                    runAttempt: this.get('model'),
+                    runAttempt: this.model,
                     content
                 })
                 await newProgress.save().then(p => content.set('progress', p))

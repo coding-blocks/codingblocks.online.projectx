@@ -18,11 +18,6 @@ module.exports = function(defaults) {
       workers: ['javascript'],
       exts: ['language_tools']
     },
-    babel: {
-      plugins: [
-        'transform-object-rest-spread'
-      ]
-    }
   });
 
   // Use `app.import` to add additional libraries to the generated

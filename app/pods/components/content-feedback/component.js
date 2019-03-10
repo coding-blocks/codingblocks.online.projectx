@@ -7,7 +7,7 @@ export default Component.extend({
             this.set('feedbackState', newState)
         },
         submitFeedback(feed) {
-            this.get('onFeedbackSubmit')(feed)
+            this.onFeedbackSubmit(feed)
             this.send('changeState', 'SUBMITTED')
             setTimeout(() => {
                 this.set('showFeedback', false)

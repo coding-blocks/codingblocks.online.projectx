@@ -1,7 +1,7 @@
 import Component from '@ember/component';
-import { action } from 'ember-decorators/object'
-import { task } from 'ember-concurrency';
-import { service } from 'ember-decorators/service';
+import { action } from '@ember-decorators/object'
+import { restartableTask } from 'ember-concurrency-decorators';
+import { inject as service } from '@ember-decorators/service';
 
 // Notifications Dropdown
 // - Highlight unread
@@ -43,7 +43,8 @@ export default class NotificationDropdownComponent extends Component {
     })
   }
 
-  loadNotifications = task(function * () {
+  @restartableTask	
+  *loadNotifications () {
     const notifications = yield this.get ('store').query ('notification', {
       page: {
         offset: this.get ('offset'),
@@ -64,7 +65,7 @@ export default class NotificationDropdownComponent extends Component {
       })
 
     this.set ('notifications', notifications)
-  })
+  }
 
   isUnread (notification) {
     let id = notification.get ('id'),

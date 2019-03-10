@@ -12,15 +12,15 @@ export default Service.extend({
         this.set("organization", window.localStorage.getItem('org'))
     },
     load () {
-        const currentUser = this.get('user')
+        const currentUser = this.user
         if (currentUser && currentUser.id) {
             return Promise.resolve(currentUser)
         }
-        return this.get('store').queryRecord('user', { custom: {ext: 'url', url: 'me' }}).then(user => {
+        return this.store.queryRecord('user', { custom: {ext: 'url', url: 'me' }}).then(user => {
             this.set('user', user)
             this.setOrg(user.get('organization'))
             return user
-        })
+        });
     },
     setOrg (org) {
         this.set('organization', org)

@@ -17,13 +17,13 @@ export default Component.extend({
   certificateNotPresent: not('runAttempt.certificate'),
   canGenerate: and('courseCompleted', 'runAttempt.certificateApproved'),
   requestApprovalTask: task(function *() {
-    yield this.get('api').request(`run_attempts/${this.get('runAttempt.id')}/requestApproval`, {
+    yield this.api.request(`run_attempts/${this.get('runAttempt.id')}/requestApproval`, {
       method: 'GET',
     })
     this.set('runAttempt.approvalRequested', true)
   }),
   generateCertificateTask: task(function * () {
-    yield this.get('api').request('certificates', {
+    yield this.api.request('certificates', {
       method: 'POST',
       data: {
         runAttemptId: this.get('runAttempt.id')
@@ -35,7 +35,7 @@ export default Component.extend({
   actions: {
     downloadCertificate () {
       const salt = this.get('runAttempt.certificate.salt')
-      this.get('router').transitionTo('certificate', `CBOL-${this.get('runAttempt.id')}-${salt}`)
+      this.router.transitionTo('certificate', `CBOL-${this.get('runAttempt.id')}-${salt}`)
     }
   }
 });

@@ -17,7 +17,7 @@ export default class RunAttemptService extends Service {
     }
 
     getRunAttempt () {
-        return this.get('runAttemptId')
+        return this.runAttemptId;
     }
 
 }

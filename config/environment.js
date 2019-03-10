@@ -18,6 +18,15 @@ module.exports = function(environment) {
     },
     hbBaseUrl: "https://hack.codingblocks.com",
     discussBaseUrl: 'https://discuss.codingblocks.com',
+    metricsAdapters: [
+      {
+        name: 'FacebookPixel',
+        environments: ['production'],
+        config: {
+          id: '1947467048859851'
+        }
+      }
+    ],
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -51,9 +60,6 @@ module.exports = function(environment) {
     ENV.googleAnalytics = {
       webPropertyId: 'UA-83327907-12'
     };
-    ENV["ember-facebook-pixel"] = {
-      id: ''
-    };
   }
 
   if (environment === 'test') {
@@ -66,9 +72,6 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
-    ENV["ember-facebook-pixel"] = {
-      id: ''
-    };
   }
 
   if (environment === 'production') {
@@ -92,9 +95,6 @@ module.exports = function(environment) {
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.codingblocks.xyz'
-    ENV["ember-facebook-pixel"] = {
-      id: ''
-    };
   }
 
   if (process.env.oss) {
@@ -108,3 +108,6 @@ module.exports = function(environment) {
 
   return ENV;
 };
+
+
+// 341997496266637

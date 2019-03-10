@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { isEmpty } from '@ember/utils';
+import { inject as service } from '@ember/service';
 import ENV from 'codingblocks-online/config/environment';
 import FileField from 'ember-uploader/components/file-field';
 import Uploader from 'ember-uploader/uploaders/uploader';
@@ -6,19 +7,19 @@ import Uploader from 'ember-uploader/uploaders/uploader';
 export default FileField.extend({
   uploader: null,
   files: null,
-  session: Ember.inject.service(),
+  session: service(),
   didUpdateAttrs () {
     this._super(...arguments)
-    const files = this.get('files'),
-      uploader = this.get('uploader'),
-      triggerUpload = this.get('triggerUpload')
+    const files = this.files,
+      uploader = this.uploader,
+      triggerUpload = this.triggerUpload
 
-    if (triggerUpload === true && !Ember.isEmpty(files) ) {
+    if (triggerUpload === true && !isEmpty(files) ) {
       uploader.upload(files[ 0 ], {
         'extra': 'data'
       })
     } else {
-      this.get('onError')()
+      this.onError()
     }
   },
   filesDidChange (files) {
@@ -32,19 +33,19 @@ export default FileField.extend({
       }
     })
 
-    if(this.get('onProgress')) {
+    if(this.onProgress) {
       uploader.on('progress', e => {
-        this.get('onProgress')(e)
+        this.onProgress(e)
       })
     }
     
 
     uploader.on('didUpload', e => {
-      this.get('onComplete')(e)
+      this.onComplete(e)
     })
 
     uploader.on('didError', (jqXHR, textStatus, errorThrown) => {
-      this.get('onError')(...arguments)
+      this.onError(...arguments)
     });
 
     this.set('uploader', uploader)

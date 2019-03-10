@@ -1,3 +1,4 @@
+import { bool } from '@ember/object/computed';
 import { computed } from '@ember/object';
 import DS from 'ember-data';
 
@@ -15,15 +16,15 @@ export default DS.Model.extend({
   video: DS.belongsTo('video'),
   duration: DS.attr(),
   payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', 'csv', function () {
-    return this.get(this.get('contentable'))
+    return this.get(this.contentable);
   }),
-  isDone: computed.bool('progress.isDone'),
-  isActive: computed.bool('progress.isActive'),
+  isDone: bool('progress.isDone'),
+  isActive: bool('progress.isActive'),
   isFeedbackDone: computed('progress.isFeedbackDone', function () {
     return !! this.get('progress.isFeedbackDone')
   }),
   iconClass: computed('contentable', function () {
-    switch (this.get('contentable')) {
+    switch (this.contentable) {
       case 'document': return 'file-icon'; break;
       case 'code-challenge': return 'code-icon'; break;
       case 'lecture':

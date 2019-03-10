@@ -1,8 +1,8 @@
 import Component from '@ember/component';
-import { service } from 'ember-decorators/service';
-import { task } from 'ember-concurrency';
-import { alias, reads } from 'ember-decorators/object/computed';
-import { action } from 'ember-decorators/object';
+import { inject as service } from '@ember-decorators/service';
+import { restartableTask } from 'ember-concurrency-decorators';
+import { alias, reads } from '@ember-decorators/object/computed';
+import { action } from '@ember-decorators/object';
 import env from "codingblocks-online/config/environment";
 
 export default class RecommendedTaskComponent extends Component {
@@ -18,9 +18,10 @@ export default class RecommendedTaskComponent extends Component {
   constructor () {
     super(...arguments)
     this.get('fetchRecommendedCoursesTask').perform()
-}
+  }
 
-  fetchRecommendedCoursesTask = task(function*() {
+  @restartableTask
+  *fetchRecommendedCoursesTask () {
     const filter = {
       recommended: true,
       unlisted: false
@@ -35,7 +36,7 @@ export default class RecommendedTaskComponent extends Component {
       exclude: "ratings",
       sort: 'difficulty'
     });
-  });
+  }
 
   @action
   logIn() {

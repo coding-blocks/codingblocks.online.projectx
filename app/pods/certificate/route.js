@@ -1,11 +1,11 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import { isBadRequestError, isNotFoundError} from 'ember-ajax/errors';
+import { isBadRequestError, isNotFoundError } from 'ember-ajax/errors';
 
 export default Route.extend({
   api: service(),
   model ({licenseKey}) {
-    return this.get('api').request('certificates/' + licenseKey)
+    return this.api.request('certificates/' + licenseKey);
   },
   actions: {
     error (error, transition) {
