@@ -36,15 +36,15 @@
   </div>
   <div class="col-6 align-self-center">
     <div class="row justify-content-end">
-      <div class="button-solid col-6">
+      <div class="col-4">
           <a href="#runs">
-              <button class="white">{{if course.organization 'Request Access' 'Buy Now'}}</button>
+              <button class="button-solid white">{{if course.organization 'Request Access' 'Buy Now'}}</button>
           </a>
       </div>
       {{#unless course.organization}}
-        <div class="button-dashed col-6">
+        <div class=" col-4">
           {{#if session.isAuthenticated}}
-              {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button"}}
+              {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button"}}
                   Start Free Trial
               {{/link-to}}
           {{else}}
@@ -150,20 +150,20 @@
 
     </div>
     <div class="button-container row justify-content-center">
-        <div class="button-solid col-5">
+        <div class="col-5">
             <a href="#runs">
-                <button class="white">{{if course.organization 'Request Access' 'Buy Now'}}</button>
+                <button class="button-solid white">{{if course.organization 'Request Access' 'Buy Now'}}</button>
             </a>
         </div>
 
       {{#unless course.organization}}
-        <div class="button-dashed col-5 p-0">
+        <div class="col-5 p-0">
             {{#if session.isAuthenticated}}
-                {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button"}}
+                {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button"}}
                     Start Free Trial
                 {{/link-to}}
             {{else}}
-                <button onclick={{action 'logIn'}}>
+                <button class="button-dashed" onclick={{action 'logIn'}}>
                     Start Free Trial
                 </button>
             {{/if}}
