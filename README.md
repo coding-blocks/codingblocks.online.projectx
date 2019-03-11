@@ -58,3 +58,10 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+
+
+## Engines
+
+We are starting to use Ember Engines for this project. Some commands that can come in handy:
+
+* Run at application root: `ember g route <route-name> -ir <engine-name>` to run blueprint inside an engine
