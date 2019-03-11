@@ -1,8 +1,8 @@
 
 {{#if session.isAuthenticated}}
-  <button onclick={{action 'invalidateSession'}}>LOGOUT</button>
+  <button class="button-solid" onclick={{action 'invalidateSession'}}>LOGOUT</button>
 {{else}} 
-        <button onclick={{action 'logIn'}}>
+        <button class="button-solid" onclick={{action 'logIn'}}>
           {{#unless hasBlock}}
             LOGIN
           {{else}}
