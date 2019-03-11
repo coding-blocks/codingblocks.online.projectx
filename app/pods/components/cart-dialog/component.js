@@ -14,5 +14,6 @@ export default class CartDialog extends Component {
     const runId = this.get('run.id');
     yield this.get('api').request(`/runs/${runId}/buy`);
     window.location.href = this.get('dukaanUrl')
+    this.get('onClose')()
   }
 }
