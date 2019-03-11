@@ -22,8 +22,8 @@ export default class NotificationDropdownComponent extends Component {
   limit = 50
   page = 1
 
-  constructor () {
-    super (...arguments)
+  didReceiveAttrs () {
+    this._super (...arguments)
 
     this.get('loadNotifications').perform ()
 
