@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { inject } from '@ember/service';
+import { get }  from '@ember/object';
 import $ from 'jquery';
 import { task } from 'ember-concurrency';
 import env from "codingblocks-online/config/environment";
@@ -42,15 +43,16 @@ export default Component.extend({
                 url: `${runId}?exclude=courses.*`
               }
             })
+            
+          // if the product in cart is the same as product user wants to buy; just continue
+          if (get(cart, 'cartItems.0.product_id') == run.get('productId')) {
+            return window.location.href = env.dukaanUrl
+          }
+
           this.set('dukaanCart', cart.cartItems[0])
           this.set('runToBuy', run)
-
           this.set('showCartModal', true)
         }
-
-        // this.router.transitionTo('error', {
-        //   queryParams: { errorCode }
-        // })
       }
     }
     else {
