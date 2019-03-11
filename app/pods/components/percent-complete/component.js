@@ -13,11 +13,6 @@ export default class PercentComplete extends Component {
     this.set('percent', response.percent)
   }
 
-  constructor () {
-    super(...arguments)
-    // this.get('fetchPercentTask').perform()
-  }
-
   didReceiveAttrs(){
     this._super(...arguments);
     this.get('fetchPercentTask').perform()

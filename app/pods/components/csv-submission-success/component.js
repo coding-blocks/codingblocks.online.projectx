@@ -6,8 +6,8 @@ export default class extends Component{
   maxTries = 10
   gap = 2000
 
-  constructor () {
-    super(...arguments)
+  didReceiveAttrs () {
+    this._super(...arguments)
     // start polling
     this.pollingTask.perform()
   }

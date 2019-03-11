@@ -15,8 +15,8 @@ export default class RecommendedTaskComponent extends Component {
 
   @reads("currentUser.organization") organization
   
-  constructor () {
-    super(...arguments)
+  didReceiveAttrs () {
+    this._super(...arguments)
     this.get('fetchRecommendedCoursesTask').perform()
   }
 
@@ -34,7 +34,10 @@ export default class RecommendedTaskComponent extends Component {
       filter,
       include: "instructors,runs",
       exclude: "ratings",
-      sort: 'difficulty'
+      sort: 'difficulty',
+      page: {
+        limit: 9
+      }
     });
   }
 

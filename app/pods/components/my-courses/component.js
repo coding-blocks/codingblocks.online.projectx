@@ -10,8 +10,8 @@ export default class MyCoursesTaskComponent extends Component {
   @service api;
   @readOnly("fetchMyCoursesTask.lastSuccessful.value") runs
 
-  constructor () {
-    super(...arguments)
+  didReceiveAttrs () {
+    this._super(...arguments)
     this.get('fetchMyCoursesTask').perform()
 }
 
