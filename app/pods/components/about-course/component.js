@@ -36,13 +36,8 @@ export default Component.extend({
             queryParams: { errorCode }
           })
         } else {
-          const cart = yield this.get('api').request(`/runs/cart`)
-          const run = yield this.get('store').queryRecord("run", {
-              custom: {
-                ext: 'url',
-                url: `${runId}?exclude=courses.*`
-              }
-            })
+          const cart = yield this.api.request(`/runs/cart`)
+          const run = this.store.peekRecord('run', runId)
             
           // if the product in cart is the same as product user wants to buy; just continue
           if (get(cart, 'cartItems.0.product_id') == run.get('productId')) {
