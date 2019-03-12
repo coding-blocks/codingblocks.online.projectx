@@ -15,6 +15,7 @@ export default DS.Model.extend({
   isExpired: computed('end', function () {
     return this.end < +new Date()/1000;
   }),
+  doubtSupport: DS.attr('date'),
   run: DS.belongsTo('run'),
   user: DS.belongsTo('user'),
   certificate: DS.belongsTo('certificate'),
