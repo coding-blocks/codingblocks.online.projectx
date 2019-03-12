@@ -54,6 +54,15 @@ body.centered-modal-showing {
   overflow: auto;
 }
 
+.cart-modal-overlay {
+  z-index: 500;
+}
+
+.cart-modal-overlay .round-img {
+  width: 100%;
+  height: 100%;
+}
+
 .display-block{
   display: block !important;
 }
