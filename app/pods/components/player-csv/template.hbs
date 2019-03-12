@@ -27,14 +27,13 @@
         View Old Submissions
       </span>
       <span>
-        {{task-button
-              task=submissionTask
-              click=(perform submissionTask)
-              idleText="Submit"
-              runningText="Submitting.."
-              type="button"
-              class="button-solid"
-              runningClass="disabled"}}
+        <button {{action (perform submissionTask)}} class="button-solid {{if submissionTask.isRunning 'disabled'}}">
+          {{#if submissionTask.isRunning }}
+            Submitting..
+          {{else}}
+            Submit
+          {{/if}}
+        </button>
       </span>
     </div>
   </div>

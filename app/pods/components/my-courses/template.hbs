@@ -62,14 +62,12 @@
                 
                                 </div>
                                 {{#unless (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
-                                <div class="button-solid offset-1 col-5">
-                                    {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}} <i class="fas fa-play"></i>Resume
+                                
+                                    {{#link-to "classroom.timeline" run.course.id run.id tagName="button" class="button-solid offset-1 col-5" activeClass=""}} <i class="fas fa-play"></i>Resume 
                                     {{/link-to}}
-                                </div>
+                                
                                 {{else}}
-                                <div class="button-solid disabled offset-1 col-5">
-                                    <button>Expired</button>
-                                </div>
+                                    <button class="button-solid disabled offset-1 col-5">Expired</button>
                                 {{/unless}}
                             </div>
                         </div>

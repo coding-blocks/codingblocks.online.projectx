@@ -7,8 +7,8 @@
     </div>
 
     <div class="col-4 col-sm-2">
-      <div class="button-dashed align-self-center">
-        {{#link-to 'courses' tagName='button' activeClass=""}}All Courses{{/link-to}}
+      <div class="align-self-center">
+        {{#link-to 'courses' tagName='button' activeClass=""}} <button class="button-dashed">All Courses</button> {{/link-to}}
         </div>
     </div>
   </div>
@@ -77,9 +77,9 @@
                   {{/unless}}
                   <div class="grey">Batches starting {{moment-format (unix course.topRun.start) 'MMM Do'}} </div>
                 </div>
-                <div class="button-solid">
-                  {{#link-to 'courses.id' course.identifier class="white" activeClass=""}} Explore {{/link-to}}
-                  </div>
+                
+                {{#link-to 'courses.id' course.identifier class="white" activeClass=""}} <button class="button-solid">Explore</button>{{/link-to}}
+                
               </div>
               <div class="divider">
                 <div class="card-mentor-divider col-12 order-0 order-md-2"></div>
