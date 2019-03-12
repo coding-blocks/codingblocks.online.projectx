@@ -37,7 +37,10 @@
           </li>
           {{/if}} {{#if session.isAuthenticated}}
           <li class="nav-items pointer">
-            {{notification-dropdown}}
+            {{notification-dropdown toggleAction=toggleNotification activeTab=activeTab}}
+          </li>
+          <li class="nav-items pointer">
+            {{dukaan-dropdown toggleAction=toggleCart activeTab=activeTab}}
           </li>
 
           <div class="round-img">
