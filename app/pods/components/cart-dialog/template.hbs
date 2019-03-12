@@ -1,0 +1,70 @@
+{{#modal-dialog
+  onClose=(action onClose)
+  translucentOverlay=true
+  overlayClass='cart-modal-overlay'
+}}
+<div class="container p-4">
+  <div class="row t-align-ca">
+    <div class="justify-content-center">
+      <h2>Replace Cart Items?</h2>
+      <p class="grey">
+        Your cart contains other items. Do you want to discard previous items from your cart and continue buying new
+        one?
+      </p>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-5">
+      <div class="heading-u">
+        Existing Cart
+      </div>
+      <div class="row justify-content-center align-items-center no-gutters">
+        <div class="col-lg-4 col-md-12">
+          <div class="round-img">
+            <img src="{{dukaanCart.image_url}}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <p>{{dukaanCart.productName}}</p>
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="row justify-content-center align-items-center no-gutters">
+        <img src="/images/swap.svg" alt="swap-icon">
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="heading-u">
+        New Cart
+      </div>
+      <div class="row justify-content-center align-items-center no-gutters">
+        <div class="col-lg-4 col-md-12">
+          <div class="round-img">
+            <img src="{{run.course.logo}}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <p>{{run.description}}</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="footer row justify-content-center no-gutters button-parent">
+    <div class="button-dashed mr-4">
+      <a href="{{dukaanUrl}}" class="red">Checkout with Existing</a>
+    </div>
+    <div class="button-solid">
+      {{task-button 
+        task=addCartTask
+        click=(perform addCartTask)
+        idleText="Yes, Continue"
+        runningText="Adding..."
+        type="button"
+        runningClass="disabled"}}
+    </div>
+  </div>
+</div>
+{{/modal-dialog}}
