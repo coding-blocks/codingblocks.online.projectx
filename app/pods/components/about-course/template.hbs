@@ -1,25 +1,8 @@
-{{!-- {{course.title}}
-<div class="card-layout col-md-4">
-    <div class="card c-layout-card ">
-        <div class="card-image c-image-card">
-            <img src="images/c++">
-        </div>
-        <div class="card-heading c-text-card">
-            Registration Open for Launchpad online
-        </div>
-        <div class="card-text">
-            Learn data structures & algorithm in C++
-        </div>
-        <div class="button-solid">
-            <button>Register</button>
-        </div>
-    </div>
-</div> --}}
 <div class="c-buy-top slide-up row no-gutters justify-content-between">
   <div class="col-6 align-self-center">
     <div class="row no-gutters">
       <div class="card-image col-sm-2">
-        <img class="round" src="{{course.logo}}" alt="course image">
+        <img class="round" src={{course.logo}} alt="course image">
       </div>
       <div class="heading-d col-10 align-self-center">
         <div class="main-h">
@@ -28,7 +11,7 @@
         <div class="sub-h">
           Taught By :
           {{#each course.instructors as |instructor index|}}
-             {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
+            {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
           {{/each}}
         </div>
       </div>
@@ -37,20 +20,20 @@
   <div class="col-6 align-self-center">
     <div class="row justify-content-end">
       <div class="col-4">
-          <a href="#runs">
-              <button class="button-solid white">{{if course.organization 'Request Access' 'Buy Now'}}</button>
-          </a>
+        <a href="#runs">
+          <button class="button-solid white">{{if course.organization 'Request Access' 'Buy Now'}}</button>
+        </a>
       </div>
       {{#unless course.organization}}
         <div class=" col-4">
           {{#if session.isAuthenticated}}
-              {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button"}}
-                  Start Free Trial
-              {{/link-to}}
+            {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button"}}
+              Start Free Trial
+            {{/link-to}}
           {{else}}
-              <button class="button-dashed" onclick={{action 'logIn'}}>
-                  Start Free Trial
-              </button>
+            <button onclick={{action "logIn"}}>
+              Start Free Trial
+            </button>
           {{/if}}
         </div>
       {{/unless}}
@@ -64,7 +47,7 @@
     <div class="classroom-header-box col-md-8 col-sm-12 col-xs-12">
       <div class="classroom-header row">
         <div class="classroom-image col-md-2 col-2 col-sm-2">
-          <img class="round" src="{{course.logo}}" alt="course logo">
+          <img class="round" src={{course.logo}} alt="course logo">
         </div>
         <h1 class="classroom-text col-md-10 col-10 col-sm-10 d-flex flex-column justify-content-center">
           {{course.title}}
@@ -78,18 +61,14 @@
       <div class="para mt-4 mb-4 mb-md-5 mt-md-5">
         <span class="bold">Taught By : </span>
         {{#each course.instructors as |instructor index|}}
-             <span class="grey">{{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}</span>
-          {{/each}}
+          <span class="grey">{{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}</span>
+        {{/each}}
       </div>
 
       <div class="para">
         <span class="key">Language : </span>
         <span> {{course.language}} </span>
       </div>
-
-      {{!-- <div class="button-solid">
-        <button>BUY NOW TO ENROLL</button>
-      </div> --}}
 
       <div class="heading-u">
         Summary
@@ -121,7 +100,7 @@
         {{#each (range 5 0) as |index|}}
           <div class="row">
             <div class="col-12 col-sm-9">
-              <progress value="{{get stats (sub index 1)}}" max="{{course.reviewCount}}"></progress>
+              <progress value={{get stats (sub index 1)}} max={{course.reviewCount}}></progress>
             </div>
             <div class="col-3 rating">
               {{#each (range 0 index)}}
@@ -145,53 +124,51 @@
   <div class="card">
     <div class="card-video">
       <div class="preview">
-        <iframe src="{{course.promoVideo}}" controls allowfullscreen></iframe>
+        <iframe src={{course.promoVideo}} controls allowfullscreen></iframe>
       </div>
 
     </div>
     <div class="button-container row justify-content-center">
-        <div class="col-5">
-            <a href="#runs">
-                <button class="button-solid white">{{if course.organization 'Request Access' 'Buy Now'}}</button>
-            </a>
-        </div>
+      <div class="col-5">
+        <a href="#runs">
+          <button class="button-solid white">{{if course.organization "Request Access" "Buy Now"}}</button>
+        </a>
+      </div>
 
       {{#unless course.organization}}
         <div class="col-5 p-0">
-            {{#if session.isAuthenticated}}
-                {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button"}}
-                    Start Free Trial
-                {{/link-to}}
-            {{else}}
-                <button class="button-dashed" onclick={{action 'logIn'}}>
-                    Start Free Trial
-                </button>
-            {{/if}}
+          {{#if session.isAuthenticated}}
+            {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button"}}
+              Start Free Trial
+            {{/link-to}}
+          {{else}}
+            <button class="button-dashed" onclick={{action "logIn"}}>
+              Start Free Trial
+            </button>
+          {{/if}}
         </div>
       {{/unless}}
     </div>
 
     <div class="course-features">
-       {{#if course.coursefeatures}}
-       <div class="row justify-content-center">
-         {{#each course.coursefeatures as |feature|}}
-
-               <div class="col-2 mb-4 align-self-center">
-                 <div class="img-container">
-                   <div class="round-img">
-                     <img src="{{feature.icon}}" alt="">
-                   </div>
-                 </div>
-
-               </div>
-               <div class="para col-4 align-self-center">
-                 {{feature.text}}
-               </div>
-
-         {{/each}}
-       </div>
-
-       {{/if}}
+      {{#if course.coursefeatures}}
+        <div class="row justify-content-center">
+          {{#each course.coursefeatures as |feature|}}
+        
+            <div class="col-2 mb-4 align-self-center">
+              <div class="img-container">
+                <div class="round-img">
+                  <img src="{{feature.icon}}" alt="">
+                </div>
+              </div>
+          
+            </div>
+            <div class="para col-4 align-self-center">
+              {{feature.text}}
+            </div>
+          {{/each}}
+        </div>
+      {{/if}}
     </div>
 
   </div>
@@ -209,37 +186,37 @@
   <div class="c-accordion c-about-accordion">
     <div class="list-divided border-none">
       {{#each course.topRun.sections as |section|}}
-      {{#accordion-head title=section.name total=section.totalContents duration=section.duration type="info" listType="divided"}}
-      <div class="pb-4 pt-4">
-        {{#each section.contents as |content|}}
-          <div class="row no-gutters {{if (not section.premium) 'red' 'grey'}}">
-            <div class="li-left col-10 col-sm-8">
-              <div class="col-1 {{content.iconClass}}-red content-icon"></div>
-              <div class="col-11 col-sm-8">
-                {{content.title}}
-              </div>
-            </div>
-            <div class="li-right no-gutters col-2 col-sm-4">
-              {{#if section.premium}}
-                <div class="t-align-c">
-                  <i class="fas fa-lock"></i>
+        {{#accordion-head title=section.name total=section.totalContents duration=section.duration type="info" listType="divided"}}
+          <div class="pb-4 pt-4">
+            {{#each section.contents as |content|}}
+              <div class="row no-gutters {{if (not section.premium) "red" "grey"}}">
+                <div class="li-left col-10 col-sm-8">
+                  <div class="col-1 {{content.iconClass}}-red content-icon"></div>
+                  <div class="col-11 col-sm-8">
+                    {{content.title}}
+                  </div>
                 </div>
-              {{else}}
-                <div class="col-12 col-sm-6">
-                  {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button" class="t-align-r"}}
-                  Preview
-                  {{/link-to}}
+                <div class="li-right no-gutters col-2 col-sm-4">
+                  {{#if section.premium}}
+                    <div class="t-align-c">
+                      <i class="fas fa-lock"></i>
+                    </div>
+                  {{else}}
+                    <div class="col-12 col-sm-6">
+                      {{#link-to "classroom.timeline.index" course.id course.topRun.id tagName="button" class="t-align-r"}}
+                        Preview
+                      {{/link-to}}
+                    </div>
+                  {{/if}}
+                  <div class="grey col-6 dsp-none-xs">
+                    {{format-duration content.duration}}
+                  </div>
                 </div>
-              {{/if}}
-              <div class="grey col-6 dsp-none-xs">
-                {{format-duration content.duration}}
               </div>
-            </div>
+            {{/each}}
           </div>
-        {{/each}}
-      </div>
-      
-      {{/accordion-head}}
+        
+        {{/accordion-head}}
       {{/each}}
     </div>
   </div>
@@ -260,7 +237,7 @@
             <div class="col-3">
               <div class="img-container">
                 <div class="round-img">
-                  <img src="{{instructor.photo}}" alt="photo of {{instructor.name}}">
+                  <img src={{instructor.photo}} alt="photo of {{instructor.name}}">
                 </div>
               </div>
 
@@ -299,112 +276,15 @@
 {{/if}}
 
 <div class="c-batches">
-<div class="heading-u" id="runs">
-  Choose from Available Batches
-</div>
+  <div class="heading-u" id="runs">
+    Choose from Available Batches
+  </div>
 
-<div class="grid row">
+  <div class="grid row">
     {{#each availableRuns as |run|}}
-	<div class="c-layout-card col-md-4 col-sm-6">
-		<div class="card c-run-card">
-			<div class="card-heading c-text-card">
-          {{run.description}}
-        </div>
-        <div class="row">
-          {{!-- <div class="card-text">
-            {{run.description}}
-          </div> --}}
-          <div class="batch">
-            <div class="card-text grey">
-              Batch Starts
-            </div>
-            <div class="card-text">
-              {{moment-format (unix run.start) 'MMM Do YYYY'}}
-            </div>
-          </div>
-
-          <div class="divider-v"></div>
-
-          <div class="batch">
-            <div class="card-text grey">
-              Batch Ends
-            </div>
-            <div class="card-text">
-              {{moment-format (unix run.end) 'MMM Do YYYY'}}
-            </div>
-          </div>
-        </div>
-
-        {{#unless course.organization}}
-          <div class="price">
-            {{format-price run.price}}
-
-            {{#unless (eq run.mrp run.price)}}
-              <span class="grey">
-                &nbsp;&nbsp;<strike style="font-size: 0.9rem">{{format-price run.mrp}}</strike>
-              </span>
-            {{/unless}}
-          </div>
-        {{/unless}}
-
-        <div class="my-course-enroll row no-gutters">
-          <div class="col-8 align-self-end">
-            <div>HURRY UP!</div>
-            <div class="red">Enrollment ends {{moment-format (unix run.enrollmentEnd) 'MMM Do YYYY'}} </div>
-        </div>	
-        {{#if course.organization}}
-          <div class="button-parent col-4 t-align-r">
-            {{run-request-button run=run}}
-          </div>
-        {{else}}
-          <div class="button-parent col-4 t-align-r">
-            <a href="#" {{action (perform enrollNowTask run.id)}}>
-              <button class="button-solid">
-                {{if enrollNowTask.isRunning 'Enrolling...' 'Enroll Now'}}
-              </button>      
-            </a>
-          </div>
-        {{/if}}
-
-			</div>
-
-			<div class="card-mentor-divider"></div>
-      {{#if run.tags.length}}
-        <div class="font-sm">Major topics covered</div>
-        <div class="tag-container">
-          {{#each run.tags as |tag|}}
-            <div class={{if (gt run.tags.length 6) "pill-sm" "pill"}}>
-              {{tag.name}}
-            </div>
-          {{/each}}
-        </div>
-
-        <div class="card-mentor-divider"></div>
-      {{/if}}
-      
-      {{#unless course.organization}}
-        <div class="row no-gutters">
-          <div class="col-7 align-self-center">
-            You may also try our
-            free lectures:
-          </div>
-          <div class="button-parent col-5">
-            {{#if session.isAuthenticated}}
-              {{#link-to "classroom.timeline.index" course.id run.id class="button-dashed" tagName="button" activeClass=""}}
-                Start Free Trial
-              {{/link-to}}
-            {{else}}
-              <button class="button-dashed" {{action 'logInAndStartTrial' course.id run.id}}>
-                Start Free Trial
-              </button>
-            {{/if}}  
-          </div>
-        </div>
-      {{/unless}}
-      </div>
-    </div> 
-  {{else}}
-    No available runs right now ! Please check back later or drop a line at admissions.codingblocks.com.
-  {{/each}}
-</div>
+      {{available-run-card run=run logInAndStartTrial=(action "logInAndStartTrial") enrollNowTask=enrollNowTask}}
+    {{else}}
+      No available runs right now ! Please check back later or drop a line at admissions.codingblocks.com.
+    {{/each}}
+  </div>
 </div>
