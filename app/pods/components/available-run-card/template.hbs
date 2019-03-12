@@ -48,11 +48,15 @@
       </div>
     {{else}}
       <div class="button-parent col-4 t-align-r">
-        <a href="#" {{action (perform enrollNowTask run.id)}}>
-          <button class="button-solid">
+        {{#if isFree}}
+          {{#link-to "classroom.timeline.index" course.id run.id tagName="button" class="button-solid" activeClass=""}}
+            Access Now
+          {{/link-to}}
+        {{else}}
+          <button class="button-solid" {{action (perform enrollNowTask run.id)}}>
             {{if enrollNowTask.isRunning 'Enrolling...' 'Enroll Now'}}
           </button>
-        </a>
+        {{/if}}
       </div>
     {{/if}}
 
@@ -72,7 +76,7 @@
     <div class="card-mentor-divider"></div>
   {{/if}}
 
-  {{#unless course.organization}}
+  {{#unless blockFreeTrial}}
     <div class="row no-gutters">
       <div class="col-7 align-self-center">
         You may also try our

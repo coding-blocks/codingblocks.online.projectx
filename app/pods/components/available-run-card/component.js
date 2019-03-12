@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { alias } from '@ember-decorators/object/computed'
+import { alias, equal, or } from '@ember-decorators/object/computed'
 import { inject as service } from '@ember-decorators/service'
 
 export default class AvailableRunCardComponent extends Component {
@@ -8,4 +8,7 @@ export default class AvailableRunCardComponent extends Component {
   @service session
 
   @alias('run.course') course
+  @equal('run.mrp', 0) isFree
+
+  @or('course.organization', 'isFree') blockFreeTrial
 }
