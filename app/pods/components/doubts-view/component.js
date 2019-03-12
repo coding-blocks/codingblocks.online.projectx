@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember-decorators/service';
 import { action } from '@ember-decorators/object'
-import { filterBy, lt, or } from '@ember-decorators/object/computed';
+import { filterBy, lt, or, not } from '@ember-decorators/object/computed';
 import { computed } from '@ember-decorators/object';
 import { restartableTask } from 'ember-concurrency-decorators';
 
@@ -17,8 +17,9 @@ export default class DoubtsViewComponent extends Component {
   @filterBy('doubts', 'isNew', false)
   existingDoubts
 
+  @not('runAttempt.premium') freeTrial
   @lt('runAttempt.doubtSupport', new Date()) doubtSupportExpired
-  @or('doubtSupportExpired', 'askDoubtTask.isRunning') disableAskDoubts
+  @or('doubtSupportExpired', 'askDoubtTask.isRunning', 'freeTrial') disableAskDoubts
 
   @computed('existingDoubts.@each.status')
   get unresolved() {
@@ -37,6 +38,9 @@ export default class DoubtsViewComponent extends Component {
     }
     if (this.disableAskDoubts) {
       return this.set('err', 'Your doubt support period has ended.')
+    }
+    if (this.freeTrial) {
+      return this.set('err', 'Doubt Support is not available for Free Trials.')
     }
     this.set('err', '')
 
