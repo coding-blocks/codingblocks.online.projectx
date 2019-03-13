@@ -1,1 +1,19 @@
-{"compilerOptions":{"target":"es6","experimentalDecorators":true},"include":["app/**/*","config/**/*"],"exclude":["node_modules","bower_components","tmp","vendor",".git","dist"]}
+{
+  "compilerOptions": {
+    "target": "es6",
+    "experimentalDecorators": true
+  },
+  "include": [
+    "app/**/*",
+    "config/**/*",
+    "lib/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "bower_components",
+    "tmp",
+    "vendor",
+    ".git",
+    "dist"
+  ]
+}

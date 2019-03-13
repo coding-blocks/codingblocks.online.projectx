@@ -8,7 +8,19 @@ import './models/custom-inflector-rules';
 const App = Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
-  Resolver
+  Resolver,
+  engines: {
+    hiringBlocks: {
+      dependencies: {
+        services: [
+          'store',
+          'session',
+          'api',
+          'current-user'
+        ]
+      }
+    }
+  }
 });
 
 loadInitializers(App, config.modulePrefix);

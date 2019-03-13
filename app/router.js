@@ -42,7 +42,6 @@ Router.map(function() {
   this.route('nagarro', function() {});
   this.mount('hiring-blocks', {path: '/jobs'});
 
-  this.route('hiring-blocks', function() {});
 });
 
 export default Router;
