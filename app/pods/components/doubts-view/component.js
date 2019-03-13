@@ -35,7 +35,7 @@ export default class DoubtsViewComponent extends Component {
     if (this.get('body.length') < 20) {
       return this.set('err', 'Description length must be atleast 20 characters.')
     }
-    if (this.disableAskDoubts) {
+    if (this.doubtSupportExpired) {
       return this.set('err', 'Your doubt support period has ended.')
     }
     this.set('err', '')
