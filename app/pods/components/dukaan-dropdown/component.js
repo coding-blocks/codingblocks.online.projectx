@@ -33,9 +33,13 @@ export default class DukaanDropdown extends Component {
   *fetchCart (){
     try {
       const cart = yield this.get('api').request('/runs/cart')
-      this.set('cartItem', cart.cartItems[0])
+      const item = cart.cartItems[0]
+      item.list_price = (item.list_price / 100).toFixed(2)
+      item.final_price = (item.final_price / 100).toFixed(2)
+      item.amount = (item.amount / 100).toFixed(2)
+      this.set('cartItem', item)
     } catch (err) {
-      this.set('cartIttems', null)
+      this.set('cartItem', null)
     }
   }
 
