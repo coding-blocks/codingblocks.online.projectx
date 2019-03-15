@@ -16,8 +16,12 @@ const App = Application.extend({
           'store',
           'session',
           'api',
-          'current-user'
-        ]
+          'current-user',
+          { 'parent-router': 'router' }
+        ],
+        externalRoutes: {
+          login: 'login'
+        }
       }
     }
   }
