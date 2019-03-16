@@ -14,16 +14,23 @@ export default class SearchBoxComponent extends Component {
 
   @service api
   @service router
+  @service currentUser
 
   @alias('searchTask.lastSuccessful.value') results
+  @alias('currentUser.organization') organization
 
   @restartableTask
   *searchTask () {
     yield timeout (1000)
     const searchQuery = this.get('qs')
+    const extraWhere = {}
+    if (this.organization) {
+      extraWhere.organization = this.organization
+    }
     return this.get('api').request('courses/search', {
       data: {
-        searchQuery
+        searchQuery,
+        ...extraWhere
       }
     }).then(response => {
       this.set('hideResultsBox', false)
