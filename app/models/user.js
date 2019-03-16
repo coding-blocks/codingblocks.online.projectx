@@ -10,7 +10,9 @@ export default DS.Model.extend({
   hackJwt: DS.attr(),
   lastReadNotification: DS.attr (),
   photo: DS.attr(),
-  oneauthId: DS.attr()
+  oneauthId: DS.attr(),
+  verifiedemail: DS.attr(),
+  verifiedmobile: DS.attr()
   //contents: DS.hasMany('content'),
   //courseRuns: DS.hasMany('run'),
   //runAttempt: DS.belongsTo('run-attempt')
