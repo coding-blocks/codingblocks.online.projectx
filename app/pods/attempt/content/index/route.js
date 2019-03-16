@@ -13,6 +13,7 @@ export default Route.extend({
         }
     },
     model () {
+        this.currentUser.user.reload()
         return hash({
             runAttempt: this.modelFor('attempt'),
             content: this.modelFor('attempt.content'),
