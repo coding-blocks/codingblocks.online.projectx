@@ -1,0 +1,20 @@
+<section class="container mt-4 recommended-jobs">
+  <h2 class="mb-5 t-align-c">Recommended Jobs</h2>
+
+  <div class="row justify-content-center mb-5">
+    {{#each fetchJobs.last.value as |job|}}
+      <JobCard class="col-12 col-lg-5" @job={{job}} />
+    {{/each}}
+  </div>
+
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12 col-lg-5 t-align-c t-align-lg-l mb-4">
+      <h2>Get Started</h2>
+      <div class="grey mb-4">
+        Start applying to jobs right now
+      </div>
+      <button class="button-solid md">View all Jobs</button>
+    </div>
+    <img class="col-12 col-lg-5" src="/images/footer.png" alt="guy sitting next to a plant">
+  </div>
+</section>
