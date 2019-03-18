@@ -49,7 +49,7 @@
           </div>
         </div>
       </div>
-      <div class="gradient-violet-lr p-4 white">
+      <div class="bg-gradient-violet-lr p-4 white d-md-none">
         View Job Description
       </div>
       <div class="border-card p-5">
@@ -76,11 +76,11 @@
     </div>
     <div class="col-12 col-md-4 pl-5">
       <div class="position-relative br-10 overflow-hidden">
-        <div class="position-absolute tl z-neg bg-grey br-10 w-100 h-75"></div>
+        <div class="back-div br-10"></div>
 
-        <div class="gradient-black-bt p-5">
+        <div class="bg-gradient-black-bt p-5">
           <div class="d-flex justify-content-between white mb-2 font-sm">
-            Eligibility: <span class="extra-bold">{{job.eligibility}}</span>
+            <span>Eligibility:</span> <span class="extra-bold">{{job.eligibility}}</span>
           </div>
           <div class="d-flex justify-content-between mb-2 {{if job.eligible "green" "red"}}">
             Status: 

@@ -1,15 +1,23 @@
 <div class="img-card online-card">
   <div class="head d-flex">
     <img class="back-img" src={{@course.coverImage}} alt>
-    <div class="difficulty-dots">
-      <div class="pos-diff"></div>
-      <div class="pos-diff"></div>
-      <div class="neg-diff"></div>
-      <div>{{@course.difficultyName}}</div>
+    <div class="dsp-none-sm">
+      <div class="difficulty-dots">
+        <div class="pos-diff"></div>
+        <div class="pos-diff"></div>
+        <div class="neg-diff"></div>
+        <div>{{@course.difficultyName}}</div>
+      </div>
     </div>
-    <div class="head-content d-flex flex-column justify-content-center">
+    <div class="content d-flex flex-column justify-content-center">
+      <div class="round-img-b">
+        <img src={{@course.logo}} alt>
+      </div>
       <div class="course-name center-text">
         {{@course.title}}
+      </div>
+      <div class="i course-description t-align-c d-md-none">
+        {{@course.subtitle}}
       </div>
 
       <div class="rating">
@@ -33,13 +41,34 @@
     </div>
   </div>
   <div class="foot">
-    <div class="round-img-b">
-      <img src={{@course.logo}} alt>
+    <div class="card-mentor d-md-none">
+      <div class="card-mentor-image">
+        {{#each @course.instructors as |instructor index|}}
+        {{#if (lt index 2) }}
+        <img class="card-mentors" src="{{instructor.photo}}">
+        {{/if}}
+        {{/each}}
+      </div>
+      <div class="card-mentor-text">
+        <span>Instructors</span>
+        <div class="card-mentor-name">
+          {{#each @course.instructors as |instructor index|}}
+          {{#if (lt index 2)}}
+          {{instructor.name}}{{if (and (gt @course.instructors.length 1) (eq index 0)) "," ""}}
+          {{/if}}
+          {{/each}}
+    
+          {{#if (gt @course.instructors.length 2)}}
+          <span class="price"> +{{sub @course.instructors.length 2}}</span> more
+          {{/if}}
+        </div>
+      </div>
     </div>
-
     <div class="row button-row justify-content-between no-gutters align-items-center">
       <div class="details">
         <div class="price">
+
+          {{log @course}}
           <span class="red font-sm extra-bold">Rs {{@course.topRun.price}}</span>
           {{#unless (eq @course.topRun.price @course.topRun.mrp)}}
             <span class="grey card-md"><strike>Rs {{@course.topRun.mrp}}</strike></span>
@@ -51,3 +80,4 @@
     </div>
   </div>
 </div>
+
