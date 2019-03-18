@@ -1,13 +1,13 @@
 <div class="border-card br-20 mb-5 mb-lg-0">
   <div class="img-desc">
     <div class="col-3 pl-0">
-      <img src="/images/c++" alt="">
+      <img src={{job.company.logo}} alt={{job.company.name}}>
     </div>
     <div class="description col-9">
       <div>
-        <h4>Android D</h4>
+        <h4>{{job.title}}</h4>
         <div class="font-mds">
-          Book My Show
+          {{job.company.name}}
         </div>
       </div>
       <div class="grey">
@@ -20,24 +20,24 @@
   <div class="d-flex font-sm mb-3">
     <div class="col-6 pl-0">
       <div class="mb-3">
-        Job Location: <span class="extra-bold">Noida</span>
+        Job Location: <span class="extra-bold">{{job.location}}</span>
       </div>
       <div class="mb-3 pl-0">
-        Job Type: <span class="extra-bold">Full Time</span>
+        Job Type: <span class="extra-bold">{{job.type}}</span>
       </div>
     </div>
     <div class="col-6">
       <div class="mb-3">
-        Experience: <span class="extra-bold">4+ Years</span>
+        Experience: <span class="extra-bold">{{job.experience}}</span>
       </div>
       <div>
-        Stipend: <span class="extra-bold">10 - 12 LPA</span>
+        Stipend: <span class="extra-bold">{{job.ctc}}</span>
       </div>
     </div>
   </div>
 
   <div class="d-flex justify-content-between align-items-center">
     <span class="red">Deadline 24 March 2019</span>
-    <EnsureLoginButton class="button-solid" @action={{action "goToJob"}} >Apply Now</EnsureLoginButton>
+    <EnsureLoginButton class="button-solid" @action={{action "goToJob"}} >View</EnsureLoginButton>
   </div>
 </div>
