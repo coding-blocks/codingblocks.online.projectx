@@ -17,49 +17,19 @@
         <button class="white">Apply Filters</button>
         <button class="yellow">Apply</button>
       </div>
-      <div class="border-card white gradient-violet-lr">
-        <h4 class="mb-3">Jobs Status</h4>
-        <div class="font-mds">
-          <label class="mb-2" for=""><input type="checkbox" id=""> All Jobs (12)</label>
-          <br>
-          <label class="mb-2" for=""><input type="checkbox" id=""> Eligible Jobs (4)</label>
-          <br>
-          <label class="mb-2" for=""><input type="checkbox" id=""> Applied Jobs (23)</label>
-        </div>
-      </div>
+
+      <JobStatusFilterbox @changeJobFilter={{action "changeJobFilter"}} @value={{eligibilityStatus}} />
 
       <div class="d-flex justify-content-between align-items-center mb-5 mt-5">
         <span class="font-lg">Filter Jobs</span>
         <button class="red">Reset all</button>
       </div>
 
-      <div class="border-card mb-5">
-        <h4 class="mb-3">Filter by Location</h4>
+      {{location-filterbox values=locations setLocations=(action "changeLocationsFilter") }}
 
-        <div class="font-mds">
-          <label class="mb-2" for=""><input type="checkbox" id=""> All (12)</label>
-          <br>
-          <label class="mb-2" for=""><input type="checkbox" id=""> Gurgaon (4)</label>
-          <br>
-          <label class="mb-2" for=""><input type="checkbox" id=""> Delhi (23)</label>
-          <br>
-          <label class="mb-2" for=""><input type="checkbox" id=""> Mumbai (4)</label>
-          <br>
-          <label class="mb-2" for=""><input type="checkbox" id=""> Noida (23)</label>
-        </div>
-      </div>
-      <div class="border-card mb-5">
-        <h4 class="mb-3">Filter by Job Type</h4>
-
-        <div class="font-mds">
-          <label class="mb-2" for=""><input type="checkbox" id=""> Full Time (12)</label>
-          <br>
-          <label class="mb-2" for=""><input type="checkbox" id=""> Part Time (4)</label>
-          <br>
-          <label class="mb-2" for=""><input type="checkbox" id=""> Internship (23)</label>
-        </div>
-      </div>
-      <div class="border-card mb-5">
+      <JobtypeFilterbox @values={{jobTypes}} @setJobTypes={{action "changeTypeFilter"}} />
+      
+      {{!-- <div class="border-card mb-5">
         <h4 class="mb-3">Filter by CTC</h4>
 
         <div class="font-mds">
@@ -69,7 +39,7 @@
           <br>
           <label class="mb-2" for=""><input type="checkbox" id=""> 10+ lpa (23)</label>
         </div>
-      </div>
+      </div> --}}
     </div>
 
     <div class="col-12 col-md-9">
@@ -80,7 +50,13 @@
         </div> --}}
       </div>
 
-      <JobCardsView @filters={{filters}} />
+      <JobCardsView 
+        @filters={{hash
+          eligibility=eligibilityStatus
+          locations=locations
+          jobTypes=jobTypes
+         }} 
+      />
     </div>
   </div>
 </div>
