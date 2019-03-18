@@ -50,7 +50,13 @@
         </div> --}}
       </div>
 
-      <JobCardsView @filters={{filters}} />
+      <JobCardsView 
+        @filters={{hash
+          eligibility=eligibilityStatus
+          locations=locations
+          jobTypes=jobTypes
+         }} 
+      />
     </div>
   </div>
 </div>
