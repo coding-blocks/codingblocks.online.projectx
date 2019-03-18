@@ -20,24 +20,9 @@
         {{@course.subtitle}}
       </div>
 
-      <div class="rating">
-        <span class="pos-rating">
-          <i class="fas fa-star"></i>
-        </span>
-        <span class="pos-rating">
-          <i class="fas fa-star"></i>
-        </span>
-        <span class="pos-rating">
-          <i class="fas fa-star"></i>
-        </span>
-        <span class="pos-rating">
-          <i class="fas fa-star"></i>
-        </span>
-        <span class="neg-rating">
-          <i class="fas fa-star"></i>
-        </span>
+      <RatingStars @total={{5}} @rating={{sub @course.rating 1}} >
         <span class="edit-rating">{{@course.rating}} ({{@course.reviewCount}})</span>
-      </div>
+      </RatingStars>
     </div>
   </div>
   <div class="foot">
