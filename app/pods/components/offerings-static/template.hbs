@@ -1,27 +1,24 @@
-<div class="row c-offerings">
-  <div class="row flex-row w-100 justify-content-center">
-    <div class="heading">
-      What we offer
-    </div>
+<div class="row m-5 justify-content-center">
+  <div class="heading">
+    What we offer
   </div>
-  <div class="row flex-column flex-md-row justify-content-between cards-box">
+</div>
 
-    {{#each offerings as |offering|}}
-    <div class="offering-card">
-      <div class="d-flex flex-md-row flex-column align-items-center justify-content-between">
-        <div class="left order-2 order-md-1">
-          <div class="offering-card-heading">
-            {{offering.name}}
-          </div>
-          <div class="card-body">
-            {{offering.body}}
-          </div>
-        </div>
-        <div class="right order-1 order-md-2">
-          <img src="{{offering.img}}">
-        </div>
+<div class="row c-offerings">
+  <div class="offset-md-1"></div>
+
+  {{#each offerings as |offering|}}
+    <div class="t-align-ca col-12 col-sm-3 col-md-2 mb-5">
+      <div class="border-card p-4">
+        <img src="{{offering.img}}">
+      </div>
+    
+      <div class="heading">
+        {{{offering.name}}}
+      </div>
+      <div class="card-body grey">
+        {{offering.body}}
       </div>
     </div>
-    {{/each}}
-  </div>
+  {{/each}}
 </div>

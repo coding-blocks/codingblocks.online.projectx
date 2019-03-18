@@ -2,7 +2,7 @@
  * Created by aayusharora on 2/27/18.
  */
 
-var initial_cards = document.getElementsByClassName('card c-layout-card');
+var initial_cards = document.getElementsByClassName('border-card c-layout-card');
 // All cards in the cards array
 
 var cards = new InitializeCards(initial_cards);

@@ -1,4 +1,3 @@
 {
-  "jquery-integration": true,
-  "template-only-glimmer-components": true
+  "jquery-integration": true
 }

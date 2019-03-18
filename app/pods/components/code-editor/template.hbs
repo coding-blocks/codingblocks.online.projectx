@@ -19,8 +19,8 @@
   <!-- code-editor -- result-->
 
   <div class="options-result">
-    <div class="editor-options row p-0 justify-content-between">
-      <div class="row p-0">
+    <div class="editor-options row no-gutters justify-content-between">
+      <div class="row no-gutters">
         <div class="select-list align-self-center pl-3">
           <div class="select-box pointer row justify-content-between" onclick={{action 'openLanguageSelectBox'}}>
             {{selectedLanguage.name}}
@@ -44,7 +44,7 @@
         <button class="white pl-4" {{action 'toggle' 'testcases'}}><i class="fas fa-arrow-down"></i> Download Testcases</button>
       </div>
       
-      <div class="row p-0 pr-3">
+      <div class="row p-0">
         <button class="red" {{action 'toggle' 'editorial'}}>
           {{#if code.editorial}}
           <i class="fas fa-book-open"></i> View Editorial
@@ -65,8 +65,8 @@
     </div>
 
     <div class="result">
-      <div class="row">
-        <div class="input col-md-6 col-sm-6 col-xs-12">
+      <div class="row no-gutters">
+        <div class="input p-3 col-md-6 col-sm-6 col-xs-12">
           <div class="row">
             <div class="heading col-md-6">
               <p>Custom Input</p>
@@ -86,7 +86,7 @@
             </div>
           </div>
         </div>
-        <div class="output  col-md-6 col-sm-6 col-xs-12">
+        <div class="output p-3 col-md-6 col-sm-6 col-xs-12">
           <div class="row">
             <div class="heading col-12">
               <p>
