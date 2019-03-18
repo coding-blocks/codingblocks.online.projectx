@@ -5,8 +5,12 @@ export default DS.Model.extend({
   location: DS.attr(),
   role: DS.attr(),
   title: DS.attr(),
+  type: DS.attr(),
   ctc: DS.attr(),
   status: DS.attr(),
   experience: DS.attr(),
-  company: DS.attr()
+  eligible: DS.attr('boolean'),
+  company: DS.belongsTo('company'),
+  courses: DS.hasMany('course'),
+  myApplication: DS.belongsTo('application')
 })

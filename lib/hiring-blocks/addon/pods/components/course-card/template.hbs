@@ -1,0 +1,53 @@
+<div class="img-card online-card">
+  <div class="head d-flex">
+    <img class="back-img" src={{@course.coverImage}} alt>
+    <div class="difficulty-dots">
+      <div class="pos-diff"></div>
+      <div class="pos-diff"></div>
+      <div class="neg-diff"></div>
+      <div>{{@course.difficultyName}}</div>
+    </div>
+    <div class="head-content d-flex flex-column justify-content-center">
+      <div class="course-name center-text">
+        {{@course.title}}
+      </div>
+
+      <div class="rating">
+        <span class="pos-rating">
+          <i class="fas fa-star"></i>
+        </span>
+        <span class="pos-rating">
+          <i class="fas fa-star"></i>
+        </span>
+        <span class="pos-rating">
+          <i class="fas fa-star"></i>
+        </span>
+        <span class="pos-rating">
+          <i class="fas fa-star"></i>
+        </span>
+        <span class="neg-rating">
+          <i class="fas fa-star"></i>
+        </span>
+        <span class="edit-rating">{{@course.rating}} ({{@course.reviewCount}})</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="round-img-b">
+      <img src={{@course.logo}} alt>
+    </div>
+
+    <div class="row button-row justify-content-between no-gutters align-items-center">
+      <div class="details">
+        <div class="price">
+          <span class="red font-sm extra-bold">Rs {{@course.topRun.price}}</span>
+          {{#unless (eq @course.topRun.price @course.topRun.mrp)}}
+            <span class="grey card-md"><strike>Rs {{@course.topRun.mrp}}</strike></span>
+          {{/unless}}
+        </div>
+      </div>
+
+      {{link-to-external "Explore" "course" @course.slug tagName="button" class="button-solid"}}
+    </div>
+  </div>
+</div>

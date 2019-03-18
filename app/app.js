@@ -20,7 +20,8 @@ const App = Application.extend({
           { 'parent-router': 'router' }
         ],
         externalRoutes: {
-          login: 'login'
+          login: 'login',
+          course: 'courses.id'
         }
       }
     }
