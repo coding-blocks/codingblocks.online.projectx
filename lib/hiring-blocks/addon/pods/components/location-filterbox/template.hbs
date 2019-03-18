@@ -1,0 +1,15 @@
+<div class="border-card mb-5">
+  <h4 class="mb-3">Filter by Location</h4>
+
+  <div class="font-mds">
+    <label class="mb-2" for="">
+      <input type="checkbox" checked={{showAll}}  onClick={{action "toggleShowAll"}} > All</label>
+    <br>
+    {{#each possibleLocations as |location|}}
+      <label class="mb-2" for="">
+        <input type="checkbox" checked={{includes values location}} onClick={{action "toggleLocation" location}}> {{location}}
+      </label>
+      <br>
+    {{/each}}
+  </div>
+</div>
