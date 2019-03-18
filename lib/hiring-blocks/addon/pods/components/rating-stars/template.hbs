@@ -1,6 +1,6 @@
 <div class="rating">
   {{#each totalStars as |star index|}}
-    <span class="{{if (lt index rating) "pos" "neg"}}-rating">
+    <span class="{{if (lte index rating) "pos" "neg"}}-rating">
       <i class="fas fa-star"></i>
     </span>
   {{/each}}
