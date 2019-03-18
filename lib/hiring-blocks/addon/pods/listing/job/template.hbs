@@ -88,7 +88,7 @@
               {{if job.eligible "Eligible" "Not Eligible"}}
             </span>
           </div>
-          {{#if (not job)}}
+          {{#if alreadyApplied}}
             <div class="mt-4 green t-align-c">You've already applied for this Job.</div>
           {{else}}
             <button 
