@@ -60,7 +60,6 @@
     "ember-simple-auth": "^1.4.2",
     "ember-simple-auth-token": "git+https://github.com/abhishek97/ember-simple-auth-token.git",
     "ember-source": "~3.8.0",
-    "ember-task-button": "^0.0.1",
     "ember-truth-helpers": "^2.0.0",
     "ember-uploader": "^2.0.0",
     "ember-welcome-page": "^3.2.0",

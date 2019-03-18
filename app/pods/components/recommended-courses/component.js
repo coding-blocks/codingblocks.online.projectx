@@ -15,8 +15,8 @@ export default class RecommendedTaskComponent extends Component {
 
   @reads("currentUser.organization") organization
   
-  constructor () {
-    super(...arguments)
+  didReceiveAttrs () {
+    this._super(...arguments)
     this.get('fetchRecommendedCoursesTask').perform()
   }
 

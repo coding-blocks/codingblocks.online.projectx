@@ -8,8 +8,8 @@ import env from 'codingblocks-online/config/environment';
 export default class DiscourseTopicsView extends Component {
   @service api
 
-  constructor () {
-    super(...arguments)
+  didReceiveAttrs () {
+    this._super(...arguments)
     this.get('fetchTopicTasks').perform().then(response => {
       this.set('topic_list', response.topic_list)
     })

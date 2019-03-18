@@ -1,0 +1,45 @@
+<div onclick={{action toggleAction}} id="cart-icon">
+  {{#if cartItem}}
+    <span class="notify-dot new"></span>
+  {{/if}}
+	<i class="fas fa-shopping-cart"></i>
+</div>
+
+<div class="dropdown-ul c-notification {{if showDialog 'display-block'}}" id="cart-box">
+  {{#if cartItem}}
+    <div class="dropdown-li row align-items-center">
+      <div class="col-3 justify-content-center">
+        <div class="w-100 round-image">
+          <img src="{{ cartItem.image_url }}" alt="">
+        </div>
+      </div>
+      <div class="col-9 align-">
+        <div class="row">
+          {{ cartItem.productName }}
+        </div>
+        <div class="row">
+          Rs {{ cartItem.final_price }}
+          <strike class="grey ml-2 font-xs">Rs {{ cartItem.list_price }}</strike>
+        </div>
+      </div>
+    </div>
+    <div class="row m-4 align-items-center">
+      <div class="col font-xs">
+          <button onclick={{action (perform clearCartTask)}}>X Remove Product</button>
+      </div>
+      <div class="col">
+        <a href="{{ dukaanUrl }}">
+          <button class="button-solid">Checkout</button>
+        </a>
+      </div>
+    </div>
+  {{else}}
+    <a href="#" target="_blank">
+      <div class="dropdown-li row align-items-center">
+        <div class="col-12">
+          Your Cart is empty
+        </div>
+      </div>
+    </a>
+  {{/if}}
+</div>

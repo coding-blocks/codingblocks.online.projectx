@@ -1,0 +1,98 @@
+<div class="card c-run-card">
+  <div class="card-heading c-text-card">
+    {{run.description}}
+  </div>
+  <div class="row">
+    <div class="batch">
+      <div class="card-text grey">
+        Batch Starts
+      </div>
+      <div class="card-text">
+        {{moment-format (unix run.start) "MMM Do YYYY"}}
+      </div>
+    </div>
+
+    <div class="divider-v"></div>
+
+    <div class="batch">
+      <div class="card-text grey">
+        Batch Ends
+      </div>
+      <div class="card-text">
+        {{moment-format (unix run.end) "MMM Do YYYY"}}
+      </div>
+    </div>
+  </div>
+
+  {{#unless course.organization}}
+    <div class="price">
+      {{format-price run.price}}
+
+      {{#unless (eq run.mrp run.price)}}
+        <span class="grey">
+          &nbsp;&nbsp;
+          <strike style="font-size: 0.9rem">{{format-price run.mrp}}</strike>
+        </span>
+      {{/unless}}
+    </div>
+  {{/unless}}
+
+  <div class="my-course-enroll row no-gutters">
+    <div class="col-8 align-self-end">
+      <div>HURRY UP!</div>
+      <div class="red">Enrollment ends {{moment-format (unix run.enrollmentEnd) 'MMM Do YYYY'}} </div>
+    </div>
+    {{#if course.organization}}
+      <div class="button-parent col-4 t-align-r">
+        {{run-request-button run=run}}
+      </div>
+    {{else}}
+      <div class="button-parent col-4 t-align-r">
+        {{#if isFree}}
+          {{#link-to "classroom.timeline.index" course.id run.id tagName="button" class="button-solid" activeClass=""}}
+            Access Now
+          {{/link-to}}
+        {{else}}
+          <button class="button-solid" {{action (perform enrollNowTask run.id)}}>
+            {{if enrollNowTask.isRunning 'Enrolling...' 'Enroll Now'}}
+          </button>
+        {{/if}}
+      </div>
+    {{/if}}
+
+  </div>
+
+  <div class="card-mentor-divider"></div>
+  {{#if run.tags.length}}
+    <div class="font-sm">Major topics covered</div>
+    <div class="tag-container">
+      {{#each run.tags as |tag|}}
+      <div class={{if (gt run.tags.length 6) "pill-sm" "pill"}}>
+        {{tag.name}}
+      </div>
+      {{/each}}
+    </div>
+
+    <div class="card-mentor-divider"></div>
+  {{/if}}
+
+  {{#unless blockFreeTrial}}
+    <div class="row no-gutters">
+      <div class="col-7 align-self-center">
+        You may also try our
+        free lectures:
+      </div>
+      <div class="button-parent col-5">
+        {{#if session.isAuthenticated}}
+          {{#link-to "classroom.timeline.index" course.id run.id tagName="button" class="button-dashed" activeClass=""}}
+            Start Free Trial
+          {{/link-to}}
+        {{else}}
+          <button class="button-dashed" {{action logInAndStartTrial course.id run.id}}>
+            Start Free Trial
+          </button>
+        {{/if}}
+      </div>
+    </div>
+  {{/unless}}
+</div>

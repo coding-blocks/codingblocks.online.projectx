@@ -1,15 +1,20 @@
 import Component from '@ember/component';
 import { inject } from '@ember/service';
+import { get }  from '@ember/object';
 import $ from 'jquery';
 import { task } from 'ember-concurrency';
 import env from "codingblocks-online/config/environment";
 
 export default Component.extend({
   availableRuns: [],
+  showCartModal: false,
+  runToBuy: null,
+  dukaanCart: null,
 
   loginUrl: `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
   session: inject(),
   api: inject(),
+  store: inject(),
   router: inject(),
   currentUser: inject(),
 
@@ -27,13 +32,22 @@ export default Component.extend({
 
         if (err.status == 400 && err.payload.err == 'TRIAL_WITHOUT_MOBILE') {
           errorCode = 'NO_USER_MOBILE_NUMBER'
+          this.get('router').transitionTo('error', {
+            queryParams: { errorCode }
+          })
         } else {
-          errorCode = 'DUKKAN_ERROR'
-        }
+          const cart = yield this.api.request(`/runs/cart`)
+          const run = this.store.peekRecord('run', runId)
+            
+          // if the product in cart is the same as product user wants to buy; just continue
+          if (get(cart, 'cartItems.0.product_id') == run.get('productId')) {
+            return window.location.href = env.dukaanUrl
+          }
 
-        this.router.transitionTo('error', {
-          queryParams: { errorCode }
-        })
+          this.set('dukaanCart', cart.cartItems[0])
+          this.set('runToBuy', run)
+          this.set('showCartModal', true)
+        }
       }
     }
     else {
@@ -55,9 +69,6 @@ export default Component.extend({
     logInAndStartTrial (courseId, runId) {
       localStorage.setItem('redirectionPath', this.router.urlFor('classroom.timeline.index', {courseId, runId}))
       this._redirectToOneauth()
-    },
-    goToTimeline (runId) {
-      this.router.transitionTo(`/classroom/course/${this.get('course.id')}/run/${runId}`)
     }
   },
 

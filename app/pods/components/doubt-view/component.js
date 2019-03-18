@@ -7,8 +7,8 @@ import env from 'codingblocks-online/config/environment';
 export default class DoubtViewComponent extends Component {
   @service api
 
-  constructor () {
-    super(...arguments)
+  didReceiveAttrs () {
+    this._super(...arguments)
     this.get('fetchTopicTask').perform()
   }
 

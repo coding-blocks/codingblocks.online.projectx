@@ -6,7 +6,7 @@
     </div>
 
     {{#if err}}
-      <div class="red card-md t-align-c pt-3"><i class="fas fa-exclamation-triangle"></i> {{{err}}}</div>
+      <div class="red card-md t-align-c pt-3"><i class="fas fa-exclamation-triangle"></i> {{{err}}} </div>
     {{/if}}
 
     <div class="input-group">
@@ -16,15 +16,15 @@
   </div>
 
   <div class="nav">
-    <div class="tab {{if (eq activeTab 'PENDING') 'active'}}" {{action 'setActiveTab' 'PENDING'}}>Unresolved({{unresolved}})</div>
-    <div class="tab {{if (eq activeTab 'RESOLVED') 'active'}}" {{action 'setActiveTab' 'RESOLVED'}}>Resolved({{sub existingDoubts.length unresolved}})</div>
+    <div role="button" class="tab {{if (eq activeTab "PENDING") "active"}}" {{action "setActiveTab" "PENDING"}}>Unresolved({{unresolved}})</div>
+    <div role="button" class="tab {{if (eq activeTab "RESOLVED") "active"}}" {{action "setActiveTab" "RESOLVED"}}>Resolved({{sub existingDoubts.length unresolved}})</div>
   </div>
 </div>
 
 <div class="bottom">
-  {{#if  (eq activeTab 'PENDING')}}
+  {{#if  (eq activeTab "PENDING")}}
     {{#if (not unresolved)}}
-    <div class="p-3 t-align-c">You have no unresolved doubts.</div> 
+      <div class="p-3 t-align-c">You have no unresolved doubts.</div> 
     {{/if}}
   {{else}}
     {{#if (not (sub doubts.length unresolved))}}
