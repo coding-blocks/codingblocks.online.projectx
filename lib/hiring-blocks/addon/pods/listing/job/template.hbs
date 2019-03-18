@@ -1,3 +1,213 @@
-{{job.title}}
-{{job.location}}
-{{job.experience}}
+<section class="container">
+  <div class="row no-gutters mt-5">
+    <div class="col-12 col-md-8">
+      <div class="border-card p-5 mb-5">
+        <div class="row no-gutters">
+          <div class="col-12 col-md-6">
+            <div class="img-desc b-right">
+              <div class="col-3 pl-0">
+                <img src={{company.logo}} alt="">
+              </div>
+              <div class="description col-9">
+                <div>
+                  <div class="heading">
+                    {{job.title}}
+                  </div>
+                  <div class="font-mds">
+                    {{company.name}}
+                  </div>
+                </div>
+                <div class="grey">
+                  Posted 2 weeks ago
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="d-flex font-sm">
+              <div class="col-6">
+                <div class="mb-3">
+                  Job Location: <span class="extra-bold">{{job.location}}</span>
+                </div>
+                <div class="mb-3">
+                  Job Type: <span class="extra-bold">{{job.type}}</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="mb-3">
+                  Experience: <span class="extra-bold">{{job.experience}}</span>
+                </div>
+                <div>
+                  Stipend: <span class="extra-bold">{{job.ctc}} LPA</span>
+                </div>
+              </div>
+            </div>
+            <div class="red pl-3">
+              Deadline: 24 March 2019
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gradient-violet-lr p-4 white">
+        View Job Description
+      </div>
+      <div class="border-card p-5">
+        <div class="font-md extra-bold mb-4">
+          Job Description
+        </div>
+        <div class="w-50 divider-h mb-4"></div>
+
+        <div class="font-sm">
+          {{markdown-to-html job.description class="d-inline" extensions="katex"}}
+        </div>
+
+        <div class="font-md extra-bold mt-5 mb-4">
+          About the Company
+        </div>
+        <div class="w-50 divider-h"></div>
+
+        <div class="font-sm">
+          {{company.description}}
+        </div>
+
+
+      </div>
+    </div>
+    <div class="col-12 col-md-4 pl-5">
+      <div class="position-relative br-10 overflow-hidden">
+        <div class="position-absolute tl z-neg bg-grey br-10 w-100 h-75"></div>
+
+        <div class="gradient-black-bt p-5">
+          <div class="d-flex justify-content-between white mb-2 font-sm">
+            Eligibility: <span class="extra-bold">{{job.eligibility}}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2 {{if job.eligible "green" "red"}}">
+            Status: 
+            <span class="extra-bold"> 
+              {{if job.eligible "Eligible" "Not Eligible"}}
+            </span>
+          </div>
+          {{#if job}}
+            <div>You've already applied for this Job</div>
+          {{else}}
+            <button 
+              class="button-solid card-md mt-4 mx-auto display-block" 
+              disabled={{unless job.eligible "disabled"}}
+              {{action (perform applyForJob)}}
+            >
+              Apply to this Job
+            </button>
+          {{/if}}
+        </div>
+
+        <div class="p-5">
+          <div class="mb-5">
+            <h6 class="mb-2">
+              Recommended Courses
+            </h6>
+            <div>
+              Based on the industry trends, you should
+              complete these courses
+            </div>
+          </div>
+
+          {{#each job.courses as |course|}}
+            <CourseCard @course={{course}} />
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="heading mb-5 mt-5">
+    What our students say about us
+  </div>
+
+  {{!-- <div class="row mb-5">
+    <div class="col-12 flex-col col-md-4">
+      <div class="dialog c-testimonial mb-2">
+        <div class="content">
+          I did three courses and was extremely happy with all the courses. They provide quality content, the support
+          from
+          faculty
+          and mentors was amazing. It helped me a lot in preparing for my interview rounds for the different companies.
+
+        </div>
+        <div class="footer bold">
+          Placed at:
+          <div class="img-container">
+            <img src="images/amazon-logo.svg" alt="">
+          </div>
+
+        </div>
+      </div>
+      <div class="round-img mb-3 mt-4">
+
+      </div>
+      <div class="extra-bold font-sm">
+        Siddharth Jain
+      </div>
+      <div class="semi-bold font-sm">
+        Android Development
+      </div>
+    </div>
+
+    <div class="col-12 flex-col col-md-4">
+      <div class="dialog c-testimonial mb-2">
+        <div class="content">
+          I did three courses and was extremely happy with all the courses. They provide quality content, the support
+          from
+          faculty
+          and mentors was amazing.
+        </div>
+        <div class="footer bold">
+          Placed at:
+          <div class="img-container">
+            <img src="images/amazon-logo.svg" alt="">
+          </div>
+
+        </div>
+      </div>
+      <div class="round-img mb-3 mt-4">
+
+      </div>
+      <div class="extra-bold font-sm">
+        Siddharth Jain
+      </div>
+      <div class="semi-bold font-sm">
+        Android Development
+      </div>
+    </div>
+
+    <div class="col-12 flex-col col-md-4">
+      <div class="dialog c-testimonial mb-2">
+        <div class="content">
+          I did three courses and was extremely happy with all the courses. They provide quality content, the support
+          from
+          faculty
+          and mentors was amazing. It helped me a lot in preparing for my interview rounds for the different companies.
+        </div>
+        <div class="footer bold">
+          Placed at:
+          <div class="img-container">
+            <img src="images/amazon-logo.svg" alt="">
+            </Piv>
+
+          </div>
+        </div>
+      </div>
+      <div class="round-img mb-3 mt-4">
+
+      </div>
+      <div class="extra-bold font-sm">
+        Siddharth Jain
+      </div>
+      <div class="semi-bold font-sm">
+        Android Development
+      </div>
+
+    </div>
+  </div> --}}
+
+</section>
