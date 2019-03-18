@@ -6,6 +6,7 @@ export default DS.Model.extend({
   role: DS.attr(),
   title: DS.attr(),
   type: DS.attr(),
+  eligibility: DS.attr(),
   ctc: DS.attr(),
   status: DS.attr(),
   experience: DS.attr(),
