@@ -13,7 +13,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-3 pr-md-5">
-      <div class="bg-gradient-violet-lr mb-5 p-3 dsp-none-sm">
+      <div class="bg-gradient-violet-lr mb-5 p-3 dsp-none-sm d-md-none">
         <button class="white">Apply Filters</button>
         <button class="yellow">Apply</button>
       </div>
@@ -22,7 +22,7 @@
 
       <div class="d-flex justify-content-between align-items-center mb-5 mt-5">
         <span class="font-lg">Filter Jobs</span>
-        <button class="red" {{action 'reset'}}>Reset all</button>
+        <button class="red" {{action "reset"}}>Reset all</button>
       </div>
 
       {{location-filterbox values=locations setLocations=(action "changeLocationsFilter") }}
