@@ -1,0 +1,64 @@
+<section class="home-banner mb-md-5">
+  <div class="left white">
+    <h1 class="semi-bold">WE HAVE JOBS</h1>
+    <h2 class="semi-bold mb-5">
+      Get recruited by top multinational companies and get worldwide recongnition
+    </h2>
+  </div>
+
+  <img class="dsp-none-sm" src="/images/home_main.jpg" alt="codingblocks-jobs-home-banner">
+</section>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3 pr-md-5">
+      <div class="bg-gradient-violet-lr mb-5 p-3 dsp-none-sm d-md-none">
+        <button class="white">Apply Filters</button>
+        <button class="yellow">Apply</button>
+      </div>
+
+      <JobStatusFilterbox @changeJobFilter={{action "changeJobFilter"}} @value={{eligibilityStatus}} />
+
+      <div class="d-flex justify-content-between align-items-center mb-5 mt-5">
+        <span class="font-lg">Filter Jobs</span>
+        <button class="red" {{action "reset"}}>Reset all</button>
+      </div>
+
+      {{location-filterbox values=locations setLocations=(action "changeLocationsFilter") }}
+
+      <JobtypeFilterbox @values={{jobTypes}} @setJobTypes={{action "changeTypeFilter"}} />
+      
+      {{!-- <div class="border-card mb-5">
+        <h4 class="mb-3">Filter by CTC</h4>
+
+        <div class="font-mds">
+          <label class="mb-2" for=""><input type="checkbox" id=""> 3 - 5 lpa (12)</label>
+          <br>
+          <label class="mb-2" for=""><input type="checkbox" id=""> 5 - 10 lpa (4)</label>
+          <br>
+          <label class="mb-2" for=""><input type="checkbox" id=""> 10+ lpa (23)</label>
+        </div>
+      </div> --}}
+    </div>
+
+    <div class="col-12 col-md-9">
+      <div class="t-align-ca mb-5">
+        <div class="bold font-lg">All Jobs</div>
+        {{!-- <div class="font-md grey">
+          Based on your courses completed, you are eligible for t jobs
+        </div> --}}
+      </div>
+
+      <JobCardsView 
+        @filters={{hash
+          eligibility=eligibilityStatus
+          locations=locations
+          jobTypes=jobTypes
+         }} 
+      />
+    </div>
+  </div>
+</div>
+
+<PartnersSection />

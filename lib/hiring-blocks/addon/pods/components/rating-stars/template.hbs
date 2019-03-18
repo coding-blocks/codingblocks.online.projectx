@@ -1,0 +1,8 @@
+<div class="rating">
+  {{#each totalStars as |star index|}}
+    <span class="{{if (lte index rating) "pos" "neg"}}-rating">
+      <i class="fas fa-star"></i>
+    </span>
+  {{/each}}
+  {{yield}}
+</div>

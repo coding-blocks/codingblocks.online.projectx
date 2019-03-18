@@ -69,7 +69,7 @@ export default class CarouselCards extends Component {
 
   didRender () {
     this._super(...arguments)
-    const carouselCardElements = Array.from(document.querySelectorAll('.card-stack > .card')).map(el => {
+    const carouselCardElements = Array.from(document.querySelectorAll('.card-stack > .border-card')).map(el => {
       return new carouselCard (el, {
         transition: '0.8s'
       })
@@ -94,13 +94,13 @@ export default class CarouselCards extends Component {
       let card = carouselCards[i]
       let normalize = factor == -1 ? 1 : 0
       if (i < currentIndex) {
-        card.setHeight(265)
+        card.setHeight(300)
         card.setTranslateY(0)
         card.addTranslateX(-110*factor)
         card.showContent()
         
       } else if (i == currentIndex-normalize) {
-        card.setHeight(265)
+        card.setHeight(300)
         card.setTranslateY(0)
         card.addTranslateX(-16*factor)
         card.showContent()

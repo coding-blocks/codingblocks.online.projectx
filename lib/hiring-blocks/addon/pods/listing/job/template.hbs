@@ -1,0 +1,130 @@
+<section class="container">
+  <div class="row no-gutters mt-5">
+    <div class="col-12 col-md-8">
+      <div class="border-card p-5 mb-5">
+        <div class="row no-gutters">
+          <div class="col-12 col-md-6">
+            <div class="img-desc b-right">
+              <div class="col-3 pl-0">
+                <img src={{company.logo}} alt="">
+              </div>
+              <div class="description col-9">
+                <div>
+                  <div class="heading">
+                    {{job.title}}
+                  </div>
+                  <div class="font-mds">
+                    {{company.name}}
+                  </div>
+                </div>
+                <div class="grey">
+                  Posted 2 weeks ago
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="d-flex font-sm">
+              <div class="col-6">
+                <div class="mb-3">
+                  Job Location: <span class="extra-bold">{{job.location}}</span>
+                </div>
+                <div class="mb-3">
+                  Job Type: <span class="extra-bold">{{job.type}}</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="mb-3">
+                  Experience: <span class="extra-bold">{{job.experience}}</span>
+                </div>
+                <div>
+                  Stipend: <span class="extra-bold">{{job.ctc}} LPA</span>
+                </div>
+              </div>
+            </div>
+            {{!-- <div class="red pl-3">
+              Deadline: 24 March 2019
+            </div> --}}
+          </div>
+        </div>
+      </div>
+      <div class="bg-gradient-violet-lr p-4 white d-md-none">
+        View Job Description
+      </div>
+      <div class="border-card p-5">
+        <div class="font-md extra-bold mb-4">
+          Job Description
+        </div>
+        <div class="w-50 divider-h mb-4"></div>
+
+        <div class="font-sm">
+          {{markdown-to-html job.description class="d-inline" extensions="katex"}}
+        </div>
+
+        <div class="font-md extra-bold mt-5 mb-4">
+          About the Company
+        </div>
+        <div class="w-50 divider-h"></div>
+
+        <div class="font-sm">
+          {{company.description}}
+        </div>
+
+
+      </div>
+    </div>
+    <div class="col-12 col-md-4 pl-5">
+      <div class="position-relative br-10 overflow-hidden">
+        <div class="back-div br-10"></div>
+
+        <div class="bg-gradient-black-bt p-5">
+          <div class="d-flex justify-content-between white mb-2 font-sm">
+            <span>Eligibility:</span> <span class="extra-bold">{{job.eligibility}}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2 {{if job.eligible "green" "red"}}">
+            Status: 
+            <span class="extra-bold"> 
+              {{if job.eligible "Eligible" "Not Eligible"}}
+            </span>
+          </div>
+          {{#if alreadyApplied}}
+            <div class="mt-4 green t-align-c">You've already applied for this Job.</div>
+          {{else}}
+            <button 
+              class="button-solid card-md mt-4 mx-auto display-block" 
+              disabled={{unless job.eligible "disabled"}}
+              {{action (perform applyForJob)}}
+            >
+              Apply to this Job
+            </button>
+          {{/if}}
+        </div>
+
+        <div class="p-5">
+          <div class="mb-5">
+            <h6 class="mb-2">
+              Recommended Courses
+            </h6>
+            <div>
+              Based on the industry trends, you should
+              complete these courses
+            </div>
+          </div>
+
+          {{#each job.courses as |course|}}
+            <CourseCard @course={{course}} />
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="container">
+  <SuccessStories />
+</section>
+
+<PartnersSection />
+

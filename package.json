@@ -46,6 +46,7 @@
     "ember-concurrency-decorators": "^0.5.5",
     "ember-data": "~3.8.0",
     "ember-decorators": "^5.1.4",
+    "ember-engines": "^0.5.26",
     "ember-export-application-global": "^2.0.0",
     "ember-keyboard-shortcuts": "^1.0.6",
     "ember-load-initializers": "^1.1.0",
@@ -71,9 +72,14 @@
     "node": "6.* || 8.* || >= 10.*"
   },
   "dependencies": {
-    "@coding-blocks/motley": "0.3.36",
+    "@coding-blocks/motley": "0.3.38",
     "ember-line-clamp": "^0.2.15",
     "moment": "^2.22.2",
     "showdown-katex-studdown": "^0.4.0"
+  },
+  "ember-addon": {
+    "paths": [
+      "lib/hiring-blocks"
+    ]
   }
 }

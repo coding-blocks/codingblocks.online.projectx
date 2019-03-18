@@ -1,10 +1,11 @@
-<div class="grid-background">
-  <div class="heading-u">
-    <p>All Courses</p>
-  </div>
-  <div class="grid row">
+
+<div class="container">
+  <h2 class="t-align-c mt-5 mb-5">
+    All Courses
+  </h2>
+  <div class="row">
     {{#each courses as |course|}}
-      <div class="c-layout-card col-12 col-sm-12   col-md-6 col-lg-4">
+      {{!-- <div class="c-layout-card col-12 col-sm-12   col-md-6 col-lg-4">
           <div class="card online-card home-card">
             <div class="head d-flex justify-content-center">
               <img class="back-img" src="{{course.coverImage}}">
@@ -73,6 +74,161 @@
                   <div class="col-12 red pointer center-text" {{action 'logIn'}} >Click here to get Free Trial Now</div>
                 {{/if}}
               </div>
+            </div>
+          </div>
+        </div> --}}
+
+        <div class="c-layout-card hoverable col-12 col-sm-12 col-md-6 col-lg-3 pr-md-0">
+          <div class="img-card online-card">
+            <div class="head d-flex">
+              <img class="back-img" src="{{course.coverImage}}">
+              <div class="dsp-none-sm">
+                {{difficulty-dots difficulty=course.difficulty difficultyName=course.difficultyName}}
+              </div>
+              <div class="content d-flex flex-column justify-content-center">
+                <div class="round-img-b">
+                  <img src="{{defaultTo course.logo '/images/c++'}}">
+                </div>
+                <div class="course-name center-text">
+                  {{#link-to 'courses.id' course.identifier activeClass="" class="white"}} {{course.title}} {{/link-to}}
+                </div>
+                <div class="i course-description t-align-c d-md-none">
+                  {{course.subtitle}}
+                </div>
+                {{rating-stars-static rating=course.rating showValue=true}}
+              </div>
+            </div>
+            <div class="foot">
+              <div class="card-mentor d-md-none">
+                <div class="card-mentor-image">
+                  {{#each course.instructors as |instructor index|}}
+                  {{#if (lt index 2) }}
+                  <img class="card-mentors" src="{{instructor.photo}}">
+                  {{/if}}
+                  {{/each}}
+                </div>
+                <div class="card-mentor-text">
+                  <span>Instructors</span>
+                  <div class="card-mentor-name">
+                    {{#each course.instructors as |instructor index|}}
+                    {{#if (lt index 2)}}
+                    {{instructor.name}}{{if (and (gt course.instructors.length 1) (eq index 0)) "," ""}}
+                    {{/if}}
+                    {{/each}}
+        
+                    {{#if (gt course.instructors.length 2)}}
+                    <span class="price"> +{{sub course.instructors.length 2}}</span> more
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+              <div class="row button-row justify-content-between no-gutters align-items-center">
+                <div class="details">
+                  {{#unless organization}}
+                  <div class="price">
+                    <span class="red font-sm extra-bold"> {{format-price course.topRun.price}} </span>
+                    {{#unless (eq course.topRun.mrp course.topRun.price)}}
+                    <span class="grey card-md">
+                      <strike>{{format-price course.topRun.mrp}}</strike>
+                    </span>
+                    {{/unless}}
+                  </div>
+                  {{/unless}}
+                  {{!-- <div class="grey">Batches starting {{moment-format (unix course.topRun.start) 'MMM Do'}} </div> --}}
+                </div>
+        
+                {{#link-to 'courses.id' course.identifier class="white" activeClass=""}} <button
+                  class="button-solid">Explore</button>{{/link-to}}
+        
+              </div>
+              <div class="d-md-none">
+                <div class="divider">
+                  <div class="card-mentor-divider col-12 order-0 order-md-2"></div>
+                </div>
+                <div class="enrollment">
+                  <div class="col-12 center-text">Hurry Up! Enrollment ends
+                    {{moment-format (unix course.topRun.enrollmentEnd) 'MMM Do YYYY'}} </div>
+                  {{#if session.isAuthenticated}}
+                  {{#link-to "classroom.timeline.index" course.id course.topRun.id class="col-12 red pointer center-text" tagName="div"}}
+                  Click here to get Free Trial Now
+                  {{/link-to}}
+                  {{else}}
+                  <div class="col-12 red pointer center-text" {{action 'logIn'}}>Click here to get Free Trial Now</div>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="border-card online-card pop-up dsp-none-sm">
+            <div class="round-img">
+              <img src="{{defaultTo course.logo '/images/c++'}}">
+            </div>
+            <div class="course-name center-text">
+              {{#link-to 'courses.id' course.identifier activeClass=""}} {{course.title}} {{/link-to}}
+            </div>
+            <div class="">
+              {{course.subtitle}}
+            </div>
+        
+        
+            <div class="card-mentor">
+              <div class="card-mentor-image">
+                {{#each course.instructors as |instructor index|}}
+                {{#if (lt index 2) }}
+                <img class="card-mentors" src="{{instructor.photo}}">
+                {{/if}}
+                {{/each}}
+              </div>
+              <div class="card-mentor-text">
+                <span>Instructors</span>
+                <div class="card-mentor-name">
+                  {{#each course.instructors as |instructor index|}}
+                  {{#if (lt index 2)}}
+                  {{instructor.name}}{{if (and (gt course.instructors.length 1) (eq index 0)) "," ""}}
+                  {{/if}}
+                  {{/each}}
+        
+                  {{#if (gt course.instructors.length 2)}}
+                  <span class="price"> +{{sub course.instructors.length 2}}</span> more
+                  {{/if}}
+                </div>
+              </div>
+              <!--</div>-->
+            </div>
+            <div class="row button-row justify-content-between no-gutters align-items-center">
+              <div class="details">
+                {{#unless organization}}
+                <div class="price">
+                  <span class="red font-sm extra-bold"> {{format-price course.topRun.price}} </span>
+                  {{#unless (eq course.topRun.mrp course.topRun.price)}}
+                  <span class="grey card-md">
+                    <strike>{{format-price course.topRun.mrp}}</strike>
+                  </span>
+                  {{/unless}}
+                  <!--<span class="grey"><strike>Rs 12000</strike></span>-->
+                </div>
+                {{/unless}}
+                <div class="grey">Batches starting {{moment-format (unix course.topRun.start) 'MMM Do'}} </div>
+              </div>
+        
+              {{#link-to 'courses.id' course.identifier class="white" activeClass=""}}
+              <button class="button-solid">Explore</button>{{/link-to}}
+        
+            </div>
+            <div class="divider-h"></div>
+            <div class="row t-align-ca card-md no-gutters">
+              <div class="col-12">Hurry Up! Enrollment ends {{moment-format (unix course.topRun.enrollmentEnd) 'MMM Do YYYY'}}
+              </div>
+        
+              {{#if session.isAuthenticated}}
+              {{#link-to "classroom.timeline.index" course.id course.topRun.id class="col-12 red pointer" tagName="div"}}
+              Click here to get Free Trial Now
+              {{/link-to}}
+              {{else}}
+              <div class="col-12 red pointer" {{action 'logIn'}}>Click here to get Free Trial Now</div>
+              {{/if}}
+        
             </div>
           </div>
         </div>

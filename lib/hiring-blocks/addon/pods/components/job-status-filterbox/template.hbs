@@ -1,0 +1,16 @@
+<div class="border-card white bg-gradient-violet-lr">
+  <h4 class="mb-3">Jobs Status</h4>
+  <div class="font-mds">
+    <label class="mb-2">
+      <input type="radio" checked={{not value}} onClick={{action changeJobFilter}}> All Jobs
+    </label>
+    <br>
+    <label class="mb-2">
+      <input type="radio" checked={{eq value "eligible"}} onClick={{action changeJobFilter "eligible"}}> Eligible Jobs
+    </label>
+    <br>
+    <label class="mb-2">
+      <input type="radio" checked={{eq value "applied"}} onClick={{action changeJobFilter "applied"}}> Applied Jobs
+    </label>
+  </div>
+</div>
