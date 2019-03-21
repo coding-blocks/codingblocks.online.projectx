@@ -36,7 +36,7 @@ export default class RecommendedTaskComponent extends Component {
       exclude: "ratings",
       sort: 'difficulty',
       page: {
-        limit: 9
+        limit: 8
       }
     });
   }
