@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import config from 'codingblocks-online/config/environment'
+import { alias }  from '@ember/object/computed';
 
 export default Controller.extend({
   api: service(),
@@ -10,6 +11,7 @@ export default Controller.extend({
   visible: true,
   offset: 0, 
   limit: 5,
+  moderators: alias('run.moderators'),
   recentEvents: computed('announcements', 'doubts', function () {
     const announcementsObjs = this.announcements.map(a => ({
       type: 'announcement',

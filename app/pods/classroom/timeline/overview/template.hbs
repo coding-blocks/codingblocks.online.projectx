@@ -189,20 +189,20 @@
     </div>
 
     <!-------------------------------------------About TAs----------------------------------->
-    {{#if run.ta.length}}
+    {{#if moderators}}
       <div class="heading-u">
           About Teaching Assistants
       </div>
 
       <div class="c-about-instructors">
           <div class="row no-gutters">
-              {{#each run.ta as |ta|}}
+              {{#each moderators as |moderator|}}
                   <div class="col-md-6 col-sm-12">
                       <div class="img-desc row no-gutters">
                           <div class="col-3">
                           <div class="img-container">
                               <div class="round-img">
-                              <img src="{{ta.photo}}" alt="photo of {{ta.name}}">
+                              <img src="{{moderator.photo}}" alt="photo of {{moderator.name}}">
                               </div>
                           </div>
 
@@ -212,18 +212,20 @@
                           <div class="description col-8">
                           <div>
                               <div class="main-h">
-                              {{ta.name}}
+                              {{moderator.fullname}}
                               </div>
                               <div class="sub-h">
                               Teaching Assistant, Coding Blocks
                               </div>
                               <div class="classroom-para">
-                                <a href="mailto:{{ta.email}}">{{ta.email}}</a>
+                                <a href="mailto:{{ta.email}}">{{moderator.verifiedemail}}</a>
                               </div>
                           </div>
 
                           <div class="classroom-para">
-                              {{markdown-to-html ta.description}}
+                              <a href="http://discuss.codingblocks.com/u/{{moderator.username}}">
+                                Message on Discuss
+                              </a>
                           </div>
                           </div>
                       </div>

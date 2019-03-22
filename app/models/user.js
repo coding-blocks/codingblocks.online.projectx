@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import { computed }  from '@ember/object';
 
 export default DS.Model.extend({
   name: DS.attr(),
@@ -12,8 +13,8 @@ export default DS.Model.extend({
   photo: DS.attr(),
   oneauthId: DS.attr(),
   verifiedemail: DS.attr(),
-  verifiedmobile: DS.attr()
-  //contents: DS.hasMany('content'),
-  //courseRuns: DS.hasMany('run'),
-  //runAttempt: DS.belongsTo('run-attempt')
+  verifiedmobile: DS.attr(),
+  fullname: computed('firstname', 'lastname', function () {
+    return [this.firstname.capitalize(), this.lastname.capitalize()].join(' ')
+  })
 });

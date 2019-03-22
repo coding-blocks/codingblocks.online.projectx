@@ -65,5 +65,6 @@ export default DS.Model.extend({
     }, 0);
   }),
   ta: DS.hasMany('ta'),
+  moderators: DS.hasMany('user'),
   runRequests: DS.hasMany('run-request')
 })
