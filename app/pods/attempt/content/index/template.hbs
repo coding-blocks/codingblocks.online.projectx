@@ -1,5 +1,7 @@
 {{!-- Render a component based upon payload --}}
-{{#if payload}}
+{{#if (not currentUser.user.verifiedemail)}}
+  {{verify-email}}
+{{else if payload}}
   {{component componentName payload=payload onVideoCompleted=(action 'transitonToNextContent') tab=tab run=run start=start showFeedback=(unbound showFeedback) onFeedbackSubmit=(action 'submitFeedback')}}
 {{else if (not run.isStarted)}}
   {{unstarted-content run=run}}

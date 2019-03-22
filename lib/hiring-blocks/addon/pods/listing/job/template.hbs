@@ -41,7 +41,7 @@
                   Experience: <span class="extra-bold">{{job.experience}}</span>
                 </div>
                 <div>
-                  Stipend: <span class="extra-bold">{{job.ctc}} LPA</span>
+                  Stipend: <span class="extra-bold">{{job.ctc}}</span>
                 </div>
               </div>
             </div>
@@ -70,7 +70,7 @@
         <div class="w-50 divider-h"></div>
 
         <div class="font-sm">
-          {{company.description}}
+          {{markdown-to-html company.description class="d-inline" extensions="katex"}}
         </div>
 
 

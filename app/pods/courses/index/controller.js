@@ -5,7 +5,7 @@ import { alias }  from '@ember/object/computed';
 
 export default Controller.extend({
   queryParams: ['limit', 'offset', 'org'],
-  limit: 9,
+  limit: 8,
   offset: 0,
   currentUser: service(),
   organization: alias('currentUser.organization'),
@@ -18,8 +18,9 @@ export default Controller.extend({
     }
 
     const nextCourses = yield this.store.query ('course', {
-      include: 'runs',
+      include: 'instructors,runs',
       sort: 'difficulty',
+      exclude: 'ratings,instructors.*',
       filter: {
         unlisted: false,
         ...extraWhere
@@ -34,7 +35,7 @@ export default Controller.extend({
 
   actions:{
     loadMore () {
-      this.set('limit', Math.min(this.limit + 9, this.count))
+      this.set('limit', Math.min(this.limit + 8, this.count))
       this.taskMoreCourses.perform()
     }
   }

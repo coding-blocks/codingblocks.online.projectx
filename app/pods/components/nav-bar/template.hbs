@@ -35,7 +35,13 @@
           <li class="nav-items pointer">
             <a href="https://codingblocks.com/centres/" target="_blank">Contact Us</a>
           </li>
-          {{/if}} {{#if session.isAuthenticated}}
+          {{/if}}
+          {{#unless organization}}
+            <li class="nav-items pointer">
+              {{#link-to 'hiring-blocks' }}Get Hired{{/link-to}}
+            </li>
+          {{/unless}}
+          {{#if session.isAuthenticated}}
           <li class="nav-items pointer">
             {{notification-dropdown toggleAction=toggleNotification activeTab=activeTab}}
           </li>
@@ -101,6 +107,11 @@
       <div class="para" onclick={{action 'toggleSidebar'}}>
         {{#link-to 'courses'}}All Courses{{/link-to}}
       </div>
+      {{#unless organization}}
+        <div class="para" onclick={{action 'toggleSidebar'}}>
+          {{#link-to 'hiring-blocks'}}Get Hired{{/link-to}}
+        </div>
+      {{/unless}}
     </div>
   </div>
 </header>

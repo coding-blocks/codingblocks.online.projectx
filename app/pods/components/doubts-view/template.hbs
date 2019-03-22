@@ -2,7 +2,7 @@
   <div class="new-doubt">
     <div class="head">
       <span>Ask a Doubt</span>
-      <button class="button-solid {{if askDoubtTask.isRunning 'disabled'}}" {{action 'askDoubt'}} >Post Doubt</button>
+      <button class="button-solid {{if askDoubtTask.isRunning 'disabled'}}" {{action (perform askDoubtTask)}} >Post Doubt</button>
     </div>
 
     {{#if err}}

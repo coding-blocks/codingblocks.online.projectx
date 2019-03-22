@@ -48,7 +48,11 @@
             <div class="phone d-flex justify-content-center">
               <img src="images/iphone.svg" class="h-100 w-100" alt="home">
               <div class="phone-content">
-                <img class="h-100" src="images/holi.webp">
+                <picture>
+                <source type="image/webp" srcset="images/holi.webp">
+                <source type="image/jpg" srcset="images/backupholi.jpg">
+                <img src="images/backupholi.jpg">
+                </picture>
               </div>
             </div>
           </div>
@@ -60,8 +64,5 @@
   {{recommended-courses}}
 
   {{testimonials-view}}
-
-  <div class="pt-5">
-    {{offerings-static}}
-  </div>
 </div>
+{{offerings-static}}
