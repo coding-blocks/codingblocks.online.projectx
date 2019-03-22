@@ -1,67 +1,69 @@
-<div class="classroom-container row">
-  <div class="classroom-header-box col-md-6 col-12">
-    <div class="classroom-header row">
-      <div class="classroom-image col-2">
-        <img class="round" src={{run.course.logo}}>
+<div class="container">
+  <div class="classroom-container row">
+    <div class="classroom-header-box col-md-6 col-12 pl-0">
+      <div class="classroom-header row no-gutters">
+        <div class="classroom-image col-2">
+          <img class="round" src={{run.course.logo}}>
+        </div>
+        <div class="classroom-text col-10 pl-3 d-flex flex-column justify-content-center">
+          <h3 class="m-0">{{#link-to 'courses.id' run.course.identifier activeClass="" class="bold"}} {{run.course.title}} {{/link-to}}</h3>
+          <h6 class="red normal m-0">Batch Ends {{moment-format run.topRunAttempt.endDate "DD-MMM-YY"}}</h6>
+        </div>
+        <div class="rating mob">
+          {{#if runAttempt.premium}}
+          {{log 'userRating' userRating}}
+            {{#rating-stars course=run.course showModal=true initialRating=userRating isShowingModal=showFeedback}} {{/rating-stars}}
+          {{else}}
+            {{rating-stars-static rating=run.course.rating showValue=true}}
+          {{/if}}
+        </div>
       </div>
-      <div class="classroom-text col-10 d-flex flex-column justify-content-center">
-        <h3 class="m-0">{{#link-to 'courses.id' run.course.identifier activeClass="" class="bold"}} {{run.course.title}} {{/link-to}}</h3>
-        <h6 class="red normal m-0">Batch Ends {{moment-format run.topRunAttempt.endDate "DD-MMM-YY"}}</h6>
-      </div>
-      <div class="rating mob">
+      <h2 class="classroom-para grey">
+        {{line-clamp
+          text=run.course.summary
+          lines=6}}
+      </h2>
+      <div class="rating">
+        <br>
         {{#if runAttempt.premium}}
-        {{log 'userRating' userRating}}
           {{#rating-stars course=run.course showModal=true initialRating=userRating isShowingModal=showFeedback}} {{/rating-stars}}
         {{else}}
           {{rating-stars-static rating=run.course.rating showValue=true}}
         {{/if}}
       </div>
     </div>
-    <h2 class="classroom-para grey">
-      {{line-clamp
-        text=run.course.summary
-        lines=6}}
-    </h2>
-    <div class="rating">
-      <br>
-      {{#if runAttempt.premium}}
-        {{#rating-stars course=run.course showModal=true initialRating=userRating isShowingModal=showFeedback}} {{/rating-stars}}
-      {{else}}
-        {{rating-stars-static rating=run.course.rating showValue=true}}
-      {{/if}}
-    </div>
-  </div>
-  <div class="course-progress-box col-md-6 col-12 pt-md-4 pt-sm-3">
-    <div class="course-progress-heading row no-gutters">
-      <div class="heading col-4 col-md-6 align-self-center">Course Progress</div>
-      <div class="divider-h col-6 align-self-center"></div>
-    </div>
+    <div class="course-progress-box col-md-6 col-12 pt-md-4 pt-sm-3 pr-0">
+      <div class="course-progress-heading row no-gutters">
+        <div class="heading col-4 col-md-6 align-self-center">Course Progress</div>
+        <div class="divider-h col-6 align-self-center"></div>
+      </div>
 
-    <div class="progress row no-gutters align-items-center mb-3">
-      <div class="progress col-10 col-md-11">
-        <progress max="100" value="{{percentage run.completedContents run.totalContents}}"></progress>
+      <div class="progress row no-gutters align-items-center mb-3">
+        <div class="progress col-10 col-md-11">
+          <progress max="100" value="{{percentage run.completedContents run.totalContents}}"></progress>
+        </div>
+        <div class="col-2 pl-3 col-md-1">
+          {{percentage run.completedContents run.totalContents}}%
+        </div>
+      
       </div>
-      <div class="col-2 pl-3 col-md-1">
-        {{percentage run.completedContents run.totalContents}}%
+      <div class="row no-gutters justify-content-between">
+        <span>{{run.completedContents}} of {{run.totalContents}} Contents Completed</span>
+        <button class="red" {{action 'resetProgress'}}>Reset Progress</button>
       </div>
-    
-    </div>
-    <div class="row no-gutters justify-content-between">
-      <span>{{run.completedContents}} of {{run.totalContents}} Contents Completed</span>
-      <button class="red" {{action 'resetProgress'}}>Reset Progress</button>
-    </div>
-    
-    <div class="row justify-content-around mt-md-5 mt-3">
-      {{#if (not run.topRunAttempt.premium)}}
-      <div class="col-6 col-md-5">
-        {{#link-to 'courses.id' run.course.identifier tagName="button" activeClass="" class="button-solid"}} Buy Now
-        {{/link-to}}
+      
+      <div class="row justify-content-around mt-md-5 mt-3">
+        {{#if (not run.topRunAttempt.premium)}}
+        <div class="col-6 col-md-5">
+          {{#link-to 'courses.id' run.course.identifier tagName="button" activeClass="" class="button-solid"}} Buy Now
+          {{/link-to}}
+        </div>
+        {{/if}}
+        <div class="col-6 col-md-5">
+          {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass="" class="button-dashed"}} Resume Learning {{/link-to}}
+        </div>
+      
       </div>
-      {{/if}}
-      <div class="col-6 col-md-5">
-        {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass="" class="button-dashed"}} Resume Learning {{/link-to}}
-      </div>
-     
     </div>
   </div>
 </div>
