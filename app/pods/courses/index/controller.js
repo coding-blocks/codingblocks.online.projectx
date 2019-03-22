@@ -18,8 +18,9 @@ export default Controller.extend({
     }
 
     const nextCourses = yield this.store.query ('course', {
-      include: 'runs',
+      include: 'instructors,runs',
       sort: 'difficulty',
+      exclude: 'ratings,instructors.*',
       filter: {
         unlisted: false,
         ...extraWhere

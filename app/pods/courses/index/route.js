@@ -24,9 +24,9 @@ export default class CoursesRouter extends Route {
     }
 
     return this.store.query('course', {
-      include: 'runs',
+      include: 'instructors,runs',
       sort: 'difficulty',
-      exclude: "ratings",
+      exclude: "ratings,instructors.*",
       filter: {
         unlisted: false,
         ...extraWhere
