@@ -46,6 +46,12 @@ module.exports = function(environment) {
 
   ENV.dukaanUrl = 'https://dukaan.codingblocks.xyz'
 
+  ENV.firebase = {
+    apiKey: '-',
+    databaseURL: "https://xyz.firebaseio.com/",
+    projectId: "cb",
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

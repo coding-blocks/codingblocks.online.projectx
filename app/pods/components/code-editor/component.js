@@ -1,6 +1,8 @@
-import Component from "@ember/component";
-import { action, computed } from "@ember-decorators/object";
-import { set } from '@ember/object';
+import Component from "@ember/component"
+import { action, computed } from "@ember-decorators/object"
+import { set } from '@ember/object'
+import firepad from 'firepad'
+import { getRef } from "codingblocks-online/utils/firebase";
 
 export default class EditorClass extends Component {
   classNames = ["height-100"];
@@ -9,49 +11,50 @@ export default class EditorClass extends Component {
     {
       name: "C++",
       code: "cpp",
-      mode: "ace/mode/c_cpp",
+      mode: "cpp",
       source: ""
     },
     {
       name: "C",
       code: "c",
-      mode: "ace/mode/c_cpp",
+      mode: "c",
       source: ""
     },
     {
       name: "Python 2.7",
       code: "py2",
-      mode: "ace/mode/python",
+      mode: "python",
       source: ""
     },
     {
       name: "Python 3",
       code: "py3",
-      mode: "ace/mode/python",
+      mode: "python",
       source: ""
     },
     {
       name: "Node",
       code: "js",
-      mode: "ace/mode/javascript",
+      mode: "javascript",
       source: ""
     },
     {
       name: "Java 8",
       code: "java",
-      mode: "ace/mode/java",
+      mode: "java",
       source: ""
     },
     {
       name: "C#",
       code: "csharp",
-      mode: "ace/mode/csharp",
+      mode: "csharp",
       source: ""
     }
   ];
 
   customInput = "";
   isRunOutput = true;
+  ref = "-LaLRKr2xor7doqVsDbO"
 
   didReceiveAttrs() {
     this._super(...arguments);
@@ -93,6 +96,7 @@ export default class EditorClass extends Component {
   selectLanguage(lang) {
     this.set("isLanguageSelectOpen", false);
     this.set("selectedLanguage", lang);
+
   }
 
   @action
@@ -125,4 +129,20 @@ export default class EditorClass extends Component {
   toggle(modalContentType){
     this.sendAction('toggleModal', modalContentType);
   }
+
+  didInsertElement () {
+    this._super(...arguments)
+    const monacoIframe = document.querySelector('iframe[src*="ember-monaco"]')
+    monacoIframe.addEventListener('load', () => {
+      const iframeWindow = monacoIframe.contentWindow
+      this.editor = iframeWindow.editor
+      console.log(this.editor)
+      window.monaco = iframeWindow.monaco
+      this.editor.setValue("")
+      firepad.fromMonaco(getRef(this.ref), this.editor, {
+        defaultText: 'Your editor is now shared.'
+      })
+    })
+  }
+  
 }
