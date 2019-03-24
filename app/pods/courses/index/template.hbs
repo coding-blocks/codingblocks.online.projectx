@@ -234,17 +234,14 @@
         </div>
     {{/each}}
   </div>
-  {{#if taskMoreCourses.isRunning}}
-    <div class="row justify-content-center">
-      <div class="button-dashed">
+  
+  <div class="row justify-content-center">
+    <div class="button-dashed">
+      {{#if taskMoreCourses.isRunning}}
         <button>Loading...</button>
-      </div>
-    </div>
-  {{else if (lt limit count)}}
-    <div class="row justify-content-center">
-      <div class="button-dashed">
+      {{else if (lt limit count)}}
         <button {{action "loadMore"}}>Load More</button>
-      </div>
+      {{/if}}
     </div>
-  {{/if}}
+  </div>
 </div>
