@@ -8,6 +8,7 @@ import { restartableTask } from 'ember-concurrency-decorators';
 export default class DoubtsViewComponent extends Component {
   @service store 
   @service currentContent
+  @service firepad
 
   classNames=['c-doubts']
 
@@ -55,14 +56,18 @@ export default class DoubtsViewComponent extends Component {
       status: "PENDING"
     })
     doubt.set("runAttempt", this.get('runAttempt'))//aisa isliye kiya hai kyoki https://github.com/emberjs/ember.js/issues/16258
-    yield doubt.save()
-    .then(r => {
+    try {
+      yield doubt.save()
       this.set('title', '')
       this.set('body', '')
-    }).catch(err => {
+
+      this.firepad.set('ref', doubt.firebase_ref)
+      this.firepad.connect()
+      
+    } catch (err) {
       doubt.rollbackAttributes();
-      this.set('err', err.errors[0].detail);
-    })
+      this.set('err', err.errors[0].detail)
+    }
   }
 
   @action

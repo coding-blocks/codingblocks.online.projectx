@@ -1,8 +1,7 @@
 import Component from "@ember/component"
 import { action, computed } from "@ember-decorators/object"
 import { set } from '@ember/object'
-import firepad from 'firepad'
-import { getRef } from "codingblocks-online/utils/firebase";
+import { inject as service } from '@ember-decorators/service';
 
 export default class EditorClass extends Component {
   classNames = ["height-100"];
@@ -55,6 +54,8 @@ export default class EditorClass extends Component {
   customInput = "";
   isRunOutput = true;
   ref = "-LaLRKr2xor7doqVsDbO"
+
+  @service firepad
 
   didReceiveAttrs() {
     this._super(...arguments);
@@ -135,13 +136,13 @@ export default class EditorClass extends Component {
     const monacoIframe = document.querySelector('iframe[src*="ember-monaco"]')
     monacoIframe.addEventListener('load', () => {
       const iframeWindow = monacoIframe.contentWindow
+      
+      // Get the editor reference and set monaco global
       this.editor = iframeWindow.editor
-      console.log(this.editor)
       window.monaco = iframeWindow.monaco
-      this.editor.setValue("")
-      firepad.fromMonaco(getRef(this.ref), this.editor, {
-        defaultText: 'Your editor is now shared.'
-      })
+
+      const firepad = this.firepad
+      firepad.set("editor", this.editor)
     })
   }
   

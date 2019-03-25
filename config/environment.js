@@ -47,9 +47,9 @@ module.exports = function(environment) {
   ENV.dukaanUrl = 'https://dukaan.codingblocks.xyz'
 
   ENV.firebase = {
-    apiKey: '-',
-    databaseURL: "https://xyz.firebaseio.com/",
-    projectId: "cb",
+    apiKey: 'AIzaSyD1bGr7kMHEWxK0X-oIKWfsZ29QNhjJA5U',
+    databaseURL: "https://cb-ide.firebaseio.com/",
+    projectId: "cb-ide",
   }
 
   if (environment === 'development') {
