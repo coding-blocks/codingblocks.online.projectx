@@ -30,13 +30,10 @@ export default Route.extend({
 							const url = transition.intent.url.replace(/player\/\d*\//g, "player/" + result.id + '/')
 							return this.transitionTo(url)
 						})
-						.catch(err => {
-
-							//if we don't get any correction, show 404
-							if(isBadRequestError(err)) {
-								this.transitionTo('404')
-							}
-						});
+						.catch(e => {
+							console.error(e)
+							this.transitionTo('404')
+						})
 				} else {
 					throw err
 				}		
