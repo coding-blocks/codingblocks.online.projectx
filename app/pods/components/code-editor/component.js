@@ -62,6 +62,13 @@ export default class EditorClass extends Component {
     this.setCodeStubs();
     const allLanguages = this.get("allLanguages") || [];
     this.selectLanguage(allLanguages[0]);
+    
+    // if we have a ref; connect to firebase
+    if (this.ref) {
+      this.firepad.connect()
+    } else {
+      this.firepad.disconnect()
+    }
   }
 
   setCodeStubs() {

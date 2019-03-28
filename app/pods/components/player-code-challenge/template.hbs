@@ -41,14 +41,16 @@
     {{/if}}
   </div>
   <div id="dragger-ps-ce"></div>
-  {{#code-editor
-    runCodeTask=runCodeTask
-    submitCodeTask=submitCodeTask
-    stubs=codeStubs
-    code=code
-    toggleModal="toggleModal"
-  }}{{/code-editor}}
+  <CodeEditor
+    @runCodeTask={{runCodeTask}}
+    @submitCodeTask={{submitCodeTask}}
+    @stubs={{codeStubs}}
+    @code={{code}}
+    @toggleModal="toggleModal"
+    @ref={{relatedPendingDoubt.firebaseRef}}
+  />
 </div>
+
 {{#if isShowingModal}}
   {{#modal-dialog
     translucentOverlay=true
@@ -105,4 +107,18 @@
       </div>
     {{/if}}
   {{/modal-dialog}}
+{{/if}}
+
+{{#if showCollabModal}}
+  <ModalDialog
+    @translucentOverlay={{true}}
+    @targetAttachment="none"
+    @containerClass="centered-scrolling-container p-4 pb-5"
+    @overlayClass="centered-scrolling-overlay"
+    @wrapperClass="centered-scrolling-wrapper"
+    @onClose={{action (mut showCollabModal) false}}
+  >
+    You have a pending doubt regarding this problem. So we have opened your editor in Collab Mode. 
+    This way you and your TA can share the editor.
+  </ModalDialog>
 {{/if}}
