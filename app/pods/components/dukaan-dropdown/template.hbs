@@ -5,33 +5,30 @@
 	<i class="fas fa-shopping-cart"></i>
 </div>
 
-<div class="dropdown-ul c-notification {{if showDialog 'display-block'}}" id="cart-box">
+<div class="dropdown-ul border-card c-notification {{if showDialog 'display-block'}}" id="cart-box">
   {{#if cartItem}}
-    <div class="dropdown-li row align-items-center">
-      <div class="col-3 justify-content-center">
-        <div class="w-100 round-image">
-          <img src="{{ cartItem.image_url }}" alt="">
+    <div class="row align-items-center mb-4">
+      <div class="img-desc">
+        <div class="col-3">
+          <img class="round" src="{{ cartItem.image_url }}" alt="">
         </div>
-      </div>
-      <div class="col-9 align-">
-        <div class="row">
-          {{ cartItem.productName }}
-        </div>
-        <div class="row">
-          Rs {{ cartItem.final_price }}
-          <strike class="grey ml-2 font-xs">Rs {{ cartItem.list_price }}</strike>
+        <div class="description">
+          <h6>{{ cartItem.productName }}</h6>
+          <div class="d-flex align-items-end">
+            <h4>Rs {{ cartItem.final_price }}</h4> 
+            <strike class="grey ml-2 card-md">Rs {{ cartItem.list_price }}</strike>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row m-4 align-items-center">
-      <div class="col font-xs">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="card-md">
           <button onclick={{action (perform clearCartTask)}}>X Remove Product</button>
       </div>
-      <div class="col">
-        <a href="{{ dukaanUrl }}">
-          <button class="button-solid">Checkout</button>
-        </a>
-      </div>
+  
+      <a href="{{ dukaanUrl }}">
+        <button class="button-solid">Checkout</button>
+      </a>
     </div>
   {{else}}
     <a href="#" target="_blank">

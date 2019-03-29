@@ -1,12 +1,8 @@
 {{#if request}}
   {{#if isPending}}
-    <div class="button-solid disabled pointer">
-      <button>Request Pending</button>
-    </div>
+    <button class="button-solid">Request Pending</button>
   {{else if  isDeclined}}
-    <div class="button-solid disabled pointer">
-      <button>Request Declined</button>
-    </div>
+    <button class="button-solid">Request Declined</button>
   {{else if  isAccepted}}
     <button class="button-solid">
       {{#link-to "classroom.timeline" run.course.id run.id tagName="button" activeClass=""}} <i class="fas fa-play"></i> Resume
@@ -15,9 +11,9 @@
   {{/if}}
 
 {{else}} {{! we don't have any request by this user}}
-  <div class="button-solid pointer">
-    <button {{action 'addRequest'}}>
+  
+    <button class="button-solid" {{action 'addRequest'}}>
       Request
     </button>
-  </div>
+  
 {{/if}}

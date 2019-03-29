@@ -1,68 +1,129 @@
-<div class="home-vh">
-  <div class="home-container">
-        <div class="heading col-12 col-md-6">
-          The Technology Learning Platform
-        </div>
-        <p class="col-12 col-md-5 font-sm">
-          Keep up with technology with expert-led courses, assessments
-          and tools that help you build the skills you need, when you need them.
-        </p>
-        <div class="mt-5 mb-5">
-          {{search-box}}
-        </div>
-    
-  </div>
-</div>
-
-
-{{!-- Top Slider Courses --}}
-<div class="home-row row p-0">
-    <div class="home-column col-12 col-md-6">
-        {{#carousel-cards}}
-        {{/carousel-cards}}
+<div class="home-container">
+  <div class="home-vh">
+    <div class="heading col-12 col-md-6">
+      The Technology Learning Platform
     </div>
-    <div class="col-12 col-md-6">
-        {{!-- <img class="home-img" src="images/home.png" alt="home"> --}}
-        <div class="row p-0">
-          <div class="col-6">
-            <div class="heading semi-bold">
-              CODING BLOCKS
-            </div>
-            <div class="heading">
-              Android Application
-            </div>
-            <p class="font-sm">
-              Now you can enjoy our courses from comfort of your phones & tablets
-            </p>
-            <a href="https://play.google.com/store/apps/details?id=com.codingblocks.cbonlineapp" target="blank">
-              <button class="button-solid play-store-button mt-5">
-                <img src="images/google-play.png" alt="">
-                <span class="text">
-                  GET IT ON <br /><span class="bold">GOOGLE PLAY</span>
-                </span>
-              </button>
-            </a>
-        
+    <p class="col-12 col-md-5 font-sm">
+      Keep up with technology with expert-led courses, assessments
+      and tools that help you build the skills you need, when you need them.
+    </p>
+    <div class="mt-5 mb-5 pl-3 pr-3">
+      {{search-box}}
+    </div>
+  </div>
+
+
+  {{!-- Top Slider Courses --}}
+  <div class="home-row d-flex justify-content-center">
+    <div class="home-column col-12 col-md-6">
+      {{#carousel-cards}}
+      {{/carousel-cards}}
+    </div>
+    <div class="col-12 col-md-10 col-lg-6">
+      {{!-- <img class="home-img" src="images/home.png" alt="home"> --}}
+      <div class="row m-0 no-gutters">
+        <div class="col-6 col-sm-8 col-lg-6">
+          <div class="heading semi-bold">
+            CODING BLOCKS
           </div>
-          <div class="col-6 p-0">
-            <div class="phone d-flex justify-content-center">
-              <img src="images/iphone.svg" class="h-100 w-100" alt="home">
-              <div class="phone-content">
-                <picture>
+          <div class="heading">
+            Android Application
+          </div>
+          <p class="font-sm">
+            Now you can enjoy our courses from comfort of your phones & tablets
+          </p>
+          <a href="https://play.google.com/store/apps/details?id=com.codingblocks.cbonlineapp" target="blank">
+            <button class="button-solid play-store-button mt-5">
+              <img src="images/google-play.png" alt="">
+              <span class="text">
+                GET IT ON <br /><span class="bold">GOOGLE PLAY</span>
+              </span>
+            </button>
+          </a>
+
+        </div>
+        <div class="col-6 col-sm-4 col-lg-6 pl-4">
+          <div class="phone d-flex justify-content-center">
+            <img src="images/iphone.svg" class="h-100 w-100" alt="home">
+            <div class="phone-content">
+              <picture>
                 <source type="image/webp" srcset="images/holi.webp">
                 <source type="image/jpg" srcset="images/backupholi.jpg">
                 <img src="images/backupholi.jpg">
-                </picture>
-              </div>
+              </picture>
             </div>
           </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-
 <div class="container">
   {{recommended-courses}}
 
-  {{testimonials-view}}
+  {{#testimonials-view}}
+  <div class="row flex-row m-5 pt-5 justify-content-center">
+    <div class="heading">
+      What our Students say about us
+    </div>
+  </div>
+  {{/testimonials-view}}
 </div>
-{{offerings-static}}
+
+<div class="p-5 p-md-5 t-align-c bg-gradient-black-lr white">
+  <div class="heading mb-4">
+    Our Students have been placed at:
+  </div>
+  <img src="/images/logostrip.png" alt="">
+</div>
+
+<div class="container pt-5">
+  <div class="row flex-row m-5 pt-5 justify-content-center">
+    <div class="heading">
+      Numbers Speak Louder
+    </div>
+  </div>
+  
+  <div class="pt-md-4 pb-md-4">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <div class="border-card c-brag-card mb-4">
+          <img src="/images/hpi1.png">
+          <div class="gradient-red text">4500+</div>
+          <h2>
+            Students Placed
+          </h2>
+        </div>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="border-card c-brag-card mb-4">
+          <img src="/images/hpi2.png">
+          <div class="gradient-red text">12000+</div>
+          <h2>
+            Students Enrolled
+          </h2>
+        </div>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="border-card c-brag-card mb-4">
+          <img src="/images/hpi3.png">
+          <div class="gradient-red text">1800+</div>
+          <h2>
+            Hours of Study
+          </h2>
+        </div>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="border-card c-brag-card mb-4">
+          <img src="/images/hpi1.png">
+          <div class="gradient-red text">100+</div>
+          <h2>
+            Years of Teaching
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{offerings-static}}
+</div>

@@ -3,82 +3,9 @@
   <h2 class="t-align-c mt-5 mb-5">
     All Courses
   </h2>
-  <div class="row">
+  <div class="row justify-content-center">
     {{#each courses as |course|}}
-      {{!-- <div class="c-layout-card col-12 col-sm-12   col-md-6 col-lg-4">
-          <div class="card online-card home-card">
-            <div class="head d-flex justify-content-center">
-              <img class="back-img" src="{{course.coverImage}}">
-              {{difficulty-dots difficulty=course.difficulty difficultyName=course.difficultyName}}
-              <div class="front-text flex-col align-item-center">
-                <div class="round-img-b">
-                  <img src="{{defaultTo course.logo '/images/c++'}}">
-                </div>
-                <div class="course-name center-text">
-                  {{#link-to 'courses.id' course.identifier activeClass="" class="white"}} {{course.title}} {{/link-to}}
-                </div>
-                <div class="i course-description center-text">
-                  {{course.subtitle}}
-                </div>
-                {{rating-stars-static rating=course.rating showValue=true}}
-              </div>
-            </div>
-            <div class="foot">
-              <div class="card-mentor">
-                <!--<div class="row no-gutters">-->
-                <div class="card-mentor-image">
-                  {{#each course.instructors as |instructor index|}}
-                    {{#if (lt index 2) }}
-                      <img class="card-mentors" src="{{instructor.photo}}">
-                    {{/if}}
-                  {{/each}}
-                </div>
-                <div class="card-mentor-text">
-                  <span>Instructors</span>
-                  <div class="card-mentor-name">
-                    {{#each course.instructors as |instructor index|}}
-                      {{#if (lt index 2)}}
-                        {{instructor.name}}{{if (and (gt course.instructors.length 1) (eq index 0)) "," ""}}
-                      {{/if}}
-                    {{/each}}
-
-                    {{#if (gt course.instructors.length 2)}}
-                      <span class="price"> +{{sub course.instructors.length 2}}</span> more
-                    {{/if}}
-                  </div>
-                </div>
-                <!--</div>-->
-              </div>
-              <div class="row button-row justify-content-between no-gutters align-items-center">
-                <div class="details">
-                  <div class="price">
-                    <span class="red"> {{format-price course .topRun.price}} </span>
-                    <span class="grey"><strike>{{format-price course.topRun.mrp}}</strike></span>
-                  </div>
-                  <div class="grey">Batches starting {{moment-format (unix course.topRun .start) 'MMM Do'}} </div>
-                </div>
-                <div class="button-solid">
-                  {{#link-to 'courses.id' course.identifier tagName="button" activeClass=""}} Explore {{/link-to}}
-                  </div>
-              </div>
-              <div class="divider">
-                <div class="divider-h col-12 order-0 order-md-2"></div>
-              </div>
-              <div class="row justify-content-center enrollment no-gutters">
-                <div class="col-12 center-text">Hurry Up! Enrollment ends {{moment-format (unix course.topRun.enrollmentEnd) 'MMM Do YYYY'}} </div>
-                {{#if session.isAuthenticated}}
-                  {{#link-to "classroom.timeline.index" course.id course.topRun.id class="col-12 red pointer center-text" tagName="div"}}
-                    Click here to get Free Trial Now
-                  {{/link-to}}
-                {{else}}
-                  <div class="col-12 red pointer center-text" {{action 'logIn'}} >Click here to get Free Trial Now</div>
-                {{/if}}
-              </div>
-            </div>
-          </div>
-        </div> --}}
-
-        <div class="c-layout-card hoverable col-12 col-sm-12 col-md-6 col-lg-3 pr-md-0">
+        <div class="c-layout-card hoverable col-12 col-md-6 col-lg-3 pr-md-0">
           <div class="img-card online-card">
             <div class="head d-flex">
               <img class="back-img" src="{{course.coverImage}}">
@@ -236,12 +163,10 @@
   </div>
   
   <div class="row justify-content-center">
-    <div class="button-dashed">
-      {{#if taskMoreCourses.isRunning}}
-        <button>Loading...</button>
-      {{else if (lt limit count)}}
-        <button {{action "loadMore"}}>Load More</button>
-      {{/if}}
-    </div>
+    {{#if taskMoreCourses.isRunning}}
+      <button class="button-dashed">Loading...</button>
+    {{else if (lt limit count)}}
+      <button class="button-dashed" {{action "loadMore"}}>Load More</button>
+    {{/if}}
   </div>
 </div>
