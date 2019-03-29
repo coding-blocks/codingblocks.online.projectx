@@ -34,11 +34,37 @@
 
       <div class="divider"></div>
       <div class="test-cases row no-gutters">
-        {{#if submission.isErrored}}
+        {{#if submission.explanation}}
+          <strong>Explanation: </strong>
           <div class="col-12 d-flex justify-content-center">
-            Error: &nbsp; <em>{{submission.errorMessage}}</em>
+            {{#if (eq submission.explanation "Perfect")}}
+              Congratulations, you passed every test case! Surely Hacker Blocks has harder
+              problems for you to solve!
+            {{else if (eq submission.explanation "FailedTestcase")}}
+              Dang! You couldn't score a perfect 100 because you failed one or
+              more testcases. This means that your program didn't account for
+              all input cases (did you account for negative numbers, for example?).
+            {{else if (eq submission.explanation "TimeLimitExceeded")}}
+              Dang! Your program was too slow to compute the answer to one or more
+              testcases. Think - is there a more efficient way to arrive at the
+              solution than brute force?
+            {{else if (eq submission.explanation "CompilationError")}}
+              Your code failed to compile. Check your program carefully for mistakes
+              (missing semicolons, for example).
+            {{else if (eq submission.explanation  "ContestOver")}}
+              Note: You were not awarded any points as this contest
+              has ended. Find more contests you can participate in
+              <a href="http://hack.codingblocks.com/contests">here</a>!
+            {{else if (eq submission.explanation  "TestcaseUnlocked")}}
+              Note: You were not awarded any points for this solution
+              because you have unlocked the testcases to this problem.
+            {{else if (eq submission.explanation  "EditorialUnlocked")}}
+              Note: You were not awarded any points for this solution
+              because you have unlocked the editorial to this problem.
+            {{/if}}
           </div>
-        {{else}}
+        {{/if}}
+        {{#unless submission.isErrored}}
           <div class="col-6">
             <div class="row no-gutters">
               <div class="col-4">
@@ -79,7 +105,7 @@
               </div>
             </div>
           </div>
-        {{/if}}
+        {{/unless}}
       </div>
       <div class="button-solid" {{action 'viewSubmission' submission}}>
         <button>View Submission</button>

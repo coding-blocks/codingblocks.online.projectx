@@ -1,14 +1,16 @@
-import Route from "@ember/routing/route";
+import Route from "@ember/routing/route"
+import { conditionalRace } from 'codingblocks-online/utils/promises'
+import { hash } from 'rsvp'
 
 export default Route.extend({
   model() {
     return this.modelFor("attempt");
   },
-  afterModel(model) {
+  async afterModel(model) {
 
-    const runAttempt = model;
+    const runAttempt = model
 
-    const run = runAttempt.get("run");
+    const run = runAttempt.get("run")
 
     if (!run.get("sections.length")) {
       // empty length
@@ -19,19 +21,21 @@ export default Route.extend({
       })
     }
 
-    let section = run.get("sections").find(section => {
-      return !section.get("isProgressCompleted") && ((runAttempt.get('premium')&&(run.get('isStarted'))) || !(section.get('premium')));
-    });
-    let content ;
-    if (!section || !section.id) {
+    const contentsPromises = run.get('sections').map(section => hash({section, contents: section.get('contents')}))
+    const result = await conditionalRace (contentsPromises, ({section}) => {
+      return !section.get("isProgressCompleted") && section.get('contents').find(content => content.get('payload.id'))
+    })
+
+    let section, content 
+    if (!result) {
       // no sections to resume
-      section = run.get("sections").objectAt(0)
-      content = section.get("contents").objectAt(0)
+      section = run.get("sections.firstObject")
+      content = section.get("contents.firstObject")
     } else {
-      content = section.get("contents").find(content => {
-        return !content.get("isDone");
-      });
+      section = result.section
+      content = result.section.get("contents").find(content => !content.get('isDone') && content.get('payload.id'))
     }
+
     this.transitionTo(
       "attempt.content",
       runAttempt.get("id"),
