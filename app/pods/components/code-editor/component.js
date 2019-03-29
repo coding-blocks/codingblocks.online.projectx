@@ -1,6 +1,8 @@
 import Component from "@ember/component"
 import { action, computed } from "@ember-decorators/object"
+import { alias }  from '@ember-decorators/object/computed';
 import { set } from '@ember/object'
+import { restartableTask } from 'ember-concurrency-decorators'
 import { inject as service } from '@ember-decorators/service';
 
 export default class EditorClass extends Component {
@@ -53,22 +55,15 @@ export default class EditorClass extends Component {
 
   customInput = "";
   isRunOutput = true;
-  ref = "-LaLRKr2xor7doqVsDbO"
 
   @service firepad
+  @alias('firepad.connected') isCollaborating
 
   didReceiveAttrs() {
     this._super(...arguments);
     this.setCodeStubs();
     const allLanguages = this.get("allLanguages") || [];
     this.selectLanguage(allLanguages[0]);
-    
-    // if we have a ref; connect to firebase
-    if (this.ref) {
-      this.firepad.connect()
-    } else {
-      this.firepad.disconnect()
-    }
   }
 
   setCodeStubs() {
@@ -138,6 +133,15 @@ export default class EditorClass extends Component {
     this.sendAction('toggleModal', modalContentType);
   }
 
+  @restartableTask
+  *setCollabModeTask (value) {
+    if (value) {
+      yield this.firepad.connect()
+    } else {
+      this.firepad.disconnect()
+    }
+  }
+
   didInsertElement () {
     this._super(...arguments)
     const monacoIframe = document.querySelector('iframe[src*="ember-monaco"]')
@@ -150,6 +154,13 @@ export default class EditorClass extends Component {
 
       const firepad = this.firepad
       firepad.set("editor", this.editor)
+
+      // if we have a ref; connect to firebase
+      if (this.ref) {
+        firepad.connect(this.ref, false)
+      } else {
+        firepad.disconnect()
+      }
     })
   }
   

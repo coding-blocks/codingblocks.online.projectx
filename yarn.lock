@@ -1692,6 +1692,11 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+animation-frame@~0.2.4:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/animation-frame/-/animation-frame-0.2.5.tgz#cdf5a91a69ad2c85ddac2b82daf7290300f05960"
+  integrity sha1-zfWpGmmtLIXdrCuC2vcpAwDwWWA=
+
 ansi-escapes@^3.0.0, ansi-escapes@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-3.2.0.tgz#8780b98ff9dbf5638152d1f1fe5c1d7b4442976b"
@@ -5253,6 +5258,22 @@ ember-factory-for-polyfill@^1.3.1:
     node-fetch "^2.3.0"
     whatwg-fetch "^3.0.0"
 
+ember-gestures@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ember-gestures/-/ember-gestures-1.1.1.tgz#b2d583846aae2dfc0c38b1b6bd934efc761230d1"
+  integrity sha512-Io5XkGXzEPYg+5nWvEyQKeqL2QTqe3B2/+34BtJeJLXZOpwz89JH4UBbh/yv41uG25mKFzpmmavt7xS0Ir1Mog==
+  dependencies:
+    animation-frame "~0.2.4"
+    broccoli-funnel "^2.0.1"
+    broccoli-merge-trees "^2.0.0"
+    broccoli-stew "^1.5.0"
+    ember-cli-babel "^6.8.2"
+    ember-cli-htmlbars "^2.0.1"
+    ember-cli-version-checker "^2.1.0"
+    ember-getowner-polyfill "^2.2.0"
+    hammerjs "^2.0.8"
+    rsvp "^3.1.0"
+
 "ember-getowner-polyfill@^1.1.0 || ^2.0.0", ember-getowner-polyfill@^2.0.0, ember-getowner-polyfill@^2.0.1, ember-getowner-polyfill@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/ember-getowner-polyfill/-/ember-getowner-polyfill-2.2.0.tgz#38e7dccbcac69d5ec694000329ec0b2be651d2b2"
@@ -5511,6 +5532,16 @@ ember-template-lint@^1.0.0-beta.5:
     minimatch "^3.0.4"
     resolve "^1.1.3"
     strip-bom "^3.0.0"
+
+ember-toggle@^5.3.2:
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/ember-toggle/-/ember-toggle-5.3.2.tgz#456e97c3a5450ccdadefe2378dc70e14fcf6cc53"
+  integrity sha512-XHJuNE966+6it2j6wWXupASMBqIUdc0y5JzT1DceP5fCCovpKZPU7+BPQBAgW5dTbn45tkjwulY62gxQJYRn4g==
+  dependencies:
+    ember-cli-babel "^7.1.2"
+    ember-cli-htmlbars "^3.0.0"
+    ember-gestures "^1.1.0"
+    ember-runtime-enumerable-includes-polyfill "^2.0.0"
 
 ember-truth-helpers@^2.0.0:
   version "2.1.0"
@@ -6851,6 +6882,11 @@ grpc@1.19.0:
     nan "^2.0.0"
     node-pre-gyp "^0.12.0"
     protobufjs "^5.0.3"
+
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
+  integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
 
 handlebars@^4.0.11, handlebars@^4.0.4, handlebars@^4.0.6:
   version "4.1.0"

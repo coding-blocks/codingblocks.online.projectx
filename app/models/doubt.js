@@ -8,7 +8,7 @@ export default DS.Model.extend({
   runAttempt: DS.belongsTo('run-attempt'),
   category: DS.attr(),
   discourseTopicId: DS.attr(),
-  firebase_ref: DS.attr(),
+  firebaseRef: DS.attr(),
   comments: DS.hasMany('comment'),
   resolvedById: DS.attr()
 })

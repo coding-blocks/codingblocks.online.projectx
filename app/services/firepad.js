@@ -6,8 +6,12 @@ export default class FirepadService extends Service {
   editor = null
   ref = null
   connected = false
+  _firepad = null
 
-  connect () {
+  async connect (refString = '', keepText = true) {
+    if (refString.length) {
+      this.set('ref', refString)
+    }
     if (this.connected) {
       return ;
     }
@@ -21,20 +25,32 @@ export default class FirepadService extends Service {
     // firepad must be setup on an empty editor
     const defaultText = this.editor.getValue()
     this.editor.setValue("")
-    firepad.fromMonaco(getRef(this.ref), this.editor, {
+    
+    const newFirepad = firepad.fromMonaco(getRef(this.ref), this.editor, {
       defaultText
     })
 
-    this.connected = true
+    if (keepText) {
+      await new Promise((resolve) => {
+        const onEditorReady = () => {
+          this.editor.setValue(defaultText)
+          resolve()
+        }
+        newFirepad.on('ready', onEditorReady)
+      })
+    }
+    
+    this.set('connected', true)
+    this.set('_firepad', newFirepad)
   }
 
   disconnect () {
     if (!this.connected) {
       return ;
     }
-    this.ref = null
-    firepad.dispose()
-    this.connected = false
+
+    this._firepad.dispose()
+    this.set('connected', false)
   }
 
 }

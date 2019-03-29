@@ -52,6 +52,12 @@ module.exports = function(environment) {
     projectId: "cb-ide",
   }
 
+  ENV['ember-toggle'] = {
+    includedThemes: ['ios'],
+    defaultTheme: 'ios',
+    defaultSize: 'medium'
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

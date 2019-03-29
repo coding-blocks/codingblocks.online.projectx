@@ -7,6 +7,15 @@
     }}
   </div>
   <div id="dragger-ce-rs"></div>
+
+  {{!-- We can only collab if we have a ref --}}
+  {{#if this.ref}}
+    <EditorCollabToggle class="collab-toggle"
+      @isCollaborating={{this.isCollaborating}}
+      @onChange={{setCollabModeTask}}
+    />
+  {{/if}}
+  
   <!-- code-editor -- result-->
   <div class="options-result">
     <div class="editor-options row no-gutters justify-content-between">
