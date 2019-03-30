@@ -1,4 +1,4 @@
-<div class="overview-container">
+<div class="container mt-5">
     <!-------------------------------------------Recent Activity----------------------------------->
 
     <div class="container-fluid pl-0 pr-0">
@@ -77,9 +77,9 @@
     {{run-leaderboard run=run}}
 
     <!-------------------------------------------About this course----------------------------------->
-    <div class="heading-u">
+    <h3 class="mb-5">
         About This Course
-    </div>
+    </h3>
   <div class="c-overview-course">
     <div class="row no-gutters flex-wrap-reverse">
       <div class="course-features col-12 col-md-5">
@@ -144,48 +144,43 @@
     </div>
 
   </div>
-
+</div>
     <!-------------------------------------------About Instructors----------------------------------->
-    <div class="heading-u">
-        About Instructors
-    </div>
-
-    <div class="c-about-instructors">
+    <div class="c-about-instructors mt-5">
+      <div class="container">
+        <h3 class="mb-5">
+          About Instructors
+        </h3>
+    
+    
         <div class="row no-gutters">
-            {{#each course.instructors as |instructor|}}
-                <div class="col-md-6 col-sm-12">
-                    <div class="img-desc row no-gutters">
-                        <div class="col-3">
-                        <div class="img-container">
-                            <div class="round-img">
-                            <img src="{{instructor.photo}}" alt="photo of {{instructor.name}}">
-                            </div>
-                        </div>
-
-                        </div>
-
-
-                        <div class="description col-8">
-                        <div>
-                            <div class="main-h">
-                            {{instructor.name}}
-                            </div>
-                            <div class="sub-h">
-                            {{instructor.sub}}, Coding Blocks
-                            </div>
-                            <div class="classroom-para">
-                              <a href="mailto:{{instructor.email}}">{{instructor.email}}</a>
-                            </div>
-                        </div>
-
-                        <div class="classroom-para i">
-                            {{markdown-to-html instructor.description}}
-                        </div>
-                        </div>
-                    </div>
+          {{#each course.instructors as |instructor|}}
+          <div class="col-12 col-md-6 mb-5">
+            <div class="img-desc row no-gutters">
+              <div class="col-3 pr-4">
+                <img class="round" src={{instructor.photo}} alt="photo of {{instructor.name}}">
+              </div>
+              <div class="description col-8">
+                <div class="heading-d">
+                  <h4 class="bold">
+                    {{instructor.name}}
+                  </h4>
+                  <div class="red font-sm mb-3">
+                    Mentor, Coding Blocks
+                    <br>
+                    <a href="mailto:{{instructor.email}}">{{instructor.email}}</a>
+                  </div>
+                  <div class="classroom-para">
+                    {{markdown-to-html instructor.description}}
+                  </div>
                 </div>
-            {{/each}}
+              </div>
+            </div>
+          </div>
+          {{/each}}
+    
         </div>
+      </div>
     </div>
 
     <!-------------------------------------------About TAs----------------------------------->
@@ -195,44 +190,36 @@
       </div>
 
       <div class="c-about-instructors">
-          <div class="row no-gutters">
-              {{#each run.ta as |ta|}}
-                  <div class="col-md-6 col-sm-12">
-                      <div class="img-desc row no-gutters">
-                          <div class="col-3">
-                          <div class="img-container">
-                              <div class="round-img">
-                              <img src="{{ta.photo}}" alt="photo of {{ta.name}}">
-                              </div>
-                          </div>
-
-                          </div>
-
-
-                          <div class="description col-8">
-                          <div>
-                              <div class="main-h">
-                              {{ta.name}}
-                              </div>
-                              <div class="sub-h">
-                              Teaching Assistant, Coding Blocks
-                              </div>
-                              <div class="classroom-para">
-                                <a href="mailto:{{ta.email}}">{{ta.email}}</a>
-                              </div>
-                          </div>
-
-                          <div class="classroom-para">
-                              {{markdown-to-html ta.description}}
-                          </div>
-                          </div>
-                      </div>
+        <div class="row no-gutters">
+          {{#each run.ta as |ta|}}
+          <div class="col-12 col-md-6 mb-5">
+            <div class="img-desc row no-gutters">
+              <div class="col-3 pr-4">
+                <img class="round" src={{ta.photo}} alt="photo of {{ta.name}}">
+              </div>
+              <div class="description col-8">
+                <div class="heading-d">
+                  <h4 class="bold">
+                    {{ta.name}}
+                  </h4>
+                  <div class="red font-sm mb-3">
+                    Teaching Assistant, Coding Blocks
+                    <br>
+                    <a href="mailto:{{ta.email}}">{{ta.email}}</a>
                   </div>
-              {{/each}}
+                  <div class="classroom-para">
+                    {{markdown-to-html ta.description}}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          {{/each}}
+        </div>
       </div>
     {{/if}}
 
+<div class="container">
   <!------------------------------------------FAQs-------------------------------------------->
     <div class="heading-u mt-5 mb-5">
       Frequently Asked Questions
@@ -271,7 +258,7 @@
       Lectures
     </div>
     <div class="grey i mb-4">
-      <ul class="list-style-disc">
+      <ul class="list-style-disc ml-3">
         <li>Lecture videos are provided in every section. </li>
         <li>There are Quizzes, Assignments, Notes along with the Lecture videos in every section. You should attempt them all to master each section that you study. </li>
         <li>You should complete the lectures within the deadlines. </li>
@@ -283,7 +270,7 @@
       Challenges and Tests
     </div>
     <div class="grey i mb-4">
-      <ul class="list-style-disc">
+      <ul class="list-style-disc ml-3">
         <li>After every section, there will be a Challenges section. </li>
         <li>These challenges are mandatory for all. Passing score is 70% of the total points. Each question is of 100 points. </li>
         <li>Apart from these Challenges, there will be frequent tests analyzing your concepts and understanding. </li>
@@ -294,7 +281,7 @@
       Teaching Assistants and Doubts Resolution
     </div>
     <div class="grey i mb-4">
-      <ul class="list-style-disc">
+      <ul class="list-style-disc ml-3">
         <li>Apart from the mentors taking the course, there are teaching assistants in the course who will be taking your doubts.</li>
         <li>You can ask doubt on any content that you are facing problem at, be it a video or a question. There is an “Ask Doubt” button on the top right corner to raise your doubt.</li>
         <li>While Asking doubt give Proper title to your doubt and also provide your solution’s link after saving at CB IDE (cb.lk/ide).</li>
@@ -310,7 +297,7 @@
       Hint Videos and Video Solutions
     </div>
     <div class="grey i mb-4">
-      <ul class="list-style-disc">
+      <ul class="list-style-disc ml-3">
         <li>For some Challenges problems, there are hint videos which you can watch. Watching them won’t add any penalty.</li>
       </ul>
     </div>
@@ -319,7 +306,7 @@
       Editorials and Test Case
     </div>
     <div class="grey i mb-4">
-      <ul class="list-style-disc">
+      <ul class="list-style-disc ml-3">
         <li>You can see editorials also of any problem and can check the solution code. There is an “Unlock Editorial” button to open the editorial.</li>
         <li>You can download the test cases also for any problem. There is a “Download Testcases” button to download the test cases.</li>
         <li>But after unlocking the editorial or downloading test cases, further submissions to that question will not fetch you any marks.</li>
@@ -330,7 +317,7 @@
       Grading and Leaderboard
     </div>
     <div class="grey i mb-4">
-      <ul class="list-style-disc">
+      <ul class="list-style-disc ml-3">
         <li>All the Quizzes and assignments are graded.</li>
         <li>A Leaderboard is maintained for the batch which you can see under overview section in your course. Based on your score you can check your class rank.</li>
         <li>Don’t copy your code from anywhere, we will detect the plagiarism in your codes and it may effect your grades and ranking on the leaderboard also.</li>
@@ -341,7 +328,7 @@
       Content Availability
     </div>
     <div class="grey i mb-4">
-      <ul class="list-style-disc">
+      <ul class="list-style-disc ml-3">
         <li>Lecture videos int the course will be accessible for the next ten months from the date your course get started.</li>
         <li>Quizzes and Challenges will be available to you for lifetime.</li>
       </ul>
@@ -351,7 +338,7 @@
       Community Support
     </div>
     <div class="grey i mb-4">
-      <ul class="list-style-disc">
+      <ul class="list-style-disc ml-3">
         <li>We have our discuss platform <a href="https://cb.lk/discuss">(cb.lk/discuss)</a> for community support where students can help each other by solving their doubts, like and upvote relevant questions and answers.</li>
         <li>You will be having the access of discuss platform for lifetime.</li>
         <li>To explore it more you can visit <a href="https://cb.lk/discuss">cb.lk/discuss</a>.</li>
@@ -362,7 +349,7 @@
       Certificate
     </div>
     <div class="grey i mb-4">
-      <ul class="list-style-disc">
+      <ul class="list-style-disc ml-3">
         <li>A Generate Certificate column is there which you can see under overview section in your course.</li>
         <li>After completion of 90% of your course, you can request for mentor’s approval for your certificate. </li>
         <li>Verify your details before requesting your certificate’s mentor approval.</li>
@@ -374,7 +361,7 @@
       Endnote
     </div>
     <div class="grey i mb-4">
-      <ul class="list-style-disc">
+      <ul class="list-style-disc ml-3">
         <li>Ultimately, PRACTICE IS THE KEY TO SUCCESS!</li>
         <li>The more you practice, better will be the result. Also, avoid missing lectures.</li>
         <li>We wish all the best in this journey of learning. Happy Programming! :)</li>

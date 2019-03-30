@@ -103,7 +103,9 @@
 
       <div class="row c-rating-stats no-gutters">
         <div class="col-4 score">
-          <span class="font-lg bold">{{course.rating}}</span><span class="bold font-md">out of 5</span>
+          <span class="font-lg bold">{{course.rating}}
+          <br class="d-sm-none">
+          </span><span class="bold font-md">out of 5</span>
 
           {{rating-stars-static rating=course.rating}}
 
@@ -201,14 +203,14 @@
   {{/unless}}
 
   <div class="row justify-content-center">
-    <div class="col-12 col-md-9">
+    <div class="col-12 {{if course.projects 'col-md-9'}}">
       <h3 class="mb-5">What will you learn?</h3>
       {{!-- Accordion --}}
       <div class="border-card accordion-card">
         <div class="c-accordion c-about-accordion">
           <div class="list-divided border-none">
             {{#each course.topRun.sections as |section|}}
-            {{#accordion-head title=section.name total=section.totalContents duration=section.duration type="info" listType="divided"}}
+            {{#accordion-head title=section.name total=section.totalContents duration=section.duration type="info" listType="divided" premium=section.premium}}
             <div class="pb-4 pt-4">
               {{#each section.contents as |content|}}
               <div class="row no-gutters {{if (not section.premium) "red" "grey"}}">
@@ -325,7 +327,7 @@
 </div>
 {{!-- Available Batches --}}
 
-<div class="bg-light-grey pb-5 pt-5 mb-5">
+<div class="bg-light-grey pb-5 pt-5 mb-5" id="runs">
   <div class="container">
     <h3 class="t-align-c">
       Choose Batches

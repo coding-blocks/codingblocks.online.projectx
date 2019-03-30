@@ -1,4 +1,4 @@
-<div class="c-doubt">
+<div class="container c-doubt mt-5">
   {{#if recent}}
     Hi
   {{else}}
@@ -13,7 +13,7 @@
     </a>
   </div>
 
-  <div class="row doubts-box">
+  <div class="row doubts-box m-0">
     <div class="col-12">
       {{#each topic_list.topics as |topic|}}
         {{doubt-view topicId=topic.id}}
