@@ -1,18 +1,21 @@
 <div>
-  {{#if @isCollaborating}}
+  {{#if this.isCollaborating}}
     You are now working in Collaboration Mode 
-    <button class="red ml-2">Learn More</button>
   {{else}}
     Do you want to switch to collaborate mode?
-    <button class="red ml-2">Learn More</button>
   {{/if}}
+  <button class="red ml-2" {{action (mut showHelpModal) true}}>Learn More</button>
 </div>
 
 <XToggle 
   @showLabels={{true}} 
   @offLabel="Normal Mode" 
   @onLabel="Collaborate Mode" 
-  @value={{@isCollaborating}}
-  @onToggle={{action (perform @onChange)}}
-  @disabled={{@onChange.isRunning}}
+  @value={{this.isCollaborating}}
+  @onToggle={{action (perform this.onChange)}}
+  @disabled={{this.onChange.isRunning}}
 />
+
+{{#if showHelpModal}}
+  <EditorCollabHelp @onClose={{action (mut showHelpModal) false}} />
+{{/if}}

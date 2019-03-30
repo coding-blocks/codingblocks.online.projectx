@@ -29,6 +29,12 @@ export default class DoubtsViewComponent extends Component {
     }, 0)
   }
 
+  @computed('existingDoubts', 'currentContent')
+  get duplicatePendingDoubt () {
+    const contentId = this.currentContent.getContentId()
+    return this.existingDoubts.find(d => d.get('content.id') == contentId && d.status == 'PENDING')
+  }
+
   @restartableTask
   *askDoubtTask (){
     if (this.get('title.length') < 15) {
@@ -43,6 +49,10 @@ export default class DoubtsViewComponent extends Component {
     if (this.freeTrial) {
       return this.set('err', 'Doubt Support is not available for Free Trials.')
     }
+    if (this.duplicatePendingDoubt) {
+      return this.set('err', 'You already have a pending doubt for this content. Please edit that to add more info.')
+    }
+
     this.set('err', '')
 
     const contentId = this.get('currentContent').getContentId()
