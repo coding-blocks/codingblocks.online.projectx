@@ -8,7 +8,6 @@ import { restartableTask } from 'ember-concurrency-decorators';
 export default class DoubtsViewComponent extends Component {
   @service store 
   @service currentContent
-  @service firepad
 
   classNames=['c-doubts']
 
@@ -29,12 +28,6 @@ export default class DoubtsViewComponent extends Component {
     }, 0)
   }
 
-  @computed('existingDoubts', 'currentContent')
-  get duplicatePendingDoubt () {
-    const contentId = this.currentContent.getContentId()
-    return this.existingDoubts.find(d => d.get('content.id') == contentId && d.status == 'PENDING')
-  }
-
   @restartableTask
   *askDoubtTask (){
     if (this.get('title.length') < 15) {
@@ -49,10 +42,6 @@ export default class DoubtsViewComponent extends Component {
     if (this.freeTrial) {
       return this.set('err', 'Doubt Support is not available for Free Trials.')
     }
-    if (this.duplicatePendingDoubt) {
-      return this.set('err', 'You already have a pending doubt for this content. Please edit that to add more info.')
-    }
-
     this.set('err', '')
 
     const contentId = this.get('currentContent').getContentId()
@@ -66,18 +55,14 @@ export default class DoubtsViewComponent extends Component {
       status: "PENDING"
     })
     doubt.set("runAttempt", this.get('runAttempt'))//aisa isliye kiya hai kyoki https://github.com/emberjs/ember.js/issues/16258
-    try {
-      yield doubt.save()
+    yield doubt.save()
+    .then(r => {
       this.set('title', '')
       this.set('body', '')
-
-      this.firepad.set('ref', doubt.firebase_ref)
-      this.firepad.connect()
-      
-    } catch (err) {
+    }).catch(err => {
       doubt.rollbackAttributes();
-      this.set('err', err.errors[0].detail)
-    }
+      this.set('err', err.errors[0].detail);
+    })
   }
 
   @action
