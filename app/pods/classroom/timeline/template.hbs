@@ -53,7 +53,7 @@
       </div>
       
       <div class="row justify-content-around mt-md-5 mt-3">
-        {{#if (not run.topRunAttempt.premium)}}
+        {{#if showBuyNow}}
         <div class="col-6 col-md-5">
           {{#link-to 'courses.id' run.course.identifier tagName="button" activeClass="" class="button-solid"}} Buy Now
           {{/link-to}}

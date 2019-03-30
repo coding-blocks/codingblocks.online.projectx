@@ -234,18 +234,17 @@
         </div>
     {{/each}}
   </div>
-  {{#unless (gte limit count)}}
-  <div class="row justify-content-center">
-      <div class="button-dashed">
-        <button {{action "loadMore"}}>Load More</button>
-      </div>        
-  </div>
-  {{/unless}}
   {{#if taskMoreCourses.isRunning}}
     <div class="row justify-content-center">
       <div class="button-dashed">
         <button>Loading...</button>
-      </div>        
-  </div>
+      </div>
+    </div>
+  {{else if (lt limit count)}}
+    <div class="row justify-content-center">
+      <div class="button-dashed">
+        <button {{action "loadMore"}}>Load More</button>
+      </div>
+    </div>
   {{/if}}
 </div>

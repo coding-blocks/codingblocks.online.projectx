@@ -7,6 +7,7 @@ export default DS.Model.extend({
   language: DS.attr(),
   score: DS.attr(),
   source: DS.attr(),
+  explanation: DS.attr(),
   'submit-at': DS.attr(),
   'judge-result': DS.attr(),
 

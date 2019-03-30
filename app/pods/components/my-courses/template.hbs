@@ -64,23 +64,24 @@
                   {{run.description}}
                   <div class="red">
                     {{#if run.topRunAttempt.premium}}
-                      {{#if (not run.topRunAttempt.isExpired)}}
+                      {{#if run.topRunAttempt.isExpired}}
+                        Expired
+                      {{else}}
                         Batch Ends {{moment-format run.topRunAttempt.endDate 'DD-MMM-YY'}}
                       {{/if}}
                     {{else}}
                       Free Trial
                     {{/if}}
                   </div>
-
                 </div>
-                {{#unless (or run.topRunAttempt.revoked run.topRunAttempt.isExpired)}}
+                {{#if (or run.topRunAttempt.revoked)}}
+                  <button class="button-solid disabled">Revoked</button>
+                {{else}}
                   {{#link-to "classroom.timeline" run.course.id run.id tagName="button" class="button-solid"
                   activeClass=""}}
                     Resume 
                   {{/link-to}}
-                {{else}}
-                  <button class="button-solid disabled">Expired</button>
-                {{/unless}}
+                {{/if}}
               </div>
             </div>
           </div>
