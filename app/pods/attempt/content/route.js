@@ -15,7 +15,7 @@ export default Route.extend({
     model (params) {
         this.runAttemptService.setCurrentSection(params.sectionId)
         this.currentContent.setContentId(params.contentId)
-        return this.store.findRecord('content', params.contentId, {
+        return this.store.peekRecord('content', params.contentId, {
             include: 'lecture,video,document,code_challenge',
             reload: true
         })
