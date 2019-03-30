@@ -12,17 +12,18 @@ export default Route.extend({
             replace: true
         }
     },
-    model () {
+    model (params) {
         return hash({
             runAttempt: this.modelFor('attempt'),
             content: this.modelFor('attempt.content'),
+            sectionId: params.sectionId,
             payload: this.modelFor('attempt.content').get('payload'),
             run: this.modelFor('attempt').get('run')
         })
     },
     setupController(controller, model) {
         this._super(...arguments)
-        controller.set("sectionId", this.paramsFor('attempt').sectionId)
+        controller.set("sectionId", model.sectionId)
         controller.set("runAttempt", model.runAttempt)
         controller.set("run", model.run)
         controller.set("content", model.content)
@@ -39,7 +40,7 @@ export default Route.extend({
         })
     },
     async afterModel(model) {
-      const sectionId = this.paramsFor('attempt').sectionId
+      const sectionId = model.sectionId
       if (sectionId) {
         const section = this.store.peekRecord('section', sectionId)
         this.set('headData.title', section.get('name') + " | " + model.content.get('title') + " player ");

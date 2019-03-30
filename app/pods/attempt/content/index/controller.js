@@ -47,7 +47,7 @@ export default Controller.extend({
       );
     },
     async transitonToNextContent() {
-      let section = await this.store.peekRecord('section', this.sectionId);
+      let section = await this.store.peekRecord('section', this.get('sectionId'));
       let nextContent = null;
 
 
