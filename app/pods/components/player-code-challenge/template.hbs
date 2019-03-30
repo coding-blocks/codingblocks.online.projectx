@@ -1,64 +1,141 @@
 <div class="c-pb">
   <div class="pb-desk">
     <div class="tab-nav">
-      {{#link-to "attempt.content" (query-params tab="problem") tagName="div" class=(concat "tab-items " (if (eq tabName 'problem') 'active') )}} Problem {{/link-to}}
-      {{#link-to "attempt.content" (query-params tab="submissions") tagName="div" class=(concat "tab-items " (if (eq tabName 'submissions') 'active') )}} Submissions {{/link-to}}
-      {{#link-to "attempt.content" (query-params tab="leaderboard") tagName="div" class=(concat "tab-items " (if (eq tabName 'leaderboard') 'active') )}} Leaderboard {{/link-to}}
+      {{#link-to
+        "attempt.content"
+        (query-params tab="problem")
+        tagName="div"
+        class=(concat "tab-items " (if (eq tabName "problem") "active"))
+      }}
+        Problem
+      {{/link-to}}
+      {{#link-to
+        "attempt.content"
+        (query-params tab="submissions")
+        tagName="div"
+        class=(concat "tab-items " (if (eq tabName "submissions") "active"))
+      }}
+        Submissions
+      {{/link-to}}
+      {{#link-to
+        "attempt.content"
+        (query-params tab="leaderboard")
+        tagName="div"
+        class=(concat "tab-items " (if (eq tabName "leaderboard") "active"))
+      }}
+        Leaderboard
+      {{/link-to}}
     </div>
-    {{#if (eq tabName 'problem')}}
-      {{#problem-statement-component  problem=problem contestId=run.contestId problemId=code.hbProblemId}}{{/problem-statement-component}}
-    {{else if (eq tabName 'leaderboard')}}
+    {{#if (eq tabName "problem")}}
+      {{#problem-statement-component
+        problem=problem
+        contestId=run.contestId
+        problemId=code.hbProblemId
+      }}{{/problem-statement-component}}
+    {{else if (eq tabName "leaderboard")}}
       {{#leaderboard-component code=code run=run}}{{/leaderboard-component}}
-    {{else if (eq tabName 'submissions')}}
-      {{#submissions-component problemPayload=problemJsonApiPayload code=code}}{{/submissions-component}}
+    {{else if (eq tabName "submissions")}}
+      {{#submissions-component problemPayload=problemJsonApiPayload code=code}}
+
+      {{/submissions-component}}
     {{/if}}
   </div>
   <div id="dragger-ps-ce"></div>
-  {{#code-editor runCodeTask=runCodeTask submitCodeTask=submitCodeTask stubs=codeStubs code=code toggleModal="toggleModal"}}
-  {{/code-editor}}
+  <CodeEditor
+    @runCodeTask={{runCodeTask}}
+    @submitCodeTask={{submitCodeTask}}
+    @stubs={{codeStubs}}
+    @code={{code}}
+    @toggleModal="toggleModal"
+    @ref={{relatedPendingDoubt.firebaseRef}}
+  />
 </div>
 
 {{#if isShowingModal}}
-{{#modal-dialog
-
-translucentOverlay=true
-targetAttachment='none'
-containerClass='centered-scrolling-container p-4 pb-5'
-overlayClass='centered-scrolling-overlay'
-wrapperClass='centered-scrolling-wrapper'
-}}
-{{#if (and code.editorial (eq modalContentType 'editorial'))}}
-  {{editorial-view code=code toggleModal=(action 'toggleModal')}}
-{{else}}
-  {{#if (and code.testcases (eq modalContentType 'testcases'))}}
-    {{testcases-view code=code toggleModal=(action 'toggleModal')}}
-  {{else}}
-    <div class="t-align-c pl-5 pr-5 pt-4 pb-4">
-      <i class="fas fa-lock fa-3x mb-4"></i>
-      <div class="font-md mb-3">
-        Unlock {{if (eq modalContentType 'editorial') "Editorial" "Testcases"}}
-      </div>
-      <div class="grey mb-4">
-        You will not be awarded any points for solutions to this particular
+  {{#modal-dialog
+    translucentOverlay=true
+    targetAttachment="none"
+    containerClass="centered-scrolling-container p-4 pb-5"
+    overlayClass="centered-scrolling-overlay"
+    wrapperClass="centered-scrolling-wrapper"
+  }}
+    {{#if (and code.editorial (eq modalContentType "editorial"))}}
+      {{editorial-view code=code toggleModal=(action "toggleModal")}}
+    {{else if (and code.testcases (eq modalContentType "testcases"))}}
+      {{testcases-view code=code toggleModal=(action "toggleModal")}}
+    {{else}}
+      <div class="t-align-c pl-5 pr-5 pt-4 pb-4">
+        <i class="fas fa-lock fa-3x mb-4"></i>
+        <div class="font-md mb-3">
+          Unlock
+          {{if (eq modalContentType "editorial") "Editorial" "Testcases"}}
+        </div>
+        <div class="grey mb-4">
+          You will not be awarded any points for solutions to this particular
         problem once you unlock the editorial!
-      </div>
-      <div class="red mb-4">
-        Do you want to continue?
-      </div>
-      <div class="row justify-content-center">
-        <button class="pr-3 pointer" {{action 'toggleModal'}}>No, Go Back</button>
-        {{#if (eq modalContentType 'editorial')}}
-        <button class="button-solid {{if fetchEditorialTestcases.isRunning 'disabled'}}" {{action 'fetchEditorial'}}>Yes, Continue</button>
-        {{else}}
-        <button class="button-solid {{if fetchEditorialTestcases.isRunning 'disabled'}}" {{action 'fetchTestcases'}}>Yes, Continue</button>
+        </div>
+        <div class="red mb-4">
+          Do you want to continue?
+        </div>
+        <div class="row justify-content-center">
+          <button class="pr-3 pointer" {{action "toggleModal"}}>
+            No, Go Back
+          </button>
+          {{#if (eq modalContentType "editorial")}}
+            <button
+              class="button-solid
+                {{if fetchEditorialTestcases.isRunning "disabled"}}"
+              {{action "fetchEditorial"}}
+            >
+              Yes, Continue
+            </button>
+          {{else}}
+            <button
+              class="button-solid
+                {{if fetchEditorialTestcases.isRunning "disabled"}}"
+              {{action "fetchTestcases"}}
+            >
+              Yes, Continue
+            </button>
+          {{/if}}
+        </div>
+        {{#if err}}
+          <div class="red mt-4">
+            {{{err}}}
+          </div>
         {{/if}}
-    
       </div>
-      {{#if err}}
-      <div class="red mt-4">{{{err}}}</div>
-      {{/if}}
-    </div>
-  {{/if}}
+    {{/if}}
+  {{/modal-dialog}}
 {{/if}}
-{{/modal-dialog}}
+
+{{#if showCollabModal}}
+  <ModalDialog
+    @translucentOverlay={{true}}
+    @targetAttachment="none"
+    @containerClass="centered-scrolling-container p-4 pb-5"
+    @overlayClass="centered-scrolling-overlay"
+    @wrapperClass="centered-scrolling-wrapper"
+    @onClose={{action (mut showCollabModal) false}}
+  >
+    <h2>You are now using Collaborate Mode</h2>
+    <hr>
+    <p>
+      You have a pending doubt regarding this problem.
+      So we have opened your editor in Collab Mode.
+      This way you and your TA can share code in this editor in realtime.
+    </p>
+    <h4> What is Collaborate Mode ?</h4>
+    <p>
+      When you ask a doubt related to programming problem, you can use
+      <b>Collaborate Mode</b> to share your code editor with a TA.
+      With the collaborate mode on, you and your TA can collaborate in realtime to
+      debug your code and help you solve the challenge.
+    </p>
+    
+    <p>
+      You can switch back to <b>Normal Mode</b> anytime and your editor
+      will no longer be connected to your TA.
+    </p>
+  </ModalDialog>
 {{/if}}
