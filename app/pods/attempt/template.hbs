@@ -21,7 +21,9 @@
             <div>
               {{#accordion-head title=section.name completed=section.doneContents.length deadline=section.deadlineDate
               total=section.contents.length
-              collapsed=(not (eq section.id currentSectionId))}}
+              collapsed=(not (eq section.id currentSectionId))
+              premium=section.premium
+              }}
               <div class="bellows pb-4 pt-4">
                 {{#each section.contents as |content|}}
                 <div class="row no-gutters pointer {{if content.isDone 'green'}}"

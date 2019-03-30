@@ -34,7 +34,11 @@
 		</div>
 		<div class="col-10">
 			{{title}}
+			{{#unless premium}}
+			<span class="tag red font-xs ml-2">FREE</span>
+			{{/unless}}
 		</div>
+		
 	</div>
 
 	{{#if (eq type "info")}}

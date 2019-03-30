@@ -1,11 +1,11 @@
-<div class="c-progress">
-<div class="card accordion-card">
+<div class="container mt-5">
+<div class="border-card accordion-card">
     <div class="c-accordion c-content-accordion">
         <div class="list-divided border-none">
             {{#if sections}}
             {{#each sections as |section|}}
             {{#accordion-head title=section.name completed=section.doneContents.length total=section.contents.length
-            deadline=section.deadlineDate hideDuration=true listType="divided"}}
+            deadline=section.deadlineDate hideDuration=true listType="divided" premium=section.premium}}
             <div class="pb-4 pt-4">
                 {{#each section.contents as |content|}}
                     {{#if (or run.isStarted (not section.premium))}}

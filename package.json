@@ -72,7 +72,7 @@
     "node": "6.* || 8.* || >= 10.*"
   },
   "dependencies": {
-    "@coding-blocks/motley": "0.3.38",
+    "@coding-blocks/motley": "0.3.39",
     "ember-line-clamp": "^0.2.15",
     "moment": "^2.22.2",
     "showdown-katex-studdown": "^0.4.0"

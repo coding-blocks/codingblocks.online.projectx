@@ -76,8 +76,10 @@ export default Component.extend({
     this._super (...arguments)
 
     let runs = this.get ('course.runs'),
-      availableRuns = runs.filter (run => run.get ('isAvailable'))
-    ;
+      availableRuns = runs.filter (run => run.get ('isAvailable'));
+    console.log(availableRuns);
+    availableRuns.sort((run1, run2) => +run1.get('start') - +run2.get('start'))
+    // availableRuns.sortBy('start') not working
 
     this.set ('availableRuns', availableRuns)
 

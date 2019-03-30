@@ -7,7 +7,7 @@
   {{loading-card}}
   {{else}}
   {{#each recommendedCourses as |course|}}
-  <div class="c-layout-card hoverable col-12 col-sm-12 col-md-6 col-lg-3 pr-md-0">
+  <div class="c-layout-card hoverable col-12 col-md-6 col-lg-3 pr-md-0">
     <div class="img-card online-card">
       <div class="head d-flex">
         <img class="back-img" src="{{course.coverImage}}">
@@ -66,8 +66,9 @@
             {{!-- <div class="grey">Batches starting {{moment-format (unix course.topRun.start) 'MMM Do'}} </div> --}}
           </div>
 
-          {{#link-to 'courses.id' course.identifier class="white" activeClass=""}} <button
-            class="button-solid">Explore</button>{{/link-to}}
+          {{!-- {{#link-to 'courses.id' course.identifier class="white" activeClass=""}}  --}}
+          {{!-- <button class="button-solid" {{action "toggleShowPopUp"}}>Details</button> --}}
+          {{!-- {{/link-to}} --}}
 
         </div>
         <div class="d-md-none">
@@ -89,7 +90,7 @@
       </div>
     </div>
 
-    <div class="border-card online-card pop-up dsp-none-sm">
+    <div class="border-card online-card pop-up dsp-none-sm animated zoom-in">
       <div class="round-img">
         <img src="{{defaultTo course.logo '/images/c++'}}">
       </div>
