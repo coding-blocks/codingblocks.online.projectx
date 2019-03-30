@@ -1,3 +1,4 @@
+import Ember from 'ember'
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import DS from 'ember-data';
@@ -7,11 +8,6 @@ import $ from 'jquery';
 export default Route.extend({
 	api: service(),
 	runAttemptService: service('run-attempt'),
-	queryParams: {
-		sectionId: {
-			as: 's'
-		}
-	},
 	model(params, transition) {
 		this.runAttemptService.setRunAttempt(params.runAttemptId)
 		return this.store.findRecord('runAttempt', params.runAttemptId, { reload: true })
@@ -43,10 +39,9 @@ export default Route.extend({
 		this._super(...arguments)
 		// console.log("inside setupController for attempt")
 		// controller.set("sectionId", this.paramsFor('attempt.content').sectionId)
-        controller.set("run", model.get('run'))
+		controller.set("run", model.get('run'))
 		controller.set("course", model.get('run.course'))
 		controller.set("sections", model.get("run.sections"))
-		controller.set("currentSectionId", this.paramsFor('attempt').sectionId)
 	},
 	actions: {
 		willTransition () {

@@ -26,7 +26,7 @@ export default Route.extend({
       return !section.get("isProgressCompleted") && section.get('contents').find(content => content.get('payload.id'))
     })
 
-    let section, content 
+    let section, content;
     if (!result) {
       // no sections to resume
       section = run.get("sections.firstObject")
@@ -39,11 +39,8 @@ export default Route.extend({
     this.transitionTo(
       "attempt.content",
       runAttempt.get("id"),
+      section.get('id'),
       content.get("id")
-    , {
-      queryParams: {
-        s: section.get('id')
-      }
-    });
+    );
   }
 });
