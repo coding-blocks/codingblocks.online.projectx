@@ -118,7 +118,24 @@
     @wrapperClass="centered-scrolling-wrapper"
     @onClose={{action (mut showCollabModal) false}}
   >
-    You have a pending doubt regarding this problem. So we have opened your editor in Collab Mode. 
-    This way you and your TA can share the editor.
+    <h2>You are now using Collaborate Mode</h2>
+    <hr>
+    <p>
+      You have a pending doubt regarding this problem.
+      So we have opened your editor in Collab Mode.
+      This way you and your TA can share code in this editor in realtime.
+    </p>
+    <h4> What is Collaborate Mode ?</h4>
+    <p>
+      When you ask a doubt related to programming problem, you can use
+      <b>Collaborate Mode</b> to share your code editor with a TA.
+      With the collaborate mode on, you and your TA can collaborate in realtime to
+      debug your code and help you solve the challenge.
+    </p>
+    
+    <p>
+      You can switch back to <b>Normal Mode</b> anytime and your editor
+      will no longer be connected to your TA.
+    </p>
   </ModalDialog>
 {{/if}}
