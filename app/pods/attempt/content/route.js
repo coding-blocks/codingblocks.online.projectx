@@ -6,14 +6,10 @@ export default Route.extend({
     currentUser: inject(),
     currentContent: inject(),
     runAttemptService: inject('run-attempt'),
-    beforeModel () {
-        const section = this.store.peekRecord('section', this.paramsFor('attempt').sectionId)
-        // trigger a fetch to contents
-        return section.get('contents')
-    },
     model (params) {
+        this.runAttemptService.setCurrentSection(params.sectionId)
         this.currentContent.setContentId(params.contentId)
-        return this.store.peekRecord('content', params.contentId, {
+        return this.store.findRecord('content', params.contentId, {
             include: 'lecture,video,document,code_challenge',
             reload: true
         })
