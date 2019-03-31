@@ -18,6 +18,11 @@ module.exports = function(defaults) {
       workers: ['javascript'],
       exts: ['language_tools']
     },
+    /* https://github.com/mike-north/ember-monaco/issues/54 */
+    'ember-cli-uglify': {
+      enabled: true,
+      exclude: ['ember-monaco/**'],
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
