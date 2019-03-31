@@ -71,7 +71,7 @@ export default class DoubtsViewComponent extends Component {
       this.set('title', '')
       this.set('body', '')
 
-      this.firepad.set('ref', doubt.firebase_ref)
+      this.firepad.set('ref', doubt.firebaseRef)
       this.firepad.connect()
       
     } catch (err) {
