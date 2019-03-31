@@ -64,7 +64,7 @@
                   {{!-- <div class="grey">Batches starting {{moment-format (unix course.topRun.start) 'MMM Do'}} </div> --}}
                 </div>
         
-                {{#link-to 'courses.id' course.identifier class="white" activeClass=""}} <button
+                {{#link-to 'courses.id' course.identifier class="white d-md-none" activeClass=""}} <button
                   class="button-solid">Explore</button>{{/link-to}}
         
               </div>
@@ -87,7 +87,7 @@
             </div>
           </div>
         
-          <div class="border-card online-card pop-up dsp-none-sm">
+          <div class="border-card online-card pop-up dsp-none-sm animated zoom-in">
             <div class="round-img">
               <img src="{{defaultTo course.logo '/images/c++'}}">
             </div>
