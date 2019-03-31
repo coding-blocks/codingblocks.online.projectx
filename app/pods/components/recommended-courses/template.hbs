@@ -66,9 +66,9 @@
             {{!-- <div class="grey">Batches starting {{moment-format (unix course.topRun.start) 'MMM Do'}} </div> --}}
           </div>
 
-          {{!-- {{#link-to 'courses.id' course.identifier class="white" activeClass=""}}  --}}
-          {{!-- <button class="button-solid" {{action "toggleShowPopUp"}}>Details</button> --}}
-          {{!-- {{/link-to}} --}}
+          {{#link-to 'courses.id' course.identifier class="white d-md-none" activeClass=""}} 
+          <button class="button-solid" {{action "toggleShowPopUp"}}>Explore</button>
+          {{/link-to}}
 
         </div>
         <div class="d-md-none">
