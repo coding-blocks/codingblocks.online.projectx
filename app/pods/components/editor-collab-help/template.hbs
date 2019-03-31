@@ -1,0 +1,30 @@
+<ModalDialog 
+  @translucentOverlay={{true}} 
+  @targetAttachment="none"
+  @containerClass="centered-scrolling-container p-4 pb-5" 
+  @overlayClass="centered-scrolling-overlay"
+  @wrapperClass="centered-scrolling-wrapper" 
+  @onClose={{action @onClose}}>
+  
+  <h2>What is Collborate Mode?</h2>
+  <hr>
+  <p>
+    When you ask a doubt related to programming problem, you can use 
+    <b>Collaborate Mode</b> to share your code editor with a TA. 
+    With the collaborate mode on, you and your TA can collaborate in realtime to 
+    debug your code and help you solve the challenge.
+  </p>
+
+  <p>
+    You can switch back to <b>Normal Mode</b> anytime and your editor
+    will no longer be connected to your TA.
+  </p>
+
+  <mark>
+    TL;DR: Keep <b>Collaborate Mode</b> when you want to share your code with
+    TA in realtime. Use <b>Normal Mode</b> when you are working on your own. 
+  </mark>
+
+  <br>
+  <button class="button-solid mt-4" {{action @onClose}}>Got it</button>
+</ModalDialog>

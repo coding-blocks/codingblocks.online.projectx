@@ -1,6 +1,9 @@
-import Component from "@ember/component";
-import { action, computed } from "@ember-decorators/object";
-import { set } from '@ember/object';
+import Component from "@ember/component"
+import { action, computed } from "@ember-decorators/object"
+import { alias }  from '@ember-decorators/object/computed';
+import { set } from '@ember/object'
+import { restartableTask } from 'ember-concurrency-decorators'
+import { inject as service } from '@ember-decorators/service';
 
 export default class EditorClass extends Component {
   classNames = ["height-100"];
@@ -9,49 +12,52 @@ export default class EditorClass extends Component {
     {
       name: "C++",
       code: "cpp",
-      mode: "ace/mode/c_cpp",
+      mode: "cpp",
       source: ""
     },
     {
       name: "C",
       code: "c",
-      mode: "ace/mode/c_cpp",
+      mode: "c",
       source: ""
     },
     {
       name: "Python 2.7",
       code: "py2",
-      mode: "ace/mode/python",
+      mode: "python",
       source: ""
     },
     {
       name: "Python 3",
       code: "py3",
-      mode: "ace/mode/python",
+      mode: "python",
       source: ""
     },
     {
       name: "Node",
       code: "js",
-      mode: "ace/mode/javascript",
+      mode: "javascript",
       source: ""
     },
     {
       name: "Java 8",
       code: "java",
-      mode: "ace/mode/java",
+      mode: "java",
       source: ""
     },
     {
       name: "C#",
       code: "csharp",
-      mode: "ace/mode/csharp",
+      mode: "csharp",
       source: ""
     }
   ];
 
   customInput = "";
   isRunOutput = true;
+
+  @service firepad
+  @alias('firepad.connected') isCollaborating
 
   didReceiveAttrs() {
     this._super(...arguments);
@@ -93,6 +99,7 @@ export default class EditorClass extends Component {
   selectLanguage(lang) {
     this.set("isLanguageSelectOpen", false);
     this.set("selectedLanguage", lang);
+
   }
 
   @action
@@ -125,4 +132,36 @@ export default class EditorClass extends Component {
   toggle(modalContentType){
     this.sendAction('toggleModal', modalContentType);
   }
+
+  @restartableTask
+  *setCollabModeTask (value) {
+    if (value) {
+      yield this.firepad.connect()
+    } else {
+      this.firepad.disconnect()
+    }
+  }
+
+  didInsertElement () {
+    this._super(...arguments)
+    const monacoIframe = document.querySelector('iframe[src*="ember-monaco"]')
+    monacoIframe.addEventListener('load', () => {
+      const iframeWindow = monacoIframe.contentWindow
+      
+      // Get the editor reference and set monaco global
+      this.editor = iframeWindow.editor
+      window.monaco = iframeWindow.monaco
+
+      const firepad = this.firepad
+      firepad.set("editor", this.editor)
+
+      // if we have a ref; connect to firebase
+      if (this.ref) {
+        firepad.connect(this.ref, false)
+      } else {
+        firepad.disconnect()
+      }
+    })
+  }
+  
 }

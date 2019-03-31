@@ -46,6 +46,18 @@ module.exports = function(environment) {
 
   ENV.dukaanUrl = 'https://dukaan.codingblocks.xyz'
 
+  ENV['ember-toggle'] = {
+    includedThemes: ['ios'],
+    defaultTheme: 'ios',
+    defaultSize: 'medium'
+  }
+
+  ENV.firebase = {
+    apiKey: 'AIzaSyD1bGr7kMHEWxK0X-oIKWfsZ29QNhjJA5U',
+    databaseURL: "https://cb-ide.firebaseio.com/",
+    projectId: "cb-ide"
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -59,7 +71,7 @@ module.exports = function(environment) {
     ENV.hackApiHost = 'https://api.cb.lk'
     ENV.googleAnalytics = {
       webPropertyId: 'UA-83327907-12'
-    };
+    }
   }
 
   if (environment === 'test') {
@@ -87,6 +99,11 @@ module.exports = function(environment) {
       id: '1947467048859851'
     };
     ENV.dukaanUrl = 'https://dukaan.codingblocks.com'
+    ENV.firebase = {
+      apiKey: 'AIzaSyBmhZWgSNL32DCYIouM_iPs4rbtq-NPugo',
+      databaseURL: "https://cb-ide-79a73.firebaseio.com/",
+      projectId: "cb-ide-79a73"
+    }
   }
 
   if (environment === 'staging') {
