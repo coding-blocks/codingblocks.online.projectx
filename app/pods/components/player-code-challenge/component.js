@@ -31,7 +31,7 @@ export default class CodeChallengeComponent extends Component {
   get relatedPendingDoubt () {
     // if (!this.runAttempt.runAttemptId) 
     const runAttempt = this.store.peekRecord('run-attempt', this.runAttempt.runAttemptId)
-    return runAttempt.doubts.find(doubt => doubt.get('content.id') == this.code.get('content.id'))
+    return runAttempt.doubts.find(doubt => doubt.get('content.id') == this.code.get('content.id') && doubt.get('status') == 'PENDING')
   }
 
   @computed("sourceCode")
