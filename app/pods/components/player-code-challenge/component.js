@@ -13,7 +13,9 @@ export default class CodeChallengeComponent extends Component {
   @service hbApi;
   @service currentUser;
   @service store;
+  @service runAttempt
   @alias("payload") code;
+
 
   sourceCode = "";
   customInput = "";
@@ -23,6 +25,14 @@ export default class CodeChallengeComponent extends Component {
   classNames = ["height-100"];
   err = "";
   isShowingModal = false;
+  showCollabModal = false;
+
+  @computed("code.content.id", "runAttempt.runAttemptId")
+  get relatedPendingDoubt () {
+    // if (!this.runAttempt.runAttemptId) 
+    const runAttempt = this.store.peekRecord('run-attempt', this.runAttempt.runAttemptId)
+    return runAttempt.doubts.find(doubt => doubt.get('content.id') == this.code.get('content.id'))
+  }
 
   @computed("sourceCode")
   get sourceCodeBase64() {
@@ -74,6 +84,9 @@ export default class CodeChallengeComponent extends Component {
     this._super(...arguments);
     const code = this.get("code");
     const run = this.get("run");
+
+    this.showCollabModal = !!this.relatedPendingDoubt && this.relatedPendingDoubt.firebaseRef
+
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     if (this.get('problemJsonApiPayload') && +this.get('problemJsonApiPayload.data.id') === code.get("hbProblemId")) {
       return

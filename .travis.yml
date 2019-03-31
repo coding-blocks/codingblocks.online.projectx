@@ -29,6 +29,8 @@ install:
 
 before_script: 
   - openssl aes-256-cbc -d -in key.pem.enc -out key.pem -k $ENC_KEY
+  - rm -rf dist/
+  - ember build --environment=production
 
 script:
   - if [ "$TRAVIS_BRANCH" = "master" ]; then bash ./deployToProduction.sh; fi
