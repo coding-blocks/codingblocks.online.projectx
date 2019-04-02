@@ -10,8 +10,6 @@ export default class RecommendedTaskComponent extends Component {
   @service session;
   @service currentUser
 
-  showPopUp = false
-
   @reads("fetchRecommendedCoursesTask.lastSuccessful.value")  
   recommendedCourses;
 
@@ -47,10 +45,5 @@ export default class RecommendedTaskComponent extends Component {
   logIn() {
     localStorage.setItem('redirectionPath', this.get('router.currentURL'))
     window.location.href = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`
-  }
-
-  @action
-  toggleShowPopUp() {
-    this.toggleProperty('showPopUp')
   }
 }

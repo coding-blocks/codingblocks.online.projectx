@@ -51,10 +51,10 @@
           </div>
         </div>
       </div>
-      <div class="bg-gradient-violet-lr p-4 white d-md-none">
-        View Job Description
+      <div class="bg-gradient-violet-lr p-4 white d-md-none mb-4">
+        <button {{action "toggleShowDescription"}}>View Job Description</button> 
       </div>
-      <div class="border-card p-5">
+      <div class="border-card p-5 {{unless showDescription 'dsp-none-sm'}}">
         <div class="font-md extra-bold mb-4">
           Job Description
         </div>
