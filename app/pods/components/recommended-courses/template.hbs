@@ -6,9 +6,12 @@
   {{!-- here we can show blank cards to indicate loading --}}
   {{loading-card}}
   {{else}}
-  {{#each recommendedCourses as |course|}}
-  <div class="c-layout-card col-12 col-md-6 col-lg-3 pr-md-0">
-    {{course-card course=course}}
-  </div>
-  {{/each}} {{/if}}
+  <CardGrid class="row justify-content-center" as |card|>
+    {{#each recommendedCourses as |course index|}}
+    <div class="c-layout-card col-12 col-md-6 col-lg-3 pr-md-0">
+      {{course-card course=course index=index showPopUp=(eq index card.poppedIndex) onChangePopped=card.changePoppedCard}}
+    </div>
+    {{/each}}
+  </CardGrid>
+  {{/if}}
 </div>

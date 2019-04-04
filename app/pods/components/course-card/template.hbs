@@ -1,4 +1,4 @@
-<div class="hoverable">
+<div class="hoverable" onclick={{action onChangePopped index}}>
   <div class="img-card online-card">
     <div class="head d-flex">
       <img class="back-img" src="{{course.coverImage}}">
@@ -58,7 +58,7 @@
         </div>
 
         {{!-- {{#link-to 'courses.id' course.identifier class="white d-md-none" activeClass=""}}  --}}
-        <button class="button-solid" {{action "toggleShowPopUp"}}>Details</button>
+        <button class="button-solid" onclick={{action onChangePopped index}} >Details</button>
         {{!-- {{/link-to}} --}}
 
       </div>

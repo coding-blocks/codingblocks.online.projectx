@@ -3,19 +3,19 @@
   <h2 class="t-align-c mt-5 mb-5">
     All Courses
   </h2>
-  <div class="row justify-content-center">
-    {{#each courses as |course|}}
+  <CardGrid class="row justify-content-center" as |card|>
+    {{#each courses as |course index|}}
         <div class="c-layout-card col-12 col-md-6 col-lg-3 pr-md-0">
-          {{course-card course=course}}
+          {{course-card course=course index=index showPopUp=(eq index card.poppedIndex) onChangePoppped=card.changePoppedCard}}
         </div>
     {{/each}}
-  </div>
+  </CardGrid>
   
   <div class="row justify-content-center">
     {{#if taskMoreCourses.isRunning}}
       <button class="button-dashed">Loading...</button>
     {{else if (lt limit count)}}
       <button class="button-dashed" {{action "loadMore"}}>Load More</button>
-    {{/if}}
+    {{/if}} 
   </div>
 </div>
