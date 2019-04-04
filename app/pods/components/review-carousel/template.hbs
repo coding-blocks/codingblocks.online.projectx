@@ -2,10 +2,10 @@
       {{#each ratingsArray as |rating|}}
         
           <div class="col-8 col-md-4 col-lg-3">
-            <div class="card round c-rating-card">
-              <div class="row justify-content-between">
-                <div>{{rating.user.firstname}} {{rating.user.lastname}}</div>
-                <div class="grey font-sm i">{{moment-from rating.updatedAt}}</div>
+            <div class="border-card round c-rating-card">
+              <div class="row justify-content-between no-gutters">
+                <div class="bold font-sm">{{rating.user.firstname}} {{rating.user.lastname}}</div>
+                <div class="grey card-md">{{moment-from rating.updatedAt}}</div>
               </div>
 
               <div class="heading">
@@ -14,7 +14,7 @@
 
               {{rating-stars-static rating=rating.value}}
 
-              <div class="review grey i">
+              <div class="review grey">
                 {{rating.review}}
               </div>
             </div>
@@ -24,8 +24,6 @@
     </div>
     {{#if meta.nextOffset}}
     <div class="row justify-content-center align-items-center">
-      <div class="button-dashed" {{action "fetchRatings"}}>
-        <button>Load More Reviews</button>
-      </div>
+      <button class="button-dashed" {{action "fetchRatings"}}>Load More Reviews</button>
     </div>
     {{/if}}
