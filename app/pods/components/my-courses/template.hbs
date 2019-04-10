@@ -1,8 +1,9 @@
 <div class="heading t-align-c mb-5 mt-5">
   My Courses
 </div>
-<div class="row justify-content-center mb-5">
-  {{#if fetchMyCoursesTask.isRunning}}
+<div class="row justify-content-center">
+  {{#if (and (not runs.length) fetchMyCoursesTask.isRunning)}}
+  {{!-- {{#if fetchMyCoursesTask.isRunning}} --}}
     {{loading-card}}
   {{else}}
     {{#if runs.length}}
@@ -92,3 +93,10 @@
     {{/if}}
   {{/if}}
 </div>
+{{#if runs.length}}
+  <div class="row justify-content-center mb-5">
+    <button id="an-load-more" class="button-dashed" {{action (perform fetchMyCoursesTask)}}>
+      {{if fetchMyCoursesTask.isRunning "Loading" "Load More"}}
+    </button>
+  </div>
+{{/if}}
