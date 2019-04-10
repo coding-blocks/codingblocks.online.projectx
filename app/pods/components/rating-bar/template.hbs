@@ -1,0 +1,11 @@
+{{#each (range 1 (inc scale)) as |index|}}
+  <span 
+    class={{if (lte index hoverRating) "pos-rating" "neg-rating"}}
+    onMouseEnter={{action (mut hoverRating) index}}
+    onClick={{action changeRating index}}
+    onMouseLeave={{action (mut hoverRating) rating}}
+    role="button"
+  >
+    <i class="fas fa-star"></i>
+  </span>
+{{/each}}

@@ -1,0 +1,6 @@
+Description: {{textarea value=description}}
+<RatingBar @scale={{5}} @rating={{score}} @changeRating={{action (mut score)}}/>
+
+<button onclick={{action (perform submitFeedback)}}>
+  Submit
+</button>
