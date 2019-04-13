@@ -58,6 +58,10 @@ module.exports = function(environment) {
     projectId: "cb-ide"
   }
 
+  ENV.talkjs = {
+    appId: 'tZFACp8h'
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

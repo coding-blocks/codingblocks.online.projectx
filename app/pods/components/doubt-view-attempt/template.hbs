@@ -22,24 +22,23 @@
       <div class="red card-md"><i class="fas fa-exclamation-triangle"></i> {{{err}}}</div>
     {{/if}}
     <div class="horizontal-half">
-      {{#if (eq doubt.status 'PENDING')}}
-        <div class="green">
+      <div class="red">
+        <button {{action "startChat"}}>
+          Still have question? Start a chat
+          <i class="fas fa-comment"></i>
+        </button>
+      </div>
+      <div class="button-solid">
+        {{#if (eq doubt.status 'PENDING')}}
           <button {{action 'markStatus' 'RESOLVED'}}>
-            <i class="fas fa-check"></i>
-            Mark as Resolved
+            Resolve
           </button>
-        </div>
-      {{else}}
-        <div class="red">
+        {{else}}
           <button {{action 'markStatus' 'PENDING'}}>
-            <i class="fas fa-check"></i>
-            Reopen Doubt
+            Reopen
           </button>
-        </div>
-      {{/if}}
-      {{!-- <div class="button-solid">
-        <button>Chat with TA</button>
-      </div> --}}
+        {{/if}}
+      </div>
     </div>
 
     {{#if existingComments.length}}

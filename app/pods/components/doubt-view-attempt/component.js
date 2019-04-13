@@ -2,10 +2,8 @@ import { getOwner } from '@ember/application';
 import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember-decorators/service';
-import env from 'codingblocks-online/config/environment';
 import { action } from '@ember-decorators/object'
 import { filterBy } from '@ember/object/computed';
-import Router from '../../../router';
 
 export default class DoubtViewAttemptComponent extends Component{
   @service api
@@ -13,6 +11,7 @@ export default class DoubtViewAttemptComponent extends Component{
   @service currentContent
   @service router
   @service currentUser
+  @service talkjs
 
   collapseThreads = true;
 
@@ -68,5 +67,11 @@ export default class DoubtViewAttemptComponent extends Component{
       // if we are already at this route, force refresh it 
       getOwner(this).lookup(`route:attempt.content`).refresh()
     }
+  }
+
+  @action
+  async startChat () {
+    const { conversationId } = await this.api.request('/chats/' + this.doubt.id, {method: 'POST'}) 
+    this.talkjs.startChat(conversationId)
   }
 }

@@ -1,0 +1,45 @@
+import Service from '@ember/service'
+import { inject as service } from '@ember-decorators/service'
+import config from 'codingblocks-online/config/environment'
+import { computed }  from '@ember-decorators/object';
+
+export default class TalkjsService extends Service {
+  @service currentUser
+  @service api
+
+  @computed ('currentUser.user')
+  get currentChatUser () {
+    const user = this.currentUser.user
+    console.log(user.id)
+    const me = new Talk.User({
+      id: user.id,
+      name: user.firstname,
+      email: user.email,
+      photo: user.photo
+    })
+    return me
+  }
+
+  @computed ('currentUser.user')
+  get currentUserSignature () {
+    return this.api.request('/users/me/chatSignature')
+      .then(result => result.signature)
+  }
+
+  async startChat(conversationId) {
+    const me = this.currentChatUser
+    const signature = await this.currentUserSignature
+
+    window.talkSession = new Talk.Session({
+      appId: config.talkjs.appId,
+      me,
+      signature
+    });
+
+    var conversation = talkSession.getOrCreateConversation(conversationId)
+    conversation.setParticipant(me);
+
+    var popup = talkSession.createPopup(conversation, { keepOpen: false });
+    popup.mount()
+  }
+}
