@@ -76,10 +76,14 @@
           <img src="/images/stamp.png" alt="Coding Blocks Pvt Ltd">
         </div>
       {{/unless}}
+      {{#if course.language}}
+        <h3 class="mt-5">Language</h3>
+        <div class="font-mds grey">All course contents will be in <span class="black">{{course.language}}</span></div>
+      {{/if}}
+        
         <h3 class="mb-3 mt-5">
           Summary
         </h3>
-
         <div class="para summary grey">
           {{markdown-to-html course.summary}}
         </div>
