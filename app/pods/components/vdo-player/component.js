@@ -13,7 +13,7 @@ export default class VdoPlayerComponent extends Component {
   initPlayer() {
     this.otp.then((otp) => {
       this.vdoservice.setVideo(this.lecture.videoId, otp, this.start)
-      const video = this.vdoservice.getVideo().addEventListener('ended', () => {
+      this.vdoservice.getVideo().addEventListener('ended', () => {
         this.onVideoCompleted()
       })
     })
