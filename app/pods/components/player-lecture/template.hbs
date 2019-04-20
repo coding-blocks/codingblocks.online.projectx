@@ -1,11 +1,13 @@
-{{#unless (or awsDataTask.isRunning getOtpTask.isRunning)}}
+{{#unless awsDataTask.isRunning}}
     <div class="video-player d-flex flex-column justify-content-around {{unless sidebarCollapsed 'collapse'}}">
         {{#content-feedback onFeedbackSubmit=onFeedbackSubmit showFeedback=showFeedback}} {{/content-feedback}}
         {{#if lecture.videoId}}
-            {{vdo-player 
+            {{vdo-player
                 lecture=lecture 
                 start=start
                 onVideoCompleted=onVideoCompleted
+                sectionId=sectionId
+                runAttempt=runAttempt
             }}
 
         {{else}}

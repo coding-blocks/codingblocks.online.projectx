@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember-decorators/service';
+import { computed } from '@ember-decorators/object'
 import DS from 'ember-data';
 import { later } from '@ember/runloop';
 
@@ -10,38 +10,28 @@ export default class VdoPlayerComponent extends Component {
 
   classNames = ['w-100', 'h-100']
 
-  initPlayer() {
-    this.otp.then((otp) => {
-      this.vdoservice.setVideo(this.lecture.videoId, otp, this.start)
-      const video = this.vdoservice.getVideo().addEventListener('ended', () => {
-        this.onVideoCompleted()
+  @computed('lecture.videoId')
+  get otp () {
+    return DS.PromiseObject.create({
+      promise: this.api.request('/lectures/otp', {
+        data: {
+          videoId: this.lecture.videoId,
+          sectionId: this.sectionId,
+          runAttemptId: this.runAttempt.id
+        }
       })
     })
   }
 
-  @restartableTask
-  *getOtpTask() {
-    const { otp } = yield this.api.request('/lectures/otp', {
-      data: {
-        videoId: this.get('lecture.videoId')
-      }
+  initPlayer() {
+    this.otp.then(({otp}) => {
+      this.vdoservice.setVideo(this.lecture.videoId, otp, this.start)
+      const video = this.vdoservice.getVideo()
+      video.addEventListener('ended', () => { this.onVideoCompleted() })
     })
-    return otp
-  }
-
-  didReceiveAttrs(){
-    this.getOtpTask.perform()
-    const otp = DS.PromiseObject.create({
-      promise: this.getOtpTask.perform()
-    })
-    this.set('otp', otp)
   }
   
   didInsertElement(){
-    later(() => this.initPlayer(), 0)
-  }
-
-  didUpdate(){
     later(() => this.initPlayer(), 0)
   }
 }
