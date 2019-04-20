@@ -124,18 +124,12 @@
             <div class="input-box col-md-12">
               {{#if isRunOutput}}
                 {{#if runCodeTask.last.value.error}}
-                  <pre>
-                    {{base64 "decode" runCodeTask.last.value.error}}
-                  </pre>
+                  <pre>{{base64 "decode" runCodeTask.last.value.error}}</pre>
                 {{else if runCodeTask.last.value.data}}
-                  <pre>
-                    {{base64 "decode" runCodeTask.last.value.data.output}}
-                  </pre>
+                  <pre>{{base64 "decode" runCodeTask.last.value.data.output}}</pre>
                 {{/if}}
               {{else if submitCodeTask.last.value.error}}
-                <pre>
-                  {{base64 "decode" submitCodeTask.last.value.error}}
-                </pre>
+                <pre>{{base64 "decode" submitCodeTask.last.value.error}}</pre>
               {{else if submitCodeTask.last.value.data}}
                 <code>
                   {{#each

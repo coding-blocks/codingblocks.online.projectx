@@ -1,30 +1,22 @@
-{{#unless awsDataTask.isRunning}}
+{{#unless (or awsDataTask.isRunning getOtpTask.isRunning)}}
     <div class="video-player d-flex flex-column justify-content-around {{unless sidebarCollapsed 'collapse'}}">
         {{#content-feedback onFeedbackSubmit=onFeedbackSubmit showFeedback=showFeedback}} {{/content-feedback}}
-        
-        {{!-- <div class="feed-overlay">
-                            <div class="feed-box collapsed" style="bottom: 190px;" {{action 'meow'}}>
-                                <img src="/images/love.svg" alt="" class="love-ico">
-                            </div>
-                            <div class="feed-box expanded" style="bottom: 120px;">
-                                <div class="feed-text">Did you like the video?</div>
-                                <form>
-                                    <input type="radio" name="gender" value="male" checked> Yes
-                                    <input type="radio" name="gender" value="female"> No
-                                </form>
-                                <img src="/images/love.svg" alt="" class="love-ico">
-                            </div>
-                            <div class="feed-box">
-                                <div class="feed-text">Feedback Submitted</div>
-                                <img src="/images/love.svg" alt="" class="love-ico">
-                            </div>
-                    </div> --}}
-        {{#hls-player src=lecture.videoUrl
-            awsData=awsDataTask.lastSuccessful.value
-            title=lecture.name
-            start=start
-            onVideoCompleted=onVideoCompleted
-        }}
-        {{/hls-player}}
+        {{#if lecture.videoId}}
+            {{vdo-player 
+                lecture=lecture 
+                start=start
+                onVideoCompleted=onVideoCompleted
+            }}
+
+        {{else}}
+            {{#hls-player src=lecture.videoUrl
+                awsData=awsDataTask.lastSuccessful.value
+                title=lecture.name
+                start=start
+                onVideoCompleted=onVideoCompleted
+            }}
+            {{/hls-player}}
+
+        {{/if}}
     </div>
 {{/unless}}

@@ -9,8 +9,10 @@ export default Component.extend({
     classNames: ['height-100'],
     lecture: alias('payload'),
     didReceiveAttrs () {
-        this.awsDataTask.perform()
         this._super(...arguments)
+      if (!this.get('lecture.videoId')) {
+        this.awsDataTask.perform()
+      }
     },
 
     awsDataTask: task(function *() {

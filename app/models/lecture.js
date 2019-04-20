@@ -5,5 +5,6 @@ export default DS.Model.extend({
   videoUrl: DS.attr(),
   status: DS.attr(),
   content: DS.belongsTo('content'),
-  duration: DS.attr()
+  duration: DS.attr(),
+  videoId: DS.attr()
 })
