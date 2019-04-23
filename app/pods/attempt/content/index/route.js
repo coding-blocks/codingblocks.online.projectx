@@ -58,8 +58,20 @@ export default Route.extend({
       if (model.content.get('contentable') === 'code-challenge') {
           this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
           try{
-              const editorialPromise = this.api.request(`/code_challenges/editorials?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
-              const testcasePromise = this.api.request(`/code_challenges/testcases?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
+              const editorialPromise = this.api.request('/code_challenges/editorials', {
+                  type: 'GET',
+                  data: {
+                    contest_id: model.run.get("contestId"),
+                    p_id: model.payload.get("hbProblemId")
+                  }
+              })
+              const testcasePromise = this.api.request('/code_challenges/testcases', {
+                  type: 'GET',
+                  data: {
+                    contest_id: model.run.get("contestId"),
+                    p_id: model.payload.get("hbProblemId")
+                  }
+              })
               const problemAttemptPromise = this.api.request('/code_challenges/problem_attempt', {
                 method: "POST",
                 data: {
