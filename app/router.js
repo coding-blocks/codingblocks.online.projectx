@@ -43,6 +43,7 @@ Router.map(function() {
   this.route('login');
   this.route('feedback', function() {
     this.route('doubt', {path: '/d/:doubt_id'});
+    this.route('thanks');
   });
   this.route('404', { path: '/*:' });
 });

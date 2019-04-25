@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember-decorators/service';
 import { action } from '@ember-decorators/object'
-import { filterBy, lt, or, not } from '@ember-decorators/object/computed';
+import { filterBy, lt, or, not, filter } from '@ember-decorators/object/computed';
 import { computed } from '@ember-decorators/object';
 import { restartableTask } from 'ember-concurrency-decorators';
 
@@ -22,11 +22,12 @@ export default class DoubtsViewComponent extends Component {
   @lt('runAttempt.doubtSupport', new Date()) doubtSupportExpired
   @or('doubtSupportExpired', 'askDoubtTask.isRunning', 'freeTrial') disableAskDoubts
 
-  @computed('existingDoubts.@each.status')
-  get unresolved() {
-    return this.get('existingDoubts').reduce((acc, val) => {
-      return val.get('status') === 'PENDING' ? ++acc : acc;
-    }, 0)
+  @filterBy('existingDoubts', 'status', 'RESOLVED')
+  resolved
+
+  @filter('existingDoubts')
+  unresolved (doubt) {
+    return doubt.status != 'RESOLVED'
   }
 
   @computed('existingDoubts', 'currentContent')

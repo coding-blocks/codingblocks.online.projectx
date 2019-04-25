@@ -2,7 +2,7 @@ import { getOwner } from '@ember/application';
 import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember-decorators/service';
-import { action } from '@ember-decorators/object'
+import { action, computed } from '@ember-decorators/object'
 import { filterBy } from '@ember/object/computed';
 
 export default class DoubtViewAttemptComponent extends Component{
@@ -16,6 +16,18 @@ export default class DoubtViewAttemptComponent extends Component{
   collapseThreads = true;
 
   existingComments = filterBy('comments', 'isNew', false)
+
+  @computed('doubt.status', 'doubt.feedbacks.@each.ratedById')
+  get feedbackMode () {
+    const doubt = this.doubt
+    const userId = this.currentUser.user.id
+
+    const feedback = doubt.feedbacks ? doubt.feedbacks.find(f => f.ratedById == userId) : null
+    if (!feedback && doubt.status == 'RESOLVED')
+      return true
+    else
+      return false
+  }
 
   @restartableTask
   *commentTask () {
@@ -49,7 +61,10 @@ export default class DoubtViewAttemptComponent extends Component{
     this.set('doubt.status', status)
     if (status == 'RESOLVED')
       this.set('doubt.resolvedById', this.get('currentUser.user.id'))
-      this.get('doubt').save()
+    else if (status == 'PENDING')
+      this.doubt.set('feedbacks', [])
+    
+    this.get('doubt').save()
   }
 
   @action

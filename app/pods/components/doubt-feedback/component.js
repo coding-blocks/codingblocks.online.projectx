@@ -7,13 +7,19 @@ export default class DoubtFeedbackComponent extends Component {
 
   @restartableTask	
   *submitFeedback() {
-    const df = this.store.createRecord('doubt-feedback', {
+    let df = this.store.createRecord('doubt-feedback', {
       type: 'STUDENT',
       score: this.score,
       description: this.description,
       doubt: this.doubt
     })
 
-    yield df.save()
+    df = yield df.save()
+    this.doubt.feedbacks.pushObject(df)
+
+    // fire callback if present
+    if (this.onSave) {
+      this.onSave()
+    }
   }
 }
