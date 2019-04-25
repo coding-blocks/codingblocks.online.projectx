@@ -26,7 +26,7 @@ export default class TalkjsService extends Service {
       .then(result => result.signature)
   }
 
-  async startChat(conversationId) {
+  async setupSession () {
     const me = this.currentChatUser
     const signature = await this.currentUserSignature
 
@@ -35,6 +35,14 @@ export default class TalkjsService extends Service {
       me,
       signature
     });
+
+    return window.talkSession
+  }
+
+  async startChat(conversationId) {
+    const me = this.currentChatUser
+    
+    const talkSession = await this.setupSession()
 
     var conversation = talkSession.getOrCreateConversation(conversationId)
     conversation.setParticipant(me);

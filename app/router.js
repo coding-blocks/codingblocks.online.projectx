@@ -45,6 +45,7 @@ Router.map(function() {
     this.route('doubt', {path: '/d/:doubt_id'});
     this.route('thanks');
   });
+  this.route('inbox');
   this.route('404', { path: '/*:' });
 });
 
