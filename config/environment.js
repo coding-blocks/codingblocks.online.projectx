@@ -107,7 +107,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'staging') {
-    ENV.apiHost = 'https://codingblocks-online-v2-staging.herokuapp.com'
+    ENV.apiHost = 'https://api-online.codingblocks.xyz'
     ENV.publicUrl = 'https://online.codingblocks.xyz';
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
