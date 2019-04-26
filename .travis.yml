@@ -34,3 +34,4 @@ before_script:
 
 script:
   - if [ "$TRAVIS_BRANCH" = "master" ]; then bash ./deployToProduction.sh; fi
+  - if [ "$TRAVIS_BRANCH" = "development" ]; then bash ./deploy-staging.sh; fi
