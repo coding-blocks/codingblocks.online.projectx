@@ -74,11 +74,7 @@ export default class SearchBoxComponent extends Component {
 
   @action
   transitionToContent(contentId, sectionId) {
-    this.get('router').transitionTo('attempt.content', contentId, {
-      queryParams: {
-        s: sectionId
-      }
-    });
+    this.get('router').transitionTo('attempt.content', sectionId, contentId);
   }
   @action
   showResult () {

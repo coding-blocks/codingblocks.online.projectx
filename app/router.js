@@ -20,7 +20,8 @@ Router.map(function() {
     })
   });
   this.route('attempt', {path: '/player/:runAttemptId'}, function() {
-    this.route('content', {path: '/content/:contentId'}, function() {
+    this.route('old-content', {path: '/content/:contentId'});
+    this.route('content', {path: '/content/:sectionId/:contentId'}, function() {
       this.route('quiz', {path: '/quiz/:quizId'} ,function() {
         this.route('attempt', {path: '/s/:quizAttemptId'}, function() {
           this.route('done');

@@ -31,11 +31,7 @@ export default Controller.extend({
         },
         transitionToContent (contentId, sectionId) {
             this.runAttemptService.setCurrentSection(sectionId)
-            this.transitionToRoute('attempt.content', contentId, {
-                queryParams: {
-                    sectionId
-                }
-            })
+            this.transitionToRoute('attempt.content', sectionId, contentId)
         },
         async toggleProgress (content) {
             if (await content.get('progress')) {
