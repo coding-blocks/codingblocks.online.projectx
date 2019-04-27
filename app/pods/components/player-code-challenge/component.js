@@ -85,7 +85,7 @@ export default class CodeChallengeComponent extends Component {
     const code = this.get("code");
     const run = this.get("run");
 
-    this.showCollabModal = !!this.relatedPendingDoubt && this.relatedPendingDoubt.firebaseRef
+    this.set('showCollabModal', !!this.relatedPendingDoubt && this.relatedPendingDoubt.firebaseRef)
 
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     if (this.get('problemJsonApiPayload') && +this.get('problemJsonApiPayload.data.id') === code.get("hbProblemId")) {
