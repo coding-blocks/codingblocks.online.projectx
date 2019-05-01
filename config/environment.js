@@ -108,6 +108,9 @@ module.exports = function(environment) {
       databaseURL: "https://cb-ide-79a73.firebaseio.com/",
       projectId: "cb-ide-79a73"
     }
+    ENV.talkjs = {
+      appId: '2LhQvB3j'
+    }
   }
 
   if (environment === 'staging') {
@@ -116,6 +119,10 @@ module.exports = function(environment) {
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.codingblocks.xyz'
+
+    ENV.talkjs = {
+      appId: '2LhQvB3j'
+    }
   }
 
   if (process.env.oss) {
