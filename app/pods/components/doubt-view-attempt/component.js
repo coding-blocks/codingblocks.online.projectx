@@ -2,10 +2,8 @@ import { getOwner } from '@ember/application';
 import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember-decorators/service';
-import env from 'codingblocks-online/config/environment';
-import { action } from '@ember-decorators/object'
+import { action, computed } from '@ember-decorators/object'
 import { filterBy } from '@ember/object/computed';
-import Router from '../../../router';
 
 export default class DoubtViewAttemptComponent extends Component{
   @service api
@@ -13,10 +11,23 @@ export default class DoubtViewAttemptComponent extends Component{
   @service currentContent
   @service router
   @service currentUser
+  @service talkjs
 
   collapseThreads = true;
 
   existingComments = filterBy('comments', 'isNew', false)
+
+  @computed('doubt.status', 'doubt.feedbacks.@each.ratedById')
+  get feedbackMode () {
+    const doubt = this.doubt
+    const userId = this.currentUser.user.id
+
+    const feedback = doubt.feedbacks ? doubt.feedbacks.find(f => f.ratedById == userId) : null
+    if (!feedback && doubt.status == 'RESOLVED')
+      return true
+    else
+      return false
+  }
 
   @restartableTask
   *commentTask () {
@@ -50,7 +61,10 @@ export default class DoubtViewAttemptComponent extends Component{
     this.set('doubt.status', status)
     if (status == 'RESOLVED')
       this.set('doubt.resolvedById', this.get('currentUser.user.id'))
-      this.get('doubt').save()
+    else if (status == 'PENDING')
+      this.doubt.set('feedbacks', [])
+    
+    this.get('doubt').save()
   }
 
   @action
@@ -68,5 +82,11 @@ export default class DoubtViewAttemptComponent extends Component{
       // if we are already at this route, force refresh it 
       getOwner(this).lookup(`route:attempt.content`).refresh()
     }
+  }
+
+  @action
+  async startChat () {
+    const { conversationId } = await this.api.request('/chats/' + this.doubt.id, {method: 'POST'}) 
+    this.talkjs.startChat(conversationId)
   }
 }
