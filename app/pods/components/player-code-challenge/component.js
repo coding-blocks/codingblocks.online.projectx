@@ -27,10 +27,10 @@ export default class CodeChallengeComponent extends Component {
   isShowingModal = false;
   showCollabModal = false;
 
-  @computed("code.content.id", "runAttempt.runAttemptId")
+  @computed("code.content.id", "runAttempt.id")
   get relatedPendingDoubt () {
     // if (!this.runAttempt.runAttemptId) 
-    const runAttempt = this.store.peekRecord('run-attempt', this.runAttempt.runAttemptId)
+    const runAttempt = this.store.peekRecord('run-attempt', this.runAttempt.id)
     return runAttempt.doubts.find(doubt => doubt.get('content.id') == this.code.get('content.id') && doubt.get('status') == 'PENDING')
   }
 
