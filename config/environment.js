@@ -59,6 +59,10 @@ module.exports = function(environment) {
     projectId: "cb-ide"
   }
 
+  ENV.talkjs = {
+    appId: 'tZFACp8h'
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -105,14 +109,21 @@ module.exports = function(environment) {
       databaseURL: "https://cb-ide-79a73.firebaseio.com/",
       projectId: "cb-ide-79a73"
     }
+    ENV.talkjs = {
+      appId: '2LhQvB3j'
+    }
   }
 
   if (environment === 'staging') {
-    ENV.apiHost = 'https://codingblocks-online-v2-staging.herokuapp.com'
+    ENV.apiHost = 'https://api-online.codingblocks.xyz'
     ENV.publicUrl = 'https://online.codingblocks.xyz';
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://api.codingblocks.xyz'
+
+    ENV.talkjs = {
+      appId: '2LhQvB3j'
+    }
   }
 
   if (process.env.oss) {

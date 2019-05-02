@@ -12,17 +12,18 @@ export default Route.extend({
             replace: true
         }
     },
-    model () {
+    model (params) {
         return hash({
             runAttempt: this.modelFor('attempt'),
             content: this.modelFor('attempt.content'),
+            sectionId: params.sectionId,
             payload: this.modelFor('attempt.content').get('payload'),
             run: this.modelFor('attempt').get('run')
         })
     },
     setupController(controller, model) {
         this._super(...arguments)
-        controller.set("sectionId", this.paramsFor('attempt').sectionId)
+        controller.set("sectionId", model.sectionId)
         controller.set("runAttempt", model.runAttempt)
         controller.set("run", model.run)
         controller.set("content", model.content)
@@ -39,7 +40,7 @@ export default Route.extend({
         })
     },
     async afterModel(model) {
-      const sectionId = this.paramsFor('attempt').sectionId
+      const sectionId = model.sectionId
       if (sectionId) {
         const section = this.store.peekRecord('section', sectionId)
         this.set('headData.title', section.get('name') + " | " + model.content.get('title') + " player ");
@@ -58,9 +59,28 @@ export default Route.extend({
       if (model.content.get('contentable') === 'code-challenge') {
           this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
           try{
-              let editorialPromise = this.api.request(`/code_challenges/editorials?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
-              let testcasePromise = this.api.request(`/code_challenges/testcases?contest_id=${model.run.get("contestId")}&p_id=${model.payload.get("hbProblemId")}`)
-              const [editorialPayload, testcasesPayload] = await allSettled([editorialPromise, testcasePromise])
+              const editorialPromise = this.api.request('/code_challenges/editorials', {
+                  type: 'GET',
+                  data: {
+                    contest_id: model.run.get("contestId"),
+                    p_id: model.payload.get("hbProblemId")
+                  }
+              })
+              const testcasePromise = this.api.request('/code_challenges/testcases', {
+                  type: 'GET',
+                  data: {
+                    contest_id: model.run.get("contestId"),
+                    p_id: model.payload.get("hbProblemId")
+                  }
+              })
+              const problemAttemptPromise = this.api.request('/code_challenges/problem_attempt', {
+                method: "POST",
+                data: {
+                  contestId: model.run.get("contestId"),
+                  problemId: model.payload.get("hbProblemId")
+                }
+              })
+              const [editorialPayload, testcasesPayload] = await allSettled([editorialPromise, testcasePromise, problemAttemptPromise])
               
               if(editorialPayload.state === 'fulfilled'){
                   const editorialRecord = this.store.createRecord('editorial', editorialPayload.value.data.attributes);

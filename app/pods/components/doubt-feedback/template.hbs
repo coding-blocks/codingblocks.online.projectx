@@ -1,0 +1,18 @@
+<div class="body">
+  <img class="mb-3" src="https://minio.codingblocks.com/amoeba/yellow-tick.svg" width="33" height="33" alt="doubt resolved">
+
+  <div class="title yellow">
+    Your doubt has been resolved.
+  </div>
+  <div class="text">
+    {{doubt.title}}
+  </div>
+
+  <RatingBar class="stars my-3" @scale={{5}} @rating={{score}} @changeRating={{action (mut score)}} />
+
+  <div class="d-flex">
+    <input type="text" placeholder="Please leave your feedback. It's optional.">
+    <button class="ml-2 red" onclick={{action (perform submitFeedback)}}>Submit</button>
+  </div>
+
+</div>

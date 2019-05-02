@@ -16,25 +16,25 @@
   </div>
 
   <div class="nav">
-    <div role="button" class="tab {{if (eq activeTab "PENDING") "active"}}" {{action "setActiveTab" "PENDING"}}>Unresolved({{unresolved}})</div>
-    <div role="button" class="tab {{if (eq activeTab "RESOLVED") "active"}}" {{action "setActiveTab" "RESOLVED"}}>Resolved({{sub existingDoubts.length unresolved}})</div>
+    <div role="button" class="tab {{if (eq activeTab "PENDING") "active"}}" {{action "setActiveTab" "PENDING"}}>Unresolved({{unresolved.length}})</div>
+    <div role="button" class="tab {{if (eq activeTab "RESOLVED") "active"}}" {{action "setActiveTab" "RESOLVED"}}>Resolved({{resolved.length}})</div>
   </div>
 </div>
 
 <div class="bottom">
   {{#if  (eq activeTab "PENDING")}}
-    {{#if (not unresolved)}}
+    {{#if (not unresolved.length)}}
       <div class="p-3 t-align-c">You have no unresolved doubts.</div> 
     {{/if}}
   {{else}}
-    {{#if (not (sub doubts.length unresolved))}}
+    {{#if (not resolved.length)}}
       <div class="p-3 t-align-c">You have no resolved doubts.</div>
     {{/if}}
   {{/if}}
   
-  {{#each existingDoubts as |doubt|}}
-    {{#if (eq activeTab doubt.status)}}
+  {{#let (if (eq activeTab "RESOLVED") resolved unresolved) as |visibleDoubts|}}
+    {{#each visibleDoubts as |doubt|}}
       {{doubt-view-attempt doubt=doubt comments=doubt.comments}}
-    {{/if}}
-  {{/each}}
+    {{/each}}
+  {{/let}}
 </div>

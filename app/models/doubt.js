@@ -10,5 +10,6 @@ export default DS.Model.extend({
   discourseTopicId: DS.attr(),
   firebaseRef: DS.attr(),
   comments: DS.hasMany('comment'),
+  feedbacks: DS.hasMany('doubt-feedback'),
   resolvedById: DS.attr()
 })

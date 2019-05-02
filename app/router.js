@@ -20,7 +20,8 @@ Router.map(function() {
     })
   });
   this.route('attempt', {path: '/player/:runAttemptId'}, function() {
-    this.route('content', {path: '/content/:contentId'}, function() {
+    this.route('old-content', {path: '/content/:contentId'});
+    this.route('content', {path: '/content/:sectionId/:contentId'}, function() {
       this.route('quiz', {path: '/quiz/:quizId'} ,function() {
         this.route('attempt', {path: '/s/:quizAttemptId'}, function() {
           this.route('done');
@@ -38,11 +39,15 @@ Router.map(function() {
   this.route('logout');
   this.route('payment-webhook-loading');
   this.route('certificate', {path: '/certificates/:licenseKey'});
-  this.route('404', { path: '/*:' });
   this.route('nagarro', function() {});
   this.mount('hiring-blocks', {path: '/jobs'});
-
   this.route('login');
+  this.route('feedback', function() {
+    this.route('doubt', {path: '/d/:doubt_id'});
+    this.route('thanks');
+  });
+  this.route('inbox');
+  this.route('404', { path: '/*:' });
 });
 
 export default Router;
