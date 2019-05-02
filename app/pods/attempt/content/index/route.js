@@ -16,7 +16,7 @@ export default Route.extend({
         return hash({
             runAttempt: this.modelFor('attempt'),
             content: this.modelFor('attempt.content'),
-            sectionId: params.sectionId,
+            sectionId: this.paramsFor('attempt.content').sectionId,
             payload: this.modelFor('attempt.content').get('payload'),
             run: this.modelFor('attempt').get('run')
         })

@@ -64,7 +64,7 @@ export default Controller.extend({
       }
       this.transitionToRoute(
         "attempt.content",
-        this.get("runAttempt.id"),
+        section.id,
         nextContent.get("id")
       , {
         queryParams: {
