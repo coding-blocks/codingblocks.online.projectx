@@ -23,7 +23,7 @@ export default Route.extend({
     },
     setupController(controller, model) {
         this._super(...arguments)
-        controller.set("sectionId", model.sectionId)
+        controller.set("sectionId", this.paramsFor('attempt.content').sectionId)
         controller.set("runAttempt", model.runAttempt)
         controller.set("run", model.run)
         controller.set("content", model.content)
