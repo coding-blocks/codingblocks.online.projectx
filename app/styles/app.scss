@@ -86,9 +86,9 @@ picture * {
   background-image: none;
 }
 
-.content-container{
-  .result{
-    pre{
+.content-container {
+  .result {
+    pre {
       white-space: pre-wrap;      
      white-space: -moz-pre-wrap;  
      white-space: -pre-wrap;      
@@ -96,4 +96,8 @@ picture * {
      word-wrap: break-word;       
     }
   }
+}
+
+.inbox {
+  height: 600px;
 }
