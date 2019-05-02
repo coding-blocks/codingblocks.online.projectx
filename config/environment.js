@@ -41,7 +41,8 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+    vdoplayerTheme: '9ae8bbe8dd964ddc9bdb932cca1cb59a'
   };
 
   ENV.dukaanUrl = 'https://dukaan.codingblocks.xyz'

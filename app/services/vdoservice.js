@@ -1,12 +1,13 @@
 import Service from '@ember/service';
+import ENV from 'codingblocks-online/config/environment'
 
 export default class VdoserviceService extends Service {
-  setVideo(videoId, otp, startTime = 0){
+  setVideo(videoId, otp, startTime = 0, container){
     let embedInfo = {
       playbackInfo: btoa(JSON.stringify({ videoId })),
       otp,
-      theme: "9ae8bbe8dd964ddc9bdb932cca1cb59a",
-      container: document.querySelector("#embedBox"),
+      theme: ENV.vdoplayerTheme,
+      container,
       autoplay: true,
       plugins: [{
         name: 'keyboard',

@@ -8,6 +8,7 @@ export default Component.extend({
     api: inject(),
     classNames: ['height-100'],
     lecture: alias('payload'),
+    
     didReceiveAttrs () {
         this._super(...arguments)
       if (!this.get('lecture.videoId')) {

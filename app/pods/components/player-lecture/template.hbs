@@ -2,14 +2,11 @@
     <div class="video-player d-flex flex-column justify-content-around {{unless sidebarCollapsed 'collapse'}}">
         {{#content-feedback onFeedbackSubmit=onFeedbackSubmit showFeedback=showFeedback}} {{/content-feedback}}
         {{#if lecture.videoId}}
-            {{vdo-player
-                lecture=lecture 
-                start=start
-                onVideoCompleted=onVideoCompleted
-                sectionId=sectionId
-                runAttempt=runAttempt
-            }}
-
+            <VdoPlayer style="width:100%; height:100%" id="embedBox"
+                @lecture={{lecture}}
+                @start={{start}}
+                @onVideoCompleted={{onVideoCompleted}}
+                @runAttempt={{runAttempt}}/>
         {{else}}
             {{#hls-player src=lecture.videoUrl
                 awsData=awsDataTask.lastSuccessful.value
