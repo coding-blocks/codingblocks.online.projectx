@@ -2,7 +2,7 @@
     <div class="video-player d-flex flex-column justify-content-around {{unless sidebarCollapsed 'collapse'}}">
         {{#content-feedback onFeedbackSubmit=onFeedbackSubmit showFeedback=showFeedback}} {{/content-feedback}}
         {{#if lecture.videoId}}
-            <VdoPlayer style="width:100%; height:100%" id="embedBox"
+            <VdoPlayer id="embedBox"
                 @lecture={{lecture}}
                 @start={{start}}
                 @onVideoCompleted={{onVideoCompleted}}
