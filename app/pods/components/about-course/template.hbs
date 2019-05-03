@@ -249,34 +249,33 @@
           </div>
         </div>
       </div>
-
-      {{!-- Projects --}}
-      {{#if course.projects}}
+    </div>
+    {{!-- Projects --}}
+    {{#if course.projects}}
       <div class="col-12 col-md-3">
         <h3 class="mb-5">Projects</h3>
         <div class="row">
           {{#each course.projects as |project index|}}
-          <div class="col-12 mb-4">
-            <div class="img-card">
-              <div class="head">
-                <img class="back-img" src="{{project.img}}">
-                <div class="content white">
-                  <h4>Project {{add index 1}}</h4>
+            <div class="col-12 mb-4">
+              <div class="img-card">
+                <div class="head">
+                  <img class="back-img" src="{{project.image}}">
+                  <div class="content white">
+                    <h4>Project {{inc index 1}}</h4>
+                  </div>
                 </div>
-              </div>
-              <div class="foot">
-                <h4>{{project.title}}</h4>
-                <div class="card-md">
-                  {{project.description}}
+                <div class="foot">
+                  <h4>{{project.title}}</h4>
+                  <div class="card-md">
+                    {{project.description}}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           {{/each}}
         </div>
       </div>
-      {{/if}}
-    </div>
+    {{/if}}
   </div>
 </div>
 
