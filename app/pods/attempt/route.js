@@ -1,11 +1,9 @@
-import Ember from 'ember'
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import DS from 'ember-data';
-import { isBadRequestError } from 'ember-ajax/errors';
-import $ from 'jquery';
+import AuthenticatedRouteMixin from 'codingblocks-online/mixins/authenticated-route-mixin';
 
-export default Route.extend({
+export default Route.extend(AuthenticatedRouteMixin, {
 	api: service(),
 	runAttemptService: service('run-attempt'),
 	model(params, transition) {
