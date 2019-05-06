@@ -4,15 +4,25 @@ import { action } from '@ember-decorators/object'
 export default class CardGridComponent extends Component {
   poppedIndex = -1
 
+  listner = e => { 
+    this.set('poppedIndex', -1)
+  }
+  
+
   didInsertElement () {
     this._super(...arguments)
-    document.addEventListener('click', e => {
-      this.set('poppedIndex', -1)  
-    })
+    document.addEventListener('click', this.listner)
   }
 
   @action
   changePoppedCard (index) {
     this.set('poppedIndex', index)
   }
+
+  willDestroyElement() {
+    document.removeEventListener('click', this.listner)
+    this._super(...arguments)
+  }
+
+
 }
