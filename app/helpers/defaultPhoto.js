@@ -7,7 +7,7 @@ export function defaultPhoto(params) {
       return photo
     }
     const defaultAvatarId = id % 35 + 1
-    return `https://minio.cb.lk/img/avatar-${defaultAvatarId}.svg`
+    return `https://minio.codingblocks.com/img/avatar-${defaultAvatarId}.svg`
 
 
 }
