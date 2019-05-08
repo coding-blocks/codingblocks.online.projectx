@@ -92,11 +92,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.apiHost = 'https://api-online.cb.lk'
+    ENV.apiHost = 'https://online-api.codingblocks.com'
     ENV.publicUrl = 'https://online.codingblocks.com';
     ENV.clientId = 5633768694
     ENV.oneauthURL = 'https://account.codingblocks.com'
-    ENV.hackApiHost = 'https://api.cb.lk'
+    ENV.hackApiHost = 'https://hack-api.codingblocks.com'
     ENV.googleAnalytics = {
       webPropertyId: 'UA-83327907-12'
     }
