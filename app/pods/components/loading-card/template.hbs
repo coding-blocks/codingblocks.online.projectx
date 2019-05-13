@@ -1,160 +1,22 @@
-<div class="container-cards">
-  <div class="row">
-      <div class="card-layout col-md-4 col-sm-6 col-lg-4">
-          <div class="card skeleton-card skeleton-animation">
-              <div class="row justify-content-end">
-                  <div class="round-img-sm round-img"></div>
-              </div>
-              <div class="rod-component ">
-                  <div class="skeleton-lg "></div>
-                  <div class="skeleton-md "></div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-lg bg-grey "></div>
-                  <div class="skeleton-md bg-grey "></div>
-              </div>
-              <div class="img-component d-flex">
-                  <div class=" round-img"></div>
-                  <div class="rod-component">
-                      <div class="skeleton-lg bg-grey "></div>
-                      <div class="skeleton-md bg-grey "></div>
-                  </div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-md "></div>
-                  <div class="skeleton-sm "></div>
-              </div>
-          </div>
-      </div>
-       <div class="card-layout col-md-4 col-sm-6 col-lg-4">
-          <div class="card skeleton-card skeleton-animation">
-              <div class="row justify-content-end">
-                  <div class="round-img-sm round-img"></div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-lg"></div>
-                  <div class="skeleton-md"></div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-lg bg-grey"></div>
-                  <div class="skeleton-md bg-grey"></div>
-              </div>
-              <div class="img-component d-flex">
-                  <div class=" round-img"></div>
-                  <div class="rod-component">
-                      <div class="skeleton-lg bg-grey"></div>
-                      <div class="skeleton-md bg-grey"></div>
-                  </div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-md"></div>
-                  <div class="skeleton-sm"></div>
-              </div>
-          </div>
-      </div>
-       <div class="card-layout col-md-4 col-sm-6 col-lg-4">
-          <div class="card skeleton-card skeleton-animation">
-              <div class="row justify-content-end">
-                  <div class="round-img-sm round-img"></div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-lg "></div>
-                  <div class="skeleton-md "></div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-lg bg-grey "></div>
-                  <div class="skeleton-md bg-grey "></div>
-              </div>
-              <div class="img-component d-flex">
-                  <div class=" round-img"></div>
-                  <div class="rod-component">
-                      <div class="skeleton-lg bg-grey "></div>
-                      <div class="skeleton-md bg-grey "></div>
-                  </div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-md "></div>
-                  <div class="skeleton-sm "></div>
-              </div>
-          </div>
-      </div>
-      <div class="card-layout col-md-4 col-sm-6 col-lg-4">
-          <div class="card skeleton-card skeleton-animation">
-              <div class="row justify-content-end">
-                  <div class="round-img-sm round-img"></div>
-              </div>
-              <div class="rod-component ">
-                  <div class="skeleton-lg "></div>
-                  <div class="skeleton-md "></div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-lg bg-grey "></div>
-                  <div class="skeleton-md bg-grey "></div>
-              </div>
-              <div class="img-component d-flex">
-                  <div class=" round-img"></div>
-                  <div class="rod-component">
-                      <div class="skeleton-lg bg-grey "></div>
-                      <div class="skeleton-md bg-grey "></div>
-                  </div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-md "></div>
-                  <div class="skeleton-sm "></div>
-              </div>
-          </div>
-      </div>
-       <div class="card-layout col-md-4 col-sm-6 col-lg-4">
-          <div class="card skeleton-card skeleton-animation">
-              <div class="row justify-content-end">
-                  <div class="round-img-sm round-img"></div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-lg"></div>
-                  <div class="skeleton-md"></div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-lg bg-grey"></div>
-                  <div class="skeleton-md bg-grey"></div>
-              </div>
-              <div class="img-component d-flex">
-                  <div class=" round-img"></div>
-                  <div class="rod-component">
-                      <div class="skeleton-lg bg-grey"></div>
-                      <div class="skeleton-md bg-grey"></div>
-                  </div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-md"></div>
-                  <div class="skeleton-sm"></div>
-              </div>
-          </div>
-      </div>
-       <div class="card-layout col-md-4 col-sm-6 col-lg-4">
-          <div class="card skeleton-card skeleton-animation">
-              <div class="row justify-content-end">
-                  <div class="round-img-sm round-img"></div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-lg "></div>
-                  <div class="skeleton-md "></div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-lg bg-grey "></div>
-                  <div class="skeleton-md bg-grey "></div>
-              </div>
-              <div class="img-component d-flex">
-                  <div class=" round-img"></div>
-                  <div class="rod-component">
-                      <div class="skeleton-lg bg-grey "></div>
-                      <div class="skeleton-md bg-grey "></div>
-                  </div>
-              </div>
-              <div class="rod-component">
-                  <div class="skeleton-md "></div>
-                  <div class="skeleton-sm "></div>
-              </div>
-          </div>
-      </div>
-  </div>
+<div class="row">
+    {{#each (range 0 8)}}
+        <div class="c-layout-card col-12 col-sm-12 col-md-6 col-lg-3 pr-md-0">
+            <div class="img-card online-card">
+                <div class="head d-flex bg-grey skeleton-animation">
+                    <div class="content d-flex flex-column justify-content-center">
+                        <div class="round-img-b"></div>
+                        <div class="rod-component">
+                            <div class="skeleton-lg mb-3"></div>
+                            <div class="skeleton-md"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="foot skeleton-animation">
+                    <div class="rod-component-small">
+                        <div class="skeleton-md"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
 </div>
