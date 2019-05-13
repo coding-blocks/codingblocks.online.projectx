@@ -13,7 +13,8 @@
     "showdown-katex-studdown": "*",
     "ember-truth-helpers": "*",
     "ember-concurrency": "*",
-    "ember-concurrency-decorators": "*"
+    "ember-concurrency-decorators": "*",
+    "ember-modal-dialog": "*"
   },
   "devDependencies": {
     "ember-simple-auth": "*",

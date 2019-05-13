@@ -96,9 +96,9 @@
             <button 
               class="button-solid card-md mt-4 mx-auto display-block" 
               disabled={{unless job.eligible "disabled"}}
-              {{action (perform applyForJob)}}
+              {{action 'toggleShowModal'}}
             >
-              Apply to this Job
+              Add Resume and Apply
             </button>
           {{/if}}
         </div>
@@ -131,4 +131,13 @@
 </section>
 
 <PartnersSection />
+{{#if showModal}}
+  <ModalDialog onClose=(action toggleShowModal) @translucentOverlay=true @overlayClass='cart-modal-overlay'>
+    <div class="border-card">
+      <h3 class="mb-4">Add you resume</h3>
+      {{input class="input-text mb-3" value=resumeLink}}
+      <button class="button-solid" {{action (perform applyForJob)}}>Apply for Job</button>
+    </div>
+  </ModalDialog>
+{{/if}}
 
