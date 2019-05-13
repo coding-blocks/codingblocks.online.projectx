@@ -80,7 +80,8 @@
     "@coding-blocks/motley": "0.3.44",
     "ember-line-clamp": "^0.2.15",
     "moment": "^2.22.2",
-    "showdown-katex-studdown": "^0.4.0"
+    "showdown-katex-studdown": "^0.4.0",
+    "ember-engines": "^0.5.26"
   },
   "ember-addon": {
     "paths": [
