@@ -1,7 +1,10 @@
 {{#modal-dialog
   onClose=(action onClose)
   translucentOverlay=true
-  overlayClass='cart-modal-overlay'
+  targetAttachment="none"
+  overlayClass="centered-scrolling-overlay cart-modal-overlay"
+  wrapperClass="centered-scrolling-wrapper"
+  containerClass="centered-scrolling-container p-4 pb-5"
 }}
 <div class="container p-4">
   <div class="row t-align-ca">
