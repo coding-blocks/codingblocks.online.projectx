@@ -4,7 +4,7 @@
 <div class="row justify-content-center pt-md-5 m-0">
   {{#if fetchRecommendedCoursesTask.isRunning}}
   {{!-- here we can show blank cards to indicate loading --}}
-  {{loading-card}}
+  <LoadingCard class="w-100"/>
   {{else}}
   <CardGrid class="row justify-content-center" as |card|>
     {{#each recommendedCourses as |course index|}}

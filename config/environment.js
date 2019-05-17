@@ -128,7 +128,7 @@ module.exports = function(environment) {
 
   if (process.env.oss) {
     ENV.clientId = 8225714181
-    ENV.apiHost = 'https://amoeba-backend-public-dev.herokuapp.com'
+    ENV.apiHost = 'https://api-online-public.codingblocks.xyz'
   }
 
   ENV['ember-simple-auth-token'].tokenPropertyName = 'jwt'
