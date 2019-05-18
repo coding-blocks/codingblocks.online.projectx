@@ -3,7 +3,7 @@ import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember-decorators/service';
 import { action, computed } from '@ember-decorators/object'
-import { filterBy } from '@ember/object/computed';
+import { filterBy } from '@ember-decorators/object/computed';
 
 export default class DoubtViewAttemptComponent extends Component{
   @service api
@@ -15,7 +15,7 @@ export default class DoubtViewAttemptComponent extends Component{
 
   collapseThreads = true;
 
-  existingComments = filterBy('comments', 'isNew', false)
+  @filterBy('doubt.comments', 'isNew', false) existingComments
 
   @computed('doubt.status', 'doubt.feedbacks.@each.ratedById')
   get feedbackMode () {
