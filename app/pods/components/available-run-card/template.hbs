@@ -29,6 +29,11 @@
     <div class="col-8 align-self-center">
       <div class="price">
         {{format-price run.price}}
+        {{#unless (eq run.mrp run.price)}}
+          <span class="grey card-md">
+            <strike >{{format-price run.mrp}}</strike>
+          </span>
+        {{/unless}}
       </div>
       <div class="red">Enrollment ends {{moment-format (unix run.enrollmentEnd) 'MMM Do YYYY'}}</div>
     </div>
