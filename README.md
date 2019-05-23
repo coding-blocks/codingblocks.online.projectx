@@ -1,7 +1,15 @@
-# codingblocks-online
+<h1 align="center"><a href="https://online.codingblocks.com">Coding Blocks | Online</a></h1>
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+<p align="center">
+  <a href="https://travis-ci.org/coding-blocks/codingblocks.online.projectx">
+    <img src="https://travis-ci.org/coding-blocks/codingblocks.online.projectx.svg?branch=master"></img>
+  </a>
+  <a href="https://twitter.com/intent/follow?screen_name=codingblocksin">
+    <img src="https://img.shields.io/twitter/follow/codingblocks.svg?label=Follow%20@codingblocksin" alt="Follow @codingblocksin" />
+  </a>
+</p>
+
+Frontend for Coding Blocks online made using EmberJS.
 
 ## Prerequisites
 
