@@ -25,8 +25,8 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd codingblocks-online`
+* `git clone https://github.com/coding-blocks/codingblocks.online.projectx` this repository
+* `cd codingblocks.online.projectx`
 * `yarn install`
 * `bower install`
 
