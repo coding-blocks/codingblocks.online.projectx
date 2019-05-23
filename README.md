@@ -1,4 +1,5 @@
-<h1 align="center"><a href="https://online.codingblocks.com">Coding Blocks | Online</a></h1>
+<h1 align="center"><a href="https://online.codingblocks.com">
+   <img src="https://user-images.githubusercontent.com/5569219/58253396-0422f400-7d86-11e9-812e-68b0e11c1dc9.png" alt="Coding Blocks Online"/></h1>
 
 <p align="center">
   <a href="https://travis-ci.org/coding-blocks/codingblocks.online.projectx">
