@@ -68,7 +68,7 @@ export default class AllCoursesComponent extends Component {
     
 
     /**
-     * 'Load More' Button Action Handler for 'My Courses'
+     * 'Load More' Button Action Handler for 'All Courses'
      */
 
     @action
