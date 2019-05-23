@@ -2,100 +2,99 @@
   My Courses
 </div>
 <div class="row justify-content-center">
-  {{#if fetchMyCoursesTask.isRunning}}
-    <LoadingCardClassroom class="w-100"/>
-  {{else}}
-    {{#if runs.length}}
-      {{#each runs as |run index|}}
-        <div class="c-layout-card col-12 col-sm-12 col-md-6 col-lg-3 pr-md-0">
-          <div class="img-card online-card my-course-card">
-            <div class="head d-flex">
-              <img class="back-img" src="{{run.course.coverImage}}">
-              <div class="dsp-none-sm">
-                {{difficulty-dots difficulty=run.course.difficulty difficultyName=run.course.difficultyName}}
-              </div>
-              <div class="content d-flex flex-column justify-content-center">
-                <div class="round-img-b">
-                  <img src="{{run.course.logo}}">
-                </div>
-                <div class="course-name center-text">
-                  {{run.course.title}}
-                </div>
-                <div class="i course-description t-align-c d-md-none">
-                  {{run.course.subtitle}}
-                </div>
-
-                {{rating-stars-static rating=run.course.rating showValue=true}}
-              </div>
+  {{#each runs as |run index|}}
+    <div class="c-layout-card col-12 col-sm-12 col-md-6 col-lg-3 pr-md-0">
+      <div class="img-card online-card my-course-card">
+        <div class="head d-flex">
+          <img class="back-img" src="{{run.course.coverImage}}">
+          <div class="dsp-none-sm">
+            {{difficulty-dots difficulty=run.course.difficulty difficultyName=run.course.difficultyName}}
+          </div>
+          <div class="content d-flex flex-column justify-content-center">
+            <div class="round-img-b">
+              <img src="{{run.course.logo}}">
             </div>
-            <div class="foot">
-              <div class="course-progress">
-                <label>Course Progress</label>
-                <div class="row no-gutters justify-content-between align-items-center">
-                  {{percent-complete runAttemptId=run.topRunAttempt.id showBar=true}}
-                </div>
-              </div>
-              <div class="card-mentor">
-                <div class="card-mentor-image">
-                  {{#each run.course.instructors as |instructor index|}} 
-                    {{#if (lt index 2) }}
-                      <img class="card-mentors" src="{{instructor.photo}}">
-                    {{/if}}
-                  {{/each}}
-                </div>
-                <div class="card-mentor-text">
-                  <span>Instructors</span>
-                  <div class="card-mentor-name">
-                    {{#each run.course.instructors as |instructor index|}} 
-                      {{#if (lt index 2)}}
-                        {{instructor.name}}
-                        {{if (and (gt run.course.instructors.length 1) (eq index 0)) "," ""}} 
-                      {{/if}} 
-                    {{/each}} 
-                    {{#if (gt run.course.instructors.length 2)}}
-                      <span class="price"> +{{sub run.course.instructors.length 2}}</span> more
-                    {{/if}}
-                  </div>
-                </div>
-              </div>
-              <div class="footer mt-3 mt-md-0 t-align-l">
+            <div class="course-name center-text">
+              {{run.course.title}}
+            </div>
+            <div class="i course-description t-align-c d-md-none">
+              {{run.course.subtitle}}
+            </div>
 
-                <div class="no-gutters col-8">
-                  {{run.description}}
-                  <div class="red">
-                    {{#if run.topRunAttempt.premium}}
-                      {{#if run.topRunAttempt.isExpired}}
-                        Expired
-                      {{else}}
-                        Batch Ends {{moment-format run.topRunAttempt.endDate 'DD-MMM-YY'}}
-                      {{/if}}
-                    {{else}}
-                      Free Trial
-                    {{/if}}
-                  </div>
-                </div>
-                {{#if (or run.topRunAttempt.revoked)}}
-                  <button class="button-solid disabled">Revoked</button>
-                {{else}}
-                  {{#link-to "classroom.timeline" run.course.id run.id tagName="button" class="button-solid"
-                  activeClass=""}}
-                    Resume 
-                  {{/link-to}}
+            {{rating-stars-static rating=run.course.rating showValue=true}}
+          </div>
+        </div>
+        <div class="foot">
+          <div class="course-progress">
+            <label>Course Progress</label>
+            <div class="row no-gutters justify-content-between align-items-center">
+              {{percent-complete runAttemptId=run.topRunAttempt.id showBar=true}}
+            </div>
+          </div>
+          <div class="card-mentor">
+            <div class="card-mentor-image">
+              {{#each run.course.instructors as |instructor index|}} 
+                {{#if (lt index 2) }}
+                  <img class="card-mentors" src="{{instructor.photo}}">
+                {{/if}}
+              {{/each}}
+            </div>
+            <div class="card-mentor-text">
+              <span>Instructors</span>
+              <div class="card-mentor-name">
+                {{#each run.course.instructors as |instructor index|}} 
+                  {{#if (lt index 2)}}
+                    {{instructor.name}}
+                    {{if (and (gt run.course.instructors.length 1) (eq index 0)) "," ""}} 
+                  {{/if}} 
+                {{/each}} 
+                {{#if (gt run.course.instructors.length 2)}}
+                  <span class="price"> +{{sub run.course.instructors.length 2}}</span> more
                 {{/if}}
               </div>
             </div>
           </div>
+          <div class="footer mt-3 mt-md-0 t-align-l">
+
+            <div class="no-gutters col-8">
+              {{run.description}}
+              <div class="red">
+                {{#if run.topRunAttempt.premium}}
+                  {{#if run.topRunAttempt.isExpired}}
+                    Expired
+                  {{else}}
+                    Batch Ends {{moment-format run.topRunAttempt.endDate 'DD-MMM-YY'}}
+                  {{/if}}
+                {{else}}
+                  Free Trial
+                {{/if}}
+              </div>
+            </div>
+            {{#if (or run.topRunAttempt.revoked)}}
+              <button class="button-solid disabled">Revoked</button>
+            {{else}}
+              {{#link-to "classroom.timeline" run.course.id run.id tagName="button" class="button-solid"
+              activeClass=""}}
+                Resume 
+              {{/link-to}}
+            {{/if}}
+          </div>
         </div>
-      {{/each}}
-    {{else}}
+      </div>
+    </div>
+  {{/each}}
+  {{#if fetchMyCoursesTask.isRunning}}
+    <LoadingCardClassroom class="w-100"/>
+  {{else}}
+    {{#unless runs.length}}
       <div class="font-sm">You are not enrolled in any course currently.</div>
-    {{/if}}
+    {{/unless}}
   {{/if}}
 </div>
 <div class="row justify-content-center mb-5">
   {{#if fetchMyCoursesTask.isRunning}}
     <button class="button-dashed">Loading...</button>
   {{else if (lt limitandoffset count)}}
-    <button class="button-dashed" {{action "loadMore"}}>Load More</button>
+    <button class="button-dashed" id="load-more" {{action "loadMore"}}>Load More</button>
   {{/if}} 
 </div>

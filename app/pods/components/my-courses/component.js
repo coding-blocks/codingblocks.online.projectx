@@ -7,15 +7,31 @@ import { action, computed } from '@ember-decorators/object'
 
 export default class MyCoursesTaskComponent extends Component {
   	@service store;
-  	@service api;
+	@service api;
+	  
+	limit = 8
+	offset = 8
+	runs = []
+	count = 0
 
-  	didReceiveAttrs () {
-		this._super(...arguments)
-		this.limit = 8;
-		this.offset = 8;
-		this.runs = [];
-		this.count = 0;
+  	constructor () {
+		super(...arguments)
+		this.infiniteScroll = () => {
+			if (document.getElementById('load-more') != null) {
+				if (window.pageYOffset >= (document.getElementById('load-more').offsetTop - window.innerHeight)) {
+					this.loadMore();
+				}
+			}
+		}
 		this.get('fetchMyCoursesTask').perform()
+	}
+
+	didInsertElement () {
+		window.addEventListener('scroll', this.infiniteScroll);
+	}
+
+	willDestroyElement () {
+		window.removeEventListener('scroll', this.infiniteScroll);
 	}
 
 	/**
@@ -24,7 +40,6 @@ export default class MyCoursesTaskComponent extends Component {
 
 	@computed ("limit", "offset")
 	get limitandoffset () {
-		console.log(this.get('limit') + this.get('offset'));
 		return (this.get('limit') + this.get('offset'));
 	}
 
@@ -49,7 +64,7 @@ export default class MyCoursesTaskComponent extends Component {
 	/**
 	 * 'Load More' Button Action Handler for 'My Courses'
 	 */
-	
+
 	@action
 	loadMore () {
 		this.set('offset', this.offset + 8);
