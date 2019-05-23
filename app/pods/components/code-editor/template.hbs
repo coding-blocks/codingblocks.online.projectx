@@ -63,13 +63,13 @@
           {{/if}}
         </button>
         <div class="align-self-center pl-3">
-          <div class="button-solid {{if isTaskRunning "disabled"}}">
+          <div class="{{if isTaskRunning "disabled"}}">
             {{#if isTaskRunning}}
-              <button disabled>
+              <button class="button-solid" disabled>
                 Executing your code
               </button>
             {{else}}
-              <button onclick={{action "submitCode"}}>
+              <button class="button-solid" onclick={{action "submitCode"}}>
                 Submit Code
               </button>
             {{/if}}
@@ -87,13 +87,13 @@
               </p>
             </div>
             <div class="col-md-6">
-              <div class="button-solid {{if isTaskRunning "disabled"}}">
+              <div class="{{if isTaskRunning "disabled"}}">
                 {{#if isTaskRunning}}
-                  <button disbaled>
+                  <button class="button-solid" disbaled>
                     Running Code
                   </button>
                 {{else}}
-                  <button onclick={{action "runCode"}}>
+                  <button class="button-solid" onclick={{action "runCode"}}>
                     Run Code
                   </button>
                 {{/if}}

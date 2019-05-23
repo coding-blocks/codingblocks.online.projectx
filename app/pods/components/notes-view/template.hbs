@@ -26,18 +26,14 @@
         <div class="li-left col-9">
           {{textarea class="invert font-sm" placeholder="Add a Note" value=newNoteText}}
         </div>
-        <div class="li-right col-3 align-self-start">
-          <div class="button-solid card-md">
-            {{!-- <button {{action 'addNote'}} >Save Note</button> --}}
-              <button {{action (perform addNoteTask)}} class="{{if submissionTask.isRunning 'disabled'}}">
-                {{#if addNoteTask.isRunning }}
-                  Saving..
-                {{else}}
-                  Save
-                {{/if}}
-              </button>
-          </div>
-        </div>
+        {{!-- <button {{action 'addNote'}} >Save Note</button> --}}
+        <button {{action (perform addNoteTask)}} class="li-right col-3 align-self-start button-solid card-md {{if submissionTask.isRunning 'disabled'}}">
+          {{#if addNoteTask.isRunning }}
+            Saving..
+          {{else}}
+            Save
+          {{/if}}
+        </button>
       </div>
     </div>
   </div>

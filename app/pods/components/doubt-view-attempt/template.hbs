@@ -25,37 +25,27 @@
         <div class="red card-md"><i class="fas fa-exclamation-triangle"></i> {{{err}}}</div>
       {{/if}}
 
-      
-      <div class="horizontal-half">
-        {{#if (eq doubt.status "ACKNOWLEDGED")}}
-          <div class="red">
-            <button {{action "startChat"}}>
-              Still have question? Start a chat
-              <i class="fas fa-comment"></i>
-            </button>
-          </div>
-        {{/if}}
-        <div class="button-solid">
-          {{#if (eq doubt.status "RESOLVED")}}
-            <button {{action "markStatus" "PENDING"}}>
-              Reopen
-            </button>
-          {{else}}
-            <button {{action "markStatus" "RESOLVED"}}>
-              Resolve
-            </button>
-          {{/if}}
-        </div>
-      </div>
-      
+      {{#if (eq doubt.status "ACKNOWLEDGED")}}
+          <button class="horizontal-half red" {{action "startChat"}}>
+            Still have question? Start a chat
+            <i class="fas fa-comment"></i>
+          </button>
+      {{/if}}
+      {{#if (eq doubt.status "RESOLVED")}}
+        <button class="horizontal-half button-solid" {{action "markStatus" "PENDING"}}>
+          Reopen
+        </button>
+      {{else}}
+        <button class="horizontal-half button-solid" {{action "markStatus" "RESOLVED"}}>
+          Resolve
+        </button>
+      {{/if}}
 
       {{#if existingComments.length}}
-        <div class="comment-toggle">
-          <button {{action "toggleThreadsCollapse"}}>
+          <button class="comment-toggle" {{action "toggleThreadsCollapse"}}>
             {{if collapseThreads "Show" "Hide"}} {{existingComments.length}} Comments
             <i class="fas {{if collapseThreads "fa-caret-down" "fa-caret-up"}}"></i>
           </button>
-        </div>
       {{/if}}
     </div>
   

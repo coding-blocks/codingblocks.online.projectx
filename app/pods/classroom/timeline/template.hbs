@@ -56,8 +56,8 @@
         </div>
         <div class="row no-gutters justify-content-between mb-4">
           <span class="font-mds extra-bold">{{progress.completedContents}} of {{progress.totalContents}} Contents Completed</span>
-          <button class="red font-sm regular" {{action "resetProgress"}}>Reset Progress</button>
         </div>
+        <button class="row no-gutters justify-content-between mb-4 red font-sm regular" {{action "resetProgress"}}>Reset Progress</button>
 
         <div class="row no-gutters font-sm pt-3">
           {{#if showBuyNow}}
@@ -129,9 +129,10 @@
           Complete this course now & Apply
           to jobs on Hiring Blocks
         </p>
-        {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass="" class="button-solid"}} Resume
-        {{/link-to}}
       </div>
+      {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass="" class="border-card extra-bold 
+        font-mds bg-gradient-black-bt dsp-none-md button-solid"}} Resume
+      {{/link-to}}
     </div>
   </div>
 </div>

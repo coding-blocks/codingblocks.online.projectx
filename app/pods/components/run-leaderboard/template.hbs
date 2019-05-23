@@ -28,9 +28,7 @@
     </table>
 
     {{#if (lt limit leaderboard.length)}}
-      <div class="row justify-content-center">
-        <button class="button-dashed" {{action 'loadMore'}}>Load More</button>
-      </div>
+      <button class="row justify-content-center button-dashed" {{action 'loadMore'}}>Load More</button>
     {{/if}}
   </div>
 {{/if}}

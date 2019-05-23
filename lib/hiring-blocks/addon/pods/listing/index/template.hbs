@@ -9,10 +9,8 @@
   <img class="dsp-none-sm" src="/images/home_main.jpg" alt="codingblocks-jobs-home-banner">
 </section>
 
-<div class="bg-gradient-violet-lr mb-5 p-3 d-md-none d-flex justify-content-between">
-  <button class="white" {{action "toggleFilterMenu"}}>Apply Filters</button>
-  <button class="yellow {{unless showFilters 'display-none'}}" {{action "toggleFilterMenu"}}>Apply</button>
-</div>
+<button class="bg-gradient-violet-lr mb-5 p-3 d-md-none d-flex justify-content-between white" {{action "toggleFilterMenu"}}>Apply Filters</button>
+<button class="bg-gradient-violet-lr mb-5 p-3 d-md-none d-flex justify-content-between yellow {{unless showFilters 'display-none'}}" {{action "toggleFilterMenu"}}>Apply</button>
 
 <div class="container">
   <div class="row">

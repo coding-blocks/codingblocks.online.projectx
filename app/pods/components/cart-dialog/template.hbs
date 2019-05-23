@@ -56,10 +56,8 @@
     </div>
   </div>
   <div class="footer row justify-content-center no-gutters button-parent">
-    <div class="button-dashed mr-4">
-      <a href="{{dukaanUrl}}" class="red">Checkout with Existing</a>
-    </div>
-    <div class="button-solid">
+    <a href="{{dukaanUrl}}" class="button-dashed mr-4 red">Checkout with Existing</a>
+    <button class="button-solid">
       {{task-button 
         task=addCartTask
         click=(perform addCartTask)
@@ -67,7 +65,7 @@
         runningText="Adding..."
         type="button"
         runningClass="disabled"}}
-    </div>
+    </button>
   </div>
 </div>
 {{/modal-dialog}}

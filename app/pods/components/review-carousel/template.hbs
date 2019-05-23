@@ -23,7 +23,5 @@
       {{/each}}
     </div>
     {{#if meta.nextOffset}}
-    <div class="row justify-content-center align-items-center">
-      <button class="button-dashed" {{action "fetchRatings"}}>Load More Reviews</button>
-    </div>
+      <button class="button-dashed row justify-content-center align-items-center" {{action "fetchRatings"}}>Load More Reviews</button>
     {{/if}}

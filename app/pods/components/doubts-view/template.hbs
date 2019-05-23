@@ -2,8 +2,8 @@
   <div class="new-doubt">
     <div class="head">
       <span>Ask a Doubt</span>
-      <button class="button-solid {{if askDoubtTask.isRunning 'disabled'}}" {{action (perform askDoubtTask)}} >Post Doubt</button>
     </div>
+    <button class="head button-solid {{if askDoubtTask.isRunning 'disabled'}}" {{action (perform askDoubtTask)}} >Post Doubt</button>
 
     {{#if err}}
       <div class="red card-md t-align-c pt-3"><i class="fas fa-exclamation-triangle"></i> {{{err}}} </div>

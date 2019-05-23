@@ -7,9 +7,7 @@
 </div>
 
 {{#if fetchJobsTask.lastSuccessful.value.meta.pagination.nextOffset}}
-  <div class="row justify-content-center">
-    <button class="button-solid" {{action "loadMore"}}>
-      Load More
-    </button>
-  </div>
+  <button class="row justify-content-center button-solid" {{action "loadMore"}}>
+    Load More
+  </button>
 {{/if}}

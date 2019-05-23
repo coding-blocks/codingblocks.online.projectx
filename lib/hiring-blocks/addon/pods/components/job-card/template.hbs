@@ -37,6 +37,6 @@
   </div>
   <div class="d-flex justify-content-between align-items-center">
     <span class="red">Deadline: {{ job.deadlineStr }}</span>
-    <EnsureLoginButton class="button-solid" @action={{action "goToJob"}} >View</EnsureLoginButton>
   </div>
+  <EnsureLoginButton class="d-flex justify-content-between align-items-center button-solid" @action={{action "goToJob"}} >View</EnsureLoginButton>
 </div>

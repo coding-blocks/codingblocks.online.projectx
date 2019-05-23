@@ -10,16 +10,12 @@
 </div>
 
 
-<div class="col-4 pr-5">
-  <div class="row justify-content-end">
-    {{!-- <div class="col-12 col-md-6 align-self-center"> --}}
-      <button class="button-solid" {{action 'transitionToDashboard'}}> &#60; Dashboard</button>
-    {{!-- </div> --}}
-      <button class="red ml-3 dsp-none-sm" {{action 'toggleSideBar'}}> 
-        {{#unless attemptController.sideBarCollapsed.right}}
-          <i class="far fa-times-circle"></i>
-        {{/unless}}
-        Ask Doubts
-      </button>
-  </div>
-</div>
+{{!-- <div class="col-12 col-md-6 align-self-center"> --}}
+<button class="col-4 pr-5 row justify-content-end button-solid" {{action 'transitionToDashboard'}}> &#60; Dashboard</button>
+{{!-- </div> --}}
+<button class="col-4 pr-5 row justify-content-end red ml-3 dsp-none-sm" {{action 'toggleSideBar'}}> 
+  {{#unless attemptController.sideBarCollapsed.right}}
+    <i class="far fa-times-circle"></i>
+  {{/unless}}
+  Ask Doubts
+</button>

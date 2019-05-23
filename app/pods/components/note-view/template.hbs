@@ -20,10 +20,8 @@
       <div class="li-left col-8 font-sm">
         {{note.text}}
       </div>
-      <div class="li-right col-4 col-sm-3 col-md-4 no-gutters">
-        <div class="red col-6 bold"><button class="t-align-r" {{action (perform deleteNote)}}>Delete</button></div>
-        <div class="red col-6 bold"><button class="t-align-r" {{action 'toggleEdit'}}>Edit</button></div>
-      </div>
+      <button class="li-right col-4 col-sm-3 col-md-4 no-gutters t-align-r red col-6 bold" {{action (perform deleteNote)}}>Delete</button>
+      <button class="li-right col-4 col-sm-3 col-md-4 no-gutters t-align-r red col-6 bold" {{action 'toggleEdit'}}>Edit</button>
       {{/if}}
     </div>
   
@@ -38,10 +36,8 @@
   
     {{#if isEditing}}
     <div class="row red">
-      <div class="li-right col-4 col-sm-3 col-md-4 no-gutters">
-        <div class="red col-6 bold"><button class="t-align-r" {{action 'toggleEdit'}}>Cancel</button></div>
-        <div class="red col-6 bold"><button class="t-align-r" {{action (perform saveNoteTask)}}>Save</button></div>
-      </div>
+      <button class="li-right col-4 col-sm-3 col-md-4 no-gutters t-align-r red col-6 bold" {{action 'toggleEdit'}}>Cancel</button>
+      <button class="li-right col-4 col-sm-3 col-md-4 no-gutters t-align-r red col-6 bold" {{action (perform saveNoteTask)}}>Save</button>
     </div>
     {{/if}}
   </div>

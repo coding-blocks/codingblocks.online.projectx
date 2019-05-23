@@ -81,11 +81,7 @@
           Write a public review.
         </div>
         {{textarea value=textPublic class='input-textarea' rows=5}}
-        <div class="row justify-content-center">
-          <div class="button-solid">
-            <button {{action 'submitFeedback'}}>Submit Feedback</button>
-          </div>
-        </div>
+        <button class="row justify-content-center button-solid" {{action 'submitFeedback'}}>Submit Feedback</button>
       </div>
     </div>
   {{/modal-dialog}}
