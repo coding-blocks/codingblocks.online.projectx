@@ -4,7 +4,7 @@ import { restartableTask } from 'ember-concurrency-decorators';
 import { action, computed } from '@ember-decorators/object'
 
 export default class MyCoursesTaskComponent extends Component {
-  	@service store;
+  @service store;
 	@service api;
 	  
 	limit = 8
