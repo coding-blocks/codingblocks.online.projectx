@@ -9,6 +9,13 @@ export default Controller.extend({
   offset: 0,
   currentUser: service(),
   organization: alias('currentUser.organization'),
+  infiniteScroll: () => {
+    if (document.getElementById('load-more') != null) {
+      if (window.pageYOffset >= (document.getElementById('load-more').offsetTop - window.innerHeight)) {
+        this.actions.loadMore();
+      }
+    }
+  },
   taskMoreCourses: task(function * () {
     const extraWhere = {}
     const organization = this.organization || this.org
@@ -25,7 +32,7 @@ export default Controller.extend({
         unlisted: false,
         ...extraWhere
       },
-      page:{
+      page: {
         limit: this.limit,
         offset: this.offset
       }
@@ -33,10 +40,11 @@ export default Controller.extend({
     this.courses.addObjects(nextCourses)
   }),
 
-  actions:{
+  actions: {
     loadMore () {
-      this.set('limit', Math.min(this.limit + 8, this.count))
-      this.taskMoreCourses.perform()
+      this.set('offset', this.offset + 8);
+      this.taskMoreCourses.perform();
     }
-  }
-})
+  },
+  
+});

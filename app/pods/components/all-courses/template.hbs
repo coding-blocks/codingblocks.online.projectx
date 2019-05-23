@@ -1,4 +1,4 @@
-{{!-- <div class="container">
+<div class="container">
   <h2 class="t-align-c mt-5 mb-5">
     All Courses
   </h2>
@@ -11,11 +11,10 @@
   </CardGrid>
   
   <div class="row justify-content-center">
-    {{#if taskMoreCourses.isRunning}}
-      <button class="button-dashed">Loading...</button>
-    {{else if (lt limit count)}}
+    {{#if fetchAllCourses.isRunning}}
+      <LoadingCardClassroom class="w-100"/>
+    {{else if (lt limitandoffset count)}}
       <button class="button-dashed" id="load-more" {{action "loadMore"}}>Load More</button>
     {{/if}}
   </div>
-</div> --}}
-{{ all-courses }}
+</div>
