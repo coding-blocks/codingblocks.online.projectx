@@ -1,8 +1,6 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember-decorators/service';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { alias } from '@ember-decorators/object/computed';
-import { readOnly } from '@ember-decorators/object/computed';
 import { action, computed } from '@ember-decorators/object'
 
 export default class MyCoursesTaskComponent extends Component {
