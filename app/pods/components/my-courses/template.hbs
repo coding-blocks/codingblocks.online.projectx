@@ -93,8 +93,8 @@
 </div>
 <div class="row justify-content-center mb-5">
   {{#if fetchMyCoursesTask.isRunning}}
-    <button class="button-dashed">Loading...</button>
+    {{loader-component}}
   {{else if (lt limitandoffset count)}}
-    <button class="button-dashed" id="load-more" {{action "loadMore"}}>Load More</button>
+    <span id="load-more"></span>
   {{/if}} 
 </div>
