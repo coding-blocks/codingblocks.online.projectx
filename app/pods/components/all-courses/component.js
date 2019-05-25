@@ -24,6 +24,10 @@ export default class AllCoursesComponent extends Component {
         }
       }
     }
+  }
+
+  didReceiveAttrs () {
+    this._super(...arguments)
     this.fetchAllCourses.perform();
   }
 
@@ -50,18 +54,27 @@ export default class AllCoursesComponent extends Component {
 
   @restartableTask
   *fetchAllCourses () {
+    const organization = this.get('currentUser.organization') || this.org
+    const extraWhere = {}
+
+    if (organization) {
+      extraWhere.organization = organization
+    }
+
     const nextCourses = yield this.store.query ('course', {
       include: 'instructors,runs',
       sort: 'difficulty',
       exclude: 'ratings,instructors.*',
       filter: {
         unlisted: false,
+        ...extraWhere
       },
       page: {
         limit: this.limit,
         offset: this.offset
       }
     })
+
     this.set('count', nextCourses.meta.pagination.count);
     this.courses.addObjects(nextCourses)
   }

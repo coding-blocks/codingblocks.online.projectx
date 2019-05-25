@@ -12,9 +12,9 @@
   
   <div class="row justify-content-center">
     {{#if fetchAllCourses.isRunning}}
-      <LoadingCardClassroom class="w-100"/>
+      {{loader-component}}
     {{else if (lt limitandoffset count)}}
-      <button class="button-dashed" id="load-more" {{action "loadMore"}}>Load More</button>
+      <span id="load-more"></span>
     {{/if}}
   </div>
 </div>
