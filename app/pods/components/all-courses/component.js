@@ -6,75 +6,73 @@ import { action, computed } from '@ember-decorators/object';
 
 export default class AllCoursesComponent extends Component {
   
-    @service store;
-	  @service api;
+  @service store;
+  @service api;
 
-    limit = 8
-    offset = 8
-    organization = alias('currentUser.organization')
-    courses = []
-    count = 0
+  limit = 8
+  offset = 8
+  organization = alias('currentUser.organization')
+  courses = []
+  count = 0
 
-    constructor() {
-      super(...arguments);
-      this.infiniteScroll = () => {
-        if (document.getElementById('load-more') != null) {
-          if (window.pageYOffset >= (document.getElementById('load-more').offsetTop - window.innerHeight)) {
-            this.loadMore();
-          }
+  constructor() {
+    super(...arguments);
+    this.infiniteScroll = () => {
+      if (document.getElementById('load-more') != null) {
+        if (window.pageYOffset >= (document.getElementById('load-more').offsetTop - window.innerHeight)) {
+          this.loadMore();
         }
       }
-      this.fetchAllCourses.perform();
     }
+    this.fetchAllCourses.perform();
+  }
 
-    didInsertElement () {
-      window.addEventListener('scroll', this.infiniteScroll);
-    }
+  didInsertElement () {
+    window.addEventListener('scroll', this.infiniteScroll);
+  }
+
+  willDestroyElement () {
+    window.removeEventListener('scroll', this.infiniteScroll);
+  }
+
+  /**
+   * Limit and offset sum computed property
+   */
+
+  @computed ("limit", "offset")
+  get limitandoffset () {
+    return (this.get('limit') + this.get('offset'));
+  }
+
+  /**
+   * Fetch courses on the 'All Courses' page
+   */
+
+  @restartableTask
+  *fetchAllCourses () {
+    const nextCourses = yield this.store.query ('course', {
+      include: 'instructors,runs',
+      sort: 'difficulty',
+      exclude: 'ratings,instructors.*',
+      filter: {
+        unlisted: false,
+      },
+      page: {
+        limit: this.limit,
+        offset: this.offset
+      }
+    })
+    this.set('count', nextCourses.meta.pagination.count);
+    this.courses.addObjects(nextCourses)
+  }
   
-    willDestroyElement () {
-      window.removeEventListener('scroll', this.infiniteScroll);
-    }
+  /**
+   * 'Load More' Button Action Handler for 'All Courses'
+   */
 
-    /**
-     * Limit and offset sum computed property
-     */
-
-    @computed ("limit", "offset")
-    get limitandoffset () {
-      return (this.get('limit') + this.get('offset'));
-    }
-
-    /**
-	   * Fetch courses on the 'All Courses' page
-	   */
-
-    @restartableTask
-    *fetchAllCourses () {
-      const nextCourses = yield this.store.query ('course', {
-        include: 'instructors,runs',
-        sort: 'difficulty',
-        exclude: 'ratings,instructors.*',
-        filter: {
-          unlisted: false,
-        },
-        page: {
-          limit: this.limit,
-          offset: this.offset
-        }
-      })
-      this.set('count', nextCourses.meta.pagination.count);
-      this.courses.addObjects(nextCourses)
-    }
-    
-
-    /**
-     * 'Load More' Button Action Handler for 'All Courses'
-     */
-
-    @action
-    loadMore () {
-      this.set('offset', this.offset + 8);
-      this.fetchAllCourses.perform();
-    }
-
+  @action
+  loadMore () {
+    this.set('offset', this.offset + 8);
+    this.fetchAllCourses.perform();
+  }
 }
