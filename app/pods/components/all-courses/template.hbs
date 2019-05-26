@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 class="t-align-c mt-5 mb-5">
+    All Courses
+  </h2>
+  <CardGrid class="row justify-content-center" as |card|>
+    {{#each courses as |course index|}}
+      <div class="c-layout-card col-12 col-md-6 col-lg-3 pr-md-0">
+        {{course-card course=course index=index showPopUp=(eq index card.poppedIndex) onChangePopped=card.changePoppedCard}}
+      </div>
+    {{/each}}
+  </CardGrid>
+  
+  <div class="row justify-content-center">
+    {{#if fetchAllCourses.isRunning}}
+      <LoadingCardClassroom class="w-100"/>
+    {{else if (lt limitandoffset count)}}
+      <span id="load-more"></span>
+    {{/if}}
+  </div>
+</div>
