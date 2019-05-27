@@ -15,10 +15,12 @@
     "ember-concurrency": "*",
     "ember-concurrency-decorators": "*",
     "ember-modal-dialog": "*",
-    "ember-moment": "*"
+    "ember-moment": "*",
+    "ember-form-for": "*"
   },
   "devDependencies": {
     "ember-simple-auth": "*",
-    "ember-simple-auth-token": "*"
+    "ember-simple-auth-token": "*",
+    "ember-data": "*"
   }
 }

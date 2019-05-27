@@ -50,6 +50,7 @@
     "ember-decorators": "^5.1.4",
     "ember-engines": "^0.5.26",
     "ember-export-application-global": "^2.0.0",
+    "ember-form-for": "^2.0.1",
     "ember-keyboard-shortcuts": "^1.0.6",
     "ember-load-initializers": "^1.1.0",
     "ember-local-storage": "^1.4.1",
