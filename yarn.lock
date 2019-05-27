@@ -1041,10 +1041,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@coding-blocks/motley@0.3.43":
-  version "0.3.43"
-  resolved "https://registry.yarnpkg.com/@coding-blocks/motley/-/motley-0.3.43.tgz#6e0108bb2910f2fdf32f6e5a7f68321bfb9418ce"
-  integrity sha512-wQPaQhY9KTrJPZmvsuKXyySeAsLqP8QWVSEuvYnOk+Pgg2Uv0pCH32dMc0nFH9wKRUbSyHDQcL+Ka/ADegeAQg==
+"@coding-blocks/motley@0.3.44":
+  version "0.3.44"
+  resolved "https://registry.yarnpkg.com/@coding-blocks/motley/-/motley-0.3.44.tgz#f0f5c37a1723eff53d755b00e3a6c36a6edede67"
+  integrity sha512-M5D0VcbsfHdb1OxqCh2A2fN93+s7Z8isCAufB/dIGE61wmjrDSweltwusRsfIL++AFrGSbLVkwJAP+A49LQCtg==
 
 "@ember-decorators/babel-transforms@^5.0.0":
   version "5.1.4"
