@@ -132,12 +132,8 @@
 
 <PartnersSection />
 {{#if showModal}}
-  <ModalDialog onClose=(action toggleShowModal) @translucentOverlay=true @overlayClass='cart-modal-overlay'>
-    <div class="border-card">
-      <h3 class="mb-4">Add you resume</h3>
-      {{input class="input-text mb-3" value=resumeLink}}
-      <button class="button-solid" {{action (perform applyForJob)}}>Apply for Job</button>
-    </div>
+  <ModalDialog @onClose={{action "toggleShowModal"}} @translucentOverlay={{true}} @overlayClass="cart-modal-overlay" @containerClass="col-md-6 col-12">
+    <JobApplicationForm @form={{job.form}} @submit={{action (perform applyForJob)}} />
   </ModalDialog>
 {{/if}}
 

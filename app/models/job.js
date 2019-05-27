@@ -19,6 +19,7 @@ export default DS.Model.extend({
   createdAt: DS.attr(),
   deadline: DS.attr(),
   postedOn: DS.attr(),
+  form: DS.attr(),
   deadlineStr: computed('deadline', function() {
     const date = moment(this.get('deadline'))
     if (date.unix() > 1e10) return 'No Deadline'

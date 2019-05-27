@@ -1,0 +1,26 @@
+<div class="my-3 font-mds">
+  <h3 class="col-12">Application Form</h3>
+  {{#form-for response  submit=(action "saveForm") reset=(action "reset") as |f|}}
+    {{#each form as |formField|}}
+      {{#if (eq formField.type "text-field")}}
+        <div class="col-12 my-4">
+          {{f.text-field formField.name labelClasses="my-1" inputClasses="input-text" label=formField.title required=formField.required}}
+        </div>
+      {{else if (eq formField.type "radio-group")}}
+        <div class="col-12 my-4">
+          {{f.radio-group propertyName=formField.name label=formField.title options=(split formField.options) required=formField.required}}
+        </div>
+      {{/if}}
+    {{/each}}
+    <div class="col-12 my-4">
+      {{input type="checkbox" checked=terms}} I agree that all the information provided is correct to the best of my knowledge.
+    </div>
+
+    {{#if terms}}
+      <div class="col-12 my-2">
+        {{f.reset "Clear form" classNames="button-solid"}}
+        {{f.submit "Apply" classNames="button-solid"}}
+      </div>
+    {{/if}}
+  {{/form-for}}
+</div>
