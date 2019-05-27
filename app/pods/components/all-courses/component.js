@@ -10,7 +10,7 @@ export default class AllCoursesComponent extends Component {
   @service api;
 
   limit = 8
-  offset = 8
+  offset = 0
   organization = alias('currentUser.organization')
   courses = []
   count = 0
