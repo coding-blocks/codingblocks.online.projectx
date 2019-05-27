@@ -8,7 +8,7 @@ export default class MyCoursesTaskComponent extends Component {
   @service api;
   
   limit = 8
-  offset = 8
+  offset = 0
   runs = []
   count = 0
   
