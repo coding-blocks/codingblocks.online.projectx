@@ -4,7 +4,7 @@ import { inject as service } from '@ember-decorators/service';
 import { computed }  from '@ember-decorators/object';
 
 export default class TimelineController extends Controller {
-    queryParams = ['showFeedback']
+    queryParams = ['showFeedback','preserveScrollPosition']
     showFeedback = false
 
     @service api

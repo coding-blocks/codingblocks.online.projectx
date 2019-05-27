@@ -68,19 +68,19 @@
   </div>
 </div>
 <div class="tab-nav">
-  {{link-to 'Overview' 'classroom.timeline.overview' class="tab-items" tagName="div"}}
+  {{link-to 'Overview' 'classroom.timeline.overview' (query-params preserveScrollPosition=true) class="tab-items" tagName="div"}}
   {{#link-to 'classroom.timeline.overview' class="tab-icons" tagName="div"}}
     <img src="/images/menu-white.svg" alt="Overview">
   {{/link-to}}
-  {{link-to 'Course Content' 'classroom.timeline.contents'class="tab-items" tagName="div"}}
+  {{link-to 'Course Content' 'classroom.timeline.contents' (query-params preserveScrollPosition=true) class="tab-items" tagName="div"}}
   {{#link-to 'classroom.timeline.contents'class="tab-icons" tagName="div"}}
     <img src="/images/docs-white.svg" alt="Course Content">
   {{/link-to}}
-  {{link-to 'Announcements' 'classroom.timeline.announcements'class="tab-items" tagName="div"}}
+  {{link-to 'Announcements' 'classroom.timeline.announcements' (query-params preserveScrollPosition=true) class="tab-items" tagName="div"}}
   {{#link-to 'classroom.timeline.announcements'class="tab-icons" tagName="div"}}
   <img src="/images/announcement-white.svg" alt="Announcements">
   {{/link-to}}
-  {{link-to 'Ask Your Doubts' 'classroom.timeline.doubts' class="tab-items" tagName="div"}}
+  {{link-to 'Ask Your Doubts' 'classroom.timeline.doubts' (query-params preserveScrollPosition=true) class="tab-items" tagName="div"}}
   {{#link-to 'classroom.timeline.doubts' class="tab-icons" tagName="div"}}
     <img src="/images/support-white.svg" alt="Ask Your Doubts">
   {{/link-to}}

@@ -6,7 +6,8 @@ module.exports = function(environment) {
     podModulePrefix: 'codingblocks-online/pods',
     environment: environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'router-scroll',
+    historySupportMiddleware: true,
     'ember-simple-auth-token': {
       identificationField: 'code',
       passwordField: 'code',

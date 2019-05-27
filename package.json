@@ -60,6 +60,7 @@
     "ember-monaco": "^1.0.2",
     "ember-qunit": "^3.4.1",
     "ember-resolver": "^5.0.1",
+    "ember-router-scroll": "^1.1.0",
     "ember-simple-auth": "^1.4.2",
     "ember-simple-auth-token": "git+https://github.com/abhishek97/ember-simple-auth-token.git",
     "ember-source": "~3.8.0",
