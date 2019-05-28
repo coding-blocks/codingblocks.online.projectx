@@ -1,7 +1,7 @@
 import Component from '@ember/component'
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { filterBy } from '@ember-decorators/object/computed'
+import { filterBy } from '@ember/object/computed'
 import { later } from '@ember/runloop'
 
 export default class NotesViewComponent extends Component {

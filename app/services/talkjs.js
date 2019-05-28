@@ -1,7 +1,7 @@
 import Service from '@ember/service'
-import { inject as service } from '@ember-decorators/service'
+import { inject as service } from '@ember/service'
 import config from 'codingblocks-online/config/environment'
-import { computed }  from '@ember-decorators/object';
+import { computed }  from '@ember/object';
 
 export default class TalkjsService extends Service {
   @service currentUser

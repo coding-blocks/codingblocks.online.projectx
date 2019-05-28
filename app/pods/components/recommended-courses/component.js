@@ -1,8 +1,8 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { alias, reads } from '@ember-decorators/object/computed';
-import { action } from '@ember-decorators/object';
+import { alias, reads } from '@ember/object/computed';
+import { action } from '@ember/object';
 import env from "codingblocks-online/config/environment";
 
 export default class RecommendedTaskComponent extends Component {

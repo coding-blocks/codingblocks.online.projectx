@@ -1,8 +1,8 @@
 import Component from '@ember/component';
-import { action } from '@ember-decorators/object';
-import { equal } from '@ember-decorators/object/computed';
+import { action } from '@ember/object';
+import { equal } from '@ember/object/computed';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 
 // Notifications Dropdown
 // - Highlight unread

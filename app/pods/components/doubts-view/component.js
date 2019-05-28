@@ -1,8 +1,8 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember-decorators/service';
-import { action } from '@ember-decorators/object'
-import { filterBy, lt, or, not, filter } from '@ember-decorators/object/computed';
-import { computed } from '@ember-decorators/object';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object'
+import { filterBy, lt, or, not, filter } from '@ember/object/computed';
+import { computed } from '@ember/object';
 import { restartableTask } from 'ember-concurrency-decorators';
 
 export default class DoubtsViewComponent extends Component {

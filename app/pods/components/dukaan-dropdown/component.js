@@ -1,7 +1,7 @@
 import Component from '@ember/component';
-import { equal } from '@ember-decorators/object/computed';
+import { equal } from '@ember/object/computed';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 import env from 'codingblocks-online/config/environment';
 
 export default class DukaanDropdown extends Component {

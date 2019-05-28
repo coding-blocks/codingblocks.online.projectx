@@ -1,9 +1,9 @@
 import Component from '@ember/component';
-import { computed, action } from '@ember-decorators/object'
-import { inject as service } from '@ember-decorators/service';
+import { computed, action } from '@ember/object'
+import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { isBadRequestError } from 'ember-ajax/errors';
-import { not } from '@ember-decorators/object/computed';
+import { not } from '@ember/object/computed';
 
 
 export default class otpEnrollComponent extends Component {

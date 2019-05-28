@@ -1,9 +1,9 @@
 import { getOwner } from '@ember/application';
 import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { inject as service } from '@ember-decorators/service';
-import { action, computed } from '@ember-decorators/object'
-import { filterBy } from '@ember-decorators/object/computed';
+import { inject as service } from '@ember/service';
+import { action, computed } from '@ember/object'
+import { filterBy } from '@ember/object/computed';
 
 export default class DoubtViewAttemptComponent extends Component{
   @service api

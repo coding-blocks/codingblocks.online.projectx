@@ -1,9 +1,9 @@
 import Component from "@ember/component";
 import { later } from "@ember/runloop";
 import { timeout } from "ember-concurrency";
-import { action } from "@ember-decorators/object";
-import { alias } from "@ember-decorators/object/computed";
-import { inject as service } from '@ember-decorators/service';
+import { action } from "@ember/object";
+import { alias } from "@ember/object/computed";
+import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
 
 

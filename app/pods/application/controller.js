@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember-decorators/object';
-import { or, alias } from '@ember-decorators/object/computed';
-import { inject as service } from '@ember-decorators/service';
+import { computed } from '@ember/object';
+import { or, alias } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
 
 export default class ApplicationController extends Controller {
   @service router
