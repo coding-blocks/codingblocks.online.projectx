@@ -2,7 +2,6 @@ import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember-decorators/service';
 import { action } from '@ember-decorators/object'
-import $ from 'jquery';
 
 class carouselCard {
   constructor (el, cssConf = {}) {
@@ -132,8 +131,5 @@ export default class CarouselCards extends Component {
     this.decrementProperty('currentIndex')
     this._reRender(-1)
   }
-
-
-
 
 }

@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { isNone } from '@ember/utils';
-import $ from 'jquery'
 import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
 import { storageFor } from 'ember-local-storage';
 import { inject as service } from '@ember/service';

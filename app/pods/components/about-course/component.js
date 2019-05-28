@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { inject } from '@ember/service';
 import { get }  from '@ember/object';
-import $ from 'jquery';
 import { task } from 'ember-concurrency';
 import env from "codingblocks-online/config/environment";
 
