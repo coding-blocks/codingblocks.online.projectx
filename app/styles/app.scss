@@ -1,5 +1,7 @@
 /* Permanent fix */
 
+$cb-red: #ff6666;
+
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 
@@ -106,4 +108,31 @@ picture * {
 
 .inbox {
   height: 600px;
+}
+
+.csv_leaderboard {
+  padding-top: 20px;
+  padding-bottom: 30px;
+
+  h4 {
+    font-size: 20pt;
+    text-align: center;
+    color: $cb-red;
+  }
+
+  table {
+    tr, td, th {
+      border: 1px solid #ddd;
+    }
+    td, th {
+      padding: 20px;
+      text-align: center;
+    }
+    th {
+      color: $cb-red;
+    }
+    width: 100%;
+    margin-top: 20px;
+    padding-bottom: 10px;
+  }
 }

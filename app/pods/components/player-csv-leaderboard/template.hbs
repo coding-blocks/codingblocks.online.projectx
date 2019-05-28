@@ -1,0 +1,19 @@
+<div class="csv_leaderboard">
+  <h4>Leaderboard</h4>
+  <table class="csv_leaderboard">
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Score</th>
+      <th>Timestamp</th>
+    </tr>
+    {{#each lb as |lb index| }}
+    <tr>
+      <td>{{inc index}}</td>
+      <td>{{lb.firstname}}</td>
+      <td>{{lb.score}}</td>
+      <td>{{lb.createdAt}}</td>
+    </tr>
+    {{/each}}
+  </table>
+</div>
