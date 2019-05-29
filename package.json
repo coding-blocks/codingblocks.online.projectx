@@ -20,7 +20,6 @@
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@ember-decorators/babel-transforms": "^5.0.0",
-    "@ember/jquery": "^0.5.2",
     "@ember/optional-features": "^0.6.3",
     "@firebase/app": "^0.3.13",
     "@firebase/database": "^0.3.16",

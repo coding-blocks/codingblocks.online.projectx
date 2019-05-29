@@ -2,14 +2,13 @@ import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember-decorators/service';
 import { action } from '@ember-decorators/object'
-import $ from 'jquery';
 
 class carouselCard {
   constructor (el, cssConf = {}) {
     this.element = el
     this.translateX = 0
     this.translateY = 0
-    $(this.element).css(cssConf)
+    this.element.querySelectorAll(this.element).setAttribute('class', cssConf)
   }
 
   setTranslateY (val) {
@@ -25,20 +24,24 @@ class carouselCard {
   }
 
   showContent () {
-    $(this.element).find('*').removeClass('display-none')
-    $(this.element).find('*').addClass('display-block')
+    this.element.querySelectorAll(this.element).childNodes.classList.remove('display-none')
+    this.element.querySelectorAll(this.element).childNodes.add('display-block')
   }
 
   hideContent () {
-    $(this.element).find('*').removeClass('display-block')
-    $(this.element).find('*').addClass('display-none')
+    this.element.querySelectorAll(this.element).childNodes.classList.remove('display-block')
+    this.element.querySelectorAll(this.element).childNodes.add('display-none')
   }
 
   apply () {
-    $(this.element).css({
+    const css = {
       height: this.height,
       transform: `translate(${this.translateX}%, ${this.translateY}%)`
-    })
+    }
+    
+    for (let prop in css)
+      this.element.querySelectorAll(this.element).style[prop] = css[prop]
+
   }
 }
 
