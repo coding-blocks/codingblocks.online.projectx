@@ -23,13 +23,15 @@ export default class PlayerCsvLeaderboardComponent extends Component {
     // Fetch the leaderboard data from the server
     let response = yield this.api.request(`/csvs/${csvId}/leaderboard`, {
       method: 'GET'
-    })
+    });
+
     response = response.map(row => {
-      row.firstname = row.firstname ? row.firstname.capitalize() : ''
-      row.lastname = row.lastname ? row.lastname.capitalize() : ''
-      row.createdAt = moment.duration(moment(row.createdAt).diff(moment.now())).humanize() + " ago"
-      return row 
-    })
+      row.firstname = row.firstname ? row.firstname.capitalize() : '';
+      row.lastname = row.lastname ? row.lastname.capitalize() : '';
+      row.createdAt = moment.duration(moment(row.createdAt).diff(moment.now())).humanize() + " ago";
+      return row;
+    });
+
     this.set('lb', response);
   }
 
