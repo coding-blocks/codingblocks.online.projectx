@@ -7,6 +7,8 @@ export default class PlayerCsvLeaderboardComponent extends Component {
 
   @service api;
 
+  isVisible = false;
+
   didReceiveAttrs() {
     this.fetchLeaderboardTask.perform();
   }
@@ -33,6 +35,11 @@ export default class PlayerCsvLeaderboardComponent extends Component {
     });
 
     this.set('lb', response);
+
+    if (response.length > 0) {
+      this.set('isVisible', true);
+    }
+
   }
 
 }
