@@ -21,18 +21,16 @@ export default class PlayerCsvLeaderboardComponent extends Component {
     let csvId = this.get('csvId');
 
     // Fetch the leaderboard data from the server
-    this.api.request(`/csvs/${csvId}/leaderboard`, {
+    let response = yield this.api.request(`/csvs/${csvId}/leaderboard`, {
       method: 'GET'
-    }).then(response => {
-      // Humanize the 'createdAt' time
-      for (let i = 0; i < response.length; i++) {
-        response[i].firstname = response[i].firstname.charAt(0).toUpperCase() + response[i].firstname.slice(1).toLowerCase();
-        response[i].lastname = response[i].lastname.charAt(0).toUpperCase() + response[i].lastname.slice(1).toLowerCase();
-        response[i].name = response[i].firstname + " " + response[i].lastname;
-        response[i].createdAt = moment.duration(moment(response[i].createdAt).diff(moment.now())).humanize() + " ago";
-      }
-      this.set('lb', response);
-    });
+    })
+    response = response.map(row => {
+      row.firstname = row.firstname ? row.firstname.capitalize() : ''
+      row.lastname = row.lastname ? row.lastname.capitalize() : ''
+      row.createdAt = moment.duration(moment(row.createdAt).diff(moment.now())).humanize() + " ago"
+      return row 
+    })
+    this.set('lb', response);
   }
 
 }
