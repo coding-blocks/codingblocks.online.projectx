@@ -133,8 +133,7 @@ export default class EditorClass extends Component {
     this.sendAction('toggleModal', modalContentType);
   }
 
-  @restartableTask
-  *setCollabModeTask (value) {
+  @restartableTask setCollabModeTask = function *(value) {
     if (value) {
       yield this.firepad.connect()
     } else {

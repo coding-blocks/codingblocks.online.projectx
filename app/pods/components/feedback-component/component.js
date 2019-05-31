@@ -22,8 +22,7 @@ export default class FeedbackComponent extends Component {
     }
   }
 
-  @restartableTask
-  *saveFeedbackTask () {
+  @restartableTask saveFeedbackTask = function* ()  {
     const feedback = this.get('feedback')
     feedback.set("course", this.get('course'))
     feedback.set("user", this.get('currentUser.user'))

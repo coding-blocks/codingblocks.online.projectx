@@ -26,8 +26,7 @@ export default class DoubtViewComponent extends Component {
     return env.discussBaseUrl + '/t/' + this.get('topicResponse.id')
   }
 
-  @restartableTask
-  *fetchTopicTask () {
+  @restartableTask fetchTopicTask = function* ()  {
     const topicResponse = yield this.get('api').request(`/courses/doubts/${this.get('topicId')}`)
     this.set('topic', topicResponse.post_stream.posts[0])
     this.set('topicResponse', topicResponse)

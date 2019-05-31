@@ -7,8 +7,7 @@ export default class PercentComplete extends Component {
   percent = 0
   classNames = ['w-100', 'd-flex', 'align-items-center', 'justify-content-between']
 
-  @restartableTask
-  *fetchPercentTask () {
+  @restartableTask fetchPercentTask = function* ()  {
     const response = yield this.get('api').request(`run_attempts/${this.get('runAttemptId')}/progress`)
     this.set('percent', response.percent)
   }

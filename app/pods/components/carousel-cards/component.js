@@ -55,8 +55,7 @@ export default class CarouselCards extends Component {
     this.get('getCarouselCardsTask').perform()
   }
 
-  @restartableTask	
-  *getCarouselCardsTask () {
+  @restartableTask getCarouselCardsTask = function *() {
     const cards = yield this.get('store').query('carousel_card', {
       sort: 'order'
     })

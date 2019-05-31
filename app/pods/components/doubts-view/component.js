@@ -25,10 +25,8 @@ export default class DoubtsViewComponent extends Component {
   @filterBy('existingDoubts', 'status', 'RESOLVED')
   resolved
 
-  @filter('existingDoubts')
-  unresolved (doubt) {
-    return doubt.status != 'RESOLVED'
-  }
+  @filter('existingDoubts', doubt => doubt.status != 'RESOLVED')
+  unresolved 
 
   @computed('existingDoubts', 'currentContent')
   get duplicatePendingDoubt () {
@@ -36,8 +34,7 @@ export default class DoubtsViewComponent extends Component {
     return this.existingDoubts.find(d => d.get('content.id') == contentId && d.status == 'PENDING')
   }
 
-  @restartableTask
-  *askDoubtTask (){
+  @restartableTask askDoubtTask = function* () {
     if (this.get('title.length') < 15) {
       return this.set('err', 'Title length must be atleast 15 characters.')
     }

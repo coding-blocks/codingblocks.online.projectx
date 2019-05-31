@@ -15,8 +15,7 @@ export default class NotesViewComponent extends Component {
 
   requestErrored = false
 
-  @restartableTask
-  *addNoteTask () {
+  @restartableTask addNoteTask = function* ()  {
     const contentId = this.get('currentContent').getContentId()
     const store = this.get('store')
 

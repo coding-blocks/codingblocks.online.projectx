@@ -45,8 +45,7 @@ export default class MyCoursesTaskComponent extends Component {
   * Fetch courses on the 'My Courses' page
   */
   
-  @restartableTask
-  *fetchMyCoursesTask () {
+  @restartableTask fetchMyCoursesTask = function* ()  {
     const results = yield this.get("store").query("run", {
       include: "course,run_attempts",
       enrolled: true,

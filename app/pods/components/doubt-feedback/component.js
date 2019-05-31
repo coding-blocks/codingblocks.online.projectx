@@ -5,8 +5,7 @@ import { inject as service } from '@ember/service';
 export default class DoubtFeedbackComponent extends Component {
   @service store
 
-  @restartableTask	
-  *submitFeedback() {
+  @restartableTask	submitFeedback = function *() {
     let df = this.store.createRecord('doubt-feedback', {
       type: 'STUDENT',
       score: this.score,

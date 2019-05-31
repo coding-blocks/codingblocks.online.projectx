@@ -52,8 +52,7 @@ export default class AllCoursesComponent extends Component {
    * Fetch courses on the 'All Courses' page
    */
 
-  @restartableTask
-  *fetchAllCourses () {
+  @restartableTask fetchAllCourses = function* ()  {
     const organization = this.get('currentUser.organization') || this.org
     const extraWhere = {}
 

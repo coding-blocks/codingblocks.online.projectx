@@ -28,8 +28,7 @@ export default class PlayerCsvComponent extends Component {
     this.set('url', link)
   }
 
-  @restartableTask
-  *submissionTask () {
+  @restartableTask submissionTask = function* ()  {
     if (!this.get('url')) {
       return alert('You must upload your solution first')
     }

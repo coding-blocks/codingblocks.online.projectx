@@ -39,8 +39,7 @@ export default class NotificationDropdownComponent extends Component {
     })
   }
 
-  @restartableTask	
-  *loadNotifications () {
+  @restartableTask loadNotifications = function *() {
     const notifications = yield this.get ('store').query ('notification', {
       page: {
         offset: this.get ('offset'),

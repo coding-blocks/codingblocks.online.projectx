@@ -19,8 +19,7 @@ export default class otpEnrollComponent extends Component {
   email = null
   errorString = null
 
-  @restartableTask
-  *sendOtpTask() {
+  @restartableTask sendOtpTask = function *() {
     return this.get('api').request('otp/request', {
       method: 'POST',
       data: {
@@ -43,8 +42,7 @@ export default class otpEnrollComponent extends Component {
     })
   }
 
-  @restartableTask
-  *verifyOtpTask() {
+  @restartableTask verifyOtpTask = function *() {
     return this.get('api').request('otp/verify', {
       method: "POST",
       data: {

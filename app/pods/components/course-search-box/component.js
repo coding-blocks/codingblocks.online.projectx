@@ -16,8 +16,7 @@ export default class SearchBoxComponent extends Component {
 
   @alias('searchTask.lastSuccessful.value') results
 
-  @restartableTask
-  *searchTask () {
+  @restartableTask searchTask = function* ()  {
     yield timeout (100)
     const searchQuery = this.get('qs').trim().toLowerCase()
 

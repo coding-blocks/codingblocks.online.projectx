@@ -23,8 +23,7 @@ export default class DiscourseTopicsView extends Component {
     return `${env.discussBaseUrl}/c/${categoryId}/${subCategoryId}`
   }
 
-  @restartableTask
-  *fetchTopicTasks () {
+  @restartableTask fetchTopicTasks = function* ()  {
     const courseId = this.get('course.id')
     return yield this.get('api').request(`/courses/${courseId}/doubts`, {
       data: {

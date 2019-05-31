@@ -19,8 +19,7 @@ export default class SearchBoxComponent extends Component {
   @alias('searchTask.lastSuccessful.value') results
   @alias('currentUser.organization') organization
 
-  @restartableTask
-  *searchTask () {
+  @restartableTask searchTask = function* ()  {
     yield timeout (1000)
     const searchQuery = this.get('qs')
     const extraWhere = {}

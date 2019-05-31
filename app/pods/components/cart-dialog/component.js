@@ -8,8 +8,7 @@ export default class CartDialog extends Component {
 
   dukaanUrl = env.dukaanUrl
 
-  @restartableTask
-  *addCartTask() {
+  @restartableTask addCartTask = function * () {
     yield this.get('api').request('/runs/clear_cart');
     const runId = this.get('run.id');
     yield this.get('api').request(`/runs/${runId}/buy`);

@@ -20,8 +20,7 @@ export default class RecommendedTaskComponent extends Component {
     this.get('fetchRecommendedCoursesTask').perform()
   }
 
-  @restartableTask
-  *fetchRecommendedCoursesTask () {
+  @restartableTask fetchRecommendedCoursesTask = function* ()  {
     const filter = {
       recommended: true,
       unlisted: false

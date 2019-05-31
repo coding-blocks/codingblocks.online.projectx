@@ -11,14 +11,12 @@ export default class NoteViewComponent extends Component {
   isEditing = false
   deleted = false
 
-  @dropTask
-  *saveNoteTask () {
+  @dropTask saveNoteTask = function *() {
     yield this.get('note').save()
     this.set("isEditing", false)
   }
 
-  @dropTask
-  *deleteNote () {
+  @dropTask deleteNote = function *() {
     yield this.get('api').request('/notes/'+ this.get('note.id'), {
       method: 'DELETE',
     })

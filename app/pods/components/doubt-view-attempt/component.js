@@ -29,8 +29,7 @@ export default class DoubtViewAttemptComponent extends Component{
       return false
   }
 
-  @restartableTask
-  *commentTask () {
+  @restartableTask commentTask = function* ()  {
     if (this.get('commentBody.length') < 20) {
       return this.set('err', 'Comment length must be atleast 20 characters.')
     }
