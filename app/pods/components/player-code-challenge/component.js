@@ -14,6 +14,7 @@ export default class CodeChallengeComponent extends Component {
   @service currentUser;
   @service store;
   @service runAttempt
+  @service taskPoller;
   @alias("payload") code;
 
 
@@ -116,7 +117,7 @@ export default class CodeChallengeComponent extends Component {
   @restartableTask
   *runCodeTask (config) {
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
-    return yield this.get("api").request("code_challenges/submit", {
+    const payload = yield this.get("api").request("code_challenges/submit", {
       method: "POST",
       data: {
         custom_input: config.input,
@@ -124,6 +125,32 @@ export default class CodeChallengeComponent extends Component {
         language: config.lang,
       },
     });
+
+    const submissionId = payload.submissionId
+    return yield this.fetchSubmissionStatusTask(submissionId)
+  }
+  
+  /**
+   * Fetch the submission status
+   * 
+   * @param {*} submissionId 
+   * @returns {Promise} API result Promise
+   */
+
+  async fetchSubmissionStatusTask (submissionId) {
+    let maxTries = 30
+    const gap = 2000
+    let submissionStatus
+    while (maxTries--) {
+      await timeout(gap)
+      submissionStatus = await this.get("api").request("code_challenges/status/" + submissionId, {
+        "method": "GET"
+      });
+      if (submissionStatus && submissionStatus.judge_result !== null) {
+        return submissionStatus.judge_result;
+      }
+    }
+    return submissionStatus;
   }
 
   @restartableTask
@@ -140,6 +167,9 @@ export default class CodeChallengeComponent extends Component {
         source: config.source
       }
     });
+
+    const submissionId = payload.submissionId
+    const submissionStatus = yield this.fetchSubmissionStatusTask(submissionId)
 
     this.get('api').request('code_challenges/problems',{
       data: {
@@ -169,7 +199,7 @@ export default class CodeChallengeComponent extends Component {
       method: 'POST',
     })
 
-    return payload
+    return submissionStatus
   }
 
   @action
