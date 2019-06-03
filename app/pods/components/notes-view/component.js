@@ -8,7 +8,7 @@ export default class NotesViewComponent extends Component {
   @service store
   @service router
   @service currentContent
-  @service lecturePlayer
+  @service vdoservice
   @service youtubePlayer
 
   @filterBy('runAttempt.notes', 'isNew', false) savedNotes
@@ -23,7 +23,7 @@ export default class NotesViewComponent extends Component {
     const content = store.peekRecord('content', contentId)
     let duration ;
     switch (content.get('contentable')) {
-      case 'lecture':  duration = this.get('lecturePlayer').getCurrentTime(); break;
+      case 'lecture':  duration = this.get('vdoservice').currentTime; break;
       case 'video': duration = this.get('youtubePlayer').getCurrentTime(); break;
       default: duration = 0
     }

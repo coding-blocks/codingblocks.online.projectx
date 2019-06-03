@@ -33,4 +33,9 @@ export default class VdoserviceService extends Service {
   seekTo(seconds){
     this.video.seek(seconds);
   }
+
+  get currentTime () {
+    return this.video.currentTime
+  }
+
 }
