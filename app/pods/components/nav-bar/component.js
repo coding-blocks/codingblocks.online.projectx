@@ -1,7 +1,7 @@
 import Component from '@ember/component';
-import { action } from '@ember-decorators/object';
-import { inject as service } from '@ember-decorators/service';
-import { alias, bool, reads }  from '@ember-decorators/object/computed';
+import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { alias, bool, reads }  from '@ember/object/computed';
 
 export default class navBarComponent extends Component {
     @service session

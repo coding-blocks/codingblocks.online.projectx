@@ -1,5 +1,5 @@
 import Service from '@ember/service'
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 
 export default class CurrentContentService extends Service {
     @service store

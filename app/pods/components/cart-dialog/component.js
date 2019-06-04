@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 import env from 'codingblocks-online/config/environment';
 
 export default class CartDialog extends Component {
@@ -8,8 +8,7 @@ export default class CartDialog extends Component {
 
   dukaanUrl = env.dukaanUrl
 
-  @restartableTask
-  *addCartTask() {
+  @restartableTask addCartTask = function * () {
     yield this.get('api').request('/runs/clear_cart');
     const runId = this.get('run.id');
     yield this.get('api').request(`/runs/${runId}/buy`);

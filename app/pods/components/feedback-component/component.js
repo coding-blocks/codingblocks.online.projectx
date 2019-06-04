@@ -1,6 +1,6 @@
 import Component from "@ember/component";
-import { action } from "@ember-decorators/object";
-import { inject as service } from '@ember-decorators/service';
+import { action } from "@ember/object";
+import { inject as service } from '@ember/service';
 import { isNone } from '@ember/utils';
 import { restartableTask } from 'ember-concurrency-decorators';
 
@@ -22,8 +22,7 @@ export default class FeedbackComponent extends Component {
     }
   }
 
-  @restartableTask
-  *saveFeedbackTask () {
+  @restartableTask saveFeedbackTask = function* ()  {
     const feedback = this.get('feedback')
     feedback.set("course", this.get('course'))
     feedback.set("user", this.get('currentUser.user'))
