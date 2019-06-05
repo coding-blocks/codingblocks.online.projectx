@@ -85,6 +85,7 @@
   },
   "ember-addon": {
     "paths": [
+      "lib/cricket-cup",
       "lib/hiring-blocks"
     ]
   }
