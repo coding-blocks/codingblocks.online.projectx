@@ -7,6 +7,9 @@
   "dependencies": {
     "ember-cli-htmlbars": "*",
     "ember-cli-babel": "*",
-    "ember-moment": "*"
+    "ember-moment": "*",
+    "ember-timer": "*",
+    "ember-concurrency": "*",
+    "ember-concurrency-decorators": "*"
   }
 }

@@ -4,5 +4,5 @@ import env from 'codingblocks-online/config/environment'
 
 export default DS.Model.extend({
   content: DS.attr(),
-  question: DS.belongsTo('cricketCupQuestion')
+  cricketCupQuestion: DS.belongsTo('cricketCupQuestion')
 })

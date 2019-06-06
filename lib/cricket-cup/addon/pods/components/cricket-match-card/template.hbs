@@ -1,7 +1,32 @@
 <div class="border-card my-5 p-4 p-md-5">
   <div class="row no-gutters">
     <div class="col-12 col-md-5 t-align-c flex-col justify-content-center">
-      <div class="font-md mb-3 pt-2">{{moment-format match.start 'Do mm HH:mm'}}</div>
+      <h6>Time Left to Predict</h6>
+      {{#if hasPredictionEnded}}
+        prediction ended
+      {{else}}
+      <Timer @to={{predictionEndTime}} as |time|>
+        <ul class="divided-list timer black mb-4 bold">
+          <li class="timer-item">
+            <div class="list-heading font-xl">{{time.days}}</div>
+            <div class="list-data">Days</div>
+          </li>
+          <li class="timer-item">
+            <div class="list-heading font-xl">{{time.hours}}</div>
+            <div class="list-data">Hours</div>
+          </li>
+          <li class="timer-item">
+            <div class="list-heading font-xl">{{time.minutes}}</div>
+            <div class="list-data">Mins</div>
+          </li>
+          <li class="timer-item pr-0">
+            <div class="list-heading font-xl">{{time.seconds}}</div>
+            <div class="list-data">Secs</div>
+          </li>
+        </ul>
+      </Timer>
+      {{/if}}
+      <div class="font-md mb-3 pt-2">{{moment-format match.start 'Do MMMM YYYY HH:mm A'}}</div>
       <div class="gradient-red-blue font-sm bold mb-3">Live Score</div>
 
       <div class="row align-items-center mb-4">
@@ -37,10 +62,6 @@
       <div class="divider-h"></div>
     </div>
 
-    {{#if match.hasPredictionEnded}}
-      prediction ended
-    {{else}}
-      <CricketMatchQuiz  @questions={{match.cricketCupQuestions}} class="col-12 col-md-6" />
-    {{/if}}
+    <CricketMatchQuiz @predictions={{predictions}} @questions={{match.cricketCupQuestions}} class="col-12 col-md-6" />
   </div>
 </div>
