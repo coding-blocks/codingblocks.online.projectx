@@ -1,58 +1,30 @@
 <div class="list-divided border-none">
-  {{log questions}}
-  {{#each questions as |question index|}}
+  {{#each predictionQuestions as |question index|}}
   <div class="pb-4">
     <div class="d-flex">
       <div class="li-left">
         <div class="flex-column align-items-start">
           <div class="bold">Level {{index}}</div>
-          <h4>{{question.title}}</h4>
+          <h4>{{question.question.title}}</h4>
         </div>
       </div>
       <div class="li-right">
-        <div class="label-dashed"><span class="gradient-red-blue">{{question.score}} Points</span></div>
+        <div class="label-dashed"><span class="gradient-red-blue">{{question.question.score}} Points</span></div>
       </div>
 
     </div>
     <div class="mt-3">
-      {{#each question.cricketCupChoices as |choice|}}
-        {{input name=question.id type="radio" value="" class="mx-2"}} {{choice.content}}
-      {{/each}}
+      {{#if recorded}}
+        {{question.prediction.cricketCupChoice.content.content}}
+      {{else}}
+        {{#each question.question.cricketCupChoices as |choice|}}
+          <input name={{question.question.id}} type="radio" value={{choice.id}} class="mx-2" onclick={{action "selectChoice" question.question choice}} /> {{choice.content}}
+        {{/each}}
+      {{/if}}
     </div>
   </div>
   {{/each}}
-  {{!-- <div class="py-4">
-      <div class="d-flex">
-        <div class="li-left">
-          <div class="flex-column align-items-start">
-            <div class="bold">Level 2</div>
-            <h4>Score of Winning Team (+/- 20 Runs)</h4>
-          </div>
-        </div>
-        <div class="li-right">
-          <div class="label-dashed"><span class="gradient-red-blue">750 Points</span></div>
-        </div>
-
-      </div>
-      <div class="mt-3">
-        <span class="gradient-red-blue">350 runs</span>
-      </div>
-    </div>
-    <div class="py-4">
-      <div class="d-flex">
-        <div class="li-left">
-          <div class="flex-column align-items-start">
-            <div class="bold">Level 3</div>
-            <h4>No of Sixes in the Match</h4>
-          </div>
-        </div>
-        <div class="li-right">
-          <div class="label-dashed"><span class="gradient-red-blue">1000 Points</span></div>
-        </div>
-
-      </div>
-      <div class="mt-3">
-        <span class="s-10x10 bg-gradient-red-blue-lr round mr-2"></span>0-5
-      </div>
-    </div> --}}
 </div>
+{{#if submitAllow}}
+  <button class="button-solid btn-grad-red-blue font-mds mt-5" {{action (perform submitTask)}}>Submit Predictions</button>
+{{/if}}

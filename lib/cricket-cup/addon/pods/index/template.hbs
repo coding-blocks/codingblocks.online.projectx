@@ -1,5 +1,5 @@
 <div class="c-cc">
-{{outlet}}
+  {{outlet}}
   <div class="banner mb-4">
     <img src="/images/bannner.jpg" alt="">
   </div>
@@ -12,12 +12,54 @@
           Your Winnings: INR {{earnings}}
         </span>
         {{#link-to 'courses' class="button-solid btn-grad-red-blue"}}
-          Use now
+        Use now
         {{/link-to}}
       </div>
     </div>
     {{#each matches as |match|}}
-      <CricketMatchCard @match={{match}} />
-    {{/each}}  
+    <CricketMatchCard @match={{match}} />
+    {{/each}}
+    <div class="row">
+      <div class="col-12">
+        <div class="border-card border-none bg-light-grey p-5">
+          <h4 class="mb-5">Rules</h4>
+          <div class="font-mds">
+            • Sign in to play the contest from 30th May 2019 to 14th July 2019.
+            <br>
+            <br>
+            • For each match, make three predictions - guess the winning team, score of winning team and total number of
+            sixes in
+            the match.
+            <br>
+            <br>
+            • Points will be given based on number of correct predictions:
+            <br>
+            <br>
+            Level 1 - 250 Points
+            <br>
+            Level 2 - 750 Points
+            <br>
+            Level 3 - 1000 Points
+            <br>
+            <br>
+            <br>
+            1 Point = INR 1 CB Wallet balance which can be used to buy free online courses.
+            <br>
+            <br>
+            • Predictions once made cannot be changed or modified.
+            <br>
+            <br>
+            • For each match, Top 10 correct predictors with correct daily prediction will win the daily points. A lucky
+            draw will
+            be done in case of a tie.
+            <br>
+            <br>
+            • Coding Blocks descision will be final in case of any discrepency.
+          </div>
+
+          <h4 class="mt-5">Play more, Predict More and Win More</h4>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
