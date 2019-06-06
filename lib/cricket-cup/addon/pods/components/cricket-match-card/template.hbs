@@ -66,7 +66,7 @@
     {{#if predictions.length}}
       <PredictionView @predictions={{predictions}}/>
     {{else}}
-      <CricketMatchQuiz @questions={{match.cricketCupQuestions}} class="col-12 col-md-6" />
+      <CricketMatchQuiz @questions={{match.cricketCupQuestions}} @onSubmit={{perform submitTask}} class="col-12 col-md-6" />
     {{/if}}
   </div>
 </div>
