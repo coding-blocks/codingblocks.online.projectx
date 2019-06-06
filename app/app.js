@@ -36,6 +36,7 @@ const App = Application.extend({
         ],
         externalRoutes: {
           login: 'login',
+          courses: 'courses'
         }
       }
     }
