@@ -10,6 +10,7 @@
     "ember-moment": "*",
     "ember-timer": "*",
     "ember-concurrency": "*",
-    "ember-concurrency-decorators": "*"
+    "ember-concurrency-decorators": "*",
+    "ember-truth-helpers": "*"
   }
 }
