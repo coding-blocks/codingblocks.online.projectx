@@ -4,7 +4,7 @@
       {{!-- {{#if hasPredictionEnded}} --}}
       {{#unless hasUserPredicted}}
         <h6>Time Left to Predict</h6>
-        <Timer @to={{predictionEndTime}} as |time|>
+        <Timer class="mb-4" @to={{predictionEndTime}} as |time|>
           <ul class="divided-list timer black mb-4 bold">
             <li class="timer-item">
               <div class="list-heading font-xl">{{time.days}}</div>
@@ -26,7 +26,7 @@
         </Timer>
       {{/unless}}
       <div class="font-md mb-3 pt-2">{{moment-format match.start 'Do MMMM YYYY HH:mm A'}}</div>
-      <div class="gradient-red-blue font-sm bold mb-3">Live Score</div>
+      <div class="red font-sm bold mb-3">Live Score</div>
 
       <div class="row align-items-center mb-4">
         <div class="offset-1"></div>
@@ -44,12 +44,12 @@
           <div class="font-md mb-2 bold">
             {{match.team1.name}}
           </div>
-          <div class="gradient-red-blue"><span class="bold">DNB</span></div>
+          <div class="red"><span class="bold">DNB</span></div>
         </div>
         <div class="col-6">
           <div class="font-md mb-2 bold">{{match.team2.name}}</div>
           <div class="mt-3">
-            <div class="gradient-red-blue"><span class="bold">210/5</span><span class="card-md"> (32 Ov)</span></div>
+            <div class="red"><span class="bold">210/5</span><span class="card-md"> (32 Ov)</span></div>
           </div>
         </div>
       </div>
@@ -61,8 +61,10 @@
       <div class="divider-h"></div>
     </div>
 
-    {{#if predictions.length}}
-      <PredictionView @predictions={{predictions}}/>
+    {{#if match.resultDeclared}}
+      <ResultView @predictions={{predictions}} @earnings={{earnings}} class="col-12 col-md-6" />
+    {{else if predictions.length}}
+      <PredictionView @predictions={{predictions}} class="col-12 col-md-6" />
     {{else}}
       <CricketMatchQuiz @questions={{match.cricketCupQuestions}} @onSubmit={{perform submitTask}} class="col-12 col-md-6" />
     {{/if}}
