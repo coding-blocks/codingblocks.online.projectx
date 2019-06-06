@@ -15,8 +15,8 @@
 
     </div>
     <div class="mt-3">
-      {{#each question.choices as |choice|}}
-      {{input type="radio" value=""}}
+      {{#each question.cricketCupChoices as |choice|}}
+        {{input name=question.id type="radio" value="" class="mx-2"}} {{choice.content}}
       {{/each}}
     </div>
   </div>

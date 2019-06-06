@@ -16,11 +16,8 @@
         {{/link-to}}
       </div>
     </div>
-
-    <div class="d-flex justify-content-between align-items-center font-md bold">
-      {{#each matches as |match|}}
-        <CricketMatchCard @match={{match}} />
-      {{/each}}
-    </div>
+    {{#each matches as |match|}}
+      <CricketMatchCard @match={{match}} />
+    {{/each}}  
   </div>
 </div>

@@ -1,6 +1,12 @@
 <div class="border-card my-5 p-4 p-md-5">
   <div class="row no-gutters">
     <div class="col-12 col-md-5 t-align-c flex-col justify-content-center">
+      <Timer @to={{predictionEndTime}} as |time|>
+          DaysLeft: {{time.days}}
+          HoursLeft: {{time.hours}}
+          MinutesLeft: {{time.minutes}}
+          SecondsLeft: {{time.seconds}}
+      </Timer>
       <div class="font-md mb-3 pt-2">{{moment-format match.start 'Do mm HH:mm'}}</div>
       <div class="gradient-red-blue font-sm bold mb-3">Live Score</div>
 

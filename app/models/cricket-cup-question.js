@@ -5,5 +5,6 @@ export default DS.Model.extend({
   description: DS.attr(),
   score: DS.attr(),
   correctChoiceId: DS.attr(),
-  match: DS.belongsTo('cricketCupMatch')
+  cricketCupChoices: DS.hasMany('cricketCupChoice'),
+  cricketCupMatch: DS.belongsTo('cricketCupMatch')
 })
