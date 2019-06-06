@@ -6,14 +6,22 @@
 
   <div class="container">
     <div class="d-flex justify-content-between align-items-center font-md bold">
-      <div>Welcome Brother</div>
+      <div>Welcome, {{user.firstname}} {{user.lastname}}</div>
       <div>
         <span class="gradient-red-blue pr-4">
-          Your Winnings: INR {{userWinnings}}
+          Your Winnings: INR {{earnings}}
         </span>
-        <button class="button-solid btn-grad-red-blue">Use Now</button>
+        {{#link-to 'courses' class="button-solid btn-grad-red-blue"}}
+          Use now
+        {{/link-to}}
       </div>
     </div>
 
+    <div class="d-flex justify-content-between align-items-center font-md bold">
+      {{#each matches as |match|}}
+        <h1>{{match.title}}</h1>
+        <p></p> 
+      {{/each}}
+    </div>
   </div>
 </div>
