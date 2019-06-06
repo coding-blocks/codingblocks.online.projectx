@@ -1,0 +1,46 @@
+<div class="border-card my-5 p-4 p-md-5">
+  <div class="row no-gutters">
+    <div class="col-12 col-md-5 t-align-c flex-col justify-content-center">
+      <div class="font-md mb-3 pt-2">{{moment-format match.start 'Do mm HH:mm'}}</div>
+      <div class="gradient-red-blue font-sm bold mb-3">Live Score</div>
+
+      <div class="row align-items-center mb-4">
+        <div class="offset-1"></div>
+        <div class="col-4">
+          <img src="{{match.team1.logo}}" alt="" class="round">
+        </div>
+        <div class="col-2 font-lg bold">VS</div>
+        <div class="col-4">
+          <img src="{{match.team2.logo}}" alt="" class="round">
+        </div>
+      </div>
+
+      <div class="row align-items-center w-100">
+        <div class="col-6">
+          <div class="font-md mb-2 bold">
+            {{match.team1.name}}
+          </div>
+          <div class="gradient-red-blue"><span class="bold">DNB</span></div>
+        </div>
+        <div class="col-6">
+          <div class="font-md mb-2 bold">{{match.team2.name}}</div>
+          <div class="mt-3">
+            <div class="gradient-red-blue"><span class="bold">210/5</span><span class="card-md"> (32 Ov)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 dsp-md-none pl-4">
+      <div class="divider-v"></div>
+    </div>
+    <div class="col-12 d-md-none my-4">
+      <div class="divider-h"></div>
+    </div>
+
+    {{#if match.hasPredictionEnded}}
+      prediction ended
+    {{else}}
+      <CricketMatchQuiz  @questions={{match.cricketCupQuestions}} class="col-12 col-md-6" />
+    {{/if}}
+  </div>
+</div>
