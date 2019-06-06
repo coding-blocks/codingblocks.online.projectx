@@ -1,0 +1,37 @@
+<div class="pb-4">
+  <div class="d-flex">
+    <div class="li-left">
+      <div class="flex-column align-items-start">
+        <div class="bold">
+          Level
+          {{ind}}
+        </div>
+        <h4>
+          {{question.title}}
+        </h4>
+      </div>
+    </div>
+    <div class="li-right">
+      <div class="label-dashed">
+        <span class="gradient-red-blue">
+          {{question.score}}
+          Points
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3">
+    {{#each question.cricketCupChoices as |choice|}}
+      <input
+        name={{question.id}}
+        type="radio"
+        class="mx-2"
+        onchange={{action (mut question.selectedChoice) choice}}
+       />
+
+      <label for={{question.id}}>
+        {{choice.content}}
+      </label>
+    {{/each}}
+  </div>
+</div>
