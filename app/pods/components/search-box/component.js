@@ -1,9 +1,9 @@
 import Component from "@ember/component";
 import { later } from "@ember/runloop";
 import { timeout } from "ember-concurrency";
-import { action } from "@ember-decorators/object";
-import { alias } from "@ember-decorators/object/computed";
-import { inject as service } from '@ember-decorators/service';
+import { action } from "@ember/object";
+import { alias } from "@ember/object/computed";
+import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
 
 
@@ -19,8 +19,7 @@ export default class SearchBoxComponent extends Component {
   @alias('searchTask.lastSuccessful.value') results
   @alias('currentUser.organization') organization
 
-  @restartableTask
-  *searchTask () {
+  @restartableTask searchTask = function* ()  {
     yield timeout (1000)
     const searchQuery = this.get('qs')
     const extraWhere = {}

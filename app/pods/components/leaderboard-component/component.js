@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 
 export default class LeaderboardComponent extends Component {
 
@@ -16,9 +16,9 @@ export default class LeaderboardComponent extends Component {
         problem_id: code.get("hbProblemId")
       }
     }).then(result => {
-      this.get('store').unloadAll('submission')
+      this.get('store').unloadAll('problem-leaderboard')
       this.get('store').pushPayload(result)
-      this.set('submissions', this.get('store').peekAll('submission'))
+      this.set('submissions', this.get('store').peekAll('problem-leaderboard'))
     })
   }
 

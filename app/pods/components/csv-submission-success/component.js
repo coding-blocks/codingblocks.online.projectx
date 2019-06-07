@@ -12,8 +12,7 @@ export default class extends Component{
     this.pollingTask.perform()
   }
 
-  @restartableTask
-  *pollingTask() {
+  @restartableTask pollingTask = function *() {
     while (this.maxTries--) {
       yield timeout(this.gap)
       const result = yield this.submission.reload()

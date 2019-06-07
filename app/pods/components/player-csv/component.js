@@ -1,7 +1,7 @@
 import Component from '@ember/component';
-import { alias } from "@ember-decorators/object/computed";
-import { action } from '@ember-decorators/object';
-import { inject as service } from '@ember-decorators/service';
+import { alias } from "@ember/object/computed";
+import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
 
 
@@ -28,8 +28,7 @@ export default class PlayerCsvComponent extends Component {
     this.set('url', link)
   }
 
-  @restartableTask
-  *submissionTask () {
+  @restartableTask submissionTask = function* ()  {
     if (!this.get('url')) {
       return alert('You must upload your solution first')
     }
