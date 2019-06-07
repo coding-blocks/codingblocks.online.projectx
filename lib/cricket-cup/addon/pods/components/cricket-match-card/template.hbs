@@ -71,7 +71,7 @@
     <PredictionView @predictions={{predictions}} class="col-12 col-md-6" />
     {{else if hasPredictionEnded}}
     <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
-      <h5 class="red t-align-c">Prediction preriod for this match has expired.</h5>
+      <h5 class="red t-align-c">Prediction period for this match has expired.</h5>
     </div>
     {{else}}
     <CricketMatchQuiz @questions={{match.cricketCupQuestions}} @onSubmit={{action (perform submitTask)}}
