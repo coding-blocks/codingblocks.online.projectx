@@ -24,6 +24,21 @@ const App = Application.extend({
           course: 'courses.id'
         }
       }
+    },
+    cricketCup: {
+      dependencies: {
+        services: [
+          'store',
+          'session',
+          'api',
+          'current-user',
+          { 'parent-router': 'router' }
+        ],
+        externalRoutes: {
+          login: 'login',
+          courses: 'courses'
+        }
+      }
     }
   }
 });

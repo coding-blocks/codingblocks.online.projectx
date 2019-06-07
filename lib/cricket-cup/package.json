@@ -1,0 +1,16 @@
+{
+  "name": "cricket-cup",
+  "keywords": [
+    "ember-addon",
+    "ember-engine"
+  ],
+  "dependencies": {
+    "ember-cli-htmlbars": "*",
+    "ember-cli-babel": "*",
+    "ember-moment": "*",
+    "ember-timer": "*",
+    "ember-concurrency": "*",
+    "ember-concurrency-decorators": "*",
+    "ember-truth-helpers": "*"
+  }
+}

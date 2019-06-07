@@ -1,0 +1,81 @@
+<div class="border-card my-5 p-4 p-md-5">
+  <div class="row no-gutters">
+    <div class="col-12 col-md-5 t-align-c flex-col justify-content-center">
+      {{!-- {{#if hasPredictionEnded}} --}}
+      {{#unless (or hasUserPredicted hasPredictionEnded)}}
+        <h6>Time Left to Predict</h6>
+        <Timer class="mb-4" @to={{predictionEndTime}} as |time|>
+          <ul class="divided-list timer black mb-4 bold">
+            <li class="timer-item">
+              <div class="list-heading font-xl">{{time.days}}</div>
+              <div class="list-data">Days</div>
+            </li>
+            <li class="timer-item">
+              <div class="list-heading font-xl">{{time.hours}}</div>
+              <div class="list-data">Hours</div>
+            </li>
+            <li class="timer-item">
+              <div class="list-heading font-xl">{{time.minutes}}</div>
+              <div class="list-data">Mins</div>
+            </li>
+            <li class="timer-item pr-0">
+              <div class="list-heading font-xl">{{time.seconds}}</div>
+              <div class="list-data">Secs</div>
+            </li>
+          </ul>
+        </Timer>
+      {{/unless}}
+      <div class="font-md mb-3 pt-2">{{moment-format match.start 'Do MMMM YYYY HH:mm A'}}</div>
+      {{#if (or team1score team2score)}}
+        <div class="red font-sm bold mb-3">Live Score</div>
+      {{/if}}
+
+      <div class="row align-items-center mb-4 w-100">
+        <div class="offset-1"></div>
+        <div class="col-4 flag" style="background-image: url('{{match.team1.logo}}')" >
+          {{!-- <img src="{{match.team1.logo}}" alt="" class="round"> --}}
+        </div>
+        <div class="col-2 font-lg bold">VS</div>
+        <div class="col-4 flag" style="background-image: url('{{match.team2.logo}}')" >
+        </div>
+      </div>
+
+      <div class="row align-items-center w-100">
+        <div class="col-6">
+          <div class="font-md mb-2 bold">
+            {{match.team1.name}}
+          </div>
+          <div class="red"><span class="bold">{{team1score}}</span></div>
+        </div>
+        <div class="col-6">
+          <div class="font-md mb-2 bold">{{match.team2.name}}</div>
+          <div class="mt-3">
+            <div class="red"><span class="bold">{{team2score}}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 dsp-md-none pl-4">
+      <div class="divider-v"></div>
+    </div>
+    <div class="col-12 d-md-none my-4">
+      <div class="divider-h"></div>
+    </div>
+
+    {{#if match.resultDeclared}} 
+    <ResultView 
+      @predictions={{predictions}}
+      @earnings={{earnings}} 
+      class="col-12 col-md-6" />
+    {{else if predictions.length}}
+    <PredictionView @predictions={{predictions}} class="col-12 col-md-6" />
+    {{else if hasPredictionEnded}}
+    <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+      <h5 class="red t-align-c">Prediction preriod for this match has expired.</h5>
+    </div>
+    {{else}}
+    <CricketMatchQuiz @questions={{match.cricketCupQuestions}} @onSubmit={{action (perform submitTask)}}
+      class="col-12 col-md-6" />
+    {{/if}}
+  </div>
+</div>

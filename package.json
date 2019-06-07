@@ -63,6 +63,7 @@
     "ember-simple-auth": "^1.4.2",
     "ember-simple-auth-token": "git+https://github.com/abhishek97/ember-simple-auth-token.git",
     "ember-source": "~3.10.0",
+    "ember-timer": "^1.1.0",
     "ember-toggle": "^5.3.2",
     "ember-truth-helpers": "^2.0.0",
     "ember-uploader": "^2.0.0",
@@ -78,13 +79,14 @@
     "node": "8.* || >= 10.*"
   },
   "dependencies": {
-    "@coding-blocks/motley": "0.3.44",
+    "@coding-blocks/motley": "0.3.45",
     "ember-line-clamp": "^0.2.15",
     "moment": "^2.22.2",
     "showdown-katex-studdown": "^0.4.0"
   },
   "ember-addon": {
     "paths": [
+      "lib/cricket-cup",
       "lib/hiring-blocks"
     ]
   }

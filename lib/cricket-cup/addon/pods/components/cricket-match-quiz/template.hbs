@@ -1,0 +1,8 @@
+<div class="list-divided border-none">
+  {{#each questions as |question index|}}
+    <QuestionView @question={{question}} @ind={{index}}/>
+  {{/each}}
+</div>
+{{#if submitAllow}}
+  <button class="button-solid btn-grad-red-blue font-mds mt-5" {{action onSubmit}}>Submit Predictions</button>
+{{/if}}

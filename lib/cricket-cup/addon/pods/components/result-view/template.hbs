@@ -1,0 +1,37 @@
+<div class=" bold t-align-c mb-3">
+  <span class="red">Your Winnings for today</span>
+  <br>
+  <span class="red font-xl">{{earnings}} Points</span>
+</div>
+<div class="list-divided border-none">
+  {{#each predictions as |prediction index|}}
+  <div class="py-4">
+    <div class="d-flex">
+      <div class="li-left">
+        {{#if (eq prediction.cricketCupChoice.id prediction.cricketCupQuestion.correctChoiceId)}}
+          <img class="status-img" src="/images/right.png" alt="">
+        {{else}}
+          <img class="status-img" src="/images/wrong.png" alt="">
+        {{/if}}
+        <div class="flex-column align-items-start">
+          <div class="bold">
+            Level
+            {{index}}
+          </div>
+          <h4>
+            {{prediction.cricketCupQuestion.title}}
+          </h4>
+        </div>
+      </div>
+      <div class="li-right">
+        <div class="label-dashed">
+          <span class="red">
+            {{prediction.cricketCupQuestion.score}}
+            Points
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
