@@ -16,15 +16,16 @@ export default class TaskPollerService extends Service {
    * @param {*} gap – Sets the gap between every request
    * @returns {Promise<object>} result – Return the poller task result
    */
-  @task 
-  *pollerTask(fn, condition, maxTries, gap) {
+
+  @task
+  pollerTask = function*(fn, condition, maxTries, gap) {
     while (maxTries--) {
       yield timeout(gap)
       const result = yield fn()
       if (condition(result)) return result;
     }
 
-    throw new Error('TIMEOUT')
+    throw new Error('TIMEOUT');
   }
   
   /**

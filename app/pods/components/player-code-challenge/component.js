@@ -1,7 +1,7 @@
 import Component from "@ember/component";
-import { alias } from "@ember-decorators/object/computed";
-import { inject as service } from '@ember-decorators/service';
-import { action, computed } from "@ember-decorators/object";
+import { alias } from "@ember/object/computed";
+import { inject as service } from '@ember/service';
+import { action, computed } from "@ember/object";
 import { restartableTask } from 'ember-concurrency-decorators';
 import { later } from '@ember/runloop';
 
