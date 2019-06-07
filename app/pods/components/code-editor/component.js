@@ -119,11 +119,6 @@ export default class EditorClass extends Component {
   }
 
   @action
-  fetchSubmissionStatus() {
-    this.get("fetchSubmissionStatusTask").perform(submissionId);
-  }
-
-  @action
   submitCode() {
     const config = {
       lang: this.get("selectedLanguage.code"),

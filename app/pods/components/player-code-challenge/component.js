@@ -127,30 +127,10 @@ export default class CodeChallengeComponent extends Component {
     });
 
     const submissionId = payload.submissionId
-    return yield this.fetchSubmissionStatusTask(submissionId)
-  }
-  
-  /**
-   * Fetch the submission status
-   * 
-   * @param {*} submissionId 
-   * @returns {Promise} API result Promise
-   */
-
-  async fetchSubmissionStatusTask (submissionId) {
-    let maxTries = 30
-    const gap = 2000
-    let submissionStatus
-    while (maxTries--) {
-      await timeout(gap)
-      submissionStatus = await this.get("api").request("code_challenges/status/" + submissionId, {
+    const status = yield this.taskPoller.performPoll(() => this.get("api").request("code_challenges/status/" + submissionId, {
         "method": "GET"
-      });
-      if (submissionStatus && submissionStatus.judge_result !== null) {
-        return submissionStatus.judge_result;
-      }
-    }
-    return submissionStatus;
+    }), submissionStatus => submissionStatus && submissionStatus.judge_result !== null);
+    return status.judge_result;
   }
 
   @restartableTask
@@ -169,7 +149,9 @@ export default class CodeChallengeComponent extends Component {
     });
 
     const submissionId = payload.submissionId
-    const submissionStatus = yield this.fetchSubmissionStatusTask(submissionId)
+    const status = yield this.taskPoller.performPoll(() => this.get("api").request("code_challenges/status/" + submissionId, {
+      "method": "GET"
+    }), submissionStatus => submissionStatus && submissionStatus.judge_result !== null);
 
     this.get('api').request('code_challenges/problems',{
       data: {
@@ -199,7 +181,7 @@ export default class CodeChallengeComponent extends Component {
       method: 'POST',
     })
 
-    return submissionStatus
+    return status.judge_result
   }
 
   @action
