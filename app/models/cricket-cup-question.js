@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import { computed } from '@ember/object';
 
 export default DS.Model.extend({
   title: DS.attr(),
@@ -6,5 +7,5 @@ export default DS.Model.extend({
   score: DS.attr(),
   correctChoiceId: DS.attr('string'),
   cricketCupChoices: DS.hasMany('cricketCupChoice'),
-  cricketCupMatch: DS.belongsTo('cricketCupMatch')
+  cricketCupMatch: DS.belongsTo('cricketCupMatch'),
 })

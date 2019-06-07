@@ -1,11 +1,10 @@
 <div class="border-card my-5 p-4 p-md-5">
   <div class="row no-gutters">
     <div class="col-12 col-md-5 t-align-c flex-col justify-content-center">
+      {{!-- {{#if hasPredictionEnded}} --}}
+      {{#unless hasUserPredicted}}
       <h6>Time Left to Predict</h6>
-      {{#if hasPredictionEnded}}
-        prediction ended
-      {{else}}
-      <Timer @to={{predictionEndTime}} as |time|>
+      <Timer class="mb-4" @to={{predictionEndTime}} as |time|>
         <ul class="divided-list timer black mb-4 bold">
           <li class="timer-item">
             <div class="list-heading font-xl">{{time.days}}</div>
@@ -25,9 +24,9 @@
           </li>
         </ul>
       </Timer>
-      {{/if}}
+      {{/unless}}
       <div class="font-md mb-3 pt-2">{{moment-format match.start 'Do MMMM YYYY HH:mm A'}}</div>
-      <div class="gradient-red-blue font-sm bold mb-3">Live Score</div>
+      <div class="red font-sm bold mb-3">Live Score</div>
 
       <div class="row align-items-center mb-4">
         <div class="offset-1"></div>
@@ -62,10 +61,14 @@
       <div class="divider-h"></div>
     </div>
 
-    {{#if predictions.length}}
-      <PredictionView @predictions={{predictions}} class="col-12 col-md-6" />
+    {{#if match.resultDeclared}} 
+    <ResultView @predictions={{predictions}}
+      @earnings={{earnings}} class="col-12 col-md-6" />
+    {{else if predictions.length}}
+    <PredictionView @predictions={{predictions}} class="col-12 col-md-6" />
     {{else}}
-      <CricketMatchQuiz @questions={{match.cricketCupQuestions}} @onSubmit={{action (perform submitTask)}} class="col-12 col-md-6" />
+    <CricketMatchQuiz @questions={{match.cricketCupQuestions}} @onSubmit={{action (perform submitTask)}}
+      class="col-12 col-md-6" />
     {{/if}}
   </div>
 </div>

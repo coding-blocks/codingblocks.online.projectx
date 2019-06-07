@@ -11,6 +11,6 @@ export default DS.Model.extend({
   predictionEnd: DS.attr(),
   cricketCupQuestions: DS.hasMany('cricketCupQuestion'),
   resultDeclared: computed('cricketCupQuestions', function(){
-    return !!this.get('cricketCupQuestions').findBy('correctChoiceId', undefined)
+    return !this.get('cricketCupQuestions').findBy('correctChoiceId', null)
   })
 })
