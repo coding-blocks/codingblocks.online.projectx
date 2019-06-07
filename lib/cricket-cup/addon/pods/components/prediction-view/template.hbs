@@ -25,10 +25,11 @@
     </div>
     <div class="mt-3">
       {{#each prediction.cricketCupQuestion.cricketCupChoices as |choice|}}
-      {{#if (eq prediction.cricketCupChoice.id choice.id)}}
-      {{choice.content}}
-      {{if (eq prediction.cricketCupChoice.id prediction.cricketCupQuestion.correctChoiceId) 'Correct' 'Incorrect'}}
-      {{/if}}
+      <input type="radio" class="mx-2" checked={{eq prediction.cricketCupChoice.id choice.id}} disabled />
+
+      <label>
+        {{choice.content}}
+      </label>
       {{/each}}
     </div>
   </div>

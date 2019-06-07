@@ -62,8 +62,10 @@
     </div>
 
     {{#if match.resultDeclared}} 
-    <ResultView @predictions={{predictions}}
-      @earnings={{earnings}} class="col-12 col-md-6" />
+    <ResultView 
+      @predictions={{predictions}}
+      @earnings={{earnings}} 
+      class="col-12 col-md-6" />
     {{else if predictions.length}}
     <PredictionView @predictions={{predictions}} class="col-12 col-md-6" />
     {{else}}
