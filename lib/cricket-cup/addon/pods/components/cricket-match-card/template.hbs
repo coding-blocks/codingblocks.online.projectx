@@ -26,7 +26,9 @@
         </Timer>
       {{/unless}}
       <div class="font-md mb-3 pt-2">{{moment-format match.start 'Do MMMM YYYY HH:mm A'}}</div>
-      <div class="red font-sm bold mb-3">Live Score</div>
+      {{#if (or team1score team2score)}}
+        <div class="red font-sm bold mb-3">Live Score</div>
+      {{/if}}
 
       <div class="row align-items-center mb-4 w-100">
         <div class="offset-1"></div>
@@ -67,6 +69,10 @@
       class="col-12 col-md-6" />
     {{else if predictions.length}}
     <PredictionView @predictions={{predictions}} class="col-12 col-md-6" />
+    {{else if hasPredictionEnded}}
+    <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+      <h5 class="red t-align-c">Prediction preriod for this match has expired.</h5>
+    </div>
     {{else}}
     <CricketMatchQuiz @questions={{match.cricketCupQuestions}} @onSubmit={{action (perform submitTask)}}
       class="col-12 col-md-6" />
