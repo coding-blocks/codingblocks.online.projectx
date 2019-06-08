@@ -52,16 +52,14 @@
     <div class="row button-row justify-content-between no-gutters align-items-center">
       <div class="details">
         <div class="price">
-
-          {{log @course}}
           <span class="red font-sm extra-bold">Rs {{@course.topRun.price}}</span>
           {{#unless (eq @course.topRun.price @course.topRun.mrp)}}
             <span class="grey card-md"><strike>Rs {{@course.topRun.mrp}}</strike></span>
           {{/unless}}
         </div>
       </div>
-
-      {{link-to-external "Explore" "course" @course.slug tagName="button" class="button-solid"}}
+      
+      {{link-to-external "Explore" @course.slug targetRouteName="course" tagName="button" class="button-solid"}}
     </div>
   </div>
 </div>
