@@ -59,7 +59,8 @@
         </div>
       </div>
       
-      {{link-to-external "Explore" @course.slug targetRouteName="course" tagName="button" class="button-solid"}}
+      {{!-- this is a hack; TODO: Remove this hack for an actual fix released in future --}}
+      {{link-to-external "Explore" "courses.id" @course.slug targetRouteName="course" tagName="button" class="button-solid"}}
     </div>
   </div>
 </div>
