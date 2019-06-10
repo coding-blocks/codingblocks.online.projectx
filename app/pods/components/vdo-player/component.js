@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember-decorators/service';
-import { computed } from '@ember-decorators/object'
+import { inject as service } from '@ember/service';
+import { computed } from '@ember/object'
 import DS from 'ember-data';
 import { later } from '@ember/runloop';
 

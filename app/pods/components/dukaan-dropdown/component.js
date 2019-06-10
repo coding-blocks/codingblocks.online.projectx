@@ -1,7 +1,7 @@
 import Component from '@ember/component';
-import { equal } from '@ember-decorators/object/computed';
+import { equal } from '@ember/object/computed';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 import env from 'codingblocks-online/config/environment';
 
 export default class DukaanDropdown extends Component {
@@ -29,8 +29,7 @@ export default class DukaanDropdown extends Component {
 
   @equal('activeTab', 'cart') showDialog
 
-  @restartableTask
-  *fetchCart (){
+  @restartableTask fetchCart = function* () {
     try {
       const cart = yield this.get('api').request('/runs/cart')
       const item = cart.cartItems[0]
@@ -43,8 +42,7 @@ export default class DukaanDropdown extends Component {
     }
   }
 
-  @restartableTask
-  *clearCartTask() {
+  @restartableTask clearCartTask = function *() {
     yield this.get('api').request('/runs/clear_cart')
     this.set('cartItem', false)
   }

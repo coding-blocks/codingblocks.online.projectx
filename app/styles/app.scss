@@ -109,3 +109,17 @@ picture * {
 .inbox {
   height: 600px;
 }
+
+.flag {
+  background-position: center;
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  border: solid 2px #e8e8e8;
+
+}
+
+.bg-red-lr{
+  background-image: linear-gradient(to right, #e9414d, #2d2982);
+}

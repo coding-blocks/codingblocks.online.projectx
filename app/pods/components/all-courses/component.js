@@ -1,8 +1,8 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { alias }  from '@ember/object/computed';
-import { action, computed } from '@ember-decorators/object';
+import { action, computed } from '@ember/object';
 
 export default class AllCoursesComponent extends Component {
   
@@ -10,7 +10,7 @@ export default class AllCoursesComponent extends Component {
   @service api;
 
   limit = 8
-  offset = 8
+  offset = 0
   organization = alias('currentUser.organization')
   courses = []
   count = 0
@@ -52,8 +52,7 @@ export default class AllCoursesComponent extends Component {
    * Fetch courses on the 'All Courses' page
    */
 
-  @restartableTask
-  *fetchAllCourses () {
+  @restartableTask fetchAllCourses = function* ()  {
     const organization = this.get('currentUser.organization') || this.org
     const extraWhere = {}
 

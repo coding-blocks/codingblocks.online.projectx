@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { inject as service } from '@ember-decorators/service';
-import { action } from '@ember-decorators/object'
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object'
 import $ from 'jquery';
 
 class carouselCard {
@@ -55,8 +55,7 @@ export default class CarouselCards extends Component {
     this.get('getCarouselCardsTask').perform()
   }
 
-  @restartableTask	
-  *getCarouselCardsTask () {
+  @restartableTask getCarouselCardsTask = function *() {
     const cards = yield this.get('store').query('carousel_card', {
       sort: 'order'
     })

@@ -21,12 +21,12 @@ export default Route.extend(ApplicationRouteMixin, {
     },
     beforeModel (transition) {
 
-      if (!isNone(transition.queryParams.code)) {
+      if (!isNone(transition.to.queryParams.code)) {
         if (this.get('session.isAuthenticated')) {
           return this.transitionTo({ queryParams: { code: undefined } })
         }
         // we have ?code qp
-        const { code } = transition.queryParams
+        const { code } = transition.to.queryParams
         
         return this.session.authenticate('authenticator:jwt', { identification: code, password: code, code })
           .then(() => this.currentUser.load())

@@ -1,9 +1,9 @@
 import Component from "@ember/component"
-import { action, computed } from "@ember-decorators/object"
-import { alias }  from '@ember-decorators/object/computed';
+import { action, computed } from "@ember/object"
+import { alias }  from '@ember/object/computed';
 import { set } from '@ember/object'
 import { restartableTask } from 'ember-concurrency-decorators'
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 
 export default class EditorClass extends Component {
   classNames = ["height-100"];
@@ -133,8 +133,7 @@ export default class EditorClass extends Component {
     this.sendAction('toggleModal', modalContentType);
   }
 
-  @restartableTask
-  *setCollabModeTask (value) {
+  @restartableTask setCollabModeTask = function *(value) {
     if (value) {
       yield this.firepad.connect()
     } else {

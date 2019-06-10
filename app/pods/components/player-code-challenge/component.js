@@ -1,7 +1,7 @@
 import Component from "@ember/component";
-import { alias } from "@ember-decorators/object/computed";
-import { inject as service } from '@ember-decorators/service';
-import { action, computed } from "@ember-decorators/object";
+import { alias } from "@ember/object/computed";
+import { inject as service } from '@ember/service';
+import { action, computed } from "@ember/object";
 import { timeout } from "ember-concurrency";
 import { restartableTask } from 'ember-concurrency-decorators';
 
@@ -113,8 +113,7 @@ export default class CodeChallengeComponent extends Component {
     this.set('err', '')
   }
   
-  @restartableTask
-  *runCodeTask (config) {
+  @restartableTask runCodeTask = function *(config) {
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     return yield this.get("api").request("code_challenges/submit", {
       method: "POST",
@@ -126,8 +125,7 @@ export default class CodeChallengeComponent extends Component {
     });
   }
 
-  @restartableTask
-  *submitCodeTask (config) {
+  @restartableTask submitCodeTask = function *(config) {
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     const code = this.get("code");
     const run = this.get("run");
@@ -191,8 +189,7 @@ export default class CodeChallengeComponent extends Component {
     
   }
 
-  @restartableTask
-  *fetchEditorialTestcases (which) {
+  @restartableTask fetchEditorialTestcases = function *(which) {
     try{
       this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
       const run = this.get("run")

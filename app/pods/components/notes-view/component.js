@@ -1,29 +1,28 @@
 import Component from '@ember/component'
-import { inject as service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { filterBy } from '@ember-decorators/object/computed'
+import { filterBy } from '@ember/object/computed'
 import { later } from '@ember/runloop'
 
 export default class NotesViewComponent extends Component {
   @service store
   @service router
   @service currentContent
-  @service lecturePlayer
+  @service vdoservice
   @service youtubePlayer
 
   @filterBy('runAttempt.notes', 'isNew', false) savedNotes
 
   requestErrored = false
 
-  @restartableTask
-  *addNoteTask () {
+  @restartableTask addNoteTask = function* ()  {
     const contentId = this.get('currentContent').getContentId()
     const store = this.get('store')
 
     const content = store.peekRecord('content', contentId)
     let duration ;
     switch (content.get('contentable')) {
-      case 'lecture':  duration = this.get('lecturePlayer').getCurrentTime(); break;
+      case 'lecture':  duration = this.get('vdoservice').currentTime; break;
       case 'video': duration = this.get('youtubePlayer').getCurrentTime(); break;
       default: duration = 0
     }

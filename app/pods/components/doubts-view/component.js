@@ -1,8 +1,8 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember-decorators/service';
-import { action } from '@ember-decorators/object'
-import { filterBy, lt, or, not, filter } from '@ember-decorators/object/computed';
-import { computed } from '@ember-decorators/object';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object'
+import { filterBy, lt, or, not, filter } from '@ember/object/computed';
+import { computed } from '@ember/object';
 import { restartableTask } from 'ember-concurrency-decorators';
 
 export default class DoubtsViewComponent extends Component {
@@ -25,10 +25,8 @@ export default class DoubtsViewComponent extends Component {
   @filterBy('existingDoubts', 'status', 'RESOLVED')
   resolved
 
-  @filter('existingDoubts')
-  unresolved (doubt) {
-    return doubt.status != 'RESOLVED'
-  }
+  @filter('existingDoubts', doubt => doubt.status != 'RESOLVED')
+  unresolved 
 
   @computed('existingDoubts', 'currentContent')
   get duplicatePendingDoubt () {
@@ -36,8 +34,7 @@ export default class DoubtsViewComponent extends Component {
     return this.existingDoubts.find(d => d.get('content.id') == contentId && d.status == 'PENDING')
   }
 
-  @restartableTask
-  *askDoubtTask (){
+  @restartableTask askDoubtTask = function* () {
     if (this.get('title.length') < 15) {
       return this.set('err', 'Title length must be atleast 15 characters.')
     }

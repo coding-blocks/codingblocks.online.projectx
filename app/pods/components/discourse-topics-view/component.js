@@ -1,8 +1,8 @@
 import Component from '@ember/component';
 
 import { restartableTask } from 'ember-concurrency-decorators';
-import { inject as service } from '@ember-decorators/service';
-import { computed } from '@ember-decorators/object';
+import { inject as service } from '@ember/service';
+import { computed } from '@ember/object';
 import env from 'codingblocks-online/config/environment';
 
 export default class DiscourseTopicsView extends Component {
@@ -23,8 +23,7 @@ export default class DiscourseTopicsView extends Component {
     return `${env.discussBaseUrl}/c/${categoryId}/${subCategoryId}`
   }
 
-  @restartableTask
-  *fetchTopicTasks () {
+  @restartableTask fetchTopicTasks = function* ()  {
     const courseId = this.get('course.id')
     return yield this.get('api').request(`/courses/${courseId}/doubts`, {
       data: {

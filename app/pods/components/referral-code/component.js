@@ -6,7 +6,7 @@ import { not }  from '@ember/object/computed';
 
 export default Component.extend({
   shareText: computed('code', function () {
-    return 'Purchase any course from online.codingblocks.com and get 500Rs OFF using my referral code at checkout: ' + this.code;
+    return 'Signup using this link to get 500Rs in your wallet or Purchase any course from online.codingblocks.com and get 500Rs extra OFF using my referral code at checkout: ' + this.code;
   }),
   api: service(),
   currentUser: service(),
