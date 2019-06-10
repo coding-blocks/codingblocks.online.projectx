@@ -35,17 +35,15 @@
             </button>
           </div>
         {{/if}}
-        <button class="button-solid">
-          {{#if (eq doubt.status "RESOLVED")}}
-            <button {{action "markStatus" "PENDING"}}>
-              Reopen
-            </button>
+        {{#if (eq doubt.status "RESOLVED")}}
+          <button class="button-solid" {{action "markStatus" "PENDING"}}>
+            Reopen
+          </button>
           {{else}}
-            <button {{action "markStatus" "RESOLVED"}}>
-              Resolve
-            </button>
-          {{/if}}
-        </button>
+          <button class="button-solid" {{action "markStatus" "RESOLVED"}}>
+            Resolve
+          </button>
+        {{/if}}
       </div>
       
 
