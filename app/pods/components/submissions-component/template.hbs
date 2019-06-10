@@ -107,9 +107,7 @@
           </div>
         {{/unless}}
       </div>
-      <div class="button-solid" {{action 'viewSubmission' submission}}>
-        <button>View Submission</button>
-      </div>
+      <button class="button-solid" {{action 'viewSubmission' submission}}>View Submission</button>
     </div>
   {{/each}}
   {{view-submissions-modal submission=submissionToView open=showSubmissionModal}}
