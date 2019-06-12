@@ -4,9 +4,9 @@
       <p class="text-center text-lg-left">ENROLL TO COURSES VIA OTP</p>
       <p class="red text-center text-lg-left">
         {{#if otpSent}}
-          We have sent an OTP to your registered Email
+        We have sent an OTP to your registered Email
         {{else if errorString}}
-          {{errorString}}
+        {{errorString}}
         {{/if}}
       </p>
     </div>
@@ -19,9 +19,9 @@
         </div>
       </div>
       <div class="col-12 col-md-3 col-lg-2 d-flex justify-content-center justify-content-md-start p-1">
-        <div class="button-solid" {{action 'handleClick'}}>
-          <button>{{buttonText}}</button>
-        </div>
+
+        <button class="button-solid" {{action 'handleClick'}}>{{buttonText}}</button>
+
       </div>
     </div>
   </div>

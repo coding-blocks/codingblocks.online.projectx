@@ -1,33 +1,27 @@
 {{#if (and hasUserMarkedRating (not isEditing))}}
-  <div>
-    Thanks for rating us! &nbsp;&nbsp;
-    
-    {{#each (range 1 (inc scale)) as |index|}}
-      <span
-        class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
-      >
-        <i class="fas fa-star"></i>
-      </span>
-    {{/each}}
-    <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
-  </div>
+<div>
+  Thanks for rating us! &nbsp;&nbsp;
+
+  {{#each (range 1 (inc scale)) as |index|}}
+  <span class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}">
+    <i class="fas fa-star"></i>
+  </span>
+  {{/each}}
+  <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
+</div>
 {{else}}
-  <div>
-    <span class="bold">Loving this course? &nbsp;&nbsp;</span>
-    {{#each (range 1 (inc scale)) as |index|}}
-      <span
-        class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
-        onMouseEnter={{action 'changeRating' index}}
-        onMouseLeave={{action 'resetRating'}}
-        onClick={{action 'toggleModal' index}}
-      >
-        <i class="fas fa-star"></i>
-      </span>
-    {{/each}}
-  </div>
+<div>
+  <span class="bold">Loving this course? &nbsp;&nbsp;</span>
+  {{#each (range 1 (inc scale)) as |index|}}
+  <span class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}" onMouseEnter={{action 'changeRating' index}}
+    onMouseLeave={{action 'resetRating'}} onClick={{action 'toggleModal' index}}>
+    <i class="fas fa-star"></i>
+  </span>
+  {{/each}}
+</div>
 {{/if}}
 {{#if isShowingModal}}
-  {{#modal-dialog
+{{#modal-dialog
     onClose=(action 'afterFeedback')
     translucentOverlay=true
     targetAttachment='none'
@@ -36,57 +30,51 @@
     wrapperClass='centered-scrolling-wrapper'
   }}
 
-    <!-- Modal -->
-    <div class="c-modal modal-dialog">
-      <div class="c-feedback-modal modal-content">
-        <h3>Submit Feedback</h3>
-        <div>
-          {{#if (and hasUserMarkedRating (not isEditing))}}
-            <div>
-              <div class="title">
-                How would you rate this course overall?
-              </div> &nbsp;&nbsp;
-              {{#each (range 1 (inc scale)) as |index|}}
-                <span
-                  class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
-                >
-        <i class="fas fa-star"></i>
-      </span>
-              {{/each}}
-              <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
-            </div>
-          {{else}}
-            <div>
-              <div class="title">
-                How would you rate this course overall?
-              </div> &nbsp;
-              {{#each (range 1 (inc scale)) as |index|}}
-                <span
-                  class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
-                  onMouseEnter={{action 'changeRating' index}}
-                  onMouseLeave={{action 'resetRating'}}
-                  onClick={{action 'markRating' index}}
-                >
-        <i class="fas fa-star"></i>
-      </span>
-              {{/each}}
-            </div>
-          {{/if}}
-        </div>
+<!-- Modal -->
+<div class="c-modal modal-dialog">
+  <div class="c-feedback-modal modal-content">
+    <h3>Submit Feedback</h3>
+    <div>
+      {{#if (and hasUserMarkedRating (not isEditing))}}
+      <div>
         <div class="title">
-          How was the overall experience?
-        </div>
-        {{textarea value=textExperience class='input-textarea'}}
-        <div class="title">
-          Write a public review.
-        </div>
-        {{textarea value=textPublic class='input-textarea' rows=5}}
-        <div class="row justify-content-center">
-          <div class="button-solid">
-            <button {{action 'submitFeedback'}}>Submit Feedback</button>
-          </div>
-        </div>
+          How would you rate this course overall?
+        </div> &nbsp;&nbsp;
+        {{#each (range 1 (inc scale)) as |index|}}
+        <span class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}">
+          <i class="fas fa-star"></i>
+        </span>
+        {{/each}}
+        <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
       </div>
+      {{else}}
+      <div>
+        <div class="title">
+          How would you rate this course overall?
+        </div> &nbsp;
+        {{#each (range 1 (inc scale)) as |index|}}
+        <span class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}" onMouseEnter={{action 'changeRating' index}}
+          onMouseLeave={{action 'resetRating'}} onClick={{action 'markRating' index}}>
+          <i class="fas fa-star"></i>
+        </span>
+        {{/each}}
+      </div>
+      {{/if}}
     </div>
-  {{/modal-dialog}}
+    <div class="title">
+      How was the overall experience?
+    </div>
+    {{textarea value=textExperience class='input-textarea'}}
+    <div class="title">
+      Write a public review.
+    </div>
+    {{textarea value=textPublic class='input-textarea' rows=5}}
+    <div class="row justify-content-center">
+
+      <button class="button-solid" {{action 'submitFeedback'}}>Submit Feedback</button>
+
+    </div>
+  </div>
+</div>
+{{/modal-dialog}}
 {{/if}}

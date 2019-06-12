@@ -1,23 +1,22 @@
-
 <div class="notes-list list-shaded spaced invert">
   {{#unless savedNotes.length}}
-    <div class="list-item">
-      <div class="row justify-content-center">
-        You have no notes for this course.
-      </div>
+  <div class="list-item">
+    <div class="row justify-content-center">
+      You have no notes for this course.
     </div>
+  </div>
   {{/unless}}
 
   {{#liquid-if requestErrored}}
-    <div class="list-item">
-      <div class="row justify-content-center red">
-        There was some error saving this note. Please try again
-      </div>
+  <div class="list-item">
+    <div class="row justify-content-center red">
+      There was some error saving this note. Please try again
     </div>
+  </div>
   {{/liquid-if}}
 
   {{#each savedNotes as |note|}}
-    {{note-view note=note runAttempt=runAttempt}}
+  {{note-view note=note runAttempt=runAttempt}}
   {{/each}}
 
   <div class="footer">
@@ -27,15 +26,16 @@
           {{textarea class="invert font-sm" placeholder="Add a Note" value=newNoteText}}
         </div>
         <div class="li-right col-3 align-self-start">
-          <div class="button-solid card-md">
+          <div class="card-md">
             {{!-- <button {{action 'addNote'}} >Save Note</button> --}}
-              <button {{action (perform addNoteTask)}} class="{{if submissionTask.isRunning 'disabled'}}">
-                {{#if addNoteTask.isRunning }}
-                  Saving..
-                {{else}}
-                  Save
-                {{/if}}
-              </button>
+            <button class="button-solid" {{action (perform addNoteTask)}}
+              class="{{if submissionTask.isRunning 'disabled'}}">
+              {{#if addNoteTask.isRunning }}
+              Saving..
+              {{else}}
+              Save
+              {{/if}}
+            </button>
           </div>
         </div>
       </div>

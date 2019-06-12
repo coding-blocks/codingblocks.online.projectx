@@ -17,26 +17,26 @@
         </thead>
         <tbody>
           {{#each displayedLeaderboard as |row index|}}
-            <tr>
-              <td>{{inc index 1}}</td>
-              <td>
-                <img src="{{defaultPhoto row.photo row.id}}" class="img-circle marginR10" width="25">
-                {{row.userName}}
-              </td>
-              <td>
-                {{if (or (not row.collegeName) (eq row.collegeName '---OTHER / NOT LISTED / NO COLLEGE ---')) 'N/A' row.collegeName}}
-              </td>
-              <td>{{row.score}}</td>
-            </tr>
+          <tr>
+            <td>{{inc index 1}}</td>
+            <td>
+              <img src="{{defaultPhoto row.photo row.id}}" class="img-circle marginR10" width="25">
+              {{row.userName}}
+            </td>
+            <td>
+              {{if (or (not row.collegeName) (eq row.collegeName '---OTHER / NOT LISTED / NO COLLEGE ---')) 'N/A' row.collegeName}}
+            </td>
+            <td>{{row.score}}</td>
+          </tr>
           {{/each}}
         </tbody>
       </table>
       {{#if (lt limit leaderboard.length)}}
-        <div class="row justify-content-center">
-          <div class="button-dashed" {{action 'loadMore'}}>
-            <button>Load More</button>
-          </div>
-        </div>
+      <div class="row justify-content-center">
+
+        <button class="button-dashed" {{action 'loadMore'}}>Load More</button>
+
+      </div>
       {{/if}}
     </div>
   </div>

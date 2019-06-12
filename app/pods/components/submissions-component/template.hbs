@@ -1,116 +1,116 @@
 <div class="c-pb-submissions">
   {{#each problem.submissions as |submission| }}
-    <div class="card">
-      <div class="row">
-        <div class="col-4">
-          <div class="circle-container">
-            <div class="circle-back circle-md pass d-flex justify-content-center">
-              <p class="progress-text align-self-center">{{submission.language}}</p>
-            </div>
+  <div class="card">
+    <div class="row">
+      <div class="col-4">
+        <div class="circle-container">
+          <div class="circle-back circle-md pass d-flex justify-content-center">
+            <p class="progress-text align-self-center">{{submission.language}}</p>
           </div>
+        </div>
 
-        </div>
-        <div class="col-4">
-          <div class="status-circle">
-            <div class="circle-back"></div>
-            <div class="circle-front d-flex justify-content-center">
-              <p class="progress-text align-self-center">{{submission.score}}</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="circle-container">
-            <div class="circle-back circle-md pass d-flex justify-content-center">
-              <p class="progress-text align-self-center">1</p> <!-- Hardcode for now -->
-            </div>
+      </div>
+      <div class="col-4">
+        <div class="status-circle">
+          <div class="circle-back"></div>
+          <div class="circle-front d-flex justify-content-center">
+            <p class="progress-text align-self-center">{{submission.score}}</p>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-4 para">Language Used</div>
-        <div class="col-4 para">Total Score</div>
-        <div class="col-4 para">Time Taken(ms)</div>
-      </div>
-
-      <div class="divider"></div>
-      <div class="test-cases row no-gutters">
-        {{#if submission.explanation}}
-          <strong>Explanation: </strong>
-          <div class="col-12 d-flex justify-content-center">
-            {{#if (eq submission.explanation "Perfect")}}
-              Congratulations, you passed every test case! Surely Hacker Blocks has harder
-              problems for you to solve!
-            {{else if (eq submission.explanation "FailedTestcase")}}
-              Dang! You couldn't score a perfect 100 because you failed one or
-              more testcases. This means that your program didn't account for
-              all input cases (did you account for negative numbers, for example?).
-            {{else if (eq submission.explanation "TimeLimitExceeded")}}
-              Dang! Your program was too slow to compute the answer to one or more
-              testcases. Think - is there a more efficient way to arrive at the
-              solution than brute force?
-            {{else if (eq submission.explanation "CompilationError")}}
-              Your code failed to compile. Check your program carefully for mistakes
-              (missing semicolons, for example).
-            {{else if (eq submission.explanation  "ContestOver")}}
-              Note: You were not awarded any points as this contest
-              has ended. Find more contests you can participate in
-              <a href="http://hack.codingblocks.com/contests">here</a>!
-            {{else if (eq submission.explanation  "TestcaseUnlocked")}}
-              Note: You were not awarded any points for this solution
-              because you have unlocked the testcases to this problem.
-            {{else if (eq submission.explanation  "EditorialUnlocked")}}
-              Note: You were not awarded any points for this solution
-              because you have unlocked the editorial to this problem.
-            {{/if}}
+      <div class="col-4">
+        <div class="circle-container">
+          <div class="circle-back circle-md pass d-flex justify-content-center">
+            <p class="progress-text align-self-center">1</p> <!-- Hardcode for now -->
           </div>
-        {{/if}}
-        {{#unless submission.isErrored}}
-          <div class="col-6">
-            <div class="row no-gutters">
-              <div class="col-4">
-                <div class="circle-container">
-                  <div class="circle-back circle-sm pass d-flex justify-content-center">
-                    <p class="progress-text align-self-center">{{submission.passedTestCasesArray.length}}</p>
-                  </div>
-                </div>
-
-              </div>
-              <div class="col-8">
-                <div class="para">
-                  Test Cases Passed
-                </div>
-                <div class="para">
-                  {{submission.passedTestCases}}
-                  <!-- MUST use spaces btw testcase number-->
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="row no-gutters">
-              <div class="col-4">
-                <div class="circle-container">
-                  <div class="circle-back circle-sm fail d-flex justify-content-center">
-                    <p class="progress-text align-self-center">{{submission.failedTestCasesArray.length}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-8">
-                <div class="para">
-                  Test Cases Failed
-                </div>
-                <div class="para">
-                  {{submission.failedTestCases}}
-                </div>
-              </div>
-            </div>
-          </div>
-        {{/unless}}
-      </div>
-      <div class="button-solid" {{action 'viewSubmission' submission}}>
-        <button>View Submission</button>
+        </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-4 para">Language Used</div>
+      <div class="col-4 para">Total Score</div>
+      <div class="col-4 para">Time Taken(ms)</div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="test-cases row no-gutters">
+      {{#if submission.explanation}}
+      <strong>Explanation: </strong>
+      <div class="col-12 d-flex justify-content-center">
+        {{#if (eq submission.explanation "Perfect")}}
+        Congratulations, you passed every test case! Surely Hacker Blocks has harder
+        problems for you to solve!
+        {{else if (eq submission.explanation "FailedTestcase")}}
+        Dang! You couldn't score a perfect 100 because you failed one or
+        more testcases. This means that your program didn't account for
+        all input cases (did you account for negative numbers, for example?).
+        {{else if (eq submission.explanation "TimeLimitExceeded")}}
+        Dang! Your program was too slow to compute the answer to one or more
+        testcases. Think - is there a more efficient way to arrive at the
+        solution than brute force?
+        {{else if (eq submission.explanation "CompilationError")}}
+        Your code failed to compile. Check your program carefully for mistakes
+        (missing semicolons, for example).
+        {{else if (eq submission.explanation  "ContestOver")}}
+        Note: You were not awarded any points as this contest
+        has ended. Find more contests you can participate in
+        <a href="http://hack.codingblocks.com/contests">here</a>!
+        {{else if (eq submission.explanation  "TestcaseUnlocked")}}
+        Note: You were not awarded any points for this solution
+        because you have unlocked the testcases to this problem.
+        {{else if (eq submission.explanation  "EditorialUnlocked")}}
+        Note: You were not awarded any points for this solution
+        because you have unlocked the editorial to this problem.
+        {{/if}}
+      </div>
+      {{/if}}
+      {{#unless submission.isErrored}}
+      <div class="col-6">
+        <div class="row no-gutters">
+          <div class="col-4">
+            <div class="circle-container">
+              <div class="circle-back circle-sm pass d-flex justify-content-center">
+                <p class="progress-text align-self-center">{{submission.passedTestCasesArray.length}}</p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-8">
+            <div class="para">
+              Test Cases Passed
+            </div>
+            <div class="para">
+              {{submission.passedTestCases}}
+              <!-- MUST use spaces btw testcase number-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row no-gutters">
+          <div class="col-4">
+            <div class="circle-container">
+              <div class="circle-back circle-sm fail d-flex justify-content-center">
+                <p class="progress-text align-self-center">{{submission.failedTestCasesArray.length}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="para">
+              Test Cases Failed
+            </div>
+            <div class="para">
+              {{submission.failedTestCases}}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/unless}}
+    </div>
+
+    <button class="button-solid" {{action 'viewSubmission' submission}}>View Submission</button>
+
+  </div>
   {{/each}}
   {{view-submissions-modal submission=submissionToView open=showSubmissionModal}}
 </div>

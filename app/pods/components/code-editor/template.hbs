@@ -10,40 +10,33 @@
 
   {{!-- We can only collab if we have a ref --}}
   {{#if this.ref}}
-    <EditorCollabToggle class="collab-toggle"
-      @isCollaborating={{this.isCollaborating}}
-      @onChange={{setCollabModeTask}}
-    />
+  <EditorCollabToggle class="collab-toggle" @isCollaborating={{this.isCollaborating}} @onChange={{setCollabModeTask}} />
   {{/if}}
-  
+
   <!-- code-editor -- result-->
   <div class="options-result">
     <div class="editor-options row no-gutters justify-content-between">
       <div class="row no-gutters">
         <div class="select-list align-self-center pl-3">
-          <div
-            class="select-box pointer row justify-content-between align-items-center p-2"
-            onclick={{action "openLanguageSelectBox"}}
-          >
+          <div class="select-box pointer row justify-content-between align-items-center p-2"
+            onclick={{action "openLanguageSelectBox"}}>
             {{selectedLanguage.name}}
             {{#if isLanguageSelectOpen}}
-              <span>
-                <i class="fas fa-angle-up"></i>
-              </span>
+            <span>
+              <i class="fas fa-angle-up"></i>
+            </span>
             {{else}}
-              <span>
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <span>
+              <i class="fas fa-angle-down"></i>
+            </span>
             {{/if}}
           </div>
-          <div
-            class="open-select-box {{if isLanguageSelectOpen "display-block"}}"
-          >
+          <div class="open-select-box {{if isLanguageSelectOpen "display-block"}}">
             <ul>
               {{#each allLanguages as |language|}}
-                <li class="pointer" {{action selectLanguage language}}>
-                  {{language.name}}
-                </li>
+              <li class="pointer" {{action selectLanguage language}}>
+                {{language.name}}
+              </li>
               {{/each}}
             </ul>
           </div>
@@ -56,23 +49,23 @@
       <div class="row p-0">
         <button class="red" {{action "toggle" "editorial"}}>
           {{#if code.editorial}}
-            <i class="fas fa-book-open"></i>View Editorial
+          <i class="fas fa-book-open"></i>View Editorial
           {{else}}
-            <i class="fas fa-lock"></i>Unlock Editorial
+          <i class="fas fa-lock"></i>Unlock Editorial
           {{/if}}
         </button>
         <div class="align-self-center pl-3">
-          <div class="button-solid {{if isTaskRunning "disabled"}}">
+        
             {{#if isTaskRunning}}
-              <button disabled>
-                Executing your code
-              </button>
+            <button class="button-solid {{if isTaskRunning "disabled"}}" disabled>
+              Executing your code
+            </button>
             {{else}}
-              <button onclick={{action "submitCode"}}>
-                Submit Code
-              </button>
+            <button class="button-solid {{if isTaskRunning "disabled"}}" onclick={{action "submitCode"}}>
+              Submit Code
+            </button>
             {{/if}}
-          </div>
+        
         </div>
       </div>
     </div>
@@ -86,25 +79,21 @@
               </p>
             </div>
             <div class="col-md-6">
-              <div class="button-solid {{if isTaskRunning "disabled"}}">
-                {{#if isTaskRunning}}
-                  <button disbaled>
-                    Running Code
-                  </button>
-                {{else}}
-                  <button onclick={{action "runCode"}}>
-                    Run Code
-                  </button>
-                {{/if}}
-              </div>
+
+              {{#if isTaskRunning}}
+              <button class="button-solid {{if isTaskRunning "disabled"}}" disbaled>
+                Running Code
+              </button>
+              {{else}}
+              <button class="button-solid {{if isTaskRunning "disabled"}}" onclick={{action "runCode"}}>
+                Run Code
+              </button>
+              {{/if}}
+
             </div>
           </div>
           <div class="row">
-            <div
-              class="input-box col-md-12"
-              contenteditable="true"
-              oninput={{action "changeCustomInput"}}
-            ></div>
+            <div class="input-box col-md-12" contenteditable="true" oninput={{action "changeCustomInput"}}></div>
           </div>
         </div>
         <div class="output p-3 col-md-6 col-sm-6 col-xs-12">
@@ -114,7 +103,7 @@
                 Output :
                 <span>
                   {{#if isRunOutput}}
-                    {{runCodeTask.last.value.result}}
+                  {{runCodeTask.last.value.result}}
                   {{/if}}
                 </span>
               </p>
@@ -123,15 +112,15 @@
           <div class="row">
             <div class="input-box col-md-12">
               {{#if isRunOutput}}
-                {{#if runCodeTask.last.value.error}}
-                  <pre class="m-0">{{base64 "decode" runCodeTask.last.value.error}}</pre>
-                {{else if runCodeTask.last.value.data}}
-                  <pre class="m-0">{{base64 "decode" runCodeTask.last.value.data.output}}</pre>
-                {{/if}}
+              {{#if runCodeTask.last.value.error}}
+              <pre class="m-0">{{base64 "decode" runCodeTask.last.value.error}}</pre>
+              {{else if runCodeTask.last.value.data}}
+              <pre class="m-0">{{base64 "decode" runCodeTask.last.value.data.output}}</pre>
+              {{/if}}
               {{else if submitCodeTask.last.value.error}}
-                <pre class="m-0">{{base64 "decode" submitCodeTask.last.value.error}}</pre>
+              <pre class="m-0">{{base64 "decode" submitCodeTask.last.value.error}}</pre>
               {{else if submitCodeTask.last.value.data}}
-                <code>
+              <code>
                   {{#each
                     submitCodeTask.last.value.data.testcases as |testcase index|
                   }}
