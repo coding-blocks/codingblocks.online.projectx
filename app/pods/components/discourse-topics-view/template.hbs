@@ -1,24 +1,24 @@
-<div class="container c-doubt mt-5">
+<div class="c-dashboard-doubts border-card p-4 p-sm-5 mb-5">
   {{#if recent}}
     Hi
   {{else}}
-  <div class="d-flex head">
-    <div class="heading-u mr-auto">
-      Ask your doubts ({{topic_list.topics.length}})
+    <div class="d-flex head">
+      <h4 class="mr-auto">
+        Ask your doubts ({{topic_list.topics.length}})
+      </h4>
+      <a href="{{redirectLink}}" target="_blank">  
+        <button class="button-solid">Discussion Forum</button>
+      </a>
     </div>
-    <a href="{{redirectLink}}" target="_blank">
-        <div class="button-solid right-head-button">
-            <button>Discussion Forum</button>
-        </div>
-    </a>
-  </div>
 
-  <div class="row doubts-box m-0">
-    <div class="col-12">
-      {{#each topic_list.topics as |topic|}}
-        {{doubt-view topicId=topic.id}}
-      {{/each}}
-    </div>
-  </div>
+    {{#if loading}}
+      {{loader-component}}
+    {{else}}
+      <div class="list-divided border-none">
+        {{#each topic_list.topics as |topic|}}
+          {{doubt-view topicId=topic.id}}
+        {{/each}}
+      </div>
+    {{/if}}
   {{/if}}
 </div>

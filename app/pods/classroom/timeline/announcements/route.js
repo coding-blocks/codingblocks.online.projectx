@@ -23,12 +23,13 @@ export default Route.extend({
             },
             sort: '-createdAt'
           }),
-          run: this.modelFor('classroom.timeline')
+          run: this.modelFor('classroom.timeline').run
       });
   },
   setupController(controller, model) {
     controller.set("announcements", model.announcement)
     controller.set("meta",model.announcement.get("meta"))
     controller.set("course", model.run.get("course"))
+    controller.set("run", model.run)
   },
 });

@@ -1,88 +1,138 @@
-<div class="container">
-  <div class="classroom-container row">
-    <div class="classroom-header-box col-md-6 col-12 pl-0">
-      <div class="classroom-header row no-gutters">
-        <div class="classroom-image col-2">
-          <img class="round" src={{run.course.logo}}>
+<div class="container mt-5">
+  <div class="border-card bg-gradient-black-lr c-course-progress mb-4">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="img-desc mb-5">
+          <div class="col-4 col-md-3 pl-0 pr-5">
+            <img class="round round-img-b" src="{{run.course.logo}}" alt="">
+          </div>
+
+          <div class="description">
+            <div>
+              <h2>
+                {{#link-to 'courses.id' run.course.identifier activeClass="" class="white"}} {{run.course.title}}
+                {{/link-to}}
+              </h2>
+              <div class="font-mds">
+                Taught By:
+                {{#each run.course.instructors as |instructor index|}}
+                {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
+                {{/each}}
+              </div>
+            </div>
+            <div class="red semi-bold font-mds">
+              Batch Ends {{moment-format run.topRunAttempt.endDate "DD-MMM-YY"}}
+            </div>
+          </div>
         </div>
-        <div class="classroom-text col-10 pl-3 d-flex flex-column justify-content-center">
-          <h3 class="m-0">{{#link-to 'courses.id' run.course.identifier activeClass="" class="bold"}} {{run.course.title}} {{/link-to}}</h3>
-          <h6 class="red normal m-0">Batch Ends {{moment-format run.topRunAttempt.endDate "DD-MMM-YY"}}</h6>
-        </div>
-        <div class="rating mob">
+
+        <div class="d-flex">
+          <strong class="font-md">Rate this course?</strong>
           {{#if runAttempt.premium}}
-          {{log 'userRating' userRating}}
-            {{#rating-stars course=run.course showModal=true initialRating=userRating isShowingModal=showFeedback}} {{/rating-stars}}
+            {{#rating-stars course=run.course showModal=true initialRating=userRating isShowingModal=showFeedback}}
+            {{/rating-stars}}
           {{else}}
             {{rating-stars-static rating=run.course.rating showValue=true}}
           {{/if}}
         </div>
       </div>
-      <h2 class="classroom-para grey">
-        {{line-clamp
-          text=run.course.summary
-          lines=6}}
-      </h2>
-      <div class="rating">
-        <br>
-        {{#if runAttempt.premium}}
-          {{#rating-stars course=run.course showModal=true initialRating=userRating isShowingModal=showFeedback}} {{/rating-stars}}
-        {{else}}
-          {{rating-stars-static rating=run.course.rating showValue=true}}
-        {{/if}}
-      </div>
-    </div>
-    <div class="course-progress-box col-md-6 col-12 pt-md-4 pt-sm-3 pr-0">
-      <div class="course-progress-heading row no-gutters">
-        <div class="heading col-4 col-md-6 align-self-center">Course Progress</div>
-        <div class="divider-h col-6 align-self-center"></div>
-      </div>
 
-      <div class="progress row no-gutters align-items-center mb-3">
-        <div class="progress col-10 col-md-11">
-          <progress max="100" value="{{percentage run.completedContents run.totalContents}}"></progress>
-        </div>
-        <div class="col-2 pl-3 col-md-1">
-          {{percentage run.completedContents run.totalContents}}%
-        </div>
-      
+      <div class="col-1 dsp-md-none">
+        <div class="divider-v mx-auto"></div>
       </div>
-      <div class="row no-gutters justify-content-between">
-        <span>{{run.completedContents}} of {{run.totalContents}} Contents Completed</span>
-        <button class="red" {{action 'resetProgress'}}>Reset Progress</button>
-      </div>
-      
-      <div class="row justify-content-around mt-md-5 mt-3">
-        {{#if showBuyNow}}
-        <div class="col-6 col-md-5">
-          {{#link-to 'courses.id' run.course.identifier tagName="button" activeClass="" class="button-solid"}} Buy Now
+      <div class="divider-h d-md-none my-4"></div>
+
+      <div class="col-12 col-md-5 extra-bold">
+        <h4 class="mb-3">
+          Course Progress
+        </h4>
+
+        <div class="progress row no-gutters align-items-center mb-2">
+          <div class="progress col-10 col-md-11">
+            <progress max="100" value="{{percentage run.completedContents run.totalContents}}"></progress>
+          </div>
+          <div class="col-2 pl-3 col-md-1 font-md">
+            {{percentage run.completedContents run.totalContents}}%
+          </div>
+
+        </div>
+        <div class="row no-gutters justify-content-between mb-4">
+          <span class="font-mds extra-bold">{{run.completedContents}} of {{run.totalContents}} Lectures Completed</span>
+          <button class="red font-sm regular" {{action 'resetProgress'}}>Reset Progress</button>
+        </div>
+
+        <div class="row no-gutters font-sm pt-3">
+          {{#if showBuyNow}}
+          {{#link-to 'courses.id' run.course.identifier tagName="button" activeClass="" class="button-solid mr-3"}} Buy
+          Now
+          {{/link-to}}
+          {{/if}}
+
+          {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass="" class="button-dashed"}} Resume
           {{/link-to}}
         </div>
-        {{/if}}
-        <div class="col-6 col-md-5">
-          {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass="" class="button-dashed"}} Resume Learning {{/link-to}}
-        </div>
-      
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row pt-3">
+    <div class="col-12 col-md-3">
+      <div class="br-15 bottom-nav bg-light-grey p-3">
+        <ul class="row m-0 font-md justify-content-between">
+          {{#link-to 'classroom.timeline.announcements' class="col-3 col-sm-2 col-md-12 row align-items-center pointer" tagName="li"}}
+            <div class="col-md-3 col-12 pr-3 t-align-c">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="dsp-none-md col-9 b-bottom py-4">Dashboard</div>
+          {{/link-to}}
+          {{#link-to 'classroom.timeline.overview' class="col-3 col-sm-2 col-md-12 row align-items-center pointer" tagName="li"}}
+            <div class="col-md-3 col-12 pr-3 t-align-c">
+              <i class="fa fa-list" aria-hidden="true"></i>
+            </div>
+            <div class="dsp-none-md col-9 b-bottom py-4">About Course</div>
+          {{/link-to}}
+          {{#link-to 'classroom.timeline.doubts' class="col-3 col-sm-2 col-md-12 row align-items-center pointer" tagName="li"}}
+            <div class="col-md-3 col-12 pr-3 t-align-c">
+              <i class="far fa-question-circle"></i>
+            </div>
+            <div class="dsp-none-md col-9 b-bottom py-4">Doubts</div>
+          {{/link-to}}
+          {{#link-to 'classroom.timeline.contents' class="col-3 col-sm-2 col-md-12 row align-items-center pointer" tagName="li"}}
+            <div class="col-md-3 col-12 pr-3 t-align-c">
+              <i class="far fa-file"></i>
+            </div>
+            <div class="dsp-none-md col-9 py-4">Curriculum</div>
+          {{/link-to}}
+        </ul>
+      </div>
+    </div>
+    {{liquid-outlet class="col-md-6 col-12 order-1 order-md-0"}}
+
+    <div class="col-12 col-md-3 order-0 order-md-1">
+      {{#if run.whatsappLink}}
+        <a href="{{run.whatsappLink}}" class="pointer" target="blank">
+          <div class="border-card border-none bg-light-green mb-5 white">
+            <i class="fab fa-whatsapp fa-2x mr-2"></i>
+            <strong class="font-md">Join Whatsapp Group</strong>
+          </div>
+        </a>
+      {{/if}}
+      {{certificate-comp runAttempt=runAttempt}}
+
+      <div class="border-card extra-bold font-mds bg-gradient-black-bt dsp-none-md">
+        <p class="white">
+          Get recruited by top multinational
+          companies and get worldwide
+          recongnition!
+        </p>
+        <p class="red">
+          Complete this course now & Apply
+          to jobs on Hiring Blocks
+        </p>
+        {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass="" class="button-solid"}} Resume
+        {{/link-to}}
       </div>
     </div>
   </div>
 </div>
-<div class="tab-nav">
-  {{link-to 'Overview' 'classroom.timeline.overview' class="tab-items" tagName="div"}}
-  {{#link-to 'classroom.timeline.overview' class="tab-icons" tagName="div"}}
-    <img src="/images/menu-white.svg" alt="Overview">
-  {{/link-to}}
-  {{link-to 'Course Content' 'classroom.timeline.contents'class="tab-items" tagName="div"}}
-  {{#link-to 'classroom.timeline.contents'class="tab-icons" tagName="div"}}
-    <img src="/images/docs-white.svg" alt="Course Content">
-  {{/link-to}}
-  {{link-to 'Announcements' 'classroom.timeline.announcements'class="tab-items" tagName="div"}}
-  {{#link-to 'classroom.timeline.announcements'class="tab-icons" tagName="div"}}
-  <img src="/images/announcement-white.svg" alt="Announcements">
-  {{/link-to}}
-  {{link-to 'Ask Your Doubts' 'classroom.timeline.doubts' class="tab-items" tagName="div"}}
-  {{#link-to 'classroom.timeline.doubts' class="tab-icons" tagName="div"}}
-    <img src="/images/support-white.svg" alt="Ask Your Doubts">
-  {{/link-to}}
-</div>
-{{liquid-outlet}}

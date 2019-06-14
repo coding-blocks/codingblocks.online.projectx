@@ -13,7 +13,6 @@
   </div>
 {{else}}
   <div>
-    <span class="bold">Loving this course? &nbsp;&nbsp;</span>
     {{#each (range 1 (inc scale)) as |index|}}
       <span
         class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
