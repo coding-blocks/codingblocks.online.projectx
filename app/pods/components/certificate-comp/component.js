@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { alias, and, not } from '@ember/object/computed';
 import { computed } from '@ember/object';
 import { task } from 'ember-concurrency';
-
+import DS from 'ember-data';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
@@ -11,8 +11,18 @@ export default Component.extend({
   router: service(),
 
   run: alias('runAttempt.run'),
-  courseCompleted: computed('run.completedContents', 'run.totalContents', function () {
-    return (this.get('run.completedContents') / this.get('run.totalContents')) > (this.get('run.completionThreshold')/100)
+  courseCompleted: computed('progress', 'run.completionThreshold', function () {
+    const courseCompleted = this.progress.then(progress => {
+      return progress.completedContents / progress.totalContents > (this.get('run.completionThreshold')/100)
+    })
+    return DS.PromiseObject.create({
+      promise: courseCompleted
+    })
+  }),
+  progress: computed('runAttempt', function () {
+    return DS.PromiseObject.create({
+      promise: this.api.request(`run_attempts/${this.runAttempt.id}/progress`)
+    })
   }),
   certificateNotPresent: not('runAttempt.certificate'),
   canGenerate: and('courseCompleted', 'runAttempt.certificateApproved'),

@@ -40,15 +40,15 @@
 
       <div class="progress row no-gutters align-items-center mb-3">
         <div class="progress col-10 col-md-11">
-          <progress max="100" value="{{percentage run.completedContents run.totalContents}}"></progress>
+          <progress max="100" value="{{percentage progress.completedContents progress.totalContents}}"></progress> 
         </div>
         <div class="col-2 pl-3 col-md-1">
-          {{percentage run.completedContents run.totalContents}}%
+          {{percentage progress.completedContents progress.totalContents}}%
         </div>
       
       </div>
       <div class="row no-gutters justify-content-between">
-        <span>{{run.completedContents}} of {{run.totalContents}} Contents Completed</span>
+        <span>{{progress.completedContents}} of {{progress.totalContents}} Contents Completed</span>
         <button class="red" {{action 'resetProgress'}}>Reset Progress</button>
       </div>
       

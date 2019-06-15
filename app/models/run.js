@@ -1,8 +1,11 @@
 import { computed } from '@ember/object';
 import DS from 'ember-data';
 import moment from 'moment';
+import { inject as service } from '@ember/service';
 
 export default DS.Model.extend({
+  api: service(),
+
   name: DS.attr(),
   start: DS.attr(),
   end: DS.attr(),
@@ -27,7 +30,7 @@ export default DS.Model.extend({
   }),
   isStarted: computed('start', function () {
     return this.start < +new Date()/1000;
-  }),
+}),
   startString: computed('start', function () {
     return new Date(this.start*1000).toISOString().substring(0, 10);
   }),
