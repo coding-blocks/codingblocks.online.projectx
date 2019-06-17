@@ -1,0 +1,25 @@
+<div class="t-align-c mb-5">
+  <h2 class="pb-4 pt-4">Leaderboard</h2>
+  <div class="c-overview-leaderboard">
+    <div class="border-card">
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Score</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        {{#each lb as |lb index| }}
+          <tr>
+            <td>{{inc index}}</td>
+            <td>{{concat lb.firstname ' ' lb.lastname}}</td>
+            <td>{{lb.score}}</td>
+            <td>{{lb.createdAt}}</td>
+          </tr>
+        {{/each}}
+      </table>
+    </div>
+  </div>
+</div>
