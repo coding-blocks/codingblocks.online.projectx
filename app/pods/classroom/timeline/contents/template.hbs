@@ -24,12 +24,12 @@
                         </div>
                         {{/if}}
 
-                        <div class="status-circle">
+                        <div class="status-circle s-30x30">
                             {{#if (and section.premium (not model.premium))}}
                             <i class="fas fa-lock grey"></i>
                             {{else}}
-                            <img class="jugaadu-img" src="{{if content.isDone '/images/green.svg' '/images/white.svg'}}"
-                                alt="">
+                            <div class="circle-back"></div>
+                            <div class="circle-front"></div>
                             {{/if}}
                         </div>
 

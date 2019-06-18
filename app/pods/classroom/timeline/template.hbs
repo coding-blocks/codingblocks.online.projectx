@@ -26,15 +26,12 @@
           </div>
         </div>
 
-        <div class="d-flex">
-          <strong class="font-md">Rate this course?</strong>
-          {{#if runAttempt.premium}}
-            {{#rating-stars course=run.course showModal=true initialRating=userRating isShowingModal=showFeedback}}
-            {{/rating-stars}}
-          {{else}}
-            {{rating-stars-static rating=run.course.rating showValue=true}}
-          {{/if}}
-        </div>
+        {{#if runAttempt.premium}}
+          {{#rating-stars course=run.course showModal=true initialRating=userRating isShowingModal=showFeedback}}
+          {{/rating-stars}}
+        {{else}}
+          {{rating-stars-static rating=run.course.rating showValue=true}}
+        {{/if}}
       </div>
 
       <div class="col-1 dsp-md-none">
