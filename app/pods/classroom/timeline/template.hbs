@@ -4,19 +4,20 @@
       <div class="col-12 col-md-6">
         <div class="img-desc mb-5">
           <div class="col-4 col-md-3 pl-0 pr-5">
-            <img class="round round-img-b" src="{{run.course.logo}}" alt="">
+            <img class="round round-img-b" src={{run.course.logo}} alt="">
           </div>
 
           <div class="description">
             <div>
               <h2>
-                {{#link-to 'courses.id' run.course.identifier activeClass="" class="white"}} {{run.course.title}}
+                {{#link-to "courses.id" run.course.identifier activeClass="" class="white"}} 
+                  {{run.course.title}}
                 {{/link-to}}
               </h2>
               <div class="font-mds">
                 Taught By:
                 {{#each run.course.instructors as |instructor index|}}
-                {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
+                  {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
                 {{/each}}
               </div>
             </div>
@@ -46,26 +47,27 @@
 
         <div class="progress row no-gutters align-items-center mb-2">
           <div class="progress col-10 col-md-11">
-            <progress max="100" value="{{percentage run.completedContents run.totalContents}}"></progress>
+            <progress max="100" value={{percentage progress.completedContents progress.totalContents}}></progress>
           </div>
           <div class="col-2 pl-3 col-md-1 font-md">
-            {{percentage run.completedContents run.totalContents}}%
+            {{percentage progress.completedContents progress.totalContents}}%
           </div>
 
         </div>
         <div class="row no-gutters justify-content-between mb-4">
-          <span class="font-mds extra-bold">{{run.completedContents}} of {{run.totalContents}} Lectures Completed</span>
-          <button class="red font-sm regular" {{action 'resetProgress'}}>Reset Progress</button>
+          <span class="font-mds extra-bold">{{progress.completedContents}} of {{progress.totalContents}} Contents Completed</span>
+          <button class="red font-sm regular" {{action "resetProgress"}}>Reset Progress</button>
         </div>
 
         <div class="row no-gutters font-sm pt-3">
           {{#if showBuyNow}}
-          {{#link-to 'courses.id' run.course.identifier tagName="button" activeClass="" class="button-solid mr-3"}} Buy
-          Now
-          {{/link-to}}
+            {{#link-to "courses.id" run.course.identifier tagName="button" activeClass="" class="button-solid mr-3"}} 
+              Buy Now
+            {{/link-to}}
           {{/if}}
 
-          {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass="" class="button-dashed"}} Resume
+          {{#link-to "attempt" run.topRunAttempt.id tagName="button" activeClass="" class="button-dashed"}}
+            Resume
           {{/link-to}}
         </div>
       </div>

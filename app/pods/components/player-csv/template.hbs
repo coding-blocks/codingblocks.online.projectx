@@ -4,10 +4,13 @@
     <div class="description mb-3">
       {{markdown-to-html csv.description extensions='katex'}}
     </div>
-    <hr>
+    <hr />
     <div class="d-flex align-items-center mt-2 mb-3">
       <h3 class="mr-3">UPLOAD SOLUTION: </h3> {{file-input link=url onComplete=(action 'onUploadComplete')}}
-     
+    </div>
+    <hr />
+    <div class="d-flex-align-items-center">
+      {{player-csv-leaderboard csvId=csv.id}}
     </div>
   </div>
 
