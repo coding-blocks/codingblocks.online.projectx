@@ -1,371 +1,85 @@
-<div class="container mt-5">
-    <!-------------------------------------------Recent Activity----------------------------------->
+<div class="border-card p-4 p-sm-5 mb-5">
+  <h4 class="mb-5">Summary</h4>
 
-    <div class="container-fluid pl-0 pr-0">
-        <div class="c-overview-recent row">
-            <div class="col-12 col-md-6">
-                <div class="border-card">
-                    <div class="heading">
-                        Recent Activity
-                    </div>
-                    <div class="card-content">
-                        {{#if (eq recentEvents.length 0)}}
-                            <div class="row">
-                              <div class="col-2">
-                                <div class="notify-type">
-                                  <div class="notify-icon">
-                                    <span class="notify-dot"></span>
-                                    <img src="/images/support.svg" alt="">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="card-text col-10 align-self-center">
-                                All the recent doubts asked by your peers will be
-                                displayed here !
-                              </div>
-                            </div>
-                      
-                        {{else}}
-                            {{#each recentEvents as |event|}}
-                            <div class="row">
-                              <div class="col-2">
-                                <div class="notify-type">
-                                  <div class="notify-icon">
-                                    <span class="notify-dot"></span>
-                                    <img src="/images/{{event.icon}}" alt="">
-                                  </div>
-                                </div>
-                              </div>
+  <p class="grey">
+    {{markdown-to-html course.summary}}
+  </p>
 
-                              <div class="card-text col-10 align-self-center">
-                                {{#if (eq event.type 'announcement')}}
-                                  {{#link-to 'classroom.timeline.announcements' activeClass=""}}
-                                    {{event.payload.text}}
-                                  {{/link-to}}
-                                {{else}}
-                                  <a href="{{discussBaseUrl}}/t/{{event.payload.id}}" target="_blank">
-                                     {{event.payload.title}}
-                                  </a>
-                                {{/if}}
-                              </div>
-                              
-                              
-                            </div>
-                            {{/each}}
-                        {{/if}}
-                    </div>
-                    <div class="pull-right">
-                      {{#link-to 'classroom.timeline.doubts' tagName='div'}}
-                        Browse
-                        All{{/link-to}}
-                    </div>
-                </div>
+  {{#if course.topRun.tags}}
+    <p class="mt-4">
+      Major Topics Covered
+    </p>
 
-            </div>
-
-            <div class="col-12 col-md-6">
-              <div class="border-card">
-
-                {{certificate-comp runAttempt=runAttempt}}
-              </div>
-            </div>
-        </div>
+    <div>
+      {{#each course.topRun.tags as |tag|}}
+        <span class="pill m-2">{{tag.name}}</span>
+      {{/each}}
     </div>
-
-    <!-------------------------------------------Leaderboard----------------------------------->
-
-    {{run-leaderboard run=run}}
-
-    <!-------------------------------------------About this course----------------------------------->
-    <h3 class="mb-5">
-        About This Course
-    </h3>
-  <div class="c-overview-course">
-    <div class="row no-gutters flex-wrap-reverse">
-      <div class="course-features col-12 col-md-5">
-        <div class="row no-gutters justify-content-center">
-          <div class="img-box col-2 align-self-center">
-            <div class="img-container">
-              <div class="round-img">
-                <img src="/images/content-2.png" alt="">
-              </div>
-            </div>
-
-          </div>
-          <div class="para col-4 align-self-center">
-            100+ lecture Video Content
-          </div>
-          <div class="img-box col-2 align-self-center">
-            <div class="img-container">
-              <div class="round-img">
-                <img src="/images/revise-2.png" alt="">
-              </div>
-            </div>
-
-          </div>
-          <div class="para col-4 align-self-center">
-            Re-visit and Revise topics
-          </div>
-        </div>
-
-        <div class="row no-gutters justify-content-center">
-          <div class="img-box col-2 align-self-center">
-            <div class="img-container">
-              <div class="round-img">
-                <img src="/images/certificate-2.png" alt="">
-              </div>
-            </div>
-
-          </div>
-          <div class="para col-4 align-self-center">
-            Certification of Completion
-          </div>
-
-          <div class="img-box col-2 align-self-center">
-            <div class="img-container">
-              <div class="round-img">
-                <img src="/images/support-2.png" alt="">
-              </div>
-            </div>
-
-          </div>
-          <div class="para col-4 align-self-center">
-            24x7 mentor support
-          </div>
-        </div>
-
-      </div>
-
-      <div class="classroom-para col-12 offset-md-1 col-md-5">
-        {{line-clamp
-          text=run.course.summary
-          lines=6}}
-      </div>
-    </div>
-
-  </div>
+  {{/if}}
 </div>
-    <!-------------------------------------------About Instructors----------------------------------->
-    <div class="c-about-instructors mt-5">
-      <div class="container">
-        <h3 class="mb-5">
-          About Instructors
-        </h3>
-    
-    
-        <div class="row no-gutters">
-          {{#each course.instructors as |instructor|}}
-          <div class="col-12 col-md-6 mb-5">
-            <div class="img-desc row no-gutters">
-              <div class="col-3 pr-4">
-                <img class="round" src={{instructor.photo}} alt="photo of {{instructor.name}}">
-              </div>
-              <div class="description col-8">
-                <div class="heading-d">
-                  <h4 class="bold">
-                    {{instructor.name}}
-                  </h4>
-                  <div class="red font-sm mb-3">
-                    Mentor, Coding Blocks
-                    <br>
-                    <a href="mailto:{{instructor.email}}">{{instructor.email}}</a>
-                  </div>
-                  <div class="classroom-para">
-                    {{markdown-to-html instructor.description}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {{/each}}
-    
+
+<div class="border-card p-4 p-sm-5 mb-5">
+  <h4>Mentors</h4>
+  Know your Mentors for this course
+
+  <div class="divider-h mt-5 mb-5"></div>
+  {{#each course.instructors as |instructor|}}
+  <div class="img-desc row no-gutters mb-5">
+    <div class="col-3 pr-4">
+      <img class="round" src="{{instructor.photo}}" alt="">
+
+    </div>
+    <div class="description col-8">
+      <div class="heading-d">
+        <h6 class="bold">
+          {{instructor.name}}
+        </h6>
+        <div class="mb-3">
+          Mentor, Coding Blocks
+          <a href="mailto:{{instructor.email}}">{{instructor.email}}</a>
+        </div>
+        <div class="card-md">
+          {{instructor.description}}
         </div>
       </div>
-    </div>
 
-    <!-------------------------------------------About TAs----------------------------------->
-    {{#if run.ta.length}}
-      <div class="heading-u">
-          About Teaching Assistants
-      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
 
-      <div class="c-about-instructors">
-        <div class="row no-gutters">
-          {{#each run.ta as |ta|}}
-          <div class="col-12 col-md-6 mb-5">
-            <div class="img-desc row no-gutters">
-              <div class="col-3 pr-4">
-                <img class="round" src={{ta.photo}} alt="photo of {{ta.name}}">
-              </div>
-              <div class="description col-8">
-                <div class="heading-d">
-                  <h4 class="bold">
-                    {{ta.name}}
-                  </h4>
-                  <div class="red font-sm mb-3">
-                    Teaching Assistant, Coding Blocks
-                    <br>
-                    <a href="mailto:{{ta.email}}">{{ta.email}}</a>
-                  </div>
-                  <div class="classroom-para">
-                    {{markdown-to-html ta.description}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {{/each}}
-        </div>
-      </div>
-    {{/if}}
+<div class="border-card p-4 p-sm-5 mb-5">
+  <h4 class="mb-5">Course Introduction</h4>
 
-<div class="container">
-  <!------------------------------------------FAQs-------------------------------------------->
-    <div class="heading-u mt-5 mb-5">
-      Frequently Asked Questions
-    </div>
+  <div class="bold mb-3">Lectures</div>
+  <div class="grey card-md mb-4">
+    • 2 to 3 lectures will be released every week.
+    <br>
+    • There are In-Class Quizzes, Assignments, Notes along with Lecture Videos in a lecture. You should attempt them all
+    to
+    master each section that you study.
+    <br>
+    • You should complete the lectures within the week.
+  </div>
 
-    <div class="font-mds mb-4">
-      When do I complete an Assignment?
-    </div>
-    <div class="grey i mb-4">
-      You complete an assignment when you have attempted at least 80% of MCQ problems and you score an average of at least
-      80%
-      in code problems, within an assignment.
-    </div>
+  <div class="bold mb-3">Assignments and Tests</div>
+  <div class="grey card-md mb-4">
+    • After almost every lecture there will be one assignment.
+    <br>
+    • Assignments will have deadlines. Submissions after deadline will be subject to penalty (Penalty procedure is
+    explained
+    separately).
+    <br>
+    • Apart from assignments there will be frequent tests analysing your concepts and understanding.
+  </div>
 
-    <div class="font-mds mb-4">
-      When do I complete a Lecture?
-    </div>
-    <div class="grey i mb-4">
-      You complete a lecture when you have attempted at least 80% of objective problems, have scored at least 80% in each
-      code problems, and have seen at least 80% of the total videos, within a lecture.
-    </div>
-
-    <div class="font-mds mb-4">
-      When do I complete a Test?
-    </div>
-    <div class="grey i mb-4">
-      You complete a test when you have submitted the test.
-    </div>
-
-    <!------------------------------------------CI-------------------------------------------->
-    <div class="heading-u mt-5 mb-5">
-      Course Introduction
-    </div>
-
-    <div class="font-mds mb-4">
-      Lectures
-    </div>
-    <div class="grey i mb-4">
-      <ul class="list-style-disc ml-3">
-        <li>Lecture videos are provided in every section. </li>
-        <li>There are Quizzes, Assignments, Notes along with the Lecture videos in every section. You should attempt them all to master each section that you study. </li>
-        <li>You should complete the lectures within the deadlines. </li>
-        <li>Lecture videos will be available for the next 10 months from the date your course starts. </li>
-      </ul>
-    </div>
-
-    <div class="font-mds mb-4">
-      Challenges and Tests
-    </div>
-    <div class="grey i mb-4">
-      <ul class="list-style-disc ml-3">
-        <li>After every section, there will be a Challenges section. </li>
-        <li>These challenges are mandatory for all. Passing score is 70% of the total points. Each question is of 100 points. </li>
-        <li>Apart from these Challenges, there will be frequent tests analyzing your concepts and understanding. </li>
-      </ul>
-    </div>
-
-    <div class="font-mds mb-4">
-      Teaching Assistants and Doubts Resolution
-    </div>
-    <div class="grey i mb-4">
-      <ul class="list-style-disc ml-3">
-        <li>Apart from the mentors taking the course, there are teaching assistants in the course who will be taking your doubts.</li>
-        <li>You can ask doubt on any content that you are facing problem at, be it a video or a question. There is an “Ask Doubt” button on the top right corner to raise your doubt.</li>
-        <li>While Asking doubt give Proper title to your doubt and also provide your solution’s link after saving at CB IDE (ide.codingblocks.com).</li>
-        <li>Mention where you are stuck in the code/ or what problem you are facing clearly.</li>
-        <li>Your doubt will get resolved within 24 hours.</li>
-        <li>If you have any further query or you are not satisfied with the doubt’s solution you can reopen your doubt also, there is a “Reopen Doubt” button for that in Resolved doubts section.</li>
-        <li>For doubt resolution TA support will be available on all seven days.</li>
-        <li>You will get the TA support for next 6 months from the date your course starts.</li>
-      </ul>
-    </div>
-
-    <div class="font-mds mb-4">
-      Hint Videos and Video Solutions
-    </div>
-    <div class="grey i mb-4">
-      <ul class="list-style-disc ml-3">
-        <li>For some Challenges problems, there are hint videos which you can watch. Watching them won’t add any penalty.</li>
-      </ul>
-    </div>
-
-    <div class="font-mds mb-4">
-      Editorials and Test Case
-    </div>
-    <div class="grey i mb-4">
-      <ul class="list-style-disc ml-3">
-        <li>You can see editorials also of any problem and can check the solution code. There is an “Unlock Editorial” button to open the editorial.</li>
-        <li>You can download the test cases also for any problem. There is a “Download Testcases” button to download the test cases.</li>
-        <li>But after unlocking the editorial or downloading test cases, further submissions to that question will not fetch you any marks.</li>
-      </ul>
-    </div>
-
-    <div class="font-mds mb-4">
-      Grading and Leaderboard
-    </div>
-    <div class="grey i mb-4">
-      <ul class="list-style-disc ml-3">
-        <li>All the Quizzes and assignments are graded.</li>
-        <li>A Leaderboard is maintained for the batch which you can see under overview section in your course. Based on your score you can check your class rank.</li>
-        <li>Don’t copy your code from anywhere, we will detect the plagiarism in your codes and it may effect your grades and ranking on the leaderboard also.</li>
-      </ul>
-    </div>
-
-    <div class="font-mds mb-4">
-      Content Availability
-    </div>
-    <div class="grey i mb-4">
-      <ul class="list-style-disc ml-3">
-        <li>Lecture videos int the course will be accessible for the next ten months from the date your course get started.</li>
-        <li>Quizzes and Challenges will be available to you for lifetime.</li>
-      </ul>
-    </div>
-
-    <div class="font-mds mb-4">
-      Community Support
-    </div>
-    <div class="grey i mb-4">
-      <ul class="list-style-disc ml-3">
-        <li>We have our discuss platform <a href="https://discuss.codingblocks.com">(Discuss)</a> for community support where students can help each other by solving their doubts, like and upvote relevant questions and answers.</li>
-        <li>You will be having the access of discuss platform for lifetime.</li>
-        <li>To explore it more you can visit <a href="https://discuss.codingblocks.com">discuss.codingblocks.com</a>.</li>
-      </ul>
-    </div>
-
-    <div class="font-mds mb-4">
-      Certificate
-    </div>
-    <div class="grey i mb-4">
-      <ul class="list-style-disc ml-3">
-        <li>A Generate Certificate column is there which you can see under overview section in your course.</li>
-        <li>After completion of 90% of your course, you can request for mentor’s approval for your certificate. </li>
-        <li>Verify your details before requesting your certificate’s mentor approval.</li>
-        <li>After mentor’s approval you can get your certificate.</li>
-      </ul>
-    </div>
-
-    <div class="font-mds mb-4">
-      Endnote
-    </div>
-    <div class="grey i mb-4">
-      <ul class="list-style-disc ml-3">
-        <li>Ultimately, PRACTICE IS THE KEY TO SUCCESS!</li>
-        <li>The more you practice, better will be the result. Also, avoid missing lectures.</li>
-        <li>We wish all the best in this journey of learning. Happy Programming! :)</li>
-      </ul>
-    </div>
-
+  <div class="bold mb-3">Teaching Assistants and Doubts Resolution</div>
+  <div class="grey card-md mb-4">
+    • Apart from instructors taking the course, there are teaching assistants in the course who will be taking your
+    doubts.
+    <br>
+    • You can ask doubt on any content that you are facing problem at, be it a video or a question. There is an “Ask
+    Doubt”
+    button on the top right corner to raise your doubt.
+  </div>
 </div>

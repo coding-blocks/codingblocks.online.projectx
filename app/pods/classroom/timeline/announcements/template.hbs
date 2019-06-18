@@ -1,30 +1,27 @@
-<div class="container">
-  <div class="border-card accordion-card mt-5 mb-5">
-    <div class="c-accordion c-announcement">
-      <div class="list-divided border-none">
-        {{#unless announcements.length}}
-          <div class="classroom-para">
-            All announcements related to course will be shared here !
+{{run-leaderboard run=run}}
+
+<div class="c-announcements border-card p-4 p-sm-5 mb-5">
+  <h4 class="mb-4">Course Announcements</h4>
+  {{#unless announcements.length}}
+    <p>
+      All announcements related to course will be shared here !
+    </p>
+  {{/unless}}
+  <div class="list-divided border-none">
+    {{#each announcements as |announcement|}}
+      <div class="pt-4 mb-2">
+        <div class="img-desc align-items-center">
+          <img src="{{announcement.user.photo}}" alt="{{announcement.user.firstname}}" class="round s-30x30">
+          <div class="description ml-3">
+            <h6>{{announcement.user.firstname}} {{announcement.user.lastname}}
+              {{!<span class="tag red card-md ml-2">Mentor</span>}}</h6>
+            <span class="card-md grey">{{moment-from-now announcement.createdAt}}</span>
           </div>
-        {{/unless}}
-        {{#each announcements as |announcement|}}
-        <div class="list-divided border-none">
-          {{#accordion-head announcement=announcement course=course}}
-          <div class="row no-gutters">
-            <div class="classroom-para col-12 grey i">
-              {{markdown-to-html announcement.text}}
-            </div>
-          </div>
-            
-          {{/accordion-head}}
         </div>
-        {{/each}}
-        
-        <div class="row justify-content-center">
-          <button id="an-load-more" class="button-dashed {{if (and visible announcements) '' 'display-none'}}" onclick={{action 'updatePage'}}>Load More</button>
-        </div>
-        
+        <p class="overflow-hidden">
+          {{markdown-to-html announcement.text}}
+        </p>
       </div>
-    </div>
+    {{/each}}
   </div>
 </div>

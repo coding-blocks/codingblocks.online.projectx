@@ -93,9 +93,9 @@
           Major Topics Covered
         </p>
 
-        <div class="row">
+        <div>
           {{#each course.topRun.tags as |tag|}}
-          <div class="pill m-2">{{tag.name}}</div>
+            <span class="pill m-1">{{tag.name}}</span>
           {{/each}}
         </div>
         {{/if}}

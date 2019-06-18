@@ -68,5 +68,6 @@ export default DS.Model.extend({
     }, 0);
   }),
   ta: DS.hasMany('ta'),
-  runRequests: DS.hasMany('run-request')
+  runRequests: DS.hasMany('run-request'),
+  whatsappLink: DS.attr()
 })

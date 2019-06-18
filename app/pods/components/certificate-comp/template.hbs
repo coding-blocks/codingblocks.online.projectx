@@ -1,66 +1,129 @@
-{{#if run.certificateTemplate}}
-  <div class="c-certificate">
-    <div class="top-row">
-      <img src="/images/certification-i.svg" alt="">
-      <div class="right">
-        <div class="heading">Generate Certificate</div>
-        <div class="text">
-          <img src="/images/warning.svg" alt="">
-          Generate only when you are satisfied with your
-          current score. You are not allowed to regenerate it.
-        </div>
+<div class="c-certificate br-15 mb-5 white">
+  <div class="row justify-content-between no-gutters align-items-center" {{action 'toggleCollapse'}}>
+    <div class="img-desc font-mds">
+      {{!-- <div class="col-2">
+        <img src="/images/placeholder.gif" alt="">
+      </div> --}}
+      <div class="description">
+        <span>Generate </span>
+        <span>Certificate </span>
       </div>
     </div>
+    {{#if canDownload}}
+      <button class="button-solid" {{action 'downloadCertificate'}}> Download </button>
+    {{else if (or generating generationRequested)}}
+      <span class="tag black">Generating</span>
+    {{else if canGenerate}}
+      <button class="button-solid" {{action (perform generateCertificateTask)}}>Generate</button>
+    {{else if approvalRequested}}
+      <span class="tag black">Requested</span>
+    {{else if canRequest}}
+      <button class="button-solid" {{action (perform requestApprovalTask)}}>Request</button>
+    {{else}}
+      <button class="button-solid" disabled>
+        <i class="fas fa-lock"></i>
+        Generate
+      </button>
+    {{/if}}
+  </div>
+
+  <div class="{{if collapsed 'dsp-none-md'}}">
+    <div class="divider-h bg-white my-4"></div>
+    
+    <i class="card-md white">Complete {{ run.completionThreshold }}% of your course to unlock and
+      generate the certificate</i>
+    
+    <div class="img-desc my-3 align-items-center">
+      <div class="s-30x30 bg-white round mr-3 {{if courseCompleted 'tick'}}"></div>
+      <div class="description">
+        <span>Course</span>
+        <span>Completion: {{ run.completionThreshold }}%+</span>
+      </div>
+    </div>
+    <div class="img-desc my-3 align-items-center">
+      <div class="s-30x30 bg-white round mr-3 {{if runAttempt.certificateApproved 'tick'}}"></div>
+      <div class="description">
+        <span>Mentor</span>
+        <span>Approval</span>
+      </div>
+    </div>
+    {{!-- <div class="img-desc my-3 align-items-center">
+        <div class="tick s-30x30 bg-white round mr-3"></div>
+        <div class="description">
+          <span>Verify Your</span>
+          <span>Details</span>
+        </div>
+      </div> --}}
+    <img class="stamp" src="/images/stamp.png" alt="Coding Blocks Pvt Ltd">
+    </div>
+  </div>
   
-    <div class="checklist">
-      <div class="option {{if courseCompleted 'correct'}}"> Course Completion: {{ run.completionThreshold }}%+</div>
-      <div class="option {{if runAttempt.certificateApproved 'correct'}}">
-        <p>Mentor Approval</p>
-        {{#if courseCompleted}}
-          {{#if (or runAttempt.approvalRequested runAttempt.certificateApproved) }}
-            <div class="button-solid disabled">
-              <button>Requested</button>
-            </div>
+
+<div class="display-none">
+  {{#if run.certificateTemplate.length}}
+    <div class="c-certificate">
+      <div class="top-row">
+        <img src="/images/certification-i.svg" alt="">
+        <div class="right">
+          <div class="heading">Generate Certificate</div>
+          <div class="text">
+            <img src="/images/warning.svg" alt="">
+            Generate only when you are satisfied with your
+            current score. You are not allowed to regenerate it.
+          </div>
+        </div>
+      </div>
+    
+      <div class="checklist">
+        <div class="option {{if courseCompleted 'correct'}}"> Course Completion: {{ run.completionThreshold }}%+</div>
+        <div class="option {{if runAttempt.certificateApproved 'correct'}}">
+          <p>Mentor Approval</p>
+          {{#if courseCompleted}}
+            {{#if (or runAttempt.approvalRequested runAttempt.certificateApproved) }}
+              <div class="button-solid disabled">
+                <button>Requested</button>
+              </div>
+            {{else}}
+              <div class="button-solid ml-4" {{action (perform requestApprovalTask)}}>
+                <button>Request</button>
+              </div>
+            {{/if}}
+          {{/if}}
+        </div>
+        <div class="option correct"> Verify your details <a href="https://account.codingblocks.com/users/me"
+            target="_blank"> &nbsp; here </a> </div>
+      </div>
+    
+      <div class="cta justify-content-center justify-content-md-end">
+        {{#if generationRequested}}
+          <div class="red">
+            Certificate Requested !
+          </div>
+        {{else if runAttempt.certificate}}
+          {{#if (eq runAttempt.certificate.status 'published')}}
+            <a href="{{runAttempt.certificate.url}}" class="button-solid white" target="_blank">Download Certificate</a>
           {{else}}
-            <div class="button-solid ml-4" {{action (perform requestApprovalTask)}}>
-              <button>Request</button>
+            <div class="red">
+              Certificate Already Requested !
             </div>
           {{/if}}
-        {{/if}}
-      </div>
-      <div class="option correct"> Verify your details <a href="https://account.codingblocks.com/users/me"
-          target="_blank"> &nbsp; here </a> </div>
-    </div>
-  
-    <div class="cta justify-content-center justify-content-md-end">
-      {{#if generationRequested}}
-        <div class="red">
-          Certificate Requested !
-        </div>
-      {{else if runAttempt.certificate}}
-        {{#if (eq runAttempt.certificate.status 'published')}}
-          <a href="{{runAttempt.certificate.url}}" class="button-solid white" target="_blank">Download Certificate</a>
+        {{else if canGenerate}}
+          <div class="button-solid" onClick={{perform generateCertificateTask}}>
+            <button>Generate Now!</button>
+          </div>
         {{else}}
-          <div class="red">
-            Certificate Already Requested !
+          <div class="button-solid disabled">
+            <button>Generate Now!</button>
           </div>
         {{/if}}
-      {{else if canGenerate}}
-        <div class="button-solid" onClick={{perform generateCertificateTask}}>
-          <button>Generate Now!</button>
-        </div>
-      {{else}}
-        <div class="button-solid disabled">
-          <button>Generate Now!</button>
-        </div>
-      {{/if}}
+      </div>
     </div>
-  </div>
-{{else}}
-  <div class="c-certificate locked">
-    <img src="/images/certification-i.svg" alt="">
-    <div class="title">Unlock Certificate</div>
-    <div class="text">Complete {{ run.completionThreshold }}% of your course to unlock and
-      generate the certificate</div>
-  </div>
-{{/if}}
+  {{else}}
+    <div class="c-certificate locked">
+      <img src="/images/certification-i.svg" alt="">
+      <div class="title">Unlock Certificate</div>
+      <div class="text">Complete {{ run.completionThreshold }}% of your course to unlock and
+        generate the certificate</div>
+    </div>
+  {{/if}}
+</div>
