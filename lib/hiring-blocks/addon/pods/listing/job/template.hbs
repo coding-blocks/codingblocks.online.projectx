@@ -132,8 +132,14 @@
 </section>
 
 <PartnersSection />
+
 {{#if showModal}}
-  <ModalDialog @onClose={{action "toggleShowModal"}} @translucentOverlay={{true}} @overlayClass="cart-modal-overlay" @containerClass="col-md-6 col-12">
+  <ModalDialog 
+    @onClose={{action "toggleShowModal"}} @translucentOverlay={{true}}
+    @targetAttachment="none"
+    @wrapperClass="centered-scrolling-wrapper"
+    @overlayClass="centered-scrolling-overlay cart-modal-overlay" 
+    @containerClass="col-md-6 col-12 centered-scrolling-container">
     <JobApplicationForm @form={{job.form}} @submit={{action (perform applyForJob)}} />
   </ModalDialog>
 {{/if}}
