@@ -103,8 +103,8 @@
 
     <!-- JIVO CHAT -->
     <script>
-      $(document).ready(function () {
-        if ($(window).width() > 780) {
+      document.addEventListener('DOMContentLoaded', function (event) {
+        if (window.innerWidth > 780) {
           (function () {
             var widget_id = 'ASYGLZQ6UC'; var d = document; var w = window; function l() {
               var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/' + widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);

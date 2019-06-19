@@ -11,8 +11,9 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{login-button}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
+  let loginButton = document.getElementsByClassName('button-solid')[0]
+  assert.equal(loginButton, null);
+  
   // Template block usage:
   this.render(hbs`
     {{#login-button}}
@@ -20,5 +21,6 @@ test('it renders', function(assert) {
     {{/login-button}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  loginButton = document.getElementsByClassName('button-solid')[0]
+  assert.equal(loginButton.innerText.trim(), 'template block text');
 });

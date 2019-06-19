@@ -34,7 +34,7 @@ export default class NotificationDropdownComponent extends Component {
   }
 
   didInsertElement() {
-    this.$('#notification-icon,#notification-box').on("click", e => {
+    this.element.querySelectorAll('#notification-icon,#notification-box').on("click", e => {
       e.stopPropagation();
     })
   }
@@ -125,7 +125,7 @@ export default class NotificationDropdownComponent extends Component {
   } 
 
   willDestroyElement () {
-    this.$(document).off("click")
-    this.$('#notification-icon,#notification-box').off("click")
+    this.element.querySelectorAll(document).off("click")
+    this.element.querySelectorAll('#notification-icon,#notification-box').off("click")
   }
 }

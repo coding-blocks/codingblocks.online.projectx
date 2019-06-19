@@ -1,6 +1,5 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import { isBadRequestError, isNotFoundError } from 'ember-ajax/errors';
 
 export default Route.extend({
   api: service(),
@@ -9,7 +8,7 @@ export default Route.extend({
   },
   actions: {
     error (error, transition) {
-      if (isBadRequestError(error) || isNotFoundError(error)) {
+      if (error.status === '400' || error.status === '404') {
         // https://github.com/emberjs/ember.js/issues/12624
         this.intermediateTransitionTo('404', 'DONOT_REMOVE_ME')
       } else 
