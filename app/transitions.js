@@ -14,11 +14,18 @@ export default function(){
       this.transition(
         this.fromRoute(tabs[i]),
         this.toRoute(tabs[j]),
-        this.use('toLeft'),
-        this.reverse('toRight')
+        this.use('fade', { duration: 100 }),
+        this.reverse('fade', { duration: 100 })
       )
     }
   }
+
+  // this.transition(
+  //   this.fromRoute('index'),
+  //   this.toRoute('courses'),
+  //   this.use('fade', { duration: 400 }),
+  //   this.reverse('fade', { duration: 400 })
+  // )
 
   this.transition(
     this.hasClass('slide'),
