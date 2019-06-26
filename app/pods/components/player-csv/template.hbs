@@ -1,20 +1,20 @@
-<div class="c-csv">
+<div class="c-csv position-relative">
   <div class="top">
     <h2 class="mb-3">{{csv.name}}</h2>
     <div class="description mb-3">
       {{markdown-to-html csv.description extensions='katex'}}
     </div>
     <hr />
-    <div class="d-flex align-items-center mt-2 mb-3">
+    <div class="d-flex align-items-center mt-2 my-4">
       <h3 class="mr-3">UPLOAD SOLUTION: </h3> {{file-input link=url onComplete=(action 'onUploadComplete')}}
     </div>
     <hr />
-    <div class="d-flex-align-items-center">
+    <div class="w-75">
       {{player-csv-leaderboard csvId=csv.id}}
     </div>
   </div>
 
-  <div class="bottom row">
+  <div class="bottom d-flex justify-content-between position-sticky">
     <div class="testcase center-flex">
       <span class="pointer" {{action 'download' csv.datasetUrl}}>
           <i class="fas fa-download"></i>
@@ -25,7 +25,7 @@
           Download Testcases
       </span>
     </div>
-    <div class="submission center-flex m-auto">
+    <div class="submission center-flex">
       <span class="pointer" {{action (mut showSubmissions) true}}>
         View Old Submissions
       </span>
