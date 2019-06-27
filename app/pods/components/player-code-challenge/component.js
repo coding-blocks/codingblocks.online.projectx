@@ -27,7 +27,7 @@ export default class CodeChallengeComponent extends Component {
   isShowingModal = false;
   showCollabModal = false;
 
-  @computed("code.content.id", "runAttempt.id")
+  @computed("code.content.id", "runAttempt.id", "runAttempt.doubts")
   get relatedPendingDoubt () {
     // if (!this.runAttempt.runAttemptId) 
     const runAttempt = this.store.peekRecord('run-attempt', this.runAttempt.id)
