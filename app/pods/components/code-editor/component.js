@@ -133,6 +133,26 @@ export default class EditorClass extends Component {
     this.sendAction('toggleModal', modalContentType);
   }
 
+  @action
+  onEditorReady (editor) {
+    const monacoIframe = document.querySelector('iframe[src*="ember-monaco"]')
+    
+    // Get the editor reference and set monaco global
+    
+    this.set('editor', editor)
+    window.monaco = monacoIframe.contentWindow.monaco
+
+    const firepad = this.firepad
+    firepad.set("editor", this.editor)
+
+    // if we have a ref; connect to firebase
+    if (this.ref) {
+      firepad.connect(this.ref, false)
+    } else {
+      firepad.disconnect()
+    }
+  }
+
   @restartableTask setCollabModeTask = function *(value) {
     if (value) {
       yield this.firepad.connect()
@@ -149,7 +169,7 @@ export default class EditorClass extends Component {
       
       // Get the editor reference and set monaco global
       this.editor = iframeWindow.editor
-      window.monaco = iframeWindow.monaco
+      window.monaco = iframeWindeow.monaco
 
       const firepad = this.firepad
       firepad.set("editor", this.editor)
@@ -162,5 +182,7 @@ export default class EditorClass extends Component {
       }
     })
   }
+
+
   
 }

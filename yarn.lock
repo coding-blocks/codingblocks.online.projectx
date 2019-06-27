@@ -787,10 +787,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@coding-blocks/motley@0.3.47":
-  version "0.3.47"
-  resolved "https://registry.yarnpkg.com/@coding-blocks/motley/-/motley-0.3.47.tgz#8b164429698eee53c5f38330f3e43a509724e7ed"
-  integrity sha512-+n4bnxSeCN9M6xKs4V/x8zv3RlI/HrAvmvbE8zL23FiN7YrGcDaU8O9lde+SWBtVIiis2iRKTv0g62tf86iJ0g==
+"@coding-blocks/motley@0.3.48":
+  version "0.3.48"
+  resolved "https://registry.yarnpkg.com/@coding-blocks/motley/-/motley-0.3.48.tgz#15fa376575d3730185b1e8d824f2c178709ca9f0"
+  integrity sha512-7bnGRGTllVbmo2KK4B9j6CDEbXcg7hohFqXuGK7M27q0NSz9vLkSsVTsqsyMolQD6sQaeugbqZNplUTzLUjBVQ==
   dependencies:
     build "^0.1.4"
     run "^1.4.0"
@@ -5115,7 +5115,7 @@ ember-moment@^7.7.0:
     ember-getowner-polyfill "^2.2.0"
     ember-macro-helpers "^2.1.0"
 
-ember-monaco@^1.0.2:
+ember-monaco@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ember-monaco/-/ember-monaco-1.1.0.tgz#978cca7346d97ff4b640e652aa142bef4eb037a8"
   integrity sha512-8tK/vcRJmL5QPmm/Pri+9UieXMeOU4jGZBrrWNFANd9Q5Rn5iB5XATBKO7v20AuYIRGMOT0K+p2hOwV5L/qurg==
