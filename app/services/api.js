@@ -1,12 +1,12 @@
-import { inject as service } from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import env from 'codingblocks-online/config/environment';
 import fetch from 'fetch';
 
-export default {
+export default Service.extend({
+  session: service(),
   request: function(url, object) {
     const options = {
-      session: service(),
       host: env.apiHost,
       contentType: 'application/json; charset=utf-8',
       namespace: '/api/v2',
@@ -31,4 +31,4 @@ export default {
 
     return fetch(url, options);
   }
-};
+});
