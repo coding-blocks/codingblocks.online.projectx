@@ -1,10 +1,14 @@
 import DS from 'ember-data';
+import { computed }  from '@ember/object';
 
 export default DS.Model.extend({
   name: DS.attr(),
   username: DS.attr(),
   firstname: DS.attr(),
   lastname: DS.attr(),
+  fullName: computed('firstname', 'lastname', function () {
+    return this.firstname + ' ' + this.lastname
+  }),
   email: DS.attr(),
   organization: DS.attr(),
   hackJwt: DS.attr(),
