@@ -10,6 +10,7 @@ export default DS.Model.extend({
     return this.firstname + ' ' + this.lastname
   }),
   email: DS.attr(),
+  college: DS.attr(),
   organization: DS.attr(),
   hackJwt: DS.attr(),
   lastReadNotification: DS.attr (),
