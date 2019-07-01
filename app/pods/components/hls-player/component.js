@@ -46,9 +46,9 @@ export default Component.extend(KeyboardShortcuts, {
 
     function queryParams (source) {
       let array = [];
-      source.map((key) => {
+      for (let key in source) {
         array.push(encodeURIComponent(key) + "=" + encodeURIComponent(source[key]));
-      })
+      }
 
       return array.join("&");
     }

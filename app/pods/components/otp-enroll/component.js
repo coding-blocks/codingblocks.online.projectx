@@ -32,7 +32,7 @@ export default class otpEnrollComponent extends Component {
       this.set('otpSent', true);
     })
     .catch(err => {
-      if (err.status === '400') {
+      if (err.status == 400) {
         this.set('errorString', err.payload.message)
       } else {
         this.set('errorString', 'Cannot Sent OTP to that email, some internal error occured. Contact at support@codingblocks.com')
@@ -51,7 +51,7 @@ export default class otpEnrollComponent extends Component {
     }).then( () => {
       window.location.reload()
     }).catch(err => {
-      if (err.status === '400') {
+      if (err.status == 400) {
         this.set('errorString', err.payload.message)
       } else {
         this.set('errorString', 'Incorrect OTP')

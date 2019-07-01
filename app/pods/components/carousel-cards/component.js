@@ -8,7 +8,15 @@ class carouselCard {
     this.element = el
     this.translateX = 0
     this.translateY = 0
-    this.element.setAttribute('class', cssConf)
+    
+    let cssString = ''
+    for (let key in cssConf) {
+      if (key) {
+        cssString += key + ':' + cssConf[key] + ';'
+      }
+    }
+
+    this.element.style.cssText = cssString
   }
 
   setTranslateY (val) {
@@ -24,13 +32,17 @@ class carouselCard {
   }
 
   showContent () {
-    this.element.querySelectorAll(this.element).childNodes.classList.remove('display-none')
-    this.element.querySelectorAll(this.element).childNodes.classList.add('display-block')
+    this.element.querySelectorAll('*').map(child => {
+      child.classList.remove('display-none')
+      child.classList.add('display-block')
+    })
   }
 
   hideContent () {
-    this.element.querySelectorAll(this.element).childNodes.classList.remove('display-block')
-    this.element.querySelectorAll(this.element).childNodes.classList.add('display-none')
+    this.element.querySelectorAll('*').map(child => {
+      child.classList.remove('display-block')
+      child.classList.add('display-none')
+    })
   }
 
   apply () {
@@ -40,7 +52,7 @@ class carouselCard {
     }
 
     for (let prop in css) {
-      this.element.querySelectorAll(this.element).style[prop] = css[prop]
+      document.querySelector(this.element).style[prop] = css[prop]
     }
   }
 

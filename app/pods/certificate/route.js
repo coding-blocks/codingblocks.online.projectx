@@ -8,7 +8,7 @@ export default Route.extend({
   },
   actions: {
     error (error, transition) {
-      if (error.status === '400' || error.status === '404') {
+      if (error.status == 400 || error.status == 404) {
         // https://github.com/emberjs/ember.js/issues/12624
         this.intermediateTransitionTo('404', 'DONOT_REMOVE_ME')
       } else 
