@@ -121,3 +121,13 @@ picture * {
 .c-csv .bottom{
   position: sticky;
 }
+
+
+tr.highlight {
+  background-color: antiquewhite;
+}
+
+tr.highlight td {
+  height: 80px;
+  padding: 0 !important;
+}
