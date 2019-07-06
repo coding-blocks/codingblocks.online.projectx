@@ -1,0 +1,38 @@
+<div class="border-card">
+  <div class="col-12">
+    <div class="d-flex flex-wrap">
+      <div class="col-12 order-0 col-md-6">
+        <h3 class="">
+          Your course {{if run.topRunAttempt.isExpired "has been expired!" "will expire soon!"}} 
+        </h3>
+        <div class="grey">
+          Buy extension for this course
+        </div>
+      </div>
+      <div class="col-6 order-1 t-align-l t-align-md-r">
+        <button class="button-solid">
+          Buy Extension
+        </button>
+      </div>
+      <div class="divider-h order-2 col-12 align-self-center my-4"></div>
+      <div class="row w-100 order-3">
+        {{#each extensionsTask.last.value as |extension index|}}
+          <div class="col-12 col-md-3 d-flex my-3">
+            <input class="mt-1" type="radio" name="extension" id="extensionRadio{{index}}">
+            <label class="ml-3" for="extensionRadio{{index}}">
+              <div class="font-mds bold">
+                {{extension.name}}
+              </div>
+              <div class="grey">
+                {{extension.expiry}}
+              </div>
+              <div class="font-md red semi-bold mt-2">
+                Rs. {{extension.price}}
+              </div>
+            </label>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
