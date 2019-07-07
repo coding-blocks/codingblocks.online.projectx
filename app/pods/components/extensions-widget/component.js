@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
-import { alias }  from '@ember/object/computed';
+import env from "codingblocks-online/config/environment";
 
 export default class ExtensionsWidgetComponent extends Component {
 
@@ -19,6 +19,14 @@ export default class ExtensionsWidgetComponent extends Component {
       expiry: moment.unix(this.run.get('end')).add(ext.duration, "days").format("DD MMM YYYY"),
       price: Math.ceil(ext.mrp/1000)
     }))
+  }
+
+  @restartableTask buyExtensionTask = function *(extension) {
+    yield this.api.request(`/runs/extensions/${extension.id}/buy`, {
+      method: 'POST'
+    })
+
+    window.location.href = env.dukaanUrl
   }
 
   didReceiveAttrs() {

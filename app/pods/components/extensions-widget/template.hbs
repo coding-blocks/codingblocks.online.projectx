@@ -10,15 +10,29 @@
         </div>
       </div>
       <div class="col-6 order-1 t-align-l t-align-md-r">
-        <button class="button-solid">
-          Buy Extension
-        </button>
+        {{task-button 
+        task=buyExtensionTask
+        click=(perform buyExtensionTask)
+        idleText="Buy Extension"
+        runningText="Adding to Cart.."
+        type="button"
+        class="button-solid"
+        runningClass="disabled"}}
       </div>
       <div class="divider-h order-2 col-12 align-self-center my-4"></div>
       <div class="row w-100 order-3">
         {{#each extensionsTask.last.value as |extension index|}}
           <div class="col-12 col-md-3 d-flex my-3">
-            <input class="mt-1" type="radio" name="extension" id="extensionRadio{{index}}">
+            <input 
+              class="mt-1" 
+              type="radio" 
+              name="extension" 
+              id="extensionRadio{{index}}" 
+              checked={{eq selectedExtension extension}}
+              onchange={{action (mut selectedExtension) extension}}
+              style="transform:scale(1.5)"
+            >
+            
             <label class="ml-3" for="extensionRadio{{index}}">
               <div class="font-mds bold">
                 {{extension.name}}
