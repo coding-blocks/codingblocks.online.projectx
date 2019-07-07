@@ -7,12 +7,6 @@ $cb-red: #ff6666;
 
 @import "./components/index.scss";
 
-.main-nav {
-  .round-img {
-    margin-left: 40px;
-  }
-}
-
 body.centered-modal-showing {
   overflow: hidden;
 }
@@ -122,4 +116,18 @@ picture * {
 
 .bg-red-lr{
   background-image: linear-gradient(to right, #e9414d, #2d2982);
+}
+
+.c-csv .bottom{
+  position: sticky;
+}
+
+
+tr.highlight {
+  background-color: antiquewhite;
+}
+
+tr.highlight td {
+  height: 80px;
+  padding: 0 !important;
 }

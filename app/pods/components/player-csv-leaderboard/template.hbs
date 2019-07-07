@@ -1,25 +1,35 @@
-<div class="t-align-c mb-5">
-  <h2 class="pb-4 pt-4">Leaderboard</h2>
-  <div class="c-overview-leaderboard">
-    <div class="border-card">
-      <table class="table table-responsive">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Score</th>
-            <th>Timestamp</th>
-          </tr>
-        </thead>
-        {{#each lb as |lb index| }}
-          <tr>
-            <td>{{inc index}}</td>
-            <td>{{concat lb.firstname ' ' lb.lastname}}</td>
-            <td>{{lb.score}}</td>
-            <td>{{lb.createdAt}}</td>
-          </tr>
-        {{/each}}
-      </table>
-    </div>
-  </div>
+<h4 class="pb-4 pt-4">Leaderboard</h4>
+
+<div class="border-card">
+  <table class="w-100">
+    <thead class="font-sm red extra-bold">
+      <td class="pb-4">Rank</td>
+      <td class="pb-4">Name</td>
+      <td class="pb-4">Score</td>
+      <td class="pb-4">Timestamp</td>
+    </thead>
+    <tbody>
+      {{#each lb as |lb index|}}
+        <tr class={{if lb.isCurrent "highlight"}}>
+          <td class="pb-4 pt-2">{{inc index}}</td>
+          <td class="pb-4 pt-2">
+            <div class="img-desc align-items-center">
+              <img class="round s-30x30" src="{{defaultPhoto lb.photo}}" alt="">
+              <div class="description ml-3">
+                {{#if lb.isCurrent}}
+                  You
+                {{else}}
+                  {{concat lb.firstname ' ' lb.lastname}}
+                {{/if}}
+              </div>
+            </div>
+          </td>
+          <td class="pb-4 pt-2">
+            {{lb.score}}
+          </td>
+          <td class="pb-4 pt-2">{{lb.createdAt}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>
