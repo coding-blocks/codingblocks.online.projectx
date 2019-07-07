@@ -12,7 +12,7 @@ export default class ExtensionsWidgetComponent extends Component {
   @restartableTask extensionsTask = function* ()  {
     const product = yield this.api.request('/runs/products/' + this.run.get('productId'))
     
-    this.set('isVisible', true)
+    this.set('isVisible', !!product.product_extensions.length)
     return product.product_extensions.map(ext => ({
       id: ext.id,
       name: ext.name,
