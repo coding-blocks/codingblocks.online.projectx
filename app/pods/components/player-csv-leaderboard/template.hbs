@@ -11,7 +11,9 @@
     <tbody>
       {{#each lb as |lb index|}}
         <tr class={{if lb.isCurrent "highlight"}}>
-          <td class="pb-4 pt-2">{{inc index}}</td>
+          <td class="pb-4 pt-2">
+            {{lb.rank}}
+          </td>
           <td class="pb-4 pt-2">
             <div class="img-desc align-items-center">
               <img class="round s-30x30" src="{{defaultPhoto lb.photo}}" alt="">
