@@ -21,7 +21,8 @@ export default class ExtensionsWidgetComponent extends Component {
     }))
   }
 
-  @restartableTask buyExtensionTask = function *(extension) {
+  @restartableTask buyExtensionTask = function *() {
+    const extension = this.selectedExtension
     yield this.api.request(`/runs/extensions/${extension.id}/buy`, {
       method: 'POST'
     })
