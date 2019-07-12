@@ -200,6 +200,16 @@
 
         </div>
       </div>
+
+      {{#if course.faq}}
+        <div class="border-card mt-4">
+          <h3>Frequently Asked Questions</h3>
+          <hr>
+          <div>
+            {{markdown-to-html course.faq}} 
+          </div>
+        </div>
+      {{/if}}
     </div>
   </div>
   {{#unless getRatingStats.isRunning}}
