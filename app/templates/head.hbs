@@ -3,4 +3,32 @@
   here. The 'model' available in this template can be populated by
   setting values on the 'head-data' service.
 --}}
+
 <title>{{model.title}}</title>
+
+{{#if model.title}}
+  <meta itemprop="name" content={{model.title}}>
+  <meta property="og:title" content={{model.title}}>
+  <meta type="title" content={{model.title}}>
+{{/if}}
+
+{{#if model.description}}
+  <meta type="description" content={{model.description}}>
+  <meta name="twitter:card" content={{model.description}}>
+  <meta property="og:description" content={{model.description}}>
+  <meta itemprop="description" content={{model.description}}>
+{{/if}}
+
+{{#if model.image}}
+  <meta property="og:image" content={{model.image}} >
+  <meta itemprop="image" content={{model.image}}>
+{{/if}}
+
+<meta name="twitter:site" content="@CodingBlocksIn" >
+<meta property="og:site_name" content="Coding Blocks Online">
+
+<meta property="og:url" content={{model.url}}>
+
+<script type="application/ld+json">
+  {{seoData}}
+</script>
