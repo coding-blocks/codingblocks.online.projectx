@@ -38,6 +38,7 @@ export default DS.Model.extend({
     buyNowLink: DS.attr(),
     backgroundImage: DS.attr(),
     rating: DS.attr(),
+    seoMeta: DS.attr(),
     topRun: computed('activeRuns', 'runs', function () {
         let runs = this.activeRuns
 
