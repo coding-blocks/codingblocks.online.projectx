@@ -2,7 +2,8 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
-import DS from 'ember-data'
+import moment from 'moment';
+import DS from 'ember-data';
 
 export default class TimelineController extends Controller {
   queryParams = ['showFeedback']
@@ -21,6 +22,12 @@ export default class TimelineController extends Controller {
     return DS.PromiseObject.create({
       promise: this.api.request(`run_attempts/${this.runAttempt.id}/progress`)
     })
+  }
+
+  @computed('runAttempt.{isExpired,end}')
+  get showExtensions() {
+    const endIsNear = moment().add(1, "month") > moment.unix(this.runAttempt.end)
+    return this.runAttempt.isExpired || endIsNear
   }
 
 
