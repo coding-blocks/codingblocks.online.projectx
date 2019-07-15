@@ -29,6 +29,7 @@
 
 <meta property="og:url" content={{model.url}}>
 
-<script type="application/ld+json">
-  {{seoData}}
-</script>
+{{#if model.schema}}
+  <script type="application/ld+json">{{model.schema}}</script>
+{{/if}}
+
