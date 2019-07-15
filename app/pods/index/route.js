@@ -12,7 +12,11 @@ export default Route.extend({
     return this._super(...arguments)
   },
   afterModel(model) {
-    this.set('headData.title', 'Coding Blocks Online | Home')
+    const head = this.headData
+    head.set('title', 'Coding Blocks Online | Home')
+    head.set('description', 'Coding Blocks is the best online programming and software training Institute offer online certification courses in Jave, C++, Android, NodeJs, Data structure, Machine learning, Interview preparation and more.')
+    head.set('image', 'https://codingblocks.com/assets/images/cb/cblogo.png')
+    head.set('url', 'https://online.codingblocks.com/')
   },
 
 });
