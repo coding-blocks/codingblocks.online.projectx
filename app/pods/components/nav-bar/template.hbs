@@ -41,6 +41,9 @@
               {{#link-to 'hiring-blocks' }}Get Hired{{/link-to}}
             </li>
           {{/unless}}
+          <li class="nav-items pointer">
+            {{#link-to 'cricket-cup' }}Cricket Cup{{/link-to}}
+          </li>
           {{#if session.isAuthenticated}}
           <li class="nav-items pointer">
             {{notification-dropdown toggleAction=toggleNotification activeTab=activeTab}}
@@ -112,6 +115,9 @@
           {{#link-to 'hiring-blocks'}}Get Hired{{/link-to}}
         </div>
       {{/unless}}
+      <div class="para" onclick={{action 'toggleSidebar'}}>
+        {{#link-to 'cricket-cup' }}Cricket Cup{{/link-to}}
+      </div>
     </div>
   </div>
 </header>
