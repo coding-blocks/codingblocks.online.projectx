@@ -112,8 +112,8 @@
     {{liquid-outlet class="col-md-6 col-12 order-1 order-md-0"}}
 
     <div class="col-12 col-md-3 order-0 order-md-1">
-      {{#if run.whatsappLink}}
-        <a href="{{run.whatsappLink}}" class="pointer" target="blank">
+      {{#if (and run.whatsappLink runAttempt.premium)}}
+        <a href={{run.whatsappLink}} class="pointer" target="blank">
           <div class="border-card border-none bg-light-green mb-5 white">
             <i class="fab fa-whatsapp fa-2x mr-2"></i>
             <strong class="font-md">Join Whatsapp Group</strong>
