@@ -28,12 +28,10 @@
       
       <div class="horizontal-half">
         {{#if (eq doubt.status "ACKNOWLEDGED")}}
-          <div class="red">
-            <button {{action "startChat"}}>
-              Still have question? Start a chat
-              <i class="fas fa-comment"></i>
-            </button>
-          </div>
+          <button class="red" {{action "startChat"}}>
+            Still have question? Start a chat
+            <i class="fas fa-comment"></i>
+          </button>
         {{/if}}
         <div class="button-solid">
           {{#if (eq doubt.status "RESOLVED")}}
@@ -50,12 +48,10 @@
       
 
       {{#if existingComments.length}}
-        <div class="comment-toggle">
-          <button {{action "toggleThreadsCollapse"}}>
-            {{if collapseThreads "Show" "Hide"}} {{existingComments.length}} Comments
-            <i class="fas {{if collapseThreads "fa-caret-down" "fa-caret-up"}}"></i>
-          </button>
-        </div>
+        <button class="comment-toggle" {{action "toggleThreadsCollapse"}}>
+          {{if collapseThreads "Show" "Hide"}} {{existingComments.length}} Comments
+          <i class="fas {{if collapseThreads "fa-caret-down" "fa-caret-up"}}"></i>
+        </button>
       {{/if}}
     </div>
   

@@ -2,9 +2,7 @@
   <div>
     Test Cases: {{code.name}}
   </div>
-  <div class="grey">
-    <button {{action 'toggleModal'}}>X</button>
-  </div>
+  <button class="grey" {{action 'toggleModal'}}>X</button>
 </div>
 
 {{#each code.testcases as |testcase index|}}
