@@ -18,6 +18,7 @@ export default DS.Model.extend({
   runAttemptId: DS.attr(),
   certificateTemplate: DS.attr(),
   completionThreshold: DS.attr('number'),
+  goodiesThreshold: DS.attr('number'),
   course: DS.belongsTo('course', {inverse: 'runs'}),
   description:DS.attr(),
   sections: DS.hasMany('sections'),

@@ -1,0 +1,119 @@
+<div class="c-certificate br-15 mb-5 white">
+  <div class="row justify-content-between no-gutters align-items-center" {{action 'toggleCollapse'}}>
+    <div class="img-desc font-mds">
+      {{!-- <div class="col-2">
+        <img src="/images/placeholder.gif" alt="">
+      </div> --}}
+      <div class="description">
+        <span>Claim </span>
+        <span>Goodies </span>
+      </div>
+    </div>
+    {{#if alreadyClaimed}}
+      <button class="button-solid" disabled> Requested </button>
+    {{else if completed}}
+      <button class="button-solid" disabled> Delivered </button>
+    {{else if canClaim}}
+      <button class="button-solid" {{action 'toggleModal'}}> Request </button>
+    {{else}}
+      <button class="button-solid" disabled>
+        <i class="fas fa-lock"></i>
+        Request
+      </button>
+    {{/if}}
+  </div>
+
+  <div class="{{if collapsed 'dsp-none-md'}}">
+    <div class="divider-h bg-white my-4"></div>
+    
+    <i class="card-md white">Complete {{ run.goodiesThreshold }}% of your course to unlock and
+      claim goodies</i>
+    
+    <div class="img-desc my-3 align-items-center">
+      <div class="s-30x30 bg-white round mr-3 {{if thresholdCompleted 'tick'}}"></div>
+      <div class="description">
+        <span>Threshold</span>
+        <span>Completion: {{ run.goodiesThreshold }}%+</span>
+      </div>
+    </div>
+
+    <img class="stamp" src="/images/stamp.png" alt="Coding Blocks Pvt Ltd">
+    </div>
+  </div>
+
+{{#if showModal}}
+  <ModalDialog   
+    @onClose={{action "toggleModal"}} @translucentOverlay={{true}}
+    @targetAttachment="none"
+    @wrapperClass="centered-scrolling-wrapper"
+    @overlayClass="centered-scrolling-overlay cart-modal-overlay" 
+    @containerClass="col-md-6 col-12 centered-scrolling-container">
+    <div class="my-3 font-mds">
+      <h3 class="col-12">Goodies Request Form</h3>
+      <form method="" {{action "saveForm" on="submit"}}>
+        <div class="col-12 my-4">
+          <label class="my-1 form-field--label ember-view"> Name
+            <span class="star">*</span>
+          </label>
+          {{input aria-invalid="false" class="input-text form-field--control ember-view" type="text" required=true value=name}}
+        </div>
+        <div class="col-12 my-4">
+          <fieldset class="radio-group form-field ember-view">  
+            <legend class="ember-view">  Enter T-shirt size 
+              <span class="star">*</span>
+            </legend>
+            <ul>
+              <li class="ember-view">
+                <div class="radio-field form-field ember-view">
+                  <label class="form-field--label ember-view">      
+                    {{input aria-invalid="false" class="form-field--control ember-view" type="radio" name="tshirt" value="XL" required=true click=(action (mut tshirt) 'XL')}}
+                    XL
+                  </label> 
+                </div>
+              </li>
+              <li class="ember-view">
+                <div class="radio-field form-field ember-view">
+                  <label class="form-field--label ember-view">      
+                    {{input aria-invalid="false" class="form-field--control ember-view" type="radio" name="tshirt" value="L" click=(action (mut tshirt) 'L')}}
+                    L
+                  </label> 
+                </div>
+              </li>
+              <li class="ember-view">
+                <div class="radio-field form-field ember-view">
+                  <label class="form-field--label ember-view">      
+                    {{input aria-invalid="false" class="form-field--control ember-view" type="radio" name="tshirt" value="M" click=(action (mut tshirt) 'M')}}
+                    M
+                  </label> 
+                </div>
+              </li>
+              <li class="ember-view">
+                <div class="radio-field form-field ember-view">
+                  <label class="form-field--label ember-view">      
+                    {{input aria-invalid="false" class="form-field--control ember-view" type="radio" name="tshirt" value="S" click=(action (mut tshirt) 'S')}}
+                    S
+                  </label> 
+                </div>
+              </li>
+            </ul>
+          </fieldset>
+        </div>
+        <div class="col-12 my-4">
+          <label class="my-1 form-field--label ember-view"> Address
+            <span class="star">*</span>
+          </label>
+          {{input aria-invalid="false" class="input-text form-field--control ember-view" type="text" required=true value=address}}
+        </div>
+        <div class="col-12 my-4">
+          <input class="ember-checkbox ember-view" type="checkbox" required=true>  
+          <b>The information provided will not changed further.</b>
+        </div>
+        <div class="col-12 my-2">
+        <button default="Apply" id="ember1124" class="async-button button-solid form-button--submit ember-view" type="submit">
+              Request
+        </button>
+      </div>
+      </form>
+    </div>
+  </ModalDialog>
+{{/if}}
