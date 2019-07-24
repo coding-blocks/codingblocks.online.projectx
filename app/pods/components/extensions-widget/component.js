@@ -17,7 +17,7 @@ export default class ExtensionsWidgetComponent extends Component {
       id: ext.id,
       name: ext.name,
       expiry: moment.unix(this.run.get('end')).add(ext.duration, "days").format("DD MMM YYYY"),
-      price: Math.ceil(ext.mrp/1000)
+      price: Math.ceil(ext.mrp/100)
     }))
   }
 
