@@ -12,7 +12,7 @@
 
 Frontend for Coding Blocks online made using EmberJS.
 
-## Prerequisites
+## Prerequisites needed
 
 You will need the following things properly installed on your computer.
 
