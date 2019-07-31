@@ -109,9 +109,15 @@
           <b>The information provided will not changed further.</b>
         </div>
         <div class="col-12 my-2">
-        <button default="Apply" id="ember1124" class="async-button button-solid form-button--submit ember-view" type="submit">
-              Request
-        </button>
+        {{#if isDisabled}}
+          <button class="async-button disabled button-solid form-button--submit ember-view" type="submit">
+            Request
+          </button>
+        {{else}}
+          <button class="async-button button-solid form-button--submit ember-view" type="submit">
+            Request
+          </button>
+        {{/if}}
       </div>
       </form>
     </div>

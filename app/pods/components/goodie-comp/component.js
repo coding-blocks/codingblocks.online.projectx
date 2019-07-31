@@ -8,7 +8,8 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
     api: service(),
     router: service(),
-    
+
+    isDisabled: false,
     showModal: false,
     collapsed: true,
     tshirt: '',
@@ -41,7 +42,8 @@ export default Component.extend({
             this.toggleProperty('showModal');
         },
         saveForm() {
-            
+            this.toggleProperty('isDisabled');
+
             let formInfo = {
                 name: this.get('name'),
                 tshirt: this.tshirt,
@@ -56,6 +58,7 @@ export default Component.extend({
                 this.toggleProperty('showModal');
             })
 
+            this.toggleProperty('isDisabled');
         }
     }
 });

@@ -57,7 +57,6 @@ export default Route.extend({
           let record = get(records, 'firstObject')
 
           if(isNone(record)) {
-            console.log("empty")
             record = this.store.createRecord("goodie-request", {})
             record.set("runAttempt", runAttemptParameter)
           }
