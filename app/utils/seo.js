@@ -68,7 +68,7 @@ export const getSeoSchemaForAllCourses = (courses) => {
         "name": "Coding Blocks",
         "sameAs": "https://online.codingblocks.com/"
       },
-      "url":`${config.publicUrl}/courses`
+      "url":`${config.publicUrl}/courses/${course.slug}`
     }
   }))
 
