@@ -54,7 +54,7 @@ export const getSeoSchemaForCourse = (course, ratings) => {
   return JSON.stringify(data)
 }
 
-export const getSeoSchemaForAllCourses = (courses) => {
+export const getSeoSchemaForAllCourses = (courses, callingPage) => {
   const items = courses.map((course, index) => ({
     "@type": "ListItem",
     "position": index+1,
@@ -68,7 +68,7 @@ export const getSeoSchemaForAllCourses = (courses) => {
         "name": "Coding Blocks",
         "sameAs": "https://online.codingblocks.com/"
       },
-      "url":`${config.publicUrl}/#${course.slug}`
+      "url": callingPage ? `${config.publicUrl}/${callingPage}#${course.slug}` : `${config.publicUrl}/#${course.slug}`
     }
   }))
 

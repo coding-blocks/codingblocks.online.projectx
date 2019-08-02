@@ -100,7 +100,7 @@ export default class AllCoursesComponent extends Component {
       description: 'Coding Blocks is the best online programming and software training Institute offer online certification courses in Jave, C++, Android, NodeJs, Data structure, Machine learning, Interview preparation and more.',
       image: "https://codingblocks.com/assets/images/cb/cblogo.png",
       url: config.publicUrl + '/courses',
-      schema: getSeoSchemaForAllCourses(courses)
+      schema: getSeoSchemaForAllCourses(courses, 'courses')
     })
   }
 }
