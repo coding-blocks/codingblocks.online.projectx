@@ -3,11 +3,14 @@ import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { alias }  from '@ember/object/computed';
 import { action, computed } from '@ember/object';
+import config from 'codingblocks-online/config/environment';
+import { getSeoSchemaForAllCourses } from 'codingblocks-online/utils/seo'
 
 export default class AllCoursesComponent extends Component {
   
   @service store;
   @service api;
+  @service headData;
 
   limit = 8
   offset = 0
@@ -30,6 +33,8 @@ export default class AllCoursesComponent extends Component {
     this._super(...arguments)
     this.fetchAllCourses.perform();
   }
+
+
 
   didInsertElement () {
     window.addEventListener('scroll', this.infiniteScroll);
@@ -62,7 +67,7 @@ export default class AllCoursesComponent extends Component {
 
     const nextCourses = yield this.store.query ('course', {
       include: 'instructors,runs',
-      sort: 'difficulty',
+      // sort: 'difficulty',
       exclude: 'ratings,instructors.*',
       filter: {
         unlisted: false,
@@ -76,6 +81,7 @@ export default class AllCoursesComponent extends Component {
 
     this.set('count', nextCourses.meta.pagination.count);
     this.courses.addObjects(nextCourses)
+    this.updateHeadMeta(this.courses)
   }
   
   /**
@@ -86,5 +92,15 @@ export default class AllCoursesComponent extends Component {
   loadMore () {
     this.set('offset', this.offset + 8);
     this.fetchAllCourses.perform();
+  }
+
+  updateHeadMeta (courses) {
+    this.headData.setProperties({
+      title: 'Best online computer programming and coding courses in India.',
+      description: 'Coding Blocks is the best online programming and software training Institute offer online certification courses in Jave, C++, Android, NodeJs, Data structure, Machine learning, Interview preparation and more.',
+      image: "https://codingblocks.com/assets/images/cb/cblogo.png",
+      url: config.publicUrl + '/courses',
+      schema: getSeoSchemaForAllCourses(courses, 'courses')
+    })
   }
 }

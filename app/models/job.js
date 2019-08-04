@@ -19,6 +19,7 @@ export default DS.Model.extend({
   createdAt: DS.attr(),
   deadline: DS.attr(),
   postedOn: DS.attr(),
+  accepting: DS.attr('boolean'),
   form: DS.attr(),
   deadlineStr: computed('deadline', function() {
     const date = moment(this.get('deadline'))

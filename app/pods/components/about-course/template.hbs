@@ -93,9 +93,9 @@
           Major Topics Covered
         </p>
 
-        <div class="row">
+        <div>
           {{#each course.topRun.tags as |tag|}}
-          <div class="pill m-2">{{tag.name}}</div>
+            <span class="pill m-1">{{tag.name}}</span>
           {{/each}}
         </div>
         {{/if}}
@@ -200,10 +200,20 @@
 
         </div>
       </div>
+
+      {{#if course.faq}}
+        <div class="border-card mt-4">
+          <h3>Frequently Asked Questions</h3>
+          <hr>
+          <div>
+            {{markdown-to-html course.faq}} 
+          </div>
+        </div>
+      {{/if}}
     </div>
   </div>
   {{#unless getRatingStats.isRunning}}
-  {{review-carousel courseId=course.id}}
+    {{review-carousel courseId=course.id}}
   {{/unless}}
 
   <div class="row justify-content-center">

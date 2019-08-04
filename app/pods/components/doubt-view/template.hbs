@@ -1,28 +1,27 @@
-<div class="row doubt">
-  <div class="d-flex flex-row doubt-head">
-    <div class="left flex-row mr-auto">
-      <div class="round-img">
-        <img src="{{photoUrl}}" class="rounded-circle">
-      </div>
-      <div class="author-name">
-        {{topic.username}}
-        <br>
-        <span class="time">{{moment-from-now topic.created_at}}</span>
+<div class="pt-4 mb-2">
+  <div class="row no-gutters justify-content-between">
+    <div class="img-desc align-items-center">
+      <img src="{{if photoUrl photoUrl 'https://minio.codingblocks.com/img/avatar-22.svg'}}" alt="" class="round s-30x30">
+      <div class="description ml-3">
+        <h6>{{topic.username}}</h6>
+        <span class="card-md grey">{{moment-from-now topic.created_at}}</span>
       </div>
     </div>
-    <div class="text">
-      {{#if (eq topicResponse.posts_count 1)}}
-        {{topicResponse.posts_count}} Reply
-      {{else}}
-        {{topicResponse.posts_count}} Replies
-      {{/if}}
-    </div>
-    <a href="{{redirectLink}}" target="_blank" style="color: #ff6666">
-      <button class="button-dashed reply">Reply Now</button>
-    </a>
   </div>
-
-  <div class="doubt-body">
+  <p class="overflow-hidden">
     {{{topic.cooked}}}
+  </p>
+
+  <div class="mb-4">
+    <a href="{{redirectLink}}" target="_blank" class="red">
+      <button class="button-solid card-md mr-2">Reply</button>
+    </a>
+    <span class="red card-md mr-3">
+      {{#if (eq topicResponse.posts_count 1)}}
+      {{topicResponse.posts_count}} Reply
+      {{else}}
+      {{topicResponse.posts_count}} Replies
+      {{/if}}
+    </span>
   </div>
 </div>

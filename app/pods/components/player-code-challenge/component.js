@@ -2,9 +2,7 @@ import Component from "@ember/component";
 import { alias } from "@ember/object/computed";
 import { inject as service } from '@ember/service';
 import { action, computed } from "@ember/object";
-import { timeout } from "ember-concurrency";
 import { restartableTask } from 'ember-concurrency-decorators';
-
 import { later } from '@ember/runloop';
 
 export default class CodeChallengeComponent extends Component {
@@ -14,6 +12,7 @@ export default class CodeChallengeComponent extends Component {
   @service currentUser;
   @service store;
   @service runAttempt
+  @service taskPoller;
   @alias("payload") code;
 
 
@@ -27,7 +26,7 @@ export default class CodeChallengeComponent extends Component {
   isShowingModal = false;
   showCollabModal = false;
 
-  @computed("code.content.id", "runAttempt.id")
+  @computed("code.content.id", "runAttempt.id", "runAttempt.doubts")
   get relatedPendingDoubt () {
     // if (!this.runAttempt.runAttemptId) 
     const runAttempt = this.store.peekRecord('run-attempt', this.runAttempt.id)
@@ -115,7 +114,7 @@ export default class CodeChallengeComponent extends Component {
   
   @restartableTask runCodeTask = function *(config) {
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
-    return yield this.get("api").request("code_challenges/submit", {
+    const payload = yield this.get("api").request("code_challenges/submit", {
       method: "POST",
       data: {
         custom_input: config.input,
@@ -123,6 +122,12 @@ export default class CodeChallengeComponent extends Component {
         language: config.lang,
       },
     });
+
+    const submissionId = payload.submissionId
+    const status = yield this.taskPoller.performPoll(() => this.get("api").request("code_challenges/status/" + submissionId, {
+        "method": "GET"
+    }), submissionStatus => submissionStatus && submissionStatus.judge_result !== null);
+    return status.judge_result;
   }
 
   @restartableTask submitCodeTask = function *(config) {
@@ -138,6 +143,11 @@ export default class CodeChallengeComponent extends Component {
         source: config.source
       }
     });
+
+    const submissionId = payload.submissionId
+    const status = yield this.taskPoller.performPoll(() => this.get("api").request("code_challenges/status/" + submissionId, {
+      "method": "GET"
+    }), submissionStatus => submissionStatus && submissionStatus.judge_result !== null);
 
     this.get('api').request('code_challenges/problems',{
       data: {
@@ -167,7 +177,7 @@ export default class CodeChallengeComponent extends Component {
       method: 'POST',
     })
 
-    return payload
+    return status.judge_result
   }
 
   @action

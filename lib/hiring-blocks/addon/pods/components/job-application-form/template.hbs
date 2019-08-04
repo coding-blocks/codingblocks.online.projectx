@@ -10,6 +10,10 @@
         <div class="col-12 my-4">
           {{f.radio-group propertyName=formField.name label=formField.title options=(split formField.options) required=formField.required}}
         </div>
+      {{else if (eq formField.type "checkbox-group")}}
+        <div class="col-12 my-4">
+          {{f.checkbox-group propertyName=formField.name label=formField.title options=(split formField.options) required=formField.required}}
+        </div>
       {{/if}}
     {{/each}}
     <div class="col-12 my-4">

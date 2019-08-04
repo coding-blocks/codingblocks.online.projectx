@@ -14,6 +14,7 @@ export default DS.Model.extend({
     coverImage: DS.attr(),
     logo: DS.attr(),
     language: DS.attr(),
+    faq: DS.attr(),
     slug: DS.attr('string'),
     difficulty: DS.attr('number'),
     categoryName: DS.attr(),
@@ -37,6 +38,7 @@ export default DS.Model.extend({
     buyNowLink: DS.attr(),
     backgroundImage: DS.attr(),
     rating: DS.attr(),
+    seoMeta: DS.attr(),
     topRun: computed('activeRuns', 'runs', function () {
         let runs = this.activeRuns
 

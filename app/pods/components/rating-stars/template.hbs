@@ -1,19 +1,19 @@
 {{#if (and hasUserMarkedRating (not isEditing))}}
-  <div>
-    Thanks for rating us! &nbsp;&nbsp;
+  <div class="d-flex align-items-center">
+    <strong class="font-md mr-2">Thanks for rating</strong>
     
     {{#each (range 1 (inc scale)) as |index|}}
       <span
         class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
       >
-        <i class="fas fa-star"></i>
+        <i class="fas fa-star mr-1"></i>
       </span>
     {{/each}}
-    <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
+    <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit pl-2" style="color:#fc4f4f"></i></a>
   </div>
 {{else}}
-  <div>
-    <span class="bold">Loving this course? &nbsp;&nbsp;</span>
+  <div class="d-flex align-items-center">
+    <strong class="font-md mr-2">Rate this course?</strong>
     {{#each (range 1 (inc scale)) as |index|}}
       <span
         class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
@@ -21,7 +21,7 @@
         onMouseLeave={{action 'resetRating'}}
         onClick={{action 'toggleModal' index}}
       >
-        <i class="fas fa-star"></i>
+        <i class="fas fa-star mr-1"></i>
       </span>
     {{/each}}
   </div>

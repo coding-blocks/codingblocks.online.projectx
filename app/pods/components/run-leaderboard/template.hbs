@@ -1,18 +1,27 @@
 {{#if showLeaderboard}}
-<h3 class="t-align-c mb-5">
-  Leaderboard
-</h3>
-
-<div class="c-overview-leaderboard">
-  <div class="border-card">
-    <div class="generate-scroll-y">
-      <table class="table table-responsive">
-        <thead>
-          <tr>
-            <th data-field="rank">Rank</th>
-            <th data-field="user">User</th>
-            <th data-field="college">College</th>
-            <th data-field="score">Score</th>
+  <div class="c-leaderboard border-card p-4 p-sm-5 mb-5">
+    <h4 class="mb-5">Contest Leaderboard</h4>
+    <table class="w-100">
+      <thead class="font-sm red extra-bold t-align-c">
+        <td class="pb-4">Rank</td>
+        <td class="pb-4">User</td>
+        <td class="pb-4">College</td>
+        <td class="pb-4">Score</td>
+      </thead>
+      <tbody>
+        {{#each displayedLeaderboard as |row index|}}
+          <tr class="">
+            <td class="pb-4 pt-2">{{inc index 1}}</td>
+            <td class="pb-4 pt-2">
+              <div class="img-desc align-items-center">
+                <img class="round s-30x30" src="{{defaultPhoto row.photo row.id}}" alt="">
+                <div class="description ml-3">
+                  {{row.userName}}
+                </div>
+              </div>
+            </td>
+            <td class="pb-4 pt-2">{{if (or (not row.collegeName) (eq row.collegeName '---OTHER / NOT LISTED / NO COLLEGE ---')) 'N/A' row.collegeName}}</td>
+            <td class="pb-4 pt-2">{{row.score}}</td>
           </tr>
         </thead>
         <tbody>
@@ -28,16 +37,14 @@
               </td>
               <td>{{row.score}}</td>
             </tr>
-          {{/each}}
-        </tbody>
-      </table>
-      {{#if (lt limit leaderboard.length)}}
-        <div class="row justify-content-center">
-          <button class="button-dashed" {{action 'loadMore'}}>Load More</button>
-        </div>
-      {{/if}}
-    </div>
-  </div>
-</div>
+        {{/each}}
+      </tbody>
+    </table>
 
+    {{#if (lt limit leaderboard.length)}}
+      <div class="row justify-content-center">
+        <button class="button-dashed" {{action 'loadMore'}}>Load More</button>
+      </div>
+    {{/if}}
+  </div>
 {{/if}}

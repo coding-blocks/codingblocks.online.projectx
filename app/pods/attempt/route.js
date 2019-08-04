@@ -5,6 +5,7 @@ import AuthenticatedRouteMixin from 'codingblocks-online/mixins/authenticated-ro
 
 export default Route.extend(AuthenticatedRouteMixin, {
 	api: service(),
+	router: service(),
 	runAttemptService: service('run-attempt'),
 	model(params, transition) {
 		this.runAttemptService.setRunAttempt(params.runAttemptId)
@@ -19,9 +20,8 @@ export default Route.extend(AuthenticatedRouteMixin, {
 					//get a corrected RunAttempt
 					return this.api.request('/users/correctRunAttempt/'+ params.runAttemptId)
 						.then(result => {
-
 							// replace url param with corrected runAttemptId
-							const url = transition.intent.url.replace(/player\/\d*\//g, "player/" + result.id + '/')
+							const url = this.get('router.currentURL').replace(/player\/\d*\//g, "player/" + result.id + '/')
 							return this.transitionTo(url)
 						})
 						.catch(e => {

@@ -57,7 +57,7 @@
     "ember-metrics": "^0.13.0",
     "ember-modal-dialog": "^3.0.0-beta.0",
     "ember-moment": "^7.7.0",
-    "ember-monaco": "^1.0.2",
+    "ember-monaco": "^1.1.0",
     "ember-qunit": "^4.4.1",
     "ember-resolver": "^5.0.1",
     "ember-simple-auth": "^1.4.2",
@@ -79,7 +79,7 @@
     "node": "8.* || >= 10.*"
   },
   "dependencies": {
-    "@coding-blocks/motley": "0.3.46",
+    "@coding-blocks/motley": "0.3.48",
     "ember-line-clamp": "^0.2.15",
     "moment": "^2.22.2",
     "showdown-katex-studdown": "^0.4.0"

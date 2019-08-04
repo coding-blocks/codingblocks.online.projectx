@@ -4,6 +4,7 @@
       language=selectedLanguage.mode
       code=selectedLanguage.source
       onChange=(action (mut selectedLanguage.source))
+      onReady=(action "onEditorReady")
     }}
   </div>
   <div id="dragger-ce-rs"></div>
@@ -58,7 +59,7 @@
           {{#if code.editorial}}
             <i class="fas fa-book-open"></i>View Editorial
           {{else}}
-            <i class="fas fa-lock"></i>Unlock Editorial
+            <i class="fas fa-lock pr-2"></i>Unlock Editorial
           {{/if}}
         </button>
         <div class="align-self-center pl-3">
@@ -86,7 +87,7 @@
               </p>
             </div>
             <div class="col-md-6">
-              <div class = "{{if isTaskRunning "disabled"}}">
+              <div class = "{{if isTaskRunning "disabled w-75"}}">
                 {{#if isTaskRunning}}
                   <button class="button-solid" disbaled>
                     Running Code

@@ -15,12 +15,16 @@ export default Route.extend({
     }
   },
   model(params) {
+    if (JSON.parse(params.product_ids)[0].type == "extension") {
+      return this.transitionTo('classroom');
+    }
+
     if(this.get('session.isAuthenticated')){
       return this.api.request('/run_attempts', {
         method: 'POST',
         data: {
           transaction_id: params.transaction_id,
-          product_ids : params.product_ids
+          product_ids : JSON.parse(params.product_ids)
         }
       }).then((res)=>{
         this.transitionTo('classroom');
