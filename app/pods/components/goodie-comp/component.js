@@ -24,11 +24,6 @@ export default Component.extend({
             promise: thresholdCompleted
         })
     }),
-    progress: computed('runAttempt', function () {
-        return DS.PromiseObject.create({
-            promise: this.api.request(`run_attempts/${this.runAttempt.id}/progress`)
-        })
-    }),
 
     canClaim: alias('thresholdCompleted'),
     alreadyClaimed: equal('statusInProgress', 'requested'),
