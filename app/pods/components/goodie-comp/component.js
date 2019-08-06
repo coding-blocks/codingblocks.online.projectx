@@ -42,7 +42,7 @@ export default Component.extend({
             let formInfo = {
                 name: this.get('name'),
                 tshirt: this.tshirt,
-                address: this.get('address')
+                address: this.get('address').replace(/\n/g, " ")
             }
 
             this.get('goodieRequests').set('formInfo', formInfo)
