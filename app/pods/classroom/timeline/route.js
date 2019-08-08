@@ -59,6 +59,7 @@ export default Route.extend({
           if(isNone(record)) {
             record = this.store.createRecord("goodie-request", {})
             record.set("runAttempt", runAttemptParameter)
+            record.set("run", runAttemptParameter.run)
           }
 
           runAttemptParameter.set("goodieRequests", record)
