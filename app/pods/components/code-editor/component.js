@@ -100,6 +100,9 @@ export default class EditorClass extends Component {
     this.set("isLanguageSelectOpen", false);
     this.set("selectedLanguage", lang);
 
+    if(this.get("previousSourceCode")) {
+      this.set("selectedLanguage.source", this.get("previousSourceCode"))
+    }
   }
 
   @action
