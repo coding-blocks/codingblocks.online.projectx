@@ -19,7 +19,7 @@
         </div>
       </div>
       <form {{action "comment" on="submit"}}>
-        {{input type="text" value=commentBody placeholder="Comment Now (Press enter to post)" disabled=commentTask.isRunning}}
+        {{textarea row="3" type="text" value=commentBody placeholder="Comment Now (Press enter to post)" disabled=commentTask.isRunning}}
       </form>
       {{#if err}}
         <div class="red card-md"><i class="fas fa-exclamation-triangle"></i> {{{err}}}</div>
