@@ -1,5 +1,9 @@
 # http://www.robotstxt.org
 User-agent: *
+Sitemap: https://online.codingblocks.com/sitemap.xml
+Disallow: /classroom
+Disallow: /login
+Disallow: /logout
 Disallow: /course/30
 Disallow: /course/42
 Disallow: /course/23
