@@ -15,7 +15,7 @@ export default class CodeChallengeComponent extends Component {
   @service taskPoller;
   @alias("payload") code;
 
-
+  previousSourceCode = null;
   sourceCode = "";
   customInput = "";
   customOutput = "";
@@ -143,6 +143,7 @@ export default class CodeChallengeComponent extends Component {
         source: config.source
       }
     });
+    this.set("previousSourceCode", window.atob(config.source))
 
     const submissionId = payload.submissionId
     const status = yield this.taskPoller.performPoll(() => this.get("api").request("code_challenges/status/" + submissionId, {
