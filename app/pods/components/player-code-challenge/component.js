@@ -115,11 +115,9 @@ export default class CodeChallengeComponent extends Component {
   @restartableTask runCodeTask = function *(config) {
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     const code = this.get("code");
-    const run = this.get("run");
     const payload = yield this.get("api").request("code_challenges/submit", {
       method: "POST",
       data: {
-        contestId: run.get("contestId"),
         problemId: code.get("hbProblemId"),
         custom_input: config.input,
         source: config.source,
