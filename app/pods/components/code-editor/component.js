@@ -172,7 +172,7 @@ export default class EditorClass extends Component {
       
       // Get the editor reference and set monaco global
       this.editor = iframeWindow.editor
-      window.monaco = iframeWindeow.monaco
+      window.monaco = iframeWindow.monaco
 
       const firepad = this.firepad
       firepad.set("editor", this.editor)
