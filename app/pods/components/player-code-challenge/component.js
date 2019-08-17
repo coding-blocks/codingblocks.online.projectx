@@ -161,11 +161,10 @@ export default class CodeChallengeComponent extends Component {
       this.set("problemJsonApiPayload", result);
       const payload = JSON.parse(JSON.stringify(result))
       this.get('store').unloadAll('problem')
-
       later(async() => {
         this.get('store').pushPayload(payload)
-        const problem = this.get('store').peekRecord('problem', code.get('hbProblemId'))
-        if (await problem.get('hasTopSubmissionPassed') && await problem.get('mostSuccessfullSubmission.score') == 100) {
+        const problem = await this.get('store').peekRecord('problem', code.get('hbProblemId'))
+        if (await problem.get('hasLatestSubmissionPassed') && await problem.get('mostSuccessfullSubmission.score') == 100) {
           const progress = await this.get('code.content').get('progress')
           progress.set("status", 'DONE')
           progress.save();
