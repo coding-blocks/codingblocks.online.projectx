@@ -4,12 +4,17 @@ import moment from 'moment'
 export const getSeoSchemaForCourse = (course, ratings) => {
   const data = {
     "@context": "http://schema.org/",
-    "@type": "Product",
+    "@type": "Course",
     "name": course.title,
-    "sku": course.id,
+    "description": course.subtitle,
     "image": [
       course.logo
     ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Coding Blocks",
+      "sameAs": "https://online.codingblocks.com/"
+    },
     "review": {
       "@type": "Review",
       "reviewRating": {
@@ -24,11 +29,6 @@ export const getSeoSchemaForCourse = (course, ratings) => {
       }
     },
     "url": `${config.publicUrl}/courses/${course.slug}`,
-    "description": course.subtitle,
-    "brand": {
-      "@type": "Thing",
-      "name": "Coding Blocks"
-    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": course.rating,
@@ -54,7 +54,7 @@ export const getSeoSchemaForCourse = (course, ratings) => {
   return JSON.stringify(data)
 }
 
-export const getSeoSchemaForAllCourses = (courses) => {
+export const getSeoSchemaForAllCourses = (courses, callingPage) => {
   const items = courses.map((course, index) => ({
     "@type": "ListItem",
     "position": index+1,
@@ -68,7 +68,7 @@ export const getSeoSchemaForAllCourses = (courses) => {
         "name": "Coding Blocks",
         "sameAs": "https://online.codingblocks.com/"
       },
-      "url":`${config.publicUrl}/courses`
+      "url": callingPage ? `${config.publicUrl}/${callingPage}#${course.slug}` : `${config.publicUrl}/#${course.slug}`
     }
   }))
 

@@ -100,6 +100,9 @@ export default class EditorClass extends Component {
     this.set("isLanguageSelectOpen", false);
     this.set("selectedLanguage", lang);
 
+    if(this.get("previousSourceCode")) {
+      this.set("selectedLanguage.source", this.get("previousSourceCode"))
+    }
   }
 
   @action
@@ -169,7 +172,7 @@ export default class EditorClass extends Component {
       
       // Get the editor reference and set monaco global
       this.editor = iframeWindow.editor
-      window.monaco = iframeWindeow.monaco
+      window.monaco = iframeWindow.monaco
 
       const firepad = this.firepad
       firepad.set("editor", this.editor)

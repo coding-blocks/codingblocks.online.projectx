@@ -15,7 +15,7 @@ export default class CodeChallengeComponent extends Component {
   @service taskPoller;
   @alias("payload") code;
 
-
+  previousSourceCode = null;
   sourceCode = "";
   customInput = "";
   customOutput = "";
@@ -114,9 +114,11 @@ export default class CodeChallengeComponent extends Component {
   
   @restartableTask runCodeTask = function *(config) {
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
+    const code = this.get("code");
     const payload = yield this.get("api").request("code_challenges/submit", {
       method: "POST",
       data: {
+        problemId: code.get("hbProblemId"),
         custom_input: config.input,
         source: config.source,
         language: config.lang,
@@ -126,8 +128,8 @@ export default class CodeChallengeComponent extends Component {
     const submissionId = payload.submissionId
     const status = yield this.taskPoller.performPoll(() => this.get("api").request("code_challenges/status/" + submissionId, {
         "method": "GET"
-    }), submissionStatus => submissionStatus && submissionStatus.judge_result !== null);
-    return status.judge_result;
+    }), submissionStatus => submissionStatus && submissionStatus['judge-result'] !== null);
+    return status['judge-result'];
   }
 
   @restartableTask submitCodeTask = function *(config) {
@@ -143,11 +145,12 @@ export default class CodeChallengeComponent extends Component {
         source: config.source
       }
     });
+    this.set("previousSourceCode", window.atob(config.source))
 
     const submissionId = payload.submissionId
     const status = yield this.taskPoller.performPoll(() => this.get("api").request("code_challenges/status/" + submissionId, {
       "method": "GET"
-    }), submissionStatus => submissionStatus && submissionStatus.judge_result !== null);
+    }), submissionStatus => submissionStatus && submissionStatus['judge-result'] !== null);
 
     this.get('api').request('code_challenges/problems',{
       data: {
@@ -177,7 +180,7 @@ export default class CodeChallengeComponent extends Component {
       method: 'POST',
     })
 
-    return status.judge_result
+    return status['judge-result']
   }
 
   @action

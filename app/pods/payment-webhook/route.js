@@ -16,8 +16,9 @@ export default Route.extend({
   },
   model(params) {
     if (JSON.parse(params.product_ids)[0].type == "extension") {
-      this.transitionTo('classroom');
+      return this.transitionTo('classroom');
     }
+
     if(this.get('session.isAuthenticated')){
       return this.api.request('/run_attempts', {
         method: 'POST',
