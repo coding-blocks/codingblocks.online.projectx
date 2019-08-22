@@ -73,14 +73,8 @@ export default Route.extend({
                     p_id: model.payload.get("hbProblemId")
                   }
               })
-              const problemAttemptPromise = this.api.request('/code_challenges/problem_attempt', {
-                method: "POST",
-                data: {
-                  contestId: model.run.get("contestId"),
-                  problemId: model.payload.get("hbProblemId")
-                }
-              })
-              const [editorialPayload, testcasesPayload] = await allSettled([editorialPromise, testcasePromise, problemAttemptPromise])
+              const [editorialPayload, testcasesPayload] = await allSettled([editorialPromise, testcasePromise])
+
               if(editorialPayload.state === 'fulfilled'){
                   const editorialRecord = this.store.createRecord('editorial', editorialPayload.value.data.attributes);
                   model.payload.set('editorial', editorialRecord)
