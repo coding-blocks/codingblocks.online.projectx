@@ -193,8 +193,8 @@ export default class CodeChallengeComponent extends Component {
   @action
   fetchTestcases(){
     this.get("fetchEditorialTestcases").perform('testcases').then(response=>{
-      const testcases = response.data.attributes.urls.map(t => {
-        return this.get('store').createRecord('testcase', { input: t.input, expectedOutput: t['expected-output'] })
+      const testcases = response.data.map(t => {
+        return this.get('store').createRecord('testcase', { input: t.attributes.input, expectedOutput: t.attributes['expected-output'] })
       })
       this.set('code.testcases', testcases)
     })

@@ -74,14 +74,14 @@ export default Route.extend({
                   }
               })
               const [editorialPayload, testcasesPayload] = await allSettled([editorialPromise, testcasePromise])
-              
+
               if(editorialPayload.state === 'fulfilled'){
                   const editorialRecord = this.store.createRecord('editorial', editorialPayload.value.data.attributes);
                   model.payload.set('editorial', editorialRecord)
               }
               if (testcasesPayload.state === 'fulfilled') {
-                  const testcases = testcasesPayload.value.data.attributes.urls.map(t=>{
-                      return this.store.createRecord('testcase', {input: t.input, expectedOutput: t['expected-output']});
+                  const testcases = testcasesPayload.value.data.map(t=>{
+                      return this.store.createRecord('testcase', {input: t.attributes.input, expectedOutput: t.attributes['expected-output']});
                   })
                   model.payload.set('testcases', testcases);
               }
