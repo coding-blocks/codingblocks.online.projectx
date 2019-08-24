@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed, action } from '@ember/object'
 import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
-import { isBadRequestError } from 'ember-ajax/errors';
+import { isBadRequestError } from 'ember-fetch/errors';
 import { not } from '@ember/object/computed';
 
 

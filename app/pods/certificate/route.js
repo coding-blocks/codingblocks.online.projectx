@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import { isBadRequestError, isNotFoundError } from 'ember-ajax/errors';
+import { isBadRequestError, isNotFoundError } from 'ember-fetch/errors';
 
 export default Route.extend({
   api: service(),
