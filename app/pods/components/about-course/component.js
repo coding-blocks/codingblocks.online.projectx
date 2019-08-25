@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { inject } from '@ember/service';
 import { get }  from '@ember/object';
-import $ from 'jquery';
 import { task } from 'ember-concurrency';
 import env from "codingblocks-online/config/environment";
 
@@ -93,18 +92,16 @@ export default Component.extend({
   didInsertElement () {
     this._super(...arguments)
     // hide buy-right and pull buy-top when user scrolls to the top of accrodian
-    const buyTop = $(".c-buy-top")[0];
-    const accordion = $(".c-about-accordion");
-    const accordOffsetTop = accordion.offset().top - 350;
-    $(window).on('scroll', function() {
-      if (window.pageYOffset >= accordOffsetTop) {
+    const buyTop = document.querySelector('.c-buy-top')
+    const accordion = document.querySelector('.c-about-accordion')
+    // const accordOffsetTop = accordion.getBoundingClientRect().top - 350;
+    window.addEventListener('scroll', function() {
+      if (accordion.getBoundingClientRect().top < 350) {
         buyTop.classList.remove("slide-up");
       } else {
         buyTop.classList.add("slide-up");
       }
     })
   }
-
-
   
 });

@@ -22,7 +22,7 @@ export default Mixin.create({
     return fetch(uri, {
       method,
       body: options.data && JSON.stringify(options.data),
-      headers: this.headers,
+      headers: this.headers
     }).then(r => {
       if (r.ok)
         return r.json()

@@ -2669,6 +2669,14 @@ broccoli-dependency-funnel@^2.1.2:
     rimraf "^2.6.2"
     symlink-or-copy "^1.2.0"
 
+broccoli-file-creator@^1.1.1:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/broccoli-file-creator/-/broccoli-file-creator-1.2.0.tgz#27f1b25b1b00e7bb7bf3d5d7abed5f4d5388df4d"
+  integrity sha512-l9zthHg6bAtnOfRr/ieZ1srRQEsufMZID7xGYRW3aBDv3u/3Eux+Iawl10tAGYE5pL9YB4n5X4vxkp6iNOoZ9g==
+  dependencies:
+    broccoli-plugin "^1.1.0"
+    mkdirp "^0.5.1"
+
 broccoli-file-creator@^2.0.0, broccoli-file-creator@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/broccoli-file-creator/-/broccoli-file-creator-2.1.1.tgz#7351dd2496c762cfce7736ce9b49e3fce0c7b7db"
@@ -4951,7 +4959,7 @@ ember-factory-for-polyfill@^1.3.1:
     node-fetch "^2.3.0"
     whatwg-fetch "^3.0.0"
 
-ember-fetch@^6.7.0:
+"ember-fetch@^4.0.0 || ^5.0.0 || ^6.0.0", ember-fetch@^6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/ember-fetch/-/ember-fetch-6.7.0.tgz#c219f820e40f7918147391617a5940c67d293319"
   integrity sha512-lB9G+XDKOc84Dr3THJs+l/KmtzUus7nv12Z0xOP54J917HmjnAsSZ9OHTp+X8ClxlAm35/v9l+sFd7IlB9Baqw==
@@ -4995,6 +5003,14 @@ ember-gestures@^1.1.0:
     fastboot-transform "^0.1.3"
     hammerjs "^2.0.8"
     resolve "^1.10.0"
+
+ember-get-config@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/ember-get-config/-/ember-get-config-0.2.4.tgz#118492a2a03d73e46004ed777928942021fe1ecd"
+  integrity sha1-EYSSoqA9c+RgBO13eSiUICH+Hs0=
+  dependencies:
+    broccoli-file-creator "^1.1.1"
+    ember-cli-babel "^6.3.0"
 
 "ember-getowner-polyfill@^1.1.0 || ^2.0.0", ember-getowner-polyfill@^2.0.0, ember-getowner-polyfill@^2.0.1, ember-getowner-polyfill@^2.2.0:
   version "2.2.0"
@@ -5198,16 +5214,36 @@ ember-runtime-enumerable-includes-polyfill@^2.0.0:
     ember-cli-babel "^6.9.0"
     ember-cli-version-checker "^2.1.0"
 
-"ember-simple-auth-token@git+https://github.com/abhishek97/ember-simple-auth-token.git":
-  version "3.0.0"
-  resolved "git+https://github.com/abhishek97/ember-simple-auth-token.git#607cb784e6b465ce44f15833c0542b3c998d282f"
+ember-simple-auth-token@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/ember-simple-auth-token/-/ember-simple-auth-token-4.0.7.tgz#df4177d118b9f7a75a3879ceec04ab2c55e1cad2"
+  integrity sha512-1AyyBn0Bvmf4l0N1/ElR7bkP6T71+uU1H5qkCDqrOV1cM1o378/vx0MPtw0nLU0OM9/H6M+TNWyyR143MjcXfA==
   dependencies:
     ember-cli-babel "^6.6.0"
+    ember-fetch "^4.0.0 || ^5.0.0 || ^6.0.0"
+    ember-get-config "^0.2.4"
+    ember-simple-auth "^1.6.0"
 
 ember-simple-auth@^1.4.2:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/ember-simple-auth/-/ember-simple-auth-1.8.2.tgz#caf823117097c7baafcaa3eac92c8217092c5299"
   integrity sha512-WKCi7zA9l2/s2Z+P7KfIZnfEwzVsk+E1JZ9iwacLcVmqSkX9+z/UDJ0d+beLPOTdODIe07uuTOdaEWRxmNzm4w==
+  dependencies:
+    base-64 "^0.1.0"
+    broccoli-file-creator "^2.0.0"
+    broccoli-funnel "^1.2.0 || ^2.0.0"
+    broccoli-merge-trees "^2.0.0 || ^3.0.0"
+    ember-cli-babel "^6.8.2"
+    ember-cli-is-package-missing "^1.0.0"
+    ember-cookies "^0.3.0 || ^0.4.0"
+    ember-fetch "^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0"
+    ember-getowner-polyfill "^1.1.0 || ^2.0.0"
+    silent-error "^1.0.0"
+
+ember-simple-auth@^1.6.0:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/ember-simple-auth/-/ember-simple-auth-1.9.2.tgz#ee8b1b0ec4c5c0e08bc94560cb90552d4ae7fd5d"
+  integrity sha512-WTG2uGe8+TIfwsy5eaS7uIszEmyQ/pjKLUMjyq6YYkU9d9erSXVRiuO4h46OxTEbVI3c17mjAu/4kTxc+BOFZw==
   dependencies:
     base-64 "^0.1.0"
     broccoli-file-creator "^2.0.0"
