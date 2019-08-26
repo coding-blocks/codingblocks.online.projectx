@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import firepad from 'firepad'
+// import firepad from 'firepad'
 import { getRef } from "codingblocks-online/utils/firebase";
 
 export default class FirepadService extends Service {
@@ -9,6 +9,7 @@ export default class FirepadService extends Service {
   _firepad = null
 
   async connect (refString = '', keepText = true) {
+    const firepad = (await import('firepad')).default
     if (refString.length) {
       this.set('ref', refString)
     }
@@ -22,11 +23,13 @@ export default class FirepadService extends Service {
       throw new Error('You must set a ref first!')
     }
 
+
+    const ref = await getRef(this.ref)
+
     // firepad must be setup on an empty editor
     const defaultText = this.editor.getValue()
     this.editor.setValue("")
-    
-    const newFirepad = firepad.fromMonaco(getRef(this.ref), this.editor, {
+    const newFirepad = firepad.fromMonaco(ref, this.editor, {
       defaultText
     })
 
