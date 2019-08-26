@@ -1,13 +1,13 @@
 <div class="hoverable">
   <div class="img-card online-card">
     <div class="head d-flex">
-      <img class="back-img" src="{{course.coverImage}}">
+      <img class="back-img" src="{{course.coverImage}}" loading="lazy">
       <div class="dsp-none-sm">
         {{difficulty-dots difficulty=course.difficulty difficultyName=course.difficultyName}}
       </div>
       <div class="content d-flex flex-column justify-content-center">
         <div class="round-img-b">
-          <img src="{{defaultTo course.logo '/images/c++'}}">
+          <img src={{defaultTo course.logo '/images/c++'}} loading="lazy">
         </div>
         <div class="course-name center-text">
           {{#link-to 'courses.id' course.identifier activeClass="" class="white"}} {{course.title}} {{/link-to}}
@@ -23,7 +23,7 @@
         <div class="card-mentor-image">
           {{#each course.instructors as |instructor index|}}
           {{#if (lt index 2) }}
-          <img class="card-mentors" src="{{instructor.photo}}">
+          <img class="card-mentors" src={{instructor.photo}} loading="lazy">
           {{/if}}
           {{/each}}
         </div>
@@ -87,7 +87,7 @@
 
   <div class="border-card online-card pop-up dsp-none-sm animated {{if showPopUp 'zoom-in display-block' 'display-none'}}">
     <div class="round-img">
-      <img src="{{defaultTo course.logo '/images/c++'}}">
+      <img src={{defaultTo course.logo '/images/c++'}} loading="lazy">
     </div>
     <div class="course-name center-text">
       {{#link-to 'courses.id' course.identifier activeClass=""}} {{course.title}} {{/link-to}}
@@ -101,7 +101,7 @@
       <div class="card-mentor-image">
         {{#each course.instructors as |instructor index|}}
         {{#if (lt index 2) }}
-        <img class="card-mentors" src="{{instructor.photo}}">
+        <img class="card-mentors" src={{instructor.photo}} loading="lazy">
         {{/if}}
         {{/each}}
       </div>
