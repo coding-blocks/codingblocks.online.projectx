@@ -127,9 +127,9 @@ export default class NotificationDropdownComponent extends Component {
   } 
 
   willDestroyElement () {
-    document.removeEventListener("click", stopPropagation)
+    document.removeEventListener("click", this.stopPropagation)
     this.element
       .querySelectorAll('#notification-icon,#notification-box')
-      .forEach(el => el.removeEventListener('click', stopPropagation))
+      .forEach(el => el.removeEventListener('click', this.stopPropagation))
   }
 }
