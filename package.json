@@ -87,6 +87,10 @@
     "moment": "^2.22.2",
     "showdown-katex-studdown": "^0.4.0"
   },
+  "fastbootDependencies": [
+    "buffer",
+    "node-fetch"
+  ],
   "ember-addon": {
     "paths": [
       "lib/cricket-cup",

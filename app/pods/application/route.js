@@ -22,6 +22,7 @@ export default Route.extend(ApplicationRouteMixin, {
     beforeModel (transition) {
 
       if (!isNone(transition.to.queryParams.code)) {
+        debugger;
         if (this.get('session.isAuthenticated')) {
           return this.transitionTo({ queryParams: { code: undefined } })
         }
@@ -29,7 +30,7 @@ export default Route.extend(ApplicationRouteMixin, {
         const { code } = transition.to.queryParams
         
         return this.session.authenticate('authenticator:jwt', { identification: code, password: code, code })
-          .then(() => this.currentUser.load())
+          .then(() => {console.log(this.session.isAuthenticated); this.currentUser.load() })
           .then(user => {
             // if user belongs to an org, redirect to the domain
             if(user.get('organization')) {
@@ -49,7 +50,7 @@ export default Route.extend(ApplicationRouteMixin, {
     },
     model () {
         if (this.get('session.isAuthenticated')) {
-          return this.currentUser.load().then (user => {
+          this.currentUser.load().then (user => { 
             try {
               OneSignal.getUserId ().then (userId => {
                 if (! userId) {

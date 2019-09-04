@@ -6,7 +6,7 @@ export default Mixin.create(AuthenticatedRouteMixin, {
   router: service(),
 
   beforeModel () {
-    localStorage.setItem('redirectionPath', this.get('router.currentURL') || window.location.pathname)
+    // localStorage.setItem('redirectionPath', this.get('router.currentURL') || window.location.pathname)
     return this._super(...arguments)
   }
 })
