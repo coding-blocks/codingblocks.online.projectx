@@ -18,14 +18,11 @@ export default class DukaanDropdown extends Component {
   }
 
   didInsertElement() {
-    const stopPropagation = e => e.stopPropagation()
+    this.$('#cart-icon,#cart-box').on("click", e => {
+      e.stopPropagation();
+    })
 
-    this.element
-      .querySelectorAll('#cart-icon,#cart-box')
-      .forEach(el => el.addEventListener('click', stopPropagation))
-    
-
-    this.element.querySelector('#cart-icon').addEventListener('click', e => {
+    this.$('#cart-icon').on('click', e => {
       this.get('fetchCart').perform()
     })
   }

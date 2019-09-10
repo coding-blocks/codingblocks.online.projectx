@@ -2,7 +2,6 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import DS from 'ember-data';
 import AuthenticatedRouteMixin from 'codingblocks-online/mixins/authenticated-route-mixin';
-import showdown from 'showdown'
 
 export default Route.extend(AuthenticatedRouteMixin, {
 	api: service(),
@@ -33,11 +32,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
 					throw err
 				}		
 			});
-	},
-	afterModel () {
-		import('showdown-katex-studdown').then(module => {
-			showdown.extension("katex", module.default())
-		})
 	},
 	setupController(controller, model) {
 		this._super(...arguments)

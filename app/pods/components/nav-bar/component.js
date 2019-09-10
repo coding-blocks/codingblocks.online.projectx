@@ -21,7 +21,7 @@ export default class navBarComponent extends Component {
 
     didInsertElement () {
       this._super(...arguments)
-      document.addEventListener("click", e => {
+      this.$(document).on("click", e => {
         this.set('activeTab', false)
       });
     }

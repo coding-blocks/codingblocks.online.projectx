@@ -1,18 +1,10 @@
 import Component from '@ember/component';
 import { isNone } from '@ember/utils';
+import $ from 'jquery'
 import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
 import { storageFor } from 'ember-local-storage';
 import { inject as service } from '@ember/service';
 
-function queryParams(source) {
-  var array = [];
-
-  for(var key in source) {
-     array.push(encodeURIComponent(key) + "=" + encodeURIComponent(source[key]));
-  }
-
-  return array.join("&");
-}
 
 export default Component.extend(KeyboardShortcuts, {
   currentUser : service(),
@@ -60,7 +52,7 @@ export default Component.extend(KeyboardShortcuts, {
         // TODO: send a request to backend and get a signed url to the segment as 301
         try {
           const awsData = self.get('awsData')
-          const encoded = queryParams({
+          const encoded = $.param({
             "Key-Pair-Id": awsData.keyId,
             "Signature": awsData.signature,
             "Policy": awsData.policyString
@@ -93,11 +85,10 @@ export default Component.extend(KeyboardShortcuts, {
 
   didInsertElement () {
     this._super(...arguments)
-
-    const video = this.element.querySelector('#video')
-    const spinner = this.element.querySelector('.spinner')
-    const lecture = this.element.querySelector('.lecture')
-    const overlay = this.element.querySelector('.overlay-content')
+    const video = this.$('#video')[0];
+    const spinner = this.$('.spinner');
+    const lecture = this.$('.lecture');
+    const overlay = this.$('.overlay-content');
 
     let topPos = Math.floor(Math.random() * 100)
     let leftPos = Math.floor(Math.random() * 100)

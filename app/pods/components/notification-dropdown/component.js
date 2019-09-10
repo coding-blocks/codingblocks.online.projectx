@@ -22,8 +22,6 @@ export default class NotificationDropdownComponent extends Component {
   limit = 50
   page = 1
 
-  stopPropagation = e => e.stopPropagation()
-
   didReceiveAttrs () {
     this._super (...arguments)
 
@@ -36,9 +34,9 @@ export default class NotificationDropdownComponent extends Component {
   }
 
   didInsertElement() {
-    this.element
-      .querySelectorAll('#notification-icon,#notification-box')
-      .forEach(el => el.addEventListener('click', this.stopPropagation))
+    this.$('#notification-icon,#notification-box').on("click", e => {
+      e.stopPropagation();
+    })
   }
 
   @restartableTask loadNotifications = function *() {
@@ -127,9 +125,7 @@ export default class NotificationDropdownComponent extends Component {
   } 
 
   willDestroyElement () {
-    document.removeEventListener("click", this.stopPropagation)
-    this.element
-      .querySelectorAll('#notification-icon,#notification-box')
-      .forEach(el => el.removeEventListener('click', this.stopPropagation))
+    this.$(document).off("click")
+    this.$('#notification-icon,#notification-box').off("click")
   }
 }

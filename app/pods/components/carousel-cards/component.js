@@ -2,15 +2,14 @@ import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object'
+import $ from 'jquery';
 
 class carouselCard {
   constructor (el, cssConf = {}) {
     this.element = el
     this.translateX = 0
     this.translateY = 0
-    Object.keys(cssConf).forEach(key => {
-      this.element.style[key] = cssConf[key]
-    })
+    $(this.element).css(cssConf)
   }
 
   setTranslateY (val) {
@@ -26,16 +25,20 @@ class carouselCard {
   }
 
   showContent () {
-    Array.from(this.element.children).forEach(c => c.style.display = 'block')
+    $(this.element).find('*').removeClass('display-none')
+    $(this.element).find('*').addClass('display-block')
   }
 
   hideContent () {
-    Array.from(this.element.children).forEach(c => c.style.display = 'none')
+    $(this.element).find('*').removeClass('display-block')
+    $(this.element).find('*').addClass('display-none')
   }
 
   apply () {
-    this.element.style.height = this.height + "px"
-    this.element.style.transform = `translate(${this.translateX}%, ${this.translateY}%)`
+    $(this.element).css({
+      height: this.height,
+      transform: `translate(${this.translateX}%, ${this.translateY}%)`
+    })
   }
 }
 
