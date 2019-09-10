@@ -163,29 +163,4 @@ export default class EditorClass extends Component {
       this.firepad.disconnect()
     }
   }
-
-  didInsertElement () {
-    this._super(...arguments)
-    const monacoIframe = document.querySelector('iframe[src*="ember-monaco"]')
-    monacoIframe.addEventListener('load', () => {
-      const iframeWindow = monacoIframe.contentWindow
-      
-      // Get the editor reference and set monaco global
-      this.editor = iframeWindow.editor
-      window.monaco = iframeWindow.monaco
-
-      const firepad = this.firepad
-      firepad.set("editor", this.editor)
-
-      // if we have a ref; connect to firebase
-      if (this.ref) {
-        firepad.connect(this.ref, false)
-      } else {
-        firepad.disconnect()
-      }
-    })
-  }
-
-
-  
 }

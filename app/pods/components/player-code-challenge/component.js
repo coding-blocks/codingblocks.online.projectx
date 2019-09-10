@@ -7,7 +7,6 @@ import { later } from '@ember/runloop';
 
 export default class CodeChallengeComponent extends Component {
   @service api;
-  @service ajax;
   @service hbApi;
   @service currentUser;
   @service store;

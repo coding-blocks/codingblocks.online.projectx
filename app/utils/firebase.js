@@ -1,11 +1,13 @@
 import env from 'codingblocks-online/config/environment'
-import firebase from '@firebase/app'
-import '@firebase/database'
-
 const { apiKey, databaseURL, projectId } = env.firebase
 
 const config = { apiKey, databaseURL, projectId }
 
-firebase.initializeApp(config)
 
-export const getRef = (ref) => firebase.database().ref().child(ref)
+export const getRef = async (ref) => {
+    const firebase = (await import('@firebase/app')).default
+    if(!firebase.apps.length)
+        firebase.initializeApp(config)
+    await import('@firebase/database')
+    return firebase.database().ref().child(ref)
+}

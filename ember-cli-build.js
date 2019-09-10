@@ -21,6 +21,9 @@ module.exports = function(defaults) {
     'ember-cli-uglify': {
       /* https://github.com/mike-north/ember-monaco/issues/54 */
       exclude: EmberApp.env() == 'production' ? ['ember-monaco/**'] : []
+    },
+    babel: {
+      plugins: [ require.resolve('ember-auto-import/babel-plugin') ]
     }
   });
 
@@ -37,7 +40,7 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
   app.import('node_modules/@coding-blocks/motley/dist/app.css')
-  app.import('node_modules/showdown-katex-studdown/dist/showdown-katex.js')
+  // app.import('node_modules/showdown-katex-studdown/dist/showdown-katex.js')
 
   return app.toTree();
 };
