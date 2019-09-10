@@ -46,7 +46,27 @@ export default Route.extend({
             }
           );
         }
-      }).then(async (runAttempt) => {
+      })
+      .then(async (runAttemptParameter) => {
+        return this.store.query("goodie-request", {
+          filter: {
+            runAttemptId: runAttemptParameter.id
+          }
+        })
+        .then((records) => {
+          let record = get(records, 'firstObject')
+
+          if(isNone(record)) {
+            record = this.store.createRecord("goodie-request", {})
+            record.set("runAttempt", runAttemptParameter)
+            record.set("run", runAttemptParameter.run)
+          }
+
+          runAttemptParameter.set("goodieRequests", record)
+          return runAttemptParameter
+        })
+      })
+      .then(async (runAttempt) => {
         await this.api.request('courses/' + runAttempt.get('run.course.id') + '/rating', {
           method: 'GET'
         }).then((rating) => {
@@ -59,6 +79,7 @@ export default Route.extend({
     controller.set("run", model.get("run"));
     controller.set("runAttempt", model);
     controller.set("userRating", model.get("rating"));
+    controller.set("goodieRequests", model.get("goodieRequests"))
   },
   actions: {
     reloadRoute() {

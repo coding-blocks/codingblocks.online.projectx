@@ -122,7 +122,7 @@
       {{/if}}
       {{certificate-comp runAttempt=runAttempt}}
 
-      <div class="border-card extra-bold font-mds bg-gradient-black-bt dsp-none-md">
+      <div class="border-card extra-bold font-mds bg-gradient-black-bt dsp-none-md mb-5">
         <p class="white">
           Get recruited by top multinational
           companies and get worldwide
@@ -135,6 +135,9 @@
         {{#link-to 'attempt' run.topRunAttempt.id tagName="button" activeClass="" class="button-solid"}} Resume
         {{/link-to}}
       </div>
+
+      {{goodie-comp runAttempt=runAttempt progress=progress goodieRequests=goodieRequests}}
+
     </div>
   </div>
 </div>
