@@ -4,6 +4,8 @@ import { restartableTask } from 'ember-concurrency-decorators';
 import { alias, reads } from '@ember/object/computed';
 import { action } from '@ember/object';
 import env from "codingblocks-online/config/environment";
+import { getPublicUrl } from "codingblocks-online/utils/browser"
+
 
 export default class RecommendedTaskComponent extends Component {
   @service store;
@@ -43,6 +45,6 @@ export default class RecommendedTaskComponent extends Component {
   @action
   logIn() {
     localStorage.setItem('redirectionPath', this.get('router.currentURL').replace("/app", "/"))
-    window.location.href = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`
+    window.location.href = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${getPublicUrl()}`
   }
 }

@@ -1,12 +1,15 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { alias, bool, reads }  from '@ember/object/computed';
+import { alias, bool, reads, equal }  from '@ember/object/computed';
 
 export default class navBarComponent extends Component {
     @service session
     @service currentUser
+    @service domain
     @alias('currentUser.user') user
+
+    @equal("domain.domain", "hellointern") isAnotherDomain
 
     @reads('currentUser.organization') organization
     @bool('organization')  isOrgView

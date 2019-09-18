@@ -14,11 +14,6 @@ export default Route.extend(ApplicationRouteMixin, {
             refreshModel: true
         }
     },
-    sessionAuthenticated () {
-      const redirectionPath = localStorage.getItem('redirectionPath')
-      if (!isNone(redirectionPath))
-        this.transitionTo(redirectionPath)
-    },
     beforeModel (transition) {
 
       if (!isNone(transition.to.queryParams.code)) {

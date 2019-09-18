@@ -18,13 +18,19 @@
           <li class="nav-items pointer">
             {{#if isOrgView}}
               {{#link-to currentUser.organization}}Home{{/link-to}}
+            {{else if isAnotherDomain}}
+              <a href="/"> Home </a>
             {{else}}
               {{#link-to 'index'}}Home{{/link-to}}
             {{/if}}
           </li>
           
           <li class="nav-items pointer">
-            {{#link-to 'courses' (query-params org=organization)}}All Courses{{/link-to}}
+            {{#if isAnotherDomain}}
+              <a href="/courses"> Courses </a>
+            {{else}}
+              {{#link-to 'courses' (query-params org=organization)}}All Courses{{/link-to}}
+            {{/if}}
           </li>
 
           {{#if session.isAuthenticated}}

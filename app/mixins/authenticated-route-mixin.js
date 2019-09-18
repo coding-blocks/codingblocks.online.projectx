@@ -4,9 +4,12 @@ import Mixin from '@ember/object/mixin';
 
 export default Mixin.create(AuthenticatedRouteMixin, {
   router: service(),
+  session: service(),
 
   beforeModel () {
-    localStorage.setItem('redirectionPath', (this.get('router.currentURL') || window.location.pathname).replace("/app", "/") )
-    return this._super(...arguments)
+    if (!this.session.isAuthenticated)
+      localStorage.setItem('redirectionPath', (this.get('router.currentURL') || window.location.pathname).replace("/app", "") )
+    
+      return this._super(...arguments)
   }
 })
