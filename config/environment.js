@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'codingblocks-online',
     podModulePrefix: 'codingblocks-online/pods',
     environment: environment,
-    rootURL: '/',
+    rootURL: '/app/',
     locationType: 'auto',
     'ember-simple-auth-token': {
       identificationField: 'code',
@@ -69,8 +69,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    
     ENV.apiHost = 'http://localhost:3000'
-    ENV.publicUrl = 'http://localhost:4200';
+    // ENV.publicUrl = 'http://localhost:4200';
+    ENV.publicUrl = 'http://test.online/app/'
     ENV.clientId = 7642172843
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://hack-api.codingblocks.com'

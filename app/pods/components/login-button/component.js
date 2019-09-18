@@ -64,7 +64,7 @@ export default class LoginButton extends Component {
 
   @action
   logIn () {
-    localStorage.setItem('redirectionPath', this.get('router.currentURL'))
+    localStorage.setItem('redirectionPath', this.get('router.currentURL').replace("/app", "/"))
     window.location.href = this.get('loginUrl')
   }
 }

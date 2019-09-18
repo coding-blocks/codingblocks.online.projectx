@@ -42,7 +42,7 @@ export default class RecommendedTaskComponent extends Component {
 
   @action
   logIn() {
-    localStorage.setItem('redirectionPath', this.get('router.currentURL'))
+    localStorage.setItem('redirectionPath', this.get('router.currentURL').replace("/app", "/"))
     window.location.href = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`
   }
 }

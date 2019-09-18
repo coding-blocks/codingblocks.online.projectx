@@ -63,11 +63,11 @@ export default Component.extend({
   }),
   actions: {
     logIn() {
-      localStorage.setItem('redirectionPath', this.get('router.currentURL'))
+      localStorage.setItem('redirectionPath', this.get('router.currentURL').replace("/app", "/"))
       this._redirectToOneauth()
     },
     logInAndStartTrial (courseId, runId) {
-      localStorage.setItem('redirectionPath', this.router.urlFor('classroom.timeline.index', {courseId, runId}))
+      localStorage.setItem('redirectionPath', this.router.urlFor('classroom.timeline.index', {courseId, runId}).replace("/app", "/"))
       this._redirectToOneauth()
     }
   },
