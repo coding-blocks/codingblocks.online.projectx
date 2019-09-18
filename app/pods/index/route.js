@@ -31,10 +31,8 @@ export default Route.extend(AuthenticatedRouteMixin, {
       if (!redirectionPath) {
         localStorage.removeItem('redirectionPath')
         this.transitionTo(redirectionPath)
-      } else 
-        this.transitionTo('classroom')
+      }
 
-    // this.transitionTo('classroom')
   }
 
 });
