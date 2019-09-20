@@ -16,7 +16,7 @@ export default Route.extend({
     if(this.get('currentUser.organization')) {
       this.transitionTo(this.get('currentUser.organization'))
     }
-
+    
     const redirectionPathExternal = localStorage.getItem('redirectionPathExternal')
       if (redirectionPathExternal) {
         // consume this redirect
