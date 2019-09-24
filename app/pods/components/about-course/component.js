@@ -4,6 +4,7 @@ import { get }  from '@ember/object';
 import $ from 'jquery';
 import { task } from 'ember-concurrency';
 import env from "codingblocks-online/config/environment";
+import { getPublicUrl } from "codingblocks-online/utils/browser"
 
 export default Component.extend({
   availableRuns: [],
@@ -11,7 +12,7 @@ export default Component.extend({
   runToBuy: null,
   dukaanCart: null,
 
-  loginUrl: `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
+  loginUrl: `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${getPublicUrl()}`,
   session: inject(),
   api: inject(),
   store: inject(),
@@ -63,11 +64,11 @@ export default Component.extend({
   }),
   actions: {
     logIn() {
-      localStorage.setItem('redirectionPath', this.get('router.currentURL'))
+      localStorage.setItem('redirectionPath', this.get('router.currentURL').replace("/app", "/"))
       this._redirectToOneauth()
     },
     logInAndStartTrial (courseId, runId) {
-      localStorage.setItem('redirectionPath', this.router.urlFor('classroom.timeline.index', {courseId, runId}))
+      localStorage.setItem('redirectionPath', this.router.urlFor('classroom.timeline.index', {courseId, runId}).replace("/app", "/"))
       this._redirectToOneauth()
     }
   },

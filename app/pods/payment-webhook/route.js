@@ -1,9 +1,11 @@
 import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
 import env from "codingblocks-online/config/environment";
+import { getPublicUrl } from "codingblocks-online/utils/browser"
+
 
 export default Route.extend({
-  loginUrl : `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${env.publicUrl}`,
+  loginUrl : `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${env.clientId}&redirect_uri=${getPublicUrl()}`,
   session : service(),
   api: service(),
   queryParams:{

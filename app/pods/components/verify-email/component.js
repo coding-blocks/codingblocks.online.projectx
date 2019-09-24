@@ -10,7 +10,7 @@ export default class VerifyEmailComponent extends Component {
   retryLogin() {
     this.session.invalidate()
       .then(() => {
-        localStorage.setItem('redirectionPath', this.get('router.currentURL'))
+        localStorage.setItem('redirectionPath', this.get('router.currentURL').replace("/app", "/"))
         this.router.transitionTo('login')
       })
   }
