@@ -1,1 +1,1 @@
-export const getPublicUrl = () => `${window.location.protocol}//${window.location.hostname}/app`
+export const getPublicUrl = () => `${window.location.protocol}//${window.location.hostname}/app/`
