@@ -60,7 +60,7 @@ export default class LoginButton extends Component {
     catch (error) {
       console.error (error)
     }
-    const logoutUrl = env.oneauthURL + '/logout?redirect=' + env.publicUrl + '/logout'
+    const logoutUrl = env.oneauthURL + '/logout?redirect=' + env.publicUrl + 'app/logout' 
     window.location.href = logoutUrl
   }
 
