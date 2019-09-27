@@ -11,6 +11,7 @@ export default class RecommendedTaskComponent extends Component {
   @service store;
   @service session;
   @service currentUser
+  @service domain
 
   @reads("fetchRecommendedCoursesTask.lastSuccessful.value")  
   recommendedCourses;
@@ -26,6 +27,13 @@ export default class RecommendedTaskComponent extends Component {
     const filter = {
       recommended: true,
       unlisted: false
+    }
+
+    if (this.domain.isExternal) {
+      // external
+      filter.domains = {
+        $contains: [this.domain.domain]
+      }
     }
 
     if (this.get('organization')) {
