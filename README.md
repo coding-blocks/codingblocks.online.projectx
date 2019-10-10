@@ -14,7 +14,7 @@ Frontend for Coding Blocks online made using EmberJS.
 
 ## Prerequisites
 
-You will need the following things properly installed on your computer.
+You will need the following things properly installed on your computer:
 
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/)
@@ -38,7 +38,7 @@ You will need the following things properly installed on your computer.
 
 ### Code Generators
 
-Make use of the many generators for code, try `ember help generate` for more details
+Make use of the many generators for code, try `ember help generate` for more details.
 
 ### Running Tests
 
@@ -64,7 +64,7 @@ Specify what it takes to deploy your app.
 
 * [ember.js](https://emberjs.com/)
 * [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
+* Development Browser Extensions:
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
@@ -73,4 +73,4 @@ Specify what it takes to deploy your app.
 
 We are starting to use Ember Engines for this project. Some commands that can come in handy:
 
-* Run at application root: `ember g route <route-name> -ir <engine-name>` to run blueprint inside an engine
+* Run at application root: `ember g route <route-name> -ir <engine-name>` to run blueprint inside an engine.
