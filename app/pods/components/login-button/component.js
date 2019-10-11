@@ -11,6 +11,7 @@ export default class LoginButton extends Component {
   @service currentUser;
   @service store;
   @service router;
+  @service domain
 
   tagName = 'span'
   loginUrl = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${
@@ -60,7 +61,7 @@ export default class LoginButton extends Component {
     catch (error) {
       console.error (error)
     }
-    const logoutUrl = env.oneauthURL + '/logout?redirect=' + env.publicUrl + 'app/logout' 
+    const logoutUrl = env.oneauthURL + '/logout?redirect=' + this.domain.domainBasedPublicUrl + '/logout' 
     window.location.href = logoutUrl
   }
 
