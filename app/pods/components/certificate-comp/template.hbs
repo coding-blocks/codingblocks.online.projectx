@@ -80,13 +80,9 @@
           <p>Mentor Approval</p>
           {{#if courseCompleted}}
             {{#if (or runAttempt.approvalRequested runAttempt.certificateApproved) }}
-              <div class="button-solid disabled">
-                <button>Requested</button>
-              </div>
+              <button class="button-solid disabled">Requested</button>
             {{else}}
-              <div class="button-solid ml-4" {{action (perform requestApprovalTask)}}>
-                <button>Request</button>
-              </div>
+              <button class="button-solid ml-4" {{action (perform requestApprovalTask)}}>Request</button>
             {{/if}}
           {{/if}}
         </div>
@@ -108,13 +104,9 @@
             </div>
           {{/if}}
         {{else if canGenerate}}
-          <div class="button-solid" onClick={{perform generateCertificateTask}}>
-            <button>Generate Now!</button>
-          </div>
+          <button class="button-solid" onClick={{perform generateCertificateTask}}>Generate Now!</button>
         {{else}}
-          <div class="button-solid disabled">
-            <button>Generate Now!</button>
-          </div>
+          <button class="button-solid disabled">Generate Now!</button>
         {{/if}}
       </div>
     </div>
