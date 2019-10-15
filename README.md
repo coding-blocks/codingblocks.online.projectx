@@ -8,6 +8,9 @@
   <a href="https://twitter.com/intent/follow?screen_name=codingblocksin">
     <img src="https://img.shields.io/twitter/follow/codingblocks.svg?label=Follow%20@codingblocksin" alt="Follow @codingblocksin" />
   </a>
+  <a href="https://raw.githubusercontent.com/coding-blocks/codingblocks.online.projectx/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-lightgrey.svg">
+  </a>
 </p>
 
 Frontend for Coding Blocks online made using EmberJS.
@@ -74,3 +77,6 @@ Specify what it takes to deploy your app.
 We are starting to use Ember Engines for this project. Some commands that can come in handy:
 
 * Run at application root: `ember g route <route-name> -ir <engine-name>` to run blueprint inside an engine
+
+## License
+[![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/CircleCI-Public/gcp-gke-orb/master/LICENSE)
