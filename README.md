@@ -77,6 +77,3 @@ Specify what it takes to deploy your app.
 We are starting to use Ember Engines for this project. Some commands that can come in handy:
 
 * Run at application root: `ember g route <route-name> -ir <engine-name>` to run blueprint inside an engine
-
-## License
-[![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/CircleCI-Public/gcp-gke-orb/master/LICENSE)
