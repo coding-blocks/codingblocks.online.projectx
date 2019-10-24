@@ -29,7 +29,7 @@ export default Route.extend({
         localStorage.removeItem('redirectionPath')
         this.transitionTo(redirectionPath)
       } else if (this.domain.isExternal) {
-        this.transitionTo('classroom')
+        window.location.href = this.domain.domainBasedPublicUrl
       }
 
   }
