@@ -10,7 +10,11 @@
           <img src={{defaultTo course.logo '/images/c++'}} loading="lazy">
         </div>
         <div class="course-name center-text">
-          {{#link-to 'courses.id' course.identifier activeClass="" class="white"}} {{course.title}} {{/link-to}}
+          {{#if domain.isExternal}}
+            <a href="/courses/{{course.identifier}}" class="white"> {{course.title}} </a>
+          {{else}}
+            {{#link-to 'courses.id' course.identifier activeClass="" class="white"}} {{course.title}} {{/link-to}}
+          {{/if}}
         </div>
         <div class="i course-description t-align-c d-md-none">
           {{course.subtitle}}
@@ -60,8 +64,14 @@
         {{!-- {{#link-to 'courses.id' course.identifier class="white d-md-none" activeClass=""}}  --}}
         <button class="button-solid dsp-none-sm" onclick={{action onChangePopped index}} >Details</button>
         {{!-- {{/link-to}} --}}
-        {{#link-to 'courses.id' course.identifier class="white d-md-none" activeClass=""}}
-        <button class="button-solid">Explore</button>{{/link-to}}
+        {{#if domain.isExternal}}
+          <a href="/courses/{{course.identifier}}" class="white d-md-none button-solid"> 
+            Explore
+          </a>
+        {{else}}
+          {{#link-to 'courses.id' course.identifier class="white d-md-none" activeClass=""}}
+          <button class="button-solid">Explore</button>{{/link-to}}
+        {{/if}}
 
       </div>
       <div class="d-md-none">
@@ -136,10 +146,15 @@
         {{/unless}}
         <div class="grey">Batches starting {{moment-format (unix course.topRun.start) 'MMM Do'}} </div>
       </div>
-
-      {{#link-to 'courses.id' course.identifier class="white" activeClass=""}}
-        <button class="button-solid">Explore</button>
-      {{/link-to}}
+      
+      {{#if domain.isExternal}}
+        <a href="/courses/{{course.identifier}}" class="white button-solid"> 
+          Explore
+        </a>
+      {{else}}
+        {{#link-to 'courses.id' course.identifier class="white" activeClass=""}}
+          <button class="button-solid">Explore</button>{{/link-to}}
+      {{/if}}
 
     </div>
     <div class="divider-h"></div>
