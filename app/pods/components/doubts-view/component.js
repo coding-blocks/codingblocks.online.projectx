@@ -82,4 +82,4 @@ export default class DoubtsViewComponent extends Component {
     setActiveTab(tab){
       this.set('activeTab', tab);
     }
-};
+}

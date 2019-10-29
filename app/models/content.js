@@ -9,28 +9,40 @@ export default DS.Model.extend({
   course: DS.belongsTo('course'),
   qna: DS.belongsTo('qna'),
   lecture: DS.belongsTo('lecture'),
-  "code-challenge": DS.belongsTo('code-challenge'),
+  'code-challenge': DS.belongsTo('code-challenge'),
   document: DS.belongsTo('document'),
   csv: DS.belongsTo('csv'),
   //attachment: DS.belongsTo('attachment'),
   video: DS.belongsTo('video'),
   duration: DS.attr(),
-  payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', 'csv', function () {
-    return this.get(this.contentable);
-  }),
+  payload: computed(
+    'contentable',
+    'qna',
+    'lecture',
+    'code-challenge',
+    'document',
+    'video',
+    'csv',
+    function() {
+      return this.get(this.contentable);
+    },
+  ),
   isDone: bool('progress.isDone'),
   isActive: bool('progress.isActive'),
-  isFeedbackDone: computed('progress.isFeedbackDone', function () {
-    return !! this.get('progress.isFeedbackDone')
+  isFeedbackDone: computed('progress.isFeedbackDone', function() {
+    return !!this.get('progress.isFeedbackDone');
   }),
-  iconClass: computed('contentable', function () {
+  iconClass: computed('contentable', function() {
     switch (this.contentable) {
-      case 'document': return 'file-icon'; break;
-      case 'code-challenge': return 'code-icon'; break;
+      case 'document':
+        return 'file-icon';
+      case 'code-challenge':
+        return 'code-icon';
       case 'lecture':
-      default: return 'play-icon'; break;
+      default:
+        return 'play-icon';
     }
   }),
-  progress: DS.belongsTo('progress')
+  progress: DS.belongsTo('progress'),
   // section: DS.belongsTo('section')
-})
+});

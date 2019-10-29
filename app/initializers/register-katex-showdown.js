@@ -2,9 +2,10 @@ import showdown from 'showdown';
 
 export function initialize() {
   // register showdownKatex as "katex" extension
-  showdown.extension("katex", showdownKatex());
+  // eslint-disable-next-line no-undef
+  showdown.extension('katex', showdownKatex());
 }
 
 export default {
-  initialize
+  initialize,
 };

@@ -1,9 +1,8 @@
-import Component from "@ember/component";
-import env from "codingblocks-online/config/environment";
+import Component from '@ember/component';
+import env from 'codingblocks-online/config/environment';
 import { inject as service } from '@ember/service';
-import { action } from "@ember/object";
-import { getPublicUrl } from "codingblocks-online/utils/browser"
-
+import { action } from '@ember/object';
+import { getPublicUrl } from 'codingblocks-online/utils/browser';
 
 export default class LoginButton extends Component {
   @service api;
@@ -11,9 +10,9 @@ export default class LoginButton extends Component {
   @service currentUser;
   @service store;
   @service router;
-  @service domain
+  @service domain;
 
-  tagName = 'span'
+  tagName = 'span';
   loginUrl = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${
     env.clientId
   }&redirect_uri=${getPublicUrl()}`;
@@ -21,53 +20,54 @@ export default class LoginButton extends Component {
   @action
   invalidateSession() {
     let logout = () => {
-      this.get("api")
-      .request("/jwt/logout")
-      .then(() => {
-        this.get("session").invalidate()
-      });
-    }
+      this.get('api')
+        .request('/jwt/logout')
+        .then(() => {
+          this.get('session').invalidate();
+        });
+    };
 
-    let timeout = setTimeout (logout, 4000)
+    let timeout = setTimeout(logout, 4000);
 
     try {
-      OneSignal.getUserId ()
-        .then (userId => {
-          clearTimeout (timeout)
+      // eslint-disable-next-line no-undef
+      OneSignal.getUserId()
+        .then(userId => {
+          clearTimeout(timeout);
 
-          if (! userId) {
-            return
+          if (!userId) {
+            return;
           }
 
-          return this.get ('store').queryRecord ('player', {
+          return this.get('store').queryRecord('player', {
             playerId: userId,
             custom: {
               ext: 'url',
-              url: 'me'
-            }
-          })
+              url: 'me',
+            },
+          });
         })
-        .then ((player) => {
-          if (! player) {
-            return
+        .then(player => {
+          if (!player) {
+            return;
           }
 
-          return player.destroyRecord ()
+          return player.destroyRecord();
         })
-        .then (() => {
-          logout ()
-        })
+        .then(() => {
+          logout();
+        });
+    } catch (error) {
+      throw new Error(error);
     }
-    catch (error) {
-      console.error (error)
-    }
-    const logoutUrl = env.oneauthURL + '/logout?redirect=' + this.domain.domainBasedPublicUrl + '/logout' 
-    window.location.href = logoutUrl
+    const logoutUrl =
+      env.oneauthURL + '/logout?redirect=' + this.domain.domainBasedPublicUrl + '/logout';
+    window.location.href = logoutUrl;
   }
 
   @action
-  logIn () {
-    localStorage.setItem('redirectionPath', this.get('router.currentURL').replace("/app", "/"))
-    window.location.href = this.get('loginUrl')
+  logIn() {
+    localStorage.setItem('redirectionPath', this.get('router.currentURL').replace('/app', '/'));
+    window.location.href = this.get('loginUrl');
   }
 }

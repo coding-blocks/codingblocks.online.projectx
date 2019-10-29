@@ -6,51 +6,48 @@ export default class LogoutRoute extends Route {
   @service store;
   @service session;
 
-
-  afterModel () {
+  afterModel() {
     let logout = () => {
-      return this.get("api")
-      .request("/jwt/logout")
-      .then(() => {
-        this.get("session").invalidate()
-      });
-    }
+      return this.get('api')
+        .request('/jwt/logout')
+        .then(() => {
+          this.get('session').invalidate();
+        });
+    };
 
-    let timeout = setTimeout (logout, 4000)
+    let timeout = setTimeout(logout, 4000);
 
     try {
-      return OneSignal.getUserId ()
-        .then (userId => {
-          clearTimeout (timeout)
+      // eslint-disable-next-line no-undef
+      return OneSignal.getUserId()
+        .then(userId => {
+          clearTimeout(timeout);
 
-          if (! userId) {
-            return
+          if (!userId) {
+            return;
           }
 
-          return this.get ('store').queryRecord ('player', {
+          return this.get('store').queryRecord('player', {
             playerId: userId,
             custom: {
               ext: 'url',
-              url: 'me'
-            }
-          })
+              url: 'me',
+            },
+          });
         })
-        .then ((player) => {
-          if (! player) {
-            return
+        .then(player => {
+          if (!player) {
+            return;
           }
 
-          return player.destroyRecord ()
+          return player.destroyRecord();
         })
-        .then ((_) => {
-          return logout ()
-        })
+        .then(() => {
+          return logout();
+        });
+    } catch (error) {
+      this.get('raven').captureException(error);
+      return logout().then(() => this.transitionTo('index'));
     }
-    catch (error) {
-      this.get ('raven').captureException (error)
-      return logout()
-        .then(() => this.transitionTo('index'))
-    }
-
   }
 }

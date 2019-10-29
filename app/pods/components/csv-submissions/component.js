@@ -6,22 +6,22 @@ export default Component.extend({
   store: service(),
   runAttempt: service(),
 
+  // eslint-disable-next-line ember/avoid-leaking-state-in-ember-objects
   submissions: [],
 
-  fetchSubmissionsTask: task(function * () {
+  fetchSubmissionsTask: task(function*() {
     const submissions = yield this.store.query('csv-submission', {
       filter: {
         csvId: this.csvId,
-        runAttemptId: this.get('runAttempt.runAttemptId')
+        runAttemptId: this.get('runAttempt.runAttemptId'),
       },
-      sort: '-createdAt'
-    })
-    this.set('submissions', submissions)
+      sort: '-createdAt',
+    });
+    this.set('submissions', submissions);
   }),
 
   init() {
-    this._super(...arguments)
-    this.fetchSubmissionsTask.perform()
-  }
-
-})
+    this._super(...arguments);
+    this.fetchSubmissionsTask.perform();
+  },
+});

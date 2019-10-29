@@ -15,18 +15,16 @@ export default Mixin.create({
     let title = this.get('headData.title');
 
     if (get(ENV, 'googleAnalytics.webPropertyId') != null) {
-      if(this.get('session.isAuthenticated')){
-        let userId = this.get('currentUser.user.oneauthId')
+      if (this.get('session.isAuthenticated')) {
+        let userId = this.get('currentUser.user.oneauthId');
         window['ga']('set', 'userId', userId);
-      } else {
       }
       window['ga']('send', 'pageview', {
         page: page,
-        title: title
+        title: title,
       });
 
       this.get('metrics').trackPage({ page, title });
     }
-  })
-
+  }),
 });

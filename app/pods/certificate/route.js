@@ -4,16 +4,15 @@ import { isBadRequestError, isNotFoundError } from 'ember-ajax/errors';
 
 export default Route.extend({
   api: service(),
-  model ({licenseKey}) {
+  model({ licenseKey }) {
     return this.api.request('certificates/' + licenseKey);
   },
   actions: {
-    error (error, transition) {
+    error(error) {
       if (isBadRequestError(error) || isNotFoundError(error)) {
         // https://github.com/emberjs/ember.js/issues/12624
-        this.intermediateTransitionTo('404', 'DONOT_REMOVE_ME')
-      } else 
-        throw error;
-    }
-  }
+        this.intermediateTransitionTo('404', 'DONOT_REMOVE_ME');
+      } else throw error;
+    },
+  },
 });

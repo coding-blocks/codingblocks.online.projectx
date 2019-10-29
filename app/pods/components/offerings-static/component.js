@@ -1,39 +1,44 @@
 import Component from '@ember/component';
 
 export default Component.extend({
+  // eslint-disable-next-line ember/avoid-leaking-state-in-ember-objects
   offerings: [
     {
       name: 'Comprehensive learning',
       body: `Experienced, engaging instructors take you through course material, step by step, in our high-quality video lessons.
        This will help you keep your skills sharp even after completing the course.`,
-      img: 'images/learning.svg'
-    },{
-    name: '24x7 Mentor <br> Support',
-    body: `Our online programming courses online are a flexible alternative that provides online access to our in-depth curriculum—complete
+      img: 'images/learning.svg',
+    },
+    {
+      name: '24x7 Mentor <br> Support',
+      body: `Our online programming courses online are a flexible alternative that provides online access to our in-depth curriculum—complete
       with real-time support from instructors, our own industry-tested learning platform, hands-on assignments and much more, all from the comfort of your abode.`,
-    img: 'images/24_7.svg'
-  },{
-    name: 'Live Webinars for Doubt Clearing',
-    body: `Get exclusive access to Live Webinars where you can interact with mentors for important course topics. Every course batch has multiple live webinars
+      img: 'images/24_7.svg',
+    },
+    {
+      name: 'Live Webinars for Doubt Clearing',
+      body: `Get exclusive access to Live Webinars where you can interact with mentors for important course topics. Every course batch has multiple live webinars
     attended by hundreds of students all over the world.`,
-    img: 'images/doubt.svg'
-  },
-  // {
-  //   name: 'Practice Assignments on HackerBlocks',
-  //   body: `Code directly in the browser with our course challenges, bring to life what you learned and receive immediate,
-  //    helpful feedback and code validation.`,
-  //   img: 'images/practice.svg'
-  // },
-  {
-    name: 'Revisit and <br> Revise',
-    body: `Study the course contents at your own pace. If you're an experienced developer, you can complete the courses in a matter of days.
+      img: 'images/doubt.svg',
+    },
+    // {
+    //   name: 'Practice Assignments on HackerBlocks',
+    //   body: `Code directly in the browser with our course challenges, bring to life what you learned and receive immediate,
+    //    helpful feedback and code validation.`,
+    //   img: 'images/practice.svg'
+    // },
+    {
+      name: 'Revisit and <br> Revise',
+      body: `Study the course contents at your own pace. If you're an experienced developer, you can complete the courses in a matter of days.
     If you want to take things slowly you get access to courses for a minimum period of 6 months. You also get an option to purchase an extended availability of the course.`,
-    img: 'images/revise.svg'
-  },{
+      img: 'images/revise.svg',
+    },
+    {
       name: 'Evaluation and Certification',
       body: `You will be assessed weekly in your path to becoming a programming expert at this online certification course and all the practice,
        assignments and tests will be taken on our online automated code judge. Get instructor-signed certificate with our
        seal to accredit your achievement after the course completion and increase your job prospects!`,
-      img: 'images/certification-i.svg'
-    }]
+      img: 'images/certification-i.svg',
+    },
+  ],
 });

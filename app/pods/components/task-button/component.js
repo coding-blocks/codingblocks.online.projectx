@@ -13,7 +13,7 @@ export default class TaskButtonComponent extends Component {
   constructor () {
     super(...arguments)
 
-    if (!!this.get('disabled')) {
+    if (this.get('disabled')) {
       this.set('disabled', "disabled");
     }
 

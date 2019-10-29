@@ -10,84 +10,84 @@ export default Controller.extend({
 
   store: service(),
   api: service(),
-  getQuestionTask: task(function * (id) {
+  getQuestionTask: task(function*(id) {
     const question = yield this.store.findRecord('question', id, {
       include: 'choices',
-      reload: true
-    })
+      reload: true,
+    });
 
-    const submission = this.get('quizAttempt.submission')
+    const submission = this.get('quizAttempt.submission');
     if (!submission || !Array.isArray(submission)) {
-      question.set("markedChoices", [])
-      return question
+      question.set('markedChoices', []);
+      return question;
     }
-    
-    const questionSubmission = submission.find(el => el && el.id == question.id)
+
+    const questionSubmission = submission.find(el => el && el.id == question.id);
     if (!questionSubmission) {
-      question.set("markedChoices", [])
+      question.set('markedChoices', []);
     } else {
-      console.log(questionSubmission)
-      question.set("markedChoices", questionSubmission["marked-choices"])
+      question.set('markedChoices', questionSubmission['marked-choices']);
     }
-    return question
+    return question;
   }),
-  currentQuestion: computed('q', function () {
-    const question = this.questions.objectAt(this.q-1)
+  currentQuestion: computed('q', function() {
+    const question = this.questions.objectAt(this.q - 1);
 
     return DS.PromiseObject.create({
-      promise: this.getQuestionTask.perform(question.id)
+      promise: this.getQuestionTask.perform(question.id),
     });
   }),
 
-  markChoice: task( function *(question, choice) {
-    let submission = this.get('quizAttempt.submission')
+  markChoice: task(function*(question, choice) {
+    let submission = this.get('quizAttempt.submission');
     if (!Array.isArray(submission)) {
-      console.error('Quiz Submission must be an array')
-      submission = []
-    } 
+      submission = [];
+    }
 
-    const questionSubmission = submission.find(el => el.id == question.get('id'))
+    const questionSubmission = submission.find(el => el.id == question.get('id'));
 
     if (!questionSubmission) {
-      submission = [{
-        id: question.get('id'),
-        "marked-choices": [choice.id]
-      }, ...submission]
-      question.set("markedChoices", [choice.id])
+      submission = [
+        {
+          id: question.get('id'),
+          'marked-choices': [choice.id],
+        },
+        ...submission,
+      ];
+      question.set('markedChoices', [choice.id]);
     } else {
-      var markedChoicesSet = new Set(questionSubmission["marked-choices"])
+      var markedChoicesSet = new Set(questionSubmission['marked-choices']);
       if (markedChoicesSet.has(choice.id)) {
-        markedChoicesSet.clear()
+        markedChoicesSet.clear();
       } else {
-        markedChoicesSet.clear()
-        markedChoicesSet.add(choice.id)
+        markedChoicesSet.clear();
+        markedChoicesSet.add(choice.id);
       }
-      questionSubmission["marked-choices"] = [...markedChoicesSet.values()]
-      question.set('markedChoices', [...markedChoicesSet.values()])
+      questionSubmission['marked-choices'] = [...markedChoicesSet.values()];
+      question.set('markedChoices', [...markedChoicesSet.values()]);
     }
 
-    this.set('quizAttempt.submission', [...submission])
-    yield this.quizAttempt.save()
-
-    
+    this.set('quizAttempt.submission', [...submission]);
+    yield this.quizAttempt.save();
   }),
-  
-  actions: {
-    changeQuestion (offset) {
-      this.incrementProperty('q', offset)
-    },
-    goToQuestion (index) {
-      this.set('q', index)
-    },
-    submitQuiz () {
-      const quizAttemptId = this.get('quizAttempt.id')
-      this.api.request(`/quiz_attempts/${quizAttemptId}/submit`, {
-        method: 'POST'
-      }).then(response => {
-        this.store.pushPayload(response)
-        this.transitionToRoute('attempt.content.quiz.attempt.done')
-      })
-    }
-  }
 
+  actions: {
+    changeQuestion(offset) {
+      this.incrementProperty('q', offset);
+    },
+    goToQuestion(index) {
+      this.set('q', index);
+    },
+    submitQuiz() {
+      const quizAttemptId = this.get('quizAttempt.id');
+      this.api
+        .request(`/quiz_attempts/${quizAttemptId}/submit`, {
+          method: 'POST',
+        })
+        .then(response => {
+          this.store.pushPayload(response);
+          this.transitionToRoute('attempt.content.quiz.attempt.done');
+        });
+    },
+  },
 });

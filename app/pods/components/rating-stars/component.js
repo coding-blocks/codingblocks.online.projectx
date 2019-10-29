@@ -1,6 +1,5 @@
-import Component from '@ember/component'
-import { action, computed } from '@ember/object'
-import { alias } from '@ember/object/computed'
+import Component from '@ember/component';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 /* props
@@ -9,51 +8,51 @@ import { inject as service } from '@ember/service';
     }
 */
 export default class RatingStartComponent extends Component {
-  @service api
+  @service api;
 
-  scale = 5
-  ratingMarkedByUser = null
-  isEditing = false
+  scale = 5;
+  ratingMarkedByUser = null;
+  isEditing = false;
 
-  constructor () {
-    super(...arguments)
-    this.set('hasUserMarkedRating', false)
+  constructor() {
+    super(...arguments);
+    this.set('hasUserMarkedRating', false);
   }
 
-  didReceiveAttrs () {
-    this._super(...arguments)
+  didReceiveAttrs() {
+    this._super(...arguments);
     if (this.get('initialRating')) {
-      this.set('hasUserMarkedRating', true)
-      this.set('ratingMarkedByUser', this.get('initialRating.value'))
-      this.set('rating', this.get('initialRating.value'))
-      this.set('textExperience', this.get('initialRating.heading'))
-      this.set('textPublic', this.get('initialRating.review'))
+      this.set('hasUserMarkedRating', true);
+      this.set('ratingMarkedByUser', this.get('initialRating.value'));
+      this.set('rating', this.get('initialRating.value'));
+      this.set('textExperience', this.get('initialRating.heading'));
+      this.set('textPublic', this.get('initialRating.review'));
     }
   }
 
   @action
-  changeRating (val) {
-    this.set('rating', val)
+  changeRating(val) {
+    this.set('rating', val);
   }
 
   @action
-  resetRating () {
-    this.set('rating', this.get('ratingMarkedByUser'))
+  resetRating() {
+    this.set('rating', this.get('ratingMarkedByUser'));
   }
 
   @action
-  markRating (rating) {
-    this.set('hasUserMarkedRating', true)
-    this.set('isEditing', false)
-    this.set('ratingMarkedByUser', rating)
+  markRating(rating) {
+    this.set('hasUserMarkedRating', true);
+    this.set('isEditing', false);
+    this.set('ratingMarkedByUser', rating);
   }
 
   @action
-  toggleEditingMode () {
+  toggleEditingMode() {
     // this.set('rating', 0)
-    this.toggleProperty('isEditing')
+    this.toggleProperty('isEditing');
     if (this.get('showModal') == true) {
-      this.set('isShowingModal', true)
+      this.set('isShowingModal', true);
     }
   }
 
@@ -64,27 +63,27 @@ export default class RatingStartComponent extends Component {
       data: {
         value: this.get('ratingMarkedByUser'),
         experience: this.get('textExperience'),
-        review: this.get('textPublic')
-      }
-    })
-    this.afterFeedback()
+        review: this.get('textPublic'),
+      },
+    });
+    this.afterFeedback();
   }
 
   @action
   afterFeedback() {
-    this.set('isShowingModal', false)
-    this.set('isEditing', false)
+    this.set('isShowingModal', false);
+    this.set('isEditing', false);
   }
 
   @action
-  toggleModal (rating) {
-    this.markRating(rating)
+  toggleModal(rating) {
+    this.markRating(rating);
     if (this.get('showModal') == true) {
-      this.toggleProperty('isShowingModal')
+      this.toggleProperty('isShowingModal');
     } else {
-      this.set('textExperience', '')
-      this.set('textPublic', '')
-      this.submitFeedback()
+      this.set('textExperience', '');
+      this.set('textPublic', '');
+      this.submitFeedback();
     }
   }
 }

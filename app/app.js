@@ -4,43 +4,31 @@ import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
 import './models/custom-inflector-rules';
 
-
 const App = Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   Resolver,
+  // eslint-disable-next-line ember/avoid-leaking-state-in-ember-objects
   engines: {
     hiringBlocks: {
       dependencies: {
-        services: [
-          'store',
-          'session',
-          'api',
-          'current-user',
-          { 'parent-router': 'router' }
-        ],
+        services: ['store', 'session', 'api', 'current-user', { 'parent-router': 'router' }],
         externalRoutes: {
           login: 'login',
-          course: 'courses.id'
-        }
-      }
+          course: 'courses.id',
+        },
+      },
     },
     cricketCup: {
       dependencies: {
-        services: [
-          'store',
-          'session',
-          'api',
-          'current-user',
-          { 'parent-router': 'router' }
-        ],
+        services: ['store', 'session', 'api', 'current-user', { 'parent-router': 'router' }],
         externalRoutes: {
           login: 'login',
-          courses: 'courses'
-        }
-      }
-    }
-  }
+          courses: 'courses',
+        },
+      },
+    },
+  },
 });
 
 loadInitializers(App, config.modulePrefix);

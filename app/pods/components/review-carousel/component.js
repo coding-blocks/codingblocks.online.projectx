@@ -5,7 +5,7 @@ import { task } from 'ember-concurrency';
 export default Component.extend({
   store: inject(),
 
-  didReceiveAttrs(){
+  didReceiveAttrs() {
     this._super(...arguments);
     this.set('ratingsArray', []);
     this.fetchRatingsTask.perform();
@@ -14,19 +14,22 @@ export default Component.extend({
   actions: {
     fetchRatings() {
       this.fetchRatingsTask.perform();
-    }
+    },
   },
 
-  fetchRatingsTask: task(function* () {
-    this.store.query('rating', {
-      custom: { ext: 'url', url: `course/${this.courseId}` },
-      page:{
-        offset: this.get('meta.nextOffset') ^ 0,
-        limit: 10
-      }
-    }).then(result => {
-      this.ratingsArray.pushObjects(result.toArray())
-      this.set('meta', result.meta.pagination);
-    })
-  })
+  // eslint-disable-next-line require-yield
+  fetchRatingsTask: task(function*() {
+    this.store
+      .query('rating', {
+        custom: { ext: 'url', url: `course/${this.courseId}` },
+        page: {
+          offset: this.get('meta.nextOffset') ^ 0,
+          limit: 10,
+        },
+      })
+      .then(result => {
+        this.ratingsArray.pushObjects(result.toArray());
+        this.set('meta', result.meta.pagination);
+      });
+  }),
 });
