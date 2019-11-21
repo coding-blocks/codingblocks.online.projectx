@@ -73,6 +73,9 @@ export default Component.extend({
     logInAndStartTrial (courseId, runId) {
       localStorage.setItem('redirectionPath', this.router.urlFor('classroom.timeline.index', {courseId, runId}).replace("/app", "/"))
       this._redirectToOneauth()
+    },
+    log(event, course){
+      this.get('metrics').trackEvent({event, course})
     }
   },
 
@@ -107,12 +110,5 @@ export default Component.extend({
         buyTop.classList.add("slide-up");
       }
     })
-  },
-
-  log(event, course){
-    this.get('metrics').trackEvent({event, course})
   }
-
-
-  
 });
