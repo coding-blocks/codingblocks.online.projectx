@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { alias, equal, or } from '@ember/object/computed'
 import { inject as service } from '@ember/service'
+import { action } from '@ember/object'
 
 export default class AvailableRunCardComponent extends Component {
   @service metrics
