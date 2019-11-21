@@ -241,7 +241,7 @@
                   </div>
                   {{else}}
                   <div class="col-12 col-sm-6">
-                    {{#link-to "classroom.timeline" course.id course.topRun.id tagName="button" class="t-align-r" invokeAction=(action 'log' 'Preview' course.title)}}
+                    {{#link-to "classroom.timeline" course.id course.topRun.id tagName="button" class="t-align-r" invokeAction=(action 'log' 'Preview' course.title preventDefault=false)}}
                     Preview
                     {{/link-to}}
                   </div>
