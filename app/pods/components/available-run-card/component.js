@@ -3,6 +3,7 @@ import { alias, equal, or } from '@ember/object/computed'
 import { inject as service } from '@ember/service'
 
 export default class AvailableRunCardComponent extends Component {
+  @service metrics
   classNames = ['card-layout', 'col-md-4', 'col-sm-6']
 
   @service session
@@ -11,4 +12,9 @@ export default class AvailableRunCardComponent extends Component {
   @equal('run.mrp', 0) isFree
 
   @or('course.organization', 'isFree') blockFreeTrial
+
+  @action
+  log(event, title) {
+    this.get('metrics').trackEvent({event, title})
+  }
 }

@@ -5,6 +5,7 @@ import { inject as service } from '@ember/service'
 
 export default Route.extend({
   api: service(),
+  metrics: service(),
   activate () {
     window.scrollTo(0, 0)
   },
@@ -84,6 +85,9 @@ export default Route.extend({
   actions: {
     reloadRoute() {
       this.refresh();
+    },
+    log(event, course){
+      this.get('metrics').trackEvent({event, course, page: 'Classroom'})
     }
   }
 });

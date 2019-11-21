@@ -25,6 +25,13 @@ module.exports = function(environment) {
         config: {
           id: '1947467048859851'
         }
+      },
+      {
+        name: 'GoogleTagManager',
+        environments: ['production', 'development'],
+        config: {
+          id: 'GTM-TWLQ78S'
+        }
       }
     ],
     EmberENV: {

@@ -10,6 +10,7 @@ export default Route.extend({
   currentUser: service(),
   session: service(),
   domain: service(),
+  metrics: service(),
   beforeModel () {
     this._super(...arguments)
 
@@ -32,6 +33,11 @@ export default Route.extend({
         window.location.href = this.domain.domainBasedPublicUrl
       }
 
+  },
+  actions : {
+    log(){
+      this.get('metrics').trackEvent({event: 'androidButtonClicked', page: '/'})
+    }
   }
 
 });

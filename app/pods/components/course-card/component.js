@@ -1,10 +1,12 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import { alias } from '@ember/object/computed';
+import { action } from '@ember/object'
+
 
 export default class CourseCardComponent extends Component {
   @service session
   @service domain
+  @service metrics
 
   didInsertElement () {
     this._super(...arguments)
@@ -12,4 +14,11 @@ export default class CourseCardComponent extends Component {
       e.stopPropagation()
     })
   }
+
+  @action
+  log(event, title) {
+    this.get('metrics').trackEvent({event, title})
+  }
+
+
 }

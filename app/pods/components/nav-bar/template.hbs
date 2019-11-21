@@ -21,7 +21,7 @@
             {{else if isAnotherDomain}}
               <a href="/"> Home </a>
             {{else}}
-              {{#link-to 'index'}}Home{{/link-to}}
+              {{#link-to 'index' invokeAction=(action 'log' 'Home')}}Home{{/link-to}}
             {{/if}}
           </li>
           
@@ -29,13 +29,13 @@
             {{#if isAnotherDomain}}
               <a href="/courses"> Courses </a>
             {{else}}
-              {{#link-to 'courses' (query-params org=organization)}}All Courses{{/link-to}}
+              {{#link-to 'courses' (query-params org=organization) invokeAction=(action 'log' 'All Courses')}}All Courses{{/link-to}}
             {{/if}}
           </li>
 
           {{#if session.isAuthenticated}}
           <li class="nav-items pointer">
-            {{#link-to 'classroom'}}My Courses{{/link-to}}
+            {{#link-to 'classroom' invokeAction=(action 'log' 'My Courses')}}My Courses{{/link-to}}
           </li>
           {{else}}
           <li class="nav-items pointer">
@@ -44,7 +44,7 @@
           {{/if}}
           {{#unless organization}}
             <li class="nav-items pointer">
-              {{#link-to 'hiring-blocks' }}Get Hired{{/link-to}}
+              {{#link-to 'hiring-blocks' invokeAction=(action 'log' 'Get Hired')}}Get Hired{{/link-to}}
             </li>
           {{/unless}}
           {{#if session.isAuthenticated}}
@@ -64,13 +64,13 @@
             <div class="nav-info">
               <div class="flex-row justify-content-end grey">
                 <a href="https://account.codingblocks.com/users/me" target="_black">
-                  <span class="pointer">MY PROFILE</span>
+                  <span class="pointer" {{action 'log' 'My Profile'}}>MY PROFILE</span>
                 </a>
               </div>
               <div class="separator"></div>
               <div class="flex-row justify-content-end grey">
                 <a href="https://dukaan.codingblocks.com/myorders" target="_black">
-                  <span class="pointer">MY ORDERS</span>
+                  <span class="pointer"  {{action 'log' 'My Orders'}}>MY ORDERS</span>
                 </a>
               </div>
               <div class="separator"></div>
@@ -103,19 +103,19 @@
     </div>
     <div class="lower-half">
       <div class="para" onclick={{action 'toggleSidebar'}}>
-        {{#link-to 'index'}}Home{{/link-to}}
+        {{#link-to 'index' invokeAction=(action 'log' 'Home')}}Home{{/link-to}}
       </div>
       {{#if session.isAuthenticated}}
       <div class="para" onclick={{action 'toggleSidebar'}}>
-        {{#link-to 'classroom'}}My Courses{{/link-to}}
+        {{#link-to 'classroom' invokeAction=(action 'log' 'My Courses')}}My Courses{{/link-to}}
       </div>
       {{/if}}
       <div class="para" onclick={{action 'toggleSidebar'}}>
-        {{#link-to 'courses'}}All Courses{{/link-to}}
+        {{#link-to 'courses' invokeAction=(action 'log' 'All Courses')}}All Courses{{/link-to}}
       </div>
       {{#unless organization}}
         <div class="para" onclick={{action 'toggleSidebar'}}>
-          {{#link-to 'hiring-blocks'}}Get Hired{{/link-to}}
+          {{#link-to 'hiring-blocks' invokeAction=(action 'log' 'Get Hired')}}Get Hired{{/link-to}}
         </div>
       {{/unless}}
     </div>

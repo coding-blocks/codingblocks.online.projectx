@@ -61,7 +61,7 @@
 
         <div class="row no-gutters font-sm pt-3">
           {{#if showBuyNow}}
-            {{#link-to "courses.id" run.course.identifier tagName="button" activeClass="" class="button-solid mr-3"}} 
+            {{#link-to "courses.id" run.course.identifier tagName="button" activeClass="" class="button-solid mr-3" invokeAction=(action 'log' 'Buy now' run.course.identifier)}}
               Buy Now
             {{/link-to}}
           {{/if}}

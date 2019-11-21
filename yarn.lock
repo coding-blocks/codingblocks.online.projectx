@@ -5043,6 +5043,13 @@ ember-line-clamp@^0.2.15:
     ember-cli-htmlbars "^2.0.1"
     ember-singularity "^1.0.2"
 
+ember-link-action@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ember-link-action/-/ember-link-action-1.0.0.tgz#54894ec3debe3fdd9db96786f96c19b00ddbbd28"
+  integrity sha512-S6ZiD+P4sb+NqNqbx2iAbNMjmcibdaXL9Fu0Gp/RmMJUBgk/9ejYbCzPaJbUD7QrkQkwVLYaBdDulmdEwXhTSA==
+  dependencies:
+    ember-cli-babel "^7.7.3"
+
 ember-load-initializers@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ember-load-initializers/-/ember-load-initializers-2.0.0.tgz#d4b3108dd14edb0f9dc3735553cc96dadd8a80cb"

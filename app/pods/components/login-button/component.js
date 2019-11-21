@@ -12,14 +12,17 @@ export default class LoginButton extends Component {
   @service store;
   @service router;
   @service domain
+  @service metrics
 
   tagName = 'span'
   loginUrl = `${env.oneauthURL}/oauth/authorize?response_type=code&client_id=${
     env.clientId
   }&redirect_uri=${getPublicUrl()}`;
 
+
   @action
   invalidateSession() {
+    this.get('metrics').trackEvent({event: 'Logout', page: this.get('router.currentURL')})
     let logout = () => {
       this.get("api")
       .request("/jwt/logout")
@@ -67,6 +70,7 @@ export default class LoginButton extends Component {
 
   @action
   logIn () {
+    this.get('metrics').trackEvent({event: 'Login', page: this.get('router.currentURL')})
     localStorage.setItem('redirectionPath', this.get('router.currentURL').replace("/app", "/"))
     window.location.href = this.get('loginUrl')
   }

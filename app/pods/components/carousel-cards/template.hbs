@@ -10,7 +10,7 @@
         <h2 class="word-wrap card-text grey i $card-md">
             {{card.subtitle}}
         </h2>
-        <a href="{{card.buttonLink}}" target="_blank">
+        <a href="{{card.buttonLink}}" target="_blank" {{action 'log' card.title preventDefault=false}}>
             <button class="button-solid">{{card.buttonText}}</button>
         </a>
     </div>

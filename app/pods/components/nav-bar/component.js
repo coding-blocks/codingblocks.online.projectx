@@ -7,6 +7,7 @@ export default class navBarComponent extends Component {
     @service session
     @service currentUser
     @service domain
+    @service metrics
     @alias('currentUser.user') user
 
     @equal("domain.domain", "hellointern") isAnotherDomain
@@ -43,5 +44,10 @@ export default class navBarComponent extends Component {
         this.set('activeTab', null)
       else
         this.set('activeTab', 'cart')
+    }
+
+    @action
+    log(cta) {
+      this.get('metrics').trackEvent({event: 'buttonClicked', location: 'navbar', cta})
     }
 }

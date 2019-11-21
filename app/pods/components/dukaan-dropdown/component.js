@@ -6,6 +6,7 @@ import env from 'codingblocks-online/config/environment';
 
 export default class DukaanDropdown extends Component {
   @service api
+  @service metrics
 
   cartItem = null
   dukaanUrl = ""
@@ -31,6 +32,7 @@ export default class DukaanDropdown extends Component {
 
   @restartableTask fetchCart = function* () {
     try {
+      this.get('metrics').trackEvent({event: 'buttonClicked', location: 'navbar', cta: 'Cart'})
       const cart = yield this.get('api').request('/runs/cart')
       const item = cart.cartItems[0]
       item.list_price = (item.list_price / 100).toFixed(2)

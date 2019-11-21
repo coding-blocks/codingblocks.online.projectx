@@ -25,7 +25,7 @@ export default Mixin.create({
         title: title
       });
 
-      this.get('metrics').trackPage({ page, title });
+      this.get('metrics').trackPage({ page, title});
     }
   })
 

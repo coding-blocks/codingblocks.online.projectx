@@ -64,7 +64,7 @@
     </div>
 
     {{#if session.isAuthenticated}}
-    {{#link-to "classroom.timeline.index" course.id run.id tagName="button" class="button-dashed" activeClass=""}}
+    {{#link-to "classroom.timeline.index" course.id run.id tagName="button" class="button-dashed" activeClass="" invokeAction=(action 'log' 'Free trial' course.title)}}
     Start Free Trial
     {{/link-to}}
     {{else}}

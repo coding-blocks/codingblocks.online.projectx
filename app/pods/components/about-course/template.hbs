@@ -20,14 +20,14 @@
   <div class="col-6 align-self-center">
     <div class="row justify-content-end">
       <div class="col-4">
-        <a href="#runs">
+        <a href="#runs" {{action 'log' 'Buy Now' course.title preventDefault=false}}>
           <button class="button-solid white">{{if course.organization 'Request Access' 'Buy Now'}}</button>
         </a>
       </div>
       {{#unless course.organization}}
       <div class=" col-4">
         {{#if session.isAuthenticated}}
-        {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button"}}
+        {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button" invokeAction=(action 'log' 'Free trial' course.title)}}
         Start Free Trial
         {{/link-to}}
         {{else}}
@@ -146,7 +146,7 @@
           </div>
           <div class="button-container row justify-content-center">
             <div class="col-5">
-              <a href="#runs">
+              <a href="#runs" {{action 'log' 'Buy Now' course.title preventDefault=false}}>
                 <button class="button-solid white">{{if course.organization "Request Access" "Buy Now"}}</button>
               </a>
             </div>
@@ -154,7 +154,7 @@
             {{#unless course.organization}}
             <div class="col-5 p-0">
               {{#if session.isAuthenticated}}
-              {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button"}}
+              {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button" invokeAction=(action 'log' 'Free trial' course.title)}}
               Start Free Trial
               {{/link-to}}
               {{else}}
@@ -241,7 +241,7 @@
                   </div>
                   {{else}}
                   <div class="col-12 col-sm-6">
-                    {{#link-to "classroom.timeline" course.id course.topRun.id tagName="button" class="t-align-r"}}
+                    {{#link-to "classroom.timeline" course.id course.topRun.id tagName="button" class="t-align-r" invokeAction=(action 'log' 'Preview' course.title)}}
                     Preview
                     {{/link-to}}
                   </div>

@@ -45,6 +45,7 @@ class carouselCard {
 
 export default class CarouselCards extends Component {
   @service store
+  @service metrics
 
   currentIndex = 2
 
@@ -124,15 +125,19 @@ export default class CarouselCards extends Component {
   next () {
     this._reRender(1)
     this.incrementProperty('currentIndex')
+    this.get('metrics').trackEvent({event:'buttonClicked', page: '/', bannerNavigation: 'next'})
   }
 
   @action
   prev () {
     this.decrementProperty('currentIndex')
     this._reRender(-1)
+    this.get('metrics').trackEvent({event:'buttonClicked', page: '/', bannerNavigation: 'prev'})
   }
 
-
-
+  @action
+  log(title) {
+    this.get('metrics').trackEvent({event:'buttonClicked', page: '/', cardClicked: title})
+  }
 
 }

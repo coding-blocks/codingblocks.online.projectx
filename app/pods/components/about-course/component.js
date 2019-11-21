@@ -39,6 +39,8 @@ export default Component.extend({
         } else {
           const cart = yield this.api.request(`/runs/cart`)
           const run = this.store.peekRecord('run', runId)
+
+          this.get('metrics').trackEvent({event: 'Enroll Now', course: run.get('name')})
             
           // if the product in cart is the same as product user wants to buy; just continue
           if (get(cart, 'cartItems.0.product_id') == run.get('productId')) {
@@ -104,6 +106,10 @@ export default Component.extend({
         buyTop.classList.add("slide-up");
       }
     })
+  },
+
+  log(event, course){
+    this.get('metrics').trackEvent({event, course})
   }
 
 
