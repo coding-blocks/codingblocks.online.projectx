@@ -18,6 +18,7 @@ export default Component.extend({
   store: inject(),
   router: inject(),
   currentUser: inject(),
+  metrics: inject(),
 
   _redirectToOneauth () {
     window.location.href = this.loginUrl
