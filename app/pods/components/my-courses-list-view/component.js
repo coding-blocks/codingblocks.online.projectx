@@ -8,6 +8,10 @@ export default class MyCoursesListView extends Component {
 
   @alias('fetchCoursesTask.lastSuccessful.value') runs
 
+  limit = 10
+  offset = 0
+  runComponent = 'my-courses-list-view/run-item'
+
   didReceiveAttrs() {
     this.fetchCoursesTask.perform()
   }
