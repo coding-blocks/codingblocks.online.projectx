@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-8">
+    <h4 class="my-4">Continue Learning</h4>
+
+    {{!-- Recent run and stats card --}}
+    <div class="border-card p-5">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-6">
+          <div class="li-left">
+            <div class="mr-4">
+              img
+            </div>
+            <div>
+              <h5 class="bold">Web Development</h5>
+              <div>Mentor: Arnav Gupta</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <span class="bold">Course Progress</span>
+          <div class="row py-3">
+            <div class="col-10">
+              <progress value="45" max="100"></progress> 
+            </div>
+            <div class="col-2">
+              <span class="extra-bold">45%</span> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider-h w-100 mx-auto my-5"></div>
+
+      <PerformanceStatsView />
+
+      <div class="divider-h w-100 mx-auto my-5"></div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="col-6 float-left">
+          <span>
+            <span class="large-font">Leave a Rating: </span>
+            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
+            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
+            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
+            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
+            <span class="pointer"> <FaIcon @icon="star" class="" /> </span>
+          </span>
+        </div>
+        <div class="col-6">
+          <button class="button-solid button-orange float-right">Resume Now</button>
+        </div>
+      </div>
+    </div>
+
+    {{!-- My courses card --}}
+    <div class="my-5">
+      <div class="border-card p-5">
+        <h4 class="li-left bold">My Courses</h4>
+        <div class="divider-h w-100 mx-auto my-5"></div>
+        <MyCoursesListView as |state|>
+          {{#if state.isRunning}}
+            Loading ...
+          {{else}}
+            {{#each state.runs as |run|}}
+              <div class="row">
+                <div class="col-8">
+                  {{run.course.title}}
+                </div>
+                <div class="col-4">
+                  <a href="#" class="button-solid button-orange float-right">Resume</a>
+                </div>
+              </div>
+            {{/each}}
+          {{/if}}
+        </MyCoursesListView>
+      </div>
+    </div>
+  </div>
+  <div class="col-4"></div>  
+</div>

@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-6">
+    <div class="row mb-5">
+      <div class="col-3">
+        <FaIcon @icon="trophy" @size="3" class="orange" />
+      </div>
+      <div class="col-9">
+        <h2 class="extra-bold">Average</h2>
+        <div>Performance</div>
+      </div>
+    </div>
+    <div class="row my-5">
+      <div class="col-3">
+        <FaIcon @icon="chart-bar" @size="3" class="orange" />
+      </div>
+      <div class="col-9">
+        <h2 class="extra-bold">235/450</h2>
+        <div>Leaderboard Ranking</div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-3">
+        <FaIcon @icon="users" @size="3" class="orange" />
+      </div>
+      <div class="col-9">
+        <h2 class="extra-bold">67</h2>
+        <div>Percentile</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <h4 class="extra-bold mb-3">Course Progress vs Time</h4>
+    <EmberChart 
+      @type="line" 
+      @data={{performanceData}} 
+      @options={{options}} 
+      width="300"
+      height="180"
+      class="bg-white"
+    />
+  </div>
+</div>
