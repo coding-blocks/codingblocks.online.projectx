@@ -2,10 +2,10 @@ import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 import googlePageview from './mixins/google-pageview';
 
-const Router = EmberRouter.extend(googlePageview, {
-  location: config.locationType,
-  rootURL: config.rootURL
-});
+export default class Router extends EmberRouter {
+  location = config.locationType;
+  rootURL = config.rootURL;
+}
 
 Router.map(function() {
   this.route('courses', function() {
@@ -51,5 +51,3 @@ Router.map(function() {
   this.mount('cricket-cup', {path: '/cricket_cup'});
   this.route('dashboard');
 });
-
-export default Router;
