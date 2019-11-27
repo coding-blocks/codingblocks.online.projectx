@@ -1,6 +1,11 @@
-{{referral-code}}
-{{otp-enroll}}
-<div class="container">
-  {{my-courses}}
-  {{recommended-courses}}
-</div>
+<h1> My Courses </h1>
+
+<WTabNav 
+  @tabs={{tabs}}
+  @activeTab={{activeTab}}
+  @onTabChange={{action (mut activeTab)}}
+  >
+  <WAsync @task={{activeTab.task}} @autoFire={{not activeTab.task.performCount}} as |value|>
+    {{component activeTab.component runs=value}}
+  </WAsync>
+</WTabNav>

@@ -1443,10 +1443,9 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@coding-blocks/motley@0.3.48":
-  version "0.3.48"
-  resolved "https://registry.yarnpkg.com/@coding-blocks/motley/-/motley-0.3.48.tgz#15fa376575d3730185b1e8d824f2c178709ca9f0"
-  integrity sha512-7bnGRGTllVbmo2KK4B9j6CDEbXcg7hohFqXuGK7M27q0NSz9vLkSsVTsqsyMolQD6sQaeugbqZNplUTzLUjBVQ==
+"@coding-blocks/motley@coding-blocks/motley#online_revamp":
+  version "0.4.9"
+  resolved "https://codeload.github.com/coding-blocks/motley/tar.gz/aa702c139fbdfb14a1ad197e9bd6209daa87d26b"
   dependencies:
     build "^0.1.4"
     run "^1.4.0"
@@ -1565,6 +1564,13 @@
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@ember-decorators/utils/-/utils-6.0.0.tgz#94ac94ce03b607fc0d2d6a058b9a27e20735ec8e"
   integrity sha512-moW4Oa7X1CN15LvjHlJVuwI4PpwTjXTPHPCCJll+a0X1sowQhObcLRykn6OMwdm9naCROGnRmcwpVqnE0eFjBg==
+  dependencies:
+    ember-cli-babel "^7.1.3"
+
+"@ember-decorators/utils@^6.1.0":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@ember-decorators/utils/-/utils-6.1.1.tgz#6b619814942b4fb3747cfa9f540c9f05283d7c5e"
+  integrity sha512-0KqnoeoLKb6AyoSU65TRF5T85wmS4uDn06oARddwNPxxf/lt5jQlh41uX3W7V/fWL9tPu8x1L1Vvpc80MN1+YA==
   dependencies:
     ember-cli-babel "^7.1.3"
 
@@ -5494,7 +5500,7 @@ ember-cli-babel@^7.0.0, ember-cli-babel@^7.1.0, ember-cli-babel@^7.1.2, ember-cl
     ensure-posix-path "^1.0.2"
     semver "^5.5.0"
 
-ember-cli-babel@^7.11.0, ember-cli-babel@^7.11.1, ember-cli-babel@^7.12.0, ember-cli-babel@^7.8.0:
+ember-cli-babel@^7.11.0, ember-cli-babel@^7.11.1, ember-cli-babel@^7.12.0, ember-cli-babel@^7.8.0, ember-cli-babel@^7.9.0:
   version "7.13.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-7.13.0.tgz#3f2c2ba7a44d7948ec927d41cf072673330f62cd"
   integrity sha512-VjagtumwQP+3jsjLR64gpca5iq2o0PS1MT0PdC90COtAYqpOqNM9axYEYBamNLIuv+3vJpAoFKu8EMBC1ZlWGQ==
@@ -5789,7 +5795,7 @@ ember-cli-test-loader@^2.2.0:
   dependencies:
     ember-cli-babel "^6.8.1"
 
-ember-cli-typescript@^2.0.0-rc.1, ember-cli-typescript@^2.0.1:
+ember-cli-typescript@^2.0.0-rc.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/ember-cli-typescript/-/ember-cli-typescript-2.0.1.tgz#9c46729213b9e1d13f5c3ff8421d772134aa889e"
   integrity sha512-xwSEQOUNM621Wt+XJWpbLhBIeqC/dM1lDS+oZQ2nSjxp4MLZkpKuiVBqdbBWcURbvv8ghoVQPfy8wYU4JIFkLA==
@@ -5985,14 +5991,14 @@ ember-composable-helpers@^2.1.0:
     ember-cli-babel "^7.1.0"
     resolve "^1.10.0"
 
-ember-concurrency-decorators@^1.0.0-beta.2:
-  version "1.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/ember-concurrency-decorators/-/ember-concurrency-decorators-1.0.0-beta.2.tgz#a241a5ed86963bd0b6221a5807dc9ffb47976e17"
-  integrity sha512-1PIGjxr4ir+H7fP2hgr2AezbfbsTGJ8Kg4kfv926oAUnGMp7A4gu+5KPCwxkA2XfGux69KGdKbA0he8WSO6/9Q==
+ember-concurrency-decorators@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ember-concurrency-decorators/-/ember-concurrency-decorators-1.0.0.tgz#b327e9e487650f0670870a8233c35bd0b5a7452b"
+  integrity sha512-lvBp22RWjrrOMpVzMNx/un+9wMzAU97G2dEbqgg5t5i4n5oa8PSs4em6NDM+kVFX9hpf5rc1wBnisLbFRBIL6A==
   dependencies:
-    "@ember-decorators/utils" "^6.0.0"
-    ember-cli-babel "^7.7.3"
-    ember-cli-typescript "^2.0.1"
+    "@ember-decorators/utils" "^6.1.0"
+    ember-cli-babel "^7.9.0"
+    ember-cli-typescript "^2.0.2"
 
 ember-concurrency@^0.10.0:
   version "0.10.1"
