@@ -4,6 +4,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
+    hinting: false, // disabled lint warnings
     // Add options here
     'ember-composable-helpers': {
       only: ['range', 'pipe', 'inc'],

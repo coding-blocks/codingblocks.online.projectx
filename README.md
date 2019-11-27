@@ -74,3 +74,5 @@ Specify what it takes to deploy your app.
 We are starting to use Ember Engines for this project. Some commands that can come in handy:
 
 * Run at application root: `ember g route <route-name> -ir <engine-name>` to run blueprint inside an engine
+
+* To add components to the in-repo addon (preferably for sharing components accross engines): `ember g component -ir ember-w-pack <components> -c`
