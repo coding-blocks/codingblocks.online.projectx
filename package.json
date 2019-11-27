@@ -18,7 +18,6 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
     "@ember/jquery": "^1.1.0",
     "@ember/optional-features": "^1.0.0",
     "@firebase/app": "^0.3.13",
@@ -44,7 +43,7 @@
     "ember-cli-uglify": "^3.0.0",
     "ember-composable-helpers": "^2.1.0",
     "ember-concurrency": "^0.10.0",
-    "ember-concurrency-decorators": "^1.0.0-beta.2",
+    "ember-concurrency-decorators": "^1.0.0",
     "ember-data": "~3.14.0",
     "ember-decorators": "^6.0.0",
     "ember-engines": "^0.8.2",
@@ -81,7 +80,7 @@
     "node": "8.* || >= 10.*"
   },
   "dependencies": {
-    "@coding-blocks/motley": "0.3.48",
+    "@coding-blocks/motley": "coding-blocks/motley#online_revamp",
     "ember-line-clamp": "^0.2.15",
     "moment": "^2.22.2",
     "showdown-katex-studdown": "^0.4.0"
