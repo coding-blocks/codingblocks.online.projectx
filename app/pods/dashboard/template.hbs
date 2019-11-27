@@ -37,7 +37,12 @@
 
       <div class="divider-h w-100 mx-auto my-5"></div>
 
-      <PerformanceStatsView />
+      <WAsync 
+        @task={{fetchPerformanceStatsTask}}
+        @autoFire="true" as |stats|>
+        <PerformanceStatsView 
+          @stats={{stats}} />
+      </WAsync>
 
       <div class="divider-h w-100 mx-auto my-5"></div>
 
@@ -60,13 +65,7 @@
 
     {{!-- My courses card --}}
     <div class="my-5">
-      <div class="border-card p-5">
-        <h4 class="li-left bold">My Courses</h4>
-        <div class="divider-h w-100 mx-auto my-5"></div>
-        <MyCoursesListView
-          @runComponent="my-courses-list-view/run-item-small"
-          @limit="5" />
-      </div>
+      <Dashboard::DashboardCoursesList />
     </div>
   </div>
   <div class="col-4"></div>  

@@ -1,0 +1,15 @@
+<div class="border-card p-5">
+  <div class="d-flex align-items-center justify-content-between">
+    <h4 class="bold">My Courses</h4>
+    <a href="#" class="orange font-sm font-normal">View All</a>
+  </div>
+  <div class="divider-h my-4"></div>
+
+  <WAsync @task={{fetchCoursesTask}} @autoFire="true" as |runs|>
+    {{#each runs as |run|}}
+      <Dashboard::DashboardCoursesListItem
+        @run={{run}} />
+    {{/each}}
+  </WAsync>
+
+</div>
