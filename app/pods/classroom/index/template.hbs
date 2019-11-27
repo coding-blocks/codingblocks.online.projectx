@@ -5,7 +5,7 @@
   @activeTab={{activeTab}}
   @onTabChange={{action (mut activeTab)}}
   >
-  <WAsync @task={{activeTab.task}} @autoFire={{not activeTab.task.performCount}} as |value|>
-    {{component activeTab.component runs=value}}
+  <WAsync @task={{activeTab.task}} @autoFire={{not activeTab.task.performCount}} as |result|>
+    {{component activeTab.component runs=result}}
   </WAsync>
 </WTabNav>
