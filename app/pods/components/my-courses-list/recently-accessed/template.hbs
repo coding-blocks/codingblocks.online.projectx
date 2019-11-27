@@ -1,2 +1,7 @@
-Recently Accessed
+{{#each @runs as |run|}}
+  <div>
+    {{run.name}}
+    {{run.course.name}}
+  </div>
+{{/each}}
 {{yield}}

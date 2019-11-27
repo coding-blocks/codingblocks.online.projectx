@@ -1,5 +1,5 @@
 {{#if task.isRunning}}
   Loading ...
 {{else}}
-  {{yield (hash value=task.last.value) }}
+  {{yield task.last.value}}
 {{/if}}

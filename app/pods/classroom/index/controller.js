@@ -17,17 +17,18 @@ export default class MyCoursesController extends Controller {
     },
     {
       name: "All Courses",
-      component: "my-courses-list/all-courses"
+      component: "my-courses-list/all-courses",
+      task: this.fetchAllRuns
     }
   ];
 
-  activeTab =  {
+  activeTab = {
     name: "Recently Accessed",
     component: "my-courses-list/recently-accessed",
     task: this.fetchRecentlyAccessedRuns
   }
 
-  @restartableTask fetchRecentlyAccessedRuns = function *() {
+  fetchRunsWithScope(scope) {
     return this.get("store").query("run", {
       include: "course,run_attempts",
       enrolled: true,
@@ -35,8 +36,25 @@ export default class MyCoursesController extends Controller {
         limit: this.limit,
         offset: this.offset
       },
-      scope: ['active']
+      ...(scope && { scope })
     })
+  }
+
+  @restartableTask fetchRecentlyAccessedRuns = function* () {
+    const scope = 'active'
+    return this.get("store").query("run", {
+      include: "course,run_attempts",
+      enrolled: true,
+      page: {
+        limit: this.limit,
+        offset: this.offset
+      },
+      ...(scope && { scope })
+    })
+  }
+
+  @restartableTask fetchAllRuns = function *() {
+    return this.fetchRunsWithScope()
   }
 
 }
