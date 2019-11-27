@@ -3,9 +3,17 @@
 <WTabNav 
   @tabs={{tabs}}
   @activeTab={{activeTab}}
-  @onTabChange={{action (mut activeTab)}}
+  @onTabChange={{action "changeTab"}}
   >
-  <WAsync @task={{activeTab.task}} @autoFire={{not activeTab.task.performCount}} as |result|>
+  <WAsync @task={{activeTab.task}} @autoFire={{true}} as |result|>
     {{component activeTab.component runs=result}}
   </WAsync>
 </WTabNav>
+
+
+<WPagination
+  @pages={{pagination.totalPages}}
+  @size={{limit}}
+  @current={{pagination.currentPage}}
+  @onchange={{action "paginate"}}
+/>

@@ -1,6 +1,6 @@
 <div class="tab-nav-underline w-100 justify-content-start">
   {{#each @tabs as |tab index|}}
-    <div class="tab px-0 mr-5 font-sm bold" {{on "click" (action @onTabChange tab)}}>{{tab.name}}</div>
+    <div class="tab px-0 mr-5 font-sm bold {{if (eq tab activeTab) 'active'}}" {{on "click" (action @onTabChange tab)}}>{{tab.name}}</div>
   {{/each}}
 </div>
 <div>
