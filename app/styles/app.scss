@@ -4,6 +4,7 @@ $cb-red: #ff6666;
 
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
+@import "ember-power-select";
 
 @import "./components/index.scss";
 
@@ -127,3 +128,4 @@ tr.highlight td {
   height: 80px;
   padding: 0 !important;
 }
+

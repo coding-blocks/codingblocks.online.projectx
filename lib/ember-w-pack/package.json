@@ -6,9 +6,8 @@
   "dependencies": {
     "ember-cli-htmlbars": "*",
     "ember-decorators": "*",
-    "ember-cli-babel": "*"
-
-    
+    "ember-cli-babel": "*",
+    "ember-power-select": "*"
   },
   "devDependencies": {
     "ember-cli-babel": "*"
