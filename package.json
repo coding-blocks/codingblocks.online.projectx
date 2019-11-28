@@ -48,6 +48,7 @@
     "ember-data": "~3.10.0",
     "ember-decorators": "^6.0.0",
     "ember-engines": "^0.7.1",
+    "ember-event-helpers": "^0.1.0",
     "ember-export-application-global": "^2.0.0",
     "ember-form-for": "^2.0.1",
     "ember-keyboard-shortcuts": "^1.0.6",

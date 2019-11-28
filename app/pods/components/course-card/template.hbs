@@ -1,5 +1,5 @@
 <div class="hoverable">
-  <div class="img-card online-card">
+  {{#link-to "courses.id" course.identifier class="img-card online-card d-md-block"}}
     <div class="head d-flex">
       <img class="back-img" src="{{course.coverImage}}" loading="lazy">
       <div class="dsp-none-sm">
@@ -62,7 +62,7 @@
         </div>
 
         {{!-- {{#link-to 'courses.id' course.identifier class="white d-md-none" activeClass=""}}  --}}
-        <button class="button-solid dsp-none-sm" onclick={{action onChangePopped index}} >Details</button>
+        <button class="button-solid dsp-none-sm" onclick={{prevent-default (action onChangePopped index)}} >Details</button>
         {{!-- {{/link-to}} --}}
         {{#if domain.isExternal}}
           <a href="/courses/{{course.identifier}}" class="white d-md-none button-solid"> 
@@ -92,8 +92,8 @@
           {{/if}}
         </div>
       </div>
-    </div>
-  </div>
+    </div> 
+  {{/link-to}}
 
   <div class="border-card online-card pop-up dsp-none-sm animated {{if showPopUp 'zoom-in display-block' 'display-none'}}">
     <div class="round-img">
