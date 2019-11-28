@@ -1,0 +1,21 @@
+<div class="row no-gutters justify-content-between align-items-center mb-4">
+  <div class="col-8">
+    <div class="row mx-0 align-items-center">
+      <div class="col-2">
+        <img src="{{run.course.logo}}" alt="">
+      </div>
+      <div class="col-10">
+        <h5 class="bold">{{run.course.title}}</h5>
+        <div class="mt-3">
+          <WAsync
+            @task={{fetchProgressTask}}
+            @autoFire="true" as |prog|>
+            <progress value="{{prog.percent}}" max="100" class="d-inline-block w-80"></progress>
+            <span class="bold ml-3">{{prog.percent}}%</span>
+          </WAsync>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="button-orange button-solid">Resume</button>
+</div>

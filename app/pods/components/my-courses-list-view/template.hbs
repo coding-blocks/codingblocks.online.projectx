@@ -1,4 +1,14 @@
-{{yield (hash
-  isRunning=fetchCoursesTask.isRunning
-  runs=runs
-)}}
+{{#if (has-block)}}
+  {{yield (hash
+    isRunning=fetchCoursesTask.isRunning
+    runs=runs
+  )}}
+{{else}}
+  {{#if fetchCoursesTask.isRunning}}
+    Loading ...
+  {{else}}
+    {{#each runs as |run|}}
+      {{component runComponent run=run}}  
+    {{/each}}
+  {{/if}}
+{{/if}}

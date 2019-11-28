@@ -8,11 +8,17 @@
         <div class="col-6">
           <div class="li-left">
             <div class="mr-4">
-              img
+              <img src="{{lastAccessedRun.course.logo}}" width="100%">
             </div>
             <div>
-              <h5 class="bold">Web Development</h5>
-              <div>Mentor: Arnav Gupta</div>
+              <h5 class="bold">{{lastAccessedRun.course.title}}</h5>
+              <div>
+                Mentor: 
+                {{log lastAccessedRun.course}}
+                {{#each lastAccessedRun.course.intructors as |instructor|}}
+                  {{instructor.name}} {{#unless @last}} , {{/unless}}
+                {{/each}}
+              </div>
             </div>
           </div>
         </div>
@@ -20,10 +26,10 @@
           <span class="bold">Course Progress</span>
           <div class="row py-3">
             <div class="col-10">
-              <progress value="45" max="100"></progress> 
+              <progress value="{{progress.percent}}" max="100"></progress> 
             </div>
             <div class="col-2">
-              <span class="extra-bold">45%</span> 
+              <span class="extra-bold">{{progress.percent}}%</span> 
             </div>
           </div>
         </div>
@@ -31,7 +37,12 @@
 
       <div class="divider-h w-100 mx-auto my-5"></div>
 
-      <PerformanceStatsView />
+      <WAsync 
+        @task={{fetchPerformanceStatsTask}}
+        @autoFire="true" as |stats|>
+        <PerformanceStatsView 
+          @stats={{stats}} />
+      </WAsync>
 
       <div class="divider-h w-100 mx-auto my-5"></div>
 
@@ -54,25 +65,17 @@
 
     {{!-- My courses card --}}
     <div class="my-5">
-      <div class="border-card p-5">
-        <h4 class="li-left bold">My Courses</h4>
-        <div class="divider-h w-100 mx-auto my-5"></div>
-        <MyCoursesListView as |state|>
-          {{#if state.isRunning}}
-            Loading ...
-          {{else}}
-            {{#each state.runs as |run|}}
-              <div class="row">
-                <div class="col-8">
-                  {{run.course.title}}
-                </div>
-                <div class="col-4">
-                  <a href="#" class="button-solid button-orange float-right">Resume</a>
-                </div>
-              </div>
-            {{/each}}
-          {{/if}}
-        </MyCoursesListView>
+      <Dashboard::DashboardCoursesList />
+    </div>
+
+    <div class="mb-5">
+      <div class="row">
+        <div class="col-6">
+          <Dashboard::DashboardWishList />
+        </div>
+        <div class="col-6">
+          <Dashboard::DashboardAppliedJobs />
+        </div>
       </div>
     </div>
   </div>
