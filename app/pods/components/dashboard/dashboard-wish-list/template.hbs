@@ -6,23 +6,7 @@
       </div>
       <div class="col-10">
         <h5 class="bold">{{item.course.title}}</h5>
-        <div class="mt-3 rating">
-          <span class="pos-rating orange">
-            <i class="fas fa-star fa-lg"></i>
-          </span>
-          <span class="pos-rating orange pl-2">
-            <i class="fas fa-star fa-lg"></i>
-          </span>
-          <span class="pos-rating orange pl-2">
-            <i class="fas fa-star fa-lg"></i>
-          </span>
-          <span class="pos-rating orange pl-2">
-            <i class="fas fa-star fa-lg"></i>
-          </span>
-          <span class="neg-rating pl-2">
-            <i class="fas fa-star fa-lg"></i>
-          </span>
-        </div>
+        <RatingStarsStatic @rating={{item.course.rating}} />
       </div>
     </div>
   </div>

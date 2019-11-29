@@ -42,4 +42,8 @@ export default class Dashboard extends Controller {
       }
     });
   }
+
+  @restartableTask fetchHackerblocksStats = function *() {
+    return yield this.api.request('/hb/performance')
+  }
 }

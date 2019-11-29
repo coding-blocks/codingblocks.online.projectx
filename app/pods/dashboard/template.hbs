@@ -65,7 +65,7 @@
       <div class="border-card p-5">
         <div class="d-flex align-items-center justify-content-between">
           <h4 class="bold">My Courses</h4>
-          <a href="#" class="orange font-sm font-normal">View All</a>
+          <LinkTo @route="classroom" class="orange font-sm font-normal">View All</LinkTo>
         </div>
         <div class="divider-h my-4"></div>
 
@@ -120,14 +120,18 @@
         Improve your Coding Skills
       </div>
       <div class="divider-h my-4"></div>
-      <div>
-        <span class="font-md">Current Rank</span>
-        <span>450</span>
-      </div>
-      <div>
-        <span class="font-md">Performance</span>
-        <span>200 Points</span>
-      </div>
+      <WAsync
+        @task={{fetchHackerblocksStats}}
+        @autoFire="true" as |stats|>
+        <div>
+          <span class="font-md">Current Rank</span>
+          <span>{{stats.currentOverallRank}}</span>
+        </div>
+        <div>
+          <span class="font-md">Performance</span>
+          <span>{{stats.currentMonthScore}} Points</span>
+        </div>
+      </WAsync>
     </div>
   </div>  
 </div>
