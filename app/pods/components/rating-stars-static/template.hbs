@@ -1,12 +1,10 @@
 <!--showValue: {type: bool, description: to show total number of reviews}-->
-<div class="rating">
-  {{#each (range 1 6) as |index|}}
-    <span class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}">
-      <i class="fas fa-star"></i>
-    </span>
-  {{/each}}
+{{#each (range 1 6) as |index|}}
+  <span class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}">
+    <i class="fas fa-star"></i>
+  </span>
+{{/each}}
 
-  {{#if showValue}}
-    <span class= "edit-rating">{{rating}}</span>
-  {{/if}}
-</div>
+{{#if showValue}}
+  <span class= "edit-rating">{{rating}}</span>
+{{/if}}

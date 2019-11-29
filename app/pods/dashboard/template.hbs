@@ -49,12 +49,9 @@
       <div class="row align-items-center justify-content-center">
         <div class="col-6 float-left">
           <span>
-            <span class="large-font">Leave a Rating: </span>
-            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
-            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
-            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
-            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
-            <span class="pointer"> <FaIcon @icon="star" class="" /> </span>
+            <RatingStars 
+              @course={{lastAccessedRun.course}}
+              @initialRating={{lastAccessedRun.course.userRating}} />
           </span>
         </div>
         <div class="col-6">
@@ -65,19 +62,72 @@
 
     {{!-- My courses card --}}
     <div class="my-5">
-      <Dashboard::DashboardCoursesList />
+      <div class="border-card p-5">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="bold">My Courses</h4>
+          <a href="#" class="orange font-sm font-normal">View All</a>
+        </div>
+        <div class="divider-h my-4"></div>
+
+        <WAsync @task={{fetchCoursesTask}} @autoFire="true" as |runs|>
+          <Dashboard::DashboardCoursesList @runs={{runs}} />
+        </WAsync>
+      </div>
     </div>
 
     <div class="mb-5">
       <div class="row">
         <div class="col-6">
-          <Dashboard::DashboardWishList />
+          <div class="border-card p-0">
+            <div class="px-5 pt-5">
+              <h4 class="bold">Wishlisted Courses</h4>
+              <div class="divider-h mt-4"></div>
+            </div>
+            <WAsync 
+              @task={{fetchWishlistCoursesTask}}
+              @autoFire="true" as |wishlist|>
+              <Dashboard::DashboardWishList @wishlist={{wishlist}} />
+            </WAsync>
+            <div class="t-align-c">
+              <button class="button-solid button-orange my-5">View All</button>
+            </div>
+          </div>
         </div>
+
         <div class="col-6">
-          <Dashboard::DashboardAppliedJobs />
+          <div class="border-card p-0">
+            <div class="px-5 pt-5">
+              <h4 class="bold">Applied Jobs</h4>
+              <div class="divider-h mt-4"></div>
+            </div>
+            <WAsync 
+              @task={{fetchAppliedJobsTask}}
+              @autoFire="true" as |jobs|>
+              <Dashboard::DashboardAppliedJobs @jobs={{jobs}} />
+            </WAsync>
+            <div class="t-align-c">
+              <button class="button-solid button-orange my-5">View All</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-4"></div>  
+  <div class="col-4">
+    <div class="border-card border-orange">
+      <span class="bold font-md">Hackerblocks Report</span>
+      <div class="font-normal">
+        Improve your Coding Skills
+      </div>
+      <div class="divider-h my-4"></div>
+      <div>
+        <span class="font-md">Current Rank</span>
+        <span>450</span>
+      </div>
+      <div>
+        <span class="font-md">Performance</span>
+        <span>200 Points</span>
+      </div>
+    </div>
+  </div>  
 </div>
