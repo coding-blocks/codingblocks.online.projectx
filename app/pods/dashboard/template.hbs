@@ -1,36 +1,30 @@
 <div class="row">
-  <div class="col-8">
+  <div class="col-9">
     <h4 class="my-4">Continue Learning</h4>
 
     {{!-- Recent run and stats card --}}
     <div class="border-card p-5">
-      <div class="row align-items-center justify-content-center">
-        <div class="col-6">
-          <div class="li-left">
-            <div class="mr-4">
-              <img src="{{lastAccessedRun.course.logo}}" width="100%">
+      <div class="row no-gutters align-items-center">
+        <div class="col-md-6 col-12">
+          <div class="row no-gutters align-items-center">
+            <div class="col-3 p-3">
+              <img src="{{lastAccessedRun.course.logo}}" alt="C++">
             </div>
-            <div>
-              <h5 class="bold">{{lastAccessedRun.course.title}}</h5>
-              <div>
-                Mentor: 
-                {{log lastAccessedRun.course}}
-                {{#each lastAccessedRun.course.intructors as |instructor|}}
-                  {{instructor.name}} {{#unless @last}} , {{/unless}}
+            <div class="col-9">
+              <h5 class="bold">C++ Master Course</h5>
+              <div class="font-normal mt-2">Mentor: 
+                {{#each lastAccessedRun.course.instructors as |instructor index|}}
+                  {{#if index}}, {{/if}} {{instructor.name}}
                 {{/each}}
               </div>
             </div>
           </div>
         </div>
-        <div class="col-6">
-          <span class="bold">Course Progress</span>
-          <div class="row py-3">
-            <div class="col-10">
-              <progress value="{{progress.percent}}" max="100"></progress> 
-            </div>
-            <div class="col-2">
-              <span class="extra-bold">{{progress.percent}}%</span> 
-            </div>
+        <div class="col-md-6 col-12">
+          <div class="font-normal">Course Progress</div>
+          <div class="mt-4">
+            <progress value="{{progress.percent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
+            <span class="bold ml-3">{{progress.percent}}%</span>
           </div>
         </div>
       </div>
@@ -113,25 +107,8 @@
       </div>
     </div>
   </div>
-  <div class="col-4">
-    <div class="border-card border-orange">
-      <span class="bold font-md">Hackerblocks Report</span>
-      <div class="font-normal">
-        Improve your Coding Skills
-      </div>
-      <div class="divider-h my-4"></div>
-      <WAsync
-        @task={{fetchHackerblocksStats}}
-        @autoFire="true" as |stats|>
-        <div>
-          <span class="font-md">Current Rank</span>
-          <span>{{stats.currentOverallRank}}</span>
-        </div>
-        <div>
-          <span class="font-md">Performance</span>
-          <span>{{stats.currentMonthScore}} Points</span>
-        </div>
-      </WAsync>
-    </div>
+  <div class="col-3">
+    <HackerblocksStats />
+    <CarouselCards />
   </div>  
 </div>
