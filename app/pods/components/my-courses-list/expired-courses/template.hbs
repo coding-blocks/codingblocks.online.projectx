@@ -1,7 +1,12 @@
 {{#each @runs as |run|}}
-  <div>
-    {{run.name}}
-    {{run.course.name}}
-  </div>
+  <MyCoursesList::RunRow
+    @run={{run}}
+    as |progressPercent| >
+
+    <MyCoursesList::ExpiredCourses::Content
+      @progressPercent={{progressPercent}}
+      @tagName=''
+      @run={{run}} />
+
+  </MyCoursesList::RunRow>
 {{/each}}
-{{yield}}

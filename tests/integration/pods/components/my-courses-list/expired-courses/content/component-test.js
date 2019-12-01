@@ -1,24 +1,24 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | my-courses-list-view', function(hooks) {
+module('Integration | Component | my-courses-list/expired-courses/content', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<MyCoursesListView />`);
+    await render(hbs`<MyCoursesList::ExpiredCourses::Content />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      <MyCoursesListView>
+      <MyCoursesList::ExpiredCourses::Content>
         template block text
-      </MyCoursesListView>
+      </MyCoursesList::ExpiredCourses::Content>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
