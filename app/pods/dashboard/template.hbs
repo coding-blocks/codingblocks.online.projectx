@@ -1,36 +1,30 @@
 <div class="row">
-  <div class="col-8">
+  <div class="col-9">
     <h4 class="my-4">Continue Learning</h4>
 
     {{!-- Recent run and stats card --}}
     <div class="border-card p-5">
-      <div class="row align-items-center justify-content-center">
-        <div class="col-6">
-          <div class="li-left">
-            <div class="mr-4">
-              <img src="{{lastAccessedRun.course.logo}}" width="100%">
+      <div class="row no-gutters align-items-center">
+        <div class="col-md-6 col-12">
+          <div class="row no-gutters align-items-center">
+            <div class="col-3 p-3">
+              <img src="{{lastAccessedRun.course.logo}}" alt="C++">
             </div>
-            <div>
-              <h5 class="bold">{{lastAccessedRun.course.title}}</h5>
-              <div>
-                Mentor: 
-                {{log lastAccessedRun.course}}
-                {{#each lastAccessedRun.course.intructors as |instructor|}}
-                  {{instructor.name}} {{#unless @last}} , {{/unless}}
+            <div class="col-9">
+              <h5 class="bold">C++ Master Course</h5>
+              <div class="font-normal mt-2">Mentor: 
+                {{#each lastAccessedRun.course.instructors as |instructor index|}}
+                  {{#if index}}, {{/if}} {{instructor.name}}
                 {{/each}}
               </div>
             </div>
           </div>
         </div>
-        <div class="col-6">
-          <span class="bold">Course Progress</span>
-          <div class="row py-3">
-            <div class="col-10">
-              <progress value="{{progress.percent}}" max="100"></progress> 
-            </div>
-            <div class="col-2">
-              <span class="extra-bold">{{progress.percent}}%</span> 
-            </div>
+        <div class="col-md-6 col-12">
+          <div class="font-normal">Course Progress</div>
+          <div class="mt-4">
+            <progress value="{{progress.percent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
+            <span class="bold ml-3">{{progress.percent}}%</span>
           </div>
         </div>
       </div>
@@ -49,12 +43,9 @@
       <div class="row align-items-center justify-content-center">
         <div class="col-6 float-left">
           <span>
-            <span class="large-font">Leave a Rating: </span>
-            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
-            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
-            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
-            <span class="pointer"> <FaIcon @icon="star" class="orange" /> </span>
-            <span class="pointer"> <FaIcon @icon="star" class="" /> </span>
+            <RatingStars 
+              @course={{lastAccessedRun.course}}
+              @initialRating={{lastAccessedRun.course.userRating}} />
           </span>
         </div>
         <div class="col-6">
@@ -65,19 +56,59 @@
 
     {{!-- My courses card --}}
     <div class="my-5">
-      <Dashboard::DashboardCoursesList />
+      <div class="border-card p-5">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="bold">My Courses</h4>
+          <LinkTo @route="classroom" class="orange font-sm font-normal">View All</LinkTo>
+        </div>
+        <div class="divider-h my-4"></div>
+
+        <WAsync @task={{fetchCoursesTask}} @autoFire="true" as |runs|>
+          <Dashboard::DashboardCoursesList @runs={{runs}} />
+        </WAsync>
+      </div>
     </div>
 
     <div class="mb-5">
       <div class="row">
         <div class="col-6">
-          <Dashboard::DashboardWishList />
+          <div class="border-card p-0">
+            <div class="px-5 pt-5">
+              <h4 class="bold">Wishlisted Courses</h4>
+              <div class="divider-h mt-4"></div>
+            </div>
+            <WAsync 
+              @task={{fetchWishlistCoursesTask}}
+              @autoFire="true" as |wishlist|>
+              <Dashboard::DashboardWishList @wishlist={{wishlist}} />
+            </WAsync>
+            <div class="t-align-c">
+              <button class="button-solid button-orange my-5">View All</button>
+            </div>
+          </div>
         </div>
+
         <div class="col-6">
-          <Dashboard::DashboardAppliedJobs />
+          <div class="border-card p-0">
+            <div class="px-5 pt-5">
+              <h4 class="bold">Applied Jobs</h4>
+              <div class="divider-h mt-4"></div>
+            </div>
+            <WAsync 
+              @task={{fetchAppliedJobsTask}}
+              @autoFire="true" as |jobs|>
+              <Dashboard::DashboardAppliedJobs @jobs={{jobs}} />
+            </WAsync>
+            <div class="t-align-c">
+              <button class="button-solid button-orange my-5">View All</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-4"></div>  
+  <div class="col-3">
+    <HackerblocksStats />
+    <CarouselCards />
+  </div>  
 </div>

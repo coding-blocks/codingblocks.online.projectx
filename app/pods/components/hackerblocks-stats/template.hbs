@@ -1,0 +1,40 @@
+<div class="border-card p-5 b-orange">
+  <h3 class="bold mb-3">Hacker Blocks Report</h3>
+  <div class="font-normal">Improve your coding skills</div>
+  <div class="divider-h my-4"></div>
+  <WAsync
+    @task={{fetchHackerblocksStats}}
+    @autoFire="true" as |stats|>
+    <div class="font-normal">Current Rank</div>
+    <div class="mt-3 d-flex align-items-center">
+      <span class="font-md bold">{{stats.currentOverallRank}}</span>
+      {{#if (gte stats.currentOverallRank stats.previousOverallRank)}}
+        <span class="green ml-4">
+          <FaIcon @icon="caret-up" />
+          <span class="ml-1">{{sub stats.currentOverallRank stats.previousOverallRank}} ranks</span>
+        </span>
+      {{else}}
+        <span class="salmon ml-4">
+          <FaIcon @icon="caret-down" />
+          <span class="ml-1">{{sub stats.previousOverallRank stats.currentOverallRank}} ranks</span>
+        </span>
+      {{/if}}
+    </div>
+    <div class="font-normal mt-5">Current Rank</div>
+    <div class="mt-3 d-flex align-items-center">
+      <span class="font-md bold">{{stats.currentMonthScore}} Points</span>
+      {{#if (gte stats.currentMonthScore stats.previousMonthScore)}}
+        <span class="green ml-4">
+          <FaIcon @icon="caret-up" />
+          <span class="ml-1">{{sub stats.currentMonthScore stats.previousMonthScore}} points</span>
+        </span>
+      {{else}}
+        <span class="salmon ml-4">
+          <FaIcon @icon="caret-down" />
+          <span class="ml-1">{{sub stats.previousMonthScore stats.currentMonthScore}} points</span>
+        </span>
+      {{/if}}
+    </div>
+  </WAsync>
+  <button class="button-solid button-orange mt-4">Continue</button>
+</div>

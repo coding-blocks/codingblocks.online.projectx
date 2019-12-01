@@ -4,9 +4,9 @@
     
     {{#each (range 1 (inc scale)) as |index|}}
       <span
-        class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
+        class="{{if (lte index rating) 'orange'}}"
       >
-        <i class="fas fa-star mr-1"></i>
+        <FaIcon @icon="star" class="mr-1" />
       </span>
     {{/each}}
     <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit pl-2" style="color:#fc4f4f"></i></a>
@@ -16,12 +16,12 @@
     <strong class="font-md mr-2">Rate this course?</strong>
     {{#each (range 1 (inc scale)) as |index|}}
       <span
-        class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
+        class="{{if (lte index rating) 'orange'}}"
         onMouseEnter={{action 'changeRating' index}}
         onMouseLeave={{action 'resetRating'}}
         onClick={{action 'toggleModal' index}}
       >
-        <i class="fas fa-star mr-1"></i>
+        <FaIcon @icon="star" class="mr-1" />
       </span>
     {{/each}}
   </div>
