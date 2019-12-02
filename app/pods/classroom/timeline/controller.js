@@ -17,20 +17,6 @@ export default class TimelineController extends Controller {
     return !ra.premium || ra.isExpired
   }
 
-  @computed('runAttempt')
-  get progress() {
-    return DS.PromiseObject.create({
-      promise: this.api.request(`run_attempts/${this.runAttempt.id}/progress`)
-    })
-  }
-
-  @computed('runAttempt.{isExpired,end}')
-  get showExtensions() {
-    const endIsNear = moment().add(1, "month") > moment.unix(this.runAttempt.end)
-    return this.runAttempt.isExpired || endIsNear
-  }
-
-
   @action
   resetProgress() {
     this.get('api').request('progresses/reset', {

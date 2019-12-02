@@ -1,85 +1,71 @@
-<div class="border-card p-4 p-sm-5 mb-5">
-  <h4 class="mb-5">Summary</h4>
-
-  <p class="grey">
-    {{markdown-to-html course.summary}}
-  </p>
-
-  {{#if course.topRun.tags}}
-    <p class="mt-4">
-      Major Topics Covered
-    </p>
-
-    <div>
-      {{#each course.topRun.tags as |tag|}}
-        <span class="pill m-2">{{tag.name}}</span>
-      {{/each}}
-    </div>
-  {{/if}}
-</div>
-
-<div class="border-card p-4 p-sm-5 mb-5">
-  <h4>Mentors</h4>
-  Know your Mentors for this course
-
-  <div class="divider-h mt-5 mb-5"></div>
-  {{#each course.instructors as |instructor|}}
-  <div class="img-desc row no-gutters mb-5">
-    <div class="col-3 pr-4">
-      <img class="round" src="{{instructor.photo}}" alt="">
-
-    </div>
-    <div class="description col-8">
-      <div class="heading-d">
-        <h6 class="bold">
-          {{instructor.name}}
-        </h6>
-        <div class="mb-3">
-          Mentor, Coding Blocks
-          <a href="mailto:{{instructor.email}}">{{instructor.email}}</a>
+<div class="row">
+  <div class="col-9">
+    <div class="border-card p-5 mb-5">
+      <div class="row no-gutters align-items-center">
+        <div class="col-md-6 col-12">
+          <div class="row no-gutters align-items-center">
+            <div class="col-3 p-3">
+              <img src="{{course.logo}}" alt="C++">
+            </div>
+            <div class="col-9">
+              <h5 class="bold">{{course.title}}</h5>
+              <div class="font-normal mt-2">Mentor: 
+                {{#each course.instructors as |instructor index|}}
+                  {{#if index}}, {{/if}} {{instructor.name}}
+                {{/each}}
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-md">
-          {{instructor.description}}
+        <div class="col-md-6 col-12">
+          <RatingStars 
+            @course={{course}}
+            @initialRating={{course.userRating}} />
         </div>
       </div>
 
+      <div class="divider-h w-100 mx-auto my-5"></div>
+
+      <div>
+        <h5 class="bold mb-3">Course Progress</h5>
+        <WAsync
+          @task={{fetchProgressTask}}
+          @autoFire="true" as |prog|>
+          <progress value="{{prog.percent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
+          <span class="bold ml-3">{{prog.percent}}%</span>
+        </WAsync>
+      </div>
+
+      <div class="divider-h w-100 mx-auto my-5"></div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="col-6 float-left red">
+          {{#if runAttempt.premium}}
+            {{#if runAttempt.isExpired}}
+              Expired
+            {{else}}
+              Batch Ends {{moment-format runAttempt.endDate 'DD-MMM-YY'}}
+            {{/if}}
+          {{else}}
+            Free Trial
+          {{/if}}
+        </div>
+        <div class="col-6">
+          <div class="float-right">
+            <a href="#" class="button-dashed button-orange mr-4">
+              Resume
+            </a>
+            <a href="#" class="button-solid button-orange">
+              Buy Now
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  {{/each}}
-</div>
 
-<div class="border-card p-4 p-sm-5 mb-5">
-  <h4 class="mb-5">Course Introduction</h4>
-
-  <div class="bold mb-3">Lectures</div>
-  <div class="grey card-md mb-4">
-    • We are providing access of complete contents on course starting date. If there are any topics which needs to be
-     discussed then we'll add more lectures to the course accordingly.
-    <br>
-    • There are In-Class Quizzes, Assignments, Notes along with Lecture Videos in a lecture. You should attempt them all
-    to
-    master each section that you study.
-    <br>
-    • You should complete the lectures within the specified deadlines.
+    {{#if showExtensions}}
+      <ExtensionsWidget @run={{runAttempt.run}} class="mb-5" />
+    {{/if}}
   </div>
-
-  <div class="bold mb-3">Assignments and Tests</div>
-  <div class="grey card-md mb-4">
-    • After almost every lecture there will be one assignment.
-    <br>
-    • Assignments will have deadlines. Submissions after deadline will be subject to penalty.
-  </div>
-
-  <div class="bold mb-3">Teaching Assistants and Doubts Resolution</div>
-  <div class="grey card-md mb-4">
-    • Apart from instructors taking the course, there are teaching assistants in the course who will be taking your
-    doubts.
-    <br>
-    • You can ask doubt on any content that you are facing problem at, be it a video or a question. There is an “Ask
-    Doubt”
-    button on the top right corner to raise your doubt.
-    <br>
-    • The doubt support period is valid for 6 months from the start of course date. This is kept after considering 
-    the section deadlines and the content that is available for the students to learn.
-  </div>
+  <div class="col-3"></div>
 </div>

@@ -11,7 +11,7 @@
               <img src="{{lastAccessedRun.course.logo}}" alt="C++">
             </div>
             <div class="col-9">
-              <h5 class="bold">C++ Master Course</h5>
+              <h5 class="bold">{{lastAccessedRun.course.title}}</h5>
               <div class="font-normal mt-2">Mentor: 
                 {{#each lastAccessedRun.course.instructors as |instructor index|}}
                   {{#if index}}, {{/if}} {{instructor.name}}
@@ -49,7 +49,12 @@
           </span>
         </div>
         <div class="col-6">
-          <button class="button-solid button-orange float-right">Resume Now</button>
+          <LinkTo 
+            @route="classroom.timeline.overview"
+            @models={{array lastAccessedRun.course.id lastAccessedRun.id}}
+            class="button-solid button-orange float-right">
+            Resume Now
+          </LinkTo>
         </div>
       </div>
     </div>

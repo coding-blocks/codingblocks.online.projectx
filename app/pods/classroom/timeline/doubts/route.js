@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-  model () {
-    return this.modelFor("classroom.timeline").get("run.course");
+  activate () {
+    return this.transitionTo('classroom.timeline.overview')
   }
 });
