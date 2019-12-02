@@ -87,6 +87,26 @@
     </div>
   </div>
   <div class="col-3">
-    <CertificateComp @runAttempt={{runAttempt}} />
+    <CertificateComp 
+      class="mb-5"
+      @runAttempt={{runAttempt}} />
+    <div class="border-card py-5 mb-5 px-0">
+      <h3 class="bold mb-4 px-5">Mentors</h3>
+      <div class="divider-h w-80 mx-auto"></div>
+      {{#each course.instructors as |instructor|}}
+        <div class="hover-grey py-4 px-5">
+          <div class="img-desc align-items-center">
+            <img class="round s-50x50" src="{{instructor.photo}}" alt="">
+            <div class="description ml-3">
+              <div class="bold">
+                {{instructor.name}}
+              </div>
+              {{instructor.email}}
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+    <HackerblocksStats />
   </div>
 </div>
