@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 export default Route.extend({
   api: service('api'),
   headData: service(),
+  metrics: service(),
   model (params) {
     return this.modelFor('classroom.timeline')
   },
@@ -13,5 +14,10 @@ export default Route.extend({
   },
   afterModel(model) {
     this.set('headData.title', model.get('title'))
+  },
+  actions: {
+    log(event, course){
+      this.get('metrics').trackEvent({event, course, page: 'Classroom'})
+    }
   }
 });

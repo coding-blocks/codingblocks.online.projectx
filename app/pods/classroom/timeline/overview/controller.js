@@ -20,8 +20,18 @@ export default class Overview extends Controller {
     return this.runAttempt.isExpired || endIsNear
   }
 
+  @computed('runAttempt.{premium,isExpired}')
+  get showBuyNow() {
+    const ra = this.runAttempt
+    return !ra.premium || ra.isExpired
+  }
+
   @restartableTask fetchProgressTask = function *() {
     return yield this.api.request(`run_attempts/${this.runAttempt.id}/progress`)
+  }
+
+  @restartableTask fetchPerformanceStatsTask = function *() {
+    return yield this.api.request(`progresses/stats/${this.runAttempt.id}`)
   }
 
   @action

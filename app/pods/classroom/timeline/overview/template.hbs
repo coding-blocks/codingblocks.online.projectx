@@ -52,12 +52,15 @@
         </div>
         <div class="col-6">
           <div class="float-right">
-            <a href="#" class="button-dashed button-orange mr-4">
+            {{#if showBuyNow}}
+              {{#link-to "courses.id" run.course.identifier tagName="button" activeClass="" class="button-solid button-orange mr-3" invokeAction=(action 'log' 'Buy now' run.course.identifier preventDefault=false)}}
+                Buy Now
+              {{/link-to}}
+            {{/if}}
+
+            {{#link-to "attempt" run.topRunAttempt.id tagName="button" activeClass="" class="button-dashed button-orange"}}
               Resume
-            </a>
-            <a href="#" class="button-solid button-orange">
-              Buy Now
-            </a>
+            {{/link-to}}
           </div>
         </div>
       </div>
@@ -66,6 +69,24 @@
     {{#if showExtensions}}
       <ExtensionsWidget @run={{runAttempt.run}} class="mb-5" />
     {{/if}}
+
+    <div class="border-card p-5 mb-5">
+      <WAsync
+        @task={{fetchPerformanceStatsTask}}
+        @autoFire="true" as |stats|>
+        <PerformanceStatsView @stats={{stats}} />
+      </WAsync>
+    </div>
+
+    <div class="border-card p-5 mb-5">
+      <h4 class="mb-5">Summary</h4>
+
+      <p class="grey">
+        {{markdown-to-html course.summary}}
+      </p>
+    </div>
   </div>
-  <div class="col-3"></div>
+  <div class="col-3">
+    <CertificateComp @runAttempt={{runAttempt}} />
+  </div>
 </div>

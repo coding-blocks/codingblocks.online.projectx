@@ -9,7 +9,6 @@ export default Component.extend({
   api: service(),
   router: service(),
 
-  collapsed: true,
   run: alias('runAttempt.run'),
   courseCompleted: computed('progress', 'run.completionThreshold', function () {
     const courseCompleted = this.progress.then(progress => {

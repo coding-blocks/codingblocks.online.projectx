@@ -11,12 +11,6 @@ export default class TimelineController extends Controller {
 
   @service api
 
-  @computed('run.topRunAttempt.{premium,isExpired}')
-  get showBuyNow() {
-    const ra = this.get('run.topRunAttempt')
-    return !ra.premium || ra.isExpired
-  }
-
   @action
   resetProgress() {
     this.get('api').request('progresses/reset', {
