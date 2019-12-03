@@ -8,20 +8,16 @@ export default class navBarComponent extends Component {
     @service currentUser
     @service domain
     @service metrics
+
     @alias('currentUser.user') user
-
     @equal("domain.domain", "hellointern") isAnotherDomain
-
     @reads('currentUser.organization') organization
     @bool('organization')  isOrgView
+
     showSidebar = false
-
     activeTab = null
-
-    @action
-    toggleSidebar () {
-      this.toggleProperty('showSidebar')
-    }
+    hideHamburgerNav = true
+    mobileSelectedTab = 'classroom'
 
     didInsertElement () {
       this._super(...arguments)
@@ -30,6 +26,11 @@ export default class navBarComponent extends Component {
       });
     }
 
+    @action 
+    toggleHamburgerNav() {
+      this.toggleProperty('hideHamburgerNav')
+    }
+    
     @action
     toggleNotification() {
       if (this.get('activeTab') === 'notification')
