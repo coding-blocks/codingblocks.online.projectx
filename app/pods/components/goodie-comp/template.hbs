@@ -1,42 +1,30 @@
-<div class="c-certificate bg-gradient-steel-grey br-15 mb-5 white">
-  <div class="row justify-content-between no-gutters align-items-center" {{action 'toggleCollapse'}}>
-    <div class="img-desc font-mds">
-      <div class="description">
-        <span>Claim Goodies </span>
-      </div>
-    </div>
-    <img src="/images/gift.png" alt="">
+<div class="border-card bg-gradient-purple mb-5">
+  <div class="t-align-c">
+    <i class="fas fa-gift fa-2x gradient-text-orange mr-2"></i>
+    <span class="bold gradient-text-orange font-md">Claim Goodies</span>
   </div>
-
-  <div class="{{if collapsed 'dsp-none-md'}}">
-    
-    <div class="row justify-content-between no-gutters align-items-center description">
-       <span class="card-md white">Complete {{ run.goodiesThreshold }}% of your course </span>
-    <span class="card-md white">to unlock and claim goodies</span>
-    </div>
-    
-    <div class="img-desc my-3 align-items-center">
-      <div class="s-30x30 bg-white round mr-3 {{if thresholdCompleted 'tick'}}"></div>
-      <div class="description">
-        <span>Threshold Completion: {{ run.goodiesThreshold }}%+</span>
-      </div>
-    </div>
-
-    <div class="divider-h bg-white my-4"></div>
-     {{#if alreadyClaimed}}
-      <button class="button-solid" disabled> Requested </button>
-    {{else if completed}}
-      <button class="button-solid" disabled> Delivered </button>
-    {{else if canClaim}}
-      <button class="button-solid" {{action 'toggleModal'}}> Request </button>
-    {{else}}
-      <button class="button-solid white" disabled>
-        <i class="fas fa-lock"></i>
-        Request
-      </button>
-    {{/if}}
-    </div>
+  <div class="font-normal white my-4">
+    Complete {{ run.goodiesThreshold }}% of your course
+    to unlock and claim goodies
   </div>
+  <div class="divider-h bg-white"></div>
+  <div class="row no-gutters align-items-center my-5">
+    <div class="s-30x30 bg-white br-25 mr-2 {{if thresholdCompleted 'tick'}}"></div>
+    <div class="bold white word-wrap">Threshold Completion: {{ run.goodiesThreshold }}%+</div>
+  </div>
+  {{#if alreadyClaimed}}
+    <button class="button-solid button-orange" disabled> Requested </button>
+  {{else if completed}}
+    <button class="button-solid button-orange" disabled> Delivered </button>
+  {{else if canClaim}}
+    <button class="button-solid button-orange" {{action 'toggleModal'}}> Request </button>
+  {{else}}
+    <button class="button-solid button-orange white" disabled>
+      <i class="fas fa-lock"></i>
+      Request
+    </button>
+  {{/if}}
+</div>
 
 {{#if showModal}}
   <ModalDialog   

@@ -1,7 +1,6 @@
 import Component from '@ember/component';
-import { alias, and, not, equal } from '@ember/object/computed';
+import { alias, equal } from '@ember/object/computed';
 import { computed } from '@ember/object';
-import { task } from 'ember-concurrency';
 import DS from 'ember-data';
 import { inject as service } from '@ember/service';
 
@@ -13,6 +12,12 @@ export default Component.extend({
     showModal: false,
     collapsed: true,
     tshirt: '',
+
+    progress: computed('runAttempt', function () {
+        return DS.PromiseObject.create({
+            promise: this.api.request(`run_attempts/${this.runAttempt.id}/progress`)
+        })
+    }),
     run: alias('runAttempt.run'),
     goodieRequests: alias('runAttempt.goodieRequests'),
     statusInProgress: alias('goodieRequests.statusInProgress'),

@@ -67,7 +67,9 @@
     </div>
 
     {{#if showExtensions}}
-      <ExtensionsWidget @run={{runAttempt.run}} class="mb-5" />
+      <div class="border-card p-5">
+        <ExtensionsWidget @run={{runAttempt.run}} class="mb-5" />
+      </div>
     {{/if}}
 
     <div class="border-card p-5 mb-5">
@@ -87,6 +89,9 @@
     </div>
   </div>
   <div class="col-3">
+    <GoodieComp
+      class="mb-5"
+      @runAttempt={{runAttempt}} />
     <CertificateComp 
       class="mb-5"
       @runAttempt={{runAttempt}} />
