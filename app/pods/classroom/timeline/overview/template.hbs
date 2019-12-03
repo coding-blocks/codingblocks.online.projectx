@@ -89,9 +89,19 @@
     </div>
   </div>
   <div class="col-3">
-    <GoodieComp
-      class="mb-5"
-      @runAttempt={{runAttempt}} />
+    {{#if (and runAttempt.run.whatsappLink runAttempt.premium)}}
+      <a href={{runAttempt.run.whatsappLink}} class="pointer" target="blank">
+        <div class="border-card border-none bg-gradient-green mb-5 white">
+          <i class="fab fa-whatsapp fa-2x mr-2"></i>
+          <strong class="font-md">Join Whatsapp Group</strong>
+        </div>
+      </a>
+    {{/if}}
+    {{#if (is-after (unix runAttempt.run.start) '2018-10-01')}}
+      <GoodieComp
+        class="mb-5"
+        @runAttempt={{runAttempt}} />
+    {{/if}}
     <CertificateComp 
       class="mb-5"
       @runAttempt={{runAttempt}} />
