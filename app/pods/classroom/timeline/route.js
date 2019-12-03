@@ -75,19 +75,5 @@ export default Route.extend({
         })
         return runAttempt
       });
-  },
-  setupController(controller, model) {
-    controller.set("run", model.get("run"));
-    controller.set("runAttempt", model);
-    controller.set("userRating", model.get("rating"));
-    controller.set("goodieRequests", model.get("goodieRequests"))
-  },
-  actions: {
-    reloadRoute() {
-      this.refresh();
-    },
-    log(event, course){
-      this.get('metrics').trackEvent({event, course, page: 'Classroom'})
-    }
   }
 });

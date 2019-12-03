@@ -31,8 +31,13 @@
         <WAsync
           @task={{fetchProgressTask}}
           @autoFire="true" as |prog|>
-          <progress value="{{prog.percent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
-          <span class="bold ml-3">{{prog.percent}}%</span>
+          <div class="mb-3">
+            <progress value="{{prog.percent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
+            <span class="bold ml-3">{{prog.percent}}%</span>
+          </div>
+          <button class="red" {{action "resetProgress"}}>
+            <FaIcon @icon="exclamation-triangle" /> Reset Progress
+          </button>
         </WAsync>
       </div>
 

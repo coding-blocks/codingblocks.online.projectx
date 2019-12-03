@@ -43,4 +43,14 @@ export default class Overview extends Controller {
       }
     })
   }
+
+  @action
+  resetProgress() {
+    this.get('api').request('progresses/reset', {
+      method: 'POST',
+      data: {
+        runAttemptId: this.get('runAttempt.id')
+      }
+    }).then(() => this.send('reloadRoute'))
+  }
 }
