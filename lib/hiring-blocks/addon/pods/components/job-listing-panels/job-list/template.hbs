@@ -1,0 +1,9 @@
+{{#each jobs as |job|}}
+  <JobListingPanels::JobRow @job={{job}}/>
+{{/each}}
+
+<WPagination
+  @pages={{pagination.totalPages}}
+  @size={{limit}}
+  @current={{pagination.currentPage}}
+  @onchange={{action 'paginate'}} />

@@ -52,10 +52,10 @@
     {{/if}}
   </div>
 
-  <hr class="mb-3">
+  <hr class="mb-4">
 
   {{#if (or selectedLocations.length selectedJobTypes.length)}}
-    <div class="mb-3">
+    <div class="mb-4">
       Search results for:
       {{!-- filter pills --}}
       {{#each selectedLocations as |location|}}  
@@ -71,5 +71,7 @@
     </div>
   {{/if}}
 
-  {{component activeTab.component filters=(hash locations=selectedLocations jobTypes=selectedJobTypes)}}
+  <div class="mb-5">
+    {{component activeTab.component filters=(hash locations=selectedLocations jobTypes=selectedJobTypes)}}
+  </div>
 </WTabNav>
