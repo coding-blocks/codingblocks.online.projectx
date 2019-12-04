@@ -1,8 +1,11 @@
-{{#each jobs as |job|}}
-  <JobListingPanels::JobRow @job={{job}}/>
-{{/each}}
+<div class="border-bottom-list">
+  {{#each jobs as |job|}}
+    <JobListingPanels::JobRow @job={{job}} class="my-2"/>
+  {{/each}}
+</div>
 
 <WPagination
+  class="mt-5"
   @pages={{pagination.totalPages}}
   @size={{limit}}
   @current={{pagination.currentPage}}

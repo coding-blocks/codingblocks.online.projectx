@@ -62,7 +62,7 @@
     {{/if}}
   </div>
 
-  <hr class="mb-4">
+<div class="divider-h my-4"></div>
 
   {{#if (or selectedLocations.length selectedJobTypes.length)}}
     <div class="mb-4">
@@ -82,6 +82,8 @@
   {{/if}}
 
   <div class="mb-5">
-    {{component activeTab.component filters=(hash locations=selectedLocations jobTypes=selectedJobTypes)}}
+    {{component activeTab.component 
+      filters=(hash locations=selectedLocations jobTypes=selectedJobTypes)
+    }}
   </div>
 </WTabNav>
