@@ -1,11 +1,13 @@
-<div class="pagination">
-  <li class="page-item {{if disabledPrevious 'disabled'}}">
-    <span class="page-link pointer" {{action 'previousPage'}}>Previous</span>
-  </li>
-
-  {{this.start}}-{{this.end}} of {{this.numberOfTotalResults}}
-
-  <li class="page-item {{if disabledNext 'disabled'}}">
-    <span class="page-link pointer" href="#" {{action 'nextPage'}}>Next</span>
-  </li>
+<div class="t-align-c mt-3 bold">
+  <button disabled="{{if disabledPrevious 'disabled'}}" {{action 'previousPage'}}>
+    &lt; Prev
+  </button>
+  <span class="dark-grey mx-4">
+    {{this.start}}-{{this.end}} of {{this.numberOfTotalResults}}
+  </span>
+  
+  <button disabled="{{if disabledNext 'disabled'}}" {{action 'nextPage'}}>
+    Next &gt;
+  </button>
+  
 </div>
