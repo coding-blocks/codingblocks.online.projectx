@@ -45,27 +45,31 @@
 
     </div>
 
-    <div class="orange pointer">
-      Apply Filter
+    {{#if showApplyButton}}
+      <button class="orange" {{action "apply"}}>
+        Apply Filter
+      </button>
+    {{/if}}
+  </div>
+
+  <hr class="mb-3">
+
+  {{#if (or selectedLocations.length selectedJobTypes.length)}}
+    <div class="mb-3">
+      Search results for:
+      {{!-- filter pills --}}
+      {{#each selectedLocations as |location|}}  
+        <button class="button-dashed button-orange" {{action 'removeObject' selectedLocations location}}>
+          {{location}} X
+        </button>
+      {{/each}}
+      {{#each selectedJobTypes as |type|}}  
+        <button class="button-dashed button-orange" {{action 'removeObject' selectedJobTypes type}}>
+          {{type}} X
+        </button>
+      {{/each}}
     </div>
-  </div>
+  {{/if}}
 
-  <hr class="mb-2">
-
-  <div>
-    2 search results for:
-    {{!-- filter pills --}}
-    {{#each locations as |location|}}  
-      <button class="button-dashed button-orange" {{action 'removeObject' locations location}}>
-        {{location}} X
-      </button>
-    {{/each}}
-    {{#each jobTypes as |type|}}  
-      <button class="button-dashed button-orange" {{action 'removeObject' jobTypes type}}>
-        {{type}} X
-      </button>
-    {{/each}}
-  </div>
-
-  {{component activeTab.component}}
+  {{component activeTab.component filters=(hash locations=selectedLocations jobTypes=selectedJobTypes)}}
 </WTabNav>
