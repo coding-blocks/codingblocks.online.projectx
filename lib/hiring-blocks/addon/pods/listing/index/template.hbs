@@ -1,6 +1,3 @@
-
-
-
 <div class="all-center px-2">
   <img src="https://via.placeholder.com/990x150.jpg?text=We Have Jobs" alt="" />
 </div>
@@ -18,8 +15,14 @@
         <PowerSelectMultiple 
           @selected={{locations}}
           @options={{possibleLocations}}
+          @closeOnSelect={{false}}
+          @placeholder="Location"
+          @triggerComponent={{component 'job-filter/trigger-component'}}
           @onChange={{action (mut locations)}}
         as |location|>
+          <Input 
+            @type="checkbox" 
+            @checked={{includes locations location}} />  
           {{location}}
         </PowerSelectMultiple>
       </div>
@@ -28,8 +31,14 @@
         <PowerSelectMultiple 
           @selected={{jobTypes}}
           @options={{possibleJobTypes}}
+          @closeOnSelect={{false}}
+          @placeholder="Job Type"
+          @triggerComponent={{component 'job-filter/trigger-component'}}
           @onChange={{action (mut jobTypes)}}
         as |type|>
+          <Input 
+            @type="checkbox" 
+            @checked={{includes jobTypes type}} />  
           {{type}}
         </PowerSelectMultiple>
       </div>
@@ -43,6 +52,20 @@
 
   <hr class="mb-2">
 
-  <div>2 search results for "fuck"</div>
+  <div>
+    2 search results for:
+    {{!-- filter pills --}}
+    {{#each locations as |location|}}  
+      <button class="button-dashed button-orange" {{action 'removeObject' locations location}}>
+        {{location}} X
+      </button>
+    {{/each}}
+    {{#each jobTypes as |type|}}  
+      <button class="button-dashed button-orange" {{action 'removeObject' jobTypes type}}>
+        {{type}} X
+      </button>
+    {{/each}}
+  </div>
+
   {{component activeTab.component}}
 </WTabNav>
