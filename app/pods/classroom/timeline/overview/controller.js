@@ -8,11 +8,11 @@ import moment from 'moment';
 export default class Overview extends Controller {
   @service api
 
+  queryParams = ['showFeedback']
+  showFeedback = false
+
   discussBaseUrl = config.discussBaseUrl
-  queryParams = ['offset', 'limit']
   visible = true
-  offset = 0
-  limit = 5
 
   @computed('runAttempt.{isExpired,end}')
   get showExtensions() {

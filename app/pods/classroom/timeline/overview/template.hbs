@@ -23,7 +23,9 @@
           <span class="font-normal">Leave a rating: </span>
           <RatingStars 
             @course={{course}}
-            @initialRating={{course.userRating}} />
+            @showModal={{true}}
+            @isShowingModal={{showFeedback}}
+            @initialRating={{userRating}} />
         </div>
       </div>
       <div class="divider-h mt-4 mb-5"></div>
