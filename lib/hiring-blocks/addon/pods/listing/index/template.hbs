@@ -30,9 +30,10 @@
           @triggerComponent={{component 'job-filter/trigger-component'}}
           @onChange={{action (mut locations)}}
         as |location|>
-          <Input 
-            @type="checkbox" 
-            @checked={{includes locations location}} />  
+          <input 
+            type="checkbox" 
+            onclick={{action "preventDefault"}}
+            checked={{includes locations location}} />  
           {{location}}
         </PowerSelectMultiple>
       </div>
@@ -46,9 +47,10 @@
           @triggerComponent={{component 'job-filter/trigger-component'}}
           @onChange={{action (mut jobTypes)}}
         as |type|>
-          <Input 
-            @type="checkbox" 
-            @checked={{includes jobTypes type}} />  
+          <input 
+            type="checkbox"
+            onclick={{action "preventDefault"}}
+            checked={{includes jobTypes type}} />
           {{type}}
         </PowerSelectMultiple>
       </div>
