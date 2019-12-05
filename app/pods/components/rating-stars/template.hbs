@@ -1,30 +1,23 @@
 {{#if (and hasUserMarkedRating (not isEditing))}}
-  <div class="d-flex align-items-center">
-    <strong class="font-md mr-2">Thanks for rating</strong>
-    
-    {{#each (range 1 (inc scale)) as |index|}}
-      <span
-        class="{{if (lte index rating) 'orange'}}"
-      >
-        <FaIcon @icon="star" class="mr-1" />
-      </span>
-    {{/each}}
-    <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit pl-2" style="color:#fc4f4f"></i></a>
-  </div>
+  {{#each (range 1 (inc scale)) as |index|}}
+    <span
+      class="{{if (lte index rating) 'orange'}}"
+    >
+      <FaIcon @icon="star" class="mr-1" />
+    </span>
+  {{/each}}
+  <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit pl-2" style="color:#fc4f4f"></i></a>
 {{else}}
-  <div class="d-flex align-items-center">
-    <strong class="font-md mr-2">Rate this course?</strong>
-    {{#each (range 1 (inc scale)) as |index|}}
-      <span
-        class="{{if (lte index rating) 'orange'}}"
-        onMouseEnter={{action 'changeRating' index}}
-        onMouseLeave={{action 'resetRating'}}
-        onClick={{action 'toggleModal' index}}
-      >
-        <FaIcon @icon="star" class="mr-1" />
-      </span>
-    {{/each}}
-  </div>
+  {{#each (range 1 (inc scale)) as |index|}}
+    <span
+      class="{{if (lte index rating) 'orange'}}"
+      onMouseEnter={{action 'changeRating' index}}
+      onMouseLeave={{action 'resetRating'}}
+      onClick={{action 'toggleModal' index}}
+    >
+      <FaIcon @icon="star" class="mr-1" />
+    </span>
+  {{/each}}
 {{/if}}
 {{#if isShowingModal}}
   {{#modal-dialog

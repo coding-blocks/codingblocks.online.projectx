@@ -9,7 +9,11 @@
   </div>
   <div class="divider-h bg-white"></div>
   <div class="row no-gutters align-items-center my-5">
-    <div class="s-30x30 bg-white br-25 mr-2 {{if thresholdCompleted 'tick'}}"></div>
+    <div class="s-30x30 bg-white br-25 mr-2 all-center">
+      {{#if thresholdCompleted}}
+        <FaIcon @icon="check" />
+      {{/if}}
+    </div>
     <div class="bold white word-wrap">Threshold Completion: {{ run.goodiesThreshold }}%+</div>
   </div>
   {{#if alreadyClaimed}}

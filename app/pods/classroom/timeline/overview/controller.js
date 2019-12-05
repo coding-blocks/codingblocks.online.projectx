@@ -26,6 +26,16 @@ export default class Overview extends Controller {
     return !ra.premium || ra.isExpired
   }
 
+  @computed('runAttempt.run.completionThreshold')
+  get certificateLockOffset() {
+    return 0.9 * this.runAttempt.get('run.completionThreshold')
+  }
+
+  @computed('runAttempt.run.goodiesThreshold')
+  get goodiesLockOffset() {
+    return 0.9 * this.runAttempt.get('run.goodiesThreshold')
+  }
+
   @restartableTask fetchProgressTask = function *() {
     return yield this.api.request(`run_attempts/${this.runAttempt.id}/progress`)
   }

@@ -11,6 +11,9 @@ import { inject as service } from '@ember/service';
 export default class RatingStartComponent extends Component {
   @service api
 
+  tagName = 'span'
+  classNames = ['align-items-center']
+
   scale = 5
   ratingMarkedByUser = null
   isEditing = false
