@@ -1,4 +1,4 @@
-<h1> My Courses </h1>
+<h2> My Courses </h2>
 
 <WTabNav 
   @tabs={{tabs}}
@@ -6,7 +6,7 @@
   @onTabChange={{action "changeTab"}}
   >
   <WAsync @task={{activeTab.task}} @autoFire={{true}} as |result|>
-    {{component activeTab.component runs=result}}
+    {{component activeTab.component runs=result class="border-bottom-list"}}
   </WAsync>
 </WTabNav>
 

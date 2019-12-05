@@ -8,7 +8,7 @@ export default class MyCoursesController extends Controller {
   @service store
 
   queryParams = ['limit', 'offset']
-  limit = 10
+  limit = 5
   offset = 0
 
   tabs = [

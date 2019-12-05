@@ -7,6 +7,7 @@ $cb-red: #ff6666;
 @import "ember-power-select";
 
 @import "./components/index.scss";
+@import "lists.scss";
 
 body.centered-modal-showing {
   overflow: hidden;

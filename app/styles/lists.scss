@@ -1,0 +1,8 @@
+.border-bottom-list > div:not(:last-child):after {
+  content: '';
+  display: block;
+  background-color: #e8e8e8;
+  height: 1px;
+  width: 100%;
+  margin: 2rem 0;
+}
