@@ -37,6 +37,7 @@ export default class RatingStartComponent extends Component {
   @action
   changeRating (val) {
     this.set('rating', val)
+    this.set('initialRating.value', val)
   }
 
   @action
