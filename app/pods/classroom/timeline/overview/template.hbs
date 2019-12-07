@@ -99,9 +99,12 @@
             {{/link-to}}
           {{/if}}
 
-          {{#link-to "attempt" run.topRunAttempt.id activeClass="" class="button-dashed button-orange"}}
+          <LinkTo 
+            @route="attempt"
+            @model={{runAttempt.id}}
+            class="button-dashed button-orange">
             Resume
-          {{/link-to}}
+          </LinkTo>
         </div>
       </div>
     </div>

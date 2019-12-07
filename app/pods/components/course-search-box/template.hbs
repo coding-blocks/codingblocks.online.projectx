@@ -1,6 +1,12 @@
-<div class="input-search nav-search dsp-none-sm">
-  {{input type="text" placeholder="Search Contents.." value=qs key-press=(perform searchTask) focusIn=(action 'showResult') focusOut=(action 'hideResult')}}
-  <img src="/images/searchicon.png" alt="search">
+<div class="input-search nav-search dsp-none-sm bg-grey p-3">
+  {{input 
+    type="text" 
+    class="bg-grey"
+    placeholder="Search Content"
+    value=qs key-press=(perform searchTask) 
+    focusIn=(action 'showResult') 
+    focusOut=(action 'hideResult')}}
+  <FaIcon @icon="search" class="float-right" />
 
   {{#unless hideResultsBox}}
     <div class="search-box">

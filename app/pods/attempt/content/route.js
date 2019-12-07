@@ -4,8 +4,6 @@ import { inject } from '@ember/service'
 export default Route.extend({
     api: inject(),
     currentUser: inject(),
-    currentContent: inject(),
-    runAttemptService: inject('run-attempt'),
     beforeModel() {
         const params = this.paramsFor('attempt.content')
         const section = this.store.peekRecord('section', params.sectionId)
@@ -13,8 +11,6 @@ export default Route.extend({
         return section.get('contents')
     },
     model (params) {
-        this.runAttemptService.setCurrentSection(params.sectionId)
-        this.currentContent.setContentId(params.contentId)
         return this.store.peekRecord('content', params.contentId, {
             include: 'lecture,video,document,code_challenge',
             reload: true

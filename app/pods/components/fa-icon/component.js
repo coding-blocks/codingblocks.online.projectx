@@ -6,6 +6,7 @@ export default class FaIcon extends Component {
   tagName = 'i'
   classNameBindings = ['type', 'iconClass', 'sizeClass']
   type = 'fas'
+  size = 1
   
   @computed('size')
   get sizeClass() {

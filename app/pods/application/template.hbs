@@ -1,5 +1,7 @@
 {{head-layout}}
-{{#unless hideNav}}
+{{#if hideNav}}
+  {{outlet}}
+{{else}}
   <NavBar />
   <SideNav />
   <div class="row justify-content-center mx-0">
@@ -10,4 +12,4 @@
       {{outlet}}
     </div>
   </div>
-{{/unless}}
+{{/if}}

@@ -1,0 +1,5 @@
+{{#each sections as |section|}}
+  <Player::PlayerSectionListItem 
+    @section={{section}}
+    @isOpen={{eq initialSectionId section.id}} />
+{{/each}}
