@@ -14,9 +14,9 @@ export default class PlayerService extends Service {
   /*
     Are we inside player?
   */
-  @computed('router.currentRouteName')
+  @computed('router.currentRoute')
   get isActive() {
-    return this.router.currentRouteName.indexOf("attempt.") != -1
+    return this.router.currentRoute && this.router.currentRoute.name.indexOf("attempt.") != -1
   }
 
   /*

@@ -1,27 +1,28 @@
 <div class="pointer" {{action "toggle"}}>
-  <h5 class="py-4 bold">
+  <h5 class="bold">
     {{section.name}}
     <span class="float-right">
       <FaIcon @icon={{if isOpen "chevron-up" "chevron-down"}} />
     </span>
   </h5>
 </div>
-<div class="divider-h"></div>
-
 {{#if isOpen}}
   {{#each section.contents as |content|}}
     <div>
       <FaIcon @icon="play-circle" />
       <LinkTo 
-        class="white"
+        class="white {{if (eq contentId content.id) "gradient-text-orange"}}"
         @route="attempt.content"
         @models={{array section.id content.id}}>
         {{content.title}}  
       </LinkTo>
       <span class="float-right">
-        <FaIcon @icon="check" class="gradient-text-green" />
+        {{#if content.isDone}}
+          <FaIcon @icon="check" class="gradient-text-green" />
+        {{else if (eq contentId content.id)}}
+          <FaIcon @icon="circle" class="gradient-text-orange" />
+        {{/if}}
       </span>
     </div>
   {{/each}}
-  <div class="divider-h"></div>
 {{/if}}

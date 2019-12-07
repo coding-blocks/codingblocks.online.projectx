@@ -15,7 +15,7 @@ export default class PlayerHeader extends Component {
     }
   }
 
-  @computed('player.runAttemptId')
+  @computed('player.contentId')
   get progress() {
     if (this.player.runAttemptId) {
       return DS.PromiseObject.create({

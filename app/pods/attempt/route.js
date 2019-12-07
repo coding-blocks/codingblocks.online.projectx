@@ -32,6 +32,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
 			});
 	},
 	setupController(controller, model) {
+		controller.set('runAttempt', model)
 		controller.set("run", model.get('run'))
 		controller.set("course", model.get('run.course'))
 		controller.set("sections", model.get("run.sections"))
@@ -41,7 +42,11 @@ export default Route.extend(AuthenticatedRouteMixin, {
 			window.setTimeout( () => jivo_init(), 5000)
 		},
 		didTransition () {
-			jivo_init();
+			try {
+				jivo_init();
+			} catch (err) {
+				console.log(err)
+			}
 		}
 	}
 });

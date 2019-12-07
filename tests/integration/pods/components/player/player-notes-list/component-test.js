@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | player/player-tab-nav', function(hooks) {
+module('Integration | Component | player/player-notes-list', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Player::PlayerTabNav />`);
+    await render(hbs`<Player::PlayerNotesList />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      <Player::PlayerTabNav>
+      <Player::PlayerNotesList>
         template block text
-      </Player::PlayerTabNav>
+      </Player::PlayerNotesList>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

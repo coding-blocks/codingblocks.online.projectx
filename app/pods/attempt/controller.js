@@ -8,6 +8,26 @@ export default class AttemptController extends Controller {
   @service player
 
   @alias ('player.sectionId') currentSectionId
+
+  tabs = [
+    {
+      name: 'Doubts',
+      component: 'player/player-doubts-tab'
+    },
+    {
+      name: 'Notes',
+      component: 'player/player-notes-tab'
+    },
+    {
+      name: 'Bookmarks',
+      component: 'player/player-bookmarks-tab'
+    },
+    {
+      name: 'Announcements',
+      component: 'player/player-announcements-tab'
+    },
+  ]
+  activeTab = this.tabs.firstObject
   
   @action
   toggleSideBar() {

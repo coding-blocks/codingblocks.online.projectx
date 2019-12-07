@@ -1,0 +1,7 @@
+<ul class="list-divided border-none">
+  {{#each notes as |note|}}
+    <li class="list-item">
+      <Player::PlayerNotesListItem @note={{note}} />
+    </li>
+  {{/each}}
+</ul>

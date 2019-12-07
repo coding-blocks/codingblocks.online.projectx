@@ -1,6 +1,7 @@
 <div class="bg-dark-grey white">  
   <Player::PlayerHeader 
     @run={{run}} />
+  <div style="margin-top: 33px;"></div>
   <div class="row px-4">
     <div class="col-3 overflow-y-auto h-100">
       <h4 class="py-4 bold">
@@ -12,6 +13,14 @@
         @currentSectionId={{currentSectionId}}
         @sections={{sections}} />
     </div>
-    <div class="col-9"></div>
+    <div class="col-9">
+      <WTabNav
+        @tabs={{tabs}}
+        @activeTab={{activeTab}}
+        @onTabChange={{action (mut activeTab)}}>
+        {{component activeTab.component
+          notes=runAttempt.notes}}  
+      </WTabNav>
+    </div>
   </div>
 </div>
