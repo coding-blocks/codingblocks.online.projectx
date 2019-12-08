@@ -130,3 +130,19 @@ tr.highlight td {
   padding: 0 !important;
 }
 
+/*
+  Wraps the content to look aligned till a 1440px screen
+*/
+.content-container {
+  max-width: 1320px;
+}
+
+@media (min-width: 768px) {
+  .content-container {
+    padding: 0 50px;
+  }
+}
+
+.c-topnav {
+  width: 88vw;
+}
