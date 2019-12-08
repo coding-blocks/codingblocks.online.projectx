@@ -6,7 +6,7 @@ const byFieldValue = (field, value) => _ => _[field] == value
 const byNameValue = val => byFieldValue("name", val)
 
 const byNameAttempt = byNameValue("attempt")
-const byNameContent = byNameValue("content")
+const byNameContent = byNameValue("attempt.content")
 
 export default class PlayerService extends Service {
   @service router
@@ -14,9 +14,9 @@ export default class PlayerService extends Service {
   /*
     Are we inside player?
   */
-  @computed('router.currentRouteName')
+  @computed('router.currentRoute')
   get isActive() {
-    return this.router.currentRouteName.indexOf("attempt.") != -1
+    return this.router.currentRoute && this.router.currentRoute.name.indexOf("attempt.") != -1
   }
 
   /*
@@ -24,13 +24,13 @@ export default class PlayerService extends Service {
   */
   @computed('isActive', 'router.currentRoute')
   get runAttemptId() {
-    return this.isActive && this.router.currentRoute.find(byNameAttempt).params.runAttemptId
+    return this.isActive && this.router.currentRoute && this.router.currentRoute.find(byNameAttempt).params.runAttemptId
   }
 
 
   @computed('isActive', 'router.currentRoute')
   get contentRoute() {
-    return this.isActive && this.router.currentRoute.find(byNameContent)
+    return this.isActive && this.router.currentRoute && this.router.currentRoute.find(byNameContent)
   }
 
   /*

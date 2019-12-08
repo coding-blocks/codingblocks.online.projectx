@@ -8,11 +8,11 @@ import moment from 'moment';
 export default class Overview extends Controller {
   @service api
 
+  queryParams = ['showFeedback']
+  showFeedback = false
+
   discussBaseUrl = config.discussBaseUrl
-  queryParams = ['offset', 'limit']
   visible = true
-  offset = 0
-  limit = 5
 
   @computed('runAttempt.{isExpired,end}')
   get showExtensions() {
@@ -24,6 +24,16 @@ export default class Overview extends Controller {
   get showBuyNow() {
     const ra = this.runAttempt
     return !ra.premium || ra.isExpired
+  }
+
+  @computed('runAttempt.run.completionThreshold')
+  get certificateLockOffset() {
+    return 0.9 * this.runAttempt.get('run.completionThreshold')
+  }
+
+  @computed('runAttempt.run.goodiesThreshold')
+  get goodiesLockOffset() {
+    return 0.9 * this.runAttempt.get('run.goodiesThreshold')
   }
 
   @restartableTask fetchProgressTask = function *() {

@@ -1,0 +1,28 @@
+<div class="pointer" {{action "toggle"}}>
+  <h5 class="bold">
+    {{section.name}}
+    <span class="float-right">
+      <FaIcon @icon={{if isOpen "chevron-up" "chevron-down"}} />
+    </span>
+  </h5>
+</div>
+{{#if isOpen}}
+  {{#each section.contents as |content|}}
+    <div>
+      <FaIcon @icon="play-circle" />
+      <LinkTo 
+        class="white {{if (eq contentId content.id) "gradient-text-orange"}}"
+        @route="attempt.content"
+        @models={{array section.id content.id}}>
+        {{content.title}}  
+      </LinkTo>
+      <span class="float-right">
+        {{#if content.isDone}}
+          <FaIcon @icon="check" class="gradient-text-green" />
+        {{else if (eq contentId content.id)}}
+          <FaIcon @icon="circle" class="gradient-text-orange" />
+        {{/if}}
+      </span>
+    </div>
+  {{/each}}
+{{/if}}

@@ -11,6 +11,7 @@ export default Route.extend({
   setupController (controller, model) {
     controller.set('course', model.get('run.course'))
     controller.set('runAttempt', model)
+    controller.set('userRating', model.get('rating'))
   },
   afterModel(model) {
     this.set('headData.title', model.get('title'))

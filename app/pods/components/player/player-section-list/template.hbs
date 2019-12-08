@@ -1,0 +1,9 @@
+<ul class="list-divided border-none">
+  {{#each sections as |section|}}
+    <li class="list-item">
+      <Player::PlayerSectionListItem 
+        @section={{section}}
+        @isOpen={{eq initialSectionId section.id}} />
+    </li>
+  {{/each}}
+</ul>

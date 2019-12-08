@@ -30,9 +30,9 @@
   </div>
 
   <div class="d-md-block d-none">
-    <button class="button-solid button-orange">View Details</button>
+    <LinkTo @route="listing.job" @model={{job.id}} class="button-dashed button-orange">View Details</LinkTo>
   </div>
   <div class="d-md-none d-block d-flex justify-content-center w-100 mt-3">
-    <button class="button-solid button-orange">View Details</button>
+    <LinkTo @route="listing.job" @model={{job.id}} class="button-dashed button-orange">View Details</LinkTo>
   </div>
 </div>

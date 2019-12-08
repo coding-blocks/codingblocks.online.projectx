@@ -15,7 +15,6 @@ export default class navBarComponent extends Component {
     @bool('organization')  isOrgView
 
     showSidebar = false
-    activeTab = null
     hideHamburgerNav = true
     mobileSelectedTab = 'classroom'
 

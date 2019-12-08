@@ -1,5 +1,7 @@
 {{head-layout}}
-{{#unless hideNav}}
+{{#if hideNav}}
+  {{outlet}}
+{{else}}
   <NavBar />
   <SideNav />
   <div class="ml-sidenav">
@@ -12,4 +14,4 @@
       </div>
     </div>
   </div>
-{{/unless}}
+{{/if}}
