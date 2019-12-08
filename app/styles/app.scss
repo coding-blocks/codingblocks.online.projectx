@@ -139,11 +139,12 @@ tr.highlight td {
 
 @media (min-width: 768px) {
   .content-container {
-    padding: 0 50px;
+    padding: 0 2%;
   }
 }
 .c-topnav {
   width: 88vw;
+  max-width: unset;
 }
 
 .progress-lock {
