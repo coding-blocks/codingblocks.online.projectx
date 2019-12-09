@@ -1,7 +1,6 @@
 <div class="bg-dark-grey white">  
   <Player::PlayerHeader 
     @run={{run}} />
-  <div style="margin-top: 33px;"></div>
   <div class="row px-4">
     <div class="col-3 overflow-y-auto h-100">
       <h4 class="py-4 bold">
@@ -14,6 +13,7 @@
         @sections={{sections}} />
     </div>
     <div class="col-9">
+      {{outlet}}
       <WTabNav
         @tabs={{tabs}}
         @activeTab={{activeTab}}

@@ -17,7 +17,7 @@ export default class VdoPlayerComponent extends Component {
         data: {
           videoId: this.lecture.videoId,
           sectionId: this.sectionId,
-          runAttemptId: this.runAttempt.id
+          runAttemptId: this.runAttemptId
         }
       })
     })

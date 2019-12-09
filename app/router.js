@@ -28,6 +28,11 @@ Router.map(function() {
         });
         this.route('view', {path: '/v/:viewQuizAttemptId'}, function() {});
       });
+      this.route('code-challenge');
+      this.route('lecture');
+      this.route('document');
+      this.route('video');
+      this.route('csv');
     });
   });
   this.route('error');

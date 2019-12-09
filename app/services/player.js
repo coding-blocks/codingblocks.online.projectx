@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 
 const byFieldValue = (field, value) => _ => _[field] == value
 const byNameValue = val => byFieldValue("name", val)
@@ -48,6 +48,9 @@ export default class PlayerService extends Service {
 
 
   //TODO:  transitionToNextContent(), transitionToPreviousContent()
+  @action
+  transitionToNextContent() {}
 
-
+  @action
+  transitionToPreviousContent() {}
 }

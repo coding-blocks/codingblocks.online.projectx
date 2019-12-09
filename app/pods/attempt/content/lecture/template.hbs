@@ -1,0 +1,23 @@
+{{#unless awsDataTask.isRunning}}
+  <div class="video-player d-flex flex-column justify-content-around">
+    {{!-- {{content-feedback onFeedbackSubmit=onFeedbackSubmit showFeedback=showFeedback}} --}}
+    {{#if lecture.videoId}}
+      <VdoPlayer 
+        id="embedBox" 
+        @lecture={{lecture}} 
+        @start={{start}} 
+        @onVideoCompleted={{action player.transitionToNextContent}}
+        @sectionId={{player.sectionId}} 
+        @runAttempt={{player.runAttemptId}} />
+    {{else}}
+      {{#hls-player 
+        src=lecture.videoUrl
+        awsData=awsDataTask.lastSuccessful.value
+        title=lecture.name
+        start=start
+        onVideoCompleted=(action player.transitionToNextContent)
+      }}
+      {{/hls-player}}
+    {{/if}}
+  </div>
+{{/unless}}

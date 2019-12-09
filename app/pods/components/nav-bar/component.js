@@ -20,9 +20,9 @@ export default class navBarComponent extends Component {
 
     didInsertElement () {
       this._super(...arguments)
-      this.$(document).on("click", e => {
-        this.set('activeTab', false)
-      });
+      // this.$(document).on("click", e => {
+      //   this.set('activeTab', false)
+      // });
     }
 
     @action 
