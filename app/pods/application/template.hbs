@@ -4,12 +4,14 @@
 {{else}}
   <NavBar />
   <SideNav />
-  <div class="row justify-content-center mx-0">
-    <div class="offset-1 w-100">
-      <cb-navbar topalign="right"></cb-navbar>
-    </div>
-    <div class="offset-0 offset-md-1 col-11 px-lg-5 px-md-4 px-0 pt-4">
-      {{outlet}}
+  <div class="ml-sidenav">
+    <div class="row justify-content-center mx-0">
+      <div class="w-100">
+        <cb-navbar topalign="right"></cb-navbar>
+      </div>
+      <div class="pt-4 container-fluid content-container">
+        {{outlet}}
+      </div>
     </div>
   </div>
 {{/if}}

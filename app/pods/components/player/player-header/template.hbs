@@ -1,24 +1,33 @@
-<div class="row c-topnav py-4 align-items-center bg-dark-grey white">
-  <div class="col-4 align-self-center t-align-c">
-    <h3 class="bold">
+<div class="row c-topnav py-4 justify-content-between content-container  bg-dark-grey white w-100">
+  <div class="col-3 align-self-center pl-0">
+    <h5 class="bold contain-text">
       {{content.title}}
-    </h3>
+    </h5>
   </div>
-  <div class="col-3 align-self-center">
+  <div class="col-4 align-self-center">
     <CourseSearchBox @run={{run}} />
   </div>
-  <div class="col-3 align-self-center">
-    <div class="row no-gutters align-items-center justify-content-between">
-      <span>Course Progress</span>
-      <progress value="{{progress.percent}}" max="100" class="progress-orange w-50" />
-      <span class="bold">{{progress.percent}}%</span>
+  <div class="col-5 my-auto">
+    <div class="row">
+      <div class="col-8 t-align-c">
+    <div class="row no-gutters align-items-center justify-content-center">
+      <div class="col-11">
+        <span class="px-2">Course Progress</span>
+        <progress value="{{progress.percent}}" max="100" class="progress-orange w-50 d-inline-block" /> 
+      </div>
+      <div class="bold col-1"> 
+        {{progress.percent}}%
+      </div>
+    </div>
+      </div>
+      <div class="col-4 t-align-r">
+        <LinkTo
+          @route="dashboard"
+          class="button-solid button-orange">
+          Exit Class  
+        </LinkTo>
+      </div>
     </div>
   </div>
-  <div class="col-2 align-self-center t-align-c">
-    <LinkTo
-      @route="dashboard"
-      class="button-solid button-orange">
-      Exit Class  
-    </LinkTo>
-  </div>
+  
 </div>

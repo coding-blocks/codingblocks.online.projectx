@@ -7,6 +7,7 @@ import moment from 'moment';
 
 export default class Overview extends Controller {
   @service api
+  @service metrics
 
   queryParams = ['showFeedback']
   showFeedback = false
@@ -62,5 +63,10 @@ export default class Overview extends Controller {
         runAttemptId: this.get('runAttempt.id')
       }
     }).then(() => this.send('reloadRoute'))
+  }
+
+  @action
+  log(event, course){
+    this.metrics.trackEvent({event, course, page: 'Classroom'})
   }
 }

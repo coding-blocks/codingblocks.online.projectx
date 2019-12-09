@@ -3,12 +3,12 @@
     <h4 class="my-4">Continue Learning</h4>
 
     {{!-- Recent run and stats card --}}
-    <div class="border-card p-5">
+    <div class="border-card">
       <div class="row no-gutters align-items-center">
         <div class="col-md-6 col-12">
           <div class="row no-gutters align-items-center">
-            <div class="col-3 p-3">
-              <img src="{{lastAccessedRun.course.logo}}" alt="C++">
+            <div class="col-2">
+              <img class="s-50x50" src="{{lastAccessedRun.course.logo}}" alt="C++">
             </div>
             <div class="col-9">
               <h5 class="bold">{{lastAccessedRun.course.title}}</h5>
@@ -34,7 +34,7 @@
       <WAsync 
         @task={{fetchPerformanceStatsTask}}
         @autoFire="true" as |stats|>
-        <PerformanceStatsView 
+      <PerformanceStatsView 
           @stats={{stats}} />
       </WAsync>
 

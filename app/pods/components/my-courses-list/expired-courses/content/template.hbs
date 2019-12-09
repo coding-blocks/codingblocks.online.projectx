@@ -6,7 +6,14 @@
 </div>
 <div class="col-md-3 col-12 mt-md-0 mt-3">
   <div class="row no-gutters justify-content-around align-items-center">
-    <button class="button-dashed button-orange">Attempt Challenges</button>
+    <LinkTo 
+      @route="classroom.timeline.overview" 
+      @models={{array run.course.id run.id}}  
+      @tagName="button" 
+      class="button-dashed button-orange"
+    >
+      Attempt Challenges
+    </LinkTo>
     <button class="button-orange button-solid" {{action (mut showExtensionsModal) true}}>Buy Extension</button>
   </div>
 </div>
