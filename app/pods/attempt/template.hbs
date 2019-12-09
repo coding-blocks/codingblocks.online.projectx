@@ -1,26 +1,28 @@
-<div class="bg-dark-grey white">  
-  <Player::PlayerHeader 
+<div class="bg-dark-grey white c-player">  
+  <Player::PlayerHeader  
     @run={{run}} />
   <div style="margin-top: 33px;"></div>
-  <div class="row px-4">
-    <div class="col-3 overflow-y-auto h-100">
-      <h4 class="py-4 bold">
-        Course Content
-      </h4>
-      <div class="divider-h"></div>
+  <div class="container-fluid content-container max-width-unset">
+    <div class="row">
+      <div class="col-3 overflow-y-auto h-100">
+        <h4 class="py-4 bold">
+          Course Content
+        </h4>
+        <div class="divider-h"></div>
 
-      <Player::PlayerSectionList 
-        @currentSectionId={{currentSectionId}}
-        @sections={{sections}} />
-    </div>
-    <div class="col-9">
-      <WTabNav
-        @tabs={{tabs}}
-        @activeTab={{activeTab}}
-        @onTabChange={{action (mut activeTab)}}>
-        {{component activeTab.component
-          notes=runAttempt.notes}}  
-      </WTabNav>
+        <Player::PlayerSectionList 
+          @currentSectionId={{currentSectionId}}
+          @sections={{sections}} />
+      </div>
+      <div class="col-9">
+        <WTabNav
+          @tabs={{tabs}}
+          @activeTab={{activeTab}}
+          @onTabChange={{action (mut activeTab)}}>
+          {{component activeTab.component
+            notes=runAttempt.notes}}  
+        </WTabNav>
+      </div>
     </div>
   </div>
 </div>

@@ -147,7 +147,35 @@ tr.highlight td {
   max-width: unset;
 }
 
+.max-width-unset {
+  max-width: unset;
+}
+
 .progress-lock {
   transform: translate(-50%, 0);
 }
 
+
+.contain-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.c-player {
+  .c-topnav {
+    border-bottom: 1px solid #2b2f37;
+  }
+
+  .divider-h {
+    background: #2b2f37;
+  }
+
+  .list-divided > *:not(:last-child) {
+    border-bottom: solid 1px #2b2f37;
+  }
+
+  .spaced-list > *:not(:last-child) {
+    padding-bottom: 2rem;
+  }
+}
