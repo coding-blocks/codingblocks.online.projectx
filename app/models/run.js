@@ -33,7 +33,7 @@ export default DS.Model.extend({
     return this.start < +new Date()/1000;
 }),
   startString: computed('start', function () {
-    return new Date(this.start*1000).toISOString().substring(0, 10);
+    return new Date(this.start*1000).toDateString().substring(4);
   }),
   runAttempts: DS.hasMany('run-attempt'),
   announcements: DS.hasMany('announcement'),
