@@ -9,7 +9,8 @@
       </h4>
       <h6 class="normal mt-3">You have unlocked the editorial, you will not be awarded any score for this problem</h6>
       <button 
-        class="button-solid button-orange font-sm extra-bold mt-3">
+        class="button-solid button-orange font-sm extra-bold mt-3"
+        {{action 'viewEditorial'}}>
         View Editorial
       </button>
     </div>
@@ -30,9 +31,9 @@
 </WAsync>
 
 <WAsync
-  @task={{fetchTestcaseTask}}
+  @task={{fetchTestcasesTask}}
   @autoFire="true">
-  {{#if testcase}}
+  {{#if testcases}}
     <div class="mt-5">
       <h4>
         <FaIcon @icon="unlock-alt" class="gradient-text-orange" />
@@ -40,7 +41,8 @@
       </h4>
       <h6 class="normal mt-3">You have unlocked the testcases, you will not be awarded any score for this problem</h6>
       <button 
-        class="button-solid button-orange font-sm extra-bold mt-3">
+        class="button-solid button-orange font-sm extra-bold mt-3"
+        {{action 'viewTestcases'}}>
         View Testcases
       </button>
     </div>
@@ -59,3 +61,16 @@
     </div>
   {{/if}}
 </WAsync>
+
+{{#if showModal}}
+  {{#modal-dialog
+    translucentOverlay=true
+    onClose=(action (mut showModal) false)
+    targetAttachment="none"
+    containerClass="centered-scrolling-container p-4 pb-5"
+    overlayClass="centered-scrolling-overlay"
+    wrapperClass="centered-scrolling-wrapper"
+  }}
+    {{component modalComponent editorial=editorial testcases=testcases}}
+  {{/modal-dialog}}
+{{/if}}

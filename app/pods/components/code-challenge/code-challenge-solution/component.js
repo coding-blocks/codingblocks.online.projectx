@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
+import { action } from '@ember/object';
 
 export default class CodeChallengeSolution extends Component {
   @service store
@@ -29,7 +30,7 @@ export default class CodeChallengeSolution extends Component {
     return editorialPayload.data.attributes
   }
 
-  @restartableTask fetchTestcaseTask = function *() {
+  @restartableTask fetchTestcasesTask = function *() {
     const runAttempt = this.store.peekRecord('run-attempt', this.player.runAttemptId)
     this.set("api.headers.hackJwt", this.get("currentUser.user.hackJwt"));
 
@@ -40,12 +41,10 @@ export default class CodeChallengeSolution extends Component {
         p_id: this.codeChallenge.get('hbProblemId')
       }
     })
-    return testcasesPayload.data.map(t => {
-      return this.store.createRecord("testcase", {
-        input: t.attributes.input,
-        expectedOutput: t.attributes["expected-output"]
-      });
-    });
+    return testcasesPayload.data.map(t => ({
+      input: t.attributes.input,
+      expectedOutput: t.attributes["expected-output"]
+    }));
   }
 
   @restartableTask unlockEditorialTestcases = function *(which) {
@@ -56,5 +55,17 @@ export default class CodeChallengeSolution extends Component {
       .request(`code_challenges/`+ which +`?contest_id=${runAttempt.run.get("contestId")}&p_id=${this.codeChallenge.get("hbProblemId")}&force=true`)
     
     return (which === 'editorials' ? this.fetchEditorialTask : this.fetchTestcaseTask).perform()
+  }
+
+  @action
+  viewEditorial() {
+    this.set('modalComponent', 'code-challenge/code-challenge-solution/code-challenge-solution-editorial')
+    this.set('showModal', true)
+  }
+
+  @action
+  viewTestcases() {
+    this.set('modalComponent', 'code-challenge/code-challenge-solution/code-challenge-solution-testcases')
+    this.set('showModal', true)    
   }
 }

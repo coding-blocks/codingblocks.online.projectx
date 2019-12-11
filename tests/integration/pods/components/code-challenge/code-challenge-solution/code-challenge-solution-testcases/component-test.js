@@ -1,24 +1,24 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | testcases-view', function(hooks) {
+module('Integration | Component | code-challenge/code-challenge-solution/code-challenge-solution-testcases', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{testcases-view}}`);
+    await render(hbs`<CodeChallenge::CodeChallengeSolution::CodeChallengeSolutionTestcases />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#testcases-view}}
+      <CodeChallenge::CodeChallengeSolution::CodeChallengeSolutionTestcases>
         template block text
-      {{/testcases-view}}
+      </CodeChallenge::CodeChallengeSolution::CodeChallengeSolutionTestcases>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
