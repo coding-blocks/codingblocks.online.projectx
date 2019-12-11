@@ -111,7 +111,9 @@
 
     {{#if showExtensions}}
       <div class="border-card p-5">
-        <ExtensionsWidget @run={{runAttempt.run}} class="mb-5" />
+        <ExtensionsWidget 
+          @onClose={{action (mut showExtensions) false}} 
+          @run={{runAttempt.run}} class="mb-5" />
       </div>
     {{/if}}
 

@@ -27,6 +27,9 @@
     @overlayClass='centered-scrolling-overlay'
     @wrapperClass='centered-scrolling-wrapper'
   >
-    <ExtensionsWidget @run={{run}} />
+    <ExtensionsWidget 
+      @run={{run}} 
+      @onClose={{action (mut showExtensionsModal) false}}
+    />
   </ModalDialog>
 {{/if}}
