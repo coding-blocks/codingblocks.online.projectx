@@ -178,4 +178,8 @@ tr.highlight td {
   .spaced-list > *:not(:last-child) {
     padding-bottom: 2rem;
   }
+
+  tr {
+    border-bottom: solid 1px #23252c;
+  }
 }

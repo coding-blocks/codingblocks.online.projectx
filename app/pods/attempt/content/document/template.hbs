@@ -1,17 +1,15 @@
 <div class="container-fluid c-document">
-  <div class="row justify-content-between">
-    <div class="col-6 col-md-4 heading">
+  <div class="row justify-content-between mb-5">
+    <span class="gradient-text-orange font-xl">
       {{document.name}}
-    </div>
-    <div class="col-5 offset-md-4 offset-lg-5 col-md-4 col-lg-3">
-      <div class="button-solid button-orange white float-right">
-        <a href={{document.pdfLink}} target="_blank">
-          <button>
-            Download as PDF
-          </button>
-        </a>
-      </div>
+    </span>
 
+    <div class="button-solid button-orange">
+      <a href={{document.pdfLink}} target="_blank" class="white">
+        <button>
+          Download as PDF
+        </button>
+      </a>
     </div>
   </div>
   <div class="row markdown">

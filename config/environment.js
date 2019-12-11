@@ -82,7 +82,7 @@ module.exports = function(environment) {
     ENV.publicUrl = 'http://test.online/app/'
     ENV.clientId = 7642172843
     ENV.oneauthURL = 'https://account.codingblocks.com'
-    ENV.hackApiHost = 'https://hack-api.codingblocks.com'
+    ENV.hackApiHost = 'http://test.hackbackend'
     ENV.googleAnalytics = {
       webPropertyId: 'UA-83327907-12'
     }
