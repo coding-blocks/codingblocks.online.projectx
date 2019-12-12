@@ -10,19 +10,10 @@ export default Component.extend({
   router: service(),
 
   run: alias('runAttempt.run'),
-  courseCompleted: computed('progress', 'run.completionThreshold', function () {
-    const courseCompleted = this.progress.then(progress => {
-      return progress.completedContents / progress.totalContents > (this.get('run.completionThreshold')/100)
-    })
-    return DS.PromiseObject.create({
-      promise: courseCompleted
-    })
+  courseCompleted: computed('progressPercent', 'run.completionThreshold', function () {
+    return this.progressPercent > this.get('run.completionThreshold')
   }),
-  progress: computed('runAttempt', function () {
-    return DS.PromiseObject.create({
-      promise: this.api.request(`run_attempts/${this.runAttempt.id}/progress`)
-    })
-  }),
+  progressPercent: alias('runAttempt.progressPercent'),
   certificateNotPresent: not('runAttempt.certificate'),
   canGenerate: and('courseCompleted', 'runAttempt.certificateApproved'),
   canRequest: alias('courseCompleted'),

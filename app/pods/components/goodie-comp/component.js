@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { alias, equal } from '@ember/object/computed';
 import { computed } from '@ember/object';
-import DS from 'ember-data';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
@@ -13,23 +12,13 @@ export default Component.extend({
     collapsed: true,
     tshirt: '',
 
-    progress: computed('runAttempt', function () {
-        return DS.PromiseObject.create({
-            promise: this.api.request(`run_attempts/${this.runAttempt.id}/progress`)
-        })
-    }),
+    progressPercent: alias('runAttempt.progressPercent'),
     run: alias('runAttempt.run'),
     goodieRequests: alias('runAttempt.goodieRequests'),
     statusInProgress: alias('goodieRequests.statusInProgress'),
-    thresholdCompleted: computed('statusInProgress','alreadyClaimed','progress', 'run.goodiesThreshold', function () {
-        const thresholdCompleted = this.progress.then(progress => {
-            return progress.completedContents / progress.totalContents > (this.get('run.goodiesThreshold')/100)
-        })
-        return DS.PromiseObject.create({
-            promise: thresholdCompleted
-        })
+    thresholdCompleted: computed('statusInProgress','alreadyClaimed','progressPercent', 'run.goodiesThreshold', function () {
+      return this.progressPercent > this.get('run.goodiesThreshold')
     }),
-
     canClaim: alias('thresholdCompleted'),
     alreadyClaimed: equal('statusInProgress', 'requested'),
     completed: equal('statusInProgress', 'completed'),

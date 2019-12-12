@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
 import config from 'codingblocks-online/config/environment';
 import moment from 'moment';
+import { alias } from '@ember/object/computed';
 
 export default class Overview extends Controller {
   @service api
@@ -37,9 +38,8 @@ export default class Overview extends Controller {
     return 0.9 * this.runAttempt.get('run.goodiesThreshold')
   }
 
-  @restartableTask fetchProgressTask = function *() {
-    return yield this.api.request(`run_attempts/${this.runAttempt.id}/progress`)
-  }
+  @alias('runAttempt.progressPercent')
+  progressPercent
 
   @restartableTask fetchPerformanceStatsTask = function *() {
     return yield this.api.request(`progresses/stats/${this.runAttempt.id}`)

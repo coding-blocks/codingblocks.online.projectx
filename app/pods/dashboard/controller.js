@@ -1,10 +1,15 @@
 import Controller from '@ember/controller';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
+import { alias } from '@ember/object/computed';
 
 export default class Dashboard extends Controller {
   @service api
   @service store
+  @service player
+
+  @alias('lastAccessedRun.topRunAttempt.progressPercent')
+  progressPercent
 
   @restartableTask fetchPerformanceStatsTask = function *() {
     return yield this.api.request(`progresses/stats/${this.lastAccessedRun.get('topRunAttempt.id')}`)
