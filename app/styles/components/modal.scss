@@ -29,11 +29,10 @@ body.centered-modal-showing {
   width: 100%;
   max-width: 650px;
   min-height: 20em;
-  margin-bottom: 67px;
   box-sizing: border-box;
   box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
   width: 100%;
-  height: calc(100vh - 62px);
+  height: calc(100vh - 67px);
   overflow: auto;
   padding: 0;
 }
