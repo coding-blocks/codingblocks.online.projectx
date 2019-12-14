@@ -1,0 +1,7 @@
+{{#if isErrored}}
+  <CodeChallenge::CodeChallengeResult::CodeChallengeResultError @output={{errorPayload}} />
+{{else if isSubmission}}
+  <CodeChallenge::CodeChallengeResult::CodeChallengeResultTestcases @testcases={{testcasesPayload}} />
+{{else}}
+  <CodeChallenge::CodeChallengeResult::CodeChallengeResultSuccess @output={{output}} />
+{{/if}}

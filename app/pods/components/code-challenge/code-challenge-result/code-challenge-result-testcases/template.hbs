@@ -1,0 +1,56 @@
+{{log testcases}}
+{{testcases}}
+
+<div class="p-0 test-cases-card">
+  <div class="row no-gutters bg-grey">
+    <div class="col-4 col-md-3">
+      <h5 class="p-4 test-cases-card__grey-heading">Test Cases</h5>
+    </div>
+    <div class="col-8 col-md-9">
+      <h5 class="py-4 px-5 test-cases-card__grey-heading">Result</h5>
+    </div>
+  </div>
+  <div class="row no-gutters">
+    <div class="col-md-3 col-4 bg-grey">
+      <ul class="font-mds extra-bold mt-0">
+        {{#each testcases as |testcase index|}}
+          <li class="p-4 d-flex align-items-center {{if (eq selectedIndex index) "test-cases-card__active"}}">
+            {{#if (eq testcase.result "correct")}}
+              <a 
+                href="#" 
+                class="gradient-text-green"
+                {{action (mut selectedIndex) index}}>
+                Test Case {{index}}
+                <FaIcon @icon="check" class="ml-3 gradient-text-green" />
+              </a>
+            {{else if (eq testcase.result "wrong-answer")}}
+              <a 
+                href="#" 
+                class="gradient-text-pink"
+                {{action (mut selectedIndex) index}}>
+                Test Case {{index}}
+                <FaIcon @icon="times" class="ml-3 gradient-text-pink" />
+              </a>
+            {{else}}
+              <a 
+                href="#" 
+                class="gradient-text-orange"
+                {{action (mut selectedIndex) index}}>
+                Test Case {{index}}
+                <FaIcon @icon="exclamation" class="ml-3 gradient-text-orange" />
+              </a>
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-md-9 col-8">
+      <div class="py-5 px-5">
+        <h6 class="bold">Compile Message</h6>
+        <div class="bg-grey p-4 mt-3 mb-5">
+          <div class="font-sm">{{compilerMessage}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

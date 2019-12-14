@@ -162,6 +162,30 @@ tr.highlight td {
   overflow: hidden;
 }
 
+.monaco-editor {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.c-code-card {
+  .header {
+    background-color: #23252c;
+  }
+
+  .editor {
+    height: 332px;
+  }
+
+  .footer {
+    background-color: #23252c;
+
+    textarea {
+      background-color: #292c33;
+    }
+  }
+}
+
 .c-player {
   .c-topnav {
     border-bottom: 1px solid #2b2f37;
