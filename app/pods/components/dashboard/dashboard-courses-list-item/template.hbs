@@ -2,17 +2,13 @@
   <div class="col-8">
     <div class="row mx-0 align-items-center">
       <div class="col-2">
-        <img src="{{run.course.logo}}" alt="">
+        <img src="{{@run.course.logo}}" alt="">
       </div>
       <div class="col-10">
-        <h5 class="bold">{{run.course.title}}</h5>
+        <h5 class="bold">{{@run.course.title}}</h5>
         <div class="mt-3">
-          <WAsync
-            @task={{fetchProgressTask}}
-            @autoFire="true" as |prog|>
-            <progress value="{{prog.percent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
-            <span class="bold ml-3">{{prog.percent}}%</span>
-          </WAsync>
+          <progress value="{{@topRunAttempt.progressPercent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
+          <span class="bold ml-3">{{@topRunAttempt.progressPercent}}%</span>
         </div>
       </div>
     </div>

@@ -33,41 +33,39 @@
       <div>
         <h4 class="bold">Course Progress</h4>
         <div class="mt-4 pt-2">
-          <WAsync
-            @task={{fetchProgressTask}}
-            @autoFire="true" as |prog|>
-            <div class="row no-gutters align-items-center justify-content-between position-relative">
-              <progress value="{{prog.percent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
+          
+          <div class="row no-gutters align-items-center justify-content-between position-relative">
+            <progress value="{{progressPercent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
 
-              {{!-- % * 0.9 to compensate for 90% width of progress bar --}}
-              <div class="progress-lock" style="left: {{goodiesLockOffset}}%">
-                <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
-                {{#if (gte prog.percent runAttempt.run.goodiesThreshold)}}
-                  <FaIcon 
-                    @icon="lock-open"
-                    class="mt-2 gradient-text-green" />
-                {{else}}
-                  <FaIcon 
-                    @icon="lock"
-                    class="mt-2 gradient-text-pink" />
-                {{/if}}
-              </div>
-
-              <div class="progress-lock" style="left: {{certificateLockOffset}}%">
-                <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.completionThreshold}}% to get certified</div>
-                {{#if (gte prog.percent runAttempt.run.completionThreshold)}}
-                  <FaIcon 
-                    @icon="lock-open"
-                    class="mt-2 gradient-text-green" />
-                {{else}}
-                  <FaIcon 
-                    @icon="lock"
-                    class="mt-2 gradient-text-pink" />
-                {{/if}}
-              </div>
-              <div class="bold">{{prog.percent}}%</div>
+            {{!-- % * 0.9 to compensate for 90% width of progress bar --}}
+            <div class="progress-lock" style="left: {{goodiesLockOffset}}%">
+              <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
+              {{#if (gte progressPercent runAttempt.run.goodiesThreshold)}}
+                <FaIcon 
+                  @icon="lock-open"
+                  class="mt-2 gradient-text-green" />
+              {{else}}
+                <FaIcon 
+                  @icon="lock"
+                  class="mt-2 gradient-text-pink" />
+              {{/if}}
             </div>
-          </WAsync>
+
+            <div class="progress-lock" style="left: {{certificateLockOffset}}%">
+              <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.completionThreshold}}% to get certified</div>
+              {{#if (gte progressPercent runAttempt.run.completionThreshold)}}
+                <FaIcon 
+                  @icon="lock-open"
+                  class="mt-2 gradient-text-green" />
+              {{else}}
+                <FaIcon 
+                  @icon="lock"
+                  class="mt-2 gradient-text-pink" />
+              {{/if}}
+            </div>
+            <div class="bold">{{progressPercent}}%</div>
+          </div>
+        
         </div>
       </div>
 

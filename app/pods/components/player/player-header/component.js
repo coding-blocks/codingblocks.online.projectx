@@ -1,10 +1,9 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
-import DS from 'ember-data';
+import { alias } from '@ember/object/computed';
 
 export default class PlayerHeader extends Component {
-  @service api
   @service store
   @service player
 
@@ -15,12 +14,6 @@ export default class PlayerHeader extends Component {
     }
   }
 
-  @computed('player.contentId')
-  get progress() {
-    if (this.player.runAttemptId) {
-      return DS.PromiseObject.create({
-        promise: this.api.request(`run_attempts/${this.player.runAttemptId}/progress`)
-      })
-    }
-  }
+  @alias('run.topRunAttempt.progressPercent')
+  progressPercent
 }
