@@ -17,6 +17,7 @@ Router.map(function() {
       this.route('contents');
       this.route('announcements');
       this.route('doubts');
+      this.route('library');
     })
   });
   this.route('attempt', {path: '/player/:runAttemptId'}, function() {
