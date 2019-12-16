@@ -9,3 +9,7 @@
 .spaced-list > *:not(:last-child) {
   padding-bottom: 2rem;
 }
+
+.spaced-list-margin  > *:not(:last-child) {
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,20 @@
+
+<WTabNav 
+  @tabs={{tabs}}
+  @activeTab={{activeTab}}
+  @onTabChange={{action "changeTab"}}
+  >
+  <WAsync @task={{activeTab.task}} @autoFire={{true}} as |result|>
+    {{component activeTab.component payload=result class="border-bottom-list my-5"}}
+  </WAsync>
+</WTabNav>
+
+
+{{#if pagination}}
+  <WPagination
+    @pages={{pagination.totalPages}}
+    @size={{limit}}
+    @current={{pagination.currentPage}}
+    @onchange={{action "paginate"}}
+  />
+{{/if}}

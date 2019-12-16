@@ -1,0 +1,24 @@
+{{#each payload as |announcement|}}
+  <div class="py-2">
+    <div class="d-flex">
+      <img src="{{announcement.user.photo}}" alt="{{announcement.user.firstname}}" class="round s-40x40">
+
+      <div class="ml-4">
+        <h6>{{announcement.user.firstname}} {{announcement.user.lastname}}</h6>
+        <div class="grey">
+          {{moment-from-now announcement.createdAt}}
+        </div>
+      </div>
+    </div>
+      
+    <div class="overflow-scroll">
+      <div class="bold mt-4">{{announcement.title}}</div>
+      <div class="mt-3">
+        {{line-clamp
+          text=announcement.text
+          lines=3
+        }}
+      </div>
+    </div>
+  </div>
+{{/each}}

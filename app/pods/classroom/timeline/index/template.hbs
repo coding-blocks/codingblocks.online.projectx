@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-md-9 col-12">
-    <div class="border-card p-sm-5 p-4 mb-5">
+  <div class="col-md-9 col-12 spaced-list-margin">
+    <div class="border-card p-sm-5 p-4">
       <div class="row no-gutters align-items-center">
         <div class="col-sm-8 col-7">
           <div class="row no-gutters align-items-center">
@@ -107,15 +107,33 @@
       </div>
     </div>
 
+    {{!-- Course Library CTA --}}
+    <LinkTo 
+    @route="classroom.timeline.library"
+    @tagName="div"
+    class="border-card px-5 py-4 pointer">
+      <div class="row">
+        <div class="col-9">
+          <div class="gradient-text-orange font-md bold">Course Library</div>
+          <div>
+             Access course notes, bookmarks, announcements, doubts
+          </div>
+        </div>
+        <div class="col-3 t-align-r">
+          <img src="https://via.placeholder.com/150x50.jpg" alt="Course Library" srcset="">
+        </div>
+      </div>
+    </LinkTo>
+
     {{#if showExtensions}}
-      <div class="border-card p-5">
+      <div class="border-card p-4">
         <ExtensionsWidget 
           @onClose={{action (mut showExtensions) false}} 
-          @run={{runAttempt.run}} class="mb-5" />
+          @run={{runAttempt.run}} />
       </div>
     {{/if}}
 
-    <div class="border-card p-5 mb-5">
+    <div class="border-card p-5">
       <WAsync
         @task={{fetchPerformanceStatsTask}}
         @autoFire="true" as |stats|>
@@ -123,7 +141,7 @@
       </WAsync>
     </div>
 
-    <div class="border-card p-5 mb-5">
+    <div class="border-card p-5">
       <h4 class="mb-5">Summary</h4>
 
       <p class="grey">
