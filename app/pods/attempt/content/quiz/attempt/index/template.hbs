@@ -1,4 +1,4 @@
-<div class="c-qna-attempt">
+<div class="c-qna-attempt bg-grey-darker">
   <div class="quiz-content col-9">
     <div class="heading p-4">
       <span class="sno">Q{{q}}.</span>
@@ -11,34 +11,35 @@
       </span>
     </div>
 
-    <div class="choices p-4">
+    <div class="p-4">
       {{#each currentQuestion.choices as |choice|}}
-        <div 
-        class="choice {{if (find choice.id currentQuestion.markedChoices) 'marked'}}"
-        onclick={{perform markChoice currentQuestion choice}}
-        >
-          <div class="circle"></div>
-          <div class="text">
-            {{markdown-to-html choice.title extensions='katex'}}
-          </div>
+        <div class="input-radio gradient-input">
+          <input
+            checked={{find choice.id currentQuestion.markedChoices}} 
+            type="radio" 
+            id={{choice.id}}
+            onclick={{action (perform markChoice) currentQuestion choice}} />
+          <label for="{{choice.id}}">
+            {{markdown-to-html choice.title extensions='katex' class="ml-3"}}
+          </label>
         </div>
       {{/each}}
     </div>
 
     <div class="navigation">
       {{#if (gt q 1)}}
-        <a href="#" {{action 'changeQuestion' -1}} >Previous</a>
+        <a href="#" {{action 'changeQuestion' -1}} class="white" >Previous</a>
       {{else}}
-        <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Previous</a>
+        <a class="grey">Previous</a>
       {{/if}}
       {{#if (lt q quiz.questions.length)}}
-        <a href="#"  {{action 'changeQuestion' 1}}>Next</a>
+        <a href="#"  {{action 'changeQuestion' 1}} class="white">Next</a>
       {{else}}
-        <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Next</a>
+        <a class="grey">Next</a>
       {{/if}}
     </div>
   </div>
-  <div class="quiz-status col-3">
+  <div class="col-3">
     {{!-- <div class="c-clock">
       <div class="item hrs">01</div>
       <div class="seprator">:</div>
@@ -50,10 +51,9 @@
     {{review-pad submission=quizAttempt.submission questions=questions onCircleClick=(action 'goToQuestion')}}
 
     <div class="d-flex justify-content-center">
-      <div class="button-solid" {{action 'submitQuiz'}}>
-        <button>Submit Quiz</button>
-      </div>
-
+      <button class="button-solid button-orange" {{action 'submitQuiz'}}>
+        Submit Quiz
+      </button>
     </div>
   </div>
 </div>

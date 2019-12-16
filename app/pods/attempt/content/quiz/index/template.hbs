@@ -1,15 +1,15 @@
-<div class="container-fluid c-qna">
+<div class="p-3">
   <div class="d-flex row no-gutters justify-content-between align-items-center">
     <div class="col-8 heading">
       {{quiz.title}}
     </div>
     <div class="col-3 d-flex justify-content-end">
-      <div class="button-solid" {{action 'startQuiz'}}>
-        <button>Start Quiz</button>
-      </div>
+      <button class="button-solid button-orange" {{action 'startQuiz'}}>
+        Start Quiz
+      </button>
     </div>
   </div>
-  <div class="row info">
+  <div class="info mb-3">
     <div class="heading">
       About Quiz
     </div>
@@ -41,7 +41,7 @@
     <div class="heading">
       Previous Attempts
     </div>
-    <div class="card">
+    <div class="card bg-black-lighter">
       <table>
         <thead>
           <td>S.No.</td>

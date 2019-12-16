@@ -1,4 +1,4 @@
-<div class="c-qna-attempt">
+<div class="d-flex">
   <div class="quiz-content col-9">
     {{outlet}}
   </div>
@@ -13,7 +13,7 @@
           <div 
             class="circle
               {{if (find question.id correctQuestionIds) 'bg-green'}}
-              {{if (find question.id incorrectQuestionIds) 'bg-incorrect'}}
+              {{if (find question.id incorrectQuestionIds) 'bg-red'}}
             "
             {{action 'setQuestion' index}}
           >

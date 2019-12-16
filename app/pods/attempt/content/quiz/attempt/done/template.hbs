@@ -1,52 +1,43 @@
-<div class="c-qna">
-  <div class="result-box">
-    <div class="title">
-      Your quiz has been submitted!
-    </div>
-    <div>
-      <b>Score Card</b>
-    </div>
-    <div class="card score-card">
+<div class="p-3 c-qna">
+  <div>
+    Your quiz has been submitted!
+  </div>
+  <div class="bold">
+    Score Card
+  </div>
 
-      <div class="circle-container color-green">
-        <div class="status-circle">
-          <div class="circle-back"></div>
-          <div class="circle-front d-flex justify-content-center">
-            <p class="progress-text align-self-center">{{totalCorrect}}</p>
-          </div>
+  <div class="row">
+    <div class="col-5 d-flex justify-content-center border-card bg-black-lighter mx-auto">
+      <div class="mr-3">
+        <div class="round d-flex justify-content-center bg-gradient-lgreen s-80x80">
+          <p class="progress-text align-self-center">{{totalCorrect}}</p>
         </div>
         <div class="sub">
           Correct Answers
         </div>
       </div>
-      <div class="circle-container color-black">
-        <div class="status-circle">
-          <div class="circle-back"></div>
-          <div class="circle-front d-flex justify-content-center">
-            <p class="progress-text align-self-center">{{quiz.questions.length}}</p>
-          </div>
+
+      <div class="mr-3">
+        <div class="round d-flex justify-content-center bg-gradient-orange s-80x80">
+          <p class="progress-text align-self-center">{{quiz.questions.length}}</p>
         </div>
         <div class="sub">
           Total Questions
         </div>
       </div>
-      <div class="circle-container">
-        <div class="status-circle">
-          <div class="circle-back"></div>
-          <div class="circle-front d-flex justify-content-center">
-            <p class="progress-text align-self-center">{{totalIncorrect}}</p>
-          </div>
+
+      <div class="">
+        <div class="round d-flex justify-content-center bg-gradient-blue s-80x80">
+          <p class="progress-text align-self-center">{{totalIncorrect}}</p>
         </div>
         <div class="sub">
           Wrong Answers
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="p-2">
-      <div class="button-solid">
-        {{#link-to 'attempt.content' tagName='button' activeClass=""}} Go Back {{/link-to}}
-      </div>
-    </div>
+  <div class="p-2">
+    {{#link-to 'attempt.content' activeClass="" class="button-solid button-orange"}} Go Back {{/link-to}}
   </div>
 </div>

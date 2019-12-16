@@ -9,31 +9,27 @@
   </span>
 </div>
 
-<div class="choices p-4">
+<div class="p-4">
   {{#each question.choices as |choice|}}
-    <div class="choice
-      {{if (find choice.id incorrectIds) 'incorrect'}}
-      {{if (find choice.id correctIds) 'correct'}}
+    <div class="
+      {{if (find choice.id incorrectIds) 'red'}}
+      {{if (find choice.id correctIds) 'green'}}
     ">
-      <div class="circle"></div>
       <div class="text">
-        {{markdown-to-html choice.title extensions='katex'}}
-        <div class="explaination">
-          {{choice.description}}
-        </div>
+        {{markdown-to-html choice.title extensions='katex' class="ml-3"}}
       </div>
     </div>
   {{/each}}
 </div>
 
 <div class="navigation">
-      {{#if (gt q 1)}}
-      <a href="#" {{action 'changeQuestion' -1}}>Previous</a>
-      {{else}}
-      <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Previous</a>
-      {{/if}} {{#if (lt q quiz.questions.length)}}
-      <a href="#" {{action 'changeQuestion' 1}}>Next</a>
-      {{else}}
-      <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Next</a>
-      {{/if}}
-    </div>
+  {{#if (gt q 1)}}
+    <a href="#" {{action 'changeQuestion' -1}} class="white">Previous</a>
+  {{else}}
+    <a class="grey">Previous</a>
+  {{/if}} {{#if (lt q quiz.questions.length)}}
+    <a href="#" {{action 'changeQuestion' 1}} class="white">Next</a>
+  {{else}}
+    <a class="grey">Next</a>
+  {{/if}}
+</div>

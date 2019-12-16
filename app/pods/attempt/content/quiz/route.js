@@ -17,13 +17,5 @@ export default Route.extend({
     controller.set("run", model.runAttempt.get('run'))
     controller.set("content", model.content)
     controller.set("payload", model.payload)
-  },
-  renderTemplate(controller, model) {
-    this.render()
-    this.render("attempt.content.index.heading", {
-        outlet: "heading",
-        controller: this.controllerFor("attempt.content.quiz"),
-        into: "attempt"
-    })
-  },
+  }
 });
