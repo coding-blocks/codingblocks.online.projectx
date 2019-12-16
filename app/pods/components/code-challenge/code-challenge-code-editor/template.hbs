@@ -32,13 +32,27 @@
       <div>
         <button 
           class="button-dashed button-orange ml-3 mr-1"
+          disabled={{judgeTaskGroup.isRunning}}
           {{action (perform runCodeTask)}}>
-          Compile and Test
+
+          {{#if runCodeTask.isRunning}}
+            Compiling
+          {{else}}
+            Compile and Test
+          {{/if}}
+          
         </button>
         <button 
           class="button-solid button-orange mr-3 ml-1"
+          disabled={{judgeTaskGroup.isRunning}}
           {{action (perform submitCodeTask)}}>
-          Submit Code
+
+          {{#if submitCodeTask.isRunning}}
+            Submitting
+          {{else}}
+            Submit Code
+          {{/if}}
+
         </button>
       </div>
     </div>
