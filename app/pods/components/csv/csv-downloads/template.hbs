@@ -1,0 +1,23 @@
+<div class="mt-5">
+  <h4>
+    <FaIcon @icon="database" class="gradient-text-orange" />
+    Dataset
+  </h4>
+  
+  <button {{action download csv.datasetUrl}} class="button-solid button-orange mt-3">
+    <FaIcon @icon="download" />
+    Download
+  </button>
+</div>
+
+<div class="mt-5">
+  <h4>
+    <FaIcon @icon="file-alt" class="gradient-text-orange" />
+    Testcases
+  </h4>
+  
+  <button {{action download csv.testcasesUrl}} class="button-solid button-orange mt-3">
+    <FaIcon @icon="download" />
+    Download
+  </button>
+</div>

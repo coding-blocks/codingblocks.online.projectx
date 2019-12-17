@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default class CsvRoute extends Route {
   model() {
-    return this.modeFor('attempt.content')
+    return this.modelFor('attempt.content')
   }
 
   setupController(controller, model) {

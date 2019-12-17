@@ -1,7 +1,21 @@
-{{#if link}}
-  <a href="{{link}}" download>Download Submission</a>
-  <i class="fa fa-times" {{action 'reset'}} ></i>
-{{else}}
-  {{file-upload-minio triggerUpload=triggerUpload onComplete=(action 'uploaded') onError=(action 'uploadFailed')}}
-  <button class="button-dashed display-inline" {{action (mut triggerUpload) true}}>Upload</button>
-{{/if}}
+<div class="d-flex justify-content-between align-items-center">
+  {{#if link}}
+    <span>
+      <a href="{{link}}" class="white" download>Download Submission</a>
+      <i class="fa fa-times" {{action 'reset'}} ></i>
+    </span>
+    {{yield}}
+  {{else}}
+    <div>
+      <span class="bold mr-3">
+        Upload Solution:
+      </span>
+      {{file-upload-minio triggerUpload=triggerUpload onComplete=(action 'uploaded') onError=(action 'uploadFailed')}}
+    </div>
+    <span class="float-right">
+      <button class="button-solid button-orange" {{action (mut triggerUpload) true}}>
+        Upload CSV
+      </button>
+    </span>
+  {{/if}}
+</div>

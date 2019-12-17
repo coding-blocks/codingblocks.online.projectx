@@ -1,0 +1,39 @@
+<WAsync
+  @task={{fetchLeaderboardTask}}
+  @autoFire="true" as |leaderboard|>
+  <table class="w-100">
+    <thead class="bold">
+      <tr>
+        <td class="pb-4">Rank</td>
+        <td class="pb-4">Name</td>
+        <td class="pb-4">Score</td>
+        <td class="pb-4">Timestamp</td>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each leaderboard as |row index|}}
+        <tr class={{if row.isCurrent "highlight"}}>
+          <td class="py-4">
+            {{row.rank}}
+          </td>
+          <td class="py-4">
+            <div class="img-desc align-items-center">
+              <img class="round s-30x30" src="{{defaultPhoto row.photo}}" alt="">
+              <div class="description ml-3">
+                {{#if row.isCurrent}}
+                  You
+                {{else}}
+                  {{concat row.firstname ' ' row.lastname}}
+                {{/if}}
+              </div>
+            </div>
+          </td>
+          <td class="py-4">
+            {{row.score}}
+          </td>
+          <td class="py-4">{{row.createdAt}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</WAsync>

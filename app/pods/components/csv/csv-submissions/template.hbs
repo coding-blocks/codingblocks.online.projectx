@@ -1,0 +1,30 @@
+<WAsync
+  @task={{fetchSubmissionsTask}}
+  @autoFire="true" as |submissions|>
+  <ul class="list-divided border-none">
+    {{#each submissions as |submission|}}
+      <li class="list-item d-flex justify-content-between">
+        <h4 class="extra-bold">
+          {{#if submission.isSuccess}}
+            <span class="green"> 
+              {{submission.score}}% Accurate
+            </span>
+          {{else if submission.isErrored}}
+            <span class="red"> Errored </span>
+          {{else}}
+            <span class="yellow"> Calculating </span>
+          {{/if}}
+        </h4>
+        <span>
+          <a 
+            href="{{submission.outputUrl}}" 
+            target="_blank"
+            class="font-sm bold gradient-text-orange mr-4">
+            Download CSV
+          </a>
+          Submitted {{moment-from submission.createdAt}}
+        </span>
+      </li>
+    {{/each}}
+  </ul>
+</WAsync>
