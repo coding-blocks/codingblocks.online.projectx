@@ -24,3 +24,9 @@
     </FileInput>
   </div>
 </div>
+
+{{#if currentSubmission}}
+  <Csv::CsvSubmissionSuccess 
+    @submission={{currentSubmission}}
+    class="mt-5" />
+{{/if}}
