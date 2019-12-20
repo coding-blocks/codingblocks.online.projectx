@@ -30,7 +30,7 @@
   background-color: #145cd3;
 }
 
-.spin-bg-light-blue {
+.spin-bg-mild-blue {
   background-color: #f1f9fe;
 }
 
@@ -53,6 +53,10 @@
     }
 }
 
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
 @font-face {
   font-family: 'Gilroy';
   src: url('https://minio.codingblocks.com/public/Gilroy-Regular.ttf');
@@ -69,14 +73,19 @@
 }
 
 .c-winning-card {
-  width: 100%;
-  height: auto;
-  padding: 0px 30px 30px 30px;
-  border-radius: 15px;
-
   .trophy {
-    color: #ffd81f;
-    position: relative;
-    top: -25px;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    margin-left: -36px;
+  }
+
+  .content {
+    width: 100%;
+    height: auto;
+    padding: 0px 30px 30px 30px;
+    border-radius: 15px;
+    margin-top: 25px;
+    padding-top: 80px;
   }
 }
