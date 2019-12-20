@@ -39,3 +39,44 @@
 .c-spin {
   font-family: Gilroy;
 }
+
+.spin-wheel {
+  position: relative;
+
+  .wheel {
+    display: block;
+    max-width: 510px;
+    z-index: 2;
+  }
+
+  .wheel-pointer {
+    position: absolute;
+    z-index: 3;
+    width: 80px;
+    left: calc(50% - 40px);
+    top: -60px;
+  }
+
+  .wheel-base {
+    position: absolute;
+    z-index: 1;
+    width: 145px;
+    bottom: -42px;
+    left: calc(50% - 70px)
+  }
+}
+
+@media (min-width: 992px) and (max-width:1200px) {
+  .spin-wheel {
+    .wheel-pointer {
+      top: -25px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .spin-wheel {
+    margin-top: 6rem;
+  }
+}
+
