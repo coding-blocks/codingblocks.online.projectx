@@ -10,8 +10,36 @@
   color: #EB2B40;
 }
 
+.spin-yellow {
+  color: #ffd81f;
+}
+
+.spin-purple {
+  color: #3d304a;
+}
+
+.spin-bg-purple {
+  background-color: #3d304a;
+}
+
+.spin-bg-red {
+  background-color: #e92b40;
+}
+
+.spin-bg-blue {
+  background-color: #145cd3;
+}
+
+.spin-bg-light-blue {
+  background-color: #f1f9fe;
+}
+
 .border-round {
   border-radius: 50px;
+}
+
+.border-dashed {
+  border: 1px dashed;
 }
 
 .button-solid.button-purple {
@@ -38,4 +66,17 @@
 
 .c-spin {
   font-family: Gilroy;
+}
+
+.c-winning-card {
+  width: 100%;
+  height: auto;
+  padding: 0px 30px 30px 30px;
+  border-radius: 15px;
+
+  .trophy {
+    color: #ffd81f;
+    position: relative;
+    top: -25px;
+  }
 }
