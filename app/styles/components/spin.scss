@@ -1,0 +1,41 @@
+.bg-mild-blue {
+  background-color: #F1F9FE;
+}
+
+.font-xxl {
+  font-size: 1.9rem;
+}
+
+.spin-red {
+  color: #EB2B40;
+}
+
+.border-round {
+  border-radius: 50px;
+}
+
+.button-solid.button-purple {
+  color: white;
+  transition: box-shadow .3s;
+  background-color: #3D304A;
+  background-image: unset;
+
+    &:hover {
+      box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    }
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('https://minio.codingblocks.com/public/Gilroy-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  font-weight: 700;
+  src: url('https://minio.codingblocks.com/public/Gilroy-Bold.woff');
+}
+
+.c-spin {
+  font-family: Gilroy;
+}
