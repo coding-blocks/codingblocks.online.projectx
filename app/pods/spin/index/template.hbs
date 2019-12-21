@@ -23,8 +23,10 @@
           </div>
 
           <div class="d-flex d-lg-block justify-content-center">
-            <button class="button-solid button-purple letter-spaced" {{action (perform spin)}}>
-              <span class="font-xxl bold p-4">TAP TO SPIN</span>
+            <button class="button-solid button-purple letter-spaced spin-button" disabled={{isSpinning}} {{action (perform spin)}}>
+              <span class="font-xxl bold p-4" >
+                {{if isSpinning 'SPINNING..' 'TAP TO SPIN'}}
+              </span>
             </button>
           </div>
 

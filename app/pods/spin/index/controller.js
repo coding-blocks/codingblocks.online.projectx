@@ -3,7 +3,7 @@ import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { dropTask } from 'ember-concurrency-decorators';
 import { timeout } from "ember-concurrency";
-
+import { alias } from '@ember/object/computed';
 
 export default class SpinIndexController extends Controller {
   @service api
@@ -19,6 +19,9 @@ export default class SpinIndexController extends Controller {
   get shareText() {
     return 'Signup using this link to get 500Rs in your wallet or Purchase any course from online.codingblocks.com and get 500Rs extra OFF using my referral code at checkout:' + this.referralCode.code
   }
+
+  @alias('spin.isRunning')
+  isSpinning
     
   getTransformForRotation(el, deg) {
     deg += (360 * 5)

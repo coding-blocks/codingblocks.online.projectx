@@ -53,6 +53,11 @@
     }
 }
 
+.spin-button:disabled,
+.spin-button[disabled] {
+  background-color: rgba(61,48,74, 0.6);
+}
+
 .overflow-x-auto {
   overflow-x: auto;
 }
