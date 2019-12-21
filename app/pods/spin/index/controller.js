@@ -1,10 +1,13 @@
 import Controller from '@ember/controller';
 import { action, computed } from '@ember/object';
-import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
+import { dropTask } from 'ember-concurrency-decorators';
+import { timeout } from "ember-concurrency";
+import { alias } from '@ember/object/computed';
 
-export default class SpinController extends Controller {
+export default class SpinIndexController extends Controller {
   @service api
+  @service router
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
@@ -15,6 +18,41 @@ export default class SpinController extends Controller {
   @computed('referralCode')
   get shareText() {
     return 'Signup using this link to get 500Rs in your wallet or Purchase any course from online.codingblocks.com and get 500Rs extra OFF using my referral code at checkout:' + this.referralCode.code
+  }
+
+  @alias('spin.isRunning')
+  isSpinning
+    
+  getTransformForRotation(el, deg) {
+    deg += (360 * 5)
+    return `rotateZ(${deg}deg)`
+  }
+
+  @action
+  setWheel(element) {
+    this.set('wheel', element)
+  }
+
+  @dropTask spin = function *() {
+    if (this.stats.availableSpins <= 0) {
+      alert('you got no spins')
+    }
+    
+    const prize = yield this.api.request('/spins/draw', {
+      method: 'POST'
+    })
+
+    this.wheel.style.transition = 'unset'
+    this.wheel.style.transform = "rotateZ(0deg)"
+    
+    yield timeout(10)
+   
+    this.wheel.style.transition = '8s ease'
+    this.wheel.style.transform = this.getTransformForRotation(this.wheel, prize.rotation)
+   
+    yield new Promise((resolve) => this.wheel.addEventListener('transitionend', resolve))
+
+    yield this.reloadRoute()
   }
 
   @action
