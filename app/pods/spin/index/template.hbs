@@ -53,18 +53,18 @@
           </div>
         </div>
         <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
-          <a href="#" class="border-dashed p-2 font-md white">            
-            https://cb.lk/join/ABCD
-          </a>
-          <a href="#" class="white ml-5 font-md">
+          <span class="border-dashed p-2 font-md white" id="referral-container" {{action 'selectText' 'referral-container'}}>
+            https://cb.lk/join/{{referralCode.code}}
+          </span>
+          <span class="white ml-5 font-md pointer" {{action 'share' 'facebook'}}>
             <i class="fab fa-2x fa-facebook-f"></i>
-          </a>
-          <a href="#" class="white ml-5 font-md">
+          </span>
+          <span class="white ml-5 font-md pointer" {{action 'share' 'twitter'}}>
             <i class="fab fa-2x fa-twitter"></i>
-          </a>
-          <a href="#" class="white ml-5 font-md">
+          </span>
+          <span class="white ml-5 font-md pointer" {{action 'share' 'whatsapp'}}>
             <i class="fab fa-2x fa-whatsapp"></i>
-          </a>
+          </span>
         </div>
       </div>
     </div>
