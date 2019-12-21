@@ -79,6 +79,10 @@
     display: block;
     max-width: 510px;
     z-index: 2;
+    transform-origin: center;
+    transform: rotateZ(0deg);
+    animation-fill-mode: forwards;
+    transition: 8s ease;
   }
 
   .wheel-pointer {
@@ -129,3 +133,12 @@
     padding-top: 80px;
   }
 }
+
+.cursor-text {
+  cursor: text;
+}
+
+.letter-spaced {
+  letter-spacing: 0.07rem;
+}
+
