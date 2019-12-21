@@ -3,34 +3,43 @@
     My Winnings
   </h4>
 
-  <div class="flex-row align-items-center mt-5">
-    <span>
-      <i class="fas fa-chevron-left"></i>
-    </span>
-    <div class="row mx-3 w-100 flex-nowrap overflow-x-auto">
-      {{#each usedSpins as |spin|}}
-        <div class="col-6 col-md-4 col-lg-3 px-2">
-          <div class="c-winning-card border-none white">
-            <div class="trophy">
-              <img src="/app/images/trophy.svg" alt="trophy">
-            </div>
-            <div class="content spin-bg-purple">
-              <div class="font-sm spin-yellow">
-                You Won
+  {{#if usedSpins}}
+    <div class="flex-row align-items-center mt-5">
+      <span>
+        <i class="fas fa-chevron-left"></i>
+      </span>
+      <div class="row mx-3 w-100 flex-nowrap overflow-x-auto">
+        {{#each usedSpins as |spin|}}
+          <div class="col-6 col-md-4 col-lg-3 px-2">
+            <div class="c-winning-card border-none white">
+              <div class="trophy">
+                <img src="/app/images/trophy.svg" alt="trophy">
               </div>
-              <div class="font-md bold">
-                {{spin.spinPrize.title}}
-              </div>
-              <div class="mt-3">
-                3hr Ago
+              <div class="content spin-bg-purple">
+                <div class="font-sm spin-yellow">
+                  You Won
+                </div>
+                <div class="font-md bold">
+                  {{spin.spinPrize.title}}
+                </div>
+                <div class="mt-3">
+                  3hr Ago
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      {{/each}}
+        {{/each}}
+      </div>
+      <span>
+        <i class="fas fa-chevron-right"></i>
+      </span>
     </div>
-    <span>
-      <i class="fas fa-chevron-right"></i>
-    </span>
-  </div>
+  {{else}}
+    <div class="t-align-c mt-5">
+      <i class="fas fa-gift fa-4x spin-purple"></i>
+      <p>
+        You have not earned any gifts till now. Spin more to earn exciting gifts !
+      </p>
+    </div>
+  {{/if}}
 </div>

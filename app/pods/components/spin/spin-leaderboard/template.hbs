@@ -7,17 +7,30 @@
       456 Spins till now
     </h4>
   </div>
-  <div class="px-5 py-3 list-divided border-none">
-    <div class="list-item row no-gutters w-100 p-4">
-      <div class="li-left">
-        <img src="https://via.placeholder.com/150" alt="" class="round s-40x40 mr-3 pr-0">
-        <span class="font-sm bold">
-          Jatin Katyal
-        </span>
-      </div>
-      <div class="font-sm li-right">
-        Netflix Subscription
-      </div>
+  {{#if winners}}
+    <div class="px-5 py-3 list-divided border-none">
+      {{#each winners as |winner|}}
+        <div class="list-item row no-gutters w-100 p-4">
+          <div class="li-left">
+            <img src="{{winner.user.photo}}" alt="" class="round s-40x40 mr-3 pr-0">
+            <span class="font-sm bold">
+              {{winner.user.fullName}}
+            </span>
+          </div>
+          <div class="font-sm li-right">
+            {{winner.spinPrize.title}}
+          </div>
+        </div>
+      {{/each}}
     </div>
-  </div>
+  {{else if fetchWinnersTask.isRunning}}
+    <LoaderComponent />
+  {{else}}
+    <div class="t-align-c p-5">
+      <i class="fas fa-chart-line fa-4x spin-purple"></i>
+      <p>
+        We can't show you a leaderboard until the submissions start rolling in. Stay tuned!
+      </p>
+    </div>
+  {{/if}}
 </div>
