@@ -15,15 +15,18 @@ export default class IndexRoute extends Route {
       },
       include: 'spin_prize'
     })
+    const referralCode = this.api.request('users/myReferral')
 
     return RSVP.hash({
       stats,
-      usedSpins
+      usedSpins,
+      referralCode
     })
   }
 
   setupController(controller, model) {
     controller.set('stats', model.stats)
     controller.set('usedSpins', model.usedSpins)
+    controller.set('referralCode', model.referralCode)
   }
 }
