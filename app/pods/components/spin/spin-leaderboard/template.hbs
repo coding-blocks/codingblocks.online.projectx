@@ -8,20 +8,26 @@
     </h4>
   </div>
   {{#if winners}}
-    <div class="px-5 py-3 list-divided border-none">
-      {{#each winners as |winner|}}
-        <div class="list-item row no-gutters w-100 p-4">
-          <div class="li-left">
-            <img src="{{winner.user.photo}}" alt="" class="round s-40x40 mr-3 pr-0">
-            <span class="font-sm bold">
-              {{winner.user.fullName}}
-            </span>
+    <div class="px-5 py-3">
+      <div class="list-divided border-none">
+        {{#each winners as |winner|}}
+          <div class="list-item row no-gutters w-100 p-4">
+            <div class="li-left">
+              <img src="{{winner.user.photo}}" alt="" class="round s-40x40 mr-3 pr-0">
+              <span class="font-sm bold">
+                {{winner.user.fullName}}
+              </span>
+            </div>
+            <div class="font-sm li-right">
+              {{winner.spinPrize.title}}
+            </div>
           </div>
-          <div class="font-sm li-right">
-            {{winner.spinPrize.title}}
-          </div>
-        </div>
-      {{/each}}
+        {{/each}}
+      </div>
+      <PaginationPills 
+        class="mt-5"
+        @pagination={{winners.meta.pagination}} 
+        @setOffset={{action 'setOffset'}} />
     </div>
   {{else if fetchWinnersTask.isRunning}}
     <LoaderComponent />
