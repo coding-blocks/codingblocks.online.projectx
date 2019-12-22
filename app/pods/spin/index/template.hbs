@@ -140,3 +140,17 @@
     </div>
   </div>
 </div>
+
+
+{{#if showWinModal}}
+  <ModalDialog
+    @onClose={{action (mut showWinModal) false}}
+    @translucentOverlay={{true}}
+    @overlayClass="entered-scrolling-overlay spin-overlay"
+    @containerClass="container spin-modal-container"
+  >
+    <Spin::SpinWinModal />
+  </ModalDialog>
+{{/if}}
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>

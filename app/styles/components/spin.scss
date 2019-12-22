@@ -73,6 +73,11 @@
   src: url('https://minio.codingblocks.com/public/Gilroy-Bold.woff');
 }
 
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('https://minio.codingblocks.com/public/Bebas_Neue.ttf')
+}
+
 .c-spin {
   font-family: Gilroy;
 }
@@ -147,3 +152,14 @@
   letter-spacing: 0.07rem;
 }
 
+.spin-overlay {
+  z-index: 501 !important;
+}
+.border-right {
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.spin-modal-container {
+  padding: 0;
+  max-width: 800px;
+}

@@ -9,6 +9,8 @@ export default class SpinIndexController extends Controller {
   @service api
   @service router
 
+  showWinModal = false
+
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
     'twitter': text => `http://twitter.com/share?text=${text}&url=https://online.codingblocks.com&hashtags=codingBlocksIN`,
@@ -51,6 +53,8 @@ export default class SpinIndexController extends Controller {
     this.wheel.style.transform = this.getTransformForRotation(this.wheel, prize.rotation)
    
     yield new Promise((resolve) => this.wheel.addEventListener('transitionend', resolve))
+
+    this.set('showWinModal', true)
 
     yield this.reloadRoute()
   }
