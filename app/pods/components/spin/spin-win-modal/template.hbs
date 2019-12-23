@@ -1,38 +1,51 @@
+<div>
+  <img 
+    class="p-3 pointer" 
+    src="https://minio.codingblocks.com/public/cross.png"
+    width="70px"
+    style="position: absolute; right: 0; z-index: 2"
+    {{action onClose}}
+  >
+</div>
 <div class="t-align-c py-4">
-      <lottie-player 
-        src="https://assets5.lottiefiles.com/temporary_files/i5pVEt.json"
-        mode="bounce" 
-        background="transparent" 
-        speed="1" 
-        style="" autoplay >
-      </lottie-player>
-    </div>
-    <div class="row no-gutters spin-bg-purple py-5 white">
-      <div class="col-6 py-4 border-right">
-        <div class="px-5" style="border-left: 8px solid white">
-          <div style="font-size: 3.72rem; font-family: Bebas Neue">CONGRATULATIONS</div>
-          <div class="spin-yellow mt-4">
-            <div class="mb-2 font-md">You Won</div>
-            <div class="bold font-xxl">3000 CB Credits</div>
-          </div>
+  <lottie-player 
+    src="https://assets5.lottiefiles.com/temporary_files/i5pVEt.json"
+    mode="bounce" 
+    background="transparent" 
+    speed="1" 
+    style="" autoplay >
+  </lottie-player>
+</div>
+<div class="row no-gutters spin-bg-purple py-5 white">
+  <div class="col-lg-6 py-4 border-right">
+    <div class="px-5" style="border-left: 8px solid white">
+      <div style="font-size: 3.72rem; font-family: Bebas Neue">CONGRATULATIONS</div>
+      <div class="spin-yellow mt-4">
+        <div class="mb-2 font-md">You Won</div>
+        <div class="bold font-xxl">
+          {{prize.title}}
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="col-6 my-auto">
-        <div class="px-5" >
-          <div>
-            <span class="white font-md pointer" {{action 'share' 'facebook'}}>
-              <i class="fab fa-2x fa-facebook-f"></i>
-            </span>
-            <span class="white ml-5 font-md pointer" {{action 'share' 'twitter'}}>
-              <i class="fab fa-2x fa-twitter"></i>
-            </span>
-            <span class="white ml-5 font-md pointer" {{action 'share' 'whatsapp'}}>
-              <i class="fab fa-2x fa-whatsapp"></i>
-            </span>
-          </div>
-          <div class="font-md mb-2 bold mt-4">Share with friends</div>
-          <div class="font-sm">Use hashtag #CBSanta and show off your winnings on social media.</div>
-        </div>
+  <div class="divider-h m-4 d-block d-lg-none"></div>
+
+  <div class="col-lg-6 my-auto">
+    <div class="px-5" >
+      <div>
+        <span class="white font-md pointer" {{action 'share' 'facebook'}}>
+          <i class="fab fa-2x fa-facebook-f"></i>
+        </span>
+        <span class="white ml-5 font-md pointer" {{action 'share' 'twitter'}}>
+          <i class="fab fa-2x fa-twitter"></i>
+        </span>
+        <span class="white ml-5 font-md pointer" {{action 'share' 'whatsapp'}}>
+          <i class="fab fa-2x fa-whatsapp"></i>
+        </span>
       </div>
+      <div class="font-md mb-2 bold mt-4">Share with friends</div>
+      <div class="font-sm">Use hashtag <a class="spin-yellow" target="_blank" href="https://twitter.com/search?q=%23CBSanta">#CBSanta</a> and show off your winnings on social media.</div>
     </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@
       <div class="row bg-mild-blue p-5">
         <div class="col-lg-6 ">
           <div class="mb-5 d-flex d-lg-block justify-content-center">
-            <img src="https://svgshare.com/i/Gtd.svg" alt="">
+            <img src="https://minio.codingblocks.com/amoeba/spin-n-win-board.svg" alt="Spin-N-Win">
           </div>
           <div class="spin-red font-xxl mb-4 pb-4 bold t-align-c t-align-lg-l">
             This festive season, Spin the CB Wheel and win assured prizes!!
@@ -146,10 +146,14 @@
   <ModalDialog
     @onClose={{action (mut showWinModal) false}}
     @translucentOverlay={{true}}
-    @overlayClass="entered-scrolling-overlay spin-overlay"
+    @overlayClass="spin-overlay"
     @containerClass="container spin-modal-container"
   >
-    <Spin::SpinWinModal />
+    <Spin::SpinWinModal 
+      @prize={{prizeWon}}
+      @referralCode={{referralCode.code}}
+      @onClose={{action (mut showWinModal) false}}
+    />
   </ModalDialog>
 {{/if}}
 

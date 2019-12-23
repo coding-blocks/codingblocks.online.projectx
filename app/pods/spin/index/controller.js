@@ -9,7 +9,8 @@ export default class SpinIndexController extends Controller {
   @service api
   @service router
 
-  showWinModal = false
+  showWinModal = true
+  prizeWon = null
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
@@ -54,7 +55,11 @@ export default class SpinIndexController extends Controller {
    
     yield new Promise((resolve) => this.wheel.addEventListener('transitionend', resolve))
 
-    this.set('showWinModal', true)
+    // this.set('showWinModal', true)
+    this.setProperties({
+      showWinModal: true,
+      prizeWon: prize
+    })
 
     yield this.reloadRoute()
   }
