@@ -11,7 +11,8 @@ export default class IndexRoute extends Route {
     const usedSpins = this.store.query('spin', {
       filter: {
         userId: this.currentUser.id,
-        used: true
+        used: true,
+        won: true
       },
       include: 'spin_prize'
     })
