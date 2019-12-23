@@ -1,0 +1,212 @@
+.bg-mild-blue {
+  background-color: #F1F9FE;
+}
+
+.font-xxl {
+  font-size: 1.9rem;
+}
+
+.spin-red {
+  color: #EB2B40;
+}
+
+.spin-yellow {
+  color: #ffd81f;
+}
+
+.spin-purple {
+  color: #3d304a;
+}
+
+.spin-bg-purple {
+  background-color: #3d304a;
+}
+
+.spin-bg-red {
+  background-color: #e92b40;
+}
+
+.spin-bg-blue {
+  background-color: #145cd3;
+}
+
+.spin-bg-mild-blue {
+  background-color: #f1f9fe;
+}
+
+.border-round {
+  border-radius: 50px;
+}
+
+.border-dashed {
+  border: 1px dashed;
+}
+
+.button-solid.button-purple {
+  color: white;
+  transition: box-shadow .3s;
+  background-color: #3D304A;
+  background-image: unset;
+
+    &:hover {
+      box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    }
+}
+
+.spin-button:disabled,
+.spin-button[disabled] {
+  background-color: rgba(61,48,74, 0.6);
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('https://minio.codingblocks.com/public/Gilroy-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  font-weight: 700;
+  src: url('https://minio.codingblocks.com/public/Gilroy-Bold.woff');
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('https://minio.codingblocks.com/public/Bebas_Neue.ttf')
+}
+
+.c-spin {
+  font-family: Gilroy;
+}
+
+.spin-wheel {
+  position: relative;
+
+  .wheel {
+    display: block;
+    max-width: 510px;
+    z-index: 2;
+    transform-origin: center;
+    transform: rotateZ(0deg);
+    animation-fill-mode: forwards;
+    transition: 8s ease;
+  }
+
+  .wheel-pointer {
+    position: absolute;
+    z-index: 3;
+    width: 80px;
+    left: calc(50% - 40px);
+    top: -60px;
+  }
+
+  .wheel-base {
+    position: absolute;
+    z-index: 1;
+    width: 145px;
+    bottom: -42px;
+    left: calc(50% - 70px)
+  }
+}
+
+@media (min-width: 992px) and (max-width:1200px) {
+  .spin-wheel {
+    .wheel-pointer {
+      top: -25px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .spin-wheel {
+    margin-top: 6rem;
+  }
+
+  .spin-modal-container {
+    height: 100vh;
+  }
+}
+
+.c-winning-card {
+  .trophy {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    margin-left: -36px;
+  }
+
+  .content {
+    width: 100%;
+    height: auto;
+    padding: 0px 30px 30px 30px;
+    border-radius: 15px;
+    margin-top: 25px;
+    padding-top: 80px;
+  }
+}
+
+.cursor-text {
+  cursor: text;
+}
+
+.letter-spaced {
+  letter-spacing: 0.07rem;
+}
+
+.spin-overlay {
+  z-index: 501 !important;
+}
+.border-right {
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.spin-modal-container {
+  padding: 0;
+  max-width: 800px;
+}
+
+
+@keyframes wobble {
+  0% {
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  15% {
+    -webkit-transform: translate3d(-25%, 0, 0) ;
+    transform: translate3d(-15%, 0, 0) ;
+  }
+
+  30% {
+    -webkit-transform: translate3d(20%, 0, 0) ;
+    transform: translate3d(10%, 0, 0) ;
+  }
+
+  45% {
+    -webkit-transform: translate3d(-15%, 0, 0) ;
+    transform: translate3d(-7%, 0, 0) ;
+  }
+
+  60% {
+    -webkit-transform: translate3d(10%, 0, 0) ;
+    transform: translate3d(7%, 0, 0) ;
+  }
+
+  75% {
+    -webkit-transform: translate3d(-5%, 0, 0) ;
+    transform: translate3d(-3%, 0, 0) ;
+  }
+
+  100% {
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.wobble {
+  animation: wobble 0.6s 1 linear;
+
+}

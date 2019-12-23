@@ -21,6 +21,7 @@
     "@babel/core": "^7.3.4",
     "@ember/jquery": "^0.6.0",
     "@ember/optional-features": "^0.7.0",
+    "@ember/render-modifiers": "^1.0.2",
     "@firebase/app": "^0.3.13",
     "@firebase/database": "^0.3.16",
     "babel-eslint": "^8.0.0",

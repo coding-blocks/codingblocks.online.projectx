@@ -1,0 +1,45 @@
+<div class="border-card p-5 t-align-c">
+  <h4 class="spin-purple font-md">
+    My Winnings
+  </h4>
+
+  {{#if usedSpins}}
+    <div class="flex-row align-items-center mt-5">
+      <span class="pointer dsp-none-sm" {{action 'scroll' 'left'}}>
+        <i class="fas fa-chevron-left"></i>
+      </span>
+      <div class="row mx-3 w-100 flex-nowrap overflow-x-auto" id="winning-carousel">
+        {{#each usedSpins as |spin i|}}
+          <div class="col-6 col-md-4 col-lg-3 px-2" id="winning-{{i}}">
+            <div class="c-winning-card border-none white">
+              <div class="trophy">
+                <img src={{spin.spinPrize.img}} alt="trophy"> 
+              </div>
+              <div class="content spin-bg-{{spin.spinPrize.theme}}">
+                <div class="font-sm spin-yellow">
+                  You Won
+                </div>
+                <div class="font-md bold">
+                  {{spin.spinPrize.title}}
+                </div>
+                <div class="mt-3">
+                  {{moment-from-now spin.used_at}}
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <span class="pointer dsp-none-sm" {{action 'scroll' 'right'}}>
+        <i class="fas fa-chevron-right"></i>
+      </span>
+    </div>
+  {{else}}
+    <div class="t-align-c mt-5">
+      <i class="fas fa-gift fa-4x spin-purple"></i>
+      <p>
+        You have not earned any gifts till now. Spin more to earn exciting gifts !
+      </p>
+    </div>
+  {{/if}}
+</div>

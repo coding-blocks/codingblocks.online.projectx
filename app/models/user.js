@@ -16,6 +16,7 @@ export default DS.Model.extend({
   lastReadNotification: DS.attr (),
   photo: DS.attr(),
   oneauthId: DS.attr(),
+  roleId: DS.attr(),
   verifiedemail: DS.attr(),
   verifiedmobile: DS.attr()
   //contents: DS.hasMany('content'),

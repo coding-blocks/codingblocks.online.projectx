@@ -49,6 +49,7 @@ Router.map(function() {
   this.route('inbox');
   this.route('404', { path: '/*:' });
   this.mount('cricket-cup', {path: '/cricket_cup'});
+  this.route('spin', function() {});
 });
 
 export default Router;
