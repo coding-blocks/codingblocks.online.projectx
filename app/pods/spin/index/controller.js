@@ -39,7 +39,10 @@ export default class SpinIndexController extends Controller {
 
   @dropTask spin = function *() {
     if (this.stats.availableSpins <= 0) {
-      alert('you got no spins')
+      this.spinsLeftBox.classList.remove('wobble')
+      yield timeout(10)
+      this.spinsLeftBox.classList.add('wobble')
+      return;
     }
     
     const prize = yield this.api.request('/spins/draw', {
