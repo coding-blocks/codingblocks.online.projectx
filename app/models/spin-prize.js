@@ -6,5 +6,6 @@ export default Model.extend({
   description: DS.attr(),
   theme: DS.attr(),
   size: DS.attr(),
-  rotation: DS.attr()
+  rotation: DS.attr(),
+  img: DS.attr()
 });

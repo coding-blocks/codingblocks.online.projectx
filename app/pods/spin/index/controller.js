@@ -9,7 +9,7 @@ export default class SpinIndexController extends Controller {
   @service api
   @service router
 
-  showWinModal = true
+  showWinModal = false
   prizeWon = null
 
   linksMap = {
