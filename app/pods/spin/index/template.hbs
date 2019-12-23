@@ -150,9 +150,22 @@
     @containerClass="container spin-modal-container"
   >
     <Spin::SpinWinModal 
-      @prize={{prizeWon}}
+      @prize={{prizeDrawn}}
       @referralCode={{referralCode.code}}
       @onClose={{action (mut showWinModal) false}}
+    />
+  </ModalDialog>
+{{else if showLoseModal}}
+  <ModalDialog
+    @onClose={{action (mut showLoseModal) false}}
+    @translucentOverlay={{true}}
+    @overlayClass="spin-overlay"
+    @containerClass="container spin-modal-container"
+  >
+    <Spin::SpinLoseModal 
+      @prize={{prizeDrawn}}
+      @referralCode={{referralCode.code}}
+      @onClose={{action (mut showLoseModal) false}}
     />
   </ModalDialog>
 {{/if}}

@@ -10,7 +10,8 @@ export default class SpinIndexController extends Controller {
   @service router
 
   showWinModal = false
-  prizeWon = null
+  showLoseModal = false
+  prizeDrawn = null
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
@@ -20,7 +21,7 @@ export default class SpinIndexController extends Controller {
 
   @computed('referralCode')
   get shareText() {
-    return 'Signup using this link to get 500Rs in your wallet or Purchase any course from online.codingblocks.com and get 500Rs extra OFF using my referral code at checkout:' + this.referralCode.code
+    return 'Signup using this link to get 500Rs in your wallet and win a chance to win prizes this Christmas using my referral code: https://cb.lk/join/' + this.referralCode.code
   }
 
   @alias('spin.isRunning')
@@ -54,12 +55,19 @@ export default class SpinIndexController extends Controller {
     this.wheel.style.transform = this.getTransformForRotation(this.wheel, prize.rotation)
    
     yield new Promise((resolve) => this.wheel.addEventListener('transitionend', resolve))
+    
 
-    // this.set('showWinModal', true)
-    this.setProperties({
-      showWinModal: true,
-      prizeWon: prize
-    })
+    if (prize.size > 0) {
+      this.setProperties({
+        showWinModal: true,
+        prizeDrawn: prize
+      })
+    } else {
+      this.setProperties({
+        showLoseModal: true,
+        prizeDrawn: prize
+      })
+    }
 
     yield this.reloadRoute()
   }
