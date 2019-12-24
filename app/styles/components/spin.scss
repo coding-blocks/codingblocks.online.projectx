@@ -58,6 +58,11 @@
   background-color: rgba(61,48,74, 0.6);
 }
 
+button.d-none-disabled[disabled] {
+  background-image: unset;
+  color: lightgray
+}
+
 .overflow-x-auto {
   overflow-x: auto;
 }
