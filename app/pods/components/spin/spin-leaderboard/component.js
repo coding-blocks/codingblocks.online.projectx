@@ -19,6 +19,7 @@ export default class SpinLeaderboard extends Component {
   @restartableTask fetchWinnersTask = function *() {
     return yield this.store.query('spin', {
       include: 'user,spin_prize',
+      exclude: 'spin_prize.*',
       page: {
         limit: this.limit,
         offset: this.offset
