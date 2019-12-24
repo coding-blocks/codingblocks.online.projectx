@@ -1,9 +1,14 @@
 <div class="home-container">
-  <div class="home-vh">
+
+
+  {{!-- Top Slider Courses --}}
+  <div class="home-row d-flex justify-content-center">
+    <div class="home-column col-12 col-md-6 fade-right" style="overflow: hidden">
+      <div class="home-vh">
     <div class="heading col-12 col-md-6">
       The Technology Learning Platform
     </div>
-    <p class="col-12 col-md-5 font-sm">
+    <p class="col-12 font-sm">
       Keep up with technology with expert-led courses, assessments
       and tools that help you build the skills you need, when you need them.
     </p>
@@ -11,17 +16,12 @@
       {{search-box}}
     </div>
   </div>
-
-
-  {{!-- Top Slider Courses --}}
-  <div class="home-row d-flex justify-content-center">
-    <div class="home-column col-12 col-md-6 fade-right">
       {{#carousel-cards}}
       {{/carousel-cards}}
     </div>
     <div class="col-12 col-md-10 col-lg-6">
       {{!-- <img class="home-img" src="images/home.png" alt="home"> --}}
-      <div class="row m-0 no-gutters">
+      {{!-- <div class="row m-0 no-gutters">
         <div class="col-6 col-sm-8 col-lg-6">
           <div class="heading semi-bold">
             CODING BLOCKS
@@ -41,8 +41,8 @@
             </button>
           </a>
 
-        </div>
-        <div class="col-6 col-sm-4 col-lg-6 pl-4">
+        </div> --}}
+        {{!-- <div class="col-6 col-sm-4 col-lg-6 pl-4">
           <div class="phone d-flex justify-content-center">
             <div class="phone-content">
               <picture>
@@ -52,10 +52,24 @@
               </picture>
             </div>
           </div>
-        </div>
+        </div> --}}
+       
+          <div class="d-flex">
+            <div class="mx-3 my-auto flex-2">
+               <img src="https://minio.codingblocks.com/amoeba/spin-n-win-board.svg" alt="">
+              <div class="t-align-c" style="margin-top: 8rem;">
+
+                <LinkTo @tagName="button" @route="spin" class="button-solid button-purple letter-spaced spin-button font-xxl">Spin and Win !</LinkTo>
+              </div>
+            </div>
+            <div class="flex-1">
+              <img src="http://minio.codingblocks.com/public/spin-wheel-whole.svg" > 
+            </div>
+          </div>
+        
       </div>
     </div>
-  </div>
+
 </div>
 <div class="container">
   {{recommended-courses}}
