@@ -12,7 +12,7 @@ export default class SpinWinModalComponent extends Component {
 
   @computed('referralCode', 'prize.title')
   get shareText() {
-    return `I just won ${this.prize.title} on CB Spin-n-Win. Signup using this link to get 500Rs in your CB wallet and get a chance to spin and win exciting prizes this Christmas with Coding Blocks: https://cb.lk/join/${this.referralCode}`
+    return `I just won ${this.prize.title} on Coding Blocks Spin-n-Win. Signup using this link to get 500 in your Coding Blocks wallet and get a chance to spin and win exciting prizes this Christmas with Coding Blocks: https://cb.lk/join/${this.referralCode}`
   }
 
   @action
