@@ -57,19 +57,21 @@
             You get an extra spin after their successful spin!
           </div>
         </div>
-        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+        <div class="col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end flex-wrap">
           <span class="border-dashed p-2 font-md white" id="referral-container" {{action 'selectText' 'referral-container'}}>
             https://cb.lk/join/{{referralCode.code}}
           </span>
-          <span class="white ml-5 font-md pointer" {{action 'share' 'facebook'}}>
-            <i class="fab fa-2x fa-facebook-f"></i>
-          </span>
-          <span class="white ml-5 font-md pointer" {{action 'share' 'twitter'}}>
-            <i class="fab fa-2x fa-twitter"></i>
-          </span>
-          <span class="white ml-5 font-md pointer" {{action 'share' 'whatsapp'}}>
-            <i class="fab fa-2x fa-whatsapp"></i>
-          </span>
+          <div class="my-3">
+            <span class="white ml-lg-5 font-md pointer" {{action 'share' 'facebook'}}>
+              <i class="fab fa-2x fa-facebook-f"></i>
+            </span>
+            <span class="white ml-5 font-md pointer" {{action 'share' 'twitter'}}>
+              <i class="fab fa-2x fa-twitter"></i>
+            </span>
+            <span class="white ml-5 font-md pointer" {{action 'share' 'whatsapp'}}>
+              <i class="fab fa-2x fa-whatsapp"></i>
+            </span>
+          </div>
         </div>
       </div>
     </div>
