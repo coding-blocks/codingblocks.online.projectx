@@ -9,5 +9,14 @@ export default Route.extend(AuthenticatedRouteMixin, {
     if (this.currentUser.user.roleId !== 1) {
       this.transitionTo('index')
     }
+  },
+
+  actions: {
+    willTransition () {
+      window.setTimeout( () => jivo_init(), 5000)
+    },
+    didTransition () {
+      jivo_init();
+    }
   }
 });
