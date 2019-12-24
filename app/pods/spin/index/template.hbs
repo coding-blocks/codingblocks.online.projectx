@@ -13,13 +13,13 @@
             <button class="button-dashed button-pink w-75 p-3 border-round" {{did-insert (action (mut spinsLeftBox))}}>
               <div class="d-flex justify-content-between align-items-center px-3 flex-wrap">
                 <span class="font-xl bold black mx-auto mr-lg-0 mb-2">{{stats.availableSpins}} Spin{{if (gt stats.availableSpins 1) "s"}} Left</span>
-                <span class="font-sm bold spin-red mx-auto mr-lg-0">Earn More <i class="fas fa-long-arrow-alt-right"></i></span>
+                <a class="font-sm bold spin-red mx-auto mr-lg-0" href="#scrollTagForWinSpin">Earn More <i class="fas fa-long-arrow-alt-right"></i></a>
               </div>
             </button>
           </div>
 
           <div class="font-md spin-red mb-5 t-align-c t-align-lg-l">
-            Get <span class="bold">500 CB Credits</span> on your first successful spin
+            Get assured <span class="bold">500 CB Credits</span> on your first successful spin
           </div>
 
           <div class="d-flex d-lg-block justify-content-center">
@@ -38,7 +38,7 @@
               class="wheel mx-auto w-100"
               data="https://minio.codingblocks.com/amoeba/spin-win-wheel.svg"
               {{did-insert (action "setWheel")}}></object>
-            <object class="wheel-base" data="https://minio.codingblocks.com/amoeba/spin-win-wheel-base.svg"></object>
+            <object class="wheel-base" id="scrollTagForWinSpin" data="https://minio.codingblocks.com/amoeba/spin-win-wheel-base.svg"></object>
          
         </div>
       </div>
@@ -57,19 +57,21 @@
             You get an extra spin after their successful spin!
           </div>
         </div>
-        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+        <div class="col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end flex-wrap">
           <span class="border-dashed p-2 font-md white" id="referral-container" {{action 'selectText' 'referral-container'}}>
             https://cb.lk/join/{{referralCode.code}}
           </span>
-          <span class="white ml-5 font-md pointer" {{action 'share' 'facebook'}}>
-            <i class="fab fa-2x fa-facebook-f"></i>
-          </span>
-          <span class="white ml-5 font-md pointer" {{action 'share' 'twitter'}}>
-            <i class="fab fa-2x fa-twitter"></i>
-          </span>
-          <span class="white ml-5 font-md pointer" {{action 'share' 'whatsapp'}}>
-            <i class="fab fa-2x fa-whatsapp"></i>
-          </span>
+          <div class="my-3">
+            <span class="white ml-lg-5 font-md pointer" {{action 'share' 'facebook'}}>
+              <i class="fab fa-2x fa-facebook-f"></i>
+            </span>
+            <span class="white ml-5 font-md pointer" {{action 'share' 'twitter'}}>
+              <i class="fab fa-2x fa-twitter"></i>
+            </span>
+            <span class="white ml-5 font-md pointer" {{action 'share' 'whatsapp'}}>
+              <i class="fab fa-2x fa-whatsapp"></i>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -99,6 +101,7 @@
             6. By entering the Contest, you consent to being placed on a mailing list for promotional and other materials for CB. You may update or change your email preferences at the email preferences page.<br> <br>
             7. You ahould have a billing address within the territory of India for t-shirt and swag pack.<br> <br>
             8. In case of any discrepency, the final decision will be of Coding Blocks.<br> <br>
+            <button {{action (mut showTnC) true}}>Terms and Conditions Apply</button>
           </div>
         </div>
       </div>
@@ -178,4 +181,51 @@
   </ModalDialog>
 {{/if}}
 
+
+{{#if showTnC}}
+  <ModalDialog
+    @onClose={{action (mut showTnC) false}}
+    @translucentOverlay={{true}}
+    @overlayClass="spin-overlay"
+    @containerClass="container spin-modal-container p-5"
+  >
+    
+    <h2>Terms and Conditions</h2>
+    <ul style="list-style: decimal;">
+      <li>
+        The CB Lucky Wheel is organized by Coding Blocks Pvt. Ltd. Activity participants (hereinafter referred to as "Participants") take part in this by starting the game. All Participants shall be deemed as having agreed to the following terms and conditions.
+      </li>
+      <li>
+        Netflix Standard plan for 2 Months.
+      </li>
+      <li>
+        Amazon Voucher worth Rs. 500
+      </li>
+      <li>
+        CB Book - Competitive Programming, C++ and JAVA
+      </li>
+      <li>
+        Validity of CB Coupon and CB Credits is till 15th Jan, 2020.
+      </li>
+      <li>
+        You must have a billing address within the territory of India for CB Goodies.
+      </li>
+
+      <li>
+        Prizes cannot be transferred to another person or redeemed for cash or other objects. 
+        Each winner must update valid contact information (including the email address, full name, complete delivery address, phone number, and post code) on his CB account within seven days after the campaign ends. 
+        Awards will be shipped within 15 working days. CB will assume all tariffs and express fees. 
+        If an award is not distributed to a winner due to the winner's fault, the winner shall be deemed as having waived the right to claim the award. 
+        CB reserves the right to the final interpretation of the prize.
+      </li>
+<li>
+There are no cash or other prize alternatives available in whole or in part. However, in circumstances beyond CB's control, CB may substitute a similar alternative prize of equal or greater value at CB's sole discretion. If you win a Prize, you may not transfer, assign, or redeem the Prize for cash.
+</li>
+  <li>
+Subject to the winner claiming the Prize within the given time period, the Prize will be dispatched/delivered to the winner on or before 30th Jan, 2020.
+
+      </li>
+    </ul>
+  </ModalDialog>
+{{/if}}
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>

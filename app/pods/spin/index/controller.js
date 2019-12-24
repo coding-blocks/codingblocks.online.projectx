@@ -11,6 +11,7 @@ export default class SpinIndexController extends Controller {
 
   showWinModal = false
   showLoseModal = false
+  showTnC = false
   prizeDrawn = null
 
   linksMap = {
