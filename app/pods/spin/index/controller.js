@@ -22,7 +22,9 @@ export default class SpinIndexController extends Controller {
 
   @computed('referralCode')
   get shareText() {
-    return 'Signup using this link to get 500Rs in your wallet and win a chance to win prizes this Christmas using my referral code: https://cb.lk/join/' + this.referralCode.code
+    return `Sign-up using my link to get instant Rs 500 in your wallet and Spin the CB Wheel to win assured prizes this Christmas and New Year using. My referral link: https://cb.lk/join/${this.referralCode.code}  @codingblocksIn
+
+    #CodingBlocks #CBSanta #Christmas #NewYear`
   }
 
   @alias('spin.isRunning')
