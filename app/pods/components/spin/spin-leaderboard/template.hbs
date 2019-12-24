@@ -13,7 +13,7 @@
         {{#each winners as |winner|}}
           <div class="list-item row no-gutters w-100 p-4">
             <div class="li-left">
-              <img src="{{winner.user.photo}}" alt="" class="round s-40x40 mr-3 pr-0">
+              <img src="{{defaultTo winner.user.photo 'https://minio.codingblocks.com/img/avatar-7.svg'}}" alt="" class="round s-40x40 mr-3 pr-0">
               <span class="font-sm bold">
                 {{winner.user.fullName}}
               </span>
