@@ -12,10 +12,16 @@ export default Service.extend({
         // restore org from store
         this.set("organization", window.localStorage.getItem('org'))
     },
-    load () {
-        const currentUser = this.user
-        if (currentUser && currentUser.id) {
-            return Promise.resolve(currentUser)
+    async load (force = false) {
+        if (force) {
+            const { refresh_token } = this.session.data.authenticated
+            await this.authenticator.refreshAccessToken(refresh_token)
+        }
+        if (!force) {
+            const currentUser = this.user
+            if (currentUser && currentUser.id) {
+                return Promise.resolve(currentUser)
+            }
         }
         document.cookie = `auth-jwt=${this.get('session.data.authenticated.jwt')}; path=/`
 

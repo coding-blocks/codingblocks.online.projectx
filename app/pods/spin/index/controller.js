@@ -8,6 +8,7 @@ import { alias } from '@ember/object/computed';
 export default class SpinIndexController extends Controller {
   @service api
   @service router
+  @service currentUser
 
   showWinModal = false
   showLoseModal = false
@@ -41,6 +42,11 @@ export default class SpinIndexController extends Controller {
   }
 
   @dropTask spin = function *() {
+    if (!this.currentUser.user.verifiedemail) {
+      this.set('notVerifiedEmailModal', true)
+      return;
+    }
+
     if (this.stats.availableSpins <= 0) {
       this.spinsLeftBox.classList.remove('wobble')
       yield timeout(10)
@@ -76,6 +82,18 @@ export default class SpinIndexController extends Controller {
     }
 
     yield this.reloadRoute()
+  }
+
+  @dropTask tryAgain = function *() {
+    yield this.api.request('/jwt/upsert')
+    yield this.currentUser.load(true)
+
+    if (!this.currentUser.user.verifiedemail) {
+      throw new Error('Email is not verified')
+    }
+
+    this.set('notVerifiedEmailModal', false)
+    return ;
   }
 
   @action

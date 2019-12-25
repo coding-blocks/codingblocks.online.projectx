@@ -231,4 +231,37 @@ Subject to the winner claiming the Prize within the given time period, the Prize
     </ul>
   </ModalDialog>
 {{/if}}
+{{#if notVerifiedEmailModal}}
+  <ModalDialog
+    @onClose={{action (mut notVerifiedEmailModal) false}}
+    @translucentOverlay={{true}}
+    @overlayClass="spin-overlay"
+    @containerClass="container spin-modal-container p-5"
+  >
+    
+    <h2>Steps to verify you email address</h2>
+    <ul style="list-style: decimal;">
+      <li>
+        Visit 
+        <a href="https://account.codingblocks.com/users/me" class="red">https://account.codingblocks.com/users/me</a>
+      </li>
+      <li>
+        Enter your email address to get the verification link
+      </li>
+      <li>
+        Click the verification link in your email
+      </li>
+    </ul>
+    <div>
+      <button class="button-solid" {{action (perform tryAgain)}}>
+        Try Again
+      </button>
+      <p class="red">
+        {{#if tryAgain.lastErrored}}
+          Email is not verified
+        {{/if}}
+      </p>
+    </div>
+  </ModalDialog>
+{{/if}}
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
