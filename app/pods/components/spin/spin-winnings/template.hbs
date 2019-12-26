@@ -22,6 +22,11 @@
                 <div class="font-md bold">
                   {{spin.spinPrize.title}}
                 </div>
+                {{#if spin.prize_remarks_extra.coupon-created}}
+                  <div class="border-dashed mt-1 p-2 font-md white" id="referral-container">
+                    {{spin.prize_remarks_extra.coupon-created}}
+                  </div>
+                {{/if}}
                 <div class="mt-3">
                   {{moment-from-now spin.used_at}}
                 </div>

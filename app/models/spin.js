@@ -6,6 +6,7 @@ export default Model.extend({
   used: DS.attr(),
   used_at: DS.attr('date'),
   won: DS.attr(),
+  prize_remarks_extra: DS.attr(),
   user: DS.belongsTo('user'),
   spinPrize: DS.belongsTo('spin_prize')
 });
