@@ -35,6 +35,7 @@
         <button class="mr-3" {{action onClose}}>Cancel</button>
         <button 
           class="button-solid button-orange" 
+          disabled={{saveDoubtTask.isRunning}}
           {{action (perform saveDoubtTask)}}>
           {{if saveDoubtTask.isRunning "Posting" "Post Doubt"}}
         </button>
