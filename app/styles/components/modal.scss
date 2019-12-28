@@ -28,7 +28,6 @@ body.centered-modal-showing {
   background-color: white;
   width: 100%;
   max-width: 650px;
-  min-height: 20em;
   box-sizing: border-box;
   box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
   width: 100%;
@@ -40,6 +39,7 @@ body.centered-modal-showing {
 
 @media (min-width: 768px) {
   .centered-scrolling-container {
+    min-height: 20em;
     width: 75%;
     margin-top: 100px;
     height: auto;

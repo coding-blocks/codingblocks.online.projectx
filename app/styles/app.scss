@@ -123,6 +123,14 @@ $cb-red: #ff6666;
   background-color: #1b1e26;
 }
 
+.bg-modal-grey-darker {
+  background-color: #23252C;
+}
+
+.player-centered-scrolling-container {
+  max-width: 950px !important;
+}
+
 .c-code-card {
   .header {
     background-color: #23252c;
@@ -160,5 +168,19 @@ $cb-red: #ff6666;
 
   tr {
     border-bottom: solid 1px #23252c;
+  }
+
+  textarea.underline-input {
+    background-color: transparent;
+    border-bottom: solid 1px #666666 !important;
+    padding-bottom: 1.5rem;
+  
+    &:focus {
+      border-bottom: solid 1px #ffff !important;
+    }
+
+    &::placeholder {
+      color: #fff;
+    }
   }
 }

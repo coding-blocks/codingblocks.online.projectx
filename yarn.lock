@@ -1452,9 +1452,9 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@coding-blocks/motley@coding-blocks/motley#2ebd427":
+"@coding-blocks/motley@coding-blocks/motley#8c44cbb":
   version "0.4.9"
-  resolved "https://codeload.github.com/coding-blocks/motley/tar.gz/2ebd42779371b3e77e875e7e21ffb2e7c3632dca"
+  resolved "https://codeload.github.com/coding-blocks/motley/tar.gz/8c44cbbf817b59577a8927145f84053a8dc947fa"
   dependencies:
     build "^0.1.4"
     run "^1.4.0"
