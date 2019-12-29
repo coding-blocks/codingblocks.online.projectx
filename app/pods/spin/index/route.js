@@ -15,6 +15,7 @@ export default class IndexRoute extends Route {
         won: true
       },
       include: 'spin_prize',
+      exclude: 'spin_prize.*,user',
       sort: '-used_at'
     })
     const referralCode = this.api.request('users/myReferral')
