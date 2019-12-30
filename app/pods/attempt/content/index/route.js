@@ -1,7 +1,7 @@
 import Route from "@ember/routing/route";
 
 export default Route.extend({
-  model(params) {
+  model() {
     // TODO: redirect to content specific route
     const content = this.modelFor('attempt.content')
     switch (content.contentable) {

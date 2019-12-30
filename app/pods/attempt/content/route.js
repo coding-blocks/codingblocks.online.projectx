@@ -4,7 +4,6 @@ import { inject } from '@ember/service'
 export default Route.extend({
     api: inject(),
     currentUser: inject(),
-    player: inject(),
     beforeModel() {
         const params = this.paramsFor('attempt.content')
         const section = this.store.peekRecord('section', params.sectionId)
@@ -41,7 +40,7 @@ export default Route.extend({
 
             if (content.get('isDone')) {
                 // Increment the completed content count in run attempt as well
-                const runAttempt = this.store.peekRecord('run-attempt', this.player.runAttemptId)
+                const runAttempt = this.modelFor('attempt')
                 runAttempt.incrementProperty('completedContents')
             }
         }
