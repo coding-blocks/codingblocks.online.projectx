@@ -6,7 +6,11 @@
   @onTabChange={{action "changeTab"}}
   >
   <WAsync @task={{activeTab.task}} @autoFire={{true}} as |result|>
-    {{component activeTab.component runs=result class="border-bottom-list"}}
+    {{#if (eq activeTab.name 'Wishlisted')}}
+      {{component activeTab.component wishlist=result class="border-bottom-list"}}
+    {{else}}
+      {{component activeTab.component runs=result class="border-bottom-list"}}
+    {{/if}}
   </WAsync>
 </WTabNav>
 
