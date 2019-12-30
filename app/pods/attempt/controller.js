@@ -19,10 +19,6 @@ export default class AttemptController extends Controller {
       component: 'player/player-notes-tab'
     },
     {
-      name: 'Bookmarks',
-      component: 'player/player-bookmarks-tab'
-    },
-    {
       name: 'Announcements',
       component: 'player/player-announcements-tab'
     },
