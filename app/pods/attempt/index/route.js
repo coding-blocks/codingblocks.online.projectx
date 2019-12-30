@@ -6,13 +6,27 @@ export default class IndexRoute extends Route {
 
   async beforeModel() {
     const { runAttemptId } = this.paramsFor('attempt')
-    const nextContent = await this.api.request(`/run_attempts/${runAttemptId}/nextContent`)
-
-    this.transitionTo(
-      "attempt.content",
-      runAttemptId,
-      nextContent.sectionId,
-      nextContent.contentId
-    );
+    try {
+      const nextContent = await this.api.request(`/run_attempts/${runAttemptId}/nextContent`)
+  
+      this.transitionTo(
+        "attempt.content",
+        runAttemptId,
+        nextContent.sectionId,
+        nextContent.contentId
+      );
+    } catch (err) {
+      const run = this.modelFor('attempt').get('run')
+      const section = run.get("sections.firstObject")
+      await section.get('contents')
+      const content = section.get("contents.firstObject")
+      
+      this.transitionTo(
+        "attempt.content",
+        runAttemptId,
+        section.id,
+        content.id
+      );
+    }
   }
 }
