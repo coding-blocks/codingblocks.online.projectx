@@ -33,7 +33,7 @@ export default class NotesViewComponent extends Component {
       duration
     })
 
-    note.set('runAttempt', this.get('runAttempt'))
+    note.set('run_attempt', this.get('runAttempt'))
 
     try {
       yield note.save()
