@@ -63,7 +63,7 @@ export default class DoubtsViewComponent extends Component {
       content,
       status: "PENDING"
     })
-    doubt.set("runAttempt", this.get('runAttempt'))//aisa isliye kiya hai kyoki https://github.com/emberjs/ember.js/issues/16258
+    doubt.set("run_attempt", this.get('runAttempt'))//aisa isliye kiya hai kyoki https://github.com/emberjs/ember.js/issues/16258
     try {
       yield doubt.save()
       this.set('title', '')

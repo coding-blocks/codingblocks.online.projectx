@@ -5,7 +5,7 @@ export default DS.Model.extend({
   body: DS.attr(),
   status: DS.attr(),
   content: DS.belongsTo('content'),
-  runAttempt: DS.belongsTo('run-attempt'),
+  run_attempt: DS.belongsTo('run-attempt'),
   category: DS.attr(),
   discourseTopicId: DS.attr(),
   firebaseRef: DS.attr(),
