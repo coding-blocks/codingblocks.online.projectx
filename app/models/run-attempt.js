@@ -23,7 +23,7 @@ export default DS.Model.extend({
   isExpired: computed('end', function () {
     return this.end < +new Date()/1000;
   }),
-  progressPercent: computed('run.totalContents', function () {
+  progressPercent: computed('completedContents', 'run.totalContents', function () {
     const totalContents = this.get('run.totalContents')
     console.log(this.completedContents, totalContents)
 

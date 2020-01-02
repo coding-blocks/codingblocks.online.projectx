@@ -24,6 +24,25 @@ export default class AttemptController extends Controller {
     },
   ]
   activeTab = this.tabs.firstObject
+
+  @action 
+  openAskDoubtModal() {
+    const content = this.store.peekRecord('content', this.player.contentId)
+    const runAttempt = this.store.peekRecord('run-attempt', this.player.runAttemptId)
+    const doubt = this.store.createRecord('doubt', {
+      content,
+      runAttempt
+    })
+
+    this.set('newDoubt', doubt)
+    this.set('showAskDoubtModal', true)
+  }
+
+  @action
+  closeAskDoubtModal() {
+    this.newDoubt.rollbackAttributes()
+    this.set('showAskDoubtModal', false)
+  }
   
   @action
   toggleSideBar() {

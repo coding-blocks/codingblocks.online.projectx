@@ -18,14 +18,38 @@
         <div class="py-4">
           {{outlet}}
         </div>
+        <div class="row py-4 mx-0 align-items-center">
+          <div class="mr-auto">
+            <h3 class="gradient-text-orange bold">
+              Get 24*7 Doubts &amp; Mentor Support
+            </h3>
+            Have any queries? Ask a Doubt
+          </div>
+          <button class="button-solid button-orange" {{action "openAskDoubtModal"}}>
+            Ask Doubt
+          </button>
+        </div>
         <WTabNav
+          @inactiveClass="white"
           @tabs={{tabs}}
           @activeTab={{activeTab}}
           @onTabChange={{action (mut activeTab)}}>
-          {{component activeTab.component
-            notes=runAttempt.notes}}  
+          {{#if (eq activeTab.name 'Doubts')}}
+            {{component activeTab.component
+              doubts=runAttempt.doubts}}  
+          {{else if (eq activeTab.name 'Notes')}}
+            {{component activeTab.component
+              notes=runAttempt.notes}}  
+          {{/if}}
         </WTabNav>
       </div>
     </div>
   </div>
 </div>
+
+{{#if showAskDoubtModal}}
+  <Player::PlayerAskDoubtModal 
+    @onClose={{action "closeAskDoubtModal"}}
+    @doubt={{newDoubt}} 
+    class="row white h-100" />
+{{/if}}

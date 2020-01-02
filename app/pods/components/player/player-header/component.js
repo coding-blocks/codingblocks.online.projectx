@@ -16,9 +16,6 @@ export default class PlayerHeader extends Component {
     }
   }
 
-  @alias('run.topRunAttempt.progressPercent')
-  progressPercent
-
   @action
   toggleBookmark() {
     if(this.content.get('bookmark.id')) {
@@ -35,6 +32,20 @@ export default class PlayerHeader extends Component {
         content: this.content
       })
       bookmark.save()
+    }
+  }
+  
+  @computed('player.runAttemptId')
+  get runAttempt() {
+    if (this.player.runAttemptId) {
+      return this.store.peekRecord('run-attempt', this.player.runAttemptId)
+    }
+  }
+
+  @computed('runAttempt.progressPercent')
+  get progressPercent() {
+    if (this.runAttempt) {
+      return this.runAttempt.progressPercent
     }
   }
 }

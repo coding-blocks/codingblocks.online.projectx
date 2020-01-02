@@ -1,0 +1,58 @@
+<ModalDialog
+  @onClose={{action onClose}}
+  @translucentOverlay={{true}}
+  @targetAttachment="none"
+  @overlayClass="centered-scrolling-overlay"
+  @wrapperClass="centered-scrolling-wrapper"
+  @containerClass="centered-scrolling-container player-centered-scrolling-container">
+  <div class="row white h-100">
+    <div class="col-md-6 p-5 bg-modal-grey-darker">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4 class="bold">Ask Doubt</h4>
+        <span class="gradient-text-orange">
+          <a href="#">Read Guidelines</a>
+        </span>
+      </div>
+      <div class="mt-5">
+        <div class="bold">Title</div>
+        <Input 
+          placeholder="Title goes here"
+          type="text" 
+          class="bg-grey-darker my-2 w-100 p-2"
+          @value={{doubt.title}} />
+        <div class="card-sm">Title should be short, precise and too the point</div>
+      </div>
+      <div class="mt-5">
+        <div class="bold">Description</div>
+        <Textarea 
+          placeholder="Description goes here"
+          class="bg-grey-darker my-2 w-100 p-2"
+          @rows="4"
+          @value={{doubt.body}} />
+        <div class="card-sm">Describe your problem thoroughly</div>
+      </div>
+      <div class="mt-5 d-flex justify-content-end">
+        <button class="mr-3" {{action onClose}}>Cancel</button>
+        <button 
+          class="button-solid button-orange" 
+          disabled={{saveDoubtTask.isRunning}}
+          {{action (perform saveDoubtTask)}}>
+          {{if saveDoubtTask.isRunning "Posting" "Post Doubt"}}
+        </button>
+      </div>
+    </div>
+    <div class="col-md-6 p-5 bg-grey-darker dsp-none-sm">
+      <h4 class="bold">
+        Doubt Preview
+      </h4>
+
+      <div class="mt-5 font-sm bold">
+        {{doubt.title}}
+      </div>
+
+      <div class="mt-5">
+        {{markdown-to-html doubt.body}}
+      </div>
+    </div>
+  </div>
+</ModalDialog>

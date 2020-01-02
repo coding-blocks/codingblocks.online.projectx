@@ -37,6 +37,12 @@ export default Route.extend({
                 })
                 await newProgress.save().then(p => content.set('progress', p))
             }
+
+            if (content.get('isDone')) {
+                // Increment the completed content count in run attempt as well
+                const runAttempt = this.modelFor('attempt')
+                runAttempt.incrementProperty('completedContents')
+            }
         }
         if (content.get('contentable') === 'code-challenge') {
             const response = await this.api.request('hb/jwt')

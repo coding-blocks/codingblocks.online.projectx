@@ -1,0 +1,44 @@
+<div class="d-flex align-items-center">
+  <img src="{{currentUser.user.photo}}" alt="user photo" class="round s-50x50">
+  <div class="ml-4">
+    <div class="bold">{{currentUser.user.fullName}}</div>
+    <div class="font-xs">4 hours ago</div>
+  </div>
+</div>
+<div class="mt-4">
+  <h3 class="bold">{{doubt.title}}</h3>
+  <p>{{doubt.body}}</p>
+</div>
+<div class="mt-4 row mx-0">
+  <form 
+    class="input-search px-3 py-2 bg-grey-darker col-md-8"
+    {{action (perform commentTask) on="submit"}}>
+    <Input 
+      @value={{commentBody}}
+      @disabled={{commentTask.isRunning}}
+      type="text" 
+      placeholder="Press enter to reply" 
+      class="white w-100" />
+  </form>
+  <div class="col-md-4 d-flex align-items-center justify-content-center font-sm">
+    {{#if (eq doubt.status "RESOLVED")}}
+      <button {{action "markStatus" "PENDING"}} class="red bold">
+        Reopen Doubt
+      </button>
+    {{else}}
+      <button {{action "markStatus" "RESOLVED"}} class="green bold">
+        <FaIcon @icon="check" /> Mark as Resolved
+      </button>
+    {{/if}}
+    {{#if (eq doubt.status "ACKNOWLEDGED")}}
+      <button class="orange bold ml-4" {{action "startChat"}}>
+        Chat with TA
+      </button>
+    {{/if}}
+  </div>
+</div>
+{{#if err}}
+  <div class="red card-md">
+    <FaIcon @icon="exclamation-triangle" /> {{{err}}}
+  </div>
+{{/if}}

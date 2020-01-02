@@ -1,2 +1,2 @@
 {{!-- {{#content-feedback onFeedbackSubmit=onFeedbackSubmit showFeedback=showFeedback}} {{/content-feedback}} --}}
-<iframe id="ext-video" class="c-video" width="100%" src="{{embed video.url}}" frameborder="0" allowfullscreen></iframe>
+<iframe id="ext-video" class="c-video" width="100%" src="{{embed video.url}}" frameborder="0" allowfullscreen {{did-insert (action initializePlayer)}}></iframe>

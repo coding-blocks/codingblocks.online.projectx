@@ -23,6 +23,11 @@ export default class MyCoursesController extends Controller {
       task: this.fetchAllRuns
     },
     {
+      name: 'Wishlisted',
+      component: 'my-courses-list/wishlisted-courses',
+      task: this.fetchWishlistedCourses
+    },
+    {
       name: 'Expired',
       component: 'my-courses-list/expired-courses',
       task: this.fetchExpiredCourses
@@ -55,6 +60,16 @@ export default class MyCoursesController extends Controller {
 
   @restartableTask fetchRecentlyAccessedRuns = function* () {
     return this.fetchRunsWithScope('active')
+  }
+
+  @restartableTask fetchWishlistedCourses = function* () {
+    return this.store.query('user-course-wishlist', {
+      include: 'course',
+      page: {
+        limit: this.limit,
+        offset: this.offset
+      }
+    })
   }
 
   @restartableTask fetchAllRuns = function* () {
