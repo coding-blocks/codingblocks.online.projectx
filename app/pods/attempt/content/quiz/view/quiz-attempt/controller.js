@@ -2,8 +2,15 @@ import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 
 export default Controller.extend({
-  queryParams: ['q'],
   q: 1,
+  incorrectQuestionIds: computed('quizAttempt.result', function () {
+    const questions = this.get('quizAttempt.result.questions')
+    return questions.filter(q => q.score == 0).mapBy('id')
+  }),
+  correctQuestionIds: computed('quizAttempt.result', function () {
+    const questions = this.get('quizAttempt.result.questions')
+    return questions.filter(q => q.score > 0).mapBy('id')
+  }),
   incorrectIds: computed('quizAttempt.result', 'question.id',function () {
     const result = this.get('quizAttempt.result')
     const question = result.questions.find(el => el.id == this.get('question.id'))
@@ -16,8 +23,14 @@ export default Controller.extend({
     return [...set.values()]
   }),
   actions: {
-    changeQuestion (index) {
-      this.incrementProperty('q', index)
+    setQuestion (index) {
+      this.set('q', index+1)
+    },
+    nextQuestion() {
+      this.incrementProperty('q')
+    },
+    prevQuestion() {
+      this.decrementProperty('q')
     }
   }
 });

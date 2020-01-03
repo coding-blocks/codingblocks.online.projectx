@@ -2,22 +2,19 @@ import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
 
 export default Route.extend({
-  queryParams: {
-    q: {
-      refreshModel: true
-    }
-  },
-  model (params) {
-    const quiz = this.modelFor('attempt.content.quiz.view').quiz
+  model() {
     return hash({
-      question: this.store.findRecord('question', quiz.get('questions').objectAt(params.q - 1).id),
-      quizAttempt: this.modelFor('attempt.content.quiz.view').quizAttempt,
-      quiz
+      attempts: this.store.query('quiz_attempt', {
+        filter: {
+          qnaId: this.modelFor('attempt.content.quiz').payload.id
+        },
+        sort: '-createdAt'
+      }),
+      quiz: this.modelFor('attempt.content.quiz').quiz
     })
   },
-  setupController (controller, model) {
-    controller.set("question", model.question)
-    controller.set("quizAttempt", model.quizAttempt)
-    controller.set("quiz", model.quiz)
+  setupController(controller, model) {
+    controller.set('attempts', model.attempts)
+    controller.set('quiz', model.quiz)
   }
 });
