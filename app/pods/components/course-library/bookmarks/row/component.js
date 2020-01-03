@@ -7,7 +7,6 @@ import { computed } from '@ember/object';
 export default class BookmarksRowComponent extends Component{
     @action
     deleteBookmark() {
-        this.get('bookmark').deleteRecord()
-        this.get('bookmark').save()
+        this.get('bookmark').destroyRecord()
     }
 };

@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import { action } from '@ember/object';
+import { restartableTask } from 'ember-concurrency-decorators';
 import { alias } from '@ember/object/computed';
 
 export default class PlayerHeader extends Component {
@@ -16,11 +17,10 @@ export default class PlayerHeader extends Component {
     }
   }
 
-  @action
-  toggleBookmark() {
+  @restartableTask toggleBookmark = function * () {
     if(this.content.get('bookmark.id')) {
 
-      this.api.request(`/bookmarks/${this.content.get('bookmark.id')}`, {
+      yield this.api.request(`/bookmarks/${this.content.get('bookmark.id')}`, {
         method: 'DELETE'
       })
       this.content.bookmark = undefined;

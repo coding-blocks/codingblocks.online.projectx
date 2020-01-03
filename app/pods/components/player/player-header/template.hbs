@@ -6,7 +6,7 @@
           {{content.title}}
         </h5>
       </div>
-      <button class="col-2 pt-1" onclick={{action "toggleBookmark"}}>
+      <button class="col-2 pt-1" {{action (perform toggleBookmark)}}>
         {{#if content.bookmark}}
         <i class="fas fa-bookmark fa-lg"></i>
         {{else}}
