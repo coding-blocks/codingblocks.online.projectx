@@ -90,5 +90,6 @@ export default DS.Model.extend({
     }),
     organization: DS.attr(),
     coursefeatures: DS.attr(),
-    projects: DS.hasMany('projects')
+    projects: DS.hasMany('projects'),
+    tags: DS.hasMany("tag")
 });

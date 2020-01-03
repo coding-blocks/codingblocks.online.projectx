@@ -27,7 +27,6 @@ export default DS.Model.extend({
   course: DS.belongsTo("course", { inverse: "runs" }),
   sections: DS.hasMany("sections"),
   user: DS.belongsTo("user"),
-  tags: DS.hasMany("tag"),
   runAttempts: DS.hasMany("run-attempt"),
   announcements: DS.hasMany("announcement"),
   ta: DS.hasMany("ta"),
