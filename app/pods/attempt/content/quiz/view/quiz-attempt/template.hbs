@@ -13,13 +13,18 @@
 
     <div class="p-4">
       {{#each question.choices as |choice|}}
-        <div class="
-          {{if (find choice.id incorrectIds) 'red'}}
-          {{if (find choice.id correctIds) 'green'}}
-        ">
-          <div class="text">
+        <div class="input-radio gradient-input">
+          <input
+            checked={{find choice.id submission}} 
+            type="radio" 
+            disabled="true"
+            id={{choice.id}} />
+          <label for="{{choice.id}}" class="
+            {{if (find choice.id incorrectIds) 'red'}}
+            {{if (find choice.id correctIds) 'green'}}
+          ">
             {{markdown-to-html choice.title extensions='katex' class="ml-3"}}
-          </div>
+          </label>
         </div>
       {{/each}}
     </div>

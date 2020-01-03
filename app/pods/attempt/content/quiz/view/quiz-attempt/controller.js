@@ -22,6 +22,9 @@ export default Controller.extend({
     const set = new Set([...question.correctlyAnswered.mapBy('id'), ...question.answers])
     return [...set.values()]
   }),
+  submission: computed('question', 'quizAttempt', function () {
+    return this.quizAttempt.submission.find(s => s.id, this.question.id)['marked-choices'] || []
+  }),
   actions: {
     setQuestion (index) {
       this.set('q', index+1)
