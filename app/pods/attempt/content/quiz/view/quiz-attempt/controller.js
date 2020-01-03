@@ -23,7 +23,8 @@ export default Controller.extend({
     return [...set.values()]
   }),
   submission: computed('question', 'quizAttempt', function () {
-    return this.quizAttempt.submission.find(s => s.id, this.question.id)['marked-choices'] || []
+    const questionSubmission = this.quizAttempt.submission.find(s => s.id === this.question.id)
+    return questionSubmission ? questionSubmission['marked-choices'] : []
   }),
   actions: {
     setQuestion (index) {
