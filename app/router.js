@@ -27,7 +27,10 @@ Router.map(function() {
         this.route('attempt', {path: '/s/:quizAttemptId'}, function() {
           this.route('done');
         });
-        this.route('view', {path: '/v/:viewQuizAttemptId'}, function() {});
+        this.route('view', function() {
+          this.route('quiz-attempt', {path: '/v/:viewQuizAttemptId'});
+        });
+        this.route('loading');
       });
       this.route('code-challenge');
       this.route('lecture');

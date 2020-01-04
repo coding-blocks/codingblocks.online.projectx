@@ -11,18 +11,11 @@ export default Route.extend({
         status: 'draft',
         runAttempt: this.store.peekRecord('run_attempt', this.paramsFor('attempt').runAttemptId),
         qna: this.store.peekRecord('content', this.paramsFor('attempt.content').contentId).get('payload')
-      }),
-      previousAttempts: this.store.query('quiz_attempt', {
-        filter: {
-          qnaId: this.modelFor('attempt.content.quiz').payload.id
-        },
-        sort: '-createdAt'
       })
     })
   },
   setupController (controller, model) {
     controller.set("quiz", model.quiz)
-    controller.set("previousAttempts", model.previousAttempts)
     this._super(...arguments)
   }
 });

@@ -8,42 +8,4 @@
       Start Quiz
     </button>
   </div>
-  <h5 class="mt-5">Previous Attempts</h5>
-  <table class="w-100">
-    <thead>
-      <tr class="white">
-        <th class="py-3">S.No.</th>
-        <th>Score</th>
-        <th>Attempt Time</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each previousAttempts as |attempt index|}}
-        <tr>
-          <td class="py-3">{{index}}</td>
-          <td 
-            class="bold {{if (gt attempt.totalCorrect (multiply quiz.questions.length 0.5)) "green" "red"}}">
-            {{defaultTo attempt.result.score 'NA'}} / {{multiply quiz.questions.length 10}}
-          </td>
-          <td>
-            {{moment-format attempt.createdAt 'MMM Do YYYY'}}
-            |
-            {{moment-format attempt.createdAt 'hh:m a'}}
-          </td>
-          <td>
-            {{#if (eq attempt.status 'FINAL')}}
-              {{#link-to 'attempt.content.quiz.view' attempt.id class="red"}}
-                View Result
-              {{/link-to}}
-            {{else}}
-              {{#link-to 'attempt.content.quiz.attempt' attempt.id class="green"}}
-                Resume
-              {{/link-to}}
-            {{/if}}
-          </td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
 </div>
