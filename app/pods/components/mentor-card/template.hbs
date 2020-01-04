@@ -1,0 +1,17 @@
+<div class="border-card px-0 py-5">
+  <h3 class="bold mb-4 px-5">Mentors</h3>
+  <div class="divider-h w-80 mx-auto"></div>
+  {{#each instructors as |instructor|}}
+    <div class="hover-grey py-4 px-5">
+      <div class="img-desc align-items-center">
+        <img class="round s-50x50" src="{{instructor.photo}}" alt="">
+        <div class="description ml-3">
+          <div class="bold">
+            {{instructor.name}}
+          </div>
+          {{instructor.email}}
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

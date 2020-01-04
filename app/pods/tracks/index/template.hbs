@@ -45,20 +45,27 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 col-lg-4 mt-5">
-      <div class="border-card p-0">
-        <div class="bg-light-grey p-4">
-          <h4>Become a Certified</h4>
-          <h4 class="bold">Data Scientist</h4>
-        </div>
-        <div class="d-flex justify-content-between align-items-center p-4">
-          <span class="bold gradient-text-orange">Trending</span>
-          <div>
-            <span class="bold">3 Courses</span>
-            <button class="button-solid button-orange ml-2">Explore</button>
+    {{#each tracks as |track|}}
+      <div class="col-md-6 col-lg-4 mt-5">
+        <div class="border-card p-0">
+          <div class="d-flex bg-light-grey p-4">
+            <img src="{{track.logo}}" alt="Track Logo">
+            <div>
+              <h4>Become a Certified</h4>
+              <h4 class="bold">{{track.name}}</h4>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center p-4">
+            <span class="bold gradient-text-orange">
+              {{track.status}}
+            </span>
+            <div>
+              <span class="bold">{{track.courseCount}} Courses</span>
+              <button class="button-solid button-orange ml-2">Explore</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    {{/each}}
   </div>
 </div>

@@ -60,6 +60,6 @@ Router.map(function() {
   this.mount('cricket-cup', {path: '/cricket_cup'});
   this.route('dashboard');
   this.route('tracks', function() {
-    this.route('id');
+    this.route('id', {path: '/:id'});
   });
 });
