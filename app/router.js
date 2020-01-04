@@ -59,4 +59,7 @@ Router.map(function() {
   this.route('404', { path: '/*:' });
   this.mount('cricket-cup', {path: '/cricket_cup'});
   this.route('dashboard');
+  this.route('tracks', function() {
+    this.route('id');
+  });
 });
