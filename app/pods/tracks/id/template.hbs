@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-8 my-4">
+    <h4>{{track.name}}</h4>
+    <ul>
+      {{#each track.courses as |course|}}
+        <li>
+          {{course.title}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="col-md-4 my-4">
+    <Tracks::TracksDoubtsForm />
+    <WAsync @task={{fetchInstructorsTask}} @autoFire="true" as |instructors|>
+      <MentorCard
+        class="mt-5"
+        @instructors={{instructors}} />
+    </WAsync>
+  </div>
+</div>

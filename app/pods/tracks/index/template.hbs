@@ -1,0 +1,58 @@
+<div class="py-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="border-card bg-dark-grey p-5 white h-100">
+        <div class="li-right font-md bold">
+          <span class="border br-50 px-3 py-2">
+            Newly Launched
+          </span>
+        </div>
+        <div class="gradient-text-orange font-lg bold">
+          <img src="/app/images/hat.svg" alt="hat">
+          <span class="ml-2">Introducing: Learning Tracks</span>
+        </div>
+        <p class="font-sm">
+          We understand that sometimes you need more than one course to achieve your learning goals. We’re here to help. Tracks arrange courses on a topic in sequence, saving you the effort of going through our courses to find out which ones fit well together, and in what order. 
+          <br>
+          <br>
+          Our tracks are carefully vetted and arranged to maximize your learning experience. 
+          <br>
+          <br>
+          Happy learning!
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4 my-5 my-md-0">
+      <Tracks::TracksDoubtsForm />
+    </div>
+  </div>
+  <div class="row">
+    {{#each tracks as |track|}}
+      <div class="col-md-6 col-lg-4 mt-5">
+        <div class="border-card p-0">
+          <div class="d-flex bg-light-grey p-4">
+            <img src="{{track.logo}}" alt="Track Logo">
+            <div>
+              <h4>Become a Certified</h4>
+              <h4 class="bold">{{track.name}}</h4>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center p-4">
+            <span class="bold gradient-text-orange">
+              {{track.status}}
+            </span>
+            <div>
+              <span class="bold">{{track.courseCount}} Courses</span>
+              <LinkTo 
+                @route="tracks.id" 
+                @model={{track.slug}}
+                class="button-solid button-orange ml-2">
+                Explore
+              </LinkTo>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

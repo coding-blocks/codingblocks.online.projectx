@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between">  
+  <div>
+    <span class="font-mds">I am a</span>
+    <button 
+      class="button-solid ml-3
+      {{if (eq selectedStatus "student") "button-orange" "button-grey"}}"
+      {{action (mut selectedStatus) "student"}}>
+      Student
+    </button>
+    <button 
+      class="button-solid 
+      {{if (eq selectedStatus "professional") "button-orange" "button-grey"}}"
+      {{action (mut selectedStatus) "professional"}}>
+      Professional
+    </button>
+    <span class="font-mds ml-5">I want to become a</span>
+    <WAsync @task={{fetchProfessionsTask}} @autoFire="true" class="d-inline" as |professions|>
+      <select class="ml-3 input-search bg-light-grey" onchange={{action (mut selectedProfessionId) value="target.value"}}>
+        <option> -- </option>
+        {{#each professions as |profession|}}
+          <option value="{{profession.id}}" selected={{eq selectedProfessionId profession.id}}>{{profession.title}}</option>
+        {{/each}}
+      </select>
+    </WAsync>
+  </div>
+  <div>
+    <button class="button-dashed button-orange" {{action 'continue'}}>Continue &gt;</button>
+  </div>
+</div>
