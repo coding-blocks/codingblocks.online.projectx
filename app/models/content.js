@@ -31,6 +31,6 @@ export default DS.Model.extend({
       default: return 'play-icon'; break;
     }
   }),
-  progress: DS.belongsTo('progress')
-  // section: DS.belongsTo('section')
+  progress: DS.belongsTo('progress'),
+  bookmark: DS.belongsTo('bookmark')
 })

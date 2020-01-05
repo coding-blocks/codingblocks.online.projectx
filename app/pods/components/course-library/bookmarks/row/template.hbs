@@ -1,0 +1,17 @@
+<div class="row">
+  <LinkTo 
+    @route="attempt.content"
+    @models={{array bookmark.runAttempt.id bookmark.section.id bookmark.content.id}}
+    class="col-12 col-md-4 col-lg-3 gradient-text-orange font-sm d-flex bold" >
+      <div> {{bookmark.content.title}} </div>
+  </LinkTo>
+  <div class="col-6 col-md-3 grey">
+    {{moment-from-now bookmark.createdAt}}
+  </div>
+  <div class="col-6 col-md-2 ml-auto gradient-text-orange t-align-r pointer" {{action "deleteBookmark"}}>
+    Delete
+  </div>
+</div>
+<div class="my-4 font-sm t-align-j">
+  Section: {{bookmark.section.name}}
+</div>

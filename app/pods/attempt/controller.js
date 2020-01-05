@@ -17,7 +17,11 @@ export default class AttemptController extends Controller {
     {
       name: 'Notes',
       component: 'player/player-notes-tab'
-    }
+    },
+    {
+      name: 'Announcements',
+      component: 'player/player-announcements-tab'
+    },
   ]
   activeTab = this.tabs.firstObject
 

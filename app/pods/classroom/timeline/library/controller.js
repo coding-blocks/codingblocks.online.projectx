@@ -21,6 +21,12 @@ export default class ClassroomTimelineLibraryController extends Controller {
       name: 'Announcements',
       component: 'course-library/announcements',
       task: this.fetchAnnouncements
+    },
+    {
+      name: 'Bookmarks',
+      component: 'course-library/bookmarks',
+      task: this.fetchBookmarks
+
     }
   ];
 
@@ -55,6 +61,18 @@ export default class ClassroomTimelineLibraryController extends Controller {
       include: 'user',
       filter: {
         runId: this.runAttempt.get('run.id'),
+      },
+      page: this.paginationOptions,
+      sort: '-createdAt'
+    })
+  }
+
+  @restartableTask fetchBookmarks = function* () {
+    return this.store.query('bookmark', {
+      include: 'section,content',
+      exclude: 'section.*,content.*',
+      filter: {
+        runAttemptId: this.runAttempt.id
       },
       page: this.paginationOptions,
       sort: '-createdAt'
