@@ -23,7 +23,7 @@ export default class PlayerHeader extends Component {
       this.api.request(`/bookmarks/${this.content.get('bookmark.id')}`, {
         method: 'DELETE'
       })
-      this.content.bookmark = undefined;
+      this.content.set('bookmark', null)
     } else {
 
       let bookmark = this.store.createRecord('bookmark', {
