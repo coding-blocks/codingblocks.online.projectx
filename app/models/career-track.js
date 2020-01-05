@@ -4,6 +4,7 @@ import DS from 'ember-data';
 
 export default Model.extend({
   name: DS.attr(),
+  slug: DS.attr(),
   languages: DS.attr(),
   unlisted: DS.attr(),
   logo: DS.attr(),
