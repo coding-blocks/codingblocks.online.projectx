@@ -1,3 +1,6 @@
-<Tracks::TracksFilter @onSearch={{action (perform onSearchTask)}} />
+<Tracks::TracksFilter 
+  @status={{status}}
+  @professionId={{professionId}}
+  @onSearch={{action (perform onSearchTask)}} />
 <div class="divider-h my-3"></div>
 {{outlet}}

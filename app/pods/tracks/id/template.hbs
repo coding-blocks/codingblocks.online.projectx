@@ -1,13 +1,77 @@
 <div class="row">
   <div class="col-md-8 my-4">
-    <h4>{{track.name}}</h4>
-    <ul>
-      {{#each track.courses as |course|}}
-        <li>
-          {{course.title}}
-        </li>
-      {{/each}}
-    </ul>
+    <div class="border-card p-md-5 p-4 bg-gradient-pink">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-xl-10 col-md-8 col-12">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-3">
+              <div class="course-logo">
+                <img src="{{track.logo}}" alt="">
+              </div>
+            </div>
+            <div class="col-9 white">
+              <h3 class="bold">{{track.name}}</h3>
+              <div class="normal">Learn full-stack web development using JavaScript &amp; NodeJS</div>
+            </div>
+          </div>
+        </div>
+        <div class="pill pill-white">{{track.courseCount}} Courses</div>
+      </div>
+    </div>
+    <div class="pl-4">
+      <div class="b-left">
+        {{#each track.courses as |course index|}}
+          <div class="px-5 pt-5 position-relative">
+            <div class="track-indicator complete">&#8226;</div>
+            <div class="normal">Course {{inc index}}</div>
+            <div class="row no-gutters align-items-center my-5">
+              <div class="col-md-6 col-12 mb-md-0 mb-3">
+                <div class="row no-gutters align-items-center">
+                  <div class="col-3">
+                    <img src="{{course.logo}}" alt="Course Logo">
+                  </div>
+                  <div class="col-9">
+                    <h5 class="bold">{{course.title}}</h5>
+                    <div class="font-normal mt-2">Mentor: {{#each course.instructors as |instructor i|}} {{if i ","}}  {{instructor.name}} {{/each}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="mb-3">
+                  <RatingStarsStatic @rating={{course.rating}} />
+                </div>
+                <div class="normal"><strong>{{course.rating}}/5.0</strong>, {{course.reviewCount}} Ratings</div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="row no-gutters justify-content-end align-items-center">
+                  <a href="#">
+                    <i class="far fa-heart mr-3 fa-lg"></i>
+                  </a>
+                  <button class="button-orange button-solid">Explore</button>
+                </div>
+              </div>
+            </div>
+            {{#if course.tags.length}}
+              <div>
+                <span class="normal grey mr-4">What will you learn</span>
+                {{#each course.tags as |tag|}}
+                  <div class="pill normal mr-2">{{tag.name}}</div>
+                {{/each}}
+              </div>
+            {{/if}}
+            {{#if course.projects.length}}
+              <div class="mt-4">
+                <span class="normal grey mr-4">Projects you will build</span>
+                {{#each course.projects as |project|}}
+                  <div class="pill pill-dashed normal mr-2">{{project.title}}</div>
+                {{/each}}
+              </div>
+            {{/if}}
+          </div>
+          <div class="divider-h content-divider mt-5 pl-5"></div>
+        {{/each}}
+      </div>
+    </div>
   </div>
   <div class="col-md-4 my-4">
     <Tracks::TracksDoubtsForm />
