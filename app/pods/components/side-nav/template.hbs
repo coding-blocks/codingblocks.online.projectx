@@ -17,6 +17,17 @@
         <FaIcon @icon="search" class="font-xl" />
         <h6 class="pt-2 d-none d-md-block font-sm">Buy Courses</h6>
       </a>
+      {{#if currentUser.organization}}
+        <LinkTo @route="courses" @query={{hash org=currentUser.organization}} class="nav-element py-4 px-2">
+          <FaIcon @icon="search" @size="2" />
+          <h6 class="pt-2 d-none d-md-block font-sm">Get Courses</h6>
+        </LinkTo>
+      {{else}}
+        <a href="/courses" class="nav-element py-4 px-2">
+          <FaIcon @icon="search" @size="2" />
+          <h6 class="pt-2 d-none d-md-block font-sm">Buy Courses</h6>
+        </a>
+      {{/if}}
     </div>
     {{#unless domain.isExternal}}
       <div class="col-2 col-md-12">
