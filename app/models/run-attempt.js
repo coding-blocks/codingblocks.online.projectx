@@ -25,8 +25,7 @@ export default DS.Model.extend({
   }),
   progressPercent: computed('completedContents', 'run.totalContents', function () {
     const totalContents = this.get('run.totalContents')
-    console.log(this.completedContents, totalContents)
-
-    return totalContents == 0 ? 0 : Math.floor(this.completedContents * 100 / totalContents)
+    const completedContents = this.completedContents || 0
+    return totalContents == 0 ? 0 : Math.floor(completedContents * 100 / totalContents)
   })
 })

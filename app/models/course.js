@@ -91,5 +91,8 @@ export default DS.Model.extend({
     organization: DS.attr(),
     coursefeatures: DS.attr(),
     projects: DS.hasMany('projects'),
-    tags: DS.hasMany("tag")
+    tags: DS.hasMany("tag"),
+    latestRun: computed('runs', 'runs.topRunAttempt', function() {
+      return this.get('runs').filter(run => run.get('topRunAttempt'))[0]
+    })
 });

@@ -37,17 +37,36 @@
                 </div>
               </div>
               <div class="col-md-3 col-6">
-                <div class="mb-3">
-                  <RatingStarsStatic @rating={{course.rating}} />
-                </div>
-                <div class="normal"><strong>{{course.rating}}/5.0</strong>, {{course.reviewCount}} Ratings</div>
+                {{#if course.latestRun}}
+                <div class="font-normal">Course Progress</div>
+                <div class="mt-3">
+                  <progress value="{{course.latestRun.topRunAttempt.progressPercent}}" max="100" class="d-inline-block w-70 progress-green"></progress>
+                  <span class="bold ml-3">
+                    {{course.latestRun.topRunAttempt.progressPercent}} %
+                  </span>
+                </div> 
+                {{else}}
+                  <div class="mb-3">
+                    <RatingStarsStatic @rating={{course.rating}} />
+                  </div>
+                  <div class="normal"><strong>{{course.rating}}/5.0</strong>, {{course.reviewCount}} Ratings</div>
+                {{/if}}
               </div>
               <div class="col-md-3 col-6">
                 <div class="row no-gutters justify-content-end align-items-center">
-                  <a href="#">
-                    <i class="far fa-heart mr-3 fa-lg"></i>
-                  </a>
-                  <button class="button-orange button-solid">Explore</button>
+                  {{#if course.latestRun}}
+                    <LinkTo 
+                      class="button-solid button-orange"
+                      @route="attempt" 
+                      @model={{course.latestRun.topRunAttempt.id}}>
+                      Resume
+                    </LinkTo>
+                  {{else}}
+                    <a href="#">
+                      <i class="far fa-heart mr-3 fa-lg"></i>
+                    </a>
+                    <button class="button-orange button-solid">Explore</button>
+                  {{/if}}
                 </div>
               </div>
             </div>
