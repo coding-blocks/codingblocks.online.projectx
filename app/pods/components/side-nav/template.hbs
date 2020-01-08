@@ -18,12 +18,14 @@
         <h6 class="pt-2 d-none d-md-block font-sm">Buy Courses</h6>
       </a>
     </div>
-    <div class="col-2 col-md-12">
-      <LinkTo @route="tracks" href="#" class="nav-element py-4 px-2">
-        <FaIcon @icon="graduation-cap" @size="2" />
-        <h6 class="pt-2 d-none d-md-block font-sm">Tracks</h6>
-      </LinkTo>
-    </div>
+    {{#unless domain.isExternal}}
+      <div class="col-2 col-md-12">
+        <LinkTo @route="tracks" href="#" class="nav-element py-4 px-2">
+          <FaIcon @icon="graduation-cap" @size="2" />
+          <h6 class="pt-2 d-none d-md-block font-sm">Tracks</h6>
+        </LinkTo>
+      </div>
+    {{/unless}}
     <div class="col-2 col-md-12">
       <LinkTo @route="classroom" class="nav-element py-4 px-2">
         <FaIcon @icon="video" @size="2" />
@@ -36,11 +38,11 @@
         <h6 class="pt-2 d-none d-md-block font-sm">Hiring Blocks</h6>
       </LinkTo>
     </div>
-    <div class="col-2 col-md-12">
+    {{!-- <div class="col-2 col-md-12">
       <a href="#" class="nav-element py-4 px-2">
         <FaIcon @icon="shopping-cart" @size="2" />
         <h6 class="pt-2 d-none d-md-block font-sm">My Orders</h6>
       </a>
-    </div>
+    </div> --}}
   </div>
 </div>
