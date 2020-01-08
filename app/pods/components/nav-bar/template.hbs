@@ -46,29 +46,27 @@
       </li> --}}
       <li class="top-nav-option hoverable px-3 d-md-block d-none">
         {{#if session.isAuthenticated}}
-        <div class="img-desc align-items-center font-sm pt-1">
-          <img class="round s-30x30" src="{{user.photo}}" alt="Profile Pic">
-          <div class="description ml-3">
-            Hi, {{user.fullName}}
+          <div class="img-desc align-items-center font-sm pt-1">
+            <img class="round s-30x30" src="{{user.photo}}" alt="Profile Pic">
+            <div class="description ml-3">
+              Hi, {{user.fullName}}
+            </div>
           </div>
-        </div>
-        <div class="pop-up border-card p-3 br-5">
-          <ul class="t-align-l">
-            <li>
-              <a href='https://account.codingblocks.com/users/me'>
-                Profile
-              </a>
-            </li>
-            <div class="divider-h my-3"></div>
-            <li>
-              <a class="dark-grey"  href={{logoutLink}} >
-                Logout
-              </a>
-            </li>
-          </ul>
-        </div>
-        {{else}}
-        <LoginButton />
+          <div class="pop-up border-card p-3 br-5">
+            <ul class="t-align-l">
+              <li>
+                <a href='https://account.codingblocks.com/users/me'>
+                  Profile
+                </a>
+              </li>
+              <div class="divider-h my-3"></div>
+              <li>
+                <a class="dark-grey"  href={{logoutLink}} >
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
         {{/if}}
       </li>
     </ul>

@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
+import AuthenticatedRouteMixin from 'codingblocks-online/mixins/authenticated-route-mixin';
 
-export default class Dashboard extends Route {
+export default class Dashboard extends Route.extend(AuthenticatedRouteMixin) {
 
   async model() {
     return await this.store.queryRecord('run', {

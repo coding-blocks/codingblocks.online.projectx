@@ -15,7 +15,6 @@ export default Route.extend(ApplicationRouteMixin, {
         }
     },
     beforeModel (transition) {
-
       if (!isNone(transition.to.queryParams.code)) {
         if (this.get('session.isAuthenticated')) {
           return this.transitionTo({ queryParams: { code: undefined } })
