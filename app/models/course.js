@@ -94,5 +94,6 @@ export default DS.Model.extend({
     tags: DS.hasMany("tag"),
     latestRun: computed('runs', 'runs.topRunAttempt', function() {
       return this.get('runs').filter(run => run.get('topRunAttempt'))[0]
-    })
+    }),
+    userCourseWishlist: DS.belongsTo('userCourseWishlist')
 });
