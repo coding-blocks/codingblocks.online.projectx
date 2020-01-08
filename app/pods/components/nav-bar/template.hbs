@@ -1,6 +1,6 @@
-<div class="row c-topnav py-3 justify-content-between ml-sidenav no-gutters content-container">
-  <div class="col-6 px-0 d-md-none d-block">
-    <div class="d-flex align-items-center ml-3">
+<div class="row c-topnav py-4 justify-content-between align-items-center">
+  <div class="col-6 px-0">
+    <div class="d-md-none d-block d-flex align-items-center ml-3">
       <div class="hamburger-menu mr-3">
         <div class="ham-toggle">
           <div class="hamburger" {{action 'toggleHamburgerNav'}}>
@@ -10,17 +10,17 @@
           </div>
         </div>
       </div>
-      <span class="font-sm">Online<strong> Coding Blocks</strong></span>
+      <img src="https://minio.codingblocks.com/motley/online-logo-text.png" alt="" class="d-inline-block w-75">
     </div>
   </div>
-  <div class="col-6 d-md-block d-none">
+  <div class="col-6 offset-1 d-md-block d-none">
     <ul>
-      <li class="top-nav-option mt-2 d-none d-md-block">
+      <li class="top-nav-option px-3 d-none d-md-block">
         <a href="https://codingblocks.com/classroom-courses/" target="blank">
           <h6>Classroom Courses</h6>
         </a>
       </li>
-      <li class="top-nav-option px-3 mt-2 d-none d-md-block">
+      <li class="top-nav-option px-3 d-none d-md-block">
         <a href="https://hack.codingblocks.com" target="blank">
           <h6>HackerBlocks</h6>
         </a>
@@ -32,8 +32,8 @@
       </li> --}}
     </ul>
   </div>
-  <div class="col-6 align-items-center">
-    <ul class="right-nav pull-right">
+  <div class="align-items-center">
+    <ul class="right-nav d-md-flex d-none">
       {{!-- <li class="top-nav-option px-3 pt-3">
         <a href="#search">
           <i class="fas fa-search fa-lg"></i>
@@ -44,11 +44,11 @@
           <i class="far fa-bell fa-lg"></i>
         </a>
       </li> --}}
-      <li class="top-nav-option hoverable px-3 d-md-block d-none">
+      <li class="top-nav-option hoverable px-3">
         {{#if session.isAuthenticated}}
-          <div class="img-desc align-items-center font-sm pt-1">
+          <div class="img-desc align-items-center font-sm">
             <img class="round s-30x30" src="{{user.photo}}" alt="Profile Pic">
-            <div class="description ml-3">
+            <div class="description ml-4 font-sm bold">
               Hi, {{user.fullName}}
             </div>
           </div>
@@ -75,9 +75,9 @@
 
 <div class="hamburger-nav b-right overflow-y-auto no-scrollbar {{if hideHamburgerNav 'hamburger-nav--hidden' ''}}">
   <div class="d-flex py-3 justify-content-between align-items-center hamburger-nav__top-bar">
-    <img src="/app/images/hb_logo_monochrome_full_dg.png" alt="HB" class="hamburger-nav__ham-logo ml-4">
+    <img src="https://minio.codingblocks.com/motley/online-logo-text.png" alt="HB" class="hamburger-nav__ham-logo ml-4">
     <button class="mr-4 hamburger-nav__cross pointer" {{action 'toggleHamburgerNav'}}>
-      <img src="/app/images/wrong_g.png" alt="#">
+      <img src="https://minio.codingblocks.com/motley/wrong_g.png" alt="#">
     </button>
   </div>
   <div class="divider-h"></div>
@@ -89,10 +89,10 @@
     </div>
 
     <div class="pl-4">
-      <div class="extra-bold gradient-text font-mds">{{user.name}}</div>
-      <a href='https://account.codingblocks.com' class="bold orange">
-        <button {{action 'toggleHamburgerNav'}}>View Profile</button>
-      </a>
+      <div class="extra-bold gradient-text font-mds">{{user.fullName}}</div>
+      <div href='https://account.codingblocks.com'>
+        <a class="bold orange" href="https://account.codingblocks.com/users/me" {{action 'toggleHamburgerNav'}}>View Profile</a>
+      </div>
     </div>
   </div>
   {{/if}}
