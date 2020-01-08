@@ -4,7 +4,7 @@
 	{{/if}}
 	<i class="fas fa-bell"></i>
 </div>
-<div class="dropdown-ul border-card pt-0 c-notification {{if showDialog 'display-block'}}" id="notification-box">
+<div class="pop-up dropdown-ul border-card pt-0 c-notification {{if showDialog 'display-block'}}" id="notification-box">
 	{{#if notifications.length}}
 		{{#each notifications as |notification|}}
 		<a href="{{notification.url}}" target="_blank">
