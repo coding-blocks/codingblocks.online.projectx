@@ -34,7 +34,8 @@
       </div>
       <div class="col-4 t-align-r">
         <LinkTo
-          @route="dashboard"
+          @route="classroom.timeline"
+          @models={{array run.course.id run.id}}
           class="button-solid button-orange">
           Exit Class  
         </LinkTo>
