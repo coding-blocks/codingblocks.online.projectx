@@ -1,5 +1,6 @@
 import Service from '@ember/service'
 import { computed } from '@ember/object';
+import env from 'codingblocks-online/config/environment'
 
 export default class DomainService extends Service {
     
@@ -12,7 +13,7 @@ export default class DomainService extends Service {
   
   @computed('domain')
   get domainBasedPublicUrl() {
-    return this.isExternal ? `https://${this.domain}.codingblocks.com` : 'https://online.codingblocks.com'
+    return this.isExternal ? `https://${this.domain}.codingblocks.com` : env.publicUrl
   }
 
 }
