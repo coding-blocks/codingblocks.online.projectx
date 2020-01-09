@@ -95,20 +95,5 @@ export default Component.extend({
   didReceiveAttrs(){
     this._super(...arguments);
     this.getRatingStats.perform();
-  },
-
-  didInsertElement () {
-    this._super(...arguments)
-    // hide buy-right and pull buy-top when user scrolls to the top of accrodian
-    const buyTop = $(".c-buy-top")[0];
-    const accordion = $(".c-about-accordion");
-    const accordOffsetTop = accordion.offset().top - 350;
-    $(window).on('scroll', function() {
-      if (window.pageYOffset >= accordOffsetTop) {
-        buyTop.classList.remove("slide-up");
-      } else {
-        buyTop.classList.add("slide-up");
-      }
-    })
   }
 });

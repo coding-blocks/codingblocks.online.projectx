@@ -7,6 +7,7 @@ $cb-red: #ff6666;
 @import "ember-power-select";
 
 @import "./components/index.scss";
+@import "./components/course-card.scss";
 @import "lists.scss";
 
 .notes-list-container {
@@ -196,5 +197,11 @@ $cb-red: #ff6666;
 
   .red {
     color: #FF6666 !important;
+  }
+}
+
+.img-card {
+  .head {
+    background-size: cover;
   }
 }
