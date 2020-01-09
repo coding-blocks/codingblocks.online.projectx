@@ -13,5 +13,10 @@
       </div>
     </div>
   </div>
-  <button class="button-orange button-solid">Resume</button>
+  <LinkTo 
+    @route="classroom.timeline"
+    @models={{array @run.course.id @run.id}}
+    class="button-orange button-solid">
+    Resume
+  </LinkTo>
 </div>
