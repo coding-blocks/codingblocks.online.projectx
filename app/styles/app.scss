@@ -10,6 +10,10 @@ $cb-red: #ff6666;
 @import "./components/course-card.scss";
 @import "lists.scss";
 
+body {
+  padding-top: 70px;
+}
+
 .notes-list-container {
   height: calc(100% - 75px);
   overflow: auto;
@@ -88,11 +92,6 @@ $cb-red: #ff6666;
   .content-container {
     padding: 0 2%;
   }
-}
-.c-topnav {
-  width: 88vw;
-  max-width: unset;
-  z-index: 5;
 }
 
 .max-width-unset {

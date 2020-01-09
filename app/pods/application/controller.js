@@ -5,6 +5,7 @@ import { inject as service } from '@ember/service';
 
 export default class ApplicationController extends Controller {
   @service router
+  @service session
   @computed ('router.currentRouteName')
   get isInsideAttemptRoute () {
     return ['attempt'].includes(this.get('router.currentRouteName').split('.')[0])
