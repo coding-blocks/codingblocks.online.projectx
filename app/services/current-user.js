@@ -18,9 +18,7 @@ export default Service.extend({
     if (currentUser && currentUser.id) {
       return Promise.resolve(currentUser);
     }
-    document.cookie = `auth-jwt=${this.get(
-      "session.data.authenticated.jwt"
-    )}; path=/`;
+    document.cookie = `auth-jwt=${this.get("session.data.authenticated.jwt")}; domain=${window.location.host}; path=/`;
 
     return this.store
       .queryRecord("user", { custom: { ext: "url", url: "me" } })
