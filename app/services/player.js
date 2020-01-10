@@ -10,6 +10,7 @@ const byNameContent = byNameValue("attempt.content")
 
 export default class PlayerService extends Service {
   @service router
+  @service store
 
   /*
     Are we inside player?
@@ -49,7 +50,28 @@ export default class PlayerService extends Service {
 
   //TODO:  transitionToNextContent(), transitionToPreviousContent()
   @action
-  transitionToNextContent() {}
+  async transitionToNextContent() {
+    const runAttempt = this.store.peekRecord('run-attempt', this.runAttemptId)
+    const currentSection = this.store.peekRecord('section', this.sectionId)
+    const currentContent = this.store.peekRecord('content', this.contentId)
+    const contents = await currentSection.get('contents')
+
+    let nextContent = null
+    let nextSection = null
+
+    const indexOfThisContent = contents.indexOf(currentContent);
+
+    if (indexOfThisContent === currentSection.get("contents.length") - 1) {
+      const indexOfThisSection = runAttempt.get("run.course.sections").indexOf(currentSection);
+      nextSection = this.get("runAttempt.run.course.sections").objectAt(indexOfThisSection + 1)
+      nextContent = (await nextSection.get("contents")).objectAt(0);
+    } else {
+      nextSection = currentSection
+      nextContent = contents.objectAt(indexOfThisContent + 1);
+    }
+
+    this.router.replaceWith('attempt.content', nextSection.id, nextContent.id)
+  }
 
   @action
   transitionToPreviousContent() {}
