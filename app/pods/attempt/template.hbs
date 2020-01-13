@@ -1,13 +1,16 @@
 <div class="timeline">  
   <Player::PlayerHeader  
     @run={{run}} />
-  <div class="container-fluid content-container max-width-unset">
-    <div class="row">
-      <div class="col-3 overflow-y-auto h-100">
-        <h4 class="py-4 bold">
-          Course Content
+
+    
+    <div class="row no-gutters timeline__main-area">
+      <div class="col-lg-3 col-12 timeline__main-area__content-bar no-scrollbar order-2">
+        <div class="position-sticky d-lg-block d-none">
+          <h4 class="bold">
+            Course Content
+          </h4>
           <div class="divider-h"></div>
-        </h4>
+        </div>
 
          <div class="d-lg-none timeline__main-area__content-bar__title--phone">
           <a href="#" class="white">
@@ -39,7 +42,7 @@
       
       <div class="col-lg-9 timeline__main-area__video-area no-scrollbar order-lg-12 order-1">
         <div>
-          <div class="py-4">
+          <div>
             {{outlet}}
           </div>
           <div class="row py-4 mx-0 align-items-center">
@@ -68,11 +71,8 @@
           </WTabNav>
         </div>
         </div>
-      </div>
-  </div>
-
-
-
+    </div>
+  
 </div>
 
 {{#if showAskDoubtModal}}
