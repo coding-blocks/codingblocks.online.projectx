@@ -5,7 +5,7 @@
 	<i class="fas fa-shopping-cart"></i>
 </div>
 
-<div class="dropdown-ul border-card c-notification {{if showDialog 'display-block'}}" id="cart-box">
+<div class="pop-up dropdown-ul border-card c-notification {{if showDialog 'display-block'}}" id="cart-box">
   {{#if cartItem}}
     <div class="row align-items-center mb-4">
       <div class="img-desc">
@@ -32,10 +32,10 @@
     </div>
   {{else}}
     <a href="#" target="_blank">
-      <div class="dropdown-li row align-items-center">
-        <div class="col-12">
+      <div class="dropdown-li row align-items-left pl-3">
+        {{!-- <div class="col-12"> --}}
           Your Cart is empty
-        </div>
+        {{!-- </div> --}}
       </div>
     </a>
   {{/if}}

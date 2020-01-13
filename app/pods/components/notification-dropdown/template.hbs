@@ -4,12 +4,13 @@
 	{{/if}}
 	<i class="fas fa-bell"></i>
 </div>
-<div class="dropdown-ul border-card pt-0 c-notification {{if showDialog 'display-block'}}" id="notification-box">
+<div class="pop-up dropdown-ul border-card pt-2 c-notification {{if showDialog 'display-block'}}" id="notification-box" 
+style="height: 500px; overflow-y: scroll;">
 	{{#if notifications.length}}
 		{{#each notifications as |notification|}}
 		<a href="{{notification.url}}" target="_blank">
 			<div class="dropdown-li row">
-				<div class="notify-type col-2 justify-content-center align-items-center">
+				<div class="notify-type col-2 pt-3 justify-content-center align-items-center">
 					<div class="notify-icon">
 						{{#if notification.isUnread}}
 						<span class="notify-dot new"></span>

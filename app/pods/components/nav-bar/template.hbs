@@ -32,43 +32,43 @@
       </li> --}}
     </ul>
   </div>
-  <div class="align-items-center">
-    <ul class="right-nav d-md-flex d-none">
-      {{!-- <li class="top-nav-option px-3 pt-3">
-        <a href="#search">
-          <i class="fas fa-search fa-lg"></i>
-        </a>
-      </li> --}}
-      {{!-- <li class="top-nav-option px-3 pt-3">
-        <a href="#notification">
-          <i class="far fa-bell fa-lg"></i>
-        </a>
-      </li> --}}
-      <li class="top-nav-option hoverable px-3">
-        {{#if session.isAuthenticated}}
-          <div class="img-desc align-items-center font-sm">
-            <img class="round s-30x30" src="{{user.photo}}" alt="Profile Pic">
-            <div class="description ml-4 font-sm bold">
-              Hi, {{user.fullName}}
-            </div>
-          </div>
-          <div class="pop-up border-card p-3 br-5">
-            <ul class="t-align-l">
-              <li>
-                <a href='https://account.codingblocks.com/users/me'>
-                  Profile
-                </a>
-              </li>
-              <div class="divider-h my-3"></div>
-              <li>
-                <a class="dark-grey"  href={{logoutLink}} >
-                  Logout
-                </a>
-              </li>
-            </ul>
-          </div>
-        {{/if}}
+  <div class="col-5 align-items-center">
+    <ul class="right-nav pull-right">
+      {{#if session.isAuthenticated}}
+     <li class="top-nav-option px-3 d-md-block d-none pointer">
+        {{notification-dropdown toggleAction=toggleNotification activeTab=activeTab}}
       </li>
+      <li class="top-nav-option px-3 d-md-block d-none pointer">
+        {{dukaan-dropdown toggleAction=toggleCart activeTab=activeTab}}
+      </li>
+      <li class="top-nav-option hoverable px-3 d-md-block d-none">
+        <div class="img-desc align-items-center font-sm">
+          <img class="round s-30x30" src="{{user.photo}}" alt="Profile Pic">
+          <div class="description ml-3">
+            Hi, {{user.fullName}}
+          </div>
+        </div>
+        <div class="pop-up border-card p-3 br-5">
+          <ul class="t-align-l">
+            <li>
+              <a href='https://account.codingblocks.com/users/me'>
+                Profile
+              </a>
+            </li>
+            <div class="divider-h my-3"></div>
+            <li>
+              <a class="dark-grey"  href={{logoutLink}} >
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {{else}}
+      <li>
+        <LoginButton />
+      </li>
+      {{/if}}
     </ul>
   </div>
 </div>
