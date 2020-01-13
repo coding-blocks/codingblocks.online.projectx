@@ -6,74 +6,60 @@ import { inject as service } from '@ember/service'
 export default Route.extend({
   api: service(),
   metrics: service(),
+  breadCrumb: {
+    title: 'Course Dashboard',
+  },
   activate () {
     window.scrollTo(0, 0)
   },
-  model(params, transition) {
-    return this.store
-      .query("run-attempt", {
+  async model(params, transition) {
+    let runAttempts = await this.store.query("run-attempt", {
         filter: {
           runId: params.runId
         },
         exclude: 'progresses,quiz_attempts,certificates,csv_submissions,doubts,notes'
-      })
-      .then(runAttempts => {
-        const runAttempt = get(runAttempts, 'firstObject')
-        if (isNone(runAttempt)) {
-          transition.abort();
+    })
 
-          // try to enroll in preview
-          return this.api
-            .request(`runs/${params.runId}/enroll`)
-            .then(response => {
-              transition.retry()
-            })
-            .catch(err => {
-              if (err.status == 400 && err.payload.err == "TRIAL_WITHOUT_MOBILE") {
-                // trial creation denined because user has no mobile number
-                this.transitionTo('error', {
-                  queryParams: {
-                    errorCode: 'NO_USER_MOBILE_NUMBER'
-                  }
-                })
-              } else {
-                throw new Error("Cannot enroll you in preview")
-              }
-            });
-        } else {
-          return this.store.findRecord("run-attempt",
-            runAttempt.get("id"), {
-              reload: true
+    let runAttempt = get(runAttempts, 'firstObject')
+    
+    if (!isNone(runAttempt)) {
+      runAttempt = await this.store.findRecord("run-attempt", runAttempt.get("id"), {reload: true})
+    } else {
+      transition.abort();
+
+      // try to enroll in preview
+      try {
+        await this.api.request(`runs/${params.runId}/enroll`)
+        transition.retry()
+      } catch (err) {
+        if (err.status == 400 && err.payload.err == "TRIAL_WITHOUT_MOBILE") {
+          // trial creation denined because user has no mobile number
+          this.transitionTo('error', {
+            queryParams: {
+              errorCode: 'NO_USER_MOBILE_NUMBER'
             }
-          );
+          })
+        } else {
+          throw new Error("Cannot enroll you in preview")
         }
-      })
-      .then(async (runAttemptParameter) => {
-        return this.store.query("goodie-request", {
-          filter: {
-            runAttemptId: runAttemptParameter.id
-          }
-        })
-        .then((records) => {
-          let record = get(records, 'firstObject')
+      }
+    }
+    const goodieRequestsForRunAttempt = await this.store.query("goodie-request", {
+      filter: {
+        runAttemptId: runAttempt.id
+      }
+    }).then(x => get(x, 'firstObject'))
 
-          if(isNone(record)) {
-            record = this.store.createRecord("goodie-request", {})
-            record.set("runAttempt", runAttemptParameter)
-            record.set("run", runAttemptParameter.run)
-          }
+    runAttempt.set("goodieRequests",
+      isNone(goodieRequestsForRunAttempt)
+        ? this.store.createRecord("goodie-request", {}) :
+        goodieRequestsForRunAttempt
+    )
 
-          runAttemptParameter.set("goodieRequests", record)
-          return runAttemptParameter
-        })
-      })
-      .then(async (runAttempt) => {
-        await this.api.request('courses/' + runAttempt.get('run.course.id') + '/rating', {
-          method: 'GET'
-        }).then((rating) => {
-          runAttempt.set("rating", rating.userScore)
-        })
-        return runAttempt
-      });
+    const rating = await this.api.request('courses/' + runAttempt.get('run.course.id') + '/rating')
+    runAttempt.set("rating", rating.userScore)
+    
+    this.set('breadCrumb.title', runAttempt.get('run.description'))
+    return runAttempt
   }
 });
