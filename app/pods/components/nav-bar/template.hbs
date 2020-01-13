@@ -32,17 +32,17 @@
       </li> --}}
     </ul>
   </div>
-  <div class="col-6 align-items-center">
+  <div class="col-5 align-items-center">
     <ul class="right-nav pull-right">
       {{#if session.isAuthenticated}}
-     <li class="top-nav-option px-3 d-md-block d-none">
+     <li class="top-nav-option px-3 d-md-block d-none pointer">
         {{notification-dropdown toggleAction=toggleNotification activeTab=activeTab}}
       </li>
-      <li class="top-nav-option px-3 d-md-block d-none">
+      <li class="top-nav-option px-3 d-md-block d-none pointer">
         {{dukaan-dropdown toggleAction=toggleCart activeTab=activeTab}}
       </li>
       <li class="top-nav-option hoverable px-3 d-md-block d-none">
-        <div class="img-desc align-items-center font-sm pt-1">
+        <div class="img-desc align-items-center font-sm">
           <img class="round s-30x30" src="{{user.photo}}" alt="Profile Pic">
           <div class="description ml-3">
             Hi, {{user.fullName}}
