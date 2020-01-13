@@ -6,14 +6,9 @@ import { action } from '@ember/object';
 export default class TracksFilter extends Component {
   @service store
 
-  selectedStatus = 'student'
-
   @action
   continue() {
-    this.sendAction('onSearch', {
-      status: this.selectedStatus,
-      professionId: this.selectedProfessionId
-    })
+    this.sendAction('onSearch')
   }
 
   @restartableTask fetchProfessionsTask = function *() {

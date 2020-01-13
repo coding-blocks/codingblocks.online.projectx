@@ -7,7 +7,13 @@ $cb-red: #ff6666;
 @import "ember-power-select";
 
 @import "./components/index.scss";
+@import "./components/course-card.scss";
+@import "./components/nagarro-banner.scss";
 @import "lists.scss";
+
+body {
+  padding-top: 70px;
+}
 
 .notes-list-container {
   height: calc(100% - 75px);
@@ -87,11 +93,6 @@ $cb-red: #ff6666;
   .content-container {
     padding: 0 2%;
   }
-}
-.c-topnav {
-  width: 88vw;
-  max-width: unset;
-  z-index: 5;
 }
 
 .max-width-unset {
@@ -204,4 +205,9 @@ $cb-red: #ff6666;
 }
 .dropdown-ul {
   width: 375px;
+}
+.img-card {
+  .head {
+    background-size: cover;
+  }
 }

@@ -2,16 +2,37 @@
 {{#if hideNav}}
   {{outlet}}
 {{else}}
+  {{#if session.isAuthenticated}}
   <NavBar />
   <SideNav />
-  <div class="ml-sidenav">
-    <div class="row justify-content-center mx-0">
-      <div class="w-100">
-        <cb-navbar topalign="right"></cb-navbar>
-      </div>
-      <div class="pt-4 container-fluid content-container">
-        {{outlet}}
+  <div class="offset-1">
+    <cb-navbar topalign="right" />
+  </div>
+
+  <div class="offset-md-1">
+    <div class="container">
+      <div class="row justify-content-center mx-0">
+        <div class="pt-4 container-fluid content-container">
+          {{outlet}}
+        </div>
       </div>
     </div>
   </div>
-{{/if}}
+  {{else}}
+    <div class="row no-gutters">
+      <div class="col-12">
+        <NavBarPublic class="ml-0 w-100" />
+        <cb-navbar topalign="right" />
+          {{outlet}}
+      </div>
+    </div>
+
+    <style>
+      body {
+        padding-top: 0px;
+      }
+    </style>
+  {{/if}}
+
+
+{{/if}} 

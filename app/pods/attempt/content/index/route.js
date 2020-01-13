@@ -1,8 +1,9 @@
 import Route from "@ember/routing/route";
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
+  router: service(),
   model() {
-    // TODO: redirect to content specific route
     const content = this.modelFor('attempt.content')
     switch (content.contentable) {
       case 'code-challenge': 

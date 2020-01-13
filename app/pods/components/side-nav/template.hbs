@@ -1,4 +1,4 @@
-<div class="c-sidenav bottom-nav">
+<div class="c-sidenav bottom-nav  col-md-1 col-12">
   <div class="logo pb-5 pt-4 d-md-block d-none">
     <LinkTo @route="index">
       <img src="/app/images/logo_white.png" alt="Logo">
@@ -8,39 +8,42 @@
   <div class="row all-center">
     <div class="col-2 col-md-12">
       <LinkTo @route="dashboard" class="nav-element py-4 px-2">
-        <FaIcon @icon="chart-pie" @size="2" />
+        <FaIcon @icon="chart-pie" class="font-xl" />
         <h6 class="pt-2 d-none d-md-block font-sm">Dashboard</h6>
       </LinkTo>
     </div>
     <div class="col-2 col-md-12">
-      <a href="#" class="nav-element py-4 px-2">
-        <FaIcon @icon="search" @size="2" />
-        <h6 class="pt-2 d-none d-md-block font-sm">Buy Courses</h6>
-      </a>
+      {{#if currentUser.organization}}
+        <LinkTo @route="courses" @query={{hash org=currentUser.organization}} class="nav-element py-4 px-2">
+          <FaIcon @icon="search" @size="2" />
+          <h6 class="pt-2 d-none d-md-block font-sm">Get Courses</h6>
+        </LinkTo>
+      {{else}}
+        <a href="/courses" class="nav-element py-4 px-2">
+          <FaIcon @icon="search" @size="2" />
+          <h6 class="pt-2 d-none d-md-block font-sm">Buy Courses</h6>
+        </a>
+      {{/if}}
     </div>
-    <div class="col-2 col-md-12">
-      <LinkTo @route="tracks" href="#" class="nav-element py-4 px-2">
-        <FaIcon @icon="graduation-cap" @size="2" />
-        <h6 class="pt-2 d-none d-md-block font-sm">Tracks</h6>
-      </LinkTo>
-    </div>
+    {{#unless domain.isExternal}}
+      <div class="col-2 col-md-12">
+        <LinkTo @route="tracks" href="#" class="nav-element py-4 px-2">
+          <FaIcon @icon="graduation-cap" @size="2" />
+          <h6 class="pt-2 d-none d-md-block font-sm">Tracks</h6>
+        </LinkTo>
+      </div>
+    {{/unless}}
     <div class="col-2 col-md-12">
       <LinkTo @route="classroom" class="nav-element py-4 px-2">
-        <FaIcon @icon="video" @size="2" />
+        <FaIcon @icon="video" class="font-xl" />
         <h6 class="pt-2 d-none d-md-block font-sm">My Courses</h6>
       </LinkTo>
     </div>
     <div class="col-2 col-md-12">
       <LinkTo @route="hiring-blocks" class="nav-element py-4 px-2">
-        <FaIcon @icon="suitcase" @size="2" />
+        <FaIcon @icon="suitcase" class="font-xl" />
         <h6 class="pt-2 d-none d-md-block font-sm">Hiring Blocks</h6>
       </LinkTo>
-    </div>
-    <div class="col-2 col-md-12">
-      <a href="#" class="nav-element py-4 px-2">
-        <FaIcon @icon="shopping-cart" @size="2" />
-        <h6 class="pt-2 d-none d-md-block font-sm">My Orders</h6>
-      </a>
     </div>
   </div>
 </div>

@@ -1,13 +1,30 @@
 <div class="row">
   <div class="col-md-8 my-4">
-    <h4>{{track.name}}</h4>
-    <ul>
-      {{#each track.courses as |course|}}
-        <li>
-          {{course.title}}
-        </li>
-      {{/each}}
-    </ul>
+    <div class="border-card p-md-5 p-4 bg-gradient-pink">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-xl-10 col-md-8 col-12">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-3">
+              <div class="course-logo">
+                <img src="{{track.logo}}" alt="">
+              </div>
+            </div>
+            <div class="col-9 white">
+              <h3 class="bold">{{track.name}}</h3>
+              <div class="normal">Learn full-stack web development using JavaScript &amp; NodeJS</div>
+            </div>
+          </div>
+        </div>
+        <div class="pill pill-white">{{track.courseCount}} Courses</div>
+      </div>
+    </div>
+    <div class="pl-4">
+      <div class="b-left">
+        {{#each track.courses as |course index|}}
+          <Tracks::TracksCourseRow @course={{course}} />
+        {{/each}}
+      </div>
+    </div>
   </div>
   <div class="col-md-4 my-4">
     <Tracks::TracksDoubtsForm />
