@@ -1,50 +1,78 @@
-<div class="bg-dark-grey white c-player">  
+<div class="timeline">  
   <Player::PlayerHeader  
     @run={{run}} />
-  <div style="margin-top: 33px;"></div>
   <div class="container-fluid content-container max-width-unset">
     <div class="row">
       <div class="col-3 overflow-y-auto h-100">
         <h4 class="py-4 bold">
           Course Content
+          <div class="divider-h"></div>
         </h4>
-        <div class="divider-h"></div>
 
-        <Player::PlayerSectionList 
-          @currentSectionId={{currentSectionId}}
-          @sections={{sections}} />
-      </div>
-      <div class="col-9">
-        <div class="py-4">
-          {{outlet}}
+         <div class="d-lg-none timeline__main-area__content-bar__title--phone">
+          <a href="#" class="white">
+            <div class="row no-gutters justify-content-between align-items-center">
+              <div class="col-10">
+                <h6 class="bold gradient-text-orange">{{currentSection.name}}</h6>
+                <div class="normal mt-1">{{currentContent.title}}</div>
+              </div>
+              <i class="far fa-bookmark fa-lg"></i>
+            </div>
+          </a>
         </div>
-        <div class="row py-4 mx-0 align-items-center">
-          <div class="mr-auto">
-            <h3 class="gradient-text-orange bold">
-              Get 24*7 Doubts &amp; Mentor Support
-            </h3>
-            Have any queries? Ask a Doubt
+        
+        <div class="collapsible-content collapsible-content--hidden">
+          <div class="d-lg-none pt-4">
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="font-normal mr-3">Course Progress</span>
+              <div class="flex-1">
+                <progress value="30" max="100" class="progress-orange"></progress>
+              </div>
+              <span class="bold ml-3">100%</span>
+            </div>
           </div>
-          <button class="button-solid button-orange" {{action "openAskDoubtModal"}}>
-            Ask Doubt
-          </button>
+          <Player::PlayerSectionList 
+            @currentSectionId={{currentSectionId}}
+            @sections={{sections}} />
         </div>
-        <WTabNav
-          @inactiveClass="white"
-          @tabs={{tabs}}
-          @activeTab={{activeTab}}
-          @onTabChange={{action (mut activeTab)}}>
-          {{#if (eq activeTab.name 'Doubts')}}
-            {{component activeTab.component
-              doubts=runAttempt.doubts}}  
-          {{else if (eq activeTab.name 'Notes')}}
-            {{component activeTab.component
-              notes=runAttempt.notes}}  
-          {{/if}}
-        </WTabNav>
       </div>
-    </div>
+      
+      <div class="col-lg-9 timeline__main-area__video-area no-scrollbar order-lg-12 order-1">
+        <div>
+          <div class="py-4">
+            {{outlet}}
+          </div>
+          <div class="row py-4 mx-0 align-items-center">
+            <div class="mr-auto">
+              <h3 class="gradient-text-orange bold">
+                Get 24*7 Doubts &amp; Mentor Support
+              </h3>
+              Have any queries? Ask a Doubt
+            </div>
+            <button class="button-solid button-orange" {{action "openAskDoubtModal"}}>
+              Ask Doubt
+            </button>
+          </div>
+          <WTabNav
+            @inactiveClass="white"
+            @tabs={{tabs}}
+            @activeTab={{activeTab}}
+            @onTabChange={{action (mut activeTab)}}>
+            {{#if (eq activeTab.name 'Doubts')}}
+              {{component activeTab.component
+                doubts=runAttempt.doubts}}  
+            {{else if (eq activeTab.name 'Notes')}}
+              {{component activeTab.component
+                notes=runAttempt.notes}}  
+            {{/if}}
+          </WTabNav>
+        </div>
+        </div>
+      </div>
   </div>
+
+
+
 </div>
 
 {{#if showAskDoubtModal}}
@@ -53,3 +81,5 @@
     @doubt={{newDoubt}} 
     class="row white h-100" />
 {{/if}}
+
+
