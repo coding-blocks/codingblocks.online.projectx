@@ -35,6 +35,7 @@ export default class AttemptController extends Controller {
     },
   ]
   activeTab = this.tabs.firstObject
+  contentListCollpased = true
 
   @action 
   openAskDoubtModal() {
@@ -86,5 +87,10 @@ export default class AttemptController extends Controller {
       await newProgress.save().then(p => content.set("progress", p));
     }
     return false;
+  }
+
+  @action
+  toggleContentList() {
+    this.toggleProperty('contentListCollpased')
   }
 }

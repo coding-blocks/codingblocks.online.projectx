@@ -1,4 +1,4 @@
-<div class="timeline">  
+<div class="timeline" id="timelineContainer">  
   <Player::PlayerHeader  
     @run={{run}} />
 
@@ -12,8 +12,7 @@
           <div class="divider-h"></div>
         </div>
 
-         <div class="d-lg-none timeline__main-area__content-bar__title--phone">
-          <a href="#" class="white">
+         <div class="d-lg-none timeline__main-area__content-bar__title--phone" {{action 'toggleContentList'}} role="button">
             <div class="row no-gutters justify-content-between align-items-center">
               <div class="col-10">
                 <h6 class="bold gradient-text-orange">{{currentSection.name}}</h6>
@@ -21,10 +20,9 @@
               </div>
               <i class="far fa-bookmark fa-lg"></i>
             </div>
-          </a>
         </div>
         
-        <div class="collapsible-content collapsible-content--hidden">
+        <div class="collapsible-content {{if contentListCollpased 'collapsible-content--hidden'}}">
           <div class="d-lg-none pt-4">
             <div class="d-flex align-items-center justify-content-between">
               <span class="font-normal mr-3">Course Progress</span>
@@ -45,8 +43,8 @@
           <div>
             {{outlet}}
           </div>
-          <div class="row py-4 mx-0 align-items-center">
-            <div class="mr-auto">
+          <div class="row py-4 no-gutters align-items-center justify-content-between ">
+            <div class="col-8">
               <h3 class="gradient-text-orange bold">
                 Get 24*7 Doubts &amp; Mentor Support
               </h3>
