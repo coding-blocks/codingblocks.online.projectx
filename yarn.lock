@@ -1452,9 +1452,9 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@coding-blocks/motley@coding-blocks/motley#526f5c4":
+"@coding-blocks/motley@coding-blocks/motley#b0cf4f2":
   version "0.4.9"
-  resolved "https://codeload.github.com/coding-blocks/motley/tar.gz/526f5c487e8784db4dfec12e03ac7db969c1dc17"
+  resolved "https://codeload.github.com/coding-blocks/motley/tar.gz/b0cf4f2469bcb04decbb4b76aec83a9cde777a8c"
   dependencies:
     build "^0.1.4"
     run "^1.4.0"
@@ -6135,9 +6135,10 @@ ember-copy@^1.0.0:
   dependencies:
     ember-cli-babel "^6.6.0"
 
-"ember-crumbly@https://github.com/poteto/ember-crumbly#13c696e":
+ember-crumbly@^3.0.1:
   version "3.0.1"
-  resolved "https://github.com/poteto/ember-crumbly#13c696e002392775df96945f558ea67093bec279"
+  resolved "https://registry.yarnpkg.com/ember-crumbly/-/ember-crumbly-3.0.1.tgz#553e4fbc109abbde38288c68546d38ffc1c808a6"
+  integrity sha512-QFILcC+vn6y+AJ7RDbhxrgtqSStW4hD/k6sLvlUo0W9tjNjqBFERNFsquj9dpxU1aKQ1tFA+oeUFeVGAxHTTSg==
   dependencies:
     ember-cli-babel "^6.6.0"
     ember-cli-htmlbars "^2.0.1"
