@@ -35,12 +35,22 @@ export default class navBarComponent extends Component {
 
   @action
   toggleNotification() {
+    this.metrics.trackEvent({
+      event: "NotificationClicked",
+      location: "navbar"
+    })
+
     if (this.get("activeTab") === "notification") this.set("activeTab", null);
     else this.set("activeTab", "notification");
   }
 
   @action
   toggleCart() {
+    this.metrics.trackEvent({
+      event: "CartClicked",
+      location: "navbar"
+    })
+
     if (this.get("activeTab") === "cart") this.set("activeTab", null);
     else this.set("activeTab", "cart");
   }

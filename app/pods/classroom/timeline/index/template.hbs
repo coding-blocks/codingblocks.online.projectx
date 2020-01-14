@@ -97,12 +97,9 @@
             {{/link-to}}
           {{/if}}
 
-          <LinkTo 
-            @route="attempt"
-            @model={{runAttempt.id}}
-            class="button-dashed button-orange">
+          {{#link-to "attempt" runAttempt.id activeClass="" class="button-dashed button-orange" invokeAction=(action 'log' 'Resume' runAttempt.id preventDefault=false)}}
             Resume
-          </LinkTo>
+          {{/link-to}}
         </div>
       </div>
     </div>
