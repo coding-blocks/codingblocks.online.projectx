@@ -2,12 +2,23 @@ import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
 import { action } from '@ember/object';
 import { alias } from '@ember/object/computed';
+import { computed } from '@ember/object';
 
 export default class AttemptController extends Controller {
   @service store
   @service player
 
-  @alias ('player.sectionId') currentSectionId
+  @alias('player.sectionId') currentSectionId
+
+  @computed('currentSectionId')
+  get currentSection() {
+    return  this.currentSectionId && this.store.peekRecord('section', this.currentSectionId)
+  }
+
+  @computed('player.contentId')
+  get currentContent() {
+    return this.player.contentId && this.store.peekRecord('content', this.player.contentId)
+  }
 
   tabs = [
     {
@@ -24,6 +35,7 @@ export default class AttemptController extends Controller {
     },
   ]
   activeTab = this.tabs.firstObject
+  contentListCollpased = true
 
   @action 
   openAskDoubtModal() {
@@ -75,5 +87,10 @@ export default class AttemptController extends Controller {
       await newProgress.save().then(p => content.set("progress", p));
     }
     return false;
+  }
+
+  @action
+  toggleContentList() {
+    this.toggleProperty('contentListCollpased')
   }
 }

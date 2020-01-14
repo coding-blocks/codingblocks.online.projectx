@@ -1,30 +1,29 @@
-<div class="pointer" {{action "toggle"}}>
-  <h5 class="bold">
-    {{section.name}}
-    <span class="float-right">
+<div class="timeline__main-area__content-bar__section">
+  <div class="pointer white" {{action "toggle"}}>
+    <div class="row no-gutters justify-content-between align-items-center py-4">
+      <div class="col-10">
+        <h6 class="bold gradient-text-orange">{{section.name}}</h6>
+        <div class="card-md normal mt-1">5/12 | Due Date: 5 Oct 2019</div>
+      </div>
       <FaIcon @icon={{if isOpen "chevron-up" "chevron-down"}} />
-    </span>
-  </h5>
-</div>
-{{#if isOpen}}
-  <div class="spaced-list mt-4">
+    </div>
+  </div>
+  {{#if isOpen}}
     {{#each section.contents as |content|}}
-      <div>
-        <FaIcon @icon="play-circle" />
+      <div class="row no-gutters justify-content-between align-items-center py-3">
         <LinkTo 
           class="white {{if (eq contentId content.id) "gradient-text-orange"}}"
           @route="attempt.content"
           @models={{array section.id content.id}}>
-          {{content.title}}  
+          <i class="white fas fa-play-circle fa-lg mr-4"></i>
+          <span class="normal">{{content.title}}  </span>
         </LinkTo>
-        <span class="float-right">
-          {{#if content.isDone}}
-            <FaIcon @icon="check" class="gradient-text-green" />
-          {{else if (eq contentId content.id)}}
-            <FaIcon @icon="circle" class="gradient-text-orange" />
-          {{/if}}
-        </span>
+        {{#if content.isDone}}
+          <FaIcon @icon="check" class="gradient-text-green" />
+        {{else if (eq contentId content.id)}}
+          <FaIcon @icon="circle" class="gradient-text-orange" />
+        {{/if}}
       </div>
     {{/each}}
-  </div>
-{{/if}}
+  {{/if}}
+</div>

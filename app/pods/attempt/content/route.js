@@ -16,7 +16,8 @@ export default Route.extend({
             reload: true
         })
     },
-    async afterModel (content) {
+  async afterModel(content) {
+    document.getElementById('timelineContainer').scrollTo({ top: 0, behavior: 'smooth' })
         if(!content.get('payload.id')) {
             // we don't have content; so a locked page will be shown
             return ;
