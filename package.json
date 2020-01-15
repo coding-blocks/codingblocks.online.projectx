@@ -82,7 +82,7 @@
     "node": "8.* || >= 10.*"
   },
   "dependencies": {
-    "@coding-blocks/motley": "coding-blocks/motley#b0cf4f2",
+    "@coding-blocks/motley": "coding-blocks/motley#40ddebd",
     "ember-line-clamp": "^0.2.15",
     "moment": "^2.22.2",
     "showdown-katex-studdown": "^0.4.0"
