@@ -2,7 +2,8 @@
   <div class="pointer white" {{action "toggle"}}>
     <div class="row no-gutters justify-content-between align-items-center py-4">
       <div class="col-10">
-        <h6 class="bold gradient-text-orange">{{section.name}}</h6>
+          {{log activeSectionId section.id}}
+        <h6 class="bold {{if (eq activeSectionId section.id) 'gradient-text-orange'}}">{{section.name}}</h6>
         <div class="card-md normal mt-1">5/12 | Due Date: 5 Oct 2019</div>
       </div>
       <FaIcon @icon={{if isOpen "chevron-up" "chevron-down"}} />
@@ -12,7 +13,7 @@
     {{#each section.contents as |content|}}
       <div class="row no-gutters justify-content-between align-items-center py-3">
         <LinkTo 
-          class="white {{if (eq contentId content.id) "gradient-text-orange"}}"
+          class="white {{if (eq activeContentId content.id) "gradient-text-orange"}}"
           @route="attempt.content"
           @models={{array section.id content.id}}>
           <i class="white fas fa-play-circle fa-lg mr-4"></i>
@@ -20,7 +21,7 @@
         </LinkTo>
         {{#if content.isDone}}
           <FaIcon @icon="check" class="gradient-text-green" />
-        {{else if (eq contentId content.id)}}
+        {{else if (eq activeContentId content.id)}}
           <FaIcon @icon="circle" class="gradient-text-orange" />
         {{/if}}
       </div>
