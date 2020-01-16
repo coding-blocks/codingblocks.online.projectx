@@ -6291,6 +6291,15 @@ ember-ignore-children-helper@^1.0.1:
   dependencies:
     ember-cli-babel "^6.8.2"
 
+ember-in-element-polyfill@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/ember-in-element-polyfill/-/ember-in-element-polyfill-0.2.1.tgz#df865f782ed31adee95c99ebf3deb4227dd0f6dc"
+  integrity sha512-S1RPqYxo8lTP//8r/Z8uIfhjFY1uVFKrDA0iVUxdc90kUIVobG51dfvj4ib/oDDfJ5IgzItfJqSJLUTaufadPg==
+  dependencies:
+    debug "^3.1.0"
+    ember-cli-babel "^7.1.2"
+    ember-cli-version-checker "^2.1.0"
+
 ember-inflector@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/ember-inflector/-/ember-inflector-3.0.1.tgz#04be6df4d7e4000f6d6bd70787cdc995f77be4ab"
