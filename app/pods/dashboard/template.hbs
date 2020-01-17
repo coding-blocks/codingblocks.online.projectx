@@ -1,76 +1,86 @@
 <div class="row">
   <div class="col-md-9 col-12">
-    <h4 class="my-4">Continue Learning</h4>
+    {{#if lastAccessedRun}}
+      <h4 class="my-4">Continue Learning</h4>
 
-    {{!-- Recent run and stats card --}}
-    <div class="border-card">
-      <div class="row no-gutters align-items-center">
-        <div class="col-md-6 col-12">
-          <div class="row no-gutters align-items-center">
-            <div class="col-2">
-              <img class="s-50x50" src="{{lastAccessedRun.course.logo}}" alt="C++">
-            </div>
-            <div class="col-9">
-              <h5 class="bold">{{lastAccessedRun.course.title}}</h5>
-              <div class="font-normal mt-2">Mentor: 
-                {{#each lastAccessedRun.course.instructors as |instructor index|}}
-                  {{#if index}}, {{/if}} {{instructor.name}}
-                {{/each}}
+      {{!-- Recent run and stats card --}}
+      <div class="border-card mb-4">
+        <div class="row no-gutters align-items-center">
+          <div class="col-md-6 col-12">
+            <div class="row no-gutters align-items-center">
+              <div class="col-2">
+                <img class="s-50x50" src="{{lastAccessedRun.course.logo}}" alt="C++">
+              </div>
+              <div class="col-9">
+                <h5 class="bold">{{lastAccessedRun.course.title}}</h5>
+                <div class="font-normal mt-2">Mentor: 
+                  {{#each lastAccessedRun.course.instructors as |instructor index|}}
+                    {{#if index}}, {{/if}} {{instructor.name}}
+                  {{/each}}
+                </div>
               </div>
             </div>
           </div>
+          <div class="col-md-6 col-12">
+            <div class="font-normal">Course Progress</div>
+            <div class="mt-4">
+              <progress value="{{progressPercent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
+              <span class="bold ml-3">{{progressPercent}}%</span>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-12">
-          <div class="font-normal">Course Progress</div>
-          <div class="mt-4">
-            <progress value="{{progressPercent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
-            <span class="bold ml-3">{{progressPercent}}%</span>
+
+        <div class="divider-h w-100 mx-auto my-5"></div>
+
+        <WAsync 
+          @task={{fetchPerformanceStatsTask}}
+          @autoFire="true" as |stats|>
+        <PerformanceStatsView 
+            @stats={{stats}} />
+        </WAsync>
+
+        <div class="divider-h w-100 mx-auto my-5"></div>
+
+        <div class="row align-items-center justify-content-center">
+          <div class="col-6 float-left">
+            <span>
+              <RatingStars 
+                @course={{lastAccessedRun.course}}
+                @initialRating={{lastAccessedRun.course.userRating}} />
+            </span>
+          </div>
+          <div class="col-6">
+            <LinkTo 
+              @route="classroom.timeline.overview"
+              @models={{array lastAccessedRun.course.id lastAccessedRun.id}}
+              class="button-solid button-orange float-right">
+              Resume Now
+            </LinkTo>
           </div>
         </div>
       </div>
-
-      <div class="divider-h w-100 mx-auto my-5"></div>
-
-      <WAsync 
-        @task={{fetchPerformanceStatsTask}}
-        @autoFire="true" as |stats|>
-      <PerformanceStatsView 
-          @stats={{stats}} />
-      </WAsync>
-
-      <div class="divider-h w-100 mx-auto my-5"></div>
-
-      <div class="row align-items-center justify-content-center">
-        <div class="col-6 float-left">
-          <span>
-            <RatingStars 
-              @course={{lastAccessedRun.course}}
-              @initialRating={{lastAccessedRun.course.userRating}} />
-          </span>
-        </div>
-        <div class="col-6">
-          <LinkTo 
-            @route="classroom.timeline.overview"
-            @models={{array lastAccessedRun.course.id lastAccessedRun.id}}
-            class="button-solid button-orange float-right">
-            Resume Now
-          </LinkTo>
-        </div>
-      </div>
-    </div>
+    {{/if}}
 
     {{!-- My courses card --}}
-    <div class="my-5">
-      <div class="border-card p-5">
-        <div class="d-flex align-items-center justify-content-between">
-          <h4 class="bold">My Courses</h4>
-          <LinkTo @route="classroom" class="orange font-sm font-normal">View All</LinkTo>
-        </div>
-        <div class="divider-h my-4"></div>
-
-        <WAsync @task={{fetchCoursesTask}} @autoFire="true" as |runs|>
-          <Dashboard::DashboardCoursesList @runs={{runs}} />
-        </WAsync>
+    <div class="mb-5">
+      <div class="border-card">
+        {{#if noRuns}}
+          <div class="t-align-c">
+            <img src="/app/images/camera-orange.svg" alt="Courses">
+            <h4 class="bold mt-4">My Courses</h4>
+            <div class="grey mb-4">You are not enrolled in any course! Find courses to get enrolled!</div>
+            <a href="#" class="font-sm bold gradient-text-orange">Explore Courses</a>
+          </div>
+        {{else}}
+          <div class="d-flex align-items-center justify-content-between">
+            <h4 class="bold">My Courses</h4>
+            <LinkTo @route="classroom" class="orange font-sm font-normal">View All</LinkTo>
+          </div>
+          <div class="divider-h my-4"></div>
+          <WAsync @task={{fetchCoursesTask}} @autoFire="true">
+            <Dashboard::DashboardCoursesList @runs={{runs}} />
+          </WAsync>
+        {{/if}}
       </div>
     </div>
 
