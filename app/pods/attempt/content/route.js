@@ -16,6 +16,10 @@ export default Route.extend({
             reload: true
         })
     },
+    setupController(controller) {
+        controller.set('run', this.modelFor('attempt').get('run'))
+        controller.set('course', this.modelFor('attempt').get('run.course'))
+    },  
   async afterModel(content) {
         if(!content.get('payload.id')) {
             // we don't have content; so a locked page will be shown

@@ -1,10 +1,16 @@
-<div class="row justify-content-center">
-  <i class="fas fa-lock fa-4x grey"></i>
-</div>
-<div class="row justify-content-center">
-  <h2 class="white">You need to buy this course to access this content.</h2>
-</div>
-<div class="row justify-content-center">
-  {{#link-to 'courses.id' course.identifier tagName="button" activeClass="" class="button-solid
-  align-self-center"}} Buy Now {{/link-to}}
+<div class="c-video t-align-c">
+  <div>
+    <FaIcon @icon="lock" @size="3" />
+  </div>
+
+  <h2 class="mt-3">You need to buy this course to access this content</h2>
+
+  <div class="mt-3">
+    <a 
+      href="/courses/{{course.slug}}"
+      target="_blank"
+      class="button-solid button-orange"> 
+      Buy Now 
+    </a>
+  </div>
 </div>

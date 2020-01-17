@@ -1,0 +1,9 @@
+{{#if (not currentUser.user.verifiedemail)}}
+  <VerifyEmail />
+{{else if model.payload}}
+  {{outlet}}
+{{else if (not run.isStarted)}}
+  <UnstartedContent @run={{run}} />
+{{else}}
+  <LockedContent @course={{run.course}} />
+{{/if}}
