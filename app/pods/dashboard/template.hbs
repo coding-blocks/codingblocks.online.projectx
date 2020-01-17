@@ -79,7 +79,7 @@
         <div class="col-6">
           <div class="border-card">
             {{#if noWishlist}}
-              <img src="/app/images/heart-orange.svg" alt="Heart">
+              <img src="/app/images/heart-orange.svg" alt="Bag">
               <h4 class="bold mt-4">Wishlisted Courses</h4>
               <div class="grey mb-4">You have not wishlisted any course! Start Wishlisting now!</div>
               <a href="#" class="font-sm bold gradient-text-orange">Explore Courses</a>
@@ -99,19 +99,24 @@
         </div>
 
         <div class="col-6">
-          <div class="border-card p-0">
-            <div class="px-5 pt-5">
+          <div class="border-card">
+            {{#if noAppliedJobs}} 
+              <img src="/app/images/bag-orange.svg" alt="Heart">
+              <h4 class="bold mt-4">Applied Jobs</h4>
+              <div class="grey mb-4">You have not applied to any jobs! Find jobs now!</div>
+              <a href="#" class="font-sm bold gradient-text-orange">See Jobs</a>
+            {{else}}
               <h4 class="bold">Applied Jobs</h4>
               <div class="divider-h mt-4"></div>
-            </div>
-            <WAsync 
-              @task={{fetchAppliedJobsTask}}
-              @autoFire="true" as |jobs|>
-              <Dashboard::DashboardAppliedJobs @jobs={{jobs}} />
-            </WAsync>
-            <div class="t-align-c">
-              <button class="button-solid button-orange my-5">View All</button>
-            </div>
+              <WAsync 
+                @task={{fetchAppliedJobsTask}}
+                @autoFire="true">
+                <Dashboard::DashboardAppliedJobs @jobs={{appliedJobs}} />
+              </WAsync>
+              <div class="t-align-c">
+                <button class="button-solid button-orange my-5">View All</button>
+              </div>
+            {{/if}}
           </div>
         </div>
       </div>

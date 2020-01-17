@@ -13,8 +13,15 @@ export default class Dashboard extends Controller {
   progressPercent
   @alias('fetchWishlistCoursesTask.lastSuccessful.value')
   wishlist
+  @alias('fetchAppliedJobsTask.lastSuccessful.value')
+  appliedJobs
 
-  @computed('fetchWishlistCoursesTask.{last}', 'wishlist')
+  @computed('fetchAppliedJobsTask.last', 'appliedJobs')
+  get noAppliedJobs() {
+    return this.fetchAppliedJobsTask.last && !(this.fetchAppliedJobsTask.isRunning || this.appliedJobs.length)
+  }
+
+  @computed('fetchWishlistCoursesTask.last', 'wishlist')
   get noWishlist() {
     return this.fetchWishlistCoursesTask.last && !(this.fetchWishlistCoursesTask.isRunning || this.wishlist.length)
   }
