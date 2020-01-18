@@ -17,6 +17,7 @@ export default Route.extend({
         })
     },
     setupController(controller) {
+        this._super(...arguments)
         controller.set('run', this.modelFor('attempt').get('run'))
         controller.set('course', this.modelFor('attempt').get('run.course'))
     },  
