@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
+import { computed } from '@ember/object';
 
 export default class NotesTab extends Component {
   @service currentUser
@@ -10,6 +11,11 @@ export default class NotesTab extends Component {
   @service youtubePlayer
 
   newNoteText = ''
+
+  @computed('notes.[]')
+  get sortedNotes() {
+    return this.notes.sortBy('createdAt').reverse()
+  }
 
   @restartableTask addNoteTask = function* ()  {
     const content = this.store.peekRecord('content', this.player.contentId)

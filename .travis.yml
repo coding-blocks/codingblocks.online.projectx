@@ -9,7 +9,6 @@ cache:
   yarn: true
   directories:
     - ~/.npm
-    - ~/.bower
 
 env:
   global:
@@ -22,8 +21,6 @@ before_install:
 
 install:
   - yarn install --non-interactive
-  - yarn global add bower
-  - bower install
 
 
 before_script: 

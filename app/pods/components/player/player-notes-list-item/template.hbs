@@ -22,13 +22,15 @@
     </span>
   </div>
 {{else}}
-  <p>
+  <p class="bold">
     {{note.text}}
   </p>
   <div>
-    <span class="gradient-text-orange">
+    <span class="gradient-text-orange bold">
       {{note.content.title}}
-      <span class="ml-5">{{note.duration}}</span>
+      <span class="ml-5">
+        {{displayDuration}}
+      </span>
     </span>
     <span class="float-right">
       <button class="mr-5 font-sm" {{action (perform deleteNoteTask)}}>

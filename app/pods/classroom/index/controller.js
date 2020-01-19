@@ -6,6 +6,7 @@ import { action } from '@ember/object';
 
 export default class MyCoursesController extends Controller {
   @service store
+  @service layout
 
   queryParams = ['limit', 'offset']
   limit = 5
@@ -39,7 +40,6 @@ export default class MyCoursesController extends Controller {
     component: 'my-courses-list/recently-accessed',
     task: this.fetchRecentlyAccessedRuns
   }
-
 
   @alias('activeTab.task.lastSuccessful.value.meta.pagination')
   pagination

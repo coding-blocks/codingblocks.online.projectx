@@ -21,14 +21,12 @@ You will need the following things properly installed on your computer.
 * [Yarn](https://yarnpkg.com/)
 * [Ember CLI](https://ember-cli.com/)
 * [Google Chrome](https://google.com/chrome/)
-* [Bower](https://bower.io/)
 
 ## Installation
 
 * `git clone https://github.com/coding-blocks/codingblocks.online.projectx` this repository
 * `cd codingblocks.online.projectx`
 * `yarn install`
-* `bower install`
 
 ## Running / Development
 

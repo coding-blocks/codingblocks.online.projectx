@@ -1,0 +1,8 @@
+textarea.underline-input {
+  background: transparent;
+  border-bottom: solid 1px #666666;
+
+  &:focus {
+    border-bottom: solid 1px #fff;   
+  }
+}

@@ -20,6 +20,7 @@
   "devDependencies": {
     "@ember/jquery": "^1.1.0",
     "@ember/optional-features": "^1.0.0",
+    "@ember/render-modifiers": "^1.0.2",
     "@firebase/app": "^0.3.13",
     "@firebase/database": "^0.3.16",
     "babel-eslint": "^10.0.3",
@@ -44,12 +45,14 @@
     "ember-composable-helpers": "^2.1.0",
     "ember-concurrency": "^0.10.0",
     "ember-concurrency-decorators": "^1.0.0",
+    "ember-crumbly": "^3.0.1",
     "ember-data": "~3.14.0",
     "ember-decorators": "^6.0.0",
     "ember-engines": "^0.8.2",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^6.7.0",
     "ember-form-for": "^2.0.1",
+    "ember-in-element-polyfill": "^0.2.1",
     "ember-keyboard-shortcuts": "^1.0.6",
     "ember-link-action": "^1.0.0",
     "ember-load-initializers": "^2.1.0",
@@ -81,7 +84,7 @@
     "node": "8.* || >= 10.*"
   },
   "dependencies": {
-    "@coding-blocks/motley": "coding-blocks/motley#526f5c4",
+    "@coding-blocks/motley": "coding-blocks/motley#40ddebd",
     "ember-line-clamp": "^0.2.15",
     "moment": "^2.22.2",
     "showdown-katex-studdown": "^0.4.0"

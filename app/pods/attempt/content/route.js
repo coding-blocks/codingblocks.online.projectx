@@ -16,7 +16,12 @@ export default Route.extend({
             reload: true
         })
     },
-    async afterModel (content) {
+    setupController(controller) {
+        this._super(...arguments)
+        controller.set('run', this.modelFor('attempt').get('run'))
+        controller.set('course', this.modelFor('attempt').get('run.course'))
+    },  
+  async afterModel(content) {
         if(!content.get('payload.id')) {
             // we don't have content; so a locked page will be shown
             return ;
@@ -48,5 +53,10 @@ export default Route.extend({
             const response = await this.api.request('hb/jwt')
             this.set('currentUser.user.hackJwt', response.jwt)
         }
+  },
+  actions: {
+    didTransition() {
+      document.getElementById('timelineContainer').scrollTo({ top: 0, behavior: 'smooth' })
     }
+  }
 })

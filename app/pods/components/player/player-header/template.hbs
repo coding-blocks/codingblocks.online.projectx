@@ -1,46 +1,41 @@
-<div class="row c-topnav py-4 justify-content-between content-container  bg-dark-grey white w-100">
-  <div class="col-3 align-self-center pl-0">
-    <div class="row">
-      <div class="col-10">
-        <h5 class="bold contain-text">
-          {{content.title}}
-        </h5>
+
+
+
+
+<div class="timeline__top-bar row no-gutters align-items-center justify-content-between">
+  <div class="col-3">
+    <div class="row no-gutters justify-content-between align-items-center">
+      
+      <div class="flex-1">
+        <div class="font-mds bold text-ellipses video-title">{{content.title}}</div>
       </div>
-      <button class="col-2 pt-1" onclick={{action "toggleBookmark"}}>
-        {{#if content.bookmark}}
-        <i class="fas fa-bookmark fa-lg"></i>
-        {{else}}
-        <i class="far fa-bookmark fa-lg"></i>
-        {{/if}}
-      </button>
+      <div class="col-1">
+        <button href="#" class="white" onclick={{action "toggleBookmark"}}>
+          {{#if content.bookmark}}
+            <i class="fas fa-bookmark fa-lg"></i>
+          {{else}}
+            <i class="far fa-bookmark fa-lg"></i>
+          {{/if}}
+        </button>
+      </div>
     </div>
   </div>
-
-  <div class="col-4 align-self-center">
+  <div class="col-xl-4 col-3 pr-4">
     <CourseSearchBox @run={{run}} />
   </div>
-  <div class="col-5 my-auto">
-    <div class="row">
-      <div class="col-8 t-align-c">
-    <div class="row no-gutters align-items-center justify-content-center">
-      <div class="col-11">
-        <span class="px-2">Course Progress</span>
-        <progress value="{{progressPercent}}" max="100" class="progress-orange w-50 d-inline-block" /> 
+  <div class="col-4 px-4">
+    <div class="d-flex align-items-center justify-content-between">
+      <span class="font-normal mr-3">Course Progress</span>
+      <div class="flex-1">
+        <progress value="{{progressPercent}}" max="100" class="progress-orange" /> 
       </div>
-      <div class="bold col-1"> 
-        {{progressPercent}}%
-      </div>
-    </div>
-      </div>
-      <div class="col-4 t-align-r">
-        <LinkTo
-          @route="classroom.timeline"
-          @models={{array run.course.id run.id}}
-          class="button-solid button-orange">
-          Exit Class  
-        </LinkTo>
-      </div>
+      <span class="bold ml-3">{{progressPercent}}%</span>
     </div>
   </div>
-  
+  <LinkTo
+    @route="classroom.timeline"
+    @models={{array run.course.id run.id}}
+    class="button-solid button-orange">
+    Exit Class  
+  </LinkTo>
 </div>

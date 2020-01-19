@@ -3,21 +3,22 @@
   {{outlet}}
 {{else}}
   {{#if session.isAuthenticated}}
-  <NavBar />
-  <SideNav />
-  <div class="offset-1">
-    <cb-navbar topalign="right" />
-  </div>
+    <NavBar />
+    <SideNav />
+    <div class="offset-1">
+      <cb-navbar topalign="right" />
+    </div>
 
-  <div class="offset-md-1">
-    <div class="container">
-      <div class="row justify-content-center mx-0">
-        <div class="pt-4 container-fluid content-container">
-          {{outlet}}
+    <div class="offset-md-1">
+      <div id="outside-container" {{did-insert (action "setOutsideContainer")}} ></div>
+      <div class="container">
+        <div class="row justify-content-center mx-0">
+          <div class="pt-4 container-fluid content-container">
+            {{outlet}}
+          </div>
         </div>
       </div>
     </div>
-  </div>
   {{else}}
     <div class="row no-gutters">
       <div class="col-12">

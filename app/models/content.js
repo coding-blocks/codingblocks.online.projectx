@@ -25,10 +25,11 @@ export default DS.Model.extend({
   }),
   iconClass: computed('contentable', function () {
     switch (this.contentable) {
-      case 'document': return 'file-icon'; break;
-      case 'code-challenge': return 'code-icon'; break;
+      case 'document': return 'file-word'; break;
+      case 'code-challenge': return 'file-code'; break;
+      case 'csv': return 'file-excel'; break
       case 'lecture':
-      default: return 'play-icon'; break;
+      default: return 'play-circle'; break;
     }
   }),
   progress: DS.belongsTo('progress'),
