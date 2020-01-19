@@ -20,7 +20,7 @@
         </span>
       {{/if}}
     </div>
-    <div class="font-normal mt-5">Current Rank</div>
+    <div class="font-normal mt-5">Performance</div>
     <div class="mt-3 d-flex align-items-center">
       <span class="font-md bold">{{stats.currentMonthScore}} Points</span>
       {{#if (gte stats.currentMonthScore stats.previousMonthScore)}}
@@ -36,5 +36,5 @@
       {{/if}}
     </div>
   </WAsync>
-  <button class="button-solid button-orange mt-4">Continue</button>
+  <a href="https://hack.codingblocks.com/app" class="button-solid button-orange mt-4">Continue</a>
 </div>
