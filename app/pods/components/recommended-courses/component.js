@@ -42,7 +42,7 @@ export default class RecommendedTaskComponent extends Component {
     return yield this.get("store").query("course", {
       filter,
       include: "instructors,runs",
-      exclude: "ratings,instructors.*,feedbacks,runs.*",
+      exclude: "ratings,instructors.*,feedbacks,runs.*,jobs,projects",
       sort: 'difficulty',
       page: {
         limit: 12
