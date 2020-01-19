@@ -1,6 +1,0 @@
-{
-  "name": "codingblocks-online",
-  "dependencies": {
-    "hls.js": "^0.8.9"
-  }
-}

@@ -14,7 +14,6 @@ export default class NotesTab extends Component {
 
   @computed('notes.[]')
   get sortedNotes() {
-    debugger
     return this.notes.sortBy('createdAt').reverse()
   }
 
