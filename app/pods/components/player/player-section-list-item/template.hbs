@@ -16,7 +16,7 @@
           class="white {{if (eq activeContentId content.id) "gradient-text-orange"}}"
           @route="attempt.content"
           @models={{array section.id content.id}}>
-          <i class="white fas fa-play-circle fa-lg mr-4"></i>
+          <FaIcon @icon={{content.iconClass}} class="white mr-3 font-lg" />
           <span class="normal">{{content.title}}  </span>
         </LinkTo>
         {{#if content.isDone}}

@@ -17,9 +17,6 @@ export default Route.extend({
     this.set('headData.title', model.get('title'))
   },
   actions: {
-    reloadRoute() {
-      this.refresh();
-    },
     log(event, course){
       this.get('metrics').trackEvent({event, course, page: 'Classroom'})
     }

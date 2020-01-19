@@ -2,24 +2,23 @@
   <div class="col-md-9 col-12 spaced-list-margin">
     <div class="border-card p-sm-5 p-4">
       <div class="row no-gutters align-items-center">
-        <div class="col-sm-8 col-7">
-          <div class="row no-gutters align-items-center">
-            <div class="col-3">
-              <img src="{{course.logo}}" alt="{{course.title}}">
+        <div class="col-md-8">
+          <div class="d-flex align-items-center">
+            <div class="mr-3">
+              <img src="{{course.logo}}" alt="{{course.title}}" class="s-50x50">
             </div>
-            <div class="col-9">
+            <div>
               <h5 class="bold">{{course.title}}</h5>
               <div class="font-normal mt-2">
                 Mentor: 
                 {{#each course.instructors as |instructor index|}}
                   {{#if index}}, {{/if}} {{instructor.name}}
                 {{/each}}
-                Prateek Narang
               </div>
             </div>
           </div>
         </div>
-        <div class="t-align-r col-sm-4 col-5">
+        <div class="t-align-md-r t-align-c col-md-4 mt-3 mt-md-0">
           <span class="font-normal">Leave a rating: </span>
           <RatingStars 
             @course={{course}}
