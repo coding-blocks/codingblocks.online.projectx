@@ -2,14 +2,14 @@
   <div>
     <span class="font-mds">I am a</span>
     <button 
-      class="button-solid ml-3
-      {{if (eq status "student") "button-orange" "button-grey"}}"
+      class="button-orange ml-3
+      {{if (eq status "student") "button-solid" "button-dashed"}}"
       {{action (mut status) "student"}}>
       Student
     </button>
     <button 
-      class="button-solid 
-      {{if (eq status "professional") "button-orange" "button-grey"}}"
+      class="button-orange 
+      {{if (eq status "professional") "button-solid" "button-dashed"}}"
       {{action (mut status) "professional"}}>
       Professional
     </button>
