@@ -46,7 +46,7 @@
               @size="lg" 
               class="mr-3" />
           </button>
-          <button class="button-orange button-solid">Explore</button>
+          <a href="/courses/{{course.slug}}" target="_blank" class="button-orange button-solid">Explore</a>
         {{/if}}
       </div>
     </div>
@@ -63,7 +63,7 @@
     <div class="mt-4">
       <span class="normal grey mr-4">Projects you will build</span>
       {{#each course.projects as |project|}}
-        <div class="pill pill-dashed normal mr-2">{{project.title}}</div>
+        <div class="pill pill-dashed normal mr-2 mb-2">{{project.title}}</div>
       {{/each}}
     </div>
   {{/if}}
