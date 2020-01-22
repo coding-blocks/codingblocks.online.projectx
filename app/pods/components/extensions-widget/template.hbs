@@ -1,7 +1,7 @@
 <div class="p-4">
   <div class="row">
     <div class="col-8 my-auto font-mds">
-      <div class="bold">Your course has been expiredz!</div>
+      <div class="bold">Your course has been expired!</div>
       <div>Buy extension for this course</div>
     </div>
     <div class="col-4 t-align-r">
@@ -10,50 +10,59 @@
   </div>
   <div class="divider-h my-4"></div>
 
-  <div class="spaced-list">
-    {{#each extensionsTask.last.value as |extension index|}}
-      <div class="row">
-        <div class="col-1 my-auto">
-          <input 
-                class="mt-1" 
-                type="radio" 
-                name="extension" 
-                id="extensionRadio{{index}}" 
-                checked={{eq selectedExtension extension}}
-                onchange={{action (mut selectedExtension) extension}}
-                style="transform:scale(1.5)"
-              >
-        </div>
-        <div class="col-8">
-          <label for="extensionRadio{{index}}">
-            <div class="font-mds bold">
-              {{extension.name}}
+  <WAsync 
+    @task={{extensionsTask}} 
+    @autoFire="true" as |extensions|>
+    {{#if extensions.length}}
+      <div class="spaced-list">
+        {{#each extensions as |extension index|}}
+          <div class="row">
+            <div class="col-1 my-auto">
+              <input 
+                    class="mt-1" 
+                    type="radio" 
+                    name="extension" 
+                    id="extensionRadio{{index}}" 
+                    checked={{eq selectedExtension extension}}
+                    onchange={{action (mut selectedExtension) extension}}
+                    style="transform:scale(1.5)"
+                  >
             </div>
-            <div class="grey">
-              Expires: {{extension.expiry}}
+            <div class="col-8">
+              <label for="extensionRadio{{index}}">
+                <div class="font-mds bold">
+                  {{extension.name}}
+                </div>
+                <div class="grey">
+                  Expires: {{extension.expiry}}
+                </div>
+              </label>
             </div>
-          </label>
-        </div>
-        <div class="col-3 t-align-r">
-          <label class="dark-orange bold font-mds" for="extensionRadio{{index}}">
-            INR {{extension.price}}
-          </label>
+            <div class="col-3 t-align-r">
+              <label class="dark-orange bold font-mds" for="extensionRadio{{index}}">
+                INR {{extension.price}}
+              </label>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="row mt-4">
+        <div class="col-12 t-align-r">
+          <button class="px-3"  {{on "click" onClose}}> Cancel </button>
+          {{task-button 
+            task=buyExtensionTask
+            click=(perform buyExtensionTask)
+            idleText="Buy Extension"
+            runningText="Adding to Cart.."
+            type="button"
+            class="button-solid button-orange"
+            runningClass="disabled"}}
         </div>
       </div>
-    {{/each}}
-  </div>
-
-  <div class="row mt-4">
-    <div class="col-12 t-align-r">
-      <button class="px-3"  {{on "click" onClose}}> Cancel </button>
-      {{task-button 
-        task=buyExtensionTask
-        click=(perform buyExtensionTask)
-        idleText="Buy Extension"
-        runningText="Adding to Cart.."
-        type="button"
-        class="button-solid button-orange"
-        runningClass="disabled"}}
-    </div>
-  </div>
+    {{else}}
+      <div class="font-lg bold t-align-c">
+        No Extensions
+      </div>
+    {{/if}}
+  </WAsync>
 </div>
