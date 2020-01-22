@@ -9,7 +9,7 @@
       <cb-navbar topalign="right" />
     </div>
 
-    <div class="offset-md-1">
+    <div class="offset-md-1 mb-5">
       <div id="outside-container" {{did-insert (action "setOutsideContainer")}} ></div>
       <div class="container">
         <div class="row justify-content-center mx-0">
@@ -24,16 +24,15 @@
       <div class="col-12">
         <NavBarPublic class="ml-0 w-100" />
         <cb-navbar topalign="right" />
+        <div class="mb-5">
           {{outlet}}
+        </div>
       </div>
     </div>
-
     <style>
       body {
         padding-top: 0px;
       }
     </style>
   {{/if}}
-
-
 {{/if}} 
