@@ -6,6 +6,20 @@ export default class PerformanceStatsView extends Component {
     legend: {
       display: true
     }, 
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Progress'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: '# of Weeks'
+        }
+      }],
+    }
   }
 
   @computed('stats', 'orangeGradient', 'greenGradient')
