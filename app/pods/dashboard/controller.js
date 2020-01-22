@@ -20,17 +20,17 @@ export default class Dashboard extends Controller {
 
   @computed('fetchAppliedJobsTask.last', 'appliedJobs')
   get noAppliedJobs() {
-    return this.fetchAppliedJobsTask.last && !this.appliedJobs.length
+    return this.fetchAppliedJobsTask.last && this.appliedJobs && !this.appliedJobs.length
   }
 
   @computed('fetchWishlistCoursesTask.last', 'wishlist')
   get noWishlist() {
-    return this.fetchWishlistCoursesTask.last && !this.wishlist.length
+    return this.fetchWishlistCoursesTask.last && this.wishlist && !this.wishlist.length
   }
 
   @computed('fetchCoursesTask.last', 'runs')
   get noRuns() {
-    return this.fetchCoursesTask.last && !this.runs.length
+    return this.fetchCoursesTask.last && this.runs && !this.runs.length
   }
 
   @restartableTask fetchPerformanceStatsTask = function *() {

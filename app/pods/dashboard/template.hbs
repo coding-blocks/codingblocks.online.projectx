@@ -46,13 +46,15 @@
             <span>
               <RatingStars 
                 @course={{lastAccessedRun.course}}
-                @initialRating={{lastAccessedRun.course.userRating}} />
+                @showModal={{true}}
+                @isShowingModal={{showFeedback}}
+                @initialRating={{lastAccessedRun.topRunAttempt.rating}} />
             </span>
           </div>
           <div class="col-6">
             <LinkTo 
-              @route="classroom.timeline.overview"
-              @models={{array lastAccessedRun.course.id lastAccessedRun.id}}
+              @route="attempt"
+              @model={{lastAccessedRun.topRunAttempt.id}}
               class="button-solid button-orange float-right">
               Resume Now
             </LinkTo>
