@@ -30,12 +30,12 @@ export default class Overview extends Controller {
 
   @computed('runAttempt.run.completionThreshold')
   get certificateLockOffset() {
-    return 0.9 * this.runAttempt.get('run.completionThreshold')
+    return 0.84 * this.runAttempt.get('run.completionThreshold')
   }
 
   @computed('runAttempt.run.goodiesThreshold')
   get goodiesLockOffset() {
-    return 0.9 * this.runAttempt.get('run.goodiesThreshold')
+    return 0.84 * this.runAttempt.get('run.goodiesThreshold')
   }
 
   @alias('runAttempt.progressPercent')

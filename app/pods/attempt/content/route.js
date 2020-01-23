@@ -1,5 +1,6 @@
 import Route from "@ember/routing/route";
 import { inject } from '@ember/service'
+import { scheduleOnce } from '@ember/runloop';
 
 export default Route.extend({
     api: inject(),
@@ -56,7 +57,17 @@ export default Route.extend({
   },
   actions: {
     didTransition() {
+      //scroll content player to top
       document.getElementById('timelineContainer').scrollTo({ top: 0, behavior: 'smooth' })
+      
+      // scroll table of contents
+      scheduleOnce('afterRender', () => {
+        document.getElementById('contentScrollContainer').scrollTo({
+          top: document.getElementById('active-section-container').getBoundingClientRect().top + document.getElementById('contentScrollContainer').scrollTop  - 160,
+          behavior: 'smooth'
+        })
+      })
+     
     }
   }
 })
