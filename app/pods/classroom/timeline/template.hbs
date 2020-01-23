@@ -136,7 +136,7 @@
         {{/link-to}}
       </div>
 
-      {{#if (and runAttempt.premium (is-after (unix run.start) '2019-11-28'))}}
+      {{#if (and showGoodieRequest (is-after (unix run.start) '2019-11-28'))}}
         {{goodie-comp runAttempt=runAttempt progress=progress goodieRequests=goodieRequests}}
       {{/if}}
     </div>

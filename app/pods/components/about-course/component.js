@@ -4,7 +4,8 @@ import { get }  from '@ember/object';
 import $ from 'jquery';
 import { task } from 'ember-concurrency';
 import env from "codingblocks-online/config/environment";
-import { getPublicUrl } from "codingblocks-online/utils/browser"
+import { getPublicUrl } from "codingblocks-online/utils/browser";
+import { computed } from '@ember/object';
 
 export default Component.extend({
   availableRuns: [],
@@ -23,6 +24,10 @@ export default Component.extend({
   _redirectToOneauth () {
     window.location.href = this.loginUrl
   },
+
+  showGoodiesInfo: computed('course.{organization,topRun}', function () {
+    return !this.course.organization && this.course.topRun.price
+  }),
 
   enrollNowTask: task(function *(runId) {
     if(this.get('session.isAuthenticated')) {
