@@ -38,6 +38,11 @@
           {{action (perform saveDoubtTask)}}>
           {{if saveDoubtTask.isRunning "Posting" "Post Doubt"}}
         </button>
+        {{#if saveDoubtTask.last.isErrored}}
+          <p class="red">
+            Error occured while posting doubt
+          </p>
+        {{/if}}
       </div>
     </div>
     <div class="col-md-6 p-5 bg-grey-darker dsp-none-sm">

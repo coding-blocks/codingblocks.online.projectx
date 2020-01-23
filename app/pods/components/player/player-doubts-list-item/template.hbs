@@ -42,3 +42,17 @@
     <FaIcon @icon="exclamation-triangle" /> {{{err}}}
   </div>
 {{/if}}
+
+{{#if showFeedbackModal}}
+  <ModalDialog 
+    @translucentOverlay={{true}} 
+    @targetAttachment="none"
+    @containerClass='centered-scrolling-container bg-dark-grey'
+    @overlayClass='centered-scrolling-overlay'
+    @wrapperClass='centered-scrolling-wrapper'
+    @onClose={{action (mut showFeedbackModal) false}}>
+    <DoubtFeedback 
+      @doubt={{doubt}} 
+      @onSave={{action (mut showFeedbackModal) false}} />
+  </ModalDialog>
+{{/if}}
