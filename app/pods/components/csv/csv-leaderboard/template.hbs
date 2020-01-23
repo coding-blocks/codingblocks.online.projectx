@@ -4,7 +4,7 @@
   <table class="w-100">
     <thead class="bold">
       <tr>
-        <td class="pb-4">Rank</td>
+        <td class="pb-4 pl-3">Rank</td>
         <td class="pb-4">Name</td>
         <td class="pb-4">Score</td>
         <td class="pb-4">Timestamp</td>
@@ -12,8 +12,8 @@
     </thead>
     <tbody>
       {{#each leaderboard as |row index|}}
-        <tr>
-          <td class="py-4">
+        <tr class={{if row.isCurrent 'bg-gradient-orange'}}>
+          <td class="py-4 pl-3">
             {{row.rank}}
           </td>
           <td class="py-4">
