@@ -68,7 +68,7 @@ export default class AllCoursesComponent extends Component {
     const nextCourses = yield this.store.query ('course', {
       include: 'instructors,runs',
       // sort: 'difficulty',
-      exclude: 'ratings,instructors.*',
+      exclude: 'ratings,instructors.*,jobs',
       filter: {
         unlisted: false,
         ...extraWhere
