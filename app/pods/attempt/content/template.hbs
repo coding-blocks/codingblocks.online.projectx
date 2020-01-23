@@ -1,7 +1,50 @@
 {{#if (not currentUser.user.verifiedemail)}}
   <VerifyEmail />
 {{else if model.payload}}
-  {{outlet}}
+  {{!-- render content outlet and doubts and notes --}}
+  <div>
+    <div>
+      {{outlet}}
+    </div>
+    <div class="row py-4 no-gutters align-items-center justify-content-between ">
+      <div class="col-8">
+        <h3 class="gradient-text-orange bold">
+          Get 24*7 Doubts &amp; Mentor Support
+        </h3>
+        Have any queries? Ask a Doubt
+      </div>
+      <button class="button-solid button-orange" {{action "openAskDoubtModal"}}>
+        Ask Doubt
+      </button>
+    </div>
+    <WTabNav
+      @inactiveClass="white"
+      @tabs={{tabs}}
+      @activeTab={{activeTab}}
+      @onTabChange={{action (mut activeTab)}}>
+      {{#if (eq activeTab.name 'Doubts')}}
+        <WAsync @task={{activeTab.task}} @autoFire="true" as |doubts|>
+          {{component activeTab.component
+            doubts=doubts}}  
+        </WAsync>
+      {{else if (eq activeTab.name 'Notes')}}
+        <WAsync @task={{activeTab.task}} @autoFire="true" as |notes|>
+          {{component activeTab.component
+            onAfterSave=(action (perform activeTab.task))
+            notes=notes}}  
+        </WAsync>
+      {{/if}}
+    </WTabNav>
+  </div>
+
+  {{#if showAskDoubtModal}}
+    <Player::PlayerAskDoubtModal 
+      @onClose={{action "closeAskDoubtModal"}}
+      @onAfterSave={{action (perform fetchDoubtsTask)}}
+      @doubt={{newDoubt}} 
+      class="row white h-100" />
+  {{/if}}
+
 {{else if (not run.isStarted)}}
   <UnstartedContent @run={{run}} />
 {{else}}
