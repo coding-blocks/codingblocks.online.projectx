@@ -27,9 +27,9 @@
             <div class="d-flex align-items-center justify-content-between">
               <span class="font-normal mr-3">Course Progress</span>
               <div class="flex-1">
-                <progress value="30" max="100" class="progress-orange"></progress>
+                <progress value={{runAttempt.progressPercent}} max="100" class="progress-orange"></progress>
               </div>
-              <span class="bold ml-3">100%</span>
+              <span class="bold ml-3">{{runAttempt.progressPercent}}%</span>
             </div>
           </div>
           <Player::PlayerSectionList 
@@ -50,7 +50,7 @@
               </h3>
               Have any queries? Ask a Doubt
             </div>
-            <button class="button-solid button-orange" {{action "openAskDoubtModal"}}>
+            <button class="button-solid button-orange" {{action "openAskDoubtModal"}} id="ask-doubt">
               Ask Doubt
             </button>
           </div>

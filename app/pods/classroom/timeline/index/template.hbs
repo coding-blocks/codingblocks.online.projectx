@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-9 col-12 spaced-list-margin">
-    <div class="border-card p-sm-5 p-4">
+    <div class="border-card p-sm-5 p-4" id="course-information-card">
       <div class="row no-gutters align-items-center">
         <div class="col-md-8">
           <div class="d-flex align-items-center">
@@ -110,6 +110,7 @@
     <LinkTo 
     @route="classroom.timeline.library"
     @tagName="div"
+    id="course-library"
     class="border-card px-5 py-4 pointer">
       <div class="row">
         <div class="col-9">
@@ -132,7 +133,7 @@
       </div>
     {{/if}}
 
-    <div class="border-card p-5">
+    <div class="border-card p-5" id="performance-stats">
       <WAsync
         @task={{fetchPerformanceStatsTask}}
         @autoFire="true" as |stats|>
@@ -140,7 +141,7 @@
       </WAsync>
     </div>
 
-    <div class="border-card p-5">
+    <div class="border-card p-5" id="course-intro">
       <h4 class="mb-5">Course Introduction</h4>
 
       <div class="bold mb-3">Lectures</div>

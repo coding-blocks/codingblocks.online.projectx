@@ -9,7 +9,7 @@
       <div class="flex-1">
         <div class="font-mds bold text-ellipses video-title">{{content.title}}</div>
       </div>
-      <div class="col-1">
+      <div class="col-1" id="bookmark-content">
         <button href="#" class="white" onclick={{action "toggleBookmark"}}>
           {{#if content.bookmark}}
             <i class="fas fa-bookmark fa-lg"></i>
@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-  <div class="col-xl-4 col-3 pr-4">
+  <div class="col-xl-4 col-3 pr-4" id="content-searchbox">
     <CourseSearchBox @run={{run}} />
   </div>
   <div class="col-4 px-4">
