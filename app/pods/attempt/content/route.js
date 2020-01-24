@@ -5,23 +5,25 @@ import { scheduleOnce } from "@ember/runloop";
 export default Route.extend({
   api: inject(),
   currentUser: inject(),
-  beforeModel() {
-    const params = this.paramsFor("attempt.content");
-    const section = this.store.peekRecord("section", params.sectionId);
-
-    return section.get("contents");
+  productTour: inject(),
+  async beforeModel() {
+    const params = this.paramsFor('attempt.content')
+    const section = this.store.peekRecord('section', params.sectionId)
+    const startTour = await this.productTour.preparePlayerTour()
+    scheduleOnce('afterRender', startTour)
+    return section.get('contents')
   },
-  model(params) {
-    return this.store.peekRecord("content", params.contentId, {
-      include: "lecture,video,document,code_challenge",
-      reload: true
-    });
+  model (params) {
+      return this.store.peekRecord('content', params.contentId, {
+          include: 'lecture,video,document,code_challenge',
+          reload: true
+      })
   },
   setupController(controller) {
-    this._super(...arguments);
-    controller.set("run", this.modelFor("attempt").get("run"));
-    controller.set("course", this.modelFor("attempt").get("run.course"));
-  },
+      this._super(...arguments)
+      controller.set('run', this.modelFor('attempt').get('run'))
+      controller.set('course', this.modelFor('attempt').get('run.course'))
+  },  
   async afterModel(content) {
     if (!content.get("payload.id")) {
       // we don't have content; so a locked page will be shown
@@ -65,17 +67,12 @@ export default Route.extend({
         .scrollTo({ top: 0, behavior: "smooth" });
 
       // scroll table of contents
-      scheduleOnce("afterRender", () => {
-        document.getElementById("contentScrollContainer").scrollTo({
-          top:
-            document
-              .getElementById("active-section-container")
-              .getBoundingClientRect().top +
-            document.getElementById("contentScrollContainer").scrollTop -
-            160,
-          behavior: "smooth"
-        });
-      });
+      scheduleOnce('afterRender', () => {
+        document.getElementById('contentScrollContainer').scrollTo({
+          top: document.getElementById('active-section-container').getBoundingClientRect().top + document.getElementById('contentScrollContainer').scrollTop  - 160,
+          behavior: 'smooth'
+        })
+      })
     }
   }
 });
