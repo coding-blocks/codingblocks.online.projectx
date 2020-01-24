@@ -48,4 +48,9 @@ export default class DoubtListItem extends Component {
     const { conversationId } = await this.api.request('/chats/' + this.doubt.id, {method: 'POST'}) 
     this.talkjs.startChat(conversationId)
   }
+
+  @action
+  toggleReplies () {
+    this.toggleProperty('showReplies')
+  }
 }
