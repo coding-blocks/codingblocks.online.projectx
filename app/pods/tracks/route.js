@@ -29,7 +29,6 @@ export default class Tracks extends Route {
         professionId: this.professionId
       }
     })
-    debugger
     this.transitionTo('tracks.id', careerTrack.data.attributes.slug)
   }
 
