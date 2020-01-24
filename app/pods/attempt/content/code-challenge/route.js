@@ -1,10 +1,11 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import { allSettled, hash } from 'rsvp';
+import { hash } from 'rsvp';
 
 export default class CodeChallengeRoute extends Route {
   @service api
   @service currentUser
+  @service player
 
   async model() {
     const content = this.modelFor('attempt.content')
@@ -23,10 +24,11 @@ export default class CodeChallengeRoute extends Route {
       this.store.pushPayload(payload)
       return this.store.peekRecord('problem', content.payload.get('hbProblemId'))
     })
-
+    
     return hash({
       content,
-      problem
+      problem,
+      runAttempt
     })
   }
 
@@ -34,5 +36,6 @@ export default class CodeChallengeRoute extends Route {
     controller.set('content', model.content)
     controller.set('codeChallenge', model.content.payload)
     controller.set('problem', model.problem)
+    controller.set('runAttempt', model.runAttempt)
   }
 }

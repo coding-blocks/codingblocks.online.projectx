@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { action, set } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import { A } from '@ember/array';
-import { task, taskGroup } from 'ember-concurrency-decorators';
+import { task, taskGroup, restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
 
 export default class CodeEditor extends Component {
@@ -11,8 +11,10 @@ export default class CodeEditor extends Component {
   @service api
   @service player
   @service store
+  @service firepad
 
   @alias('judgeTaskGroup.lastSuccessful.value') lastResult
+  @alias('firepad.connected') isCollaborating
 
   customInputOpen = true
   customInputText = ''
@@ -71,8 +73,30 @@ export default class CodeEditor extends Component {
   }
 
   didReceiveAttrs() {
-    this.selectedLanguage = this.languageSpecs[0]
+    this.set('selectedLanguage', this.languageSpecs[0])
     this.setCodeStubs()
+  }
+
+  didInsertElement () {
+    this._super(...arguments)
+    const monacoIframe = document.querySelector('iframe[src*="ember-monaco"]')
+    monacoIframe.addEventListener('load', () => {
+      const iframeWindow = monacoIframe.contentWindow
+      
+      // Get the editor reference and set monaco global
+      this.editor = iframeWindow.editor
+      window.monaco = iframeWindow.monaco
+
+      const firepad = this.firepad
+      firepad.set("editor", this.editor)
+
+      // if we have a ref; connect to firebase
+      if (this.ref) {
+        firepad.connect(this.ref, false)
+      } else {
+        firepad.disconnect()
+      }
+    })
   }
 
   @taskGroup({drop: true}) judgeTaskGroup
@@ -152,5 +176,33 @@ export default class CodeEditor extends Component {
   selectLanguage(code) {
     const language = this.languageSpecs.findBy('code', code)
     this.set('selectedLanguage', language)
+  }
+
+  @action
+  onEditorReady (editor) {
+    const monacoIframe = document.querySelector('iframe[src*="ember-monaco"]')
+    
+    // Get the editor reference and set monaco global
+    
+    this.set('editor', editor)
+    window.monaco = monacoIframe.contentWindow.monaco
+
+    const firepad = this.firepad
+    firepad.set("editor", this.editor)
+
+    // if we have a ref; connect to firebase
+    if (this.ref) {
+      firepad.connect(this.ref, false)
+    } else {
+      firepad.disconnect()
+    }
+  }
+
+  @restartableTask setCollabModeTask = function *(value) {
+    if (value) {
+      yield this.firepad.connect()
+    } else {
+      this.firepad.disconnect()
+    }
   }
 }

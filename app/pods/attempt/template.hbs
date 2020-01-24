@@ -39,45 +39,8 @@
       </div>
       
       <div class="col-lg-9 timeline__main-area__video-area no-scrollbar order-lg-12 order-1">
-        <div>
-          <div>
-            {{outlet}}
-          </div>
-          <div class="row py-4 no-gutters align-items-center justify-content-between ">
-            <div class="col-8">
-              <h3 class="gradient-text-orange bold">
-                Get 24*7 Doubts &amp; Mentor Support
-              </h3>
-              Have any queries? Ask a Doubt
-            </div>
-            <button class="button-solid button-orange" {{action "openAskDoubtModal"}} id="ask-doubt">
-              Ask Doubt
-            </button>
-          </div>
-          <WTabNav
-            @inactiveClass="white"
-            @tabs={{tabs}}
-            @activeTab={{activeTab}}
-            @onTabChange={{action (mut activeTab)}}>
-            {{#if (eq activeTab.name 'Doubts')}}
-              {{component activeTab.component
-                doubts=runAttempt.doubts}}  
-            {{else if (eq activeTab.name 'Notes')}}
-              {{component activeTab.component
-                notes=runAttempt.notes}}  
-            {{/if}}
-          </WTabNav>
-        </div>
-        </div>
+        {{outlet}}
+      </div>
     </div>
   
 </div>
-
-{{#if showAskDoubtModal}}
-  <Player::PlayerAskDoubtModal 
-    @onClose={{action "closeAskDoubtModal"}}
-    @doubt={{newDoubt}} 
-    class="row white h-100" />
-{{/if}}
-
-

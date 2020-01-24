@@ -38,6 +38,10 @@ export default class NotesTab extends Component {
     yield note.save()
     this.set('newNoteText', '')
 
+    if (this.onAfterSave) {
+      this.onAfterSave()
+    }
+
     return note
   }
 }
