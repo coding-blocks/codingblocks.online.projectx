@@ -1,6 +1,16 @@
-{{#each doubts as |doubt|}}
-  <div class="py-4">
-    <Player::PlayerDoubtsListItem @doubt={{doubt}} />
+{{#if doubts}}
+  {{#each doubts as |doubt|}}
+    <div class="py-4">
+      <Player::PlayerDoubtsListItem @doubt={{doubt}} />
+    </div>
+    <div class="divider-h"></div>
+  {{/each}}
+{{else}}
+  <div class="t-align-c my-5">
+    <img src="https://minio.codingblocks.com/amoeba/announcements-orange.svg" />
+    <h3 class="gradient-text-orange mt-3">No Doubts</h3>
+    <p class="white">
+      Doubts that you ask appear here
+    </p>
   </div>
-  <div class="divider-h"></div>
-{{/each}}
+{{/if}}
