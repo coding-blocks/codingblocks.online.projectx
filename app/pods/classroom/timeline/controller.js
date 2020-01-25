@@ -17,7 +17,7 @@ export default class TimelineController extends Controller {
     return !ra.premium || ra.isExpired
   }
 
-  @computed('runAttempt.{premium,price}')
+  @computed('runAttempt.{premium}', 'run.price')
   get showGoodieRequest() {
     return this.runAttempt.premium && this.run.price
   }
