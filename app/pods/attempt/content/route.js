@@ -5,12 +5,9 @@ import { scheduleOnce } from "@ember/runloop";
 export default Route.extend({
   api: inject(),
   currentUser: inject(),
-  productTour: inject(),
   async beforeModel() {
     const params = this.paramsFor('attempt.content')
     const section = this.store.peekRecord('section', params.sectionId)
-    const startTour = await this.productTour.preparePlayerTour()
-    scheduleOnce('afterRender', startTour)
     return section.get('contents')
   },
   model (params) {

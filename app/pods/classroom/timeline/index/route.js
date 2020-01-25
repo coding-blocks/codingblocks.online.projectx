@@ -18,8 +18,6 @@ export default Route.extend({
   async afterModel(model) {
     this.set('headData.title', model.get('title'))
     const startTour = await this.productTour.prepareCourseDashboardTour()
-    debugger;
-
     scheduleOnce('afterRender', startTour)
   },
   actions: {

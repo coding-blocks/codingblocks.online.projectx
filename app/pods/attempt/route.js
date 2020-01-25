@@ -2,10 +2,16 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import DS from 'ember-data';
 import AuthenticatedRouteMixin from 'codingblocks-online/mixins/authenticated-route-mixin';
+import { scheduleOnce } from "@ember/runloop";
 
 export default Route.extend(AuthenticatedRouteMixin, {
 	api: service(),
-	router: service(),
+  router: service(),
+  productTour: service(),
+  async beforeModel() {
+    const startTour = await this.productTour.preparePlayerTour()
+    scheduleOnce('afterRender', startTour)
+  },
 	model(params, transition) {
 		return this.store.findRecord('runAttempt', params.runAttemptId, { reload: true })
 			.catch(err => {
