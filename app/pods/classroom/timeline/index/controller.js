@@ -43,7 +43,12 @@ export default class Overview extends Controller {
   progressPercent
 
   @restartableTask fetchPerformanceStatsTask = function *() {
-    return yield this.api.request(`progresses/stats/${this.runAttempt.id}`)
+    const leaderboard = yield this.api.request(`runs/${this.runAttempt.get('run.id')}/leaderboard`).catch(console.log)
+    const stats = yield this.api.request(`progresses/stats/${this.runAttempt.id}`)
+    return {
+      ...stats,
+      leaderboard: leaderboard || []
+    }
   }
 
   @action

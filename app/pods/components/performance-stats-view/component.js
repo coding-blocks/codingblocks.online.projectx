@@ -1,7 +1,10 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class PerformanceStatsView extends Component {
+  @service currentUser
+
   options = {
     legend: {
       display: true
@@ -20,6 +23,17 @@ export default class PerformanceStatsView extends Component {
         }
       }],
     }
+  }
+
+  @computed('stats.leaderboard')
+  get leaderboardCount() {
+    return this.stats.leaderboard.length
+  }
+
+  @computed('stats.leaderboard')
+  get myRank() {
+    const rank = this.stats.leaderboard.findIndex(_ => _.id === this.currentUser.user.id)
+    return rank > 0 ? rank + 1 : null
   }
 
   @computed('stats', 'orangeGradient', 'greenGradient')
