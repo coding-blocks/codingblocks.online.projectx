@@ -19,7 +19,7 @@ export default class TimelineController extends Controller {
 
   @computed('runAttempt.{premium,price}')
   get showGoodieRequest() {
-    return this.runAttempt.premium && this.runAttempt.price
+    return this.runAttempt.premium && this.run.price
   }
 
   @computed('runAttempt')
