@@ -188,7 +188,7 @@
         </div>
       </a>
     {{/if}}
-    {{#if (is-after (unix runAttempt.run.start) '2018-10-01')}}
+    {{#if (and (is-after (unix runAttempt.run.start) '2018-10-01') (not (eq runAttempt.run.price 0)))}}
       <GoodieComp
         class="mb-5"
         @runAttempt={{runAttempt}} />
