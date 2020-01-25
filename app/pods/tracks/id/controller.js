@@ -6,7 +6,7 @@ import { computed } from '@ember/object';
 export default class Track extends Controller {
   @service store
 
-  @computed('track.courses')
+  @computed('track.courses.@each.title')
   get coursesLoaded() {
     return this.track.hasMany('courses').value()
   }

@@ -23,10 +23,11 @@
         {{#if (not coursesLoaded)}}
           {{!-- TODO: use skeleton instead --}}
           Loading....
+        {{else}}
+          {{#each courses as |course index|}}
+            <Tracks::TracksCourseRow @course={{course}} />
+          {{/each}}
         {{/if}}
-        {{#each track.courses as |course index|}}
-          <Tracks::TracksCourseRow @course={{course}} />
-        {{/each}}
       </div>
     </div>
   </div>

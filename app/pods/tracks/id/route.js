@@ -7,5 +7,6 @@ export default class Track extends Route {
 
   setupController(controller, model) {
     controller.set('track', model)
+    controller.set('courses', model.courses)
   }
 }
