@@ -1,4 +1,4 @@
-{{#if (not currentUser.user.verifiedemail)}}
+{{#if (not (or currentUser.user.verifiedemail currentUser.user.verifiedmobile))}}
   <VerifyEmail />
 {{else if model.payload}}
   {{!-- render content outlet and doubts and notes --}}
