@@ -17,7 +17,7 @@ export default class CourseCardComponent extends Component {
 
   @action
   log(event, title) {
-    this.get('metrics').trackEvent({event, title})
+    this.get('metrics').trackEvent({event, title, page: 'courses'})
   }
 
 

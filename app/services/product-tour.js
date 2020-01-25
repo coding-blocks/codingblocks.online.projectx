@@ -27,43 +27,49 @@ const tourStarterHoc = (tour, keyName) => {
   }
 }
 
+const tourDefaults = {
+  defaultStepOptions,
+  disableScroll: true,
+  modal: true,
+  styleVariables: {
+    // Shepherd theme overrides
+    shepherdTextBackground: '#3d2f53',
+    shepherdThemePrimary: '#624b86',
+    shepherdThemeSecondary: '#c8c7d5'
+  }
+}
+
+const resetDefaults = (tour) => tour.setProperties(tourDefaults)
+
+
 export default class ProductTourService extends Service {
   @service tour
 
   constructor() {
     super(...arguments)
-    const tour = this.tour
-
-    tour.setProperties({
-      defaultStepOptions,
-      disableScroll: true,
-      modal: true,
-      styleVariables: {
-        // Shepherd theme overrides
-        shepherdTextBackground: '#3d2f53',
-        shepherdThemePrimary: '#624b86',
-        shepherdThemeSecondary: '#c8c7d5'
-      },
-      confirmCancel: true
-    })
+    resetDefaults(this.tour)
   }
 
-  async prepareCourseDashboardTour() {
+
+  async prepareCourseDashboardTour(force = false) {
     const keyName = 'dashboard-tour'
-    if (localStorage.getItem(keyName)) {
+    if (localStorage.getItem(keyName) && !force) {
       return noop
     }
     const tour = this.tour
+    resetDefaults(tour)
     await tour.addSteps(courseDashboardsSteps)
     return tourStarterHoc(tour, keyName)
   }
 
-  async preparePlayerTour() {
+  async preparePlayerTour(force = false) {
     const keyName = 'player-tour'
-    if (window.localStorage.getItem(keyName)) {
+    if (window.localStorage.getItem(keyName) && !force) {
       return noop
     }
     const tour = this.tour
+    resetDefaults(tour)
+    tour.set("modal", false)
     await tour.addSteps(contentPlayerSteps)
     return tourStarterHoc(tour, keyName)
   }

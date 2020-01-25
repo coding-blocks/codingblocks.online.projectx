@@ -7,6 +7,7 @@ import { computed } from '@ember/object';
 export default class AttemptController extends Controller {
   @service store
   @service player
+  @service productTour
 
   @alias('player.sectionId') currentSectionId
 
@@ -56,5 +57,11 @@ export default class AttemptController extends Controller {
   @action
   toggleContentList() {
     this.toggleProperty('contentListCollpased')
+  }
+
+  @action
+  async startTour() {
+    const startTour = await this.productTour.preparePlayerTour(true)
+    startTour()
   }
 }

@@ -49,38 +49,33 @@
         <div class="card-md mt-1">Batches starting {{moment-format (unix course.topRun.start) 'MMM Do'}}</div>
       </div>
       {{#if domain.isExternal}}
-        <a
-          href="/courses/{{course.identifier}}" 
-          class="button-solid button-orange">
+        {{#link-to "courses.id" course.identifier activeClass="" class="button-solid button-orange"
+          invokeAction=(action 'log' 'explore' course.identifier)
+        }}
           Explore
-        </a
-        >
+        {{/link-to}}
       {{else}}
-        <LinkTo 
-          @route="courses.id"
-          @model={{course.identifier}}
-          @invokeAction={{action 'log' 'explore' course.identifier}}
-          class="button-solid button-orange">
+        {{#link-to "courses.id" course.identifier activeClass="" class="button-solid button-orange"
+          invokeAction=(action 'log' 'Explore' course.identifier)
+          }}
           Explore
-        </LinkTo>
+        {{/link-to}}
       {{/if}}
     </div>
     <div class="divider-h my-4"></div>
     {{#if session.isAuthenticated}}
-      <LinkTo
-        @route="classroom.timeline.index"
-        @models={{array course.id course.topRun.id}}
-        @invokeAction={{action 'log' 'free trial' course.identifier}}
-        class="orange t-align-c d-block card-md font-normal">
+      {{#link-to "classroom.timeline.index" array course.id course.topRun.id 
+        activeClass="" class="orange t-align-c d-block card-md font-normal"
+        invokeAction=(action 'log' 'Free trial' course.identifier preventDefault=false)}}
         Try it for Free!
-      </LinkTo>
+      {{/link-to}}
     {{else}}
-      <LinkTo
-        @route="login"
-        @invokeAction={{action 'log' 'free trial' course.identifier}}
-        class="orange t-align-c d-block card-md font-normal">
+      {{#link-to "login"
+        activeClass="" class="orange t-align-c d-block card-md font-normal"
+        invokeAction=(action 'log' 'free trial' course.identifier) 
+        }}
         Try it for Free!
-      </LinkTo>
+      {{/link-to}}
     {{/if}}
   </div>
 </div>

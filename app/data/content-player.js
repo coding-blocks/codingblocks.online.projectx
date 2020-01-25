@@ -1,5 +1,6 @@
 import buttons from './buttons'
 
+const onMobile = window.innerWidth <= 800
 
 export default [
   {
@@ -11,9 +12,10 @@ export default [
       buttons.cancel,
       buttons.next
     ],
-    title: 'These are the list of contents',
+    title: 'Table of Contents',
     text: `
-      <p> Welcome to the machine! </p>
+      <p> See the whole list of course contents here
+      </p>
     `
   },
   {
@@ -25,9 +27,11 @@ export default [
       buttons.cancel,
       buttons.next
     ],
-    title: 'You can bookmark your content',
+    title: 'Bookmark your favourite content',
     text: `
-      <p> Welcome my son! </p>
+      <p>
+        Bookmark the particular section of the course you'd like to watch again and access it directly from your course library
+      </p>
     `
   },
   {
@@ -41,7 +45,8 @@ export default [
     ],
     title: 'You can search contents here',
     text: `
-      <p> Welcome my son! </p>
+      <p> Click and type here to search the section video you want to watch
+      </p>
     `
   },
   {
@@ -55,8 +60,25 @@ export default [
     ],
     title: 'Ask your doubts here!',
     text: `
-      <p> Welcome my son! </p>
+      <p> Scroll down here to ask your doubt/ raise your query
+      </p>
     `
   },
+  {
+    attachTo: {
+      element: '#start-player-tour',
+      on: 'left'
+    },
+    buttons: [
+      buttons.cancel
+    ],
+    title: 'Restart Tour',
+    highlightClass: 'px-3',
+    text: `
+      <p>
+       Click here to restart this tour anytime.
+      </p>
+    `
+  }
 
 ]

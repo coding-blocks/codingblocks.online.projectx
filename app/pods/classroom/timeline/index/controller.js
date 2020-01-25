@@ -9,6 +9,7 @@ import { alias } from '@ember/object/computed';
 export default class Overview extends Controller {
   @service api
   @service metrics
+  @service productTour
 
   queryParams = ['showFeedback']
   showFeedback = false
@@ -67,7 +68,13 @@ export default class Overview extends Controller {
   }
 
   @action
+  async startTour() {
+    const startTour = await this.productTour.prepareCourseDashboardTour(true)
+    startTour()
+  }
+
+  @action
   log(event, course){
     this.metrics.trackEvent({event, course, page: 'Classroom'})
-  }
+  } 
 }

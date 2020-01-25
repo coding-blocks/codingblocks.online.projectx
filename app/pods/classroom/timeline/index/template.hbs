@@ -8,7 +8,10 @@
               <img src="{{course.logo}}" alt="{{course.title}}" class="s-50x50">
             </div>
             <div>
-              <h5 class="bold">{{course.title}}</h5>
+              <h5 class="bold">
+                {{course.title}}
+                <i class="far fa-question-circle icon-hover-fill pointer" title="Take Tour" {{action "startTour"}} id="start-course-dashboard-tour" ></i>
+              </h5>
               <div class="font-normal mt-2">
                 Mentor: 
                 {{#each course.instructors as |instructor index|}}
@@ -37,7 +40,7 @@
             <progress value="{{progressPercent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
 
             {{!-- % * 0.9 to compensate for 90% width of progress bar --}}
-            <div class="progress-lock" style="left: {{goodiesLockOffset}}%">
+            <div class="progress-lock" style="left: {{goodiesLockOffset}}%" id="goodies-lock">
               <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
               {{#if (gte progressPercent runAttempt.run.goodiesThreshold)}}
                 <FaIcon 
@@ -50,7 +53,7 @@
               {{/if}}
             </div>
 
-            <div class="progress-lock" style="left: {{certificateLockOffset}}%">
+            <div class="progress-lock" style="left: {{certificateLockOffset}}%" id="certificate-lock">
               <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.completionThreshold}}% to get certified</div>
               {{#if (gte progressPercent runAttempt.run.completionThreshold)}}
                 <FaIcon 
@@ -96,12 +99,9 @@
             {{/link-to}}
           {{/if}}
 
-          <LinkTo 
-            @route="attempt"
-            @model={{runAttempt.id}}
-            class="button-dashed button-orange">
+          {{#link-to "attempt" runAttempt.id activeClass="" class="button-dashed button-orange" invokeAction=(action 'log' 'Resume' runAttempt.id preventDefault=false)}}
             Resume
-          </LinkTo>
+          {{/link-to}}
         </div>
       </div>
     </div>
@@ -182,7 +182,7 @@
   <div class="col-md-3 col-12">
     {{#if (and runAttempt.run.whatsappLink runAttempt.premium)}}
       <a href={{runAttempt.run.whatsappLink}} class="pointer" target="blank">
-        <div class="border-card border-none bg-gradient-green mb-5 white">
+        <div class="border-card border-none bg-gradient-green mb-5 white" id="join-whatsapp-card">
           <i class="fab fa-whatsapp fa-2x mr-2"></i>
           <strong class="font-md">Join Whatsapp Group</strong>
         </div>
