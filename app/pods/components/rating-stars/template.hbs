@@ -1,21 +1,16 @@
 {{#if (and hasUserMarkedRating (not isEditing))}}
   {{#each (range 1 (inc scale)) as |index|}}
-    <span
-      class="{{if (lte index rating) 'orange'}}"
-    >
-      <FaIcon @icon="star" class="mr-1" />
-    </span>
+    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/star_{{if (lte index rating) 'filled' 'unfilled'}}.svg" alt="">
   {{/each}}
   <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit pl-2" style="color:#fc4f4f"></i></a>
 {{else}}
   {{#each (range 1 (inc scale)) as |index|}}
     <span
-      class="{{if (lte index rating) 'orange'}}"
       onMouseEnter={{action 'changeRating' index}}
       onMouseLeave={{action 'resetRating'}}
       onClick={{action 'toggleModal' index}}
     >
-      <FaIcon @icon="star" class="mr-1" />
+      <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/star_{{if (lte index rating) 'filled' 'unfilled'}}.svg" alt="">
     </span>
   {{/each}}
 {{/if}}
@@ -40,11 +35,7 @@
                 How would you rate this course overall?
               </div> &nbsp;&nbsp;
               {{#each (range 1 (inc scale)) as |index|}}
-                <span
-                  class="{{if (lte index rating) 'orange'}}"
-                >
-                  <FaIcon @icon="star" />
-                </span>
+                <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/star_{{if (lte index rating) 'filled' 'unfilled'}}.svg" alt="">
               {{/each}}
               <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
             </div>
@@ -55,12 +46,11 @@
               </div> &nbsp;
               {{#each (range 1 (inc scale)) as |index|}}
                 <span
-                  class="{{if (lte index rating) 'orange'}}"
                   onMouseEnter={{action 'changeRating' index}}
                   onMouseLeave={{action 'resetRating'}}
                   onClick={{action 'markRating' index}}
                 >
-                  <FaIcon @icon="star" />
+                  <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/star_{{if (lte index rating) 'filled' 'unfilled'}}.svg" alt="">
                 </span>
               {{/each}}
             </div>

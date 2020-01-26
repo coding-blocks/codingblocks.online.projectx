@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="t-align-md-r t-align-c col-md-4 mt-3 mt-md-0">
-          <span class="font-normal">Leave a rating: </span>
+          <div class="normal mb-2">Leave a rating</div>
           <RatingStars 
             @course={{course}}
             @showModal={{true}}
@@ -182,9 +182,9 @@
   <div class="col-md-3 col-12">
     {{#if (and runAttempt.run.whatsappLink runAttempt.premium)}}
       <a href={{runAttempt.run.whatsappLink}} class="pointer" target="blank">
-        <div class="border-card border-none bg-gradient-green mb-5 white" id="join-whatsapp-card">
+        <div class="border-card border-none bg-gradient-green mb-5 white p-4 v-align-ma mt-md-0 mt-5" id="join-whatsapp-card">
           <i class="fab fa-whatsapp fa-2x mr-2"></i>
-          <strong class="font-md">Join Whatsapp Group</strong>
+          <strong class="font-sm">Join Whatsapp Group</strong>
         </div>
       </a>
     {{/if}}

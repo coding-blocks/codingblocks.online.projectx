@@ -2,9 +2,9 @@
 	{{#if unreadNotifications}}
 		<span class="notify-dot new"></span>
 	{{/if}}
-	<i class="far fa-bell  icon-hover-fill pointer"></i>
+	<img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/notification.svg" alt="">
 </div>
-<div class="pop-up dropdown-ul border-card pt-2 c-notification {{if showDialog 'display-block'}}" id="notification-box" 
+<div class="pop-up dropdown-ul border-card pt-2 c-notification no-scrollbar {{if showDialog 'display-block'}}" id="notification-box" 
 style="height: 500px; overflow-y: scroll;">
 	{{#if notifications.length}}
 		{{#each notifications as |notification|}}
