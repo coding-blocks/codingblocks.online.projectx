@@ -16,7 +16,7 @@ export default Route.extend({
     controller.set('userRating', model.get('rating'))
   },
   async afterModel(model) {
-    this.set('headData.title', model.get('title'))
+    this.set('headData.title', 'My Classroom | ' + model.get('run.course.title'))
     const startTour = await this.productTour.prepareCourseDashboardTour()
     scheduleOnce('afterRender', startTour)
   },

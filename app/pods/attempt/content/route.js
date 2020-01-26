@@ -5,6 +5,7 @@ import { scheduleOnce } from "@ember/runloop";
 export default Route.extend({
   api: inject(),
   currentUser: inject(),
+  headData: inject(),
   async beforeModel() {
     const params = this.paramsFor('attempt.content')
     const section = this.store.peekRecord('section', params.sectionId)
@@ -22,6 +23,9 @@ export default Route.extend({
       controller.set('course', this.modelFor('attempt').get('run.course'))
   },  
   async afterModel(content) {
+    const courseTitle = this.modelFor('attempt').get('run.course.title')
+    this.headData.set('title', `${courseTitle} | ${content.title}`)
+
     if (!content.get("payload.id")) {
       // we don't have content; so a locked page will be shown
       return;
@@ -56,6 +60,7 @@ export default Route.extend({
       this.set("currentUser.user.hackJwt", response.jwt);
     }
   },
+
   actions: {
     didTransition() {
       //scroll content player to top
