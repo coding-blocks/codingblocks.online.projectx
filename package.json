@@ -65,6 +65,7 @@
     "ember-power-select": "^4.0.0-beta.4",
     "ember-qunit": "^4.5.1",
     "ember-resolver": "^5.3.0",
+    "ember-shepherd": "^10.0.1",
     "ember-simple-auth": "^1.4.2",
     "ember-simple-auth-token": "git+https://github.com/abhishek97/ember-simple-auth-token.git",
     "ember-source": "~3.14.1",

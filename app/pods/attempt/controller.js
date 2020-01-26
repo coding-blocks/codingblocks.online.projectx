@@ -7,6 +7,7 @@ import { computed } from '@ember/object';
 export default class AttemptController extends Controller {
   @service store
   @service player
+  @service productTour
 
   @alias('player.sectionId') currentSectionId
 
@@ -18,42 +19,6 @@ export default class AttemptController extends Controller {
   @computed('player.contentId')
   get currentContent() {
     return this.player.contentId && this.store.peekRecord('content', this.player.contentId)
-  }
-
-  tabs = [
-    {
-      name: 'Doubts',
-      component: 'player/player-doubts-tab'
-    },
-    {
-      name: 'Notes',
-      component: 'player/player-notes-tab'
-    },
-    {
-      name: 'Announcements',
-      component: 'player/player-announcements-tab'
-    },
-  ]
-  activeTab = this.tabs.firstObject
-  contentListCollpased = true
-
-  @action 
-  openAskDoubtModal() {
-    const content = this.store.peekRecord('content', this.player.contentId)
-    const runAttempt = this.store.peekRecord('run-attempt', this.player.runAttemptId)
-    const doubt = this.store.createRecord('doubt', {
-      content,
-      runAttempt
-    })
-
-    this.set('newDoubt', doubt)
-    this.set('showAskDoubtModal', true)
-  }
-
-  @action
-  closeAskDoubtModal() {
-    this.newDoubt.rollbackAttributes()
-    this.set('showAskDoubtModal', false)
   }
   
   @action
@@ -92,5 +57,11 @@ export default class AttemptController extends Controller {
   @action
   toggleContentList() {
     this.toggleProperty('contentListCollpased')
+  }
+
+  @action
+  async startTour() {
+    const startTour = await this.productTour.preparePlayerTour(true)
+    startTour()
   }
 }

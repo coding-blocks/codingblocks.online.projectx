@@ -42,3 +42,42 @@
     <FaIcon @icon="exclamation-triangle" /> {{{err}}}
   </div>
 {{/if}}
+<div class="mt-4 gradient-text-orange">
+  <a href="#" {{action "toggleReplies"}}>
+    {{if showReplies "Hide" "Show"}} Replies
+  </a>
+</div>
+
+{{#if showReplies}}
+  <div class="ml-5 py-4 b-left b-grey">
+    {{#each doubt.comments as |comment|}}
+      <div class="ml-4">  
+        <div class="d-flex align-items-center">
+          <img src="{{comment.avatarTemplate}}" alt="user photo" class="round s-50x50">
+          <div class="ml-3">
+            <div class="bold">{{comment.name}}</div>
+            <div class="font-xs">4 hours ago</div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <p>{{markdown-to-html comment.body}}</p>
+        </div>
+        <div class="divider-h my-4"></div>
+      </div>
+    {{/each}}
+  </div>
+{{/if}}
+
+{{#if showFeedbackModal}}
+  <ModalDialog 
+    @translucentOverlay={{true}} 
+    @targetAttachment="none"
+    @containerClass='centered-scrolling-container bg-dark-grey'
+    @overlayClass='centered-scrolling-overlay'
+    @wrapperClass='centered-scrolling-wrapper'
+    @onClose={{action (mut showFeedbackModal) false}}>
+    <DoubtFeedback 
+      @doubt={{doubt}} 
+      @onSave={{action (mut showFeedbackModal) false}} />
+  </ModalDialog>
+{{/if}}

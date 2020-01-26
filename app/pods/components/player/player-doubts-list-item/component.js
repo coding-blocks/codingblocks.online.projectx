@@ -31,19 +31,26 @@ export default class DoubtListItem extends Component {
   }
   
   @action
-  markStatus (status) {
+  async markStatus (status) {
     this.set('doubt.status', status)
     if (status == 'RESOLVED')
       this.set('doubt.resolvedById', this.get('currentUser.user.id'))
     else if (status == 'PENDING')
       this.doubt.set('feedbacks', [])
-    
-    this.get('doubt').save()
+    await this.get('doubt').save()
+    if (this.get('doubt.status') === 'RESOLVED') {
+      this.set('showFeedbackModal', true)
+    }
   }
 
   @action
   async startChat () {
     const { conversationId } = await this.api.request('/chats/' + this.doubt.id, {method: 'POST'}) 
     this.talkjs.startChat(conversationId)
+  }
+
+  @action
+  toggleReplies () {
+    this.toggleProperty('showReplies')
   }
 }

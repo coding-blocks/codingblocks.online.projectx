@@ -39,6 +39,15 @@
           {{if saveDoubtTask.isRunning "Posting" "Post Doubt"}}
         </button>
       </div>
+      {{#if saveDoubtTask.last.isError}}
+        <div class="mt-3 t-align-c">
+          <p class="red">
+            {{#each saveDoubtTask.last.error.errors as |error|}}
+              {{error.detail}}
+            {{/each}}
+          </p>
+        </div>
+      {{/if}}
     </div>
     <div class="col-md-6 p-5 bg-grey-darker dsp-none-sm">
       <h4 class="bold">

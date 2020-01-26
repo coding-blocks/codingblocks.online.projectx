@@ -1,5 +1,21 @@
-{{#each payload as |note|}}
-  <CourseLibrary::Notes::Row
-    @note={{note}}
-  />
-{{/each}}
+{{#if payload}}
+  {{#each payload as |note|}}
+    <CourseLibrary::Notes::Row
+      @note={{note}}
+    />
+  {{/each}}
+{{else}}
+  <div class="t-align-c">
+    <img src="https://minio.codingblocks.com/amoeba/notes-orange.svg" />
+    <h3 class="gradient-text-orange mt-3">No Notes</h3>
+    <p class="grey">
+      Take important notes while accessing the content
+    </p>
+    <LinkTo
+      class="button-solid button-orange d-inline-block"
+      @route="attempt"
+      @model={{runAttempt.id}}>
+      Go To Classroom
+    </LinkTo>
+  </div>
+{{/if}}

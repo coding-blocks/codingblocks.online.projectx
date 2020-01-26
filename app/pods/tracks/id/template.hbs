@@ -20,9 +20,14 @@
     </div>
     <div class="pl-4">
       <div class="b-left">
-        {{#each track.courses as |course index|}}
-          <Tracks::TracksCourseRow @course={{course}} />
-        {{/each}}
+        {{#if (not coursesLoaded)}}
+          {{!-- TODO: use skeleton instead --}}
+          Loading....
+        {{else}}
+          {{#each courses as |course index|}}
+            <Tracks::TracksCourseRow @course={{course}} />
+          {{/each}}
+        {{/if}}
       </div>
     </div>
   </div>

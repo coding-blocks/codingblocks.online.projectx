@@ -4,10 +4,11 @@
 
     
     <div class="row no-gutters timeline__main-area">
-      <div class="col-lg-3 col-12 timeline__main-area__content-bar no-scrollbar order-2">
+      <div class="col-lg-3 col-12 timeline__main-area__content-bar no-scrollbar order-2" id="contentScrollContainer">
         <div class="position-sticky d-lg-block d-none">
-          <h4 class="bold">
-            Course Content
+          <h4 class="bold" id="start-player-tour">
+            Course Content 
+            <i class="far fa-question-circle icon-hover-fill pointer" title="Take Tour" {{action "startTour"}} ></i>
           </h4>
           <div class="divider-h"></div>
         </div>
@@ -27,9 +28,9 @@
             <div class="d-flex align-items-center justify-content-between">
               <span class="font-normal mr-3">Course Progress</span>
               <div class="flex-1">
-                <progress value="30" max="100" class="progress-orange"></progress>
+                <progress value={{runAttempt.progressPercent}} max="100" class="progress-orange"></progress>
               </div>
-              <span class="bold ml-3">100%</span>
+              <span class="bold ml-3">{{runAttempt.progressPercent}}%</span>
             </div>
           </div>
           <Player::PlayerSectionList 
@@ -39,45 +40,8 @@
       </div>
       
       <div class="col-lg-9 timeline__main-area__video-area no-scrollbar order-lg-12 order-1">
-        <div>
-          <div>
-            {{outlet}}
-          </div>
-          <div class="row py-4 no-gutters align-items-center justify-content-between ">
-            <div class="col-8">
-              <h3 class="gradient-text-orange bold">
-                Get 24*7 Doubts &amp; Mentor Support
-              </h3>
-              Have any queries? Ask a Doubt
-            </div>
-            <button class="button-solid button-orange" {{action "openAskDoubtModal"}}>
-              Ask Doubt
-            </button>
-          </div>
-          <WTabNav
-            @inactiveClass="white"
-            @tabs={{tabs}}
-            @activeTab={{activeTab}}
-            @onTabChange={{action (mut activeTab)}}>
-            {{#if (eq activeTab.name 'Doubts')}}
-              {{component activeTab.component
-                doubts=runAttempt.doubts}}  
-            {{else if (eq activeTab.name 'Notes')}}
-              {{component activeTab.component
-                notes=runAttempt.notes}}  
-            {{/if}}
-          </WTabNav>
-        </div>
-        </div>
+        {{outlet}}
+      </div>
     </div>
   
 </div>
-
-{{#if showAskDoubtModal}}
-  <Player::PlayerAskDoubtModal 
-    @onClose={{action "closeAskDoubtModal"}}
-    @doubt={{newDoubt}} 
-    class="row white h-100" />
-{{/if}}
-
-

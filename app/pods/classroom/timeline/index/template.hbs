@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-9 col-12 spaced-list-margin">
-    <div class="border-card p-sm-5 p-4">
+    <div class="border-card p-sm-5 p-4" id="course-information-card">
       <div class="row no-gutters align-items-center">
         <div class="col-md-8">
           <div class="d-flex align-items-center">
@@ -8,7 +8,10 @@
               <img src="{{course.logo}}" alt="{{course.title}}" class="s-50x50">
             </div>
             <div>
-              <h5 class="bold">{{course.title}}</h5>
+              <h5 class="bold">
+                {{course.title}}
+                <i class="far fa-question-circle icon-hover-fill pointer" title="Take Tour" {{action "startTour"}} id="start-course-dashboard-tour" ></i>
+              </h5>
               <div class="font-normal mt-2">
                 Mentor: 
                 {{#each course.instructors as |instructor index|}}
@@ -37,29 +40,29 @@
             <progress value="{{progressPercent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
 
             {{!-- % * 0.9 to compensate for 90% width of progress bar --}}
-            <div class="progress-lock" style="left: {{goodiesLockOffset}}%">
+            <div class="progress-lock" style="left: {{goodiesLockOffset}}%" id="goodies-lock">
               <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
               {{#if (gte progressPercent runAttempt.run.goodiesThreshold)}}
                 <FaIcon 
                   @icon="lock-open"
-                  class="mt-2 gradient-text-green" />
+                  class="mt-2 gradient-text-green pointer" />
               {{else}}
                 <FaIcon 
                   @icon="lock"
-                  class="mt-2 gradient-text-pink" />
+                  class="mt-2 gradient-text-pink pointer" />
               {{/if}}
             </div>
 
-            <div class="progress-lock" style="left: {{certificateLockOffset}}%">
+            <div class="progress-lock" style="left: {{certificateLockOffset}}%" id="certificate-lock">
               <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.completionThreshold}}% to get certified</div>
               {{#if (gte progressPercent runAttempt.run.completionThreshold)}}
                 <FaIcon 
                   @icon="lock-open"
-                  class="mt-2 gradient-text-green" />
+                  class="mt-2 gradient-text-green pointer" />
               {{else}}
                 <FaIcon 
                   @icon="lock"
-                  class="mt-2 gradient-text-pink" />
+                  class="mt-2 gradient-text-pink pointer" />
               {{/if}}
             </div>
             <div class="bold">{{progressPercent}}%</div>
@@ -96,12 +99,9 @@
             {{/link-to}}
           {{/if}}
 
-          <LinkTo 
-            @route="attempt"
-            @model={{runAttempt.id}}
-            class="button-dashed button-orange">
+          {{#link-to "attempt" runAttempt.id activeClass="" class="button-dashed button-orange" invokeAction=(action 'log' 'Resume' runAttempt.id preventDefault=false)}}
             Resume
-          </LinkTo>
+          {{/link-to}}
         </div>
       </div>
     </div>
@@ -110,6 +110,7 @@
     <LinkTo 
     @route="classroom.timeline.library"
     @tagName="div"
+    id="course-library"
     class="border-card px-5 py-4 pointer">
       <div class="row">
         <div class="col-9">
@@ -119,7 +120,7 @@
           </div>
         </div>
         <div class="col-3 t-align-r">
-          <img src="https://via.placeholder.com/150x50.jpg" alt="Course Library" srcset="">
+          <img src="https://minio.codingblocks.com/amoeba/course-library.svg" alt="Course Library" srcset="">
         </div>
       </div>
     </LinkTo>
@@ -132,7 +133,7 @@
       </div>
     {{/if}}
 
-    <div class="border-card p-5">
+    <div class="border-card p-5" id="performance-stats">
       <WAsync
         @task={{fetchPerformanceStatsTask}}
         @autoFire="true" as |stats|>
@@ -140,24 +141,54 @@
       </WAsync>
     </div>
 
-    <div class="border-card p-5">
+    <div class="border-card p-5" id="course-intro">
       <h4 class="mb-5">Course Introduction</h4>
 
-      <p class="grey">
-        {{markdown-to-html course.summary}}
-      </p>
+      <div class="bold mb-3">Lectures</div>
+      <div class="grey card-md mb-4">
+        • We are providing access of complete contents on course starting date. If there are any topics which needs to be
+        discussed then we'll add more lectures to the course accordingly.
+        <br>
+        • There are In-Class Quizzes, Assignments, Notes along with Lecture Videos in a lecture. You should attempt them all
+        to
+        master each section that you study.
+        <br>
+        • You should complete the lectures within the specified deadlines.
+      </div>
+
+      <div class="bold mb-3">Assignments and Tests</div>
+      <div class="grey card-md mb-4">
+        • After almost every lecture there will be one assignment.
+        <br>
+        • Assignments will have deadlines.
+        <br>
+        • Deadlines will be the soft deadlines, submitting a challenge after the given deadline will not affect your score. 
+      </div>
+
+      <div class="bold mb-3">Teaching Assistants and Doubts Resolution</div>
+      <div class="grey card-md mb-4">
+        • Apart from instructors taking the course, there are teaching assistants in the course who will be taking your
+        doubts.
+        <br>
+        • You can ask doubt on any content that you are facing problem at, be it a video or a question. There is an “Ask
+        Doubt”
+        button on the top right corner to raise your doubt.
+        <br>
+        • The doubt support period is valid for 6 months from the start of course date. This is kept after considering 
+        the section deadlines and the content that is available for the students to learn.
+      </div>
     </div>
   </div>
   <div class="col-md-3 col-12">
     {{#if (and runAttempt.run.whatsappLink runAttempt.premium)}}
       <a href={{runAttempt.run.whatsappLink}} class="pointer" target="blank">
-        <div class="border-card border-none bg-gradient-green mb-5 white p-4 v-align-ma mt-md-0 mt-5">
+        <div class="border-card border-none bg-gradient-green mb-5 white p-4 v-align-ma mt-md-0 mt-5" id="join-whatsapp-card">
           <i class="fab fa-whatsapp fa-2x mr-2"></i>
           <strong class="font-sm">Join Whatsapp Group</strong>
         </div>
       </a>
     {{/if}}
-    {{#if (is-after (unix runAttempt.run.start) '2018-10-01')}}
+    {{#if (and (is-after (unix runAttempt.run.start) '2018-10-01') (not (eq runAttempt.run.price 0)))}}
       <GoodieComp
         class="mb-5"
         @runAttempt={{runAttempt}} />

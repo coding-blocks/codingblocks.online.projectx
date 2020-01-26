@@ -34,7 +34,12 @@ export default class Dashboard extends Controller {
   }
 
   @restartableTask fetchPerformanceStatsTask = function *() {
-    return yield this.api.request(`progresses/stats/${this.lastAccessedRun.get('topRunAttempt.id')}`)
+    const leaderboard = yield this.api.request(`runs/${this.lastAccessedRun.id}/leaderboard`).catch(console.log)
+    const stats = yield this.api.request(`progresses/stats/${this.lastAccessedRun.get('topRunAttempt.id')}`)
+    return {
+      ...stats,
+      leaderboard: leaderboard || []
+    }
   }
 
   @restartableTask fetchAppliedJobsTask = function *() {

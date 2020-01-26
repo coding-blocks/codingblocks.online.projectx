@@ -1,7 +1,7 @@
-<div class="input-search dsp-none-sm bg-grey p-3">
+<div class="input-search dsp-none-sm bg-light-grey p-3">
   {{input 
     type="text" 
-    class="bg-grey"
+    class="bg-light-grey w-75 grey"
     placeholder="Search Content"
     value=qs key-press=(perform searchTask) 
     focusIn=(action 'showResult') 
@@ -14,7 +14,7 @@
         {{loader-component}}
       {{else}}
         {{#each results as |result|}}
-          <div class="row search-content pointer align-items-center" {{action 'transitionToContent' result.contentId result.sectionId}}>
+          <div class="row search-content pointer align-items-center black" {{action 'transitionToContent' result.contentId result.sectionId}}>
             <div class="img-container col-md-3">
               <div class="content-icon {{result.iconClass}}-{{if result.isDone 'green-dark' 'red-dark'}}"></div>
             </div>

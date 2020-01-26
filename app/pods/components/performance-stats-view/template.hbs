@@ -14,7 +14,13 @@
         <FaIcon @icon="signal" @size="3" class="orange" />
       </div>
       <div class="col-9">
-        <h6 class="bold">235/450</h6>
+        <h6 class="bold">
+          {{#if myRank}}
+            {{myRank}}/{{leaderboardCount}}
+          {{else}}
+            N/A
+          {{/if}}
+        </h6>
         <div class="font-normal grey mt-2">Leaderboard Ranking</div>
       </div>
     </div>
