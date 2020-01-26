@@ -41,8 +41,11 @@
 
         <div class="divider-h w-100 mx-auto my-5"></div>
 
-        <div class="row align-items-center justify-content-center">
-          <div class="col-6 float-left">
+        <div class="row no-gutters align-items-center justify-content-between">
+          <div class="col-8">
+            <span class="normal mr-4">
+              Leave a rating
+            </span>
             <span>
               <RatingStars 
                 @course={{lastAccessedRun.course}}
@@ -51,7 +54,7 @@
                 @initialRating={{lastAccessedRun.topRunAttempt.rating}} />
             </span>
           </div>
-          <div class="col-6">
+          <div>
             <LinkTo 
               @route="attempt"
               @model={{lastAccessedRun.topRunAttempt.id}}

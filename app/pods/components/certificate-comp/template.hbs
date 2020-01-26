@@ -6,24 +6,24 @@
 
   <div class="divider-h w-100 mx-auto mb-4"></div>
 
-  <div class="img-desc mb-4 align-items-center">
-    <div class="s-30x30 bg-light-grey round mr-3 all-center">
+  <div class="row no-gutters mb-4 align-items-center">
+    <div class="s-30x30 bg-light-grey round mr-3">
       {{#if courseCompleted}}
         <FaIcon @icon="check" class="orange" />
       {{/if}}
     </div>
-    <div class="description">
+    <div class="flex-1">
       <span>Course</span>
       <span>Completion: {{ run.completionThreshold }}%+</span>
     </div>
   </div>
-  <div class="img-desc mb-4 align-items-center">
-    <div class="s-30x30 bg-light-grey round mr-3 all-center">
+  <div class="row no-gutters mb-4 align-items-center">
+    <div class="s-30x30 bg-light-grey round mr-3">
       {{#if runAttempt.certificateApproved}}
         <FaIcon @icon="check" class="orange" />
       {{/if}}
     </div>
-    <div class="description">
+    <div class="flex-1">
       <span>Mentor Approved</span>
     </div>
   </div>

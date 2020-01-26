@@ -1,5 +1,5 @@
 <div class="border-card bg-gradient-purple mb-5">
-  <div class="t-align-c">
+  <div>
     <i class="fas fa-gift fa-2x gradient-text-orange mr-2"></i>
     <span class="bold gradient-text-orange font-md">Claim Goodies</span>
   </div>
@@ -8,13 +8,13 @@
     to unlock and claim goodies
   </div>
   <div class="divider-h bg-white"></div>
-  <div class="row no-gutters align-items-center my-5">
+  <div class="row no-gutters align-items-center my-4 py-3">
     <div class="s-30x30 bg-white br-25 mr-2 all-center">
       {{#if thresholdCompleted}}
         <FaIcon @icon="check" />
       {{/if}}
     </div>
-    <div class="bold white word-wrap">Threshold Completion: {{ run.goodiesThreshold }}%+</div>
+    <div class="bold white word-wrap flex-1">Threshold Completion: {{ run.goodiesThreshold }}%+</div>
   </div>
   {{#if alreadyClaimed}}
     <button class="button-solid button-orange" disabled> Requested </button>
