@@ -1,0 +1,42 @@
+.content-row {
+  display: flex;
+  align-items: center;
+  
+  &::before {
+    content: '';
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin-right: 1rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &.quiz-row::before {
+    background-image: url('https://minio.codingblocks.com/amoeba/quiz_grey.svg');
+  }
+  &.quiz-row.active::before {
+    background-image: url('https://minio.codingblocks.com/amoeba/quiz_orange.svg');
+  }
+
+  &.notes-row::before {
+    background-image: url('https://minio.codingblocks.com/amoeba/notes_grey.svg');
+  }
+  &.notes-row.active::before {
+    background-image: url('https://minio.codingblocks.com/amoeba/notes_orange.svg');
+  }
+
+  &.code-row::before {
+    background-image: url('https://minio.codingblocks.com/amoeba/code_grey.svg');
+  }
+  &.code-row.active::before {
+    background-image: url('https://minio.codingblocks.com/amoeba/code_orange.svg');
+  }
+
+  &.video-row::before {
+    background-image: url('https://minio.codingblocks.com/amoeba/video_grey.svg');
+  }
+  &.video-row.active::before {
+    background-image: url('https://minio.codingblocks.com/amoeba/video_orange.svg');
+  }
+}
