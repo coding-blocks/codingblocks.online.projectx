@@ -229,3 +229,12 @@ body {
   border: 1.5px solid #fff;
   position: relative;
 }
+
+.search-content:not(:first-of-type) {
+  border-top: 1px solid #2b2f37;
+}
+
+.input-search > img {
+  left: unset;
+  right: 15px;
+}
