@@ -239,6 +239,10 @@ body {
   right: 15px;
 }
 
-.navigation > a,span:not(:first-child) {
-  margin-left: 3rem;
+.navigation {
+  & > a, & > span {
+    &:not(:first-child) {
+      margin-left: 3rem;
+    }
+  }
 }

@@ -91,8 +91,8 @@
 
     <div class="mb-5">
       <div class="row">
-        <div class="col-6">
-          <div class="border-card">
+        <div class="col-md-6">
+          <div class="border-card h-100">
             {{#if noWishlist}}
               <img src="/app/images/heart-orange.svg" alt="Bag">
               <h4 class="bold mt-4">Wishlisted Courses</h4>
@@ -106,15 +106,17 @@
                 @autoFire="true">
                 <Dashboard::DashboardWishList @wishlist={{wishlist}} />
               </WAsync>
-              <div class="t-align-c">
-                <button class="button-solid button-orange mt-4">View All</button>
-              </div>
+              {{#if (gt wishlist.length 2)}}
+                <div class="t-align-c">
+                  <button class="button-solid button-orange mt-4">View All</button>
+                </div>
+              {{/if}}
             {{/if}}
           </div>
         </div>
 
-        <div class="col-6">
-          <div class="border-card">
+        <div class="col-md-6">
+          <div class="border-card h-100">
             {{#if noAppliedJobs}} 
               <img src="/app/images/bag-orange.svg" alt="Heart">
               <h4 class="bold mt-4">Applied Jobs</h4>
@@ -128,9 +130,11 @@
                 @autoFire="true">
                 <Dashboard::DashboardAppliedJobs @jobs={{appliedJobs}} />
               </WAsync>
-              <div class="t-align-c">
-                <button class="button-solid button-orange my-5">View All</button>
-              </div>
+              {{#if (gt wishlist.length 2)}}
+                <div class="t-align-c">
+                  <button class="button-solid button-orange my-5">View All</button>
+                </div>
+              {{/if}}
             {{/if}}
           </div>
         </div>

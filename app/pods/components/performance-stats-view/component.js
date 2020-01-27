@@ -7,7 +7,12 @@ export default class PerformanceStatsView extends Component {
 
   options = {
     legend: {
-      display: true
+      display: true,
+      labels: {
+        usePointStyle: true,
+        boxWidth: 20,
+        fontSize: 10
+      }
     }, 
     scales: {
       yAxes: [{
