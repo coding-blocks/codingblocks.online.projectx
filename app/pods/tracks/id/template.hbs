@@ -1,15 +1,16 @@
 <div class="row">
   <div class="col-md-8 my-4">
-    <div class="border-card p-md-5 p-4 bg-gradient-pink">
-      <div class="row justify-content-between align-items-center">
+    <div class="border-card px-3 p-4 bg-gradient-pink" style="background: url({{track.background}}); background-size: cover; background-position: center">
+      <div class="d-flex justify-content-between align-items-center">
         <div class="col-xl-10 col-md-8 col-12">
           <div class="row justify-content-between align-items-center">
-            <div class="col-3">
-              <div class="course-logo">
-                <img src="{{track.logo}}" alt="">
-              </div>
+            <div class="">
+               <img src="{{track.logo}}" alt="" class="tracks-logo p-0 s-70x70">
+              {{!-- <div class="s-50x50">
+               
+              </div> --}}
             </div>
-            <div class="col-9 white">
+            <div class="col-10 white">
               <h3 class="bold">{{track.name}}</h3>
               <div class="normal">Learn full-stack web development using JavaScript &amp; NodeJS</div>
             </div>

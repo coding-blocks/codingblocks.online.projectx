@@ -1,13 +1,11 @@
 {{#each wishlist as |item|}}
   <div class="hover-grey py-4">
-    <div class="row mx-0 align-items-center">
-      <div class="col-2">
-        <img src="{{item.course.logo}}" alt="">
-      </div>
-      <div class="col-10">
+    <div class="d-flex align-items-center">
+      <img src="{{item.course.logo}}" alt="" class="s-60x60 mr-3">
+      <div>
         <h5 class="bold">{{item.course.title}}</h5>
         <RatingStarsStatic @rating={{item.course.rating}} />
       </div>
-    </div>
+  </div>
   </div>
 {{/each}}
