@@ -238,3 +238,7 @@ body {
   left: unset;
   right: 15px;
 }
+
+.navigation > a,span:not(:first-child) {
+  margin-left: 3rem;
+}

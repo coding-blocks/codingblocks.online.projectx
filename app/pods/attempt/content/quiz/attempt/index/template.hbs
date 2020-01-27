@@ -1,17 +1,17 @@
-<div class="c-qna-attempt bg-grey-darker">
+<div class="c-qna-attempt bg-grey-darker row" style="min-height: 506px;">
   <div class="quiz-content col-9">
-    <div class="heading p-4">
+    <div class="heading bold font-mds">
       <span class="sno">Q{{q}}.</span>
       {{currentQuestion.title}}
     </div>
 
-    <div class="question p-4">
-      <span class="text">
+    <div class="question py-4">
+      <span class="text font-sm">
         {{markdown-to-html currentQuestion.description class="d-inline" extensions='katex'}}
       </span>
     </div>
 
-    <div class="p-4">
+    <div class="py-4">
       {{#each currentQuestion.choices as |choice|}}
         <div class="input-radio gradient-input">
           <input
@@ -26,20 +26,35 @@
       {{/each}}
     </div>
 
-    <div class="navigation">
+    <div class="navigation t-align-c font-sm">
+      
       {{#if (gt q 1)}}
-        <a href="#" {{action 'changeQuestion' -1}} class="white" >Previous</a>
+        <span>
+          <img src="https://minio.codingblocks.com/amoeba/left-angle-white.svg" alt="Prev">
+          <a {{action 'changeQuestion' -1}} class="white pointer ml-2" >Previous</a>
+        </span>
       {{else}}
-        <a class="grey">Previous</a>
+      <span>
+        <img src="https://minio.codingblocks.com/amoeba/left-angle-grey.svg" alt="Prev">
+        <a class="grey ml-2">Previous</a>   
+      </span>
       {{/if}}
+        <span>{{q}} of {{quiz.questions.length}}</span>
       {{#if (lt q quiz.questions.length)}}
-        <a href="#"  {{action 'changeQuestion' 1}} class="white">Next</a>
+      <span>
+        <a {{action 'changeQuestion' 1}} class="pointer white mr-2">Next</a>
+        <img src="https://minio.codingblocks.com/amoeba/right-angle-white.svg" alt="Prev">
+      </span>
+
       {{else}}
-        <a class="grey">Next</a>
+      <span>
+        <a class="grey mr-2">Next</a>
+        <img src="https://minio.codingblocks.com/amoeba/right-angle-grey.svg" alt="Prev">
+      </span>
       {{/if}}
     </div>
   </div>
-  <div class="col-3">
+  <div class="col-3 border-left">
     {{!-- <div class="c-clock">
       <div class="item hrs">01</div>
       <div class="seprator">:</div>
