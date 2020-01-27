@@ -17,17 +17,21 @@ export default class Tracks extends Route {
   async model(params) {
     const { status, professionId } = params
     if (status && professionId) {
-      await this.onSearchTask.perform()
+      await this.onSearchTask.perform({
+        status,
+        professionId
+      })
     }
   }
 
-  @restartableTask onSearchTask = function *() {
+  @restartableTask onSearchTask = function *(params) {
+    console.log("maa ki chut", ...arguments)
     const careerTrack = yield this.api.request('career_tracks/recommend', {
       method: 'POST',
       data: {
-        status: this.status,
-        professionId: this.professionId
-      }
+        ...params
+      },
+      json: true
     })
     this.transitionTo('tracks.id', careerTrack.data.attributes.slug)
   }

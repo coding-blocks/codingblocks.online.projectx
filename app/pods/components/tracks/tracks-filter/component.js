@@ -8,7 +8,7 @@ export default class TracksFilter extends Component {
 
   @action
   continue() {
-    this.sendAction('onSearch')
+    this.get('onSearch')()
   }
 
   @restartableTask fetchProfessionsTask = function *() {
