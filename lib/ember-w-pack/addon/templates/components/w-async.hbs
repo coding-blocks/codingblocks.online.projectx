@@ -1,5 +1,9 @@
 {{#if task.isRunning}}
-  Loading ...
+  {{#if loaderComponent}}
+    {{loaderComponent}}
+  {{else}}
+    Loading...
+  {{/if}}
 {{else}}
   {{yield task.last.value}}
 {{/if}}

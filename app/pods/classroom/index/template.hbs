@@ -7,7 +7,11 @@
   @activeTab={{activeTab}}
   @onTabChange={{action "changeTab"}}
   >
-  <WAsync @task={{activeTab.task}} @autoFire={{true}} as |result|>
+  <WAsync 
+    @task={{activeTab.task}}
+    @autoFire={{true}} 
+    @loaderComponent={{component 'my-courses-list/placeholder-row'}}
+    as |result|>
     {{#if (eq activeTab.name 'Wishlisted')}}
       {{component activeTab.component wishlist=result class="border-bottom-list"}}
     {{else}}

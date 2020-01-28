@@ -7,7 +7,7 @@ module.exports = function(defaults) {
     hinting: false, // disabled lint warnings
     // Add options here
     'ember-composable-helpers': {
-      only: ['range', 'pipe', 'inc'],
+      only: ['range', 'pipe', 'inc', 'repeat'],
     },
     sourcemaps: {
       enabled: true,

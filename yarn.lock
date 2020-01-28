@@ -1452,9 +1452,9 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@coding-blocks/motley@coding-blocks/motley#32b7c8b":
+"@coding-blocks/motley@coding-blocks/motley#2e526c6":
   version "0.5.0"
-  resolved "https://codeload.github.com/coding-blocks/motley/tar.gz/32b7c8b3ceb22ed5c7dc4badf35a9255ae12650a"
+  resolved "https://codeload.github.com/coding-blocks/motley/tar.gz/2e526c651d205e09dc3ab747565c2fd4f0fb5247"
   dependencies:
     build "^0.1.4"
     run "^1.4.0"
@@ -6196,6 +6196,14 @@ ember-concurrency@^1.0.0:
     ember-cli-babel "^7.7.3"
     ember-compatibility-helpers "^1.2.0"
     ember-maybe-import-regenerator "^0.1.6"
+
+ember-content-placeholders@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ember-content-placeholders/-/ember-content-placeholders-1.0.0.tgz#21c3ce60b1d7b4c9e8d80303124d3300cca03bc7"
+  integrity sha512-AbCTrADdxvbgtYSJzym+FsyJF3a8HnfIIKeafI1+LYBaT7+OO9ccd3y7PnqEmXqzvKQzWRd69Dt4cfCkZJRpfQ==
+  dependencies:
+    ember-cli-babel "^6.6.0"
+    ember-cli-htmlbars "^2.0.1"
 
 "ember-cookies@^0.3.0 || ^0.4.0":
   version "0.4.0"

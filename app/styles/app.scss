@@ -11,6 +11,8 @@ $cb-red: #ff6666;
 @import "./components/nagarro-banner.scss";
 @import "./components/textarea.scss";
 @import "./components/player.scss";
+@import "./components/loader.scss";
+@import "./components/button.scss";
 @import "lists.scss";
 
 body {
@@ -246,3 +248,7 @@ body {
     }
   }
 }
+
+
+
+@import "ember-content-placeholders";
