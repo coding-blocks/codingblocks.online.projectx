@@ -5,7 +5,7 @@
       class="px-5 pt-4"
       @status={{status}}
       @professionId={{professionId}}
-      @onSearch={{action (perform onSearchTask)}} />
+      @onSearch={{perform onSearchTask (hash status=status professionId=professionId)}} />
       <div class="divider-h my-3"></div>
 
     {{/in-element}}
@@ -16,7 +16,7 @@
     <Tracks::TracksFilter 
     @status={{status}}
     @professionId={{professionId}}
-    @onSearch={{action (perform onSearchTask)}} />
+    @onSearch={{perform onSearchTask (hash status=status professionId=professionId)}} />
     <div class="divider-h my-3"></div>
     {{outlet}}
   </div>
