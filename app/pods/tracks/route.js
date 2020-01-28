@@ -25,7 +25,6 @@ export default class Tracks extends Route {
   }
 
   @restartableTask onSearchTask = function *(params) {
-    console.log("maa ki chut", ...arguments)
     const careerTrack = yield this.api.request('career_tracks/recommend', {
       method: 'POST',
       data: {
