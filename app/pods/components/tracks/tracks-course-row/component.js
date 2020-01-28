@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default class CourseRow extends Component {
   @service store
+  @service session
 
   @restartableTask createOrDestroyCourseWishlist = function *() {
     let userCourseWishlist = yield this.course.get('userCourseWishlist')

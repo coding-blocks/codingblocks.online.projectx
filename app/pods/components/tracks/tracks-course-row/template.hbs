@@ -39,13 +39,15 @@
             Resume
           </LinkTo>
         {{else}}
-          <button {{action (perform createOrDestroyCourseWishlist)}}>
-            <FaIcon 
-              @icon="heart" 
-              @type={{if course.userCourseWishlist "fas" "far"}} 
-              @size="lg" 
-              class="mr-3" />
-          </button>
+          {{#if session.isAuthenticated}}
+            <button {{action (perform createOrDestroyCourseWishlist)}}>
+              <FaIcon 
+                @icon="heart" 
+                @type={{if course.userCourseWishlist "fas" "far"}} 
+                @size="lg" 
+                class="mr-3" />
+            </button>
+          {{/if}}
           <a href="/courses/{{course.slug}}" target="_blank" class="button-orange button-solid">Explore</a>
         {{/if}}
       </div>

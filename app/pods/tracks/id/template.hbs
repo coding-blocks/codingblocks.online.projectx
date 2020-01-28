@@ -22,11 +22,12 @@
     <div class="pl-4">
       <div class="b-left">
         {{#if (not coursesLoaded)}}
-          {{!-- TODO: use skeleton instead --}}
-          Loading....
+          {{#each (repeat 3)}}
+            <Tracks::TracksCourseRowLoading />
+          {{/each}}
         {{else}}
           {{#each courses as |course index|}}
-            <Tracks::TracksCourseRow @course={{course}} />
+            <Tracks::TracksCourseRow @course={{course}} @index={{index}}/>
           {{/each}}
         {{/if}}
       </div>
