@@ -71,7 +71,7 @@ export default Route.extend({
       // scroll table of contents
       scheduleOnce('afterRender', () => {
         document.getElementById('contentScrollContainer').scrollTo({
-          top: document.getElementById('active-section-container').getBoundingClientRect().top + document.getElementById('contentScrollContainer').scrollTop  - 160,
+          top: document.getElementById('active-section-container').getBoundingClientRect().top + document.getElementById('contentScrollContainer').scrollTop  - 180,
           behavior: 'smooth'
         })
       })
