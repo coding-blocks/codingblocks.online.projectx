@@ -1,33 +1,3 @@
-<div class="d-flex justify-content-between">  
-  <div>
-    <span class="font-mds">I am a</span>
-    <button 
-      class="button-orange ml-3
-      {{if (eq status "student") "button-solid" "button-dashed"}}"
-      {{action (mut status) "student"}}>
-      Student
-    </button>
-    <button 
-      class="button-orange 
-      {{if (eq status "professional") "button-solid" "button-dashed"}}"
-      {{action (mut status) "professional"}}>
-      Professional
-    </button>
-    <span class="font-mds ml-5">I want to become a</span>
-    <WAsync @task={{fetchProfessionsTask}} @autoFire="true" class="d-inline" as |professions|>
-      <select class="ml-3 input-search bg-light-grey" onchange={{action (mut professionId) value="target.value"}}>
-        <option> -- </option>
-        {{#each professions as |profession|}}
-          <option value="{{profession.id}}" selected={{eq professionId profession.id}}>{{profession.title}}</option>
-        {{/each}}
-      </select>
-    </WAsync>
-  </div>
-  <div>
-    <button class="button-dashed button-orange"  {{action onSearch}}>Continue &gt;</button>
-  </div>
-</div>
-
 <div class="row no-gutters justify-content-between align-items-center">
   <div class="col-10">
     <div class="row no-gutters align-items-center">
