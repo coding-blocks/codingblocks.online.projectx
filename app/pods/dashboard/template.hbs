@@ -4,12 +4,12 @@
       <h4 class="my-4">Continue Learning</h4>
 
       {{!-- Recent run and stats card --}}
-      <div class="border-card mb-4">
+      <div class="border-card mb-5">
         <div class="row no-gutters align-items-center">
           <div class="col-md-6 col-12">
-            <div class="row no-gutters align-items-center">
+            <div class="row no-gutters align-items-center justify-content-between">
               <div class="col-2">
-                <img class="s-50x50" src="{{lastAccessedRun.course.logo}}" alt="C++">
+                <img src="{{lastAccessedRun.course.logo}}" alt="C++">
               </div>
               <div class="col-9">
                 <h5 class="bold">{{lastAccessedRun.course.title}}</h5>
@@ -21,9 +21,9 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-12">
+          <div class="col-md-6 col-12 mt-md-0 mt-4">
             <div class="font-normal">Course Progress</div>
-            <div class="mt-4">
+            <div class="mt-md-4 mt-2">
               <progress value="{{progressPercent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
               <span class="bold ml-3">{{progressPercent}}%</span>
             </div>
@@ -43,7 +43,7 @@
         <div class="divider-h w-100 mx-auto my-5"></div>
 
         <div class="row no-gutters align-items-center justify-content-between">
-          <div class="col-8">
+          <div class="col-sm-8 col-12">
             <span class="normal mr-4">
               Leave a rating
             </span>
@@ -55,11 +55,11 @@
                 @initialRating={{lastAccessedRun.topRunAttempt.rating}} />
             </span>
           </div>
-          <div>
+          <div class="mt-sm-0 mt-4">
             <LinkTo 
               @route="attempt"
               @model={{lastAccessedRun.topRunAttempt.id}}
-              class="button-solid button-orange float-right">
+              class="button-solid button-orange">
               Resume Now
             </LinkTo>
           </div>
