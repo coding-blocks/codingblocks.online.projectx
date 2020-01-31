@@ -7,6 +7,7 @@
 <WPagination
   class="mt-5"
   @pages={{pagination.totalPages}}
+  @count={{pagination.count}}
   @size={{limit}}
   @current={{pagination.currentPage}}
   @onchange={{action 'paginate'}} />

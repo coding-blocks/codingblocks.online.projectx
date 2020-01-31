@@ -23,6 +23,7 @@
 
 <WPagination
   @pages={{pagination.totalPages}}
+  @count={{pagination.count}}
   @size={{limit}}
   @current={{pagination.currentPage}}
   @onchange={{action "paginate"}}
