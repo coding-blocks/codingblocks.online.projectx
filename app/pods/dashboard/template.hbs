@@ -98,7 +98,7 @@
               <img src="/app/images/heart-orange.svg" alt="Bag">
               <h4 class="bold mt-4">Wishlisted Courses</h4>
               <div class="grey mb-4">You have not wishlisted any course! Start Wishlisting now!</div>
-              <a href="#" class="font-sm bold gradient-text-orange">Explore Courses</a>
+              <a href="/courses" target="_blank" class="font-sm bold gradient-text-orange">Explore Courses</a>
             {{else}}
               <h4 class="bold">Wishlisted Courses</h4>
               <div class="divider-h mt-4"></div>
@@ -122,7 +122,7 @@
               <img src="/app/images/bag-orange.svg" alt="Heart">
               <h4 class="bold mt-4">Applied Jobs</h4>
               <div class="grey mb-4">You have not applied to any jobs! Find jobs now!</div>
-              <a href="#" class="font-sm bold gradient-text-orange">See Jobs</a>
+              <LinkTo @route="hiring-blocks" class="font-sm bold gradient-text-orange">See Jobs</LinkTo>
             {{else}}
               <h4 class="bold">Applied Jobs</h4>
               <div class="divider-h mt-4"></div>
