@@ -11,6 +11,14 @@ export default class Track extends Controller {
     return this.track.hasMany('courses').value()
   }
 
+  @restartableTask fetchJobsTask = function *() {
+    return this.store.query('job', {
+      page: {
+        limit: 3
+      }
+    })
+  }
+
   @restartableTask fetchInstructorsTask = function *() {
     const instructors = yield this.store.query('instructor', {
       custom: {

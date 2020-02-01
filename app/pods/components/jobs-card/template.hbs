@@ -1,0 +1,17 @@
+<div class="border-card py-md-5 py-4 px-0">
+  <h4 class="bold px-lg-5 px-4">Jobs</h4>
+  <div class="divider-h content-divider mt-4 px-lg-5 px-4"></div>
+  {{#each jobs as |job|}}
+    <LinkTo @route="hiring-blocks.listing.job" @model={{job.id}} >
+      <div class="row no-gutters align-items-center hover-grey py-4 px-lg-5 px-4">
+        <div class="d-flex align-items-center">
+          <img src="{{job.company.logo}}" class="s-60x60 mr-3" alt="">
+          <div>
+            <h5 class="bold">{{job.title}}</h5>
+            <span>{{job.company.name}}</span>
+          </div>
+        </div>
+      </div>
+    </LinkTo>
+  {{/each}}
+</div>

@@ -58,5 +58,10 @@
         class="mt-5"
         @instructors={{instructors}} />
     </WAsync>
+    <WAsync @task={{fetchJobsTask}} @autoFire="true" as |jobs|>
+      <JobsCard
+        class="mt-5"
+        @jobs={{jobs}} />
+    </WAsync>
   </div>
 </div>
