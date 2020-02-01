@@ -254,5 +254,10 @@ body {
   height: 25px;
 }
 
+.review-body {
+  height: 80px;
+  overflow: hidden;
+}
+
 
 @import "ember-content-placeholders";
