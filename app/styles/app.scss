@@ -43,8 +43,31 @@ body {
   border: none;
 }
 
+.home-banner {
+  width: 100%;
+  height: 500px;
+  background-image: url(/images/home_bg.jpg);
+  padding: 30px 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-banner .left {
+  align-self: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  max-width: 500px;
+}
+
 .home-banner .left .button-solid{
   background-image: none;
+}
+
+.home-banner .left .button-solid {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background-color: #fff;
+  color: #692fdc;
 }
 
 #embedBox {
