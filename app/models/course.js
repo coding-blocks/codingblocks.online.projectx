@@ -13,6 +13,7 @@ export default DS.Model.extend({
     promoVideo: DS.attr(),
     coverImage: DS.attr(),
     logo: DS.attr(),
+    badgeUrl: DS.attr(),
     language: DS.attr(),
     faq: DS.attr(),
     slug: DS.attr('string'),
