@@ -1,0 +1,42 @@
+<div class="border-card p-0">
+  <div class="spin-bg-red p-5 d-flex justify-content-between">
+    <h4 class="bold white">
+      <i class="fas fa-trophy letter-spaced"></i> Winners List
+    </h4>
+    <h4 class="spin-yellow">
+      {{stats.totalUsedSpins}} Spins till now
+    </h4>
+  </div>
+  {{#if winners}}
+    <div class="px-5 py-3">
+      <div class="list-divided border-none">
+        {{#each winners as |winner|}}
+          <div class="list-item row no-gutters w-100 p-4">
+            <div class="li-left">
+              <img src="{{defaultTo winner.user.photo 'https://minio.codingblocks.com/img/avatar-7.svg'}}" alt="" class="round s-40x40 mr-3 pr-0">
+              <span class="font-sm bold">
+                {{winner.user.fullName}}
+              </span>
+            </div>
+            <div class="font-sm li-right">
+              {{winner.spinPrize.title}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <PaginationPills 
+        class="mt-5"
+        @pagination={{winners.meta.pagination}} 
+        @setOffset={{action 'setOffset'}} />
+    </div>
+  {{else if fetchWinnersTask.isRunning}}
+    <LoaderComponent />
+  {{else}}
+    <div class="t-align-c p-5">
+      <i class="fas fa-chart-line fa-4x spin-purple"></i>
+      <p>
+        We can't show you a leaderboard until the submissions start rolling in. Stay tuned!
+      </p>
+    </div>
+  {{/if}}
+</div>

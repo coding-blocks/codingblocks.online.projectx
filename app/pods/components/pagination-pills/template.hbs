@@ -1,0 +1,13 @@
+<div class="t-align-c bold">
+  <button class="d-none-disabled" {{action setOffset pagination.prevOffset}} disabled={{eq pagination.currentPage 1}}>
+    &lt; Prev
+  </button>
+  <span class="dark-grey mx-4">
+    {{or (inc pagination.currentOffset) 1}} - {{or pagination.nextOffset pagination.count}} of {{pagination.count}}
+  </span>
+  
+  <button class="d-none-disabled" {{action setOffset pagination.nextOffset}} disabled={{not pagination.nextOffset}}>
+    Next &gt;
+  </button>
+  
+</div>

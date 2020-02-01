@@ -1,0 +1,264 @@
+<div class="c-spin">
+  <div class="bg-mild-blue pt-4">
+    <div class="container pt-5">
+      <div class="row bg-mild-blue p-5">
+        <div class="col-lg-6 ">
+          <div class="mb-5 d-flex d-lg-block justify-content-center">
+            <img src="https://minio.codingblocks.com/amoeba/spin-n-win-board.svg" alt="Spin-N-Win">
+          </div>
+                    
+          <div class="spin-red font-xxl bold t-align-c t-align-lg-l">
+            Coding Blocks Spin N Win Coupons/Credits expires tonight. Hurry up and <a href="https://cb.lk/swuse">USE NOW</a>
+          </div>
+          
+          <div class="my-4 font-md spin-red t-align-c t-align-lg-l">
+            We reached a staggering number of 78,000+ Spins and we gave away prizes worth over 5 Lacs during this festive season.
+
+            <p>
+              Don’t forget to share your gifts on social media platforms! <a href="https://twitter.com/search?q=CBSanta">#CBSanta</a>.
+              <br>
+              You can subscribe to our social media channels for upcoming contests and updates.
+            </p>
+
+            <div class="mt-4">
+              <a target="_blank" href="https://cb.lk/fbsw" class="ml-lg-5 font-md pointer">
+                <i class="fab fa-2x fa-facebook-f"></i>
+              </a>
+              <a target="_blank" href="https://cb.lk/twsw" class="ml-5 font-md pointer">
+                <i class="fab fa-2x fa-twitter"></i>
+              </a>
+              <a target="_blank" href="https://cb.lk/insw" class="ml-5 font-md pointer">
+                <i class="fab fa-2x fa-instagram"></i>
+              </a>
+              <a target="_blank" href="https://cb.lk/lisw" class="ml-5 font-md pointer">
+                <i class="fab fa-2x fa-linkedin"></i>
+              </a>
+              <a target="_blank" href="https://cb.lk/ytsw" class="ml-5 font-md pointer">
+                <i class="fab fa-2x fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 spin-wheel d-flex">
+         
+            <img class="wheel-pointer" src="https://minio.codingblocks.com/amoeba/wheel-pointer.png">
+            <object 
+              class="wheel mx-auto w-100"
+              data="https://minio.codingblocks.com/amoeba/spin-win-wheel.svg"
+              {{did-insert (action "setWheel")}}></object>
+            <object class="wheel-base" id="scrollTagForWinSpin" data="https://minio.codingblocks.com/amoeba/spin-win-wheel-base.svg"></object>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    {{!-- My Winnings --}}
+    <Spin::SpinWinnings 
+      @usedSpins={{usedSpins}}
+      class="mt-5" />
+
+    <div class="row">
+      {{!-- rules --}}
+      <div class="col-md-6 mt-5">
+        <div class="border-card p-0">
+          <div class="spin-bg-mild-blue p-5">
+            <h4 class="bold">
+              <i class="fas fa-question-circle letter-spaced"></i> Rules
+            </h4>
+          </div>
+         <div class="p-5 font-sm">
+            1. User get one free spin everyday.<br> <br>
+            2. User need to signup in order to play the Spin N Win Game.<br> <br>
+            3. User gets 5 spins on every course purchase during this campaign.<br> <br>
+            4. We will notify the participants, eligible to claim the Prize by E-Mail / SMS.<br> <br>
+            5. The daily free spin will expire at the end of the day.<br> <br>
+            6. User should have a billing address within the territory of India for t-shirt and swag pack.<br> <br>
+            7. In case of any discrepency, the final decision will be of Coding Blocks.<br> <br>
+            <button class="spin-red" {{action (mut showTnC) true}} style="text-decoration: underline;">Terms and Conditions</button>
+          </div>
+        </div>
+      </div>
+
+      {{!-- winners list --}}
+      <div class="col-md-6 mt-5">
+        <Spin::SpinLeaderboard @stats={{stats}} />
+      </div>
+    </div>
+
+    <div class="border-card mt-5 p-5">
+      <h4 class="bold">
+        Frequently Asked Questions (FAQ’s)
+      </h4>
+      <div class="mt-5">
+        <h6 class="bold">
+          Q1. Am I eligible to participate?
+        </h6>
+        <p>
+          Yes everyone who has an account on Coding Blocks is eligible to participate. If you don’t have one, please sign-up now! 
+        </p>
+      </div>
+      <div class="mt-4">
+        <h6 class="bold">
+          Q2. How will i receive my rewards?
+        </h6>
+        <p>
+           Coding Blocks will notify the participants, eligible to claim the Prize by e-mail / SMS.
+           The goodies (including Tee-Shirts, Books and SWAG Packs) will be delivered by 31st January 2020.
+           Please update your address and profile in the profile section for the availing of the gifts.
+           Netflix Subscriptions and Amazon Vouchers will be distributed via mail by 31st January 2020.
+        </p>
+      </div>
+      <div class="mt-4">
+        <h6 class="bold">
+          Q3. How to get help regarding Spin and Win?
+        </h6>
+        <p>
+          For any details regarding the Contest and the Prizes thereof, please contact Coding Blocks Customer Care or mail us at <a href="mailto:support@codingblocks.com" > support@codingblocks.com </a>
+        </p>
+      </div>
+      <div class="mt-4">
+        <h6 class="bold">
+          Q4. When will contest start and end?
+        </h6>
+        <p>
+          This Contest will be available from Dec 25, 2019 12:01 a.m. (IST) to Jan 01, 2020 11:59:59 p.m. (IST) only.
+        </p>
+      </div>
+      <div class="mt-4">
+        <h6 class="bold">
+          Q5. Till when my coupons are valid?
+        </h6>
+        <p>
+          All coupons won in Spin-N-Win are valid till 5 Jan, 2020.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{#if showWinModal}}
+  <ModalDialog
+    @onClose={{action (mut showWinModal) false}}
+    @translucentOverlay={{true}}
+    @overlayClass="spin-overlay"
+    @containerClass="container spin-modal-container"
+  >
+    <Spin::SpinWinModal 
+      @prize={{prizeDrawn}}
+      @referralCode={{referralCode.code}}
+      @onClose={{action (mut showWinModal) false}}
+    />
+  </ModalDialog>
+{{else if showLoseModal}}
+  <ModalDialog
+    @onClose={{action (mut showLoseModal) false}}
+    @translucentOverlay={{true}}
+    @overlayClass="spin-overlay"
+    @containerClass="container spin-modal-container"
+  >
+    <Spin::SpinLoseModal 
+      @prize={{prizeDrawn}}
+      @referralCode={{referralCode.code}}
+      @onClose={{action (mut showLoseModal) false}}
+    />
+  </ModalDialog>
+{{/if}}
+
+
+{{#if showTnC}}
+  <ModalDialog
+    @onClose={{action (mut showTnC) false}}
+    @translucentOverlay={{true}}
+    @overlayClass="spin-overlay"
+    @containerClass="container spin-modal-container p-5"
+  >
+    
+    <h2>Terms and Conditions</h2>
+    <ul style="list-style: decimal;">
+      <li>
+        The CB Lucky Wheel is organized by Coding Blocks Pvt. Ltd. Activity participants (hereinafter referred to as "Participants") take part in this by starting the game. All Participants shall be deemed as having agreed to the following terms and conditions.
+      </li>
+      <li>
+        Netflix Standard plan for 2 Months.
+      </li>
+      <li>
+        Amazon Voucher worth Rs. 500
+      </li>
+      <li>
+        CB Book means Competitive Programming Book By Coding Blocks.
+      </li>
+      <li>
+        Validity of CB Coupon and CB Credits is till 5th Jan, 2020.
+      </li>
+      <li>
+        You must have a billing address within the territory of India for CB Goodies.
+      </li>
+      <li>
+        By entering the Contest, User consent to being placed on a mailing list for promotional and other materials for CB. User may update or change Userr email preferences at the email preferences page.<br> <br>
+
+      </li>
+
+      <li>
+        Prizes cannot be transferred to another person or redeemed for cash or other objects. 
+        Each winner must update valid contact information (including the email address, full name, complete delivery address, phone number, and post code) on his CB account within seven days after the campaign ends. 
+        Awards will be shipped within 15 working days. CB will assume all tariffs and express fees. 
+        If an award is not distributed to a winner due to the winner's fault, the winner shall be deemed as having waived the right to claim the award. 
+        CB reserves the right to the final interpretation of the prize.
+      </li>
+<li>
+There are no cash or other prize alternatives available in whole or in part. However, in circumstances beyond CB's control, CB may substitute a similar alternative prize of equal or greater value at CB's sole discretion. If you win a Prize, you may not transfer, assign, or redeem the Prize for cash.
+</li>
+  <li>
+Subject to the winner claiming the Prize within the given time period, the Prize will be dispatched/delivered to the winner on or before 30th Jan, 2020.
+
+      </li>
+      <li>
+        A single participant can only avail either one of "CB Swagpack", "CB T-Shirt" and "CB Book". 
+      </li>
+      <li>
+        Courses bought during this sale, won't be refunded on any pretext.
+      </li>
+      <li>
+        "CB Swagpack" contains CB notebook and stickers only.
+      </li>
+    </ul>
+  </ModalDialog>
+{{/if}}
+{{#if notVerifiedEmailModal}}
+  <ModalDialog
+    @onClose={{action (mut notVerifiedEmailModal) false}}
+    @translucentOverlay={{true}}
+    @overlayClass="spin-overlay"
+    @containerClass="container spin-modal-container p-5"
+  >
+    
+    <h2>Steps to verify you email address</h2>
+    <ul style="list-style: decimal;">
+      <li>
+        Visit 
+        <a href="https://account.codingblocks.com/users/me" class="red">https://account.codingblocks.com/users/me</a>
+      </li>
+      <li>
+        Enter your email address to get the verification link
+      </li>
+      <li>
+        Click the verification link in your email
+      </li>
+    </ul>
+    <div>
+      <button class="button-solid" {{action (perform tryAgain)}}>
+        Try Again
+      </button>
+      <p class="red">
+        {{#if tryAgain.lastErrored}}
+          Email is not verified
+        {{/if}}
+      </p>
+    </div>
+  </ModalDialog>
+{{/if}}
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>

@@ -94,8 +94,30 @@
           {{textarea aria-invalid="false" class="input-textarea form-field--control ember-view" rows="4" required=true value=address}}
         </div>
         <div class="col-12 my-4">
+          <label class="my-1 form-field--label ember-view"> 
+            Postal Code
+            <span class="star">*</span>
+          </label>
+          {{input aria-invalid="false" class="input-text form-field--control ember-view" pattern="\d*" maxlength="6" type="text" required=true value=postalCode}}
+        </div>
+        <div class="col-12 my-4">
+          <label class="my-1 form-field--label ember-view"> 
+            Alternate Contact Number
+          </label>
+          {{input aria-invalid="false" class="input-text form-field--control ember-view" pattern="\d*" maxlength="10"  type="text" required=false value=mobile}}
+        </div>
+        <div class="col-12 my-4">
+
+          Please Note:
+          <ol>
+            <li>Provide correct postal address where there will be someone to collect</li>
+            <li>We will send bags only in India</li>
+            <li>In case, bag is returned back to us then you have to collect the same from our center</li>
+            <li>We will send the goodies within next 10 days and will share the tracking ids as soon it is in transit.</li>
+          </ol>
+
           <input class="ember-checkbox ember-view" type="checkbox" required=true>  
-          <b>The information provided will not changed further.</b>
+          <b>I understand and acknowledge all the information given is correct.</b>
         </div>
         <div class="col-12 my-2">
         {{#if isDisabled}}

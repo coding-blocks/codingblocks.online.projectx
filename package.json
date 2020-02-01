@@ -20,6 +20,7 @@
   "devDependencies": {
     "@ember/jquery": "^1.1.0",
     "@ember/optional-features": "^1.0.0",
+    "@babel/core": "^7.3.4",
     "@ember/render-modifiers": "^1.0.2",
     "@firebase/app": "^0.3.13",
     "@firebase/database": "^0.3.16",
@@ -50,6 +51,7 @@
     "ember-data": "~3.14.0",
     "ember-decorators": "^6.0.0",
     "ember-engines": "^0.8.2",
+    "ember-event-helpers": "^0.1.0",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^6.7.0",
     "ember-form-for": "^2.0.1",

@@ -34,9 +34,11 @@ export default Component.extend({
             this.toggleProperty('isDisabled');
 
             let formInfo = {
-                name: this.get('name'),
-                tshirt: this.tshirt,
-                address: this.get('address').replace(/\n/g, " ")
+              name: this.get('name'),
+              tshirt: this.tshirt,
+              address: this.get('address').replace(/\n/g, " "),
+              postalCode: this.postalCode,
+              alternateContact: this.mobile
             }
 
             this.get('goodieRequests').set('formInfo', formInfo)
