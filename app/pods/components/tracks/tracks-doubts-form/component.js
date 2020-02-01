@@ -11,21 +11,25 @@ export default class TracksDoubtsFormComponent extends Component {
   @service api
 
   @dropTask createLeadTask = function *() {
-    yield this.api.request('/hubspot/lead', {
-      method: 'POST',
-      data: {
+    try {
+      yield this.api.request('/hubspot/lead', {
+        method: 'POST',
         data: {
-          name: this.name,
-          mobile: this.mobile,
-          course: 'Tracks',
-        },
-        meta: {
-          pageUri: window.location.href,
-          pageName: "Web: Tracks"
+          data: {
+            name: this.name,
+            mobile: this.mobile,
+            course: 'Tracks',
+          },
+          meta: {
+            pageUri: window.location.href,
+            pageName: "Web: Tracks"
+          }
         }
-      }
-    })
-
-    this.set('alreadySent', true)
+      })
+  
+      this.set('alreadySent', true)
+    } catch (err) {
+      this.set('error', err.payload.message)
+    }
   }
 }
