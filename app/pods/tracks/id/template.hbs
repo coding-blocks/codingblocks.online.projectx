@@ -31,6 +31,22 @@
           {{#each courses as |course index|}}
             <Tracks::TracksCourseRow @course={{course}} @index={{index}}/>
           {{/each}}
+          <div class="px-5 pt-5 position-relative">
+            <div class="track-indicator complete">&#8226;</div>
+            <div class="row no-gutters align-items-center mb-5">
+              <div class="col-md-2 t-align-md-l t-align-c">
+                <img src="https://minio.codingblocks.com/amoeba/badge-orange.svg" />
+              </div>
+              <div class="col-md-10 t-align-md-l t-align-c">
+                <div class="gradient-text-orange font-md">
+                  Certified {{track.name}}
+                </div>
+                <div>
+                  At the end of the track, you will be job ready and can start applying for jobs!
+                </div>
+              </div>
+            </div>
+          </div>
         {{/if}}
       </div>
     </div>
