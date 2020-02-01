@@ -2,13 +2,17 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import DS from 'ember-data';
 import AuthenticatedRouteMixin from 'codingblocks-online/mixins/authenticated-route-mixin';
+import { scheduleOnce } from "@ember/runloop";
 
 export default Route.extend(AuthenticatedRouteMixin, {
 	api: service(),
-	router: service(),
-	runAttemptService: service('run-attempt'),
+  router: service(),
+  productTour: service(),
+  async beforeModel() {
+    const startTour = await this.productTour.preparePlayerTour()
+    scheduleOnce('afterRender', startTour)
+  },
 	model(params, transition) {
-		this.runAttemptService.setRunAttempt(params.runAttemptId)
 		return this.store.findRecord('runAttempt', params.runAttemptId, { reload: true })
 			.catch(err => {
 				if (err instanceof DS.AdapterError) {
@@ -34,9 +38,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
 			});
 	},
 	setupController(controller, model) {
-		this._super(...arguments)
-		// console.log("inside setupController for attempt")
-		// controller.set("sectionId", this.paramsFor('attempt.content').sectionId)
+		controller.set('runAttempt', model)
 		controller.set("run", model.get('run'))
 		controller.set("course", model.get('run.course'))
 		controller.set("sections", model.get("run.sections"))
@@ -46,7 +48,11 @@ export default Route.extend(AuthenticatedRouteMixin, {
 			window.setTimeout( () => jivo_init(), 5000)
 		},
 		didTransition () {
-			jivo_init();
+			try {
+				jivo_init();
+			} catch (err) {
+				console.log(err)
+			}
 		}
 	}
 });

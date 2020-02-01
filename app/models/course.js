@@ -13,6 +13,7 @@ export default DS.Model.extend({
     promoVideo: DS.attr(),
     coverImage: DS.attr(),
     logo: DS.attr(),
+    badgeUrl: DS.attr(),
     language: DS.attr(),
     faq: DS.attr(),
     slug: DS.attr('string'),
@@ -37,7 +38,7 @@ export default DS.Model.extend({
     color: DS.attr(),
     buyNowLink: DS.attr(),
     backgroundImage: DS.attr(),
-    rating: DS.attr(),
+    rating: DS.attr('number'),
     seoMeta: DS.attr(),
     topRun: computed('activeRuns', 'runs', function () {
         let runs = this.activeRuns
@@ -90,5 +91,10 @@ export default DS.Model.extend({
     }),
     organization: DS.attr(),
     coursefeatures: DS.attr(),
-    projects: DS.hasMany('projects')
+    projects: DS.hasMany('projects'),
+    tags: DS.hasMany("tag"),
+    latestRun: computed('runs', 'runs.topRunAttempt', function() {
+      return this.get('runs').filter(run => run.get('topRunAttempt'))[0]
+    }),
+    userCourseWishlist: DS.belongsTo('userCourseWishlist')
 });

@@ -9,6 +9,7 @@ import { alias } from '@ember/object/computed';
 export default class Overview extends Controller {
   @service api
   @service metrics
+  @service productTour
 
   queryParams = ['showFeedback']
   showFeedback = false
@@ -16,11 +17,10 @@ export default class Overview extends Controller {
   discussBaseUrl = config.discussBaseUrl
   visible = true
 
-  @computed('runAttempt.{isExpired,end,premium}')
+  @computed('runAttempt.{isExpired,end}')
   get showExtensions() {
-    const {end, isExpired, premium} = this.runAttempt
-    const endIsNear = moment().add(1, "month") > moment.unix(end)
-    return premium && (isExpired || endIsNear)
+    const endIsNear = moment().add(1, "month") > moment.unix(this.runAttempt.end)
+    return this.runAttempt.isExpired || endIsNear
   }
 
   @computed('runAttempt.{premium,isExpired}')
@@ -31,19 +31,24 @@ export default class Overview extends Controller {
 
   @computed('runAttempt.run.completionThreshold')
   get certificateLockOffset() {
-    return 0.9 * this.runAttempt.get('run.completionThreshold')
+    return 0.84 * this.runAttempt.get('run.completionThreshold')
   }
 
   @computed('runAttempt.run.goodiesThreshold')
   get goodiesLockOffset() {
-    return 0.9 * this.runAttempt.get('run.goodiesThreshold')
+    return 0.84 * this.runAttempt.get('run.goodiesThreshold')
   }
 
   @alias('runAttempt.progressPercent')
   progressPercent
 
   @restartableTask fetchPerformanceStatsTask = function *() {
-    return yield this.api.request(`progresses/stats/${this.runAttempt.id}`)
+    const leaderboard = yield this.api.request(`runs/${this.runAttempt.get('run.id')}/leaderboard`).catch(console.log)
+    const stats = yield this.api.request(`progresses/stats/${this.runAttempt.id}`)
+    return {
+      ...stats,
+      leaderboard: leaderboard || []
+    }
   }
 
   @action
@@ -57,17 +62,24 @@ export default class Overview extends Controller {
   }
 
   @action
-  resetProgress() {
-    this.get('api').request('progresses/reset', {
+  async resetProgress() {
+    await this.get('api').request('progresses/reset', {
       method: 'POST',
       data: {
         runAttemptId: this.get('runAttempt.id')
       }
-    }).then(() => this.send('reloadRoute'))
+    })
+    return this.runAttempt.reload()
+  }
+
+  @action
+  async startTour() {
+    const startTour = await this.productTour.prepareCourseDashboardTour(true)
+    startTour()
   }
 
   @action
   log(event, course){
     this.metrics.trackEvent({event, course, page: 'Classroom'})
-  }
+  } 
 }

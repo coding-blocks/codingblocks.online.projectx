@@ -1,0 +1,83 @@
+<div class="border-card c-code-card p-0 border-none mb-5">
+  <div class="header row px-5 py-4 justify-content-between align-items-center m-0">
+    <div class="col-3 p-0">
+      <span class="font-sm extra-bold">Code Editor</span>
+    </div>
+    <div>
+      <div class="dropdown d-inline-block">Choose Language</div>
+      <select class="dropdown d-inline-block black" onchange={{action "selectLanguage" value="target.value"}}>
+        {{#each languageSpecs as |language|}}
+          <option 
+            value="{{language.code}}" 
+            selected={{eq language.code selectedLanguage.code}}>
+            {{language.name}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+  <div>
+    <MonacoEditor
+      class="editor monaco-editor"
+      @language={{selectedLanguage.mode}}
+      @code={{selectedLanguage.source}}
+      @onChange={{action (mut selectedLanguage.source)}}
+      @onReady={{action "onEditorReady"}} />
+  </div>
+  {{!-- We can only collab if we have a ref --}}
+  {{#if this.ref}}
+    <div>
+      <EditorCollabToggle 
+        class="bg-grey-darker d-flex justify-content-between p-3 align-items-center"
+        @isCollaborating={{isCollaborating}}
+        @onChange={{action (perform setCollabModeTask)}}
+      />
+    </div>
+  {{/if}}
+  <div class="footer pt-4 pb-5 px-5 input-div">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-4 white extra-bold p-0 pointer" {{action toggleCustomInput}}>
+        <FaIcon @icon={{if customInputOpen "angle-up" "angle-down"}} />
+        <span>Provide Custom Input</span>
+      </div>
+      <div>
+        <button 
+          class="button-dashed button-orange ml-3 mr-1"
+          disabled={{judgeTaskGroup.isRunning}}
+          {{action (perform runCodeTask)}}>
+
+          {{#if runCodeTask.isRunning}}
+            Compiling
+          {{else}}
+            Compile and Test
+          {{/if}}
+          
+        </button>
+        <button 
+          class="button-solid button-orange mr-3 ml-1"
+          disabled={{judgeTaskGroup.isRunning}}
+          {{action (perform submitCodeTask)}}>
+
+          {{#if submitCodeTask.isRunning}}
+            Submitting
+          {{else}}
+            Submit Code
+          {{/if}}
+
+        </button>
+      </div>
+    </div>
+    {{#if customInputOpen}}
+      <Textarea 
+        cols="30" 
+        rows="5" 
+        class="mx-auto mt-4 white w-100"
+        @value={{customInputText}}>
+      </Textarea>
+    {{/if}}
+  </div>
+</div>
+
+{{#if lastResult}}
+  <CodeChallenge::CodeChallengeResult @judgeResult={{lastResult}} />
+{{/if}}

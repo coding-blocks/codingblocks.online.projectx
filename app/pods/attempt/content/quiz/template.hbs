@@ -1,1 +1,13 @@
-{{outlet}}
+<div class="border-card border-none bg-grey-darker" style="min-height: 566px;">
+  {{#unless hideTabNav}}
+    <div class="tab-nav-underline w-100 justify-content-start mb-3">
+      <LinkTo @route="attempt.content.quiz.index" class="tab px-0 mr-5 font-sm bold white">
+        About
+      </LinkTo>
+      <LinkTo @route="attempt.content.quiz.view" class="tab px-0 mr-5 font-sm bold white">
+        Submissions
+      </LinkTo>
+    </div>
+  {{/unless}}
+  {{outlet}}
+</div>

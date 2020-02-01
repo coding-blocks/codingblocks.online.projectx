@@ -1,53 +1,66 @@
-import Component from '@ember/component';
-import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
-import { alias, bool, reads, equal }  from '@ember/object/computed';
+import Component from "@ember/component";
+import { action } from "@ember/object";
+import { inject as service } from "@ember/service";
+import { alias, bool, reads, equal } from "@ember/object/computed";
+import env from "codingblocks-online/config/environment";
+
 
 export default class navBarComponent extends Component {
-    @service session
-    @service currentUser
-    @service domain
-    @service metrics
-    @alias('currentUser.user') user
+  @service session;
+  @service currentUser;
+  @service domain;
+  @service metrics;
 
-    @equal("domain.domain", "hellointern") isAnotherDomain
+  @alias("currentUser.user") user;
+  @equal("domain.domain", "hellointern") isAnotherDomain;
+  @reads("currentUser.organization") organization;
+  @bool("organization") isOrgView;
 
-    @reads('currentUser.organization') organization
-    @bool('organization')  isOrgView
-    showSidebar = false
+  showSidebar = false;
+  hideHamburgerNav = true;
+  mobileSelectedTab = "classroom";
+  logoutLink = env.oneauthURL + '/logout?redirect=' + this.domain.domainBasedPublicUrl + '/logout' 
 
-    activeTab = null
+  didInsertElement() {
+    this._super(...arguments);
+    // this.$(document).on("click", e => {
+    //   this.set('activeTab', false)
+    // });
+  }
 
-    @action
-    toggleSidebar () {
-      this.toggleProperty('showSidebar')
-    }
+  @action
+  toggleHamburgerNav() {
+    this.toggleProperty("hideHamburgerNav");
+  }
 
-    didInsertElement () {
-      this._super(...arguments)
-      this.$(document).on("click", e => {
-        this.set('activeTab', false)
-      });
-    }
+  @action
+  toggleNotification() {
+    this.metrics.trackEvent({
+      event: "NotificationClicked",
+      location: "navbar"
+    })
 
-    @action
-    toggleNotification() {
-      if (this.get('activeTab') === 'notification')
-        this.set('activeTab', null)
-      else
-        this.set('activeTab', 'notification')
-    }
+    if (this.get("activeTab") === "notification") this.set("activeTab", null);
+    else this.set("activeTab", "notification");
+  }
 
-    @action
-    toggleCart() {
-      if (this.get('activeTab') === 'cart')
-        this.set('activeTab', null)
-      else
-        this.set('activeTab', 'cart')
-    }
+  @action
+  toggleCart() {
+    this.metrics.trackEvent({
+      event: "CartClicked",
+      location: "navbar"
+    })
 
-    @action
-    log(cta) {
-      this.get('metrics').trackEvent({event: 'buttonClicked', location: 'navbar', cta})
-    }
+    if (this.get("activeTab") === "cart") this.set("activeTab", null);
+    else this.set("activeTab", "cart");
+  }
+
+  @action
+  log(cta) {
+    this.get("metrics").trackEvent({
+      event: "buttonClicked",
+      location: "navbar",
+      cta
+    });
+  }
 }

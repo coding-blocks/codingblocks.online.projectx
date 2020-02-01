@@ -1,0 +1,44 @@
+{{#if isDeleted}}
+  <div class="all-center p-3">
+    <span class="bold font-sm">
+      Note has been deleted <button class="gradient-text-orange" {{action "undo"}}>Undo</button>
+    </span>
+  </div>
+{{else if isEditing}}
+  <h4 class="bold">Edit Note</h4>
+  <Textarea @value={{note.text}} class="underline-input w-100"></Textarea>
+  <div>
+    <span class="gradient-text-orange">
+      {{note.content.title}}
+      <span class="ml-5">{{note.duration}}</span>
+    </span>
+    <span class="float-right">
+      <button class="mr-5 font-sm" {{action (mut isEditing) false}}>
+        Cancel
+      </button>
+      <button class="gradient-text-green font-sm" {{action (perform saveNotesTask)}} disabled={{saveNotesTask.isRunning}}>
+        {{if saveNotesTask.isRunning "Saving" "Save"}}
+      </button>
+    </span>
+  </div>
+{{else}}
+  <p class="bold">
+    {{note.text}}
+  </p>
+  <div>
+    <span class="gradient-text-orange bold">
+      {{note.content.title}}
+      <span class="ml-5">
+        {{displayDuration}}
+      </span>
+    </span>
+    <span class="float-right">
+      <button class="mr-5 font-sm" {{action (perform deleteNoteTask)}}>
+        Delete
+      </button>
+      <button class="gradient-text-green font-sm" {{action (mut isEditing) true}}>
+        Edit
+      </button>
+    </span>
+  </div>
+{{/if}}

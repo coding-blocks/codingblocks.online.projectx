@@ -1,30 +1,18 @@
 {{#if (and hasUserMarkedRating (not isEditing))}}
-  <div class="d-flex align-items-center">
-    <strong class="font-md mr-2">Thanks for rating</strong>
-    
-    {{#each (range 1 (inc scale)) as |index|}}
-      <span
-        class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
-      >
-        <i class="fas fa-star mr-1"></i>
-      </span>
-    {{/each}}
-    <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit pl-2" style="color:#fc4f4f"></i></a>
-  </div>
+  {{#each (range 1 (inc scale)) as |index|}}
+    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/star_{{if (lte index rating) 'filled' 'unfilled'}}.svg" alt="">
+  {{/each}}
+  <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit pl-2" style="color:#fc4f4f"></i></a>
 {{else}}
-  <div class="d-flex align-items-center">
-    <strong class="font-md mr-2">Rate this course?</strong>
-    {{#each (range 1 (inc scale)) as |index|}}
-      <span
-        class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
-        onMouseEnter={{action 'changeRating' index}}
-        onMouseLeave={{action 'resetRating'}}
-        onClick={{action 'toggleModal' index}}
-      >
-        <i class="fas fa-star mr-1"></i>
-      </span>
-    {{/each}}
-  </div>
+  {{#each (range 1 (inc scale)) as |index|}}
+    <span
+      onMouseEnter={{action 'changeRating' index}}
+      onMouseLeave={{action 'resetRating'}}
+      onClick={{action 'toggleModal' index}}
+    >
+      <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/star_{{if (lte index rating) 'filled' 'unfilled'}}.svg" alt="">
+    </span>
+  {{/each}}
 {{/if}}
 {{#if isShowingModal}}
   {{#modal-dialog
@@ -38,7 +26,7 @@
 
     <!-- Modal -->
     <div class="c-modal modal-dialog">
-      <div class="c-feedback-modal modal-content">
+      <div class="c-feedback-modal modal-content p-0">
         <h3>Submit Feedback</h3>
         <div>
           {{#if (and hasUserMarkedRating (not isEditing))}}
@@ -47,11 +35,7 @@
                 How would you rate this course overall?
               </div> &nbsp;&nbsp;
               {{#each (range 1 (inc scale)) as |index|}}
-                <span
-                  class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
-                >
-        <i class="fas fa-star"></i>
-      </span>
+                <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/star_{{if (lte index rating) 'filled' 'unfilled'}}.svg" alt="">
               {{/each}}
               <a href="#" {{action 'toggleEditingMode'}}><i class="fas fa-edit" style="color:#fc4f4f"></i></a>
             </div>
@@ -62,13 +46,12 @@
               </div> &nbsp;
               {{#each (range 1 (inc scale)) as |index|}}
                 <span
-                  class="{{if (lte index rating) 'pos-rating' 'neg-rating'}}"
                   onMouseEnter={{action 'changeRating' index}}
                   onMouseLeave={{action 'resetRating'}}
                   onClick={{action 'markRating' index}}
                 >
-        <i class="fas fa-star"></i>
-      </span>
+                  <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/star_{{if (lte index rating) 'filled' 'unfilled'}}.svg" alt="">
+                </span>
               {{/each}}
             </div>
           {{/if}}

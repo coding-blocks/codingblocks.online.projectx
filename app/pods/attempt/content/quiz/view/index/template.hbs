@@ -1,39 +1,37 @@
-<div class="heading p-4">
-  <span class="sno">Q{{q}}.</span>
-  {{question.title}}
-</div>
-
-<div class="question p-4">
-  <span class="text">
-    {{markdown-to-html question.description class="d-inline" extensions='katex'}}
-  </span>
-</div>
-
-<div class="choices p-4">
-  {{#each question.choices as |choice|}}
-    <div class="choice
-      {{if (find choice.id incorrectIds) 'incorrect'}}
-      {{if (find choice.id correctIds) 'correct'}}
-    ">
-      <div class="circle"></div>
-      <div class="text">
-        {{markdown-to-html choice.title extensions='katex'}}
-        <div class="explaination">
-          {{choice.description}}
-        </div>
-      </div>
-    </div>
-  {{/each}}
-</div>
-
-<div class="navigation">
-      {{#if (gt q 1)}}
-      <a href="#" {{action 'changeQuestion' -1}}>Previous</a>
-      {{else}}
-      <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Previous</a>
-      {{/if}} {{#if (lt q quiz.questions.length)}}
-      <a href="#" {{action 'changeQuestion' 1}}>Next</a>
-      {{else}}
-      <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Next</a>
-      {{/if}}
-    </div>
+<table class="w-100 mt-3">
+  <thead>
+    <tr class="white">
+      <th class="py-3">S.No.</th>
+      <th>Score</th>
+      <th>Attempt Time</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each attempts as |attempt index|}}
+      <tr class="t-align-c">
+        <td class="py-3">{{index}}</td>
+        <td 
+          class="bold {{if (gt attempt.totalCorrect (multiply quiz.questions.length 0.5)) "green" "red"}}">
+          {{defaultTo attempt.result.score 'NA'}} / {{multiply quiz.questions.length 10}}
+        </td>
+        <td>
+          {{moment-format attempt.createdAt 'MMM Do YYYY'}}
+          |
+          {{moment-format attempt.createdAt 'hh:m a'}}
+        </td>
+        <td>
+          {{#if (eq attempt.status 'FINAL')}}
+            {{#link-to 'attempt.content.quiz.view.quiz-attempt' attempt.id class="red"}}
+              View Result
+            {{/link-to}}
+          {{else}}
+            {{#link-to 'attempt.content.quiz.attempt' attempt.id class="green"}}
+              Resume
+            {{/link-to}}
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

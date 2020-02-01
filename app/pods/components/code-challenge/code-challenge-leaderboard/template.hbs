@@ -1,0 +1,33 @@
+<WAsync 
+  @task={{fetchLeaderboardTask}}
+  @autoFire="true">
+  <table class="w-100">
+    <thead class="bold">
+      <tr>
+        <td class="pb-4">Rank</td>
+        <td class="pb-4">User</td>
+        <td class="pb-4">College</td>
+        <td class="pb-4">Language</td>
+        <td class="pb-4">Score</td>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each leaderboard as |row index|}}
+        <tr>
+          <td class="pb-4 pt-4">{{inc index}}</td>
+          <td class="pb-4 pt-4">
+            <div class="img-desc align-items-center">
+              <img class="round s-30x30" src="{{row.user.photo}}" alt="">
+              <div class="description ml-3">
+                {{row.user.name}}
+              </div>
+            </div>
+          </td>
+          <td class="pb-4 pt-4">{{row.college.name}}</td>
+          <td class="pb-4 pt-4">{{row.language}}</td>
+          <td class="pb-4 pt-4">{{row.score}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</WAsync>

@@ -1,0 +1,30 @@
+<div class="border-card">
+  {{#if alreadySent}}
+    <p class="grey">
+      Thanks for getting in touch! <br> We'll get back to you shortly!
+    </p>
+  {{else}}
+    <h4 class="bold gradient-text-orange d-flex align-items-center">
+      <img src="/app/images/doubt_chat.svg" alt="hat">
+      <span class="ml-2">Have any Doubts?</span>
+    </h4>
+    <div class="divider-h my-4"></div>
+    <p class="grey">
+      Just fill in your details and our edu. counsellor will get back to you!
+    </p>
+    <div class="mt-4">
+      {{input type="text" class="input-search bg-light-grey p-3 w-100" placeholder="Name" value=name}}
+    </div>
+    <div class="mt-4">
+      {{input type="text" class="input-search bg-light-grey p-3 w-100" placeholder="Mobile number, For eg. 9999999999" value=mobile}}
+    </div>
+    {{#if error}}
+      <p class="mt-4 mb-0 red">
+        {{error}}
+      </p>
+    {{/if}}
+    <button class="mt-4 button-solid button-orange" {{action (perform createLeadTask)}} disabled={{createLeadTask.isRunning}}>
+      Send Details
+    </button>
+  {{/if}}
+</div>

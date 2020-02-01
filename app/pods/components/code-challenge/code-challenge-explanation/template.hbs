@@ -1,0 +1,31 @@
+<p>
+  {{markdown-to-html problem.content.description}}
+</p>
+<div class="extra-bold">Input Format</div>
+<p>
+  {{markdown-to-html problem.content.input-format}}
+</p>
+<div class="extra-bold">Constraints</div>
+<div class="bg-dark-grey br-5 w-60 px-4 py-2 my-2">
+  <p>
+    {{markdown-to-html problem.content.constraints}}
+  </p>
+</div>
+<div class="extra-bold">Output Format</div>
+<p>
+  {{markdown-to-html problem.content.output-format}}
+</p>
+<div class="extra-bold">Sample Input</div>
+<div class="bg-dark-grey br-5 w-60 px-4 py-2 my-2">
+  <pre>{{problem.content.sample-input}}</pre>
+</div>
+<div class="extra-bold">Sample Output</div>
+<div class="bg-dark-grey br-5 w-60 px-4 py-2 my-2">
+  <pre>{{problem.content.sample-output}}</pre>
+</div>
+{{#if problem.content.explanation}}
+  <div class="extra-bold">Explanation</div>
+  <div class="bg-dark-grey br-5 w-60 px-4 py-2 my-2">
+    {{markdown-to-html problem.content.explanation}}
+  </div>
+{{/if}}

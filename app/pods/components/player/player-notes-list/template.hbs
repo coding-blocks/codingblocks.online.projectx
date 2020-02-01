@@ -1,0 +1,17 @@
+{{#if notes}}
+  <ul class="list-divided border-none">
+    {{#each notes as |note|}}
+      <li class="list-item">
+        <Player::PlayerNotesListItem @note={{note}} />
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <div class="t-align-c my-5">
+    <img src="https://minio.codingblocks.com/amoeba/notes-orange.svg" />
+    <h3 class="gradient-text-orange mt-3">No Notes</h3>
+    <p class="white">
+      Take important notes while accessing the content
+    </p>
+  </div>
+{{/if}}

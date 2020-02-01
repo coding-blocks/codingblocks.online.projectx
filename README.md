@@ -21,14 +21,12 @@ You will need the following things properly installed on your computer.
 * [Yarn](https://yarnpkg.com/)
 * [Ember CLI](https://ember-cli.com/)
 * [Google Chrome](https://google.com/chrome/)
-* [Bower](https://bower.io/)
 
 ## Installation
 
 * `git clone https://github.com/coding-blocks/codingblocks.online.projectx` this repository
 * `cd codingblocks.online.projectx`
 * `yarn install`
-* `bower install`
 
 ## Running / Development
 
@@ -74,3 +72,5 @@ Specify what it takes to deploy your app.
 We are starting to use Ember Engines for this project. Some commands that can come in handy:
 
 * Run at application root: `ember g route <route-name> -ir <engine-name>` to run blueprint inside an engine
+
+* To add components to the in-repo addon (preferably for sharing components accross engines): `ember g component -ir ember-w-pack <components> -c`

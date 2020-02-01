@@ -1,0 +1,48 @@
+
+body.centered-modal-showing {
+  overflow: hidden;
+}
+.centered-scrolling-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+  z-index: 11;
+}
+
+.centered-scrolling-overlay {
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 10;
+}
+
+
+.centered-scrolling-container {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  max-width: 650px;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
+  width: 100%;
+  height: calc(100vh - 67px);
+  overflow: auto;
+  padding: 0;
+}
+
+
+@media (min-width: 768px) {
+  .centered-scrolling-container {
+    min-height: 20em;
+    width: 75%;
+    margin-top: 100px;
+    height: auto;
+  }
+
+}

@@ -1,0 +1,21 @@
+{{#if payload}}
+  {{#each payload as |bookmark|}}
+    <CourseLibrary::Bookmarks::Row
+      @bookmark={{bookmark}}
+    />
+  {{/each}}
+{{else}}
+  <div class="t-align-c">
+    <img src="https://minio.codingblocks.com/amoeba/bookmarks-orange.svg" />
+    <h3 class="gradient-text-orange mt-3">No Bookmarks</h3>
+    <p class="grey">
+      You do not have any bookmarks. Start bookmarking important sections.
+    </p>
+    <LinkTo
+      class="button-solid button-orange d-inline-block"
+      @route="attempt"
+      @model={{runAttempt.id}}>
+      Go To Classroom
+    </LinkTo>
+  </div>
+{{/if}}

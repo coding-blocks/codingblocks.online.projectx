@@ -1,0 +1,15 @@
+{
+  "name": "ember-w-pack",
+  "keywords": [
+    "ember-addon"
+  ],
+  "dependencies": {
+    "ember-cli-htmlbars": "*",
+    "ember-decorators": "*",
+    "ember-cli-babel": "*",
+    "ember-power-select": "*"
+  },
+  "devDependencies": {
+    "ember-cli-babel": "*"
+  }
+}

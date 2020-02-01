@@ -1,4 +1,4 @@
-<div class="body">
+<div class="body t-align-c p-5 white">
   <img class="mb-3" src="https://minio.codingblocks.com/amoeba/yellow-tick.svg" width="33" height="33" alt="doubt resolved">
 
   <div class="title yellow">
@@ -8,11 +8,23 @@
     {{doubt.title}}
   </div>
 
-  <RatingBar class="stars my-3" @scale={{5}} @rating={{score}} @changeRating={{action (mut score)}} />
+  <RatingBar class="stars my-3 w-100" @scale={{5}} @rating={{score}} @changeRating={{action (mut score)}} />
 
-  <div class="d-flex">
-    <input type="text" placeholder="Please leave your feedback. It's optional.">
-    <button class="ml-2 red" onclick={{action (perform submitFeedback)}}>Submit</button>
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="w-80">
+      <Textarea 
+        @value={{description}}
+        class="w-100 underline-input" 
+        placeholder="Please leave your feedback. It's optional." />
+    </div>
+    <div>
+      <button 
+        class="ml-2 red" 
+        disabled={{submitFeedback.isRunning}}
+        {{action (perform submitFeedback)}}>
+        {{if submitFeedback.isRunning "Submitting" "Submit"}}
+      </button>
+    </div>
   </div>
 
 </div>

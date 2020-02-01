@@ -1,0 +1,65 @@
+<div class="d-flex">
+  <div class="quiz-content col-9">
+    <div class="heading p-4">
+      <span class="sno">Q{{q}}.</span>
+      {{question.title}}
+    </div>
+
+    <div class="question p-4">
+      <span class="text">
+        {{markdown-to-html question.description class="d-inline" extensions='katex'}}
+      </span>
+    </div>
+
+    <div class="p-4">
+      {{#each question.choices as |choice|}}
+        <div class="input-radio gradient-input">
+          <input
+            checked={{find choice.id submission}} 
+            type="radio" 
+            disabled="true"
+            id={{choice.id}} />
+          <label for="{{choice.id}}" class="
+            {{if (find choice.id incorrectIds) 'red'}}
+            {{if (find choice.id correctIds) 'green'}}
+          ">
+            {{markdown-to-html choice.title extensions='katex' class="ml-3"}}
+          </label>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="navigation">
+      {{#if (gt q 1)}}
+        <a href="#" {{action 'prevQuestion'}} class="white">Previous</a>
+      {{else}}
+        <a class="grey">Previous</a>
+      {{/if}} {{#if (lt q quiz.questions.length)}}
+        <a href="#" {{action 'nextQuestion'}} class="white">Next</a>
+      {{else}}
+        <a class="grey">Next</a>
+      {{/if}}
+    </div>
+  </div>
+  <div class="quiz-status col-3">
+
+    <div class="c-review-pad">
+      <div class="title">
+        Result
+      </div>
+      <div class="options">
+        {{#each quiz.questions as |question index|}}
+          <div 
+            class="circle
+              {{if (find question.id correctQuestionIds) 'bg-green'}}
+              {{if (find question.id incorrectQuestionIds) 'bg-red'}}
+            "
+            {{action 'setQuestion' index}}
+          >
+            {{inc index 1}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

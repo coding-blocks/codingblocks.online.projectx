@@ -4,41 +4,19 @@ $cb-red: #ff6666;
 
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
+@import "ember-power-select";
 
 @import "./components/index.scss";
+@import "./components/course-card.scss";
+@import "./components/nagarro-banner.scss";
+@import "./components/textarea.scss";
+@import "./components/player.scss";
+@import "./components/loader.scss";
+@import "./components/button.scss";
+@import "lists.scss";
 
-body.centered-modal-showing {
-  overflow: hidden;
-}
-.centered-scrolling-wrapper {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow-y: scroll;
-  z-index: 200;
-}
-
-.centered-scrolling-overlay {
-  position: relative;
-  height: auto;
-  min-height: 100vh;
-  padding: 1em;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-.centered-scrolling-container {
-  position: relative;
-  background-color: white;
-  width: 100%;
-  max-width: 650px;
-  min-height: 20em;
-  margin-top: 100px;
-  margin-bottom: 30px;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
+body {
+  padding-top: 70px;
 }
 
 .notes-list-container {
@@ -55,16 +33,6 @@ body.centered-modal-showing {
   overflow: auto;
 }
 
-.cart-modal-overlay {
-  z-index: 500;
-  padding-top: 70px;
-}
-
-.cart-modal-overlay .round-img {
-  width: 100%;
-  height: 100%;
-}
-
 .display-block {
   display: block !important;
 }
@@ -75,8 +43,31 @@ body.centered-modal-showing {
   border: none;
 }
 
+.home-banner {
+  width: 100%;
+  height: 500px;
+  background-image: url(/images/home_bg.jpg);
+  padding: 30px 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-banner .left {
+  align-self: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  max-width: 500px;
+}
+
 .home-banner .left .button-solid{
   background-image: none;
+}
+
+.home-banner .left .button-solid {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background-color: #fff;
+  color: #692fdc;
 }
 
 #embedBox {
@@ -118,12 +109,178 @@ body.centered-modal-showing {
   position: sticky;
 }
 
-
-tr.highlight {
-  background-color: antiquewhite;
+/*
+  Wraps the content to look aligned till a 1440px screen
+*/
+.content-container {
+  max-width: 1320px;
 }
 
-tr.highlight td {
+@media (min-width: 768px) {
+  .content-container {
+    padding: 0 2%;
+  }
+}
+
+.max-width-unset {
+  max-width: unset;
+}
+
+.progress-lock {
+  transform: translate(-50%, 0);
+}
+
+
+.contain-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.monaco-editor {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.bg-grey-darker {
+  background-color: #292c33;
+}
+
+.bg-black-lighter {
+  background-color: #1b1e26;
+}
+
+.bg-modal-grey-darker {
+  background-color: #23252C;
+}
+
+.player-centered-scrolling-container {
+  max-width: 950px !important;
+}
+
+.c-code-card {
+  .header {
+    background-color: #23252c;
+  }
+
+  .editor {
+    height: 332px;
+  }
+
+  .footer {
+    background-color: #23252c;
+
+    textarea {
+      background-color: #292c33;
+    }
+  }
+}
+
+.c-player {
+  .c-topnav {
+    border-bottom: 1px solid #2b2f37;
+  }
+
+  .divider-h {
+    background: #2b2f37;
+  }
+
+  .list-divided > *:not(:last-child) {
+    border-bottom: solid 1px #2b2f37;
+  }
+
+  .spaced-list > *:not(:last-child) {
+    padding-bottom: 2rem;
+  }
+
+  .tab {
+    color: #fff;
+  }
+
+  tr {
+    border-bottom: solid 1px #23252c;
+  }
+
+  textarea.underline-input {
+    background-color: transparent;
+    border-bottom: solid 1px #666666 !important;
+    padding-bottom: 1.5rem;
+  
+    &:focus {
+      border-bottom: solid 1px #ffff !important;
+    }
+
+    &::placeholder {
+      color: #fff;
+    }
+  }
+}
+
+.c-qna {
+  .green {
+    color: #6ECF4A !important;
+  }
+
+  .red {
+    color: #FF6666 !important;
+  }
+}
+
+.pop-up {
+  position: absolute;
+}
+.dropdown-ul {
+  width: 375px;
+}
+.img-card {
+  .head {
+    background-size: cover;
+  }
+}
+
+.b-grey {
+  border-color: #2B2F37 !important;
+}
+
+.icon-hover-fill:hover {
+  font-weight: 900;
+}
+
+.tracks-logo {
+  max-height: 100px;
+  max-width: 100px;
+  border-radius: 50px;
+  border: 1.5px solid #fff;
+  position: relative;
+}
+
+.search-content:not(:first-of-type) {
+  border-top: 1px solid #2b2f37;
+}
+
+.input-search > img {
+  left: unset;
+  right: 15px;
+}
+
+.navigation {
+  & > a, & > span {
+    &:not(:first-child) {
+      margin-left: 3rem;
+    }
+  }
+}
+
+.s-25x25 {
+  width: 25px;
+  height: 25px;
+}
+
+.review-body {
   height: 80px;
-  padding: 0 !important;
+  overflow: hidden;
 }
+
+
+@import "ember-content-placeholders";

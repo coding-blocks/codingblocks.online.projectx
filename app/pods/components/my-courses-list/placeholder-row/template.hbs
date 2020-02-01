@@ -1,0 +1,35 @@
+{{#each (repeat 5)}}
+  {{#content-placeholders rounded=true as |placeholder|}}
+    <div class="row no-gutters align-items-center mt-4">
+      <div class="col-md-4 col-6">
+        <div class="row no-gutters align-items-center">
+          <div class="col-3">
+            <div class="mr-5 s-80x80 overflow-hidden">
+            {{placeholder.img}}
+            </div>
+          </div>
+          <div class="col-9">
+            {{placeholder.heading}}
+            {{placeholder.text class="font-normal mt-2" lines="1"}}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5 col-6">
+      {{placeholder.text class="font-normal mt-2" lines="1"}}
+      </div>
+      
+      <div class="col-md-3 col-12 mt-md-0 mt-3">
+        <div class="row no-gutters justify-content-around align-items-center">
+          <a href="#" class="font-normal">
+            {{placeholder.heading}}
+          </a>
+
+          <button class="button-solid button-placeholder">
+            {{placeholder.img}}
+          </button>
+        </div>
+      </div>
+    </div>
+  {{/content-placeholders}}
+{{/each}}

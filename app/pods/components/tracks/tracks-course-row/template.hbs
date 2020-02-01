@@ -1,0 +1,73 @@
+<div class="px-5 pt-5 position-relative">
+  <div class="track-indicator complete">&#8226;</div>
+  <div class="normal">Course {{inc index}}</div>
+  <div class="row align-items-center my-5">
+    <div class="col-md-6 col-12 mb-md-0 mb-3">
+      <div class="row no-gutters align-items-center">
+        <div class="col-3">
+          <img src="{{course.logo}}" alt="Course Logo" class="s-60x60 mr-3">
+        </div>
+        <div class="col-9">
+          <h5 class="bold">{{course.title}}</h5>
+          <div class="font-normal mt-2">Mentor: {{#each course.instructors as |instructor i|}} {{if i ","}}  {{instructor.name}} {{/each}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      {{#if course.latestRun}}
+      <div class="font-normal">Course Progress</div>
+      <div class="mt-3">
+        <progress value="{{course.latestRun.topRunAttempt.progressPercent}}" max="100" class="d-inline-block w-70 progress-green"></progress>
+        <span class="bold ml-3">
+          {{course.latestRun.topRunAttempt.progressPercent}} %
+        </span>
+      </div> 
+      {{else}}
+        <div class="mb-3">
+          <RatingStarsStatic @rating={{course.rating}} />
+        </div>
+        <div class="normal"><strong>{{course.rating}}/5.0</strong>, {{course.reviewCount}} Ratings</div>
+      {{/if}}
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="row no-gutters justify-content-end align-items-center">
+        {{#if course.latestRun}}
+          <LinkTo 
+            class="button-solid button-orange"
+            @route="attempt" 
+            @model={{course.latestRun.topRunAttempt.id}}>
+            Resume
+          </LinkTo>
+        {{else}}
+          {{#if session.isAuthenticated}}
+            <button {{action (perform createOrDestroyCourseWishlist)}}>
+              <FaIcon 
+                @icon="heart" 
+                @type={{if course.userCourseWishlist "fas" "far"}} 
+                @size="lg" 
+                class="mr-3" />
+            </button>
+          {{/if}}
+          <a href="/courses/{{course.slug}}" target="_blank" class="button-orange button-solid">Explore</a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  {{#if course.tags.length}}
+    <div>
+      <span class="normal grey mr-4">What will you learn</span>
+      {{#each course.tags as |tag|}}
+        <div class="pill normal mr-2 mb-2">{{tag.name}}</div>
+      {{/each}}
+    </div>
+  {{/if}}
+  {{#if course.projects.length}}
+    <div class="mt-4">
+      <span class="normal grey mr-4">Projects you will build</span>
+      {{#each course.projects as |project|}}
+        <div class="pill pill-dashed normal mr-2 mb-2">{{project.title}}</div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+<div class="divider-h content-divider mt-5 pl-5"></div>

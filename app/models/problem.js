@@ -5,6 +5,7 @@ export default DS.Model.extend({
   name: DS.attr(),
   content: DS.attr(),
   submissions: DS.hasMany('submission'),
+  solutionStubs: DS.hasMany('solution-stub'),
   mostSuccessfullSubmission: computed('submissions', function(){
     const submissions = this.submissions;
     return submissions.reduce((acc, curr)=> acc.get("score")>= curr.get("score")? acc: curr, submissions.objectAt(0))

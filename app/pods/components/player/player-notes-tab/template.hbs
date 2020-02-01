@@ -1,0 +1,12 @@
+<div class="flex-row no-gutters bg-grey-darker p-3 justify-content-between mt-5">
+  <img src="{{currentUser.user.photo}}" alt="user-photo" class="round s-50x50">
+  <Textarea 
+    placeholder="Add a Note" 
+    class="underline-input w-80"
+    @value={{newNoteText}}>
+  </Textarea>
+  <button class="button-solid button-orange" {{action (perform addNoteTask)}}>
+    Save
+  </button>
+</div>
+<Player::PlayerNotesList @notes={{sortedNotes}} />

@@ -1,52 +1,28 @@
-<div class="c-qna">
-  <div class="result-box">
-    <div class="title">
-      Your quiz has been submitted!
-    </div>
-    <div>
-      <b>Score Card</b>
-    </div>
-    <div class="card score-card">
+<div class="p-3 c-qna">
+  <h4 class="bold">
+    {{quiz.title}}
+  </h4>
 
-      <div class="circle-container color-green">
-        <div class="status-circle">
-          <div class="circle-back"></div>
-          <div class="circle-front d-flex justify-content-center">
-            <p class="progress-text align-self-center">{{totalCorrect}}</p>
-          </div>
-        </div>
-        <div class="sub">
-          Correct Answers
-        </div>
-      </div>
-      <div class="circle-container color-black">
-        <div class="status-circle">
-          <div class="circle-back"></div>
-          <div class="circle-front d-flex justify-content-center">
-            <p class="progress-text align-self-center">{{quiz.questions.length}}</p>
-          </div>
-        </div>
-        <div class="sub">
-          Total Questions
-        </div>
-      </div>
-      <div class="circle-container">
-        <div class="status-circle">
-          <div class="circle-back"></div>
-          <div class="circle-front d-flex justify-content-center">
-            <p class="progress-text align-self-center">{{totalIncorrect}}</p>
-          </div>
-        </div>
-        <div class="sub">
-          Wrong Answers
-        </div>
-      </div>
-    </div>
+  <div class="font-sm mt-4">
+    Your Scorecard
+  </div>
 
-    <div class="p-2">
-      <div class="button-solid">
-        {{#link-to 'attempt.content' tagName='button' activeClass=""}} Go Back {{/link-to}}
-      </div>
+  <div class="row mt-4">
+    <div class="col-md-4 col-lg-3">
+      <div class="font-mdxl bold">{{quiz.questions.length}}</div>
+      <div class="font-md bold">Total Questions</div>
     </div>
+    <div class="col-md-4 col-lg-3 green">
+      <div class="font-mdxl bold">{{totalCorrect}}</div>
+      <div class="font-md bold">Right Answers</div>
+    </div>
+    <div class="col-md-4 col-lg-3 red">
+      <div class="font-mdxl bold">{{totalIncorrect}}</div>
+      <div class="font-md bold">Wrong Answers</div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    {{#link-to 'attempt.content' activeClass="" class="button-solid button-orange"}} Go Back {{/link-to}}
   </div>
 </div>

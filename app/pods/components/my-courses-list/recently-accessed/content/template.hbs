@@ -1,0 +1,22 @@
+<div class="col-md-5 col-6">
+  <div class="font-normal">Course Progress</div>
+  <div class="mt-3">
+    <MyCoursesList::ProgressBar @percent={{progressPercent}} />
+  </div>
+</div>
+<div class="col-md-3 col-12 mt-md-0 mt-3">
+  <div class="row no-gutters justify-content-around align-items-center">
+    <a href="#" class="font-normal {{fontClassName}}"> {{progressText}} </a>
+    <LinkTo 
+      @route="classroom.timeline.overview" 
+      @models={{array run.course.id run.id}}  
+      @tagName="button" 
+      class="button-orange button-solid"
+    >
+      {{resumeButtonText}}
+    </LinkTo>
+    {{#if showGetCertificate}}
+      <button class="button-green button-solid">Get Certificate</button>
+    {{/if}}
+  </div>
+</div>

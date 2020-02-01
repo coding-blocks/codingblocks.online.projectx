@@ -1,88 +1,49 @@
-<div class="c-content-section">
-  <div class="curtains">
-    <div class="left {{if sideBarCollapsed.left 'collapse'}} order-1 order-md-0">
-      <div class="tab-nav">
-        <div class="tab-items {{if isContentsTabActive 'active'}}" {{action "setActiveTab" "contents"}}>
-          Table Of Content
+<div class="timeline" id="timelineContainer">  
+  <Player::PlayerHeader  
+    @run={{run}} />
+
+    
+    <div class="row no-gutters timeline__main-area">
+      <div class="col-lg-3 col-12 timeline__main-area__content-bar no-scrollbar order-2" id="contentScrollContainer">
+        <div class="position-sticky d-lg-block d-none">
+          <h4 class="bold font-mds" id="start-player-tour">
+            Course Content 
+            <i class="far fa-question-circle icon-hover-fill pointer" title="Take Tour" {{action "startTour"}} ></i>
+          </h4>
+          <div class="divider-h"></div>
         </div>
-        <div class="tab-items {{if isNotesTabActive 'active'}}" {{action "setActiveTab" "notes"}}>
-          Notes
-          {{#if model.notes.length}}
-          ({{persistedNotes.length}})
-          {{/if}}
-        </div>
-      </div>
-      <div class="section-tabs">
-        {{!-- {{#unless accordionCollapsed}} --}}
-        {{#liquid-if isContentsTabActive class="slide"}}
-        <div class="c-accordion">
-          <div class="list-shaded invert">
-            {{#each sections as |section|}}
-            <div>
-              {{#accordion-head title=section.name completed=section.doneContents.length deadline=section.deadlineDate
-              total=section.contents.length
-              collapsed=(not (eq section.id currentSectionId))
-              premium=section.premium
-              }}
-              <div class="bellows pb-4 pt-4">
-                {{#each section.contents as |content|}}
-                <div class="row no-gutters pointer {{if content.isDone 'green'}}"
-                  {{action 'transitionToContent' content.id section.id}}>
-                  <div class="li-left col-10">
-                    <div class="col-1 content-icon {{content.iconClass}}-{{if content.isDone 'green-dark' 'red-dark'}}"></div>
-                    <div class="col-10">
-                      {{content.title}}
-                    </div>
-                  </div>
-                  <div class="li-right  col-2">
-                    {{#if (not content.payload)}}
-                    {{!-- <div class="t-align-c"> --}}
-                      <i class="fas fa-lock grey"></i>
-                      {{!-- </div> --}}
-                    {{else}}
-                    <div class="status-circle">
-                      <div class="circle-back"></div>
-                      <div class="circle-front {{if content.isActive 'bg-red'}}" {{action 'toggleProgress' content bubbles=false}}></div>
-                    </div>
-                    {{/if}}
-      
-      
-                  </div>
-                </div>
-                {{/each}}
+
+         <div class="d-lg-none timeline__main-area__content-bar__title--phone" {{action 'toggleContentList'}} role="button">
+            <div class="row no-gutters justify-content-between align-items-center">
+              <div class="col-10">
+                <h6 class="bold gradient-text-orange">{{currentSection.name}}</h6>
+                <div class="normal mt-1">{{currentContent.title}}</div>
               </div>
-      
-              {{/accordion-head}}
+              <i class="far fa-bookmark fa-lg"></i>
             </div>
-            {{/each}}
-          </div>
         </div>
-        {{else}}
-        {{notes-view runAttempt=model}}
-        {{/liquid-if}}
-      </div>
-    </div>
-    <div class="main order-0 order-md-1">
-      <div class="header flex-row">
-        <div class="dashboard row no-gutters justify-content-between">
-          <div class="flex-row white pointer dsp-none-sm font-lg" {{action 'toggleSideBar'}}>
-              {{#if sideBarCollapsed.left}}
-                <i class="fas fa-bars"></i>
-              {{else}}
-                <i class="far fa-times-circle"></i>
-              {{/if}}
+        
+        <div class="collapsible-content {{if contentListCollpased 'collapsible-content--hidden'}}">
+          <div class="d-lg-none pt-4">
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="font-normal mr-3">Course Progress</span>
+              <div class="flex-1">
+                <progress value={{runAttempt.progressPercent}} max="100" class="progress-orange"></progress>
+              </div>
+              <span class="bold ml-3">{{runAttempt.progressPercent}}%</span>
+            </div>
           </div>
-          {{outlet "heading"}}
+          <Player::PlayerSectionList 
+            @currentSectionId={{currentSectionId}}
+            @sections={{sections}} />
         </div>
       </div>
-      <div class="content-container">
+      
+      <div class="col-lg-9 timeline__main-area__video-area no-scrollbar order-lg-12 order-1">
         {{outlet}}
       </div>
     </div>
-    <div class="right {{if sideBarCollapsed.right 'collapse'}} dsp-none-sm order-md-2">
-      {{doubts-view doubts=model.doubts runAttempt=model}}
+    <div class="d-md-none d-block">
+      <Player::PlayerTabs />
     </div>
-  </div>
-  
 </div>
-

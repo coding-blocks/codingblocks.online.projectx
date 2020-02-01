@@ -10,28 +10,22 @@ export default class VdoPlayerComponent extends Component {
 
   classNames = ['w-100', 'h-100']
 
-  @computed('lecture.videoId')
-  get otp () {
-    return DS.PromiseObject.create({
-      promise: this.api.request('/lectures/otp', {
-        data: {
-          videoId: this.lecture.videoId,
-          sectionId: this.sectionId,
-          runAttemptId: this.runAttempt.id
-        }
-      })
-    })
-  }
-
-  initPlayer() {
-    this.otp.then(({otp}) => {
-      this.vdoservice.setVideo(this.lecture.videoId, otp, this.start, this.element)
-      const video = this.vdoservice.getVideo()
-      video.addEventListener('ended', () => { this.onVideoCompleted() })
-    })
+  initPlayer(otp) {
+    this.vdoservice.setVideo(this.lecture.get('videoId'), otp, this.start, this.element)
+    const video = this.vdoservice.getVideo()
+    video.addEventListener('ended', () => { this.onVideoCompleted() })
+  
   }
   
-  didInsertElement(){
-    later(() => this.initPlayer(), 0)
+  didRender () {
+    this.api.request('/lectures/otp', {
+      data: {
+        videoId: this.lecture.get('videoId'),
+        sectionId: this.sectionId,
+        runAttemptId: this.runAttemptId
+      }
+    }).then(({otp}) => this.initPlayer(otp))
+
+    return this._super(...arguments)
   }
 }

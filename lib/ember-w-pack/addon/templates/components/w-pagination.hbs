@@ -1,0 +1,15 @@
+{{#if showComponent}} 
+<div class="t-align-c mt-3 bold">
+  <button disabled="{{if disabledPrevious 'disabled'}}" {{action 'previousPage'}}>
+    &lt; Prev
+  </button>
+  <span class="dark-grey mx-4">
+    {{this.start}}-{{this.end}} of {{this.numberOfTotalResults}}
+  </span>
+  
+  <button disabled="{{if disabledNext 'disabled'}}" {{action 'nextPage'}}>
+    Next &gt;
+  </button>
+  
+</div>
+{{/if}}

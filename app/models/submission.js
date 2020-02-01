@@ -49,5 +49,56 @@ export default DS.Model.extend({
     const failedTestCases = this.failedTestCasesArray
     return failedTestCases.length ? failedTestCases.map((tc, index) => index + 1).toString() : '[]' 
   }),
+  executionTime: Ember.computed('judge-result', function () {
+    const testcases = this.get('judge-result.data.testcases')
+    if (!testcases) 
+      return '--'
+    
+    return testcases.reduce((acc, t) => acc + +t.runtime, 0).toFixed(2)
+  }),
+  resultParams: Ember.computed('explanation', 'submissionType', function() {
+    switch(this.explanation) {
+      case 'Perfect': return {
+        color: 'green',
+        icon: 'check',
+        message: 'Accepted'
+      }
+      case 'FailedTestcase': return {
+        color: 'red',
+        icon: 'times',
+        message: 'Wrong Answer'
+      }
+      case 'TimeLimitExceeded': return {
+        color: 'orange',
+        icon: 'exclamation',
+        message: 'TLE'
+      }
+      case 'CompilationError': return {
+        color: 'orange',
+        icon: 'exclamation',
+        message: 'Compilation Error'
+      }
+      case 'ContestOver': return {
+        color: 'orange',
+        icon: 'exclamation',
+        message: 'Contest Over'
+      }
+      case 'TestcaseUnlocked': return {
+        color: 'orange',
+        icon: 'exclamation',
+        message: 'Test Case Unlocked'
+      }
+      case 'EditorialUnlocked': return {
+        color: 'orange',
+        icon: 'exclamation',
+        message: 'Editorial Unlocked'
+      }
+      default: return {
+        color: 'orange',
+        icon: 'exclamation',
+        message: 'Submission Not Judged'
+      }
+    }
+  }),
   user: DS.belongsTo('user')
 })

@@ -1,0 +1,204 @@
+<div class="row mt-5">
+  <div class="col-md-9 col-12 spaced-list-margin">
+    <div class="border-card" id="course-information-card">
+      <div class="row no-gutters align-items-center">
+        <div class="col-md-8">
+          <div class="d-flex align-items-center">
+            <div class="mr-3">
+              <img src="{{course.logo}}" alt="{{course.title}}" class="s-50x50">
+            </div>
+            <div>
+              <h5 class="bold">
+                {{course.title}}
+                <i class="far fa-question-circle icon-hover-fill pointer" title="Take Tour" {{action "startTour"}} id="start-course-dashboard-tour" ></i>
+              </h5>
+              <div class="font-normal mt-2">
+                Mentor: 
+                {{#each course.instructors as |instructor index|}}
+                  {{#if index}}, {{/if}} {{instructor.name}}
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="t-align-md-r t-align-c col-md-4 mt-3 mt-md-0">
+          <div class="normal mb-2">Leave a rating</div>
+          <RatingStars 
+            @course={{course}}
+            @showModal={{true}}
+            @isShowingModal={{showFeedback}}
+            @initialRating={{userRating}} />
+        </div>
+      </div>
+      <div class="divider-h mt-4 mb-5"></div>
+
+      <div>
+        <h4 class="bold">Course Progress</h4>
+        <div class="mt-4 pt-2">
+          
+          <div class="row no-gutters align-items-center justify-content-between position-relative">
+            <progress value="{{progressPercent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
+
+            {{!-- % * 0.9 to compensate for 90% width of progress bar --}}
+            <div class="progress-lock" style="left: {{goodiesLockOffset}}%; bottom: -2px" id="goodies-lock">
+              <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
+              {{#if (gte progressPercent runAttempt.run.goodiesThreshold)}}
+                <img 
+                  src="https://minio.codingblocks.com/amoeba/progress-unlocked.svg"
+                  class="gradient-text-green pointer s-25x25"/>
+              {{else}}
+                <img 
+                  src="https://minio.codingblocks.com/amoeba/progress-lock.svg"
+                  class="gradient-text-green pointer s-25x25"/>
+              {{/if}}
+            </div>
+
+            <div class="progress-lock" style="left: {{certificateLockOffset}}%; bottom: -2px" id="certificate-lock">
+              <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.completionThreshold}}% to get certified</div>
+              {{#if (gte progressPercent runAttempt.run.completionThreshold)}}
+                <img 
+                  src="https://minio.codingblocks.com/amoeba/progress-unlocked.svg"
+                  class="gradient-text-green pointer s-25x25" />
+              {{else}}
+                <img 
+                  src="https://minio.codingblocks.com/amoeba/progress-lock.svg"
+                  class="gradient-text-green pointer s-25x25" />
+              {{/if}}
+            </div>
+            <div class="bold">{{progressPercent}}%</div>
+          </div>
+        
+        </div>
+      </div>
+
+      <button class="card-md font-normal salmon mt-3 d-block" {{action "resetProgress"}}>
+        <i class="fas fa-exclamation-triangle mr-2"></i>
+        Reset Progress
+      </button>
+
+      <div class="divider-h my-4"></div>
+
+      <div class="row no-gutters justify-content-between align-items-center">
+        <div class="col-sm-6 col-12 mb-sm-0 mb-3">
+          <div class="font-normal salmon">
+            {{#if runAttempt.premium}}
+              {{#if runAttempt.isExpired}}
+                Expired
+              {{else}}
+                Batch Ends {{moment-format runAttempt.endDate 'DD-MMM-YY'}}
+              {{/if}}
+            {{else}}
+              Free Trial
+            {{/if}}
+          </div>
+        </div>
+        <div>
+          {{#if showBuyNow}}
+            {{#link-to "courses.id" run.course.identifier activeClass="" class="button-solid button-orange mr-4" invokeAction=(action 'log' 'Buy now' run.course.identifier preventDefault=false)}}
+              Buy Now
+            {{/link-to}}
+          {{/if}}
+
+          {{#link-to "attempt" runAttempt.id activeClass="" class="button-dashed button-orange" invokeAction=(action 'log' 'Resume' runAttempt.id preventDefault=false)}}
+            Resume
+          {{/link-to}}
+        </div>
+      </div>
+    </div>
+
+    {{!-- Course Library CTA --}}
+    <LinkTo 
+    @route="classroom.timeline.library"
+    @tagName="div"
+    id="course-library"
+    class="border-card px-5 py-4 pointer">
+      <div class="row">
+        <div class="col-9">
+          <div class="gradient-text-orange font-md bold">Course Library</div>
+          <div>
+             Access course notes, bookmarks, announcements, doubts
+          </div>
+        </div>
+        <div class="col-3 t-align-r">
+          <img src="https://minio.codingblocks.com/amoeba/course-library.svg" alt="Course Library" srcset="">
+        </div>
+      </div>
+    </LinkTo>
+
+    {{#if showExtensions}}
+      <div class="border-card p-4">
+        <ExtensionsWidget 
+          @onClose={{action (mut showExtensions) false}} 
+          @run={{runAttempt.run}} />
+      </div>
+    {{/if}}
+
+    <div class="border-card p-5" id="performance-stats">
+      <WAsync
+        @task={{fetchPerformanceStatsTask}}
+        @autoFire="true" as |stats|>
+        <PerformanceStatsView @stats={{stats}} />
+      </WAsync>
+    </div>
+
+    <div class="border-card p-5" id="course-intro">
+      <h4 class="mb-5">Course Introduction</h4>
+
+      <div class="bold mb-3">Lectures</div>
+      <div class="grey card-md mb-4">
+        • We are providing access of complete contents on course starting date. If there are any topics which needs to be
+        discussed then we'll add more lectures to the course accordingly.
+        <br>
+        • There are In-Class Quizzes, Assignments, Notes along with Lecture Videos in a lecture. You should attempt them all
+        to
+        master each section that you study.
+        <br>
+        • You should complete the lectures within the specified deadlines.
+      </div>
+
+      <div class="bold mb-3">Assignments and Tests</div>
+      <div class="grey card-md mb-4">
+        • After almost every lecture there will be one assignment.
+        <br>
+        • Assignments will have deadlines.
+        <br>
+        • Deadlines will be the soft deadlines, submitting a challenge after the given deadline will not affect your score. 
+      </div>
+
+      <div class="bold mb-3">Teaching Assistants and Doubts Resolution</div>
+      <div class="grey card-md mb-4">
+        • Apart from instructors taking the course, there are teaching assistants in the course who will be taking your
+        doubts.
+        <br>
+        • You can ask doubt on any content that you are facing problem at, be it a video or a question. There is an “Ask
+        Doubt”
+        button on the top right corner to raise your doubt.
+        <br>
+        • The doubt support period is valid for 6 months from the start of course date. This is kept after considering 
+        the section deadlines and the content that is available for the students to learn.
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-12">
+    {{#if (and runAttempt.run.whatsappLink runAttempt.premium)}}
+      <a href={{runAttempt.run.whatsappLink}} class="pointer" target="blank">
+        <div class="border-card border-none bg-gradient-green mb-5 white p-4 v-align-ma mt-md-0 mt-5" id="join-whatsapp-card">
+          <i class="fab fa-whatsapp fa-2x mr-2"></i>
+          <strong class="font-sm">Join Whatsapp Group</strong>
+        </div>
+      </a>
+    {{/if}}
+    {{#if (and (is-after (unix runAttempt.run.start) '2018-10-01') (not (eq runAttempt.run.price 0)))}}
+      <GoodieComp
+        class="mb-5"
+        @runAttempt={{runAttempt}} />
+    {{/if}}
+    <CertificateComp 
+      class="mb-5"
+      @runAttempt={{runAttempt}} />
+    <MentorCard
+      class="mb-5"
+      @instructors={{course.instructors}} />
+    <HackerblocksStats />
+  </div>
+</div>

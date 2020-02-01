@@ -1,0 +1,32 @@
+<div class="p-0 mb-5 border-card white border-none bg-grey-darker">
+  <div class="p-5">
+    <WTabNav
+      @inactiveClass="white"
+      @tabs={{tabs}}
+      @activeTab={{activeTab}}
+      @onTabChange={{action (mut activeTab)}}>
+      <div class="py-4">
+        {{component activeTab.component csv=csv content=content}}  
+      </div>
+    </WTabNav>
+  </div>
+  <div class="p-4" style="background-color: #23252C;">
+    <FileInput
+      @link={{url}}
+      @onComplete={{action (mut url)}}>  
+      {{#if url}}
+        <button 
+          class="float-right button-solid button-orange"
+          {{action (perform submissionTask)}}>
+          {{if submissionTask.isRunning "Submitting" "Submit"}}
+        </button>
+      {{/if}}
+    </FileInput>
+  </div>
+</div>
+
+{{#if currentSubmission}}
+  <Csv::CsvSubmissionSuccess 
+    @submission={{currentSubmission}}
+    class="mt-5" />
+{{/if}}

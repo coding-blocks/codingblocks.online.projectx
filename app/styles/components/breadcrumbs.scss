@@ -1,0 +1,21 @@
+.breadcrumbs > li:not(:last-child) {
+  font-weight: bold;
+}
+
+.breadcrumbs {
+  padding-left: 0 !important;
+}
+
+.breadcrumbs > li:not(:first-child) {
+  padding-left: 1rem !important;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    top: 2px;
+    left: 0px;
+    background: url('https://minio.codingblocks.com/amoeba/arrow-right-breadcrumb.svg') no-repeat;
+  }
+}

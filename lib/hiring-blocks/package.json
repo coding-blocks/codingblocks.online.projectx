@@ -20,5 +20,10 @@
     "ember-simple-auth": "*",
     "ember-simple-auth-token": "*",
     "ember-data": "*"
+  },
+  "ember-addon": {
+    "paths": [
+      "../ember-w-pack"
+    ]
   }
 }

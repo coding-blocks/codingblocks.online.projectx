@@ -1,0 +1,76 @@
+<WAsync
+  @task={{fetchEditorialTask}}
+  @autoFire="true">
+  {{#if editorial}}
+    <div class="mt-5">
+      <h4>
+        <FaIcon @icon="unlock-alt" class="gradient-text-orange" />
+        Editorial Unlocked
+      </h4>
+      <h6 class="normal mt-3">You have unlocked the editorial, you will not be awarded any score for this problem</h6>
+      <button 
+        class="button-solid button-orange font-sm extra-bold mt-3"
+        {{action 'viewEditorial'}}>
+        View Editorial
+      </button>
+    </div>
+  {{else}}
+    <div class="mt-5">
+      <h4>
+        <FaIcon @icon="lock" class="gradient-text-orange" />
+        Editorial Locked
+      </h4>
+      <h6 class="normal mt-3">If you unlock the editorial, you will not be awarded any score for this problem</h6>
+      <button 
+        class="button-solid button-orange font-sm extra-bold mt-3" 
+        {{action (perform unlockEditorialTestcases) 'editorials'}}>
+        Yes, I want to unlock
+      </button>
+    </div>
+  {{/if}}
+</WAsync>
+
+<WAsync
+  @task={{fetchTestcasesTask}}
+  @autoFire="true">
+  {{#if testcases}}
+    <div class="mt-5">
+      <h4>
+        <FaIcon @icon="unlock-alt" class="gradient-text-orange" />
+        Test Cases Unlocked
+      </h4>
+      <h6 class="normal mt-3">You have unlocked the testcases, you will not be awarded any score for this problem</h6>
+      <button 
+        class="button-solid button-orange font-sm extra-bold mt-3"
+        {{action 'viewTestcases'}}>
+        View Testcases
+      </button>
+    </div>
+  {{else}}
+    <div class="mt-5">
+      <h4>
+        <FaIcon @icon="lock" class="gradient-text-orange" />
+        Test Cases Locked
+      </h4>
+      <h6 class="normal mt-3">If you unlock the testcases, you will not be awarded any score for this problem</h6>
+      <button 
+        class="button-solid button-orange font-sm extra-bold mt-3" 
+        {{action (perform unlockEditorialTestcases) 'testcases'}}>
+        Yes, I want to unlock
+      </button>
+    </div>
+  {{/if}}
+</WAsync>
+
+{{#if showModal}}
+  {{#modal-dialog
+    translucentOverlay=true
+    onClose=(action (mut showModal) false)
+    targetAttachment="none"
+    containerClass="centered-scrolling-container p-4 pb-5"
+    overlayClass="centered-scrolling-overlay"
+    wrapperClass="centered-scrolling-wrapper"
+  }}
+    {{component modalComponent editorial=editorial testcases=testcases}}
+  {{/modal-dialog}}
+{{/if}}

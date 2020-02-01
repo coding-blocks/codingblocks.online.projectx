@@ -1,10 +1,40 @@
 {{head-layout}}
-{{#unless hideNav}}
-  {{nav-bar}}
-{{/unless}}
+{{#if hideNav}}
+  {{outlet}}
+{{else}}
+  {{#if session.isAuthenticated}}
+    <NavBar />
+    <SideNav />
+    <div class="offset-1">
+      <cb-navbar topalign="right" />
+    </div>
 
-{{outlet}}
-
-{{#unless hideFooter}}
-  {{foot-er}}
-{{/unless}}
+    <div class="offset-md-1 mb-5">
+      <div id="outside-container" {{did-insert (action "setOutsideContainer")}} ></div>
+      <div class="container">
+        <div class="row justify-content-center mx-0">
+          <div class="pt-4 container-fluid content-container">
+            {{outlet}}
+          </div>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="row no-gutters">
+      <div class="col-12">
+        <NavBarPublic class="ml-0 w-100" />
+        <cb-navbar topalign="right" />
+        <div class="">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+    <FootEr />
+    <style>
+      body.a-ocb {
+        padding-top: 0px;
+        margin-bottom: 0px;
+      }
+    </style>
+  {{/if}}
+{{/if}} 

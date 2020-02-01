@@ -1,0 +1,22 @@
+{{#if submission.isPending}}
+  <div class="border-card bg-gradient-yellow white border-none">
+    <div class="row mx-0 justify-content-between align-items-center">
+      <span class="font-xl">Calculating</span>
+    </div>
+  </div>
+{{else if submission.isErrored}}
+  <div class="border-card bg-gradient-orange white border-none">
+    <div class="row mx-0 justify-content-between align-items-center">
+      <span class="font-xl">Errored !</span>
+    </div>
+  </div>
+{{else}}
+  <div class="border-card bg-gradient-orange white border-none">
+    <div class="row mx-0 justify-content-between align-items-center">
+      <span class="font-xl">You Answer's Accuracy</span>
+      <span class="float-right font-xxl extra-bold">
+        {{submission.score}}%
+      </span>
+    </div>
+  </div>
+{{/if}}

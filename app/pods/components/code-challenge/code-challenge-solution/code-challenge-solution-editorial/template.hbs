@@ -1,0 +1,12 @@
+<div class="red row justify-content-between no-gutters">
+  <div>
+    Editorial
+  </div>
+  <div class="grey">
+    <button {{action 'onClose'}}>X</button>
+  </div>
+</div>
+
+<div>
+  {{markdown-to-html editorial.content extensions='katex'}}
+</div>

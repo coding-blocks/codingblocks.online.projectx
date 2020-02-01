@@ -7,5 +7,6 @@ export default DS.Model.extend({
   language: DS.attr(),
   score: DS.attr(),
   'submit-at': DS.attr(),
-  user: DS.belongsTo('user')
+  user: DS.belongsTo('user'),
+  college: DS.belongsTo('college')
 })

@@ -1,0 +1,39 @@
+{{#content-placeholders rounded=true as |placeholder|}}
+  <div class="row">
+    <div class="col-md-6 col-12">
+      <div class="bold mb-2 font-sm mb-5">Your Performance</div>
+
+      <div class="row align-items-center">
+        <div class="col-2">
+          <img src="https://minio.codingblocks.com/amoeba/performance.svg" alt="">
+        </div>
+        <div class="col-10">
+          {{placeholder.heading}}
+        </div>
+      </div>
+      <div class="row align-items-center mt-5">
+        <div class="col-2">
+          <img src="https://minio.codingblocks.com/amoeba/percentile.svg" alt="">
+        </div>
+        <div class="col-10">
+          {{placeholder.heading}}
+        </div>
+      </div>
+      <div class="row align-items-center mt-5">
+        <div class="col-2">
+          <img src="https://minio.codingblocks.com/amoeba/leaderboard.svg" alt="">
+        </div>
+        <div class="col-10">
+          {{placeholder.heading}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-12">
+      <div class="bold mb-2 font-sm mb-5">Weekly Course Progress</div>
+      <div style="height: 245px;">
+        {{placeholder.img class="h-100"}}
+      </div>
+    </div>
+  </div>
+
+{{/content-placeholders}}

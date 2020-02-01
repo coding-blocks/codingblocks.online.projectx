@@ -1,46 +1,3 @@
-<div class="c-buy-top slide-up row no-gutters justify-content-between">
-  <div class="col-6 align-self-center">
-    <div class="row no-gutters">
-      <div class="card-image col-sm-2">
-        <img class="round" src={{course.logo}} alt="course image">
-      </div>
-      <div class="heading-d col-10 align-self-center">
-        <div class="main-h">
-          {{course.title}}
-        </div>
-        <div class="sub-h">
-          Taught By :
-          {{#each course.instructors as |instructor index|}}
-          {{instructor.name}}{{if (lt index (sub course.instructors.length 1)) ", " " "}}
-          {{/each}}
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 align-self-center">
-    <div class="row justify-content-end">
-      <div class="col-4">
-        <a href="#runs" {{action 'log' 'Buy Now' course.title preventDefault=false}}>
-          <button class="button-solid white">{{if course.organization 'Request Access' 'Buy Now'}}</button>
-        </a>
-      </div>
-      {{#unless course.organization}}
-      <div class=" col-4">
-        {{#if session.isAuthenticated}}
-        {{#link-to "classroom.timeline.index" course.id course.topRun.id class="button-dashed" tagName="button" invokeAction=(action 'log' 'Free trial' course.title)}}
-        Start Free Trial
-        {{/link-to}}
-        {{else}}
-        <button class="button-dashed" onclick={{action 'logIn'}}>
-          Start Free Trial
-        </button>
-        {{/if}}
-      </div>
-      {{/unless}}
-    </div>
-  </div>
-</div>
-
 {{!-- Summary Section --}}
 <div class="container mt-5">
   <div class="c-summary row mb-5">
@@ -289,12 +246,9 @@
   </div>
 </div>
 
-
-
-
 {{!-- Instructor --}}
 
-<div class="c-about-instructors mt-5">
+<div class="border-card c-about-instructors mb-5">
   <div class="container">
     <h3 class="mb-5">
       About Instructors
@@ -331,15 +285,15 @@
   </div>
 </div>
 
-{{#testimonials-video videoLink="https://www.youtube.com/embed/h_YmJLN9IgY"}}
+{{#testimonials-video videoLink="https://www.youtube.com/embed/hqWZgg0vf1c"}}
   <h2 class="white">What our students say about us</h2>
   <h2 class="yellow semi-bold">Rashid Saifi shares his experience of Machine Learning Course</h2>
 {{/testimonials-video}}
+
 <div class="container mt-5">
   {{testimonials-view}}
 </div>
 {{!-- Available Batches --}}
-
 <div class="bg-light-grey pb-5 pt-5 mb-5" id="runs">
   <div class="container">
     <h3 class="t-align-c">

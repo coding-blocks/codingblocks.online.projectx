@@ -1,6 +1,36 @@
-{{referral-code}}
-{{otp-enroll}}
-<div class="container">
-  {{my-courses}}
-  {{recommended-courses}}
-</div>
+<h2> 
+  My Courses 
+</h2>
+
+<WTabNav 
+  @tabs={{tabs}}
+  @activeTab={{activeTab}}
+  @onTabChange={{action "changeTab"}}
+  >
+  <WAsync 
+    @task={{activeTab.task}}
+    @autoFire={{true}} 
+    @loaderComponent={{component 'my-courses-list/placeholder-row'}}
+    as |result|>
+    {{#if (eq activeTab.name 'Wishlisted')}}
+      {{component activeTab.component wishlist=result class="border-bottom-list"}}
+    {{else}}
+      {{component activeTab.component runs=result class="border-bottom-list"}}
+    {{/if}}
+  </WAsync>
+</WTabNav>
+
+
+<WPagination
+  @pages={{pagination.totalPages}}
+  @count={{pagination.count}}
+  @size={{limit}}
+  @current={{pagination.currentPage}}
+  @onchange={{action "paginate"}}
+/>
+
+{{#if layout.outsideContainer}}
+  {{#in-element layout.outsideContainer}}
+    <OtpEnroll />
+  {{/in-element}}
+{{/if}}

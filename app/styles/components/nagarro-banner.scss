@@ -1,0 +1,24 @@
+.nagarro-banner {
+  background-color: #f5fcff;
+  position: relative;
+  font-family: Cabin;
+
+  .logo {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 100;
+  }
+
+  .title {
+    color: #384181;
+  }
+
+  .sub {
+    color: #6699cc;
+  }
+
+  .button-blue {
+    background-image: linear-gradient(to top, #384181, #346e98);
+  }
+}

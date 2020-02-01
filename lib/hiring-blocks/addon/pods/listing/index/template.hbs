@@ -1,64 +1,93 @@
-<section class="home-banner mb-md-5">
-  <div class="left white">
-    <h1 class="semi-bold">WE HAVE JOBS</h1>
-    <h2 class="semi-bold mb-5">
-      Get recruited by top multinational companies and get worldwide recognition
-    </h2>
-  </div>
 
-  <img class="dsp-none-sm" src="/images/home_main.jpg" alt="codingblocks-jobs-home-banner">
-</section>
-
-<div class="bg-gradient-violet-lr mb-5 p-3 d-md-none d-flex justify-content-between">
-  <button class="white" {{action "toggleFilterMenu"}}>Apply Filters</button>
-  <button class="yellow {{unless showFilters 'display-none'}}" {{action "toggleFilterMenu"}}>Apply</button>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-md-3 pr-md-5 {{unless showFilters 'dsp-none-sm'}}">
-
-      <JobStatusFilterbox @changeJobFilter={{action "changeJobFilter"}} @value={{eligibilityStatus}} />
-
-      <div class="d-flex justify-content-between align-items-center mb-5 mt-5">
-        <span class="font-lg">Filter Jobs</span>
-        <button class="red" {{action "reset"}}>Reset all</button>
-      </div>
-
-      {{location-filterbox values=locations setLocations=(action "changeLocationsFilter") }}
-
-      <JobtypeFilterbox @values={{jobTypes}} @setJobTypes={{action "changeTypeFilter"}} />
-      
-      {{!-- <div class="border-card mb-5">
-        <h4 class="mb-3">Filter by CTC</h4>
-
-        <div class="font-mds">
-          <label class="mb-2" for=""><input type="checkbox" id=""> 3 - 5 lpa (12)</label>
-          <br>
-          <label class="mb-2" for=""><input type="checkbox" id=""> 5 - 10 lpa (4)</label>
-          <br>
-          <label class="mb-2" for=""><input type="checkbox" id=""> 10+ lpa (23)</label>
-        </div>
-      </div> --}}
+<div class="row align-items-center py-5 px-4 bg-gradient-violet-lr border-card">
+  <div class="col-12 col-md-6 white">
+      <h2 class="mb-3">We Have Jobs</h2>
+      <div class="mb-5 font-sm">
+        Get recruited by top multinational companies and get worldwide recognition
     </div>
-
-    <div class="col-12 col-md-9">
-      <div class="t-align-ca mb-5">
-        <div class="bold font-lg">All Jobs</div>
-        {{!-- <div class="font-md grey">
-          Based on your courses completed, you are eligible for t jobs
-        </div> --}}
-      </div>
-
-      <JobCardsView 
-        @filters={{hash
-          eligibility=eligibilityStatus
-          locations=locations
-          jobTypes=jobTypes
-         }} 
-      />
+  </div>
+  <div class="col-12 col-md-6 t-align-l t-align-md-r">
+    <div>
+    <img src="https://minio.codingblocks.com/amoeba/companies-logos.png" alt="Partner Logos">
     </div>
   </div>
 </div>
 
-<PartnersSection />
+
+<WTabNav
+  @tabs={{tabs}}
+  @activeTab={{activeTab}}
+  @onTabChange={{action (mut activeTab)}}
+>
+  <div class="d-flex my-4 justify-content-between">
+    <div class="d-flex w-50">
+      <div class="flex-1 font-md">Filter Jobs</div>
+
+      <div class="flex-1 mx-5">
+        <PowerSelectMultiple 
+          @selected={{locations}}
+          @options={{possibleLocations}}
+          @closeOnSelect={{false}}
+          @placeholder="Location"
+          @triggerComponent={{component 'job-filter/trigger-component'}}
+          @onChange={{action (mut locations)}}
+        as |location|>
+          <input 
+            type="checkbox" 
+            onclick={{action "preventDefault"}}
+            checked={{includes locations location}} />  
+          {{location}}
+        </PowerSelectMultiple>
+      </div>
+
+      <div class="flex-1 mx-5">
+        <PowerSelectMultiple 
+          @selected={{jobTypes}}
+          @options={{possibleJobTypes}}
+          @closeOnSelect={{false}}
+          @placeholder="Job Type"
+          @triggerComponent={{component 'job-filter/trigger-component'}}
+          @onChange={{action (mut jobTypes)}}
+        as |type|>
+          <input 
+            type="checkbox"
+            onclick={{action "preventDefault"}}
+            checked={{includes jobTypes type}} />
+          {{type}}
+        </PowerSelectMultiple>
+      </div>
+
+    </div>
+
+    {{#if showApplyButton}}
+      <button class="orange" {{action "apply"}}>
+        Apply Filter
+      </button>
+    {{/if}}
+  </div>
+
+<div class="divider-h my-4"></div>
+
+  {{#if (or selectedLocations.length selectedJobTypes.length)}}
+    <div class="mb-4">
+      Search results for:
+      {{!-- filter pills --}}
+      {{#each selectedLocations as |location|}}  
+        <button class="button-dashed button-orange" {{action 'removeObject' selectedLocations location}}>
+          {{location}} X
+        </button>
+      {{/each}}
+      {{#each selectedJobTypes as |type|}}  
+        <button class="button-dashed button-orange" {{action 'removeObject' selectedJobTypes type}}>
+          {{type}} X
+        </button>
+      {{/each}}
+    </div>
+  {{/if}}
+
+  <div class="mb-5">
+    {{component activeTab.component 
+      filters=(hash locations=selectedLocations jobTypes=selectedJobTypes)
+    }}
+  </div>
+</WTabNav>

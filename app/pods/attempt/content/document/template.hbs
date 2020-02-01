@@ -1,0 +1,26 @@
+<div class="container-fluid c-document">
+      <div class="row py-4 bg-black-grey justify-content-between" style="border-top-right-radius: 15px; border-top-left-radius: 15px">
+      
+      <div class="col-md-9  gradient-text-orange font-xl">
+        <span class="pl-2">{{document.name}}</span>
+      </div>
+
+      <div class="col-md-3">
+        <div class="pr-3 t-align-r">
+          <a href={{document.pdfLink}} target="_blank" class="white button-solid button-orange">
+            Download as PDF  
+          </a>
+        </div>
+      </div>
+      
+  </div>
+  <div class="row markdown">
+    {{#if document.pdfLink}}
+      <iframe src="https://docs.google.com/gview?url={{document.pdfLink}}&embedded=true"
+              style="width:100%" frameborder="0">
+      </iframe>
+    {{else}}
+      {{markdown-to-html document.markdown extensions='katex'}}
+    {{/if}}
+  </div>
+</div>

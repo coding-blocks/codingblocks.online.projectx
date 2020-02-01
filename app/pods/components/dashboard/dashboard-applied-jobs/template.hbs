@@ -1,0 +1,11 @@
+{{#each jobs as |job|}}
+  <div class="hover-grey py-4">
+    <div class="d-flex align-items-center">
+      <img src="{{job.company.logo}}" class="s-60x60 mr-3" alt="">
+      <div>
+        <h5 class="bold">{{job.title}}</h5>
+        <span>{{job.company.name}}</span>
+      </div>
+    </div>
+  </div>
+{{/each}}

@@ -1,0 +1,38 @@
+<div class="row no-gutters align-items-center justify-content-between">
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="row no-gutters align-items-center">
+      <div class="col-3">
+        <img class="s-80x80" src={{job.company.logo}} alt={{job.company.name}}>
+      </div>
+      <div class="col-9">
+        <h5 class="bold">{{job.title}}</h5>
+        <div class="font-normal mt-2 grey">
+          {{job.company.name}} 
+          <span class="black">Posted {{moment-from-now job.postedOn}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 col-sm-3 col-6 mt-sm-0 mt-3">
+    <div class="font-normal">
+      Experience: 
+      <span class="bold">{{job.experience}}</span>
+    </div>
+    <div class="font-normal mt-2">
+      CTC: 
+      <span class="bold">{{job.ctc}}</span>
+    </div>
+  </div>
+
+  <div class="col-md-2 col-sm-3 col-6 mt-sm-0 mt-3">
+    <div class="font-normal">Type: <span class="bold">{{job.type}}</span></div>
+    <div class="font-normal mt-2">Location: <span class="bold">{{job.location}}</span></div>
+  </div>
+
+  <div class="d-md-block d-none">
+    <LinkTo @route="listing.job" @model={{job.id}} class="button-dashed button-orange">View Details</LinkTo>
+  </div>
+  <div class="d-md-none d-block d-flex justify-content-center w-100 mt-3">
+    <LinkTo @route="listing.job" @model={{job.id}} class="button-dashed button-orange">View Details</LinkTo>
+  </div>
+</div>

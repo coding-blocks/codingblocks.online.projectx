@@ -1,0 +1,17 @@
+{{#if (not (or currentUser.user.verifiedemail currentUser.user.verifiedmobile))}}
+  <VerifyEmail />
+{{else if model.payload}}
+  {{!-- render content outlet and doubts and notes --}}
+  <div>
+    <div>
+      {{outlet}}
+    </div>
+    <div class="d-md-block d-none">
+      <Player::PlayerTabs />
+    </div>
+  </div>
+{{else if (not run.isStarted)}}
+  <UnstartedContent @run={{run}} />
+{{else}}
+  <LockedContent @course={{run.course}} />
+{{/if}}
