@@ -1,10 +1,10 @@
-<div class="row no-gutters justify-content-between align-items-center">
-  <div class="col-10">
+<div class="row no-gutters justify-content-between align-items-center my-4 px-4">
+  <div class="col-xl-9 col-md-10 col-12">
     <div class="row no-gutters align-items-center">
-      <div class="col-md-5 col-12">
+      <div class="col-xl-4 col-md-6 col-12">
         <span class="font-mds normal mr-3">I am a </span>
         <button 
-          class="button-orange
+          class="button-orange mr-2
           {{if (eq status "student") "button-solid" "button-dashed"}}"
           {{action (mut status) "student"}}>
           Student
@@ -16,9 +16,9 @@
           Professional
         </button>
       </div>
-      <div class="col-md-7 col-12 mt-md-0 mt-4">
+      <div class="col-xl-8 col-md-6 col-12 mt-md-0 mt-4 d-flex align-items-center">
         <span class="font-mds normal mr-3">I want to become a</span>
-        <WAsync @task={{fetchProfessionsTask}} @autoFire="true" class="d-inline-block" as |professions|>
+        <WAsync @task={{fetchProfessionsTask}} @autoFire="true" class="d-inline-block flex-1" as |professions|>
           <div class="select-container">
             <select class="rounded-select" onchange={{action (mut professionId) value="target.value"}}>
               <option> -- </option>
@@ -30,9 +30,9 @@
         </WAsync>        
       </div>
     </div>
-    <button class="button-dashed button-orange v-align-ma"  {{action onSearch}}>
-      Continue
-      <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/arrow_right_orange.svg" class="ml-1">
-    </button>
   </div>
+  <button class="button-dashed button-orange v-align-ma mt-md-0 mt-4"  {{action onSearch}}>
+    Continue
+    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/arrow_right_orange.svg" class="ml-1">
+  </button>
 </div>
