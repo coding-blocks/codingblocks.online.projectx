@@ -1,21 +1,21 @@
 <div class="row">
   <div class="col-md-6 col-12">
-    <div class="bold mb-2 font-sm mb-5">Your Performance</div>
+    <div class="bold font-sm mb-5">Your Performance</div>
 
-    <div class="row align-items-center">
+    <div class="row align-items-center no-gutters">
       <div class="col-2">
         <img src="https://minio.codingblocks.com/amoeba/performance.svg" alt="">
       </div>
-      <div class="col-10">
+      <div class="col-10 pl-2">
         <h6 class="bold">{{stats.performance.remarks}}</h6>
         <div class="font-normal grey mt-2">Your Performance</div>
       </div>
     </div>
-    <div class="row align-items-center mt-5">
+    <div class="row align-items-center no-gutters mt-md-5 mt-4">
       <div class="col-2">
         <img src="https://minio.codingblocks.com/amoeba/percentile.svg" alt="">
       </div>
-      <div class="col-10">
+      <div class="col-10 pl-2">
         <h6 class="bold">
           {{#if myRank}}
             {{myRank}}/{{leaderboardCount}}
@@ -26,18 +26,18 @@
         <div class="font-normal grey mt-2">Leaderboard Ranking</div>
       </div>
     </div>
-    <div class="row align-items-center mt-5">
+    <div class="row align-items-center no-gutters mt-md-5 mt-4">
       <div class="col-2">
         <img src="https://minio.codingblocks.com/amoeba/leaderboard.svg" alt="">
       </div>
-      <div class="col-10">
+      <div class="col-10 pl-2">
         <h6 class="bold">{{stats.performance.percentile}}</h6>
         <div class="font-normal grey mt-2">Percentile</div>
       </div>
     </div>
   </div>
-  <div class="col-md-6 col-12">
-    <div class="bold mb-2 font-sm mb-5">Weekly Course Progress</div>
+  <div class="col-md-6 col-12 mt-md-0 mt-5">
+    <div class="bold font-sm mb-5">Weekly Course Progress</div>
     <div>
       <EmberChart 
         @type="line" 
