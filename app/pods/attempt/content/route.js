@@ -69,12 +69,15 @@ export default Route.extend({
         .scrollTo({ top: 0, behavior: "smooth" });
 
       // scroll table of contents
-      scheduleOnce('afterRender', () => {
-        document.getElementById('contentScrollContainer').scrollTo({
-          top: document.getElementById('active-section-container').getBoundingClientRect().top + document.getElementById('contentScrollContainer').scrollTop  - 180,
-          behavior: 'smooth'
+      if (!window.EMBER_LOADED) {
+        scheduleOnce('afterRender', () => {
+          document.getElementById('contentScrollContainer').scrollTo({
+            top: document.getElementById('active-section-container').getBoundingClientRect().top + document.getElementById('contentScrollContainer').scrollTop - 180,
+            behavior: 'smooth'
+          })
+          window.EMBER_LOADED = true
         })
-      })
+      }
     }
   }
 });
