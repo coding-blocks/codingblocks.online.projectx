@@ -1,8 +1,7 @@
 {{#if session.isAuthenticated}}
   {{#if layout.outsideContainer}}
     {{#in-element layout.outsideContainer}}
-      <Tracks::TracksFilter 
-      class="px-5 pt-4"
+      <Tracks::TracksFilter
       @status={{status}}
       @professionId={{professionId}}
       @onSearch={{perform onSearchTask (hash status=status professionId=professionId)}} />
@@ -12,12 +11,12 @@
   {{/if}}
   {{outlet}}
 {{else}}
-  <div class="container mt-5">
+  <div class="container">
     <Tracks::TracksFilter 
     @status={{status}}
     @professionId={{professionId}}
     @onSearch={{perform onSearchTask (hash status=status professionId=professionId)}} />
-    <div class="divider-h my-3"></div>
+    <div class="divider-h"></div>
     {{outlet}}
   </div>
 
