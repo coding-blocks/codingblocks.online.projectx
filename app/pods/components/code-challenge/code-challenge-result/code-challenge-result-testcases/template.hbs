@@ -1,7 +1,7 @@
 <div class="border-card p-0 test-cases-card">
   <div class="row no-gutters bg-black-lighter">
     <div class="col-4 col-md-3">
-      <h5 class="p-4 test-cases-card__grey-heading">Test Cases</h5>
+      <h5 class="py-4 px-5 test-cases-card__grey-heading">Test Cases</h5>
     </div>
     <div class="col-8 col-md-9">
       <h5 class="py-4 px-5 test-cases-card__grey-heading">Result</h5>
@@ -11,7 +11,7 @@
     <div class="col-md-3 col-4 bg-grey-darker">
       <ul class="font-mds extra-bold mt-0">
         {{#each testcases as |testcase index|}}
-          <li class="p-4 d-flex align-items-center {{if (eq selectedIndex index) "test-cases-card__active"}}">
+          <li class="px-5 py-4 d-flex align-items-center {{if (eq selectedIndex index) "test-cases-card__active"}}">
             {{#if (eq testcase.result "correct")}}
               <a 
                 href="#" 
