@@ -23,7 +23,8 @@ export default class CodeChallengeRoute extends Route {
       this.store.unloadAll('problem')
       this.store.pushPayload(payload)
       return this.store.peekRecord('problem', content.payload.get('hbProblemId'))
-    }).catch(() => {
+    }).catch(err => {
+      console.log(err)
       return {}
     })
     
