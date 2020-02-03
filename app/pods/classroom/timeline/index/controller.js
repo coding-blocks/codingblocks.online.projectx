@@ -17,6 +17,11 @@ export default class Overview extends Controller {
   discussBaseUrl = config.discussBaseUrl
   visible = true
 
+  @computed('runAttempt.{end,premium}', 'runAttempt.run.price')
+  get showGoodieRequest() {
+    return this.runAttempt.premium && this.runAttempt.get('run.price')
+  }
+
   @computed('runAttempt.{isExpired,end}')
   get showExtensions() {
     const endIsNear = moment().add(1, "month") > moment.unix(this.runAttempt.end)

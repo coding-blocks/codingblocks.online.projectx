@@ -7,12 +7,4 @@ export default class LectureController extends Controller {
   @service player
 
   queryParams = ['start']
-
-  @restartableTask fetchAwsData = function *() {
-    return yield this.api.request('/aws/cookie', {
-      data: {
-          url: this.get('lecture.videoUrl')
-      }
-    })
-  }
 }

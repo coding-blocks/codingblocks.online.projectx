@@ -44,6 +44,8 @@
       </div>
     </div>
     <div class="d-md-none d-block">
-      <Player::PlayerTabs />
+      {{#if player.isActive}}
+        <Player::PlayerTabs />
+      {{/if}}
     </div>
 </div>

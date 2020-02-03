@@ -1,12 +1,13 @@
-{{#unless awsDataTask.isRunning}}
+{{#if player.isActive}}
   <div class="c-video d-flex flex-column justify-content-around">
     {{!-- {{content-feedback onFeedbackSubmit=onFeedbackSubmit showFeedback=showFeedback}} --}}
+   
     <VdoPlayer 
       id="embedBox" 
       @lecture={{lecture}} 
       @start={{start}} 
       @onVideoCompleted={{action player.transitionToNextContent}}
-      @sectionId={{player.sectionId}} 
-      @runAttempt={{player.runAttemptId}} />
+    />
+
   </div>
-{{/unless}}
+{{/if}}
