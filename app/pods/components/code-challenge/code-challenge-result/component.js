@@ -2,6 +2,10 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 
 export default class Result extends Component {
+  didRender() {
+    this.element.scrollIntoView({behavior: "smooth", block: "end" })
+  }
+  
   @computed('judgeResult')
   get isErrored() {
     return this.judgeResult.result !== 'success'
