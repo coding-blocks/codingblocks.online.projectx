@@ -14,6 +14,7 @@
         <td class="pb-4 pt-4 {{submission.resultParams.color}} font-sm">
           <FaIcon @icon={{submission.resultParams.icon}} class="pr-3" />
           <span>{{submission.resultParams.message}}</span>
+          <a href="#" class="orange font-xs bold ml-3" {{action "viewSubmission" submission}}>View</a>
         </td>
         <td class="pb-4 pt-4">{{submission.score}}/100</td>
         <td class="pb-4 pt-4">{{submission.executionTime}}</td>
@@ -25,3 +26,19 @@
     {{/each}}
   </tbody>
 </table>
+
+{{#if (and submissionToView viewSubmissionCode)}}
+  {{#modal-dialog
+    onClose=(action (mut viewSubmissionCode) false)
+    translucentOverlay=true
+    targetAttachment="none"
+    overlayClass="centered-scrolling-overlay"
+    wrapperClass="centered-scrolling-wrapper"
+    containerClass="centered-scrolling-container bg-black-lighter p-4 pb-5"
+  }}
+    <h3 class="white">Submission #{{submissionToView.id}}</h3>
+    <div class="bg-grey-darker">
+      <pre class="p-4 white">{{submissionToView.sourceParsed}}</pre>
+    </div>
+  {{/modal-dialog}}
+{{/if}}

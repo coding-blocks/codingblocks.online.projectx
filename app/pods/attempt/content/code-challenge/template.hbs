@@ -1,15 +1,38 @@
-<div class="p-5 mb-5 border-card white border-none bg-grey-darker">
-  <WTabNav
-    @inactiveClass="white"
-    @tabs={{tabs}}
-    @activeTab={{activeTab}}
-    @onTabChange={{action (mut activeTab)}}>
-    <div class="py-4">
-      {{component activeTab.component codeChallenge=codeChallenge problem=problem}}  
+{{#if problem.id}}
+  <div class="p-5 mb-5 border-card white border-none bg-grey-darker">
+    <WTabNav
+      @inactiveClass="white"
+      @tabs={{tabs}}
+      @activeTab={{activeTab}}
+      @onTabChange={{action (mut activeTab)}}>
+      <div class="py-4">
+        {{component activeTab.component codeChallenge=codeChallenge problem=problem}}  
+      </div>
+    </WTabNav>
+  </div>
+  <CodeChallenge::CodeChallengeCodeEditor
+    @ref={{relatedPendingDoubt.firebaseRef}}
+    @codeChallenge={{codeChallenge}}
+    @problem={{problem}} />
+{{else}}
+  <div class="p-5 mb-5 border-card white border-none bg-grey-darker">
+    <div class="t-align-c">
+      <FaIcon @icon="info-circle" @size="4" class="grey" />
     </div>
-  </WTabNav>
-</div>
-<CodeChallenge::CodeChallengeCodeEditor
-  @ref={{relatedPendingDoubt.firebaseRef}}
-  @codeChallenge={{codeChallenge}}
-  @problem={{problem}} />
+
+    <p class="t-align-c">
+      This problem is unavailable right now. Please contact <a href="mailto:support@codingblocks.com" class="orange">support@codingblocks.com</a> with the following Debug Output
+    </p>
+
+    <div class="mt-4 p-4 bg-black-lighter">
+      <div class="bold">
+        Debug Output
+      </div>
+
+      Contest ID: {{runAttempt.run.contestId}} <br>
+      Problem ID: {{codeChallenge.hbProblemId}} <br>
+      Run ID: {{runAttempt.run.id}} <br>
+      Run Attempt ID: {{runAttempt.id}}
+    </div>
+  </div>
+{{/if}}
