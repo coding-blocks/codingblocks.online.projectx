@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { action, set } from '@ember/object';
+import { action, set, computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import { A } from '@ember/array';
 import { task, taskGroup, restartableTask } from 'ember-concurrency-decorators';
@@ -14,9 +14,24 @@ export default class CodeEditor extends Component {
   @service store
   @service firepad
 
-  @alias('judgeTaskGroup.lastSuccessful.value') lastResult
+  @alias('judgeTaskGroup.lastSuccessful.value.judge-result') lastResult
+  @alias('judgeTaskGroup.lastSuccessful.value.explanation') explanation
   @alias('firepad.connected') isCollaborating
 
+  @computed('explanation')
+  get headerForExplanation() {
+    switch(this.explanation) {
+      case "Perfect": return "Perfect";
+      case "FailedTestcase": return "Failed Testcases";
+      case "TimeLimitExceeded": return "Time Limit Exceeded";
+      case "CompilationError": return "Compilation Error";
+      case "ContestOver": return "Contest Over";
+      case "TestcaseUnlocked": return "Testcase Unlocked";
+      case "EditorialUnlocked": return "Editorial Unlocked";
+    }
+  }
+  
+  showExplanation = false
   customInputOpen = true
   customInputText = ''
   languageSpecs = A([
@@ -103,6 +118,7 @@ export default class CodeEditor extends Component {
   @taskGroup({drop: true}) judgeTaskGroup
 
   @task({group: 'judgeTaskGroup'}) runCodeTask = function *() {
+    this.set('showExplanation', false)
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     const payload = yield this.api.request("code_challenges/submit", {
       method: "POST",
@@ -118,10 +134,11 @@ export default class CodeEditor extends Component {
     const status = yield this.taskPoller.performPoll(() => this.get("api").request("code_challenges/status/" + submissionId, {
         "method": "GET"
     }), submissionStatus => submissionStatus && submissionStatus['judge-result'] !== null);
-    return status['judge-result'];
+    return status
   }
 
   @task({group: 'judgeTaskGroup'}) submitCodeTask = function *() {
+    this.set('showExplanation', false)
     const runAttempt = this.store.peekRecord('run-attempt', this.player.runAttemptId)
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     const payload = yield this.get("api").request("code_challenges/submit", {
@@ -166,7 +183,8 @@ export default class CodeEditor extends Component {
       method: 'POST',
     })
 
-    return status['judge-result']
+    this.set('showExplanation', true)
+    return status
   }
 
   @action
