@@ -4,6 +4,7 @@ import { alias } from '@ember/object/computed';
 import { A } from '@ember/array';
 import { task, taskGroup, restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
+import { later } from '@ember/runloop';
 
 export default class CodeEditor extends Component {
   @service taskPoller
