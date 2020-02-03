@@ -11,6 +11,10 @@ export default DS.Model.extend({
   'submit-at': DS.attr(),
   'judge-result': DS.attr(),
 
+  sourceParsed: computed('source', function () {
+    return window.atob(this.source)
+  }),
+
   isErrored: computed('judge-result', function () {
     return this['judge-result'].result !== 'success';
   }),
