@@ -1,6 +1,7 @@
 import Route from "@ember/routing/route";
 import { inject } from "@ember/service";
 import { scheduleOnce } from "@ember/runloop";
+import { defaultProgressValueForContent } from 'codingblocks-online/utils/content'
 
 export default Route.extend({
   api: inject(),
@@ -31,30 +32,34 @@ export default Route.extend({
       return;
     }
 
-    if (!content.get("isDone")) {
-      // create progress for this
-      if (await content.get("progress")) {
-        const progress = await content.get("progress");
-        content.get("contentable") === "code-challenge"
-          ? progress.set("status", "ACTIVE")
-          : progress.set("status", "DONE");
-        await progress.save().then(p => content.set("progress", p));
-      } else {
-        const newProgress = this.store.createRecord("progress", {
-          status:
-            content.get("contentable") === "code-challenge" ? "ACTIVE" : "DONE",
-          runAttempt: this.modelFor("attempt"),
-          content
-        });
-        await newProgress.save().then(p => content.set("progress", p));
-      }
+    const defaultProgressValue = defaultProgressValueForContent(content)
+    const runAttempt = this.modelFor("attempt");
 
-      if (content.get("isDone")) {
-        // Increment the completed content count in run attempt as well
-        const runAttempt = this.modelFor("attempt");
-        runAttempt.incrementProperty("completedContents");
-      }
+    const progress = (await content.get('progress')) || this.store.createRecord("progress", {
+      status: defaultProgressValue,
+      runAttempt: this.modelFor("attempt"),
+      content
+    })
+
+    if (progress.isNew && progress.status === 'DONE') {
+      // a new "Done" progress is created
+      runAttempt.incrementProperty("completedContents")
     }
+
+    if (progress.status === 'UNDONE') {
+      // user reset his progress and now has revisited this content
+      progress.set("status", defaultProgressValue) 
+
+      // if we mark it as done, we increment completedContents
+      if (defaultProgressValue === 'DONE') 
+        runAttempt.incrementProperty("completedContents");
+    }
+    
+    // save progress and bind it content; binding part is necessary for now
+    await progress.save().then(p => content.set("progress", p)).catch(err => {
+      
+    })
+
     if (content.get("contentable") === "code-challenge") {
       const response = await this.api.request("hb/jwt");
       this.set("currentUser.user.hackJwt", response.jwt);

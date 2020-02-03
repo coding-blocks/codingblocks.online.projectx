@@ -5,6 +5,7 @@
     <VdoPlayer 
       id="embedBox" 
       @lecture={{lecture}} 
+      @markProgress={{action "markProgress"}}
       @start={{start}} 
       @onVideoCompleted={{action player.transitionToNextContent}}
     />

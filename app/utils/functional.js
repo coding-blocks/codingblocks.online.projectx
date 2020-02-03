@@ -11,3 +11,10 @@ export const not = (fn) => {
     return !fn(...arguments)
   }
 }
+
+export const once = (fn) => {
+  let ran = false
+  return function () {
+    return ran ? (() => {}) : (ran = true, fn(...arguments))
+  }
+}
