@@ -93,8 +93,8 @@
           </div>
         </div>
         <div>
-          {{#if showBuyNow}}
-            {{#link-to "courses.id" run.course.identifier activeClass="" class="button-solid button-orange mr-4" invokeAction=(action 'log' 'Buy now' run.course.identifier preventDefault=false)}}
+          {{#if showBuyNow}} 
+            {{#link-to "courses.id" course.identifier activeClass="" class="button-solid button-orange mr-4" invokeAction=(action 'log' 'Buy now' course.identifier preventDefault=false)}}
               Buy Now
             {{/link-to}}
           {{/if}}
