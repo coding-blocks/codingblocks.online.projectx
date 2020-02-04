@@ -94,9 +94,9 @@
         </div>
         <div>
           {{#if showBuyNow}} 
-            {{#link-to "courses.id" course.identifier activeClass="" class="button-solid button-orange mr-4" invokeAction=(action 'log' 'Buy now' course.identifier preventDefault=false)}}
+            <a href="/courses/{{course.identifier}}"  class="button-solid button-orange mr-4" onclick={{action 'log' 'Buy now' course.identifier preventDefault=false}}>
               Buy Now
-            {{/link-to}}
+            </a>
           {{/if}}
 
           {{#link-to "attempt" runAttempt.id activeClass="" class="button-dashed button-orange" invokeAction=(action 'log' 'Resume' runAttempt.id preventDefault=false)}}
