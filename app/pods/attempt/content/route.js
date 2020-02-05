@@ -83,6 +83,9 @@ export default Route.extend({
           window.EMBER_LOADED = true
         })
       }
+      
+      // required to bubble this event up to parent routes
+      return true
     }
   }
 });
