@@ -6,18 +6,22 @@ export default class Dashboard extends Route.extend(AuthenticatedRouteMixin) {
   @service api
 
   async model() {
-    const run = await this.store.queryRecord('run', {
-      custom: {
-        ext: 'url',
-        url: 'lastAccessedRun',
-        
-      },
-      include: 'course,run_attempts'
-    }).catch(console.log)
-    const rating = await this.api.request('courses/' + run.topRunAttempt.get('run.course.id') + '/rating')
-    run.topRunAttempt.set("rating", rating.userScore)
-    
-    return run
+    try {
+      const run = await this.store.queryRecord('run', {
+        custom: {
+          ext: 'url',
+          url: 'lastAccessedRun',
+          
+        },
+        include: 'course,run_attempts'
+      })
+      const rating = await this.api.request('courses/' + run.topRunAttempt.get('run.course.id') + '/rating')
+      run.topRunAttempt.set("rating", rating.userScore)
+      return run
+    } catch (err) {
+      console.error(err)
+      return null
+    } 
   }
   setupController(controller, model) {
     controller.set('lastAccessedRun', model)
