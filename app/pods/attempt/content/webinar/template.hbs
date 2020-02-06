@@ -1,0 +1,11 @@
+<div class="p-5 mb-5 border-card white border-none bg-grey-darker">
+  <div class="t-align-c">
+    <FaIcon @icon="video" @size="4" class="grey" />
+  </div>
+
+  <div class="t-align-c">
+    <button class="button-solid button-orange" {{action (perform startWebinarTask)}}>
+      {{if startWebinarTask.isRunning "Starting" "Start Webinar"}}
+    </button>
+  </div>
+</div>

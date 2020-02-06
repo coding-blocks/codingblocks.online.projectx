@@ -37,6 +37,7 @@ Router.map(function() {
       this.route('document');
       this.route('video');
       this.route('csv');
+      this.route('webinar');
     });
   });
   this.route('error');

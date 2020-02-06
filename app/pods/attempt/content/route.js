@@ -14,7 +14,7 @@ export default Route.extend({
   },
   model (params) {
       return this.store.peekRecord('content', params.contentId, {
-          include: 'lecture,video,document,code_challenge',
+          include: 'lecture,video,document,code_challenge,webinar',
           reload: true
       })
   },
