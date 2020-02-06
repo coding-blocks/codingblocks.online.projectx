@@ -14,9 +14,14 @@ export default class MyCoursesController extends Controller {
 
   tabs = [
     {
-      name: 'Recently Accessed',
-      component: 'my-courses-list/recently-accessed',
-      task: this.fetchRecentlyAccessedRuns
+      name: 'Active',
+      component: 'my-courses-list/purchased',
+      task: this.fetchPurchased
+    },
+    {
+      name: 'Free Trials',
+      component: 'my-courses-list/free-trials',
+      task: this.fetchFreeTrails
     },
     {
       name: 'All Courses',
@@ -36,9 +41,9 @@ export default class MyCoursesController extends Controller {
   ];
 
   activeTab = {
-    name: 'Recently Accessed',
+    name: 'Purchased',
     component: 'my-courses-list/recently-accessed',
-    task: this.fetchRecentlyAccessedRuns
+    task: this.fetchPurchased
   }
 
   @alias('activeTab.task.lastSuccessful.value.meta.pagination')
@@ -58,8 +63,12 @@ export default class MyCoursesController extends Controller {
     })
   }
 
-  @restartableTask fetchRecentlyAccessedRuns = function* () {
-    return this.fetchRunsWithScope('active')
+  @restartableTask fetchPurchased = function* () {
+    return this.fetchRunsWithScope('purchased')
+  }
+
+  @restartableTask fetchFreeTrails = function* () {
+    return this.fetchRunsWithScope('trials')
   }
 
   @restartableTask fetchWishlistedCourses = function* () {
