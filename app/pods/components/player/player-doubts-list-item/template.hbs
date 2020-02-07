@@ -2,7 +2,7 @@
   <img src="{{currentUser.user.photo}}" alt="user photo" class="round s-50x50">
   <div class="ml-4">
     <div class="bold">{{currentUser.user.fullName}}</div>
-    <div class="font-xs">4 hours ago</div>
+    <div class="font-xs">{{moment-from-now doubt.createdAt}}</div>
   </div>
 </div>
 <div class="mt-4">
@@ -56,7 +56,7 @@
           <img src="{{comment.avatarTemplate}}" alt="user photo" class="round s-50x50">
           <div class="ml-3">
             <div class="bold">{{comment.name}}</div>
-            <div class="font-xs">4 hours ago</div>
+            <div class="font-xs">{{moment-from-now comment.createdAt}}</div>
           </div>
         </div>
         <div class="mt-4">
