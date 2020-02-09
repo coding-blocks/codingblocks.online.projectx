@@ -32,6 +32,20 @@ module.exports = function(environment) {
         config: {
           id: 'GTM-TWLQ78S'
         }
+      },
+      {
+        name: 'GoogleAnalytics',
+        environments: ['production', 'development'],
+        config: {
+          id: 'UA-83327907-12'
+        }
+      },
+      {
+        name: 'gtag',
+        environments: ['production', 'development'],
+        config: {
+          id: 'UA-83327907-12'
+        }
       }
     ],
     EmberENV: {
