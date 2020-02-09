@@ -1,5 +1,16 @@
-.bg-mild-blue {
-  background-color: #F1F9FE;
+.c-spin {
+  .bg-purple-blue {
+    background: linear-gradient(90deg, #00205B 0%, #84358E 100%) !important;
+  }
+  .bg-gradient-red-pink {
+    background: linear-gradient(270deg, #F24F60 10.36%, #A5066C 95.36%);
+  }
+  .gradient-text-yellow {
+    color: linear-gradient(90deg, #FA8733 0%, #F7C332 100%);
+  }
+  .font-smxl {
+    font-size: 26px !important;
+  }
 }
 
 .font-xxl {

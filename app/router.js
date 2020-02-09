@@ -61,5 +61,5 @@ Router.map(function() {
   this.route('tracks', function() {
     this.route('id', {path: '/:slug'});
   });
-  this.route('spin', function() {});
+  this.route('spin', {path: '/valentines'}, function() {});
 });

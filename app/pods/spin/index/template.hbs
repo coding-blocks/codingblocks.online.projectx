@@ -1,58 +1,41 @@
 <div class="c-spin">
-  <div class="bg-mild-blue pt-4">
-    <div class="container pt-5">
-      <div class="row bg-mild-blue p-5">
-        <div class="col-lg-6 ">
-          <div class="mb-5 d-flex d-lg-block justify-content-center">
-            <img src="https://minio.codingblocks.com/amoeba/spin-n-win-board.svg" alt="Spin-N-Win">
-          </div>
-                    
-          <div class="spin-red font-xxl bold t-align-c t-align-lg-l">
-            Coding Blocks Spin N Win Coupons/Credits expires tonight. Hurry up and <a href="https://cb.lk/swuse">USE NOW</a>
-          </div>
-          
-          <div class="my-4 font-md spin-red t-align-c t-align-lg-l">
-            We reached a staggering number of 78,000+ Spins and we gave away prizes worth over 5 Lacs during this festive season.
-
-            <p>
-              Don’t forget to share your gifts on social media platforms! <a href="https://twitter.com/search?q=CBSanta">#CBSanta</a>.
-              <br>
-              You can subscribe to our social media channels for upcoming contests and updates.
-            </p>
-
-            <div class="mt-4">
-              <a target="_blank" href="https://cb.lk/fbsw" class="ml-lg-5 font-md pointer">
-                <i class="fab fa-2x fa-facebook-f"></i>
-              </a>
-              <a target="_blank" href="https://cb.lk/twsw" class="ml-5 font-md pointer">
-                <i class="fab fa-2x fa-twitter"></i>
-              </a>
-              <a target="_blank" href="https://cb.lk/insw" class="ml-5 font-md pointer">
-                <i class="fab fa-2x fa-instagram"></i>
-              </a>
-              <a target="_blank" href="https://cb.lk/lisw" class="ml-5 font-md pointer">
-                <i class="fab fa-2x fa-linkedin"></i>
-              </a>
-              <a target="_blank" href="https://cb.lk/ytsw" class="ml-5 font-md pointer">
-                <i class="fab fa-2x fa-youtube"></i>
+  <div class="container pt-5">
+    <div class="row bg-purple-blue p-5 br-10">
+      <div class="col-lg-6 ">
+        {{!-- <div class="mb-5 d-flex d-lg-block justify-content-center">
+          <img src="https://minio.codingblocks.com/amoeba/spin-n-win-board.svg" alt="Spin-N-Win">
+        </div> --}}
+                  
+        <div class="gradient-text-yellow font-md bold t-align-c t-align-lg-l">
+          This Valentine’s, we are spreading love by giving assured prizes through mystery box
+        </div>
+        <div class="mt-5 d-flex d-lg-block justify-content-center">
+          <button class="button-dashed button-pink w-75 p-3 border-round" {{did-insert (action (mut spinsLeftBox))}}>
+            <div class="d-flex justify-content-between align-items-center px-3 flex-wrap">
+              <span class="font-xl bold black mx-auto mr-lg-0 white">
+                {{stats.availableSpins}} DRAW{{if (gt stats.availableSpins 1) "S"}} LEFT
+              </span>
+              <a class="font-sm bold spin-red mx-auto mr-lg-0">
+                Earn More 
+                <i class="fas fa-long-arrow-alt-right"></i>
               </a>
             </div>
-          </div>
+          </button>
         </div>
-        <div class="col-lg-6 spin-wheel d-flex">
-         
-            <img class="wheel-pointer" src="https://minio.codingblocks.com/amoeba/wheel-pointer.png">
-            <object 
-              class="wheel mx-auto w-100"
-              data="https://minio.codingblocks.com/amoeba/spin-win-wheel.svg"
-              {{did-insert (action "setWheel")}}></object>
-            <object class="wheel-base" id="scrollTagForWinSpin" data="https://minio.codingblocks.com/amoeba/spin-win-wheel-base.svg"></object>
-         
+        <div class="mt-5 mb-5 font-md white t-align-c t-align-lg-l">
+          Get <span class="bold">500 CB Credits</span> on your first successful draw
         </div>
+        <div class="mt-5 d-flex d-lg-block justify-content-center">
+          <button class="button-solid button-orange py-3 px-4 font-smxl" {{action (perform spin)}}>
+            Tap to Open
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-6 t-align-c t-align-lg-r mt-5 mt-lg-0">
+        <img src="https://minio.codingblocks.com/amoeba/off.png" alt="Gifts"/>
       </div>
     </div>
   </div>
-
 
   <div class="container">
     {{!-- My Winnings --}}
@@ -64,8 +47,8 @@
       {{!-- rules --}}
       <div class="col-md-6 mt-5">
         <div class="border-card p-0">
-          <div class="spin-bg-mild-blue p-5">
-            <h4 class="bold">
+          <div class="bg-gradient-red-pink p-5">
+            <h4 class="bold white">
               <i class="fas fa-question-circle letter-spaced"></i> Rules
             </h4>
           </div>
