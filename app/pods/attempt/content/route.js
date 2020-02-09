@@ -41,6 +41,8 @@ export default Route.extend({
       content
     })
 
+    progress.set('status', defaultProgressValue)
+
     if (progress.isNew && progress.status === 'DONE') {
       // a new "Done" progress is created
       runAttempt.incrementProperty("completedContents")
