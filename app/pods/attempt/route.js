@@ -44,10 +44,10 @@ export default Route.extend(AuthenticatedRouteMixin, {
 		controller.set("sections", model.get("run.sections"))
 	},
 	actions: {
-		willTransition () {
+    willTransition() {
 			window.setTimeout( () => jivo_init(), 5000)
 		},
-		didTransition () {
+    didTransition() {
 			try {
 				jivo_init();
 			} catch (err) {

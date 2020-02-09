@@ -1,0 +1,12 @@
+{{#each @runs as |run|}}
+  <MyCoursesList::RunRow
+    @run={{run}}
+    as |progressPercent| >
+
+    <MyCoursesList::RecentlyAccessed::Content
+      @progressPercent={{progressPercent}}
+      @tagName=''
+      @run={{run}} />
+
+  </MyCoursesList::RunRow>
+{{/each}}
