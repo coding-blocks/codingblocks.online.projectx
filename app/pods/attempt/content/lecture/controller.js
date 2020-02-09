@@ -12,6 +12,7 @@ export default class LectureController extends Controller {
   async markProgress() {
     const progress = await this.content.get('progress')
     progress.set('status', 'DONE')
+    this.runAttempt.incrementProperty("completedContents")
     progress.save()
   }
 }

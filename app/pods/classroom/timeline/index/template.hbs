@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <button class="card-md font-normal salmon mt-3 d-block" {{action "resetProgress"}}>
+      <button class="card-md font-normal salmon mt-3 d-block" {{action (mut showConfirmResetProgress) true}}>
         <i class="fas fa-exclamation-triangle mr-2"></i>
         Reset Progress
       </button>
@@ -204,3 +204,33 @@
     <HackerblocksStats />
   </div>
 </div>
+
+
+{{#if showConfirmResetProgress}}
+  {{#modal-dialog
+    translucentOverlay=true
+    onClose=(action (mut showConfirmResetProgress) false)
+    targetAttachment="none"
+    containerClass="centered-scrolling-container p-4"
+    overlayClass="centered-scrolling-overlay"
+    wrapperClass="centered-scrolling-wrapper"
+  }}
+    <div class="row">
+      <div class="col-2">
+        <img src="http://minio.codingblocks.com/amoeba/danger-flat-icon.svg" alt="danger!" width="75px" height="75px">
+      </div>
+      <div class="col-10 my-auto font-md bold">
+        Are you sure you want to reset all your progress? 
+      </div>
+    </div>
+    <p class="font-sm">
+      All progress related to course material including assignments will be lost forever.
+      Bookmarks, Notes our doubts that you asked will still remain.
+    </p>
+
+    <div class="d-flex justify-content-end">
+      <button class="button-solid button-orange mr-3" {{action "resetProgress"}} >I Understand</button>
+      <button class="button-dashed button-orange" {{action (mut showConfirmResetProgress) false}}>No, Take me back</button>
+    </div>
+  {{/modal-dialog}}
+{{/if}}

@@ -74,6 +74,7 @@ export default class Overview extends Controller {
         runAttemptId: this.get('runAttempt.id')
       }
     })
+    this.set('showConfirmResetProgress', false)
     return this.runAttempt.reload()
   }
 
