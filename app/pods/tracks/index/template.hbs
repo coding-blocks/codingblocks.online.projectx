@@ -14,7 +14,10 @@
           <span class="ml-2">Introducing: Learning Tracks</span>
         </div>
         <p class="font-sm" style="word-spacing: 0.2rem; text-align: justify">
-          Our expert instructors believe that systematically designed paths can help you to master your skills & achieve your career goals. We've got your back! Learning Tracks are carefully crafted with a step by step guide that saves you the effort to find out which course fits you well, and in what sequence to maximize your learning experience.
+          Our expert instructors believe that systematically designed paths can help you to master your skills & achieve
+          your career goals. We've got your back! Learning Tracks are carefully crafted with a step by step guide that
+          saves you the effort to find out which course fits you well, and in what sequence to maximize your learning
+          experience.
 
           Happy learning!
         </p>
@@ -26,30 +29,29 @@
   </div>
   <div class="row">
     {{#each tracks as |track|}}
-      <div class="col-md-6 col-lg-4 mt-5">
-        <div class="border-card p-0">
-          <div class="d-flex bg-light-grey p-4">
-            <img src="{{track.logo}}" alt="Track Logo" class="s-50x50 mr-3">
-            <div>
-              <h4 class="bold">{{track.name}}</h4>
-            </div>
+    <div class="col-md-6 col-lg-4 mt-5">
+      <div class="border-card p-0 track-card">
+        <div class="row no-gutters bg-light-grey p-4 track-card__head">
+          <img src="{{track.logo}}" alt="Track Logo" class="s-80x80 track-card__head__logo"
+            style="background-image: url({{track.background}});">
+          <div class="flex-col align-items-end justify-content-between w-100" style="margin-left: 6.5rem;">
+            <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/share.svg">
+            <h4 class="bold w-100">{{track.name}}</h4>
           </div>
-          <div class="d-flex justify-content-between align-items-center p-4">
-            <span class="bold gradient-text-orange">
-              {{track.status}}
-            </span>
-            <div>
-              <span class="bold">{{track.courseCount}} Courses</span>
-              <LinkTo 
-                @route="tracks.id" 
-                @model={{track.slug}}
-                class="button-solid button-orange ml-2">
-                Explore
-              </LinkTo>
-            </div>
+        </div>
+        <div class="row no-gutters justify-content-end align-items-center p-4">
+          {{!-- <span class="bold gradient-text-orange">
+            {{track.status}}
+          </span> --}}
+          <div>
+            <span class="bold">{{track.courseCount}} Courses</span>
+            <LinkTo @route="tracks.id" @model={{track.slug}} class="button-solid button-orange ml-3">
+              Explore
+            </LinkTo>
           </div>
         </div>
       </div>
+    </div>
     {{/each}}
   </div>
 </div>
