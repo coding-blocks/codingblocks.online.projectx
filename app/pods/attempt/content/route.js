@@ -41,7 +41,7 @@ export default Route.extend({
       content
     })
 
-    progress.set('status', defaultProgressValue)
+    progress.set('status', progress.status == 'DONE' ? 'DONE' : defaultProgressValue)
 
     if (progress.isNew && progress.status === 'DONE') {
       // a new "Done" progress is created
