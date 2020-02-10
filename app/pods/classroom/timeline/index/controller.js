@@ -22,10 +22,10 @@ export default class Overview extends Controller {
     return this.runAttempt.premium && this.runAttempt.get('run.price')
   }
 
-  @computed('runAttempt.{isExpired,end}')
+  @computed('runAttempt.{isExpired,end,premium}')
   get showExtensions() {
     const endIsNear = moment().add(1, "month") > moment.unix(this.runAttempt.end)
-    return this.runAttempt.isExpired || endIsNear
+    return (this.runAttempt.isExpired || endIsNear) && this.runAttempt.premium
   }
 
   @computed('runAttempt.{premium,isExpired}')

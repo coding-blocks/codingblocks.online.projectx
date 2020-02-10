@@ -14,7 +14,9 @@
     >
       Attempt Challenges
     </LinkTo>
-    <button class="button-orange button-solid" {{action (mut showExtensionsModal) true}}>Buy Extension</button>
+    {{#if run.topRunAttempt.premium}}
+      <button class="button-orange button-solid" {{action (mut showExtensionsModal) true}}>Buy Extension</button>
+    {{/if}}
   </div>
 </div>
 
