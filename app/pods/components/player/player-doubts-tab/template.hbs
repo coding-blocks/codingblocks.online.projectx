@@ -1,35 +1,43 @@
-<div class="py-4 row no-gutters align-items-center font-sm">
-  <div class="bold col-md-2 col-12 mb-md-0 mb-3">Filter Doubts</div>
+<div class="py-4 d-flex align-items-center font-sm">
+  <span class="bold">Filter Doubts</span>
 
-  <div class="col-md-10 col-sm-12 col-8 row no-gutters">
-    <div class="input-radio gradient-input small mr-4">
-      <input checked={{eq filter 'all'}} type="radio" id="my-doubts" onclick={{action (mut filter) 'all'}} />
-      <label for="my-doubts">
-        <span class="ml-3">
-          My Doubts
-        </span>
-      </label>
-    </div>
+  <div class="input-radio gradient-input small ml-4">
+    <input
+      checked={{eq filter 'all'}}
+      type="radio"
+      id="my-doubts"
+      onclick={{action (mut filter) 'all'}} />
+    <label for="my-doubts">
+      <span class="ml-3">
+        My Doubts
+      </span>
+    </label>
+  </div>
 
-    <div class="input-radio gradient-input small mr-4">
-      <input checked={{eq filter 'resolved'}} type="radio" id="resolved-doubts"
-        onclick={{action (mut filter) 'resolved'}} />
-      <label for="resolved-doubts">
-        <span class="ml-3">
-          Resolved Doubts
-        </span>
-      </label>
-    </div>
+  <div class="input-radio gradient-input small ml-4">
+    <input
+      checked={{eq filter 'resolved'}}
+      type="radio"
+      id="resolved-doubts"
+      onclick={{action (mut filter) 'resolved'}} />
+    <label for="resolved-doubts">
+      <span class="ml-3">
+        Resolved Doubts
+      </span>
+    </label>
+  </div>
 
-    <div class="input-radio gradient-input small mr-4">
-      <input checked={{eq filter 'unresolved'}} type="radio" id="unresolved-doubts"
-        onclick={{action (mut filter) 'unresolved'}} />
-      <label for="unresolved-doubts">
-        <span class="ml-3">
-          Unresolved Doubts
-        </span>
-      </label>
-    </div>
+  <div class="input-radio gradient-input small ml-4">
+    <input
+      checked={{eq filter 'unresolved'}}
+      type="radio"
+      id="unresolved-doubts"
+      onclick={{action (mut filter) 'unresolved'}} />
+    <label for="unresolved-doubts">
+      <span class="ml-3">
+        Unresolved Doubts
+      </span>
+    </label>
   </div>
 </div>
 
