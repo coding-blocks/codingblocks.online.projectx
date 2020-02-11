@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="col-lg-6 t-align-c t-align-lg-r mt-5 mt-lg-0">
-      <img src="https://minio.codingblocks.com/amoeba/off.png" alt="Gifts"/>
+      <img src="https://minio.codingblocks.com/amoeba/off.png" alt="Gifts" id="prize-image" style="height: 508px; width: 322px;"/>
     </div>
   </div>
 
@@ -117,36 +117,6 @@
   </div>
 </div>
 
-
-{{#if showWinModal}}
-  <ModalDialog
-    @onClose={{action (mut showWinModal) false}}
-    @translucentOverlay={{true}}
-    @overlayClass="spin-overlay"
-    @containerClass="container spin-modal-container"
-  >
-    <Spin::SpinWinModal 
-      @prize={{prizeDrawn}}
-      @referralCode={{referralCode.code}}
-      @onClose={{action (mut showWinModal) false}}
-    />
-  </ModalDialog>
-{{else if showLoseModal}}
-  <ModalDialog
-    @onClose={{action (mut showLoseModal) false}}
-    @translucentOverlay={{true}}
-    @overlayClass="spin-overlay"
-    @containerClass="container spin-modal-container"
-  >
-    <Spin::SpinLoseModal 
-      @prize={{prizeDrawn}}
-      @referralCode={{referralCode.code}}
-      @onClose={{action (mut showLoseModal) false}}
-    />
-  </ModalDialog>
-{{/if}}
-
-
 {{#if showTnC}}
   <ModalDialog
     @onClose={{action (mut showTnC) false}}
@@ -154,55 +124,13 @@
     @overlayClass="spin-overlay"
     @containerClass="container spin-modal-container p-5"
   >
-    
     <h2>Terms and Conditions</h2>
     <ul style="list-style: decimal;">
-      <li>
-        The CB Lucky Wheel is organized by Coding Blocks Pvt. Ltd. Activity participants (hereinafter referred to as "Participants") take part in this by starting the game. All Participants shall be deemed as having agreed to the following terms and conditions.
-      </li>
-      <li>
-        Netflix Standard plan for 2 Months.
-      </li>
-      <li>
-        Amazon Voucher worth Rs. 500
-      </li>
-      <li>
-        CB Book means Competitive Programming Book By Coding Blocks.
-      </li>
-      <li>
-        Validity of CB Coupon and CB Credits is till 5th Jan, 2020.
-      </li>
-      <li>
-        You must have a billing address within the territory of India for CB Goodies.
-      </li>
-      <li>
-        By entering the Contest, User consent to being placed on a mailing list for promotional and other materials for CB. User may update or change Userr email preferences at the email preferences page.<br> <br>
-
-      </li>
-
-      <li>
-        Prizes cannot be transferred to another person or redeemed for cash or other objects. 
-        Each winner must update valid contact information (including the email address, full name, complete delivery address, phone number, and post code) on his CB account within seven days after the campaign ends. 
-        Awards will be shipped within 15 working days. CB will assume all tariffs and express fees. 
-        If an award is not distributed to a winner due to the winner's fault, the winner shall be deemed as having waived the right to claim the award. 
-        CB reserves the right to the final interpretation of the prize.
-      </li>
-<li>
-There are no cash or other prize alternatives available in whole or in part. However, in circumstances beyond CB's control, CB may substitute a similar alternative prize of equal or greater value at CB's sole discretion. If you win a Prize, you may not transfer, assign, or redeem the Prize for cash.
-</li>
-  <li>
-Subject to the winner claiming the Prize within the given time period, the Prize will be dispatched/delivered to the winner on or before 30th Jan, 2020.
-
-      </li>
-      <li>
-        A single participant can only avail either one of "CB Swagpack", "CB T-Shirt" and "CB Book". 
-      </li>
-      <li>
-        Courses bought during this sale, won't be refunded on any pretext.
-      </li>
-      <li>
-        "CB Swagpack" contains CB notebook and stickers only.
-      </li>
+      <li>The Coding Blocks Lucky Wheel is organized by Coding Blocks Pvt. Ltd. Activity participants (hereinafter referred to as "Participants") take part in this by starting the game. All Participants shall be deemed as having agreed to the following terms and conditions.</li>
+      <li>Amazon Voucher worth Rs. 500</li>
+      <li>Validity of Coding Blocks Coupon is Only for 24 Hours after winning it.</li>
+      <li>OTP verified mobile or email users can only access this feature.</li>
+      <li>Users who refer others to the program are "Referrers"; those who are referred are "Referred Customers." Referrers are may be eligible to receive "CHANCES" for every qualified referral. "Qualifying Referral" means an individual that (a) does not currently have, and has never had, a Coding Blocks Account; (b) has not initiated the Sign-Up Process prior to clicking on your Referral Link; and (c) uses your Referral Link to complete the Sign-Up Process, and "Sign-Up Process" means the successful registration for a Coding Blocks Account pursuant to our Terms of Use</li>
     </ul>
   </ModalDialog>
 {{/if}}

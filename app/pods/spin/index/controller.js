@@ -10,23 +10,8 @@ export default class SpinIndexController extends Controller {
   @service router
   @service currentUser
 
-  showWinModal = false
-  showLoseModal = false
   showTnC = false
   prizeDrawn = null
-
-  @alias('spin.isRunning')
-  isSpinning
-    
-  getTransformForRotation(el, deg) {
-    deg += (360 * 5)
-    return `rotateZ(${deg}deg)`
-  }
-
-  @action
-  setWheel(element) {
-    this.set('wheel', element)
-  }
 
   @dropTask spin = function *() {
     if (!this.currentUser.user.verifiedemail) {
@@ -44,29 +29,9 @@ export default class SpinIndexController extends Controller {
     const prize = yield this.api.request('/spins/draw', {
       method: 'POST'
     })
-
-    this.wheel.style.transition = 'unset'
-    this.wheel.style.transform = "rotateZ(0deg)"
-    
-    yield timeout(10)
-   
-    this.wheel.style.transition = '8s ease'
-    this.wheel.style.transform = this.getTransformForRotation(this.wheel, prize.rotation)
-   
-    yield new Promise((resolve) => this.wheel.addEventListener('transitionend', resolve))
-    
-
-    if (prize.size > 0) {
-      this.setProperties({
-        showWinModal: true,
-        prizeDrawn: prize
-      })
-    } else {
-      this.setProperties({
-        showLoseModal: true,
-        prizeDrawn: prize
-      })
-    }
+    // TODO: Animate Image
+    const prizeImage = document.getElementById('prize-image')
+    prizeImage.src = prize.webp
 
     yield this.reloadRoute()
   }
