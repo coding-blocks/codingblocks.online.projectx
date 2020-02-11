@@ -1,9 +1,8 @@
 import Controller from '@ember/controller';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { dropTask } from 'ember-concurrency-decorators';
 import { timeout } from "ember-concurrency";
-import { alias } from '@ember/object/computed';
 
 export default class SpinIndexController extends Controller {
   @service api
@@ -46,5 +45,10 @@ export default class SpinIndexController extends Controller {
 
     this.set('notVerifiedEmailModal', false)
     return ;
+  }
+
+  @action goToShare() {
+    const shareBox = document.getElementById("share-box")
+    shareBox.scrollIntoView({behavior: "smooth", block: "center" })
   }
 }

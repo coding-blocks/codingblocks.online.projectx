@@ -5,6 +5,12 @@
   .bg-gradient-red-pink {
     background: linear-gradient(270deg, #F24F60 10.36%, #A5066C 95.36%) !important;
   }
+  .gradient-text-light-yellow {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(90deg, #ef9740 0%, #f4d549 100%) !important;
+  }
   .gradient-text-yellow {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
