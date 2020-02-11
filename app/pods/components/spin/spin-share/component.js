@@ -23,7 +23,7 @@ export default class SpinShare extends Component {
         range.select();
     } else if (window.getSelection) {
         var range = document.createRange();
-        range.selectNode(document.getElementById(containerid));
+        range.selectNodeContents(document.getElementById(containerid));
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
     }
