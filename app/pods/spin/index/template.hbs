@@ -12,7 +12,9 @@
         <button class="button-dashed button-pink w-75 p-3 border-round" {{did-insert (action (mut spinsLeftBox))}}>
           <div class="d-flex justify-content-between align-items-center px-3 flex-wrap">
             <span class="font-xl bold black mx-auto mr-lg-0 white">
-              {{stats.availableSpins}} DRAW{{if (gt stats.availableSpins 1) "S"}} LEFT
+              <span class="gradient-text-orange">{{stats.availableSpins}}</span>
+              <img src="https://minio.codingblocks.com/amoeba/heart.svg" class="mr-3"> 
+              LEFT
             </span>
             <a class="font-sm bold spin-red mx-auto mr-lg-0">
               Earn More 
@@ -22,7 +24,7 @@
         </button>
       </div>
       <div class="mt-5 mb-5 font-md white t-align-c t-align-lg-l">
-        Get <span class="bold">500 CB Credits</span> on your first successful draw
+        Get a chance to win MiBand, Amazon Gift Card and much more
       </div>
       <div class="mt-5 d-flex d-lg-block justify-content-center">
         <button class="button-solid button-orange py-3 px-4 font-smxl" {{action (perform spin)}}>
@@ -38,6 +40,11 @@
   {{!-- My Winnings --}}
   <Spin::SpinWinnings 
     @usedSpins={{usedSpins}}
+    class="mt-5" />
+
+  {{!-- Share it --}}
+  <Spin::SpinShare 
+    @referralCode={{referralCode}}
     class="mt-5" />
 
   <div class="row">

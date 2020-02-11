@@ -1,0 +1,42 @@
+<div class="border-card px-0 p-md-4 t-align-c">
+  <div class="w-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 my-3 t-align-c t-align-lg-l">
+          <div class="row no-gutters align-items-center">
+            <div class="col-lg-2">
+              <img src="https://minio.codingblocks.com/amoeba/circle-heart.svg" class="s-60x60" />
+            </div>
+            <div class="col-lg-8">
+              <div class="extra-bold font-md letter-spaced gradient-text-red-pink">
+                Running out of hearts?
+              </div>
+              <div class="font-sm">
+                For every friend who signup with your code gets an extra heart. <br>
+                <span class="bold">You get an extra heart after their successful spin!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row no-gutters col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end flex-wrap">
+          <div class="col-lg-6 gradient-br-red-pink p-2 font-md" id="referral-container" {{action 'selectText' 'referral-container'}}>
+            <span class="gradient-text-red-pink">
+              https://cb.lk/join/{{referralCode.code}}
+            </span>
+          </div>
+          <div class="col-lg-6">
+            <span class="ml-lg-5 font-md pointer" {{action 'share' 'facebook'}}>
+              <i class="fab fa-2x fa-facebook-f"></i>
+            </span>
+            <span class="ml-5 font-md pointer" {{action 'share' 'twitter'}}>
+              <i class="fab fa-2x fa-twitter"></i>
+            </span>
+            <span class="ml-5 font-md pointer" {{action 'share' 'whatsapp'}}>
+              <i class="fab fa-2x fa-whatsapp"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
