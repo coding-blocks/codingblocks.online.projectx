@@ -41,16 +41,20 @@
       </div>
       <div id="content-share" style="display: none;">
         <div class="mt-4 gradient-text-yellow font-md bold t-align-c t-align-lg-l">
-          Congratulations on winning {{wonPrize.title}} ! Spread the love by sharing with your friends
+          {{#if (eq wonPrize.size 0)}}
+            Oops! Didn't win anything? Share with your friends to win an extra heart for every Sign-Up
+          {{else}}
+            Congratulations on winning {{wonPrize.title}} ! Spread the love by sharing with your friends
+          {{/if}}
         </div>
         <div class="mt-5 t-align-c t-align-lg-l white">
-          <span class="font-md pointer" {{action 'share' 'facebook'}}>
+          <span class="font-md pointer" {{action 'share' 'facebook' (eq wonPrize.size 0)}}>
             <i class="fab fa-2x fa-facebook-f"></i>
           </span>
-          <span class="ml-4 font-md pointer" {{action 'share' 'twitter'}}>
+          <span class="ml-4 font-md pointer" {{action 'share' 'twitter' (eq wonPrize.size 0)}}>
             <i class="fab fa-2x fa-twitter"></i>
           </span>
-          <span class="ml-4 font-md pointer" {{action 'share' 'whatsapp'}}>
+          <span class="ml-4 font-md pointer" {{action 'share' 'whatsapp' (eq wonPrize.size 0)}}>
             <i class="fab fa-2x fa-whatsapp"></i>
           </span>
         </div>

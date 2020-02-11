@@ -25,6 +25,11 @@ export default class SpinIndexController extends Controller {
     #CodingBlocks #CBSanta #Christmas #NewYear`
   }
 
+  @computed('referralCode', 'wonPrize.title')
+  get shareTextWin() {
+    return `I just won ${this.wonPrize.title} on Coding Blocks Spin-n-Win. Signup using this link to get 500 in your Coding Blocks wallet and get a chance to spin and win exciting prizes this Christmas with Coding Blocks: https://cb.lk/join/${this.referralCode}`
+  }
+
   @dropTask spin = function *() {
     if (!this.currentUser.user.verifiedemail) {
       this.set('notVerifiedEmailModal', true)
@@ -76,8 +81,8 @@ export default class SpinIndexController extends Controller {
   }
 
   @action
-  share(to) {
-    window.open(this.linksMap[to](this.shareText), `${to}-share`, 'width=860,height=840,toolbar=0,menubar=0')
+  share(to, lose = true) {
+    window.open(this.linksMap[to](lose ? this.shareText : this.shareTextWin), `${to}-share`, 'width=860,height=840,toolbar=0,menubar=0')
   }
 
   @action goToShare() {
