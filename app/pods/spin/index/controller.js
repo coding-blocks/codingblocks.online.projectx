@@ -52,12 +52,13 @@ export default class SpinIndexController extends Controller {
     prizeImage.src = prize.webp
 
     yield timeout(3000)
+    this.set('wonPrize', prize)
 
     const content = document.getElementById('content-play')
-    content.setAttribute('style', 'display: none !important;')
+    content.style.display = 'none'
 
     const share = document.getElementById('content-share')
-    share.setAttribute('style', 'display: block !important;')
+    share.style.display = 'block'
 
     yield this.reloadRoute()
   }
