@@ -51,6 +51,8 @@ export default class SpinIndexController extends Controller {
     const prizeImage = document.getElementById('prize-image')
     prizeImage.src = prize.webp
 
+    yield timeout(3000)
+
     const content = document.getElementById('content-play')
     content.setAttribute('style', 'display: none !important;')
 

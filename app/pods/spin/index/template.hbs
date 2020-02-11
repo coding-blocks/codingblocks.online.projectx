@@ -33,7 +33,7 @@
         This Valentine’s, we are spreading love by giving assured prizes through mystery box
       </div>
       <div class="mt-5 d-flex d-lg-block justify-content-center" id="content-play" style="disply: block !important;">
-        <button class="button-solid button-orange py-3 px-4 font-md" {{action (perform spin)}}>
+        <button class="button-solid button-orange py-3 px-4 font-md" {{action (perform spin)}} disabled={{spin.isRunning}}>
           TAP TO PLAY
         </button>
       </div>
