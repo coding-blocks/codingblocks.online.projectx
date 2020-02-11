@@ -28,17 +28,25 @@
             </a>
           </div>
         </button>
-      </div>    
+      </div>   
       <div class="mt-4 gradient-text-yellow font-md bold t-align-c t-align-lg-l">
         This Valentine’s, we are spreading love by giving assured prizes through mystery box
       </div>
-      {{!-- <div class="mt-4 font-md white t-align-c t-align-lg-l">
-        Get a chance to win MiBand, Amazon Gift Card and much more
-      </div> --}}
-      <div class="mt-5 d-flex d-lg-block justify-content-center">
-        <button class="button-solid button-orange py-3 px-4 font-smxl" {{action (perform spin)}}>
+      <div class="mt-5 d-flex d-lg-block justify-content-center" id="content-play" style="disply: block !important;">
+        <button class="button-solid button-orange py-3 px-4 font-md" {{action (perform spin)}}>
           TAP TO PLAY
         </button>
+      </div>
+      <div class="mt-5 d-flex d-lg-block justify-content-center white" id="content-share" style="display: none !important;">
+        <span class="font-md pointer" {{action 'share' 'facebook'}}>
+          <i class="fab fa-2x fa-facebook-f"></i>
+        </span>
+        <span class="ml-4 font-md pointer" {{action 'share' 'twitter'}}>
+          <i class="fab fa-2x fa-twitter"></i>
+        </span>
+        <span class="ml-4 font-md pointer" {{action 'share' 'whatsapp'}}>
+          <i class="fab fa-2x fa-whatsapp"></i>
+        </span>
       </div>
     </div>
     <div class="col-lg-6 t-align-c t-align-lg-r mt-5 mt-lg-0">
@@ -53,6 +61,7 @@
 
   {{!-- Share it --}}
   <Spin::SpinShare 
+    @share={{action 'share'}}
     @referralCode={{referralCode}}
     class="mt-5"
     id="share-box" />
