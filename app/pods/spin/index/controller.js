@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { dropTask } from 'ember-concurrency-decorators';
 import { timeout } from "ember-concurrency";
@@ -11,6 +11,19 @@ export default class SpinIndexController extends Controller {
 
   showTnC = false
   prizeDrawn = null
+
+  linksMap = {
+    'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
+    'twitter': text => `http://twitter.com/share?text=${text}&url=https://online.codingblocks.com&hashtags=codingBlocksIN`,
+    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=online.codingblocks.com&quote=${text}`
+  }
+
+  @computed('referralCode')
+  get shareText() {
+    return `Sign-up using my link to get instant 500 in your wallet and Spin the CB Wheel to win assured prizes this Christmas and New Year using my referral link: https://cb.lk/join/${this.referralCode.code}  @codingblocksIn
+
+    #CodingBlocks #CBSanta #Christmas #NewYear`
+  }
 
   @dropTask spin = function *() {
     if (!this.currentUser.user.verifiedemail) {
@@ -29,8 +42,23 @@ export default class SpinIndexController extends Controller {
       method: 'POST'
     })
     // TODO: Animate Image
+    yield new Promise((resolve, reject) => {
+      const preloadImage = new Image()
+      preloadImage.src = prize.webp
+      preloadImage.onload = resolve
+      preloadImage.onerror = reject
+    })
     const prizeImage = document.getElementById('prize-image')
     prizeImage.src = prize.webp
+
+    yield timeout(3000)
+    this.set('wonPrize', prize)
+
+    const content = document.getElementById('content-play')
+    content.style.display = 'none'
+
+    const share = document.getElementById('content-share')
+    share.style.display = 'block'
 
     yield this.reloadRoute()
   }
@@ -45,6 +73,11 @@ export default class SpinIndexController extends Controller {
 
     this.set('notVerifiedEmailModal', false)
     return ;
+  }
+
+  @action
+  share(to) {
+    window.open(this.linksMap[to](this.shareText), `${to}-share`, 'width=860,height=840,toolbar=0,menubar=0')
   }
 
   @action goToShare() {

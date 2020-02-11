@@ -1,7 +1,7 @@
 <div class="c-spin">
   <div class="row no-gutters bg-purple-blue p-5 br-10">
     <div class="col-lg-6 ">
-      <div class="d-flex d-lg-block justify-content-center">
+      <div class="t-align-c t-align-lg-l">
         <div class="font-sm white" style="letter-spacing: 10px;">
           CODING BLOCKS
         </div>
@@ -28,17 +28,32 @@
             </a>
           </div>
         </button>
-      </div>    
-      <div class="mt-4 gradient-text-yellow font-md bold t-align-c t-align-lg-l">
-        This Valentine’s, we are spreading love by giving assured prizes through mystery box
+      </div>   
+      <div id="content-play" style="display: block;">
+        <div class="mt-4 gradient-text-yellow font-md bold t-align-c t-align-lg-l">
+          This Valentine’s, we are spreading love by giving assured prizes through mystery box
+        </div>
+        <div class="mt-5 t-align-c t-align-lg-l">
+          <button class="button-solid button-orange py-3 px-4 font-md" {{action (perform spin)}} disabled={{spin.isRunning}}>
+            TAP TO PLAY
+          </button>
+        </div>
       </div>
-      {{!-- <div class="mt-4 font-md white t-align-c t-align-lg-l">
-        Get a chance to win MiBand, Amazon Gift Card and much more
-      </div> --}}
-      <div class="mt-5 d-flex d-lg-block justify-content-center">
-        <button class="button-solid button-orange py-3 px-4 font-smxl" {{action (perform spin)}}>
-          TAP TO PLAY
-        </button>
+      <div id="content-share" style="display: none;">
+        <div class="mt-4 gradient-text-yellow font-md bold t-align-c t-align-lg-l">
+          Congratulations on winning {{wonPrize.title}} ! Spread the love by sharing with your friends
+        </div>
+        <div class="mt-5 t-align-c t-align-lg-l white">
+          <span class="font-md pointer" {{action 'share' 'facebook'}}>
+            <i class="fab fa-2x fa-facebook-f"></i>
+          </span>
+          <span class="ml-4 font-md pointer" {{action 'share' 'twitter'}}>
+            <i class="fab fa-2x fa-twitter"></i>
+          </span>
+          <span class="ml-4 font-md pointer" {{action 'share' 'whatsapp'}}>
+            <i class="fab fa-2x fa-whatsapp"></i>
+          </span>
+        </div>
       </div>
     </div>
     <div class="col-lg-6 t-align-c t-align-lg-r mt-5 mt-lg-0">
@@ -53,6 +68,7 @@
 
   {{!-- Share it --}}
   <Spin::SpinShare 
+    @share={{action 'share'}}
     @referralCode={{referralCode}}
     class="mt-5"
     id="share-box" />
