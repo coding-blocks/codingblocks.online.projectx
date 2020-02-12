@@ -40,7 +40,11 @@
             </div>
             <div class="col-3 t-align-r">
               <label class="dark-orange bold font-mds" for="extensionRadio{{index}}">
-                INR {{extension.price}}
+                {{#if extension.price}}
+                  INR {{extension.price}}
+                {{else}}
+                  FREE
+                {{/if}}
               </label>
             </div>
           </div>
@@ -49,14 +53,21 @@
       <div class="row mt-4">
         <div class="col-12 t-align-r">
           <button class="px-3"  {{on "click" onClose}}> Cancel </button>
-          {{task-button 
+
+          {{!-- {{task-button 
             task=buyExtensionTask
             click=(perform buyExtensionTask)
             idleText="Buy Extension"
             runningText="Adding to Cart.."
             type="button"
             class="button-solid button-orange"
-            runningClass="disabled"}}
+            runningClass="disabled"}} --}}
+          {{#if selectedExtension}}
+            <a href={{buyExtensionUrl}} class="button-solid button-orange"> Buy Extension </a>
+          {{else}}
+            <a class="button-solid button-grey" disabled style="cursor: not-allowed;"> Buy Extension </a>
+
+          {{/if}}
         </div>
       </div>
     {{else}}
