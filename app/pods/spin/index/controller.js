@@ -20,14 +20,14 @@ export default class SpinIndexController extends Controller {
 
   @computed('referralCode')
   get shareText() {
-    return `Sign-up using my link to get instant 500 in your wallet and Spin the CB Wheel to win assured prizes this Christmas and New Year using my referral link: https://cb.lk/join/${this.referralCode.code}  @codingblocksIn
-
-    #CodingBlocks #CBSanta #Christmas #NewYear`
+    return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Login and unveil CB Box of Love now to win stunning prize. Click on https://cb.lk/join/${this.referralCode} to win an additional heart/box.`
   }
 
   @computed('referralCode', 'wonPrize.title')
   get shareTextWin() {
-    return `I just won ${this.wonPrize.title} on Coding Blocks Spin-n-Win. Signup using this link to get 500 in your Coding Blocks wallet and get a chance to spin and win exciting prizes this Christmas with Coding Blocks: https://cb.lk/join/${this.referralCode}`
+    return `
+    I am so happy to win ${this.wonPrize.title}. You can also win amazing prizes. Visit https://cb.lk/join/${this.referralCode} to participate in the Campaign and get an extra heart. Hurry up and find what Coding Blocks’s Cupid has in store for you! 
+    `
   }
 
   @dropTask spin = function *() {
