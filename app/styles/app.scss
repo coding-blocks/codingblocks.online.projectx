@@ -283,5 +283,17 @@ body {
   overflow: hidden;
 }
 
+.spoiler-text {
+
+  color: whitesmoke;
+  background-color: whitesmoke;
+  transition: all 0.1s;
+  
+
+  &:hover {
+    color: black;
+    background-color: white;
+  }
+}
 
 @import "ember-content-placeholders";

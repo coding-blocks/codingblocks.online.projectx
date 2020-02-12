@@ -1,6 +1,6 @@
 <div class="c-spin">
   <div class="row no-gutters bg-purple-blue p-5 br-10">
-    <div class="col-lg-6 ">
+    <div class="col-lg-6 my-auto">
       <div class="t-align-c t-align-lg-l">
         <div class="font-sm white" style="letter-spacing: 10px;">
           CODING BLOCKS
@@ -40,12 +40,12 @@
         </div>
       </div>
       <div id="content-share" style="display: none;">
-        <div class="mt-4 gradient-text-yellow font-md bold t-align-c t-align-lg-l">
-          {{#if (eq wonPrize.size 0)}}
-            Oops! Didn't win anything? Share with your friends to win an extra heart for every Sign-Up
+        <div class="mt-4 font-md bold t-align-c t-align-lg-l">
+          {{#liquid-if (eq wonPrize.size 0) class="fade"}}
+            <span class="gradient-text-yellow">Oops! Didn't win anything? Share with your friends to win an extra heart for every Sign-Up</span>
           {{else}}
-            Congratulations on winning {{wonPrize.title}} ! Spread the love by sharing with your friends
-          {{/if}}
+            <span class="gradient-text-yellow">Congratulations on winning {{wonPrize.title}} ! Spread the love by sharing with your friends</span>
+          {{/liquid-if}}
         </div>
         <div class="mt-5 t-align-c t-align-lg-l white">
           <span class="font-md pointer" {{action 'share' 'facebook' (eq wonPrize.size 0)}}>
@@ -87,12 +87,12 @@
           </h4>
         </div>
         <div class="p-5 font-sm">
-          1. User get one free spin everyday.<br> <br>
-          2. User need to signup in order to play the Spin N Win Game.<br> <br>
-          3. User gets 5 spins on every course purchase during this campaign.<br> <br>
+          1. User get one free draw everyday.<br> <br>
+          2. New user need to signup in order participate.<br> <br>
+          3. User gets 5 chances on every course purchase during this campaign.<br> <br>
           4. We will notify the participants, eligible to claim the Prize by E-Mail / SMS.<br> <br>
-          5. The daily free spin will expire at the end of the day.<br> <br>
-          6. User should have a billing address within the territory of India for t-shirt and swag pack.<br> <br>
+          5. The chances are valid for the same day and will expire at the end of the day.<br> <br>
+          6. User should have a billing address within the territory of India.<br> <br>
           7. In case of any discrepency, the final decision will be of Coding Blocks.<br> <br>
           <button class="spin-red" {{action (mut showTnC) true}} style="text-decoration: underline;">Terms and Conditions</button>
         </div>

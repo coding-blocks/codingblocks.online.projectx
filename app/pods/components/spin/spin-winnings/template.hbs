@@ -1,4 +1,4 @@
-<div class="border-card px-0 p-md-5 t-align-c">
+<div class="py-5 t-align-c">
   <h4 class="spin-purple font-md">
     My Winnings
   </h4>
@@ -28,7 +28,7 @@
                     {{#if (and spin.prize_remarks_extra.valid-end (is-after now spin.prize_remarks_extra.valid-end) )}}
                       EXPIRED
                     {{else}}
-                      {{spin.prize_remarks_extra.coupon-created}}
+                      <span class="spoiler-text">{{spin.prize_remarks_extra.coupon-created}}</span>
                     {{/if}}
                   </div>
                 {{else}}

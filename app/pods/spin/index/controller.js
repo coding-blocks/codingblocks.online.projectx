@@ -47,16 +47,16 @@ export default class SpinIndexController extends Controller {
       method: 'POST'
     })
     // TODO: Animate Image
-    yield new Promise((resolve, reject) => {
-      const preloadImage = new Image()
-      preloadImage.src = prize.webp
-      preloadImage.onload = resolve
-      preloadImage.onerror = reject
-    })
+    // yield new Promise((resolve, reject) => {
+    //   const preloadImage = new Image()
+    //   preloadImage.src = prize.webp
+    //   preloadImage.onload = resolve
+    //   preloadImage.onerror = reject
+    // })
     const prizeImage = document.getElementById('prize-image')
     prizeImage.src = prize.webp
 
-    yield timeout(3000)
+    yield timeout(4500)
     this.set('wonPrize', prize)
 
     const content = document.getElementById('content-play')
