@@ -20,8 +20,11 @@
         </div>
         <div class="d-flex col-lg-6 d-flex align-items-center justify-content-center flex-wrap">
           <div class="gradient-br-red-pink p-2 font-md">
-            <span class="gradient-text-red-pink" id="referral-container" {{action 'selectText' 'referral-container'}}>
+            <span class="gradient-text-red-pink copy-text" {{on "click" (action 'selectText')}} title="Click To Copy">
               https://cb.lk/join/{{referralCode}}
+              <EmberTooltip @event="click" @duration="1000">
+                Copied!
+              </EmberTooltip>
             </span>
           </div>
           <div class="ml-5">
