@@ -28,12 +28,10 @@
                     {{#if (and spin.prize_remarks_extra.valid-end (is-after now spin.prize_remarks_extra.valid-end) )}}
                       EXPIRED
                     {{else}}
-                      <span class="spoiler-text copy-text" {{on "click" (action 'selectText')}} title="Click To Copy">
-                        {{spin.prize_remarks_extra.coupon-created}}
-                        <EmberTooltip @event="click" @duration="1000">
-                          Copied!
-                        </EmberTooltip>
-                      </span>
+                      <span class="spoiler-text copy-text" {{on "click" (action 'selectText')}} title="Click To Copy">{{spin.prize_remarks_extra.coupon-created}}</span>
+                      <EmberTooltip @event="click" @duration="1000">
+                        Copied!
+                      </EmberTooltip>
                     {{/if}}
                   </div>
                 {{else}}
