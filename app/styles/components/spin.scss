@@ -1,5 +1,37 @@
-.bg-mild-blue {
-  background-color: #F1F9FE;
+.c-spin {
+  .bg-purple-blue {
+    background: linear-gradient(90deg, #00205B 0%, #84358E 100%) !important;
+  }
+  .bg-gradient-red-pink {
+    background: linear-gradient(270deg, #F24F60 10.36%, #A5066C 95.36%) !important;
+  }
+  .gradient-text-light-yellow {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(90deg, #ef9740 0%, #f4d549 100%) !important;
+  }
+  .gradient-text-yellow {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(90deg, #FA8733 0%, #F7C332 100%) !important;
+  }
+  .gradient-text-red-pink {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(270deg, #F24F60 10.36%, #A5066C 95.36%) !important;
+  }
+  .font-smxl {
+    font-size: 26px !important;
+  }
+  .gradient-br-red-pink {
+    border: 2px dashed #fff;
+    background:
+      linear-gradient(#fff,#fff) padding-box,
+      linear-gradient(270deg, #F24F60 10.36%, #A5066C 95.36%) border-box;
+  }
 }
 
 .font-xxl {

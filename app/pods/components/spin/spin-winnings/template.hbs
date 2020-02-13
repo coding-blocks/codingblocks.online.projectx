@@ -1,4 +1,4 @@
-<div class="border-card px-0 p-md-5 t-align-c">
+<div class="py-5 t-align-c">
   <h4 class="spin-purple font-md">
     My Winnings
   </h4>
@@ -11,24 +11,36 @@
       <div class="row mx-3 w-100 flex-nowrap overflow-x-auto" id="winning-carousel">
         {{#each usedSpins as |spin i|}}
           <div class="col-6 col-md-4 col-lg-3 px-2" id="winning-{{i}}">
-            <div class="border-card border-none white spin-bg-{{spin.spinPrize.theme}}">
+            {{!-- <div class="border-card border-none white spin-bg-{{spin.spinPrize.theme}}"> --}}
+            <div class="border-card h-100">
               <div>
-                <img src={{spin.spinPrize.img}} alt="trophy" class="w-50"> 
+                <img src={{spin.spinPrize.img}} alt="trophy" style="width: 90px;"> 
               </div>
               <div class="mt-3">
-                <div class="font-sm spin-yellow">
+                <div class="font-sm letter-spaced gradient-text-red-pink">
                   You Won
                 </div>
-                <div class="font-md bold">
+                <div class="font-md bold gradient-text-red-pink">
                   {{spin.spinPrize.title}}
                 </div>
                 {{#if spin.prize_remarks_extra.coupon-created}}
-                  <div class="border-dashed mt-1 p-2 font-md white" id="referral-container">
-                    {{spin.prize_remarks_extra.coupon-created}}
+                  <div class="border-dashed mt-1 gradient-br-red-pink p-2 font-md">
+                    {{#if (and spin.prize_remarks_extra.valid-end (is-after now spin.prize_remarks_extra.valid-end) )}}
+                      EXPIRED
+                    {{else}}
+                      <span class="spoiler-text">{{spin.prize_remarks_extra.coupon-created}}</span>
+                    {{/if}}
                   </div>
+                {{else}}
+                  <div class="my-5"></div>
                 {{/if}}
                 <div class="mt-3">
-                  {{moment-from-now spin.used_at}}
+                  {{#if (and spin.prize_remarks_extra.valid-end (is-before now spin.prize_remarks_extra.valid-end) )}}
+                    <span class="bold">Expires {{moment-from-now spin.prize_remarks_extra.valid-end}}</span>
+                    <br>
+                  {{/if}}
+                  
+                  Won {{moment-from-now spin.used_at}}
                 </div>
               </div>
             </div>
@@ -43,7 +55,7 @@
     <div class="t-align-c mt-5">
       <i class="fas fa-gift fa-4x spin-purple"></i>
       <p>
-        You have not earned any gifts till now. Spin more to earn exciting gifts !
+        You have not earned any gifts till now. Find more hearts to earn exciting gifts !
       </p>
     </div>
   {{/if}}
