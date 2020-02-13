@@ -32,6 +32,13 @@
       linear-gradient(#fff,#fff) padding-box,
       linear-gradient(270deg, #F24F60 10.36%, #A5066C 95.36%) border-box;
   }
+  .font-title {
+    font-family: Bebas Neue; 
+    font-size: 3.125rem !important;
+    @media (min-width: 768px) {
+      font-size: 5.72rem !important;
+    }
+  }
 }
 
 .font-xxl {
