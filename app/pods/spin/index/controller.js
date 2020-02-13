@@ -20,7 +20,7 @@ export default class SpinIndexController extends Controller {
 
   @computed('referralCode')
   get shareText() {
-    return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Login and unveil CB Box of Love now to win stunning prize. Click on https://cb.lk/join/${this.referralCode} to win an additional heart/box.`
+    return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Login and unveil CB Box of Love now to win stunning prize. Click on https://cb.lk/join/${this.referralCode} to win an additional heart.`
   }
 
   @computed('referralCode', 'wonPrize.title')
