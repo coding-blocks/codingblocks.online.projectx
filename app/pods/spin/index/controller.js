@@ -3,42 +3,29 @@ import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { dropTask } from 'ember-concurrency-decorators';
 import { timeout } from "ember-concurrency";
-import { alias } from '@ember/object/computed';
 
 export default class SpinIndexController extends Controller {
   @service api
   @service router
   @service currentUser
 
-  showWinModal = false
-  showLoseModal = false
   showTnC = false
   prizeDrawn = null
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
-    'twitter': text => `http://twitter.com/share?text=${text}&url=https://online.codingblocks.com&hashtags=codingBlocksIN`,
-    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=online.codingblocks.com&quote=${text}`
+    'twitter': text => `http://twitter.com/share?text=${text}&url=https://cb.lk/vdtw&hashtags=codingBlocksIN,CBVDay&via=codingBlocksIN`,
+    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=https://cb.lk/vdfb&quote=${text}`
   }
 
   @computed('referralCode')
   get shareText() {
-    return `Sign-up using my link to get instant 500 in your wallet and Spin the CB Wheel to win assured prizes this Christmas and New Year using my referral link: https://cb.lk/join/${this.referralCode.code}  @codingblocksIn
-
-    #CodingBlocks #CBSanta #Christmas #NewYear`
+    return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Login and unveil CB Box of Love now to win stunning prize. Click on https://cb.lk/join/${this.referralCode} to win an additional heart.`
   }
 
-  @alias('spin.isRunning')
-  isSpinning
-    
-  getTransformForRotation(el, deg) {
-    deg += (360 * 5)
-    return `rotateZ(${deg}deg)`
-  }
-
-  @action
-  setWheel(element) {
-    this.set('wheel', element)
+  @computed('referralCode', 'wonPrize.title')
+  get shareTextWin() {
+    return `I won ${this.wonPrize.title} from Coding Blocks. So, hurry up and participate in the Campaign. Click on https://cb.lk/join/${this.referralCode} to win an additional heart. The offer expires soon.`
   }
 
   @dropTask spin = function *() {
@@ -57,29 +44,24 @@ export default class SpinIndexController extends Controller {
     const prize = yield this.api.request('/spins/draw', {
       method: 'POST'
     })
+    // TODO: Animate Image
+    // yield new Promise((resolve, reject) => {
+    //   const preloadImage = new Image()
+    //   preloadImage.src = prize.webp
+    //   preloadImage.onload = resolve
+    //   preloadImage.onerror = reject
+    // })
+    const prizeImage = document.getElementById('prize-image')
+    prizeImage.src = prize.webp
 
-    this.wheel.style.transition = 'unset'
-    this.wheel.style.transform = "rotateZ(0deg)"
-    
-    yield timeout(10)
-   
-    this.wheel.style.transition = '8s ease'
-    this.wheel.style.transform = this.getTransformForRotation(this.wheel, prize.rotation)
-   
-    yield new Promise((resolve) => this.wheel.addEventListener('transitionend', resolve))
-    
+    yield timeout(4500)
+    this.set('wonPrize', prize)
 
-    if (prize.size > 0) {
-      this.setProperties({
-        showWinModal: true,
-        prizeDrawn: prize
-      })
-    } else {
-      this.setProperties({
-        showLoseModal: true,
-        prizeDrawn: prize
-      })
-    }
+    const content = document.getElementById('content-play')
+    content.style.display = 'none'
+
+    const share = document.getElementById('content-share')
+    share.style.display = 'block'
 
     yield this.reloadRoute()
   }
@@ -97,22 +79,13 @@ export default class SpinIndexController extends Controller {
   }
 
   @action
-  share(to) {
-    window.open(this.linksMap[to](this.shareText), `${to}-share`, 'width=860,height=840,toolbar=0,menubar=0')
+  share(to, lose = true) {
+    const url = window.encodeURI(this.linksMap[to](lose ? this.shareText : this.shareTextWin))
+    window.open(url, `${to}-share`, 'width=860,height=840,toolbar=0,menubar=0')
   }
 
-  @action
-  selectText(containerid) {
-    if (document.selection) { // IE
-        var range = document.body.createTextRange();
-        range.moveToElementText(document.getElementById(containerid));
-        range.select();
-    } else if (window.getSelection) {
-        var range = document.createRange();
-        range.selectNode(document.getElementById(containerid));
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-    }
-    document.execCommand('copy');
+  @action goToShare() {
+    const shareBox = document.getElementById("share-box")
+    shareBox.scrollIntoView({behavior: "smooth", block: "center" })
   }
 }

@@ -1,5 +1,5 @@
 <div class="c-sidenav bottom-nav col-md-1 col-12">
-  <div class="logo pb-5 pt-4 d-md-block d-none">
+  <div class="logo pb-4 pt-4 d-md-block d-none">
     <LinkTo @route="index">
       <img src="https://minio.codingblocks.com/amoeba/OnlineLogo2020.svg" alt="Coding Blocks Online" class="s-50x50" title="Coding Blocks Online">
     </LinkTo>
@@ -7,20 +7,26 @@
 
   <div class="row all-center">
     <div class="col-2 col-md-12">
+      <LinkTo @route="spin" class="nav-element py-4 px-2">
+        <img src="https://minio.codingblocks.com/amoeba/love.svg" alt="valentines day special">
+        <h6 class="pt-2 d-none d-md-block font-sm gradient-text-orange">Valentines</h6>
+      </LinkTo>
+    </div>
+    <div class="col-2 col-md-12">
       <LinkTo @route="dashboard" class="nav-element py-4 px-2">
-        <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/dashboard_grey.svg" alt="">
+        <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/dashboard_grey.svg" alt="dashboard">
         <h6 class="pt-2 d-none d-md-block font-sm">Dashboard</h6>
       </LinkTo>
     </div>
     <div class="col-2 col-md-12">
       {{#if currentUser.organization}}
         <LinkTo @route="courses" @query={{hash org=currentUser.organization}} class="nav-element py-4 px-2">
-          <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/buy_grey.svg" alt="">
+          <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/buy_grey.svg" alt="all courses">
           <h6 class="pt-2 d-none d-md-block font-sm">Get Courses</h6>
         </LinkTo>
       {{else}}
         <a href="/courses" class="nav-element py-4 px-2">
-          <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/buy_grey.svg" alt="">
+          <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/buy_grey.svg" alt="all courses">
           <h6 class="pt-2 d-none d-md-block font-sm">Buy Courses</h6>
         </a>
       {{/if}}
@@ -28,7 +34,7 @@
     {{#unless domain.isExternal}}
       <div class="col-2 col-md-12">
         <LinkTo @route="tracks" href="#" class="nav-element py-4 px-2">
-          <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/tracks_grey.svg" alt="">
+          <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/tracks_grey.svg" alt="tracks">
           <h6 class="pt-2 d-none d-md-block font-sm">Tracks</h6>
         </LinkTo>
       </div>

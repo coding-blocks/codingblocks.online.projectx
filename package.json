@@ -18,9 +18,9 @@
     "test": "ember test"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.4",
     "@ember/jquery": "^1.1.0",
     "@ember/optional-features": "^1.0.0",
-    "@babel/core": "^7.3.4",
     "@ember/render-modifiers": "^1.0.2",
     "@firebase/app": "^0.3.13",
     "@firebase/database": "^0.3.16",
@@ -74,6 +74,7 @@
     "ember-source": "~3.14.1",
     "ember-timer": "^1.1.0",
     "ember-toggle": "^5.3.2",
+    "ember-tooltips": "^3.4.2",
     "ember-truth-helpers": "^2.0.0",
     "ember-uploader": "^2.0.0",
     "ember-welcome-page": "^4.0.0",

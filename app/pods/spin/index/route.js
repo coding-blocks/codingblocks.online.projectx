@@ -30,7 +30,7 @@ export default class IndexRoute extends Route {
   setupController(controller, model) {
     controller.set('stats', model.stats)
     controller.set('usedSpins', model.usedSpins)
-    controller.set('referralCode', model.referralCode)
+    controller.set('referralCode', model.referralCode.code)
     controller.set('reloadRoute', () => this.refresh())
   }
 }
