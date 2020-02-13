@@ -14,8 +14,8 @@ export default class SpinIndexController extends Controller {
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
-    'twitter': text => `http://twitter.com/share?text=${text}&url=https://online.codingblocks.com&hashtags=codingBlocksIN`,
-    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=online.codingblocks.com&quote=${text}`
+    'twitter': text => `http://twitter.com/share?text=${text}&url=https://cb.lk/vdtw&hashtags=codingBlocksIN,CBVDay&via=codingBlocksIN`,
+    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=https://cb.lk/vdfb&quote=${text}`
   }
 
   @computed('referralCode')
@@ -25,9 +25,7 @@ export default class SpinIndexController extends Controller {
 
   @computed('referralCode', 'wonPrize.title')
   get shareTextWin() {
-    return `
-    I am so happy to win ${this.wonPrize.title}. You can also win amazing prizes. Visit https://cb.lk/join/${this.referralCode} to participate in the Campaign and get an extra heart. Hurry up and find what Coding Blocks’s Cupid has in store for you! 
-    `
+    return `I won ${this.wonPrize.title} from Coding Blocks. So, hurry up and participate in the Campaign. Click on https://cb.lk/join/${this.referralCode} to win an additional heart. The offer expires soon.`
   }
 
   @dropTask spin = function *() {
@@ -82,7 +80,8 @@ export default class SpinIndexController extends Controller {
 
   @action
   share(to, lose = true) {
-    window.open(this.linksMap[to](lose ? this.shareText : this.shareTextWin), `${to}-share`, 'width=860,height=840,toolbar=0,menubar=0')
+    const url = window.encodeURI(this.linksMap[to](lose ? this.shareText : this.shareTextWin))
+    window.open(url, `${to}-share`, 'width=860,height=840,toolbar=0,menubar=0')
   }
 
   @action goToShare() {
