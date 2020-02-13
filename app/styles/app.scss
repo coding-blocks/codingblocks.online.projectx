@@ -288,11 +288,16 @@ body {
   color: whitesmoke;
   background-color: whitesmoke;
   transition: all 0.1s;
+  cursor: grab;
   
 
   &:hover {
     color: black;
     background-color: white;
+  }
+
+  &:active:hover {
+    cursor: grabbing;
   }
 }
 

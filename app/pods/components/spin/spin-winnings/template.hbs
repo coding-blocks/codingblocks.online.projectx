@@ -10,7 +10,7 @@
       </span>
       <div class="row mx-3 w-100 flex-nowrap overflow-x-auto" id="winning-carousel">
         {{#each usedSpins as |spin i|}}
-          <div class="col-6 col-md-4 col-lg-3 px-2" id="winning-{{i}}">
+          <div class="col-9 col-md-4 col-lg-3 px-2" id="winning-{{i}}">
             {{!-- <div class="border-card border-none white spin-bg-{{spin.spinPrize.theme}}"> --}}
             <div class="border-card h-100">
               <div>
@@ -28,7 +28,12 @@
                     {{#if (and spin.prize_remarks_extra.valid-end (is-after now spin.prize_remarks_extra.valid-end) )}}
                       EXPIRED
                     {{else}}
-                      <span class="spoiler-text">{{spin.prize_remarks_extra.coupon-created}}</span>
+                      <span class="spoiler-text" {{on "click" (action 'selectText')}} title="Click To Copy">
+                        {{spin.prize_remarks_extra.coupon-created}}
+                        <EmberTooltip @event="click" @duration="1000">
+                          Copied!
+                        </EmberTooltip>
+                      </span>
                     {{/if}}
                   </div>
                 {{else}}
