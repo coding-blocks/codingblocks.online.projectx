@@ -91,12 +91,12 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     
-    ENV.apiHost = 'http://test.onlinebackend'
+    ENV.apiHost = 'http://localhost:3000'
     // ENV.publicUrl = 'http://localhost:4200';
     ENV.publicUrl = 'http://test.online'
     ENV.clientId = 7642172843
     ENV.oneauthURL = 'https://account.codingblocks.com'
-    ENV.hackApiHost = 'http://test.hackbackend'
+    ENV.hackApiHost = 'http://hack.codingblocks.xyz'
     ENV.googleAnalytics = {
       webPropertyId: 'UA-83327907-12'
     }
