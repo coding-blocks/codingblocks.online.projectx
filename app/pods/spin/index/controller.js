@@ -14,13 +14,13 @@ export default class SpinIndexController extends Controller {
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
-    'twitter': text => `http://twitter.com/share?text=${text}&url=https://cb.lk/vdtw&hashtags=codingBlocksIN,CBVDay&via=codingBlocksIN`,
+    'twitter': text => `http://twitter.com/share?text=${text}&url=https://cb.lk/vdoncb&hashtags=codingBlocksIN,CBVDay&via=codingBlocksIN`,
     'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=https://cb.lk/vdfb&quote=${text}`
   }
 
   @computed('referralCode')
   get shareText() {
-    return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Login and unveil CB Box of Love now to win stunning prize. Click on https://cb.lk/join/${this.referralCode} to win an additional heart.`
+    return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Click on https://cb.lk/join/${this.referralCode} to win an additional heart.`
   }
 
   @computed('referralCode', 'wonPrize.title')
