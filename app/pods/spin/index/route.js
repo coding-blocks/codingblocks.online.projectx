@@ -18,7 +18,10 @@ export default class IndexRoute extends Route {
       exclude: 'spin_prize.*,user',
       sort: '-used_at'
     })
-    const referralCode = this.api.request('users/myReferral')
+    const referralCode = this.api.request('users/myReferral').catch(err => {
+      console.error(err)
+      return { code: null }
+    })
 
     return RSVP.hash({
       stats,

@@ -72,11 +72,13 @@
     class="mt-5" />
 
   {{!-- Share it --}}
-  <Spin::SpinShare 
-    @share={{action 'share'}}
-    @referralCode={{referralCode}}
-    class="mt-5"
-    id="share-box" />
+  {{#if referralCode}}
+    <Spin::SpinShare 
+      @share={{action 'share'}}
+      @referralCode={{referralCode}}
+      class="mt-5"
+      id="share-box" />
+  {{/if}}
 
   <div class="row">
     {{!-- rules --}}
