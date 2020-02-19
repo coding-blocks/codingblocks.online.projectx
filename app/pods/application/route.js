@@ -3,7 +3,6 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 import { inject as service } from '@ember/service';
 import { isNone } from '@ember/utils';
 import { later } from '@ember/runloop';
-import { get } from '@ember/object';
 
 export default Route.extend(ApplicationRouteMixin, {
     session: service(),
@@ -11,44 +10,36 @@ export default Route.extend(ApplicationRouteMixin, {
     store: service (),
     headData: service(),
     queryParams: {
-      code: {
-          refreshModel: true
-      }
-    },
-  async beforeModel(transition) {
-      this._super(...arguments)
-      if (!get(transition, 'to.queryParams.code')) {
-        return;
-      }
-
-      if (this.get('session.isAuthenticated')) {
-        // if user is already authenticated
-        return;
-        // return this.transitionTo({ queryParams: { code: undefined } })
-      }
-
-      // we have ?code qp
-      const { code } = transition.to.queryParams
-      
-      try {
-        await this.session.authenticate('authenticator:jwt', { identification: code, password: code, code })
-        const user = await this.currentUser.load()
-        
-        // if user belongs to an org, redirect to the domain
-        if (user.get('organization')) {
-          this.transitionTo(user.get('organization'))
+        code: {
+            refreshModel: true
         }
+    },
+    beforeModel (transition) {
+      if (!isNone(transition.to.queryParams.code)) {
+        if (this.get('session.isAuthenticated')) {
+          return this.transitionTo({ queryParams: { code: undefined } })
+        }
+        // we have ?code qp
+        const { code } = transition.to.queryParams
         
-      } catch(error) {
-        if (error.err === 'USER_EMAIL_NOT_VERIFIED') {
-          this.transitionTo('error', {
-            queryParams: {
-              errorCode: 'USER_EMAIL_NOT_VERIFIED'
+        return this.session.authenticate('authenticator:jwt', { identification: code, password: code, code })
+          .then(() => this.currentUser.load())
+          .then(user => {
+            // if user belongs to an org, redirect to the domain
+            if(user.get('organization')) {
+              this.transitionTo(user.get('organization'))
             }
           })
-        }
+          .catch(error => {
+            if (error.err === 'USER_EMAIL_NOT_VERIFIED') {
+              this.transitionTo('error', {
+                queryParams: {
+                  errorCode: 'USER_EMAIL_NOT_VERIFIED'
+                }
+              })
+            }
+          });
       }
-      
     },
     model () {
         if (this.get('session.isAuthenticated')) {

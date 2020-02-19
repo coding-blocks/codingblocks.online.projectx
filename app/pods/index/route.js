@@ -15,7 +15,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     if (this.get("currentUser.organization")) {
       this.transitionTo(this.get("currentUser.organization"));
     }
-    
+
     const redirectionPathExternal = localStorage.getItem(
       "redirectionPathExternal"
     );
@@ -28,10 +28,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     const redirectionPath = localStorage.getItem("redirectionPath");
     if (redirectionPath) {
       localStorage.removeItem("redirectionPath");
-      if (redirectionPath == '/') {
-        return this.transitionTo('dashboard')
-      }
-      return this.transitionTo(redirectionPath);
+      this.transitionTo(redirectionPath);
     } else if (this.domain.isExternal) {
       window.location.href = this.domain.domainBasedPublicUrl;
     }
