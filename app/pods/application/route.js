@@ -2,22 +2,23 @@ import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import { inject as service } from '@ember/service';
 import { isNone } from '@ember/utils';
-import { later } from '@ember/runloop';
 
 export default Route.extend(ApplicationRouteMixin, {
-    session: service(),
-    currentUser: service(),
-    store: service (),
-    headData: service(),
-    queryParams: {
-        code: {
-            refreshModel: true
-        }
-    },
-    beforeModel (transition) {
+  session: service(),
+  currentUser: service(),
+  store: service (),
+  headData: service(),
+  // routeAfterAuthentication: 'dashboard',
+  queryParams: {
+    code: {
+      refreshModel: true
+    }
+  },
+  async beforeModel(transition) { 
       if (!isNone(transition.to.queryParams.code)) {
         if (this.get('session.isAuthenticated')) {
-          return this.transitionTo({ queryParams: { code: undefined } })
+          return ''
+          // return this.transitionTo({ queryParams: { code: undefined } })
         }
         // we have ?code qp
         const { code } = transition.to.queryParams
@@ -41,41 +42,43 @@ export default Route.extend(ApplicationRouteMixin, {
           });
       }
     },
-    model () {
-        if (this.get('session.isAuthenticated')) {
-          return this.currentUser.load().then (user => {
-            try {
-              OneSignal.getUserId ().then (userId => {
-                if (! userId) {
-                  throw new Error ('player ID not found')
-                }
+  model () {
+      if (this.get('session.isAuthenticated')) {
+        return this.currentUser.load().then (user => {
+          try {
+            OneSignal.getUserId ().then (userId => {
+              if (! userId) {
+                throw new Error ('player ID not found')
+              }
 
-                const player = this.store.createRecord ('player')
+              const player = this.store.createRecord ('player')
 
-                player.set ('playerId', userId)
+              player.set ('playerId', userId)
 
-                return player.save ()
-              })
-                .then (result => console.log ('playerId set!'))
-                .catch (error => console.error (error))
-            }
-            catch (error) {
-              console.error(error)
-            }
-            return user
-          });
-        }
-    },
+              return player.save ()
+            })
+              .then (result => console.log ('playerId set!'))
+              .catch (error => console.error (error))
+          }
+          catch (error) {
+            console.error(error)
+          }
+          return user
+        });
+      }
+  },
 
-    setupController(controller, model){
-      this._super(controller, model)
-      controller.set('model', model)
+  setupController(controller, model){
+    this._super(controller, model)
+    controller.set('model', model)
 
-      later(function(){
-        controller.set('code', undefined)
-      })
-    },
-    afterModel(model) {
-      this.set('headData.title', 'Coding Blocks Online')
-    }
+    // later(function(){
+    //   controller.set('code', undefined)
+    // })
+  },
+  afterModel(model) {
+    this.set('headData.title', 'Coding Blocks Online')
+  },
+
+  
 })
