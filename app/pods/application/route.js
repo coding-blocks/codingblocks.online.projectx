@@ -33,9 +33,17 @@ export default Route.extend(ApplicationRouteMixin, {
           })
           .catch(error => {
             if (error.err === 'USER_EMAIL_NOT_VERIFIED') {
-              this.transitionTo('error', {
+              return this.transitionTo('error', {
                 queryParams: {
                   errorCode: 'USER_EMAIL_NOT_VERIFIED'
+                }
+              })
+            }
+            if (error.name == 'USER_LOGGED_IN_ELSEWHERE') {
+              return this.transitionTo('login-blocker', {
+                queryParams: {
+                  code: null,
+                  token: error.logout_token
                 }
               })
             }
