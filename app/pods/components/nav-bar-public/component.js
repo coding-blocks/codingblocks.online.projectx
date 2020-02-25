@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 
 export default class NavBarPublic extends Component {
   hideHamburgerNav = true;
-  mobileSelectedTab = "classroom";
+  mobileSelectedTab = "online";
 
   @action
   toggleHamburgerNav() {

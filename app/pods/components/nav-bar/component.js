@@ -18,7 +18,7 @@ export default class navBarComponent extends Component {
 
   showSidebar = false;
   hideHamburgerNav = true;
-  mobileSelectedTab = "classroom";
+  mobileSelectedTab = "online";
   logoutLink = env.oneauthURL + '/logout?redirect=' + this.domain.domainBasedPublicUrl + '/logout' 
 
   didInsertElement() {
