@@ -28,7 +28,11 @@ export default BaseAdapter.extend({
   },
 
   trackEvent({ event, ...options }) {
-    window.gtag('event', event, options)
+    try {
+      window.gtag('event', event, options)
+    } catch (err) {
+      console.error('tried to fire event: ', event, " but gtag wasn't available on time")
+    }
   },
 
   trackPage({name, ...options}) {
