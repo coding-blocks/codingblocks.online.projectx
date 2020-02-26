@@ -63,4 +63,5 @@ Router.map(function() {
     this.route('id', {path: '/:slug'});
   });
   this.route('spin', {path: '/valentines'}, function() {});
+  this.route('login-blocker');
 });
