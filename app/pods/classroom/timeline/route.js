@@ -23,7 +23,7 @@ export default Route.extend({
     let runAttempt = get(runAttempts, 'firstObject')
     
     // runAttempt is revoked
-    if (runAttempt.revoked) {
+    if (!isNone(runAttempt) && runAttempt.revoked) {
       return runAttempt
     }
     
