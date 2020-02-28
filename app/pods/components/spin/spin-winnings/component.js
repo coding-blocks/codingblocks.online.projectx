@@ -13,4 +13,21 @@ export default class SpinWinning extends Component {
 
     element.scrollBy({ behavior: 'smooth', left: leftOffset })
   }
+
+  @action
+  selectText(e) {
+    const el = e.target
+    if (document.selection) { // IE
+      var range = document.body.createTextRange();
+      range.moveToElementText(el);
+      range.select();
+  } else if (window.getSelection) {
+      var range = document.createRange();
+      range.selectNodeContents(el);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+  }
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+  }
 }

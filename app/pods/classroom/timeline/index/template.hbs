@@ -84,8 +84,8 @@
             {{#if runAttempt.premium}}
               {{#if runAttempt.isExpired}}
                 Expired
-              {{else}}
-                Batch Ends {{moment-format runAttempt.endDate 'DD-MMM-YY'}}
+        {{!-- {{else}}
+                Batch Ends {{moment-format runAttempt.endDate 'DD-MMM-YY'}} --}}
               {{/if}}
             {{else}}
               Free Trial
@@ -188,7 +188,7 @@
         </div>
       </a>
     {{/if}}
-    {{#if (and (is-after (unix runAttempt.run.start) '2018-10-01') showGoodieRequest)}}
+    {{#if (and (is-after (unix runAttempt.run.start) '2019-11-29') showGoodieRequest)}}
       <GoodieComp
         class="mb-5"
         @runAttempt={{runAttempt}} />

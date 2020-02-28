@@ -817,10 +817,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@coding-blocks/motley@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@coding-blocks/motley/-/motley-0.7.0.tgz#a81574af97e912a558df865f89e054068fae6e77"
-  integrity sha512-Wh8HgAj+lee/yk9fv2XsyruLb2W32mWynRTPkItFJEjZdRNH5UTaGjLIgD+nZ3hKPR0azS1BFx+DEBTWeTKcDA==
+"@coding-blocks/motley@0.7.3":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@coding-blocks/motley/-/motley-0.7.3.tgz#f6f14051ec7ad41e1fb61f0d7a4b37eb88f6ebf5"
+  integrity sha512-7KfC01iOHTX0Trg/ErLRqcINvwJ4//OrbbYiyhrDFiwvi8xyCXl0SEAkePJl4wcCT6+2wclQxACNHSuHue8Y1A==
   dependencies:
     build "^0.1.4"
     run "^1.4.0"
@@ -3354,6 +3354,11 @@ broccoli-source@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/broccoli-source/-/broccoli-source-1.1.0.tgz#54f0e82c8b73f46580cbbc4f578f0b32fca8f809"
   integrity sha1-VPDoLItz9GWAy7xPV48LMvyo+Ak=
+
+broccoli-source@^2.0.0:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/broccoli-source/-/broccoli-source-2.1.2.tgz#e9ae834f143b607e9ec114ade66731500c38b90b"
+  integrity sha512-1lLayO4wfS0c0Sj50VfHJXNWf94FYY0WUhxj0R77thbs6uWI7USiOWFqQV5dRmhAJnoKaGN4WyLGQbgjgiYFwQ==
 
 broccoli-source@^3.0.0:
   version "3.0.0"
@@ -6006,6 +6011,23 @@ ember-toggle@^5.3.2:
     ember-gestures "^1.1.1"
     ember-runtime-enumerable-includes-polyfill "^2.0.0"
 
+ember-tooltips@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/ember-tooltips/-/ember-tooltips-3.4.2.tgz#e47efb5dab4af644b87ae811f1f3b1e7d75fc95e"
+  integrity sha512-zobYPwmGIZRLexRg2vKdipu6SxQJqNb8JXXtkMci6MqnpDQI9E3seDGr/88kd1R5EXTF4EmBXPz0HIs2/VjSZg==
+  dependencies:
+    broccoli-file-creator "^2.1.1"
+    broccoli-funnel "^2.0.2"
+    broccoli-merge-trees "^2.0.0"
+    broccoli-source "^2.0.0"
+    broccoli-string-replace "^0.1.2"
+    ember-cli-babel "^7.13.0"
+    ember-cli-htmlbars "^4.2.0"
+    ember-maybe-in-element "^0.4.0"
+    popper.js "^1.12.5"
+    resolve "^1.10.1"
+    tooltip.js "^1.1.5"
+
 ember-truth-helpers@2.1.0, ember-truth-helpers@^2.0.0, ember-truth-helpers@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/ember-truth-helpers/-/ember-truth-helpers-2.1.0.tgz#d4dab4eee7945aa2388126485977baeb33ca0798"
@@ -8176,6 +8198,11 @@ js-base64@^2.1.8:
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.5.1.tgz#1efa39ef2c5f7980bb1784ade4a8af2de3291121"
   integrity sha512-M7kLczedRMYX4L8Mdh4MzyAMM9O5osx+4FcOQuTvr3A9F2D9S5JXheN0ewNbrvK2UatkTRhL5ejGmGSjNMiZuw==
 
+js-base64@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.5.2.tgz#313b6274dda718f714d00b3330bbae6e38e90209"
+  integrity sha512-Vg8czh0Q7sFBSUMWWArX/miJeBWYBPpdU/3M/DKSaekLMqrqVPaedp+5mZhie/r0lgrcaYBfwXatEew6gwgiQQ==
+
 js-reporters@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/js-reporters/-/js-reporters-1.2.1.tgz#f88c608e324a3373a95bcc45ad305e5c979c459b"
@@ -10118,6 +10145,11 @@ pn@^1.1.0:
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
 
+popper.js@^1.0.2, popper.js@^1.12.5:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
+  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
+
 portfinder@^1.0.23:
   version "1.0.25"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.25.tgz#254fd337ffba869f4b9d37edc298059cb4d35eca"
@@ -12023,6 +12055,13 @@ toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
+
+tooltip.js@^1.1.5:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/tooltip.js/-/tooltip.js-1.3.3.tgz#2ad0d77bb6776a76e117eac0afcd3c7d3a237121"
+  integrity sha512-XWWuy/dBdF/F/YpRE955yqBZ4VdLfiTAUdOqoU+wJm6phJlMpEzl/iYHZ+qJswbeT9VG822bNfsETF9wzmoy5A==
+  dependencies:
+    popper.js "^1.0.2"
 
 tough-cookie@^2.3.3, tough-cookie@^2.4.3:
   version "2.5.0"

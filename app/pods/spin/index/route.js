@@ -18,7 +18,10 @@ export default class IndexRoute extends Route {
       exclude: 'spin_prize.*,user',
       sort: '-used_at'
     })
-    const referralCode = this.api.request('users/myReferral')
+    const referralCode = this.api.request('users/myReferral').catch(err => {
+      console.error(err)
+      return { code: null }
+    })
 
     return RSVP.hash({
       stats,
@@ -30,7 +33,7 @@ export default class IndexRoute extends Route {
   setupController(controller, model) {
     controller.set('stats', model.stats)
     controller.set('usedSpins', model.usedSpins)
-    controller.set('referralCode', model.referralCode)
+    controller.set('referralCode', model.referralCode.code)
     controller.set('reloadRoute', () => this.refresh())
   }
 }

@@ -1,0 +1,40 @@
+<div class="p-5 mb-5 border-card white border-none bg-grey-darker">
+  <div class="t-align-c">
+    <FaIcon @icon="video" @size="4" class={{if (eq webinarStatus 0) "orange" "grey"}} />
+  </div>
+
+  <div class="t-align-c mt-5">
+    {{#if (eq webinarStatus -1)}}
+      <h3 class="gradient-text-orange">Webinar will start soon</h3>
+      <Timer 
+        class="mt-4" 
+        @to={{moment webinar.start_time}}
+        @onEnd={{action (mut started) true}} as |time|>
+        <ul class="divided-list timer black mb-4 bold justify-content-center white">
+          <li class="timer-item mr-4">
+            <div class="list-heading font-xxl">{{time.days}}</div>
+            <div class="list-data">Days</div>
+          </li>
+          <li class="timer-item mr-4">
+            <div class="list-heading font-xxl">{{time.hours}}</div>
+            <div class="list-data">Hours</div>
+          </li>
+          <li class="timer-item mr-4">
+            <div class="list-heading font-xxl">{{time.minutes}}</div>
+            <div class="list-data">Mins</div>
+          </li>
+          <li class="timer-item mr-4 pr-0">
+            <div class="list-heading font-xxl">{{time.seconds}}</div>
+            <div class="list-data">Secs</div>
+          </li>
+        </ul>
+      </Timer>
+    {{else if (or (eq webinarStatus 0) started)}}
+      <button class="button-solid button-orange" {{action (perform startWebinarTask)}}>
+        {{if startWebinarTask.isRunning "Starting" "Start Webinar"}}
+      </button>
+    {{else}}
+      <h3 class="gradient-text-orange">Webinar has ended</h3>
+    {{/if}}
+  </div>
+</div>

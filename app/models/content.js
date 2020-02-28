@@ -14,8 +14,9 @@ export default DS.Model.extend({
   csv: DS.belongsTo('csv'),
   //attachment: DS.belongsTo('attachment'),
   video: DS.belongsTo('video'),
+  webinar: DS.belongsTo('webinar'),
   duration: DS.attr(),
-  payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', 'csv', function () {
+  payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', 'csv', 'webinar', function () {
     return this.get(this.contentable);
   }),
   isDone: bool('progress.isDone'),

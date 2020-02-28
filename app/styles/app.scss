@@ -13,6 +13,7 @@ $cb-red: #ff6666;
 @import "./components/player.scss";
 @import "./components/loader.scss";
 @import "./components/button.scss";
+@import "./components/spin.scss";
 @import "lists.scss";
 
 body {
@@ -282,5 +283,28 @@ body {
   overflow: hidden;
 }
 
+.spoiler-text {
+
+  color: whitesmoke;
+  background-color: whitesmoke;
+  transition: all 0.1s;
+
+  &:hover {
+    color: black;
+    background-color: white;
+  }
+
+  &:active:hover {
+    cursor: grabbing;
+  }
+}
+
+.copy-text {
+  cursor: grab;
+
+  &:active:hover {
+    cursor: grabbing;
+  }
+}
 
 @import "ember-content-placeholders";

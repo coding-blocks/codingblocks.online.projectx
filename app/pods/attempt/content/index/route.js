@@ -18,6 +18,8 @@ export default Route.extend({
         return this.transitionTo('attempt.content.video')
       case 'qna':
         return this.transitionTo('attempt.content.quiz', content.get('payload.qId'))
+      case 'webinar':
+        return this.transitionTo('attempt.content.webinar')
     }
   }
 });

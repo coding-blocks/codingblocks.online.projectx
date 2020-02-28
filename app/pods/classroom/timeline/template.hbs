@@ -1,2 +1,28 @@
 {{bread-crumbs tagName="ul" outputStyle="foundation" linkable=true}}
-{{outlet}}
+
+{{#if model.revoked}}
+  <div class="border-card">
+    <div class="t-align-c">
+      <FaIcon @icon="info-circle" @size="5" class="grey" />
+    </div>
+
+    <p class="font-mds">
+      Your access to this course has been revoked. If you think this is an error, Please contact <a href="mailto:support@codingblocks.com" class="orange">support@codingblocks.com</a> with the following Debug Output
+    </p>
+
+    <div class="divider-h my-4"></div>
+    <div class="">
+      <div class="d-inline-block bold mb-2">
+        Debug Output
+      </div>
+      <br>
+
+      User ID: <strong>{{currentUser.user.id}}</strong> <br>
+      Oneauth ID: <strong>{{currentUser.user.oneauthId}} </strong> <br>
+      Run ID: <strong>{{model.run.id}} </strong> <br>
+      Run Attempt ID: <strong>{{model.id}} </strong>
+    </div>
+  </div>
+{{else}}
+  {{outlet}}
+{{/if}}

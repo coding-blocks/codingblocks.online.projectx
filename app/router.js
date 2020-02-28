@@ -37,6 +37,7 @@ Router.map(function() {
       this.route('document');
       this.route('video');
       this.route('csv');
+      this.route('webinar');
     });
   });
   this.route('error');
@@ -61,5 +62,6 @@ Router.map(function() {
   this.route('tracks', function() {
     this.route('id', {path: '/:slug'});
   });
-  this.route('spin', function() {});
+  this.route('spin', {path: '/valentines'}, function() {});
+  this.route('login-blocker');
 });
