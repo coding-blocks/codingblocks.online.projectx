@@ -8,13 +8,15 @@ export default Route.extend(ApplicationRouteMixin, {
   currentUser: service(),
   store: service (),
   headData: service(),
+  metrics: service(), // !important: keep this here to init trackers for all routes
   // routeAfterAuthentication: 'dashboard',
   queryParams: {
     code: {
       refreshModel: true
     }
   },
-  async beforeModel(transition) { 
+  async beforeModel(transition) {
+    this.metrics; // !important: keep this here to init trackers for all routes
       if (!isNone(transition.to.queryParams.code)) {
         if (this.get('session.isAuthenticated')) {
           return ''
