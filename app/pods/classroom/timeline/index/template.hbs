@@ -84,8 +84,8 @@
             {{#if runAttempt.premium}}
               {{#if runAttempt.isExpired}}
                 Expired
-        {{!-- {{else}}
-                Batch Ends {{moment-format runAttempt.endDate 'DD-MMM-YY'}} --}}
+            {{else}}
+                Batch Ends {{moment-format runAttempt.endDate 'DD-MMM-YY'}}
               {{/if}}
             {{else}}
               Free Trial
