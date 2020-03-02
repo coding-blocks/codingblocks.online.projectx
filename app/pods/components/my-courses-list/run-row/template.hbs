@@ -8,6 +8,7 @@
       <div class="col-9">
         <h5 class="bold">{{course.title}}</h5>
         <div class="font-normal mt-2">Mentor: {{instrcutorNames}}</div>
+        <div>Expires {{moment-from-now (unix run.topRunAttempt.end)}} </div>
       </div>
     </div>
   </div>
