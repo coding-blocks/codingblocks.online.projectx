@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div class="mt-4 d-flex d-lg-block justify-content-center">
+      {{!-- <div class="mt-4 d-flex d-lg-block justify-content-center">
         <button class="button-dashed button-pink w-75 p-3 border-round" {{did-insert (action (mut spinsLeftBox))}}>
           <div class="d-flex justify-content-between align-items-center px-3 flex-wrap">
             <span class="font-xl bold black white">
@@ -29,16 +29,38 @@
             </a>
           </div>
         </button>
-      </div>   
+      </div>    --}}
       <div id="content-play" style="display: block;">
         <div class="mt-4 gradient-text-yellow font-md bold t-align-c t-align-lg-l">
-          This Valentine’s, we are spreading love by giving assured prizes through mystery box
+          Thank You for your participation in the WeLearnTime Contest and making it a success!
         </div>
-        <div class="mt-5 t-align-c t-align-lg-l">
-          <button class="button-solid button-orange py-3 px-4 font-md" {{action (perform spin)}} disabled={{spin.isRunning}}>
-            TAP TO PLAY
-          </button>
+        <div class="mt-5 t-align-c t-align-lg-l gradient-text-yellow font-sm">
+           We reached a staggering number of students across India, 35,000+ draws were made.
+
+            <p>
+              Don’t forget to share your gifts on social media platforms! <a href="https://twitter.com/search?q=CBLove">#CBLove</a>.
+              <br>
+              You can also subscribe to our social media channels for upcoming contests and updates regarding Coding Blocks.
+            </p>
         </div>
+
+         <div class="mt-5">
+              <a target="_blank" href="https://cb.lk/fbsw" class="ml-lg-5 font-md pointer white">
+                <i class="fab fa-2x fa-facebook-f"></i>
+              </a>
+              <a target="_blank" href="https://cb.lk/twsw" class="ml-5 font-md pointer white">
+                <i class="fab fa-2x fa-twitter"></i>
+              </a>
+              <a target="_blank" href="https://cb.lk/insw" class="ml-5 font-md pointer white">
+                <i class="fab fa-2x fa-instagram"></i>
+              </a>
+              <a target="_blank" href="https://cb.lk/lisw" class="ml-5 font-md pointer white">
+                <i class="fab fa-2x fa-linkedin"></i>
+              </a>
+              <a target="_blank" href="https://cb.lk/ytsw" class="ml-5 font-md pointer white">
+                <i class="fab fa-2x fa-youtube"></i>
+              </a>
+            </div>
       </div>
       <div id="content-share" style="display: none;">
         <div class="mt-4 font-md bold t-align-c t-align-lg-l">
@@ -72,11 +94,13 @@
     class="mt-5" />
 
   {{!-- Share it --}}
-  <Spin::SpinShare 
-    @share={{action 'share'}}
-    @referralCode={{referralCode}}
-    class="mt-5"
-    id="share-box" />
+  {{#if referralCode}}
+    <Spin::SpinShare 
+      @share={{action 'share'}}
+      @referralCode={{referralCode}}
+      class="mt-5"
+      id="share-box" />
+  {{/if}}
 
   <div class="row">
     {{!-- rules --}}

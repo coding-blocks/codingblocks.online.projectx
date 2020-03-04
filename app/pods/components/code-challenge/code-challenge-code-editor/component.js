@@ -5,6 +5,7 @@ import { A } from '@ember/array';
 import { task, taskGroup, restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
 import { later } from '@ember/runloop';
+import { Base64 } from 'js-base64';
 
 export default class CodeEditor extends Component {
   @service taskPoller
@@ -124,8 +125,8 @@ export default class CodeEditor extends Component {
       method: "POST",
       data: {
         problemId: this.codeChallenge.get("hbProblemId"),
-        custom_input: window.btoa(this.customInputText),
-        source: window.btoa(this.selectedLanguage.source),
+        custom_input: Base64.encode(this.customInputText),
+        source: Base64.encode(this.selectedLanguage.source),
         language: this.selectedLanguage.code,
       },
     });
@@ -147,7 +148,7 @@ export default class CodeEditor extends Component {
         contestId: runAttempt.get("run.contestId"),
         problemId: this.codeChallenge.get("hbProblemId"),
         language: this.selectedLanguage.code,
-        source: window.btoa(this.selectedLanguage.source)
+        source: Base64.encode(this.selectedLanguage.source)
       }
     });
 

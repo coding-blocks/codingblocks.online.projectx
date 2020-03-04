@@ -1,10 +1,12 @@
 import Component from '@ember/component';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
+import { computed } from '@ember/object';
 import env from "codingblocks-online/config/environment";
 
 export default class ExtensionsWidgetComponent extends Component {
   @service api
+  @service currentUser
 
   @restartableTask extensionsTask = function* ()  {
     const product = yield this.api.request('/runs/products/' + this.run.get('productId'))
@@ -26,5 +28,12 @@ export default class ExtensionsWidgetComponent extends Component {
     })
 
     window.location.href = env.dukaanUrl
+  }
+
+  @computed('env.dukaanUrl', 'selectedExtension', 'currentUser.user')
+  get buyExtensionUrl () {
+    const { id: productId } = this.selectedExtension
+    const { user } = this.currentUser
+    return `${env.dukaanUrl}/buy?productId=${productId}&oneauthId=${user.oneauthId}`
   }
 }

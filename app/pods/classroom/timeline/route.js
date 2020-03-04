@@ -22,6 +22,11 @@ export default Route.extend({
 
     let runAttempt = get(runAttempts, 'firstObject')
     
+    // runAttempt is revoked
+    if (!isNone(runAttempt) && runAttempt.revoked) {
+      return runAttempt
+    }
+    
     if (!isNone(runAttempt)) {
       runAttempt = await this.store.findRecord("run-attempt", runAttempt.get("id"), {reload: true})
     } else {
@@ -44,6 +49,8 @@ export default Route.extend({
         }
       }
     }
+    
+
     const goodieRequestsForRunAttempt = await this.store.query("goodie-request", {
       filter: {
         runAttemptId: runAttempt.id

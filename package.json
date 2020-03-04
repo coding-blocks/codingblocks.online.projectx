@@ -94,8 +94,9 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@coding-blocks/motley": "0.7.2",
+    "@coding-blocks/motley": "0.7.3",
     "ember-line-clamp": "^0.2.15",
+    "js-base64": "^2.5.2",
     "moment": "^2.22.2",
     "showdown-katex-studdown": "^0.4.0"
   },

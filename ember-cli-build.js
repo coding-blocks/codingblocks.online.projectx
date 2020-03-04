@@ -22,7 +22,8 @@ module.exports = function(defaults) {
     'ember-cli-uglify': {
       /* https://github.com/mike-north/ember-monaco/issues/54 */
       exclude: EmberApp.env() == 'production' ? ['ember-monaco/**'] : []
-    }
+    },
+    tests: false
   });
 
   // Use `app.import` to add additional libraries to the generated

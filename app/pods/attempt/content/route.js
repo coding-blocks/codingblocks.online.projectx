@@ -41,9 +41,11 @@ export default Route.extend({
       content
     })
 
-    progress.set('status', defaultProgressValue)
+    const changedToDone = progress.status === 'DONE' ? false : (defaultProgressValue == 'DONE')
+    
+    progress.set('status', progress.status === 'DONE' ? 'DONE' : defaultProgressValue)
 
-    if (progress.isNew && progress.status === 'DONE') {
+    if (progress.isNew && changedToDone) {
       // a new "Done" progress is created
       runAttempt.incrementProperty("completedContents")
     }

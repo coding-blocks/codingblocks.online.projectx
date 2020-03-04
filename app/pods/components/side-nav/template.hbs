@@ -7,27 +7,21 @@
 
   <div class="row all-center">
     <div class="col-2 col-md-12">
-      <LinkTo @route="spin" class="nav-element py-4 px-2">
-        <img src="https://minio.codingblocks.com/amoeba/love.svg" alt="valentines day special">
-        <h6 class="pt-2 d-none d-md-block font-sm gradient-text-orange">Valentines</h6>
-      </LinkTo>
-    </div>
-    <div class="col-2 col-md-12">
       <LinkTo @route="dashboard" class="nav-element py-4 px-2">
         <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/dashboard_grey.svg" alt="dashboard">
-        <h6 class="pt-2 d-none d-md-block font-sm">Dashboard</h6>
+        <div class="pt-2 d-none d-md-block font-sm card-md">Dashboard</div>
       </LinkTo>
     </div>
     <div class="col-2 col-md-12">
       {{#if currentUser.organization}}
         <LinkTo @route="courses" @query={{hash org=currentUser.organization}} class="nav-element py-4 px-2">
           <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/buy_grey.svg" alt="all courses">
-          <h6 class="pt-2 d-none d-md-block font-sm">Get Courses</h6>
+          <div class="pt-2 d-none d-md-block font-sm card-md">Get Courses</div>
         </LinkTo>
       {{else}}
         <a href="/courses" class="nav-element py-4 px-2">
           <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/buy_grey.svg" alt="all courses">
-          <h6 class="pt-2 d-none d-md-block font-sm">Buy Courses</h6>
+          <div class="pt-2 d-none d-md-block font-sm card-md">Buy Courses</div>
         </a>
       {{/if}}
     </div>
@@ -35,20 +29,20 @@
       <div class="col-2 col-md-12">
         <LinkTo @route="tracks" href="#" class="nav-element py-4 px-2">
           <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/tracks_grey.svg" alt="tracks">
-          <h6 class="pt-2 d-none d-md-block font-sm">Tracks</h6>
+          <div class="pt-2 d-none d-md-block font-sm card-md">Tracks</div>
         </LinkTo>
       </div>
     {{/unless}}
     <div class="col-2 col-md-12">
       <LinkTo @route="classroom" class="nav-element py-4 px-2">
         <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/mycourses_grey.svg" alt="">
-        <h6 class="pt-2 d-none d-md-block font-sm">My Courses</h6>
+        <div class="pt-2 d-none d-md-block font-sm card-md">My Courses</div>
       </LinkTo>
     </div>
     <div class="col-2 col-md-12">
       <LinkTo @route="hiring-blocks" class="nav-element py-4 px-2">
         <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/job_grey.svg" alt="">
-        <h6 class="pt-2 d-none d-md-block font-sm">Hiring Blocks</h6>
+        <div class="pt-2 d-none d-md-block font-sm card-md">Hiring Blocks</div>
       </LinkTo>
     </div>
   </div>
