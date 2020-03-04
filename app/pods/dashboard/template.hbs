@@ -83,9 +83,7 @@
             <LinkTo @route="classroom" class="orange font-sm font-normal">View All</LinkTo>
           </div>
           <div class="divider-h my-4"></div>
-          <WAsync @task={{fetchCoursesTask}} @autoFire="true">
             <Dashboard::DashboardCoursesList @runs={{runs}} />
-          </WAsync>
         {{/if}}
       </div>
     </div>
@@ -102,11 +100,8 @@
             {{else}}
               <h4 class="bold">Wishlisted Courses</h4>
               <div class="divider-h mt-4"></div>
-              <WAsync 
-                @task={{fetchWishlistCoursesTask}}
-                @autoFire="true">
+             
                 <Dashboard::DashboardWishList @wishlist={{wishlist}} />
-              </WAsync>
               {{#if (gt wishlist.length 2)}}
                 <div class="t-align-c">
                   <button class="button-solid button-orange mt-4">View All</button>
@@ -126,11 +121,7 @@
             {{else}}
               <h4 class="bold">Applied Jobs</h4>
               <div class="divider-h mt-4"></div>
-              <WAsync 
-                @task={{fetchAppliedJobsTask}}
-                @autoFire="true">
                 <Dashboard::DashboardAppliedJobs @jobs={{appliedJobs}} />
-              </WAsync>
               {{#if (gt wishlist.length 2)}}
                 <div class="t-align-c">
                   <button class="button-solid button-orange my-5">View All</button>
