@@ -25,5 +25,8 @@ export default class Dashboard extends Route.extend(AuthenticatedRouteMixin) {
   }
   setupController(controller, model) {
     controller.set('lastAccessedRun', model)
+    controller.fetchCoursesTask.perform()
+    controller.fetchWishlistCoursesTask.perform()
+    controller.fetchAppliedJobsTask.perform()
   }
 }
