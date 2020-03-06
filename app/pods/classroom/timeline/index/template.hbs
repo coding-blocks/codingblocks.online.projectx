@@ -40,18 +40,20 @@
             <progress value="{{progressPercent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
 
             {{!-- % * 0.9 to compensate for 90% width of progress bar --}}
-            <div class="progress-lock" style="left: {{goodiesLockOffset}}%; bottom: -2px" id="goodies-lock">
-              <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
-              {{#if (gte progressPercent runAttempt.run.goodiesThreshold)}}
-                <img 
-                  src="https://minio.codingblocks.com/amoeba/progress-unlocked.svg"
-                  class="gradient-text-green pointer s-25x25"/>
-              {{else}}
-                <img 
-                  src="https://minio.codingblocks.com/amoeba/progress-lock.svg"
-                  class="gradient-text-green pointer s-25x25"/>
-              {{/if}}
-            </div>
+            {{#if showGoodieRequest}}  
+              <div class="progress-lock" style="left: {{goodiesLockOffset}}%; bottom: -2px" id="goodies-lock">
+                <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
+                {{#if (gte progressPercent runAttempt.run.goodiesThreshold)}}
+                  <img 
+                    src="https://minio.codingblocks.com/amoeba/progress-unlocked.svg"
+                    class="gradient-text-green pointer s-25x25"/>
+                {{else}}
+                  <img 
+                    src="https://minio.codingblocks.com/amoeba/progress-lock.svg"
+                    class="gradient-text-green pointer s-25x25"/>
+                {{/if}}
+              </div>
+            {{/if}}
 
             <div class="progress-lock" style="left: {{certificateLockOffset}}%; bottom: -2px" id="certificate-lock">
               <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.completionThreshold}}% to get certified</div>
