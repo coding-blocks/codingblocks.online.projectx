@@ -1,5 +1,5 @@
-{{#if payload}}
-  {{#each payload as |announcement|}}
+{{#if @payload}}
+  {{#each @payload as |announcement|}}
     <div class="py-2">
       <div class="d-flex">
         <img src="{{announcement.user.photo}}" alt="{{announcement.user.firstname}}" class="round s-40x40">
@@ -33,7 +33,7 @@
     <LinkTo
       class="button-solid button-orange d-inline-block"
       @route="attempt"
-      @model={{runAttempt.id}}>
+      @model={{@runAttempt.id}}>
       Go To Classroom
     </LinkTo>
   </div>

@@ -1,5 +1,5 @@
-{{#if payload}}
-  {{#each payload as |note|}}
+{{#if @payload}}
+  {{#each @payload as |note|}}
     <CourseLibrary::Notes::Row
       @note={{note}}
     />
@@ -14,8 +14,9 @@
     <LinkTo
       class="button-solid button-orange d-inline-block"
       @route="attempt"
-      @model={{runAttempt.id}}>
+      @model={{@runAttempt.id}}>
       Go To Classroom
     </LinkTo>
   </div>
 {{/if}}
+ 
