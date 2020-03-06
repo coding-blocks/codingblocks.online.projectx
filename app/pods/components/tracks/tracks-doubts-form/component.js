@@ -7,6 +7,7 @@ export default class TracksDoubtsFormComponent extends Component {
   alreadySent = false
   name = null
   mobile = null
+  email = null
 
   @service api
 
@@ -18,6 +19,7 @@ export default class TracksDoubtsFormComponent extends Component {
           data: {
             name: this.name,
             mobile: this.mobile,
+            email: this.email,
             course: 'Tracks',
           },
           meta: {
