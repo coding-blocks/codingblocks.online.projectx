@@ -1,27 +1,27 @@
 <div class="img-card">
-  <div class="head p-4" style="background-image: url('{{course.coverImage}}')">
+  <div class="head p-4" style="background-image: url('{{@course.coverImage}}')">
     <div class="row justify-content-between align-items-center no-gutters">
-      <div class="head__course-logo">
-        <img src={{or course.logo '/images/c++'}} loading="lazy">
+      <div class="s-50x50 round">
+        <img src={{or @course.logo '/images/c++'}} loading="lazy">
       </div>
       <div class="t-align-r">
         {{#each (array 0 1 2) as |index|}}
-          <span class="font-lg pl-1 {{if (lte index course.difficulty) 'orange' 'grey'}}">&#8226;</span>
+          <span class="font-lg pl-1 {{if (lte index @course.difficulty) 'orange' 'grey'}}">&#8226;</span>
         {{/each}}
-        <div class="card-sms">{{course.difficultyName}}</div>
+        <div class="card-sms">{{@course.difficultyName}}</div>
       </div>
     </div>
-    <h5 class="bold mt-3">{{course.title}}</h5>
+    <h5 class="bold mt-3">{{@course.title}}</h5>
     <div class="mt-2">
       <RatingStars 
-        @rating={{course.rating}} 
+        @rating={{@course.rating}} 
         @total={{5}} />
     </div>
   </div>
   <div class="p-4">
     <div class="card-mentor mb-4">
       <div class="card-mentor-image">
-        {{#each course.instructors as |instructor index|}}
+        {{#each @course.instructors as |instructor index|}}
           {{#if (lt index 2) }}
             <img class="card-mentors" src={{instructor.photo}} loading="lazy">
           {{/if}}
@@ -30,25 +30,25 @@
       <div class="pl-4">
         <div class="card-md font-normal">Instructors</div>
         <div class="bold">
-          {{#each course.instructors as |instructor index|}}
+          {{#each @course.instructors as |instructor index|}}
             {{#if (lt index 2)}}
               {{if index "," ""}} {{instructor.name}}
             {{/if}}
           {{/each}}
-          {{#if (gt course.instructors.length 2)}}
-            <span class="price"> +{{sub course.instructors.length 2}}</span> more
+          {{#if (gt @course.instructors.length 2)}}
+            <span class="price"> +{{sub @course.instructors.length 2}}</span> more
           {{/if}}
         </div>
       </div>
     </div>
     <div class="row no-gutters align-items-center justify-content-between">
       <div class="col-lg-8 col-6">
-        {{#unless (or organization (not course.topRun))}}
-          <span class="bold orange font-sm">&#x20b9; {{course.topRun.price}}</span>
+        {{#unless (or organization (not @course.topRun))}}
+          <span class="bold orange font-sm">&#x20b9; {{@course.topRun.price}}</span>
         {{/unless}}
       </div>
       <div class="col-6 col-lg-4">
-        <a href="/courses/{{course.slug}}" target="_blank" class="button-solid button-orange"> Explore </a>
+        <a href="/courses/{{@course.slug}}" target="_blank" class="button-solid button-orange"> Explore </a>
       </div>
     </div>
   </div>
