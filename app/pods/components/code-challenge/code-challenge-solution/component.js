@@ -23,7 +23,7 @@ export default class CodeChallengeSolution extends Component {
         type: "GET",
         data: {
           contest_id: runAttempt.run.get("contestId"),
-          p_id: this.codeChallenge.get('hbProblemId')
+          p_id: this.problem.get('id')
         }
       }
     );
@@ -38,7 +38,7 @@ export default class CodeChallengeSolution extends Component {
       type: "GET",
       data: {
         contest_id: runAttempt.run.get("contestId"),
-        p_id: this.codeChallenge.get('hbProblemId')
+        p_id: this.problem.get('id')
       }
     })
     return testcasesPayload.data.map(t => ({
@@ -52,7 +52,7 @@ export default class CodeChallengeSolution extends Component {
     this.set('api.headers.hackJwt', this.get('currentUser.user.hackJwt'))
     yield this
       .get("api")
-      .request(`code_challenges/`+ which +`?contest_id=${runAttempt.run.get("contestId")}&p_id=${this.codeChallenge.get("hbProblemId")}&force=true`)
+      .request(`code_challenges/`+ which +`?contest_id=${runAttempt.run.get("contestId")}&p_id=${this.problem.get("id")}&force=true`)
     
     return (which === 'editorials' ? this.fetchEditorialTask : this.fetchTestcaseTask).perform()
   }
