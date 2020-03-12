@@ -35,7 +35,8 @@ export default Route.extend({
       // try to enroll in preview
       try {
         await this.api.request(`runs/${params.runId}/enroll`)
-        transition.retry()
+        return this.transitionTo('classroom.timeline.index', params.courseId, params.runId)
+        // transition.retry()
       } catch (err) {
         if (err.status == 400 && err.payload.err == "TRIAL_WITHOUT_MOBILE") {
           // trial creation denined because user has no mobile number
