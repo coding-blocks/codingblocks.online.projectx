@@ -15,7 +15,8 @@ export default class LeaderboardComponent extends Component {
         filter: {
           contestId: runAttempt.get("run.contestId"),
           contentId: this.codeChallenge.get("hbContentId")
-        }
+        },
+        include: 'user,college'
       }
     }).then(result => {
       this.store.unloadAll('content-leaderboard')

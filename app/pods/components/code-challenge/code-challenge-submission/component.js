@@ -21,6 +21,10 @@ export default class SubmissionComponent extends Component {
         },
         sort: '-createdAt'
       }
+    }).then(submissions => {
+      this.store.unloadAll('submission')
+      this.store.pushPayload(submissions)
+      return this.store.peekAll('submission')
     })
   }
 
