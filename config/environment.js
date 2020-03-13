@@ -142,7 +142,7 @@ module.exports = function(environment) {
     ENV.publicUrl = 'https://online.codingblocks.xyz';
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
-    ENV.hackApiHost = 'https://api.codingblocks.xyz'
+    ENV.hackApiHost = 'https://hack-api.codingblocks.xyz'
 
     ENV.talkjs = {
       appId: '2LhQvB3j'
