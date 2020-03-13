@@ -129,7 +129,7 @@ export default class CodeEditor extends Component {
     const payload = yield this.api.request("code_challenges/submit", {
       method: "POST",
       data: {
-        problemId: this.codeChallenge.get("hbProblemId"),
+        contentId: this.codeChallenge.get("hbContentId"),
         custom_input: Base64.encode(this.customInputText),
         source: Base64.encode(this.selectedLanguage.source),
         language: this.selectedLanguage.code,
@@ -151,7 +151,7 @@ export default class CodeEditor extends Component {
       method: "POST",
       data: {
         contestId: runAttempt.get("run.contestId"),
-        problemId: this.codeChallenge.get("hbProblemId"),
+        contentId: this.codeChallenge.get("hbContentId"),
         language: this.selectedLanguage.code,
         source: Base64.encode(this.selectedLanguage.source)
       }
@@ -162,10 +162,9 @@ export default class CodeEditor extends Component {
       "method": "GET"
     }), submissionStatus => submissionStatus && submissionStatus['judge-result'] !== null);
 
-    this.get('api').request('code_challenges/problems',{
+    this.get('api').request(`code_challenges/${this.codeChallenge.get('id')}/problems`,{
       data: {
-        contest_id: runAttempt.get("run.contestId"),
-        problem_id: this.codeChallenge.get("hbProblemId")
+        contest_id: runAttempt.get("run.contestId")
       },
     }).then(async result=>{
       this.set("problemJsonApiPayload", result);
@@ -173,10 +172,9 @@ export default class CodeEditor extends Component {
       this.get('store').unloadAll('problem')
       later(async() => {
         this.get('store').pushPayload(payload)
-        const problem = await this.get('store').peekRecord('problem', this.codeChallenge.get('hbProblemId'))
+        const problem = await this.get('store').peekRecord('problem', result.data.id)
         if (await problem.get('hasLatestSubmissionPassed') && await problem.get('mostSuccessfullSubmission.score') == 100) {
           const progress = await this.get('content.progress')
-          debugger
           progress.set("status", 'DONE')
           return progress.save();
         }

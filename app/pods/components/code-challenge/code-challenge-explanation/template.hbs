@@ -1,31 +1,31 @@
 <p>
-  {{markdown-to-html problem.content.description}}
+  {{markdown-to-html problem.details.description}}
 </p>
 <div class="extra-bold">Input Format</div>
 <p>
-  {{markdown-to-html problem.content.input-format}}
+  {{markdown-to-html problem.details.input-format}}
 </p>
 <div class="extra-bold">Constraints</div>
 <div class="bg-dark-grey br-5 w-60 px-4 py-2 my-2">
   <p>
-    {{markdown-to-html problem.content.constraints}}
+    {{markdown-to-html problem.details.constraints}}
   </p>
 </div>
 <div class="extra-bold">Output Format</div>
 <p>
-  {{markdown-to-html problem.content.output-format}}
+  {{markdown-to-html problem.details.output-format}}
 </p>
 <div class="extra-bold">Sample Input</div>
 <div class="bg-dark-grey br-5 w-60 px-4 py-2 my-2">
-  <pre>{{problem.content.sample-input}}</pre>
+  <pre>{{problem.details.sample-input}}</pre>
 </div>
 <div class="extra-bold">Sample Output</div>
 <div class="bg-dark-grey br-5 w-60 px-4 py-2 my-2">
-  <pre>{{problem.content.sample-output}}</pre>
+  <pre>{{problem.details.sample-output}}</pre>
 </div>
-{{#if problem.content.explanation}}
+{{#if problem.details.explanation}}
   <div class="extra-bold">Explanation</div>
   <div class="bg-dark-grey br-5 w-60 px-4 py-2 my-2">
-    {{markdown-to-html problem.content.explanation}}
+    {{markdown-to-html problem.details.explanation}}
   </div>
 {{/if}}

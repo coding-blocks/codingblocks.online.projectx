@@ -8,7 +8,7 @@ export default AjaxService.extend({
     currentUser: service(),
     host: env.hackApiHost,
     contentType: 'application/json; charset=utf-8',
-    namespace: '/api',
+    namespace: '/api/v2',
     headers: computed('currentUser.user.hackJwt', function () {
         return {
             Authorization: `JWT ${this.get('currentUser.user.hackJwt')}`,

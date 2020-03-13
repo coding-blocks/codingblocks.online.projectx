@@ -12,17 +12,16 @@ export default class CodeChallengeRoute extends Route {
     const runAttempt = this.modelFor('attempt')
     this.set("api.headers.hackJwt", this.get("currentUser.user.hackJwt"));
 
-    const problem = this.api.request('code_challenges/problems', {
+    const problem = this.api.request(`code_challenges/${content.payload.get('id')}/problem`, {
       data: {
-        contest_id: runAttempt.get("run.contestId"),
-        problem_id: content.payload.get("hbProblemId")
+        contest_id: runAttempt.get("run.contestId")
       }
     }).then(payload => {
       if (!payload) return {}
       
       this.store.unloadAll('problem')
       this.store.pushPayload(payload)
-      return this.store.peekRecord('problem', content.payload.get('hbProblemId'))
+      return this.store.peekRecord('problem', payload.data.id)
     }).catch(err => {
       console.log(err)
       return {}
