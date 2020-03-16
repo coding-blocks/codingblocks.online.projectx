@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 export default DS.Model.extend({
   name: DS.attr(),
-  content: DS.attr(),
+  details: DS.attr(),
   submissions: DS.hasMany('submission'),
   solutionStubs: DS.hasMany('solution-stub'),
   mostSuccessfullSubmission: computed('submissions', function(){

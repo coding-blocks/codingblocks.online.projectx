@@ -10,16 +10,19 @@ export default class LeaderboardComponent extends Component {
 
   @restartableTask fetchLeaderboardTask = function *() {
     const runAttempt = this.store.peekRecord('run-attempt', this.player.runAttemptId)
-    yield this.hbApi.request('submissions/leaderboard', {
+    yield this.hbApi.request('content-leaderboards', {
       data: {
-        contest_id: runAttempt.get("run.contestId"),
-        problem_id: this.codeChallenge.get("hbProblemId")
+        filter: {
+          contestId: runAttempt.get("run.contestId"),
+          contentId: this.codeChallenge.get("hbContentId")
+        },
+        include: 'user,college'
       }
     }).then(result => {
-      this.store.unloadAll('problem-leaderboard')
+      this.store.unloadAll('content-leaderboard')
       later(() => {
         this.store.pushPayload(result)
-        this.set('leaderboard', this.get('store').peekAll('problem-leaderboard'))
+        this.set('leaderboard', this.get('store').peekAll('content-leaderboard'))
       })
     })
   }
