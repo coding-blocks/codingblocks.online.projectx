@@ -131,7 +131,9 @@
       <div class="border-card p-4">
         <ExtensionsWidget 
           @onClose={{action (mut showExtensions) false}} 
-          @run={{runAttempt.run}} />
+          @run={{runAttempt.run}}
+          @expired={{runAttempt.isExpired}}
+        />
       </div>
     {{/if}}
 

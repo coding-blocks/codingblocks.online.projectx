@@ -1,7 +1,9 @@
 <div class="p-4">
   <div class="row">
     <div class="col-8 my-auto font-mds">
-      <div class="bold">Your course has been expired!</div>
+      <div class="bold">Your course 
+        {{if @expired 'has been expired!' 'will expire soon!'}}
+      </div>
       <div>Buy extension for this course</div>
     </div>
     <div class="col-4 t-align-r">
