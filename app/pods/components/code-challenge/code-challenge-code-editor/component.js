@@ -157,7 +157,7 @@ export default class CodeEditor extends Component {
       "method": "GET"
     }), submissionStatus => submissionStatus && submissionStatus['judge-result'] !== null);
 
-    this.get('api').request(`code_challenges/${this.codeChallenge.get('id')}/problems`,{
+    this.get('api').request(`code_challenges/${this.codeChallenge.get('id')}/problem`,{
       data: {
         contest_id: runAttempt.get("run.contestId")
       },
