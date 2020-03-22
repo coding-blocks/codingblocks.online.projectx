@@ -32,6 +32,7 @@
     <ExtensionsWidget 
       @run={{run}} 
       @onClose={{action (mut showExtensionsModal) false}}
+      @expired={{runAttempt.isExpired}}
     />
   </ModalDialog>
 {{/if}}

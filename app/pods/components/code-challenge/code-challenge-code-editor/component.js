@@ -86,7 +86,7 @@ export default class CodeEditor extends Component {
   ])
 
   setCodeStubs() {
-    this.problem.solutionStubs.map(stub => {
+    this.problem.get('solutionStubs').map(stub => {
       const languageSpec = this.languageSpecs.findBy('code', stub.language)
       if (languageSpec.source === '') {
         set(languageSpec, 'source', stub.body)
@@ -162,19 +162,19 @@ export default class CodeEditor extends Component {
       "method": "GET"
     }), submissionStatus => submissionStatus && submissionStatus['judge-result'] !== null);
 
-    this.get('api').request(`code_challenges/${this.codeChallenge.get('id')}/problems`,{
+    this.get('api').request(`code_challenges/${this.codeChallenge.get('id')}/content`,{
       data: {
         contest_id: runAttempt.get("run.contestId")
       },
     }).then(async result=>{
-      this.set("problemJsonApiPayload", result);
+      // this.set("problemJsonApiPayload", result);
       const payload = JSON.parse(JSON.stringify(result))
-      this.get('store').unloadAll('problem')
-      later(async() => {
+      // this.get('store').unloadAll('hbcontent') // kyu ?
+      later(async () => {
         this.get('store').pushPayload(payload)
-        const problem = await this.get('store').peekRecord('problem', result.data.id)
-        if (await problem.get('hasLatestSubmissionPassed') && await problem.get('mostSuccessfullSubmission.score') == 100) {
-          const progress = await this.get('content.progress')
+        const hbContent = await this.get('store').peekRecord('hbcontent', result.data.id)
+        if (await hbContent.get('topSubmission.score') == 100) {
+          const progress = await this.content.get('progress')
           progress.set("status", 'DONE')
           return progress.save();
         }

@@ -40,7 +40,7 @@
             <progress value="{{progressPercent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
 
             {{!-- % * 0.9 to compensate for 90% width of progress bar --}}
-            {{#if showGoodieRequest}}  
+            {{#if (and (is-after (unix runAttempt.run.start) '2019-11-29') showGoodieRequest)}}  
               <div class="progress-lock" style="left: {{goodiesLockOffset}}%; bottom: -2px" id="goodies-lock">
                 <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
                 {{#if (gte progressPercent runAttempt.run.goodiesThreshold)}}
@@ -131,7 +131,9 @@
       <div class="border-card p-4">
         <ExtensionsWidget 
           @onClose={{action (mut showExtensions) false}} 
-          @run={{runAttempt.run}} />
+          @run={{runAttempt.run}}
+          @expired={{runAttempt.isExpired}}
+        />
       </div>
     {{/if}}
 
