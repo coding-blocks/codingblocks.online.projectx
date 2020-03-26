@@ -64,4 +64,5 @@ Router.map(function() {
   });
   this.route('spin', {path: '/valentines'}, function() {});
   this.route('login-blocker');
+  this.route('subscribe');
 });
