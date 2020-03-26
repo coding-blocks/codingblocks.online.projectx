@@ -56,19 +56,19 @@ export default Route.extend(ApplicationRouteMixin, {
       if (this.get('session.isAuthenticated')) {
         return this.currentUser.load().then (user => {
           try {
-            OneSignal.getUserId ().then (userId => {
-              if (! userId) {
-                throw new Error ('player ID not found')
-              }
+            OneSignal.push(function() {
+              OneSignal.on("subscriptionChange", async isSubscribed => {
+                const userId = await OneSignal.getUserId();
+                if (!userId) {
+                  throw new Error("player ID not found");
+                }
+                const player = this.store.createRecord("player");
 
-              const player = this.store.createRecord ('player')
+                player.set("playerId", userId);
 
-              player.set ('playerId', userId)
-
-              return player.save ()
+                await player.save();
+              })
             })
-              .then (result => console.log ('playerId set!'))
-              .catch (error => console.error (error))
           }
           catch (error) {
             console.error(error)
