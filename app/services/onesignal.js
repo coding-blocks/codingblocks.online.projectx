@@ -15,7 +15,7 @@ export default class OnesignalService extends Service {
       })
     })
 
-    OneSignal.push(function () {
+    OneSignal.push(() => {
       OneSignal.on("subscriptionChange", async isSubscribed => {
         if (!isSubscribed) 
           return;
