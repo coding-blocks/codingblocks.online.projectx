@@ -86,6 +86,9 @@ export default class Overview extends Controller {
 
   @action
   log(event, course){
-    this.metrics.trackEvent({event, course, page: 'Classroom'})
+    this.metrics.trackEvent({
+      action: event,
+      category: course,
+    })
   } 
 }

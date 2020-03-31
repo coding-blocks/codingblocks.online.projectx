@@ -36,8 +36,8 @@ export default class navBarComponent extends Component {
   @action
   toggleNotification() {
     this.metrics.trackEvent({
-      event: "NotificationClicked",
-      location: "navbar"
+      action: "notification_clicked",
+      category: "navbar_menu"
     })
 
     if (this.get("activeTab") === "notification") this.set("activeTab", null);
@@ -47,20 +47,11 @@ export default class navBarComponent extends Component {
   @action
   toggleCart() {
     this.metrics.trackEvent({
-      event: "CartClicked",
-      location: "navbar"
+      action: "cart_clicked",
+      category: "navbar_menu"
     })
 
     if (this.get("activeTab") === "cart") this.set("activeTab", null);
     else this.set("activeTab", "cart");
-  }
-
-  @action
-  log(cta) {
-    this.get("metrics").trackEvent({
-      event: "buttonClicked",
-      location: "navbar",
-      cta
-    });
   }
 }
