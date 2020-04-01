@@ -41,7 +41,6 @@ export default class NotificationDropdownComponent extends Component {
   }
 
   @restartableTask loadNotifications = function *() {
-    this.get('metrics').trackEvent({event: 'buttonClicked', location: 'navbar', cta: 'Notification'})
     const notifications = yield this.get ('store').query ('notification', {
       page: {
         offset: this.get ('offset'),
