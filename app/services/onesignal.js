@@ -31,6 +31,8 @@ export default class OnesignalService extends Service {
 
   // sets externalId on this user
   setExternalId(oneauthId) {
-    OneSignal.setExternalUserId(oneauthId)
+    if (OneSignal && typeof OneSignal.setExternalUserId === 'function') {
+      OneSignal.setExternalUserId(oneauthId)
+    }
   }
 }
