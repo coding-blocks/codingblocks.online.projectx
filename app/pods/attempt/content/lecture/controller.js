@@ -11,6 +11,9 @@ export default class LectureController extends Controller {
   @action
   async markProgress() {
     const progress = await this.content.get('progress')
+    if (progress.status == 'DONE') // don't mark progress if already done
+      return;
+    
     progress.set('status', 'DONE')
     this.runAttempt.incrementProperty("completedContents")
     progress.save()
