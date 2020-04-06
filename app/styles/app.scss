@@ -307,4 +307,14 @@ body {
   }
 }
 
+.new-tag{
+  padding: 2px;
+  font-family: Gilroy-Medium;
+  font-size: 8px;
+  line-height: 10px;
+  color: #FFFFFF;
+  background: linear-gradient(90deg, #E74E4B 14.25%, #FB8133 96.93%);
+  border-radius: 25px;
+}
+
 @import "ember-content-placeholders";
