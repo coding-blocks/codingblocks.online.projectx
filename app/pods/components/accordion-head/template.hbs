@@ -68,9 +68,9 @@
 		<div class="li-right col-4">
 			<div class="d-flex flex-column align-items-end">
 				<div class="{{if (eq completed total) 'green'}}">{{completed}}/{{total}} Lectures Completed</div>
-				{{#if (and deadline (not (eq completed total)))}}
+				{{!-- {{#if (and deadline (not (eq completed total)))}}
 				<div class="red mt-2 deadline">Due {{moment-format deadline 'DD-MMM-YY'}}</div>
-				{{/if}}
+				{{/if}} --}}
 			</div>
 		</div>
 	{{/if}}
