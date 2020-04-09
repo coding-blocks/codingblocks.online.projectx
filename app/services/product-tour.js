@@ -18,15 +18,6 @@ export const defaultStepOptions = {
   }
 }
 
-const noop = () => { }
-
-const tourStarterHoc = (tour, keyName) => {
-  return () => {
-    localStorage.setItem(keyName, true)
-    tour.start()
-  }
-}
-
 const tourDefaults = {
   defaultStepOptions,
   disableScroll: true,
@@ -45,32 +36,37 @@ const resetDefaults = (tour) => tour.setProperties(tourDefaults)
 export default class ProductTourService extends Service {
   @service tour
 
+  _loadedTourName = null
+
   constructor() {
     super(...arguments)
     resetDefaults(this.tour)
   }
 
 
-  async prepareCourseDashboardTour(force = false) {
+  async prepareCourseDashboardTour() {
     const keyName = 'dashboard-tour'
-    if (localStorage.getItem(keyName) && !force) {
-      return noop
-    }
     const tour = this.tour
     resetDefaults(tour)
     await tour.addSteps(courseDashboardsSteps)
-    return tourStarterHoc(tour, keyName)
+    this.set('_loadedTourName', keyName)
   }
 
-  async preparePlayerTour(force = false) {
+  async preparePlayerTour() {
     const keyName = 'player-tour'
-    if (window.localStorage.getItem(keyName) && !force) {
-      return noop
-    }
     const tour = this.tour
-    resetDefaults(tour)
+    resetDefaults(tour) 
     tour.set("modal", false)
     await tour.addSteps(contentPlayerSteps)
-    return tourStarterHoc(tour, keyName)
+    this.set('_loadedTourName', keyName)
+  }
+
+  start(force) {
+    if (localStorage.getItem(this._loadedTourName) && !force) {
+      return;
+    }
+    const tour = this.tour
+    localStorage.setItem(this._loadedTourName, true)
+    tour.isActive ? tour.cancel() : tour.start()
   }
 }

@@ -17,8 +17,8 @@ export default Route.extend({
   },
   async afterModel(model) {
     this.set('headData.title', 'My Classroom | ' + model.get('run.course.title'))
-    const startTour = await this.productTour.prepareCourseDashboardTour()
-    scheduleOnce('afterRender', startTour)
+    await this.productTour.prepareCourseDashboardTour()
+    scheduleOnce('afterRender', () => this.productTour.start())
   },
   actions: {
     log(event, course){

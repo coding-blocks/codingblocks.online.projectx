@@ -60,8 +60,7 @@ export default class AttemptController extends Controller {
   }
 
   @action
-  async startTour() {
-    const startTour = await this.productTour.preparePlayerTour(true)
-    startTour()
+  startTour() {
+    this.productTour.start(true)
   }
 }

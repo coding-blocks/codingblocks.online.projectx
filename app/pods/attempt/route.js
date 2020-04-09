@@ -9,8 +9,8 @@ export default Route.extend(AuthenticatedRouteMixin, {
   router: service(),
   productTour: service(),
   async beforeModel() {
-    const startTour = await this.productTour.preparePlayerTour()
-    scheduleOnce('afterRender', startTour)
+    await this.productTour.preparePlayerTour()
+    scheduleOnce('afterRender', () => this.productTour.start())
   },
 	model(params, transition) {
 		return this.store.findRecord('runAttempt', params.runAttemptId, { reload: true })

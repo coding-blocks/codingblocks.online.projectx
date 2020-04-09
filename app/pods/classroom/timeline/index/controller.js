@@ -79,9 +79,8 @@ export default class Overview extends Controller {
   }
 
   @action
-  async startTour() {
-    const startTour = await this.productTour.prepareCourseDashboardTour(true)
-    startTour()
+  startTour() {
+    this.productTour.start(true)
   }
 
   @action
