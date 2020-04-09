@@ -21,6 +21,8 @@ export default class LoginBlockerController extends Controller {
     await this.session.authenticate('authenticator:jwt-direct', response)
     await this.currentUser.load()
 
+    const user = this.currentUser.user
+
     if(user.get('organization')) {
       this.transitionTo(user.get('organization'))
     }

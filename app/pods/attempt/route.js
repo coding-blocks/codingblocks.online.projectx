@@ -9,6 +9,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
   router: service(),
   productTour: service(),
   async beforeModel() {
+    this._super(...arguments)
     await this.productTour.preparePlayerTour()
     scheduleOnce('afterRender', () => this.productTour.start())
   },
@@ -45,9 +46,11 @@ export default Route.extend(AuthenticatedRouteMixin, {
 	},
 	actions: {
     willTransition() {
+      this._super(...arguments)
 			window.setTimeout( () => jivo_init(), 5000)
 		},
     didTransition() {
+      this._super(...arguments)
 			try {
 				jivo_init();
 			} catch (err) {
