@@ -1,9 +1,10 @@
 import Route from "@ember/routing/route";
 import ApplicationRouteMixin from "ember-simple-auth/mixins/application-route-mixin";
+import UtmCookieRouteMixin from "../../mixins/utm-cookie-route"
 import { inject as service } from "@ember/service";
 import { isNone } from "@ember/utils";
 
-export default Route.extend(ApplicationRouteMixin, {
+export default Route.extend(ApplicationRouteMixin, UtmCookieRouteMixin, {
   session: service(),
   currentUser: service(),
   store: service(),
@@ -13,10 +14,12 @@ export default Route.extend(ApplicationRouteMixin, {
   // routeAfterAuthentication: 'dashboard',
   queryParams: {
     code: {
-      refreshModel: true
+      refreshModel: true,
+      repalce: true
     }
   },
   async beforeModel(transition) {
+    this._super(...arguments)
     this.metrics; // !important: keep this here to init trackers for all routes
     this.onesignal;
     if (!isNone(transition.to.queryParams.code)) {
@@ -69,9 +72,5 @@ export default Route.extend(ApplicationRouteMixin, {
   setupController(controller, model) {
     this._super(controller, model);
     controller.set("model", model);
-
-    // later(function(){
-    //   controller.set('code', undefined)
-    // })
   }
 });

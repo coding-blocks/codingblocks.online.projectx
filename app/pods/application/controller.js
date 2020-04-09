@@ -8,6 +8,13 @@ export default class ApplicationController extends Controller {
   @service router
   @service session
   @service layout
+
+  queryParams = ['utm_campaign', 'utm_source', 'utm_medium', 'code']
+  utm_campaign = null
+  utm_source = null
+  utm_medium = null
+  code = null
+
   @computed ('router.currentRouteName')
   get isInsideAttemptRoute () {
     return ['attempt'].includes(this.get('router.currentRouteName').split('.')[0])
