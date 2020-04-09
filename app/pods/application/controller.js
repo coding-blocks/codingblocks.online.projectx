@@ -9,10 +9,13 @@ export default class ApplicationController extends Controller {
   @service session
   @service layout
 
-  queryParams = ['utm_campaign', 'utm_source', 'utm_medium', 'code']
+  queryParams = ['utm_campaign', 'utm_source', 'utm_medium', 'utm_term', 'utm_content', 'utm_coupon' ,'code']
   utm_campaign = null
   utm_source = null
   utm_medium = null
+  utm_term = null
+  utm_content = null
+  utm_coupon = null
   code = null
 
   @computed ('router.currentRouteName')

@@ -11,20 +11,13 @@ function getCookie(name, defaultValue = window.btoa('{}')){
   return defaultValue
 }
 
-const utm_params = ['utm_campaign', 'utm_source', 'utm_medium']
+const utm_params = ['utm_campaign', 'utm_source', 'utm_medium', 'utm_term', 'utm_content', 'utm_coupon']
+const resetProps = utm_params.reduce((acc, key) => ({ ...acc, [key]: null }), {})
+const defaultQpProps = { replace: true }
+const queryParamsProps = utm_params.reduce((acc, key) => ({...acc, [key]: defaultQpProps}), {})
 
 export default Mixin.create({
-  queryParams: {
-    utm_campaign: {
-      replace: true
-    },
-    utm_source: {
-      replace: true
-    },
-    utm_medium: {
-      replace: true
-    }
-  },
+  queryParams: queryParamsProps,
   beforeModel(transition) {
     const qp = transition.to.queryParams
     const new_cbutm = Object.keys(qp).reduce((acc, key) => utm_params.includes(key) && qp[key] ? {...acc, [key]: qp[key]} : acc , {})
@@ -42,9 +35,7 @@ export default Mixin.create({
     didTransition() {
       this._super(...arguments)
       this.controller.setProperties({
-        utm_campaign: null,
-        utm_source: null,
-        utm_medium: null,
+        ...resetProps,
         code: null
       })
     }
