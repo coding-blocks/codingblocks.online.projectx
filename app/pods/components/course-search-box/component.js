@@ -8,16 +8,15 @@ import { inject as service } from '@ember/service';
 
 export default class SearchBoxComponent extends Component {
   hideResultsBox = true
-  qs = ''
 
   @service api
   @service router
 
   @alias('searchTask.lastSuccessful.value') results
 
-  @restartableTask searchTask = function* ()  {
+  @restartableTask searchTask = function* (query = '') {
     yield timeout (100)
-    const searchQuery = this.get('qs').trim().toLowerCase()
+    const searchQuery = query.trim().toLowerCase()
 
     try {
       const sections = this.get('run.sections')
@@ -33,9 +32,11 @@ export default class SearchBoxComponent extends Component {
         })
         .reduce((acc, val) => [...acc, ...val.toArray()], [])
         .filter(result => {
-          return (result.content.get('payload.name')
+          return (
+            (result.content.get('payload.name') || '')
             .toLowerCase()
-            .indexOf(searchQuery) > -1)
+            .indexOf(searchQuery) > -1
+          )
         })
         .map((result) => {
           let content = result.content

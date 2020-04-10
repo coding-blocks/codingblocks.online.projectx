@@ -3,10 +3,11 @@
     type="text" 
     class="bg-black-grey w-75 grey"
     placeholder="Search Content"
-    value=qs key-press=(perform searchTask) 
+    key-press=(perform searchTask) 
     focusIn=(action 'showResult') 
-    focusOut=(action 'hideResult')}}
-    <img src="https://minio.codingblocks.com/amoeba/search-icon.svg" alt="Search Icon" class="float-right">
+    focusOut=(action 'hideResult')
+  }}
+  <img src="https://minio.codingblocks.com/amoeba/search-icon.svg" alt="Search Icon" class="float-right">
 
   {{#unless hideResultsBox}}
     <div class="search-box bg-black-grey br-15 inverted">
@@ -16,7 +17,7 @@
         {{#each results as |result|}}
           <div class="row search-content pointer align-items-center" {{action 'transitionToContent' result.contentId result.sectionId}}>
             <div class="img-container col-md-3">
-              <div class="content-icon {{result.iconClass}}-{{if result.isDone 'green-dark' 'red-dark'}}"></div>
+              <div class="content-row big {{result.iconClass}}"></div>
             </div>
             <div class="heading-container col-md-9">
               <div>{{result.title}}</div>
