@@ -7,16 +7,13 @@ export default Route.extend({
   api: inject(),
   currentUser: inject(),
   headData: inject(),
-  async beforeModel() {
-    const params = this.paramsFor('attempt.content')
+  async model(params) {
     const section = this.store.peekRecord('section', params.sectionId)
-    return section.get('contents')
-  },
-  model (params) {
-      return this.store.peekRecord('content', params.contentId, {
-          include: 'lecture,video,document,code_challenge,webinar',
-          reload: true
-      })
+    await section.get('contents')
+    return this.store.peekRecord('content', params.contentId, {
+        include: 'lecture,video,document,code_challenge,webinar',
+        reload: true
+    })
   },
   setupController(controller) {
       this._super(...arguments)
