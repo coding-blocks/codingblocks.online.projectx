@@ -7,9 +7,14 @@
     display: inline-block;
     height: 25px;
     width: 25px;
-    margin-right: 1rem;
-    background-size: cover;
+    margin-right: 0.5rem;
+    background-size: contain;
     background-repeat: no-repeat;
+  }
+
+  span.normal {
+    word-break: break-word;
+    margin-right: 0.5rem;
   }
 
   &.quiz-row::before {
