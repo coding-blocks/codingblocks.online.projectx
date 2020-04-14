@@ -96,12 +96,12 @@
         </div>
         <div>
           {{#if showBuyNow}} 
-            <a href="/courses/{{course.identifier}}"  class="button-solid button-orange mr-4" onclick={{action 'log' 'Buy now' course.identifier preventDefault=false}}>
+            <a href="/courses/{{course.identifier}}"  class="button-solid button-orange mr-4" onclick={{action 'log' 'buy_now' course.identifier preventDefault=false}}>
               Buy Now
             </a>
           {{/if}}
 
-          {{#link-to "attempt" runAttempt.id activeClass="" class="button-dashed button-orange" invokeAction=(action 'log' 'Resume' runAttempt.id preventDefault=false)}}
+          {{#link-to "attempt" runAttempt.id activeClass="" class="button-dashed button-orange" invokeAction=(action 'log' 'resume' course.identifier preventDefault=false)}}
             Resume
           {{/link-to}}
         </div>

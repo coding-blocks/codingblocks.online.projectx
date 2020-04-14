@@ -12,11 +12,11 @@
             </div>
           {{/if}}
         <div class="normal mt-1 med-grey font-xs">
-          {{#if (and section.deadlineDate (is-before now section.deadlineDate)) }}
+          {{!-- {{#if (and section.deadlineDate (is-before now section.deadlineDate)) }}
             {{section.doneContents.length}}/{{section.contents.length}} | Due Date: {{moment-format section.deadlineDate 'MMM Do YYYY'}}
-          {{else}}
+          {{else}} --}}
             {{section.doneContents.length}} of {{section.contents.length}} contents completed
-          {{/if}}
+          {{!-- {{/if}} --}}
         </div>
       </div>
       <FaIcon @icon={{if isOpen "chevron-up" "chevron-down"}} />

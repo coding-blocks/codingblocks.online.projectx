@@ -1,94 +1,76 @@
-import Route from '@ember/routing/route';
-import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
-import { inject as service } from '@ember/service';
-import { isNone } from '@ember/utils';
+import Route from "@ember/routing/route";
+import ApplicationRouteMixin from "ember-simple-auth/mixins/application-route-mixin";
+import UtmCookieRouteMixin from "../../mixins/utm-cookie-route"
+import { inject as service } from "@ember/service";
+import { isNone } from "@ember/utils";
 
-export default Route.extend(ApplicationRouteMixin, {
+export default Route.extend(ApplicationRouteMixin, UtmCookieRouteMixin, {
   session: service(),
   currentUser: service(),
-  store: service (),
+  store: service(),
   headData: service(),
+  onesignal: service(),
   metrics: service(), // !important: keep this here to init trackers for all routes
   // routeAfterAuthentication: 'dashboard',
   queryParams: {
     code: {
-      refreshModel: true
+      refreshModel: true,
+      repalce: true
     }
   },
   async beforeModel(transition) {
+    this._super(...arguments)
     this.metrics; // !important: keep this here to init trackers for all routes
-      if (!isNone(transition.to.queryParams.code)) {
-        if (this.get('session.isAuthenticated')) {
-          return ''
-          // return this.transitionTo({ queryParams: { code: undefined } })
-        }
-        // we have ?code qp
-        const { code } = transition.to.queryParams
-        
-        return this.session.authenticate('authenticator:jwt', { identification: code, password: code, code })
-          .then(() => this.currentUser.load())
-          .then(user => {
-            // if user belongs to an org, redirect to the domain
-            if(user.get('organization')) {
-              this.transitionTo(user.get('organization'))
-            }
-          })
-          .catch(error => {
-            if (error.err === 'USER_EMAIL_NOT_VERIFIED') {
-              return this.transitionTo('error', {
-                queryParams: {
-                  errorCode: 'USER_EMAIL_NOT_VERIFIED'
-                }
-              })
-            }
-            if (error.name == 'USER_LOGGED_IN_ELSEWHERE') {
-              return this.transitionTo('login-blocker', {
-                queryParams: {
-                  code: null,
-                  token: error.logout_token
-                }
-              })
-            }
-          });
+    this.onesignal;
+    if (!isNone(transition.to.queryParams.code)) {
+      if (this.get("session.isAuthenticated")) {
+        return "";
+        // return this.transitionTo({ queryParams: { code: undefined } })
       }
-    },
-  model () {
-      if (this.get('session.isAuthenticated')) {
-        return this.currentUser.load().then (user => {
-          try {
-            OneSignal.getUserId ().then (userId => {
-              if (! userId) {
-                throw new Error ('player ID not found')
+      // we have ?code qp
+      const { code } = transition.to.queryParams;
+
+      return this.session
+        .authenticate("authenticator:jwt", {
+          identification: code,
+          password: code,
+          code
+        })
+        .then(() => this.currentUser.load())
+        .then(user => {
+          // if user belongs to an org, redirect to the domain
+          if (user.get("organization")) {
+            this.transitionTo(user.get("organization"));
+          }
+        })
+        .catch(error => {
+          if (error.err === "USER_EMAIL_NOT_VERIFIED") {
+            return this.transitionTo("error", {
+              queryParams: {
+                errorCode: "USER_EMAIL_NOT_VERIFIED"
               }
-
-              const player = this.store.createRecord ('player')
-
-              player.set ('playerId', userId)
-
-              return player.save ()
-            })
-              .then (result => console.log ('playerId set!'))
-              .catch (error => console.error (error))
+            });
           }
-          catch (error) {
-            console.error(error)
+          if (error.name == "USER_LOGGED_IN_ELSEWHERE") {
+            return this.transitionTo("login-blocker", {
+              queryParams: {
+                code: null,
+                token: error.logout_token
+              }
+            });
           }
-          return user
         });
-      }
+    }
   },
-
-  setupController(controller, model){
-    this._super(controller, model)
-    controller.set('model', model)
-
-    // later(function(){
-    //   controller.set('code', undefined)
-    // })
+  model() {
+    return this.get("session.isAuthenticated") && this.currentUser.load()
   },
   afterModel(model) {
-    this.set('headData.title', 'Coding Blocks Online')
+    this.set("headData.title", "Coding Blocks Online")
   },
 
-  
-})
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set("model", model);
+  }
+});

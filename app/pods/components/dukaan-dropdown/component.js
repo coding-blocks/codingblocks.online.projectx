@@ -32,7 +32,10 @@ export default class DukaanDropdown extends Component {
 
   @restartableTask fetchCart = function* () {
     try {
-      this.get('metrics').trackEvent({event: 'buttonClicked', location: 'navbar', cta: 'Cart'})
+      this.metrics.trackEvent({
+        action: "cart_open",
+        category: "navbar_menu"
+      })
       const cart = yield this.get('api').request('/runs/cart')
       const item = cart.cartItems[0]
       item.list_price = (item.list_price / 100).toFixed(2)

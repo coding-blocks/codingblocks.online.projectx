@@ -78,7 +78,7 @@
   </div>
 </div>
 
-{{#if lastResult}}
+{{#if (and lastResult (not judgeTaskGroup.isRunning))}}
   {{#if (and explanation showExplanation)}}
     <div class="border-card border-none mb-5 bg-grey-darker">
       <div class="font-sm bold white">

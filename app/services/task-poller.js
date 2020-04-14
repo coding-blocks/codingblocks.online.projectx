@@ -36,7 +36,7 @@ export default class TaskPollerService extends Service {
    * @param {*} gap – Sets the gap between every request
    * @returns {Promise<object>} result – Return the poller task result
    */
-  performPoll(fn, condition, maxTries = 10, gap = 2000) {
+  performPoll(fn, condition, maxTries = 30, gap = 2000) {
     if (typeof condition !== 'function') {
       throw new Error('The Exit Condition to poll must be function! Got: ', typeof condition)
     }

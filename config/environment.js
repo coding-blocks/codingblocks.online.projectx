@@ -100,6 +100,7 @@ module.exports = function(environment) {
     ENV.googleAnalytics = {
       webPropertyId: 'UA-83327907-12'
     }
+    ENV.OnesignalAppId = 'ae392a03-3c7d-498b-94aa-2a7c17f7db0c'
   }
 
   if (environment === 'test') {
@@ -135,6 +136,8 @@ module.exports = function(environment) {
     ENV.talkjs = {
       appId: '2LhQvB3j'
     }
+    ENV.OnesignalAppId = '01d75aac-5123-4145-b655-ba8d27c5dc13'
+
   }
 
   if (environment === 'staging') {

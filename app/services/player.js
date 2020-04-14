@@ -70,7 +70,10 @@ export default class PlayerService extends Service {
       nextContent = contents.objectAt(indexOfThisContent + 1);
     }
 
-    this.router.replaceWith('attempt.content', nextSection.id, nextContent.id)
+    Ember.getOwner(this).lookup('router:main').transitionTo('attempt.content', nextSection.id, nextContent.id) // because router service sucks
+    // jokes aside: it has do something with query params on routes
+    // ember router service behavious differently with qp
+    // this.router.transitionTo('attempt.content', nextSection.id, nextContent.id)
   }
 
   @action

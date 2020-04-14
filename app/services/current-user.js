@@ -6,6 +6,8 @@ export default Service.extend({
   api: service(),
   store: service(),
   session: service(),
+  onesignal: service(),
+  metrics: service(),
   user: {},
   organization: alias("user.organization"),
   init() {
@@ -31,6 +33,10 @@ export default Service.extend({
       .then(user => {
         this.set("user", user);
         this.setOrg(user.get("organization"));
+        this.onesignal.setExternalId(user.oneauthId)
+        this.metrics.identify({
+          distinctId: user.oneauthId
+        })
         return user;
       });
   },

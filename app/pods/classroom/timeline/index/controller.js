@@ -79,13 +79,15 @@ export default class Overview extends Controller {
   }
 
   @action
-  async startTour() {
-    const startTour = await this.productTour.prepareCourseDashboardTour(true)
-    startTour()
+  startTour() {
+    this.productTour.start(true)
   }
 
   @action
   log(event, course){
-    this.metrics.trackEvent({event, course, page: 'Classroom'})
+    this.metrics.trackEvent({
+      action: event,
+      category: course,
+    })
   } 
 }

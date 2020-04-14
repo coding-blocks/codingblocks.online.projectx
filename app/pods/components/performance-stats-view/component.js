@@ -37,7 +37,7 @@ export default class PerformanceStatsView extends Component {
 
   @computed('stats.leaderboard')
   get myRank() {
-    const rank = this.stats.leaderboard.findIndex(_ => _.id === this.currentUser.user.id)
+    const rank = this.stats.leaderboard.findIndex(_ => _.oneauth_id == this.currentUser.user.oneauthId)
     return rank > 0 ? rank + 1 : null
   }
 
