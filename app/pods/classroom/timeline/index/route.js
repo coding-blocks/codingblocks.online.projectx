@@ -21,8 +21,12 @@ export default Route.extend({
     scheduleOnce('afterRender', () => this.productTour.start())
   },
   actions: {
-    log(event, course){
-      this.get('metrics').trackEvent({event, course, page: 'Classroom'})
+    log(action, courseIdentifier){
+      this.metrics.trackEvent({
+        category: 'course',
+        label: courseIdentifier,
+        action
+      })
     }
   }
 });
