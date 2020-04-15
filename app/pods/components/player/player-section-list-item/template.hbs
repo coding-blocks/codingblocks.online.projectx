@@ -6,10 +6,12 @@
           {{section.name}}
 
           </h6>
-          {{#if (not section.premium)}}
-            <div class="pill bg-gradient-orange white card-md normal ml-1">
-              Free
-            </div>
+          {{#if (not runAttemptPremium)}}
+            {{#if (not section.premium )}}
+              <div class="pill bg-gradient-orange white card-md normal ml-1">
+                Free
+              </div>
+            {{/if}}
           {{/if}}
         <div class="normal mt-1 med-grey font-xs">
           {{!-- {{#if (and section.deadlineDate (is-before now section.deadlineDate)) }}
