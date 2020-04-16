@@ -17,6 +17,7 @@ $cb-red: #ff6666;
 @import "./components/button.scss";
 @import "./components/spin.scss";
 @import "./components/searchbox.scss";
+@import "./components/svg.scss";
 @import "lists.scss";
 
 body {
@@ -318,4 +319,36 @@ body {
   color: #FFFFFF;
   background: linear-gradient(90deg, #E74E4B 14.25%, #FB8133 96.93%);
   border-radius: 25px;
+}
+
+.youtube-embed {
+  width: 100%;
+  border-radius: 15px;
+  min-height: 250px;
+  background-color: #f3f3f3;
+}
+
+@media(min-width: 768px) {
+  .youtube-embed {
+    min-height: 355px;
+  }
+}
+
+.hoverable-text:hover {
+  filter: brightness(80%)
+}
+
+.hoverable-text:active {
+  filter: brightness(50%)
+}
+
+.hoverable-icon:hover {
+  zoom: 1.1;
+}
+.hoverable-icon:active {
+  zoom: 1.05;
+}
+
+.c-topnav {
+  z-index: 10;
 }
