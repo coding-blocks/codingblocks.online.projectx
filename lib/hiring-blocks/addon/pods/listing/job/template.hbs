@@ -1,7 +1,7 @@
 <section class="container c-job-description">
   <div class="row no-gutters mt-5">
     <div class="col-12 col-md-8">
-      <div class="border-card p-5 mb-5">
+      <div class="border-card mb-5">
         <div class="row no-gutters">
           <div class="col-12 col-md-6">
             <div class="img-desc b-right">
@@ -22,6 +22,11 @@
                 </div>
               </div>
             </div>
+            {{#unless (eq job.deadlineStr 'No Deadline')}}
+              <div class="red mt-4">
+                Deadline: {{job.deadlineStr}}
+              </div>
+            {{/unless}}
           </div>
 
           <div class="divider-h d-md-none mt-4 mb-4"></div>
@@ -41,20 +46,18 @@
                   Experience: <span class="extra-bold">{{job.experience}}</span>
                 </div>
                 <div>
-                  Stipend: <span class="extra-bold">{{job.ctc}}</span>
+                  {{compensationLabel}}: <span class="extra-bold">{{job.ctc}}</span>
                 </div>
               </div>
             </div>
-            {{!-- <div class="red pl-3">
-              Deadline: 24 March 2019
-            </div> --}}
+            
           </div>
         </div>
       </div>
       
       <button class="bg-gradient-violet-lr w-100 white d-md-none p-4 mb-4" {{action "toggleShowDescription"}}>{{if showDescription 'Hide' 'View'}} Job Description</button> 
       
-      <div class="border-card p-5 {{unless showDescription 'dsp-none-sm'}}">
+      <div class="border-card {{unless showDescription 'dsp-none-sm'}}">
         <div class="font-md extra-bold mb-4">
           Job Description
         </div>
@@ -115,7 +118,7 @@
           </div>
         </div>
 
-        <div class="p-0 pr-md-5 pl-md-5">
+        <div class="p-0 pr-md-5 pl-md-5" style="overflow-y: auto; max-height: 900px">
           {{#each job.courses as |course|}}
             {{log course.title}}
             <div class="mb-4">
