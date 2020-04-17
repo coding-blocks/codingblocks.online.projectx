@@ -16,11 +16,13 @@ export default class Selection extends Component {
   }
 
   @computed('player.runAttemptId')
-  get runAttemptPremium() {
-    if (this.player.runAttemptId) {
-      const run_attempt = this.store.peekRecord('run-attempt', this.player.runAttemptId)
-      const not_expired = run_attempt.end > Date.parse(moment())/1000
-      return run_attempt.premium && not_expired
+  get premiumStudent() {
+    const { runAttemptId } = this.player
+    if (!runAttemptId) {
+      return false
+    }else{
+      const runAttempt = this.store.peekRecord('run-attempt', runAttemptId)
+      return runAttempt.premium && !runAttempt.isExpired
     }
   }
 
