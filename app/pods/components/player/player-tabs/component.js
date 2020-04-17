@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { action } from '@ember/object';
+import { computed } from '@ember/object';
 
 export default class PlayerTabs extends Component {
   @service player
@@ -21,6 +22,17 @@ export default class PlayerTabs extends Component {
   ]
   activeTab = this.tabs.firstObject
   contentListCollpased = true
+
+  @computed('player.runAttemptId', 'store')
+  get runAttempt() {
+    return this.store.peekRecord('run-attempt', this.player.runAttemptId)
+  }
+
+  @computed('runAttempt')
+  get hideDoubtSupport() {
+    const { doubtSupport } = this.runAttempt
+    return !doubtSupport || isNaN(doubtSupport.getTime())
+  }
 
   @restartableTask fetchDoubtsTask = function *() {
     return this.store.query('doubt', {

@@ -352,3 +352,7 @@ body {
 .c-topnav {
   z-index: 10;
 }
+
+button:disabled{
+  cursor:  not-allowed !important;
+}

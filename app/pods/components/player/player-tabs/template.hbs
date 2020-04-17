@@ -5,7 +5,13 @@
     </h3>
     Have any queries? Ask a Doubt
   </div>
-  <button class="button-solid button-orange" {{action "openAskDoubtModal"}} id="ask-doubt">
+  <button 
+    class="button-solid button-orange {{if hideDoubtSupport 'disabled'}}" 
+    id="ask-doubt" 
+    title={{if hideDoubtSupport 'Doubt Support unavailable' 'Ask a Doubt'}}
+    disabled={{hideDoubtSupport}}
+    {{action "openAskDoubtModal"}} 
+    >
     Ask Doubt
   </button>
 </div>
