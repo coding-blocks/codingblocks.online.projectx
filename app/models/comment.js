@@ -6,7 +6,8 @@ export default DS.Model.extend({
   name: DS.attr(),
   avatarTemplate: DS.attr(),
   username: DS.attr(),
-  updatedAt: DS.attr(),
+  createdAt: DS.attr('date'),
+  updatedAt: DS.attr('dare'),
   doubt: DS.belongsTo('doubt'),
   discourseTopicId: DS.attr()
 })
