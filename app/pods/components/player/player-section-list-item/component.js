@@ -6,12 +6,13 @@ import { computed } from '@ember/object';
 
 export default class Selection extends Component {
   @service player
+  @service store
+
   @alias('player.contentId') activeContentId
   @alias('player.sectionId') activeSectionId
-  @service store;
+
   @computed('activeSectionId', 'section.id')
   get isActiveSection() {
-
     return this.activeSectionId == this.section.id
   }
 
@@ -22,7 +23,9 @@ export default class Selection extends Component {
       return false
     }else{
       const runAttempt = this.store.peekRecord('run-attempt', runAttemptId)
-      return runAttempt.premium && !runAttempt.isExpired
+      const sectionPremium = this.section.premium
+      const premiumCourse =  runAttempt.premium && !runAttempt.isExpired
+      return !sectionPremium && !premiumCourse
     }
   }
 

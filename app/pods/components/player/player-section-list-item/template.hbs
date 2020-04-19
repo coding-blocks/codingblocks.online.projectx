@@ -6,11 +6,11 @@
           {{section.name}}
 
           </h6>
-            {{#if (and (not section.premium ) (not premiumStudent) )}}
-              <div class="pill bg-gradient-orange white card-md normal ml-1">
-                Free
-              </div>
-            {{/if}}
+          {{#if premiumStudent }}
+            <div class="pill bg-gradient-orange white card-md normal ml-1">
+              Free
+            </div>
+          {{/if}}
         <div class="normal mt-1 med-grey font-xs">
           {{!-- {{#if (and section.deadlineDate (is-before now section.deadlineDate)) }}
             {{section.doneContents.length}}/{{section.contents.length}} | Due Date: {{moment-format section.deadlineDate 'MMM Do YYYY'}}
