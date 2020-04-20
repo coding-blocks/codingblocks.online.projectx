@@ -84,6 +84,7 @@
   @to="fullscreen-code-challenge-result" 
   @renderInPlace={{not player.isFullscreen}}
 >
+<div>
   {{#if (and lastResult (not judgeTaskGroup.isRunning))}}
     {{#if (and explanation showExplanation)}}
       <div class="border-card border-none mb-5 bg-grey-darker">
@@ -124,4 +125,5 @@
     {{/if}}
     <CodeChallenge::CodeChallengeResult @judgeResult={{lastResult}} id="result" />
   {{/if}}
+</div>
 </EmberWormhole>
