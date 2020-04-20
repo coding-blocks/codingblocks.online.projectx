@@ -12,6 +12,21 @@ export default class PlayerService extends Service {
   @service router
   @service store
 
+  isFullscreen = false
+
+  constructor() {
+    super(...arguments)
+    document.addEventListener('fullscreenchange', event => {
+      const el = document.getElementById('player-content-fullscreen-container')
+      if (document.fullscreenElement === null)
+        this.set('isFullscreen', false)
+      else if (el && el == document.fullscreenElement) {
+        this.set('isFullscreen', true)
+        this.enhanceDomForFullScreen()
+      }
+    })
+  }
+
   /*
     Are we inside player?
   */
@@ -47,6 +62,15 @@ export default class PlayerService extends Service {
     return this.contentRoute && this.contentRoute.params.sectionId
   }
 
+  enhanceDomForFullScreen() {
+    window.setTimeout(() => { // dirty hack to get around some browsers f--ing up 'fullscreenchange' 
+      $('.c-code-challenge').children().first().resizable({
+        handleSelector: ".splitter",
+        resizeHeight: false
+      })
+    }, 0) 
+  }
+
 
   //TODO:  transitionToNextContent(), transitionToPreviousContent()
   @action
@@ -77,5 +101,23 @@ export default class PlayerService extends Service {
   }
 
   @action
-  transitionToPreviousContent() {}
+  transitionToPreviousContent() { }
+  
+  @action
+  goFullScreen() {
+    const el = document.getElementById('player-content-fullscreen-container')
+    if (!this.isActive || !el) {
+      return console.error(`Can't go fullscreen. Either player service is inactive or container element(#player-content-fullscreen-container) not found ${el}`)
+    }
+    try {
+      el.requestFullscreen()
+    } catch (err) {
+      return console.error(`Can't request fullscreen on element. `, err)
+    }
+  }
+
+  @action
+  exitFullScreen() {
+    
+  }
 }

@@ -1,0 +1,24 @@
+#player-content-fullscreen-container:fullscreen {
+  .c-code-challenge {
+    display: flex;
+    height: 90vh;
+
+    &>.problem-panel {
+      margin-bottom: 0 !important;
+      border-radius: unset;
+      max-width: 57vw;
+      min-width: 20vw;
+    }
+  }
+
+  .c-code-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: unset;
+
+    .monaco-editor {
+      flex-grow: 1;
+    }
+  }
+}

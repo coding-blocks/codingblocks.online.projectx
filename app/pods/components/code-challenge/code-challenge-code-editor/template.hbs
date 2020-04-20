@@ -16,14 +16,12 @@
       </select>
     </div>
   </div>
-  <div>
-    <MonacoEditor
-      class="editor monaco-editor"
-      @language={{selectedLanguage.mode}}
-      @code={{selectedLanguage.source}}
-      @onChange={{action (mut selectedLanguage.source)}}
-      @onReady={{action "onEditorReady"}} />
-  </div>
+  <MonacoEditor
+    class="editor monaco-editor"
+    @language={{selectedLanguage.mode}}
+    @code={{selectedLanguage.source}}
+    @onChange={{action (mut selectedLanguage.source)}}
+    @onReady={{action "onEditorReady"}} />
   {{!-- We can only collab if we have a ref --}}
   {{#if this.ref}}
     <div>
@@ -34,7 +32,7 @@
       />
     </div>
   {{/if}}
-  <div class="footer pt-4 pb-5 px-md-5 px-4 input-div">
+  <div class="footer py-4 px-md-5 px-4 input-div">
     <div class="row justify-content-sm-between justify-content-center align-items-center no-gutters">
       <div class="col-sm-4 col-12 white extra-bold pointer t-align-sm-l t-align-c" {{action toggleCustomInput}}>
         <FaIcon @icon={{if customInputOpen "angle-up" "angle-down"}} />
@@ -78,6 +76,7 @@
   </div>
 </div>
 
+{{!-- Result of compilations/Juding --}}
 {{#if (and lastResult (not judgeTaskGroup.isRunning))}}
   {{#if (and explanation showExplanation)}}
     <div class="border-card border-none mb-5 bg-grey-darker">

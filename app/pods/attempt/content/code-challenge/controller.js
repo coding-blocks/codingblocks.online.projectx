@@ -1,8 +1,11 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
 
 export default class CodeChallenge extends Controller {
+  @service player
+
   tabs = [
     {
       name: 'Problem',

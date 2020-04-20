@@ -1,20 +1,29 @@
 {{#if problem.id}}
-  <div class="p-md-5 p-4 mb-5 border-card white border-none bg-grey-darker">
-    <WTabNav
-      @inactiveClass="white"
-      @tabs={{tabs}}
-      @activeTab={{activeTab}}
-      @onTabChange={{action (mut activeTab)}}>
-      <div class="py-4">
-        {{component activeTab.component codeChallenge=codeChallenge problem=problem}}  
-      </div>
-    </WTabNav>
+  <div class="c-code-challenge">
+    <div class="p-md-5 p-4 white border-none bg-grey-darker mb-5 border-card problem-panel">
+      <button {{action player.goFullScreen}}>Go Full Screen</button>
+      <WTabNav
+        @inactiveClass="white"
+        @tabs={{tabs}}
+        @activeTab={{activeTab}}
+        @onTabChange={{action (mut activeTab)}}>
+        <div class="py-4">
+          {{component activeTab.component codeChallenge=codeChallenge problem=problem}}  
+        </div>
+      </WTabNav>
+    </div>
+    
+    {{#if player.isFullscreen}}
+      <div class="splitter"></div>
+    {{/if}}
+
+    <CodeChallenge::CodeChallengeCodeEditor
+      class="flex-1"
+      @ref={{relatedPendingDoubt.firebaseRef}}
+      @content={{content}}
+      @codeChallenge={{codeChallenge}}
+      @problem={{problem}} />
   </div>
-  <CodeChallenge::CodeChallengeCodeEditor
-    @ref={{relatedPendingDoubt.firebaseRef}}
-    @content={{content}}
-    @codeChallenge={{codeChallenge}}
-    @problem={{problem}} />
 {{else}}
   <div class="p-md-5 p-4 mb-5 border-card white border-none bg-grey-darker">
     <div class="t-align-c">
