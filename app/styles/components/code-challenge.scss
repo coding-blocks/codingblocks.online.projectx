@@ -1,3 +1,10 @@
+#player-content-fullscreen-container {
+  .problem-panel {
+    border-radius: 0 0 15px 15px;
+  }
+}
+
+
 #player-content-fullscreen-container:fullscreen {
   .c-code-challenge {
     display: flex;
@@ -5,7 +12,7 @@
 
     &>.problem-panel {
       margin-bottom: 0 !important;
-      border-radius: unset;
+      border-radius: 0 0 0 15px;
       max-width: 57vw;
       min-width: 20vw;
     }
@@ -15,10 +22,14 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    border-radius: unset;
+    border-radius: 0 0 15px 0;
 
     .monaco-editor {
       flex-grow: 1;
     }
+  }
+
+  #fullscreen-code-challenge-result {
+    margin: 2rem 0;
   }
 }

@@ -18,8 +18,15 @@ export default class PlayerService extends Service {
     super(...arguments)
     document.addEventListener('fullscreenchange', event => {
       const el = document.getElementById('player-content-fullscreen-container')
-      if (document.fullscreenElement === null)
-        this.set('isFullscreen', false)
+      if (document.fullscreenElement === null) {
+        try {
+          this.cleanupDomEnhancementForFullScreen()
+        } catch (e) {
+          console.error(e)
+        } finally {
+          this.set('isFullscreen', false)
+        }
+      }
       else if (el && el == document.fullscreenElement) {
         this.set('isFullscreen', true)
         this.enhanceDomForFullScreen()
@@ -69,6 +76,13 @@ export default class PlayerService extends Service {
         resizeHeight: false
       })
     }, 0) 
+  }
+
+  cleanupDomEnhancementForFullScreen() {
+    //Cleanup any dom changes after user exit fullscreen;
+    const el = $('.c-code-challenge').children().first()
+    el.resizable('destroy')
+    el.css("width", "unset") //  was expecting this jquery plugin to cleanup this too, but can't seem to find anything
   }
 
 

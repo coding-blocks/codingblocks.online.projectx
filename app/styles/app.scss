@@ -365,3 +365,7 @@ button:disabled{
   min-height: 200px;
   cursor: col-resize;  
 }
+
+.hoverable-underline:hover {
+  text-decoration: underline;
+}

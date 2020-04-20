@@ -76,44 +76,52 @@
   </div>
 </div>
 
-{{!-- Result of compilations/Juding --}}
-{{#if (and lastResult (not judgeTaskGroup.isRunning))}}
-  {{#if (and explanation showExplanation)}}
-    <div class="border-card border-none mb-5 bg-grey-darker">
-      <div class="font-sm bold white">
-        {{headerForExplanation}}
-        <a href="#" class="float-right white" {{action (mut showExplanation) false}}>
-          <FaIcon @icon="times-circle" />
-        </a>
+{{!-- 
+  Result of compilations/Juding 
+  Wrapped in wormhole to output this in code-challenge route's template for fullscreen mode; otherwise renderInPlace
+--}}
+<EmberWormhole 
+  @to="fullscreen-code-challenge-result" 
+  @renderInPlace={{not player.isFullscreen}}
+>
+  {{#if (and lastResult (not judgeTaskGroup.isRunning))}}
+    {{#if (and explanation showExplanation)}}
+      <div class="border-card border-none mb-5 bg-grey-darker">
+        <div class="font-sm bold white">
+          {{headerForExplanation}}
+          <a href="#" class="float-right white" {{action (mut showExplanation) false}}>
+            <FaIcon @icon="times-circle" />
+          </a>
+        </div>
+        <div class="mt-3 bg-black-lighter p-4">
+          {{#if (eq explanation "Perfect")}}
+            Congratulations, you passed every test case! Surely Hacker Blocks has harder
+            problems for you to solve!
+          {{else if (eq explanation "FailedTestcase")}}
+            Dang! You couldn't score a perfect 100 because you failed one or
+            more testcases. This means that your program didn't account for
+            all input cases (did you account for negative numbers, for example?).
+          {{else if (eq explanation "TimeLimitExceeded")}}
+            Dang! Your program was too slow to compute the answer to one or more
+            testcases. Think - is there a more efficient way to arrive at the
+            solution than brute force?
+          {{else if (eq explanation "CompilationError")}}
+            Your code failed to compile. Check your program carefully for mistakes
+            (missing semicolons, for example).
+          {{else if (eq explanation  "ContestOver")}}
+            Note: You were not awarded any points as this contest
+            has ended. Find more contests you can participate in
+            <a href="http://hack.codingblocks.com/contests">here</a>!
+          {{else if (eq explanation  "TestcaseUnlocked")}}
+            Note: You were not awarded any points for this solution
+            because you have unlocked the testcases to this problem.
+          {{else if (eq explanation  "EditorialUnlocked")}}
+            Note: You were not awarded any points for this solution
+            because you have unlocked the editorial to this problem.
+          {{/if}}
+        </div>
       </div>
-      <div class="mt-3 bg-black-lighter p-4">
-        {{#if (eq explanation "Perfect")}}
-          Congratulations, you passed every test case! Surely Hacker Blocks has harder
-          problems for you to solve!
-        {{else if (eq explanation "FailedTestcase")}}
-          Dang! You couldn't score a perfect 100 because you failed one or
-          more testcases. This means that your program didn't account for
-          all input cases (did you account for negative numbers, for example?).
-        {{else if (eq explanation "TimeLimitExceeded")}}
-          Dang! Your program was too slow to compute the answer to one or more
-          testcases. Think - is there a more efficient way to arrive at the
-          solution than brute force?
-        {{else if (eq explanation "CompilationError")}}
-          Your code failed to compile. Check your program carefully for mistakes
-          (missing semicolons, for example).
-        {{else if (eq explanation  "ContestOver")}}
-          Note: You were not awarded any points as this contest
-          has ended. Find more contests you can participate in
-          <a href="http://hack.codingblocks.com/contests">here</a>!
-        {{else if (eq explanation  "TestcaseUnlocked")}}
-          Note: You were not awarded any points for this solution
-          because you have unlocked the testcases to this problem.
-        {{else if (eq explanation  "EditorialUnlocked")}}
-          Note: You were not awarded any points for this solution
-          because you have unlocked the editorial to this problem.
-        {{/if}}
-      </div>
-    </div>
+    {{/if}}
+    <CodeChallenge::CodeChallengeResult @judgeResult={{lastResult}} id="result" />
   {{/if}}
-  <CodeChallenge::CodeChallengeResult @judgeResult={{lastResult}} id="result" />
-{{/if}}
+</EmberWormhole>
