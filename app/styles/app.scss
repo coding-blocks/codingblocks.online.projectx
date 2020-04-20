@@ -7,7 +7,6 @@ $cb-red: #ff6666;
 @import "ember-power-select";
 @import "ember-content-placeholders";
 
-
 @import "./components/index.scss";
 @import "./components/course-card.scss";
 @import "./components/nagarro-banner.scss";
@@ -18,6 +17,7 @@ $cb-red: #ff6666;
 @import "./components/spin.scss";
 @import "./components/searchbox.scss";
 @import "./components/svg.scss";
+@import "./components/code-challenge.scss";
 @import "lists.scss";
 
 body {
@@ -355,4 +355,17 @@ body {
 
 button:disabled{
   cursor:  not-allowed !important;
+}
+
+
+.splitter {
+  flex: 0 0 auto;
+  width: 12px;  
+  background: url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #444;
+  min-height: 200px;
+  cursor: col-resize;  
+}
+
+.hoverable-underline:hover {
+  text-decoration: underline;
 }

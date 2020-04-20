@@ -33,7 +33,7 @@ export default class CodeEditor extends Component {
   }
   
   showExplanation = false
-  customInputOpen = true
+  customInputOpen = false
   customInputText = ''
   languageSpecs = A([
     {

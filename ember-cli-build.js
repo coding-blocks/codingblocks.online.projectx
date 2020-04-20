@@ -40,6 +40,7 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
   app.import('node_modules/@coding-blocks/motley/dist/online-cb/app.css')
   app.import('node_modules/showdown-katex-studdown/dist/showdown-katex.js')
+  app.import('node_modules/jquery-resizable-dom/dist/jquery-resizable.min.js')
 
   return app.toTree();
 };
