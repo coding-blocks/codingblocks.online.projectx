@@ -40,6 +40,7 @@ export default DS.Model.extend({
     backgroundImage: DS.attr(),
     rating: DS.attr('number'),
     seoMeta: DS.attr(),
+    code: DS.attr(),
     topRun: computed('activeRuns', 'runs', function () {
         let runs = this.activeRuns
 
