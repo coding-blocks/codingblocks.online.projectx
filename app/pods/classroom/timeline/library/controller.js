@@ -27,6 +27,11 @@ export default class ClassroomTimelineLibraryController extends Controller {
       component: 'course-library/bookmarks',
       task: this.fetchBookmarks
 
+    },
+    {
+      name: 'Doubts',
+      component: 'player/player-doubts-list',
+      task: this.fetchDoubts
     }
   ];
 
@@ -77,6 +82,11 @@ export default class ClassroomTimelineLibraryController extends Controller {
       page: this.paginationOptions,
       sort: '-createdAt'
     })
+  }
+
+  @restartableTask fetchDoubts = function* () {
+    const doubts = this.runAttempt.doubts
+    return doubts
   }
 
   @action

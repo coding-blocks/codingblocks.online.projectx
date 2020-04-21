@@ -1,5 +1,5 @@
-{{#if doubts}}
-  {{#each doubts as |doubt|}}
+{{#if @payload }}
+  {{#each @payload as |doubt|}}
     <div class="py-4">
       <Player::PlayerDoubtsListItem @doubt={{doubt}} />
     </div>
