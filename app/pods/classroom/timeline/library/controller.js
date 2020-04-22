@@ -30,7 +30,7 @@ export default class ClassroomTimelineLibraryController extends Controller {
     },
     {
       name: 'Doubts',
-      component: 'player/player-doubts-list',
+      component: 'course-library/doubts',
       task: this.fetchDoubts
     }
   ];
@@ -85,8 +85,7 @@ export default class ClassroomTimelineLibraryController extends Controller {
   }
 
   @restartableTask fetchDoubts = function* () {
-    const doubts = this.runAttempt.doubts
-    return doubts
+    return this.runAttempt.doubts
   }
 
   @action
