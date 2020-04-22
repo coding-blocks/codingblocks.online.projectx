@@ -8,6 +8,17 @@ const byNameValue = val => byFieldValue("name", val)
 const byNameAttempt = byNameValue("attempt")
 const byNameContent = byNameValue("attempt.content")
 
+const getObjectFromLocalStorage = (key, def= {}) => {
+  try {
+    return JSON.parse(window.localStorage.getItem(key)) || def
+  } catch (e) {
+    console.error(new Error('Malformed localstorage value:', key))
+    window.localStorage.removeItem(key)
+    return def
+  }
+}
+const setObjectToLocalStorage = (key, obj) => window.localStorage.setItem(key, JSON.stringify(obj))
+
 export default class PlayerService extends Service {
   @service router
   @service store
@@ -132,6 +143,26 @@ export default class PlayerService extends Service {
 
   @action
   exitFullScreen() {
-    
+    // do nothing now
   }
+
+  @action
+  setResumeTime(time) {
+    const { runAttemptId, sectionId, contentId } = this
+
+    setObjectToLocalStorage(`player_resume_time:${runAttemptId}`, {
+      sectionId,
+      contentId,
+      time
+    })
+  }
+
+  @action
+  getResumeTimeForCurrentContent() {
+    const { runAttemptId } = this
+    const { sectionId, contentId, time } = getObjectFromLocalStorage(`player_resume_time:${runAttemptId}`)
+    const matchesCurrentContent = sectionId == this.sectionId && contentId == this.contentId
+    return matchesCurrentContent ? time : 0
+  }
+
 }
