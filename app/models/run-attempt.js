@@ -9,6 +9,7 @@ export default DS.Model.extend({
   revoked: DS.attr(),
   certificateApproved: DS.attr(),
   rating: DS.attr(),
+  runTier: DS.attr(),
   completedContents: DS.attr('number'),
   approvalRequested: DS.attr('boolean'),
   doubtSupport: DS.attr('date'),

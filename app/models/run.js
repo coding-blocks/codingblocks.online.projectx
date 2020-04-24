@@ -24,6 +24,7 @@ export default DS.Model.extend({
   description: DS.attr(),
   productId: DS.attr(),
   totalContents: DS.attr("number"),
+  tier: DS.attr(),
   course: DS.belongsTo("course", { inverse: "runs" }),
   sections: DS.hasMany("sections"),
   user: DS.belongsTo("user"),

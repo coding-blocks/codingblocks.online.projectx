@@ -1,0 +1,38 @@
+<div class="row py-4 no-gutters align-items-center justify-content-between">
+  {{#if showCommunitySupportOnly}}
+    <div class="col-8">
+        <h3 class="gradient-text-orange bold">
+          Check out CodingBlocks Community
+        </h3>
+        Got Stuck? Browse community forums
+    </div>
+    <a 
+      href={{communityForumLink}}
+      target="_blank"
+      class="button-solid button-orange" 
+      id="ask-doubt" >
+      Browse forums
+    </a>
+  {{else}}
+    <div class="col-8">
+        <h3 class="gradient-text-orange bold">
+          Get 24*7 Doubts &amp; Mentor Support
+        </h3>
+        Have any queries? Ask a Doubt
+    </div>
+    <button 
+      class="button-solid button-orange {{if hideDoubtSupport 'disabled'}}" 
+      id="ask-doubt" 
+      title={{if hideDoubtSupport 'Doubt Support unavailable' 'Ask a Doubt'}}
+      disabled={{hideDoubtSupport}}
+      {{action onAskDoubt}} 
+      >
+      Ask Doubt
+    </button>
+
+  {{/if}}
+
+  
+</div>
+
+
