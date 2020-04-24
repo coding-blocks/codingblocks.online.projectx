@@ -269,6 +269,11 @@ body {
   right: 15px;
 }
 
+div.library_doubts .input-search {
+  background-color: white;
+  border: 2px solid black;
+}
+
 .navigation {
   & > a, & > span {
     &:not(:first-child) {
