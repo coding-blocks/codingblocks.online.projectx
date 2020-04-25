@@ -40,6 +40,7 @@
     "ember-cli-htmlbars": "^4.2.2",
     "ember-cli-inject-live-reload": "^2.0.2",
     "ember-cli-moment-shim": "^3.7.1",
+    "ember-cli-page-progress": "^2.0.0",
     "ember-cli-sass": "^7.1.7",
     "ember-cli-showdown": "^4.4.2",
     "ember-cli-sri": "^2.1.1",
