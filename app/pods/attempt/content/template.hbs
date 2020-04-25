@@ -1,6 +1,8 @@
 <div id="player-content-fullscreen-container" class="col-lg-9 timeline__main-area__video-area no-scrollbar order-lg-12 order-1">
-  {{#if (not (or currentUser.user.verifiedemail currentUser.user.verifiedmobile))}}
-    <VerifyEmail />
+  {{#if (not isMobileOrEmailVerified)}}
+    <Blockers::VerifyEmail />
+  {{else if hasEmptyName}}
+    <Blockers::FillupName />
   {{else if model.payload}}
     {{!-- render content outlet and doubts and notes --}}
     <div>
