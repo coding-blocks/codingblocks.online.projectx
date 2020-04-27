@@ -55,6 +55,7 @@
               </div>
             {{/if}}
 
+            {{#if showCertificateRequest}}
             <div class="progress-lock" style="left: {{certificateLockOffset}}%; bottom: -2px" id="certificate-lock">
               <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.completionThreshold}}% to get certified</div>
               {{#if (gte progressPercent runAttempt.run.completionThreshold)}}
@@ -67,6 +68,7 @@
                   class="gradient-text-green pointer s-25x25" />
               {{/if}}
             </div>
+            {{/if}}
             <div class="bold">{{progressPercent}}%</div>
           </div>
         
@@ -197,7 +199,7 @@
         class="mb-5"
         @runAttempt={{runAttempt}} />
     {{/if}}
-    {{#if showGoodieRequest}}
+    {{#if showCertificateRequest}}
     <CertificateComp 
       class="mb-5"
       @runAttempt={{runAttempt}} />
