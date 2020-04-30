@@ -13,11 +13,13 @@
     @loaderComponent={{component 'my-courses-list/placeholder-row'}}
     as |result|>
     {{#if result.length}}
-      {{#if (eq activeTab.name 'Wishlisted')}}
-        {{component activeTab.component wishlist=result class="border-bottom-list"}}
-      {{else}}
-        {{component activeTab.component runs=result class="border-bottom-list"}}
-      {{/if}}
+      <div class="border-bottom-list">
+        {{#if (eq activeTab.name 'Wishlisted')}}
+          {{component activeTab.component wishlist=result}}
+        {{else}}
+          {{component activeTab.component runs=result}}
+        {{/if}}
+      </div>
     {{else}}
       <div class="t-align-c my-5">
         <img src="/app/images/camera-orange.svg" alt="Courses">
