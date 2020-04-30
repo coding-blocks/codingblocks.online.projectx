@@ -14,58 +14,6 @@
 </div>
 
 
-<WTabNav
-  @tabs={{tabs}}
-  @activeTab={{activeTab}}
-  @onTabChange={{action (mut activeTab)}}
->
-  <div class="d-flex my-4 justify-content-between">
-    <div class="d-flex w-50">
-      <div class="flex-1 font-md">Filter Jobs</div>
-
-      <div class="flex-1 mx-5">
-        <PowerSelectMultiple 
-          @selected={{locations}}
-          @options={{possibleLocations}}
-          @closeOnSelect={{false}}
-          @placeholder="Location"
-          @triggerComponent={{component 'job-filter/trigger-component'}}
-          @onChange={{action (mut locations)}}
-        as |location|>
-          <input 
-            type="checkbox" 
-            onclick={{action "preventDefault"}}
-            checked={{includes locations location}} />  
-          {{location}}
-        </PowerSelectMultiple>
-      </div>
-
-      <div class="flex-1 mx-5">
-        <PowerSelectMultiple 
-          @selected={{jobTypes}}
-          @options={{possibleJobTypes}}
-          @closeOnSelect={{false}}
-          @placeholder="Job Type"
-          @triggerComponent={{component 'job-filter/trigger-component'}}
-          @onChange={{action (mut jobTypes)}}
-        as |type|>
-          <input 
-            type="checkbox"
-            onclick={{action "preventDefault"}}
-            checked={{includes jobTypes type}} />
-          {{type}}
-        </PowerSelectMultiple>
-      </div>
-
-    </div>
-
-    {{#if showApplyButton}}
-      <button class="orange" {{action "apply"}}>
-        Apply Filter
-      </button>
-    {{/if}}
-  </div>
-
 <div class="divider-h my-4"></div>
 
   {{#if (or selectedLocations.length selectedJobTypes.length)}}
@@ -90,4 +38,4 @@
       filters=(hash locations=selectedLocations jobTypes=selectedJobTypes)
     }}
   </div>
-</WTabNav>
+
