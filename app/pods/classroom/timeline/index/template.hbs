@@ -11,9 +11,21 @@
               <h5 class="bold">
                 {{course.title}}
                 <i class="far fa-question-circle icon-hover-fill pointer" title="Take Tour" {{action "startTour"}} id="start-course-dashboard-tour" ></i>
+                <div style="border: solid 1px #f2734c; color: #f2734c; display: inline-block; padding: 4px 10px 0 7px; border-radius: 22px; margin-left:8px;">
+                    {{#if (eq run.tier 'LITE')}}
+                    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/lite.png" class="mr-1">
+                    {{else if (eq run.tier 'PREMIUM')}}
+                    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/premium.png" class="mr-1">
+                    {{else if (eq run.tier 'LIVE')}}
+                    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/live.png" class="mr-1">
+                    {{else if (eq run.tier 'CLASSROOM')}}
+                    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/classroom.png" class="mr-1">
+                    {{/if}}
+                    <h6 class="gradient-text-orange d-inline-block">{{run.tier}}</h6>
+                </div>
               </h5>
               <div class="font-normal mt-2">
-                Mentor: 
+                  Mentor: 
                 {{#each course.instructors as |instructor index|}}
                   {{#if index}}, {{/if}} {{instructor.name}}
                 {{/each}}
