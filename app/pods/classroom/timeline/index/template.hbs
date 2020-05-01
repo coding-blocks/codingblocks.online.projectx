@@ -21,7 +21,9 @@
                     {{else if (eq run.tier 'CLASSROOM')}}
                     <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/classroom.png" class="mr-1">
                     {{/if}}
-                    <h6 class="gradient-text-orange d-inline-block">{{run.tier}}</h6>
+                    {{#if run.tier}}
+                      <h6 class="gradient-text-orange d-inline-block">{{run.tier}}</h6>
+                    {{/if}}
                 </div>
               </h5>
               <div class="font-normal mt-2">
