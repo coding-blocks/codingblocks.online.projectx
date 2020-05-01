@@ -61,10 +61,6 @@ export default DS.Model.extend({
     feedback: computed('feedbacks', function () {
       return this.feedbacks.objectAt(0);
     }),
-    canHazDoubtsLink: and('categoryId', 'doubtSubCategoryId'),
-    doubtsLink: computed('categoryId', 'doubtSubCategoryId', function () {
-      return `${env.discussBaseUrl}/c/${this.categoryId}/${this.doubtSubCategoryId}`;
-    }),
     difficultyName: computed('difficulty', function () {
       switch(+this.difficulty) {
         case 0: return 'beginner' ; break;

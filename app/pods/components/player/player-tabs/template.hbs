@@ -1,20 +1,7 @@
-<div class="row py-4 no-gutters align-items-center justify-content-between">
-  <div class="col-8">
-    <h3 class="gradient-text-orange bold">
-      Get 24*7 Doubts &amp; Mentor Support
-    </h3>
-    Have any queries? Ask a Doubt
-  </div>
-  <button 
-    class="button-solid button-orange {{if hideDoubtSupport 'disabled'}}" 
-    id="ask-doubt" 
-    title={{if hideDoubtSupport 'Doubt Support unavailable' 'Ask a Doubt'}}
-    disabled={{hideDoubtSupport}}
-    {{action "openAskDoubtModal"}} 
-    >
-    Ask Doubt
-  </button>
-</div>
+<Player::PlayerTabs::DoubtSupportStrip 
+  @runAttempt={{runAttempt}}
+  @onAskDoubt={{action 'openAskDoubtModal'}}
+/>
 <WTabNav
   class="c-player"
   @tabClass="inverted"
