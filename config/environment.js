@@ -121,6 +121,7 @@ module.exports = function(environment) {
     ENV.clientId = 5633768694
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://hack-api.codingblocks.com'
+    ENV.hiringblocksUrl = 'https://hire.codingblocks.com'
     ENV.googleAnalytics = {
       webPropertyId: 'UA-83327907-12'
     }
@@ -146,6 +147,7 @@ module.exports = function(environment) {
     ENV.clientId = 5169892443
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://hack-api.codingblocks.xyz'
+    ENV.hiringblocksUrl = 'https://hire.codingblocks.xyz'
 
     ENV.talkjs = {
       appId: '2LhQvB3j'
