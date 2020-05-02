@@ -2,26 +2,39 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { action } from '@ember/object';
+import { computed } from '@ember/object';
 
 export default class PlayerTabs extends Component {
   @service player
   @service store
 
-  tabs = [
-    {
-      name: 'Doubts',
-      component: 'player/player-doubts-tab',
-      task: this.fetchDoubtsTask
-    },
-    {
-      name: 'Notes',
-      component: 'player/player-notes-tab',
-      task: this.fetchNotesTask
-    }
-  ]
+
+  DoubtsTab = {
+    name: 'Doubts',
+    component: 'player/player-doubts-tab',
+    task: this.fetchDoubtsTask
+  }
+
+  NotesTab = {
+    name: 'Notes',
+    component: 'player/player-notes-tab',
+    task: this.fetchNotesTask
+  }
+
+  @computed('runAttempt.runTier')
+  get tabs() {
+    const {DoubtsTab, NotesTab} = this
+    return this.runAttempt.runTier === 'LITE' ? [NotesTab] : [DoubtsTab, NotesTab]
+  }
+  
   activeTab = this.tabs.firstObject
   contentListCollpased = true
 
+  @computed('player.runAttemptId', 'store')
+  get runAttempt() {
+    return this.store.peekRecord('run-attempt', this.player.runAttemptId)
+  }
+  
   @restartableTask fetchDoubtsTask = function *() {
     return this.store.query('doubt', {
       filter: {

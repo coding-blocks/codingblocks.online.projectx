@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { action } from '@ember/object';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
+import { later } from '@ember/runloop';
 
 export default class SubmissionComponent extends Component {
   @service hbApi
@@ -13,7 +14,7 @@ export default class SubmissionComponent extends Component {
 
   @restartableTask fetchSubmissionsTask = function *() {
     const runAttempt = this.store.peekRecord('run-attempt', this.player.runAttemptId)
-    return this.hbApi.request('submissions', {
+    const submissions = yield this.hbApi.request('submissions', {
       data: {
         filter: {
           contest_id: runAttempt.get("run.contestId"),
@@ -21,10 +22,14 @@ export default class SubmissionComponent extends Component {
         },
         sort: '-createdAt'
       }
-    }).then(submissions => {
+    })
+    
+    return new Promise((resolve) => {
       this.store.unloadAll('submission')
-      this.store.pushPayload(submissions)
-      return this.store.peekAll('submission')
+      later(() => {
+        this.store.pushPayload(submissions)
+        resolve(this.store.peekAll('submission'))
+      })
     })
   }
 

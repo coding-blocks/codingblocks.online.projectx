@@ -1,20 +1,36 @@
 {{#if problem.id}}
-  <div class="p-md-5 p-4 mb-5 border-card white border-none bg-grey-darker">
-    <WTabNav
-      @inactiveClass="white"
-      @tabs={{tabs}}
-      @activeTab={{activeTab}}
-      @onTabChange={{action (mut activeTab)}}>
-      <div class="py-4">
-        {{component activeTab.component codeChallenge=codeChallenge problem=problem}}  
-      </div>
-    </WTabNav>
+  <div class="bg-modal-grey-darker py-2 t-align-c" style="border-radius: 15px 15px 0 0;">
+    {{#if player.isFullscreen}}
+      <span>Press Esc to exit fullscreen mode.</span>
+    {{else}}
+      <a class="white pointer hoverable-underline" {{action player.goFullScreen}} >
+        Try Fullscreen mode <i class="fas fa-expand"></i> <sup>Beta</sup> </a>
+    {{/if}}
   </div>
-  <CodeChallenge::CodeChallengeCodeEditor
-    @ref={{relatedPendingDoubt.firebaseRef}}
-    @content={{content}}
-    @codeChallenge={{codeChallenge}}
-    @problem={{problem}} />
+  <div class="c-code-challenge">
+    <div class="p-md-5 p-4 white border-none bg-grey-darker mb-5 border-card problem-panel">
+      <WTabNav
+        @inactiveClass="white"
+        @tabs={{tabs}}
+        @activeTab={{activeTab}}
+        @onTabChange={{action (mut activeTab)}}>
+        <div class="py-4">
+          {{component activeTab.component codeChallenge=codeChallenge problem=problem}}  
+        </div>
+      </WTabNav>
+    </div>
+    
+    {{#if player.isFullscreen}}
+      <div class="splitter"></div>
+    {{/if}}
+
+    <CodeChallenge::CodeChallengeCodeEditor
+      class="flex-1"
+      @ref={{relatedPendingDoubt.firebaseRef}}
+      @content={{content}}
+      @codeChallenge={{codeChallenge}}
+      @problem={{problem}} />
+  </div>
 {{else}}
   <div class="p-md-5 p-4 mb-5 border-card white border-none bg-grey-darker">
     <div class="t-align-c">
@@ -37,3 +53,5 @@
     </div>
   </div>
 {{/if}}
+
+<div id="fullscreen-code-challenge-result"></div>

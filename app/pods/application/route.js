@@ -3,12 +3,14 @@ import ApplicationRouteMixin from "ember-simple-auth/mixins/application-route-mi
 import UtmCookieRouteMixin from "../../mixins/utm-cookie-route"
 import { inject as service } from "@ember/service";
 import { isNone } from "@ember/utils";
+import { get } from '@ember/object';
 
 export default Route.extend(ApplicationRouteMixin, UtmCookieRouteMixin, {
   session: service(),
   currentUser: service(),
   store: service(),
   headData: service(),
+  pageProgress: service(),
   onesignal: service(),
   metrics: service(), // !important: keep this here to init trackers for all routes
   // routeAfterAuthentication: 'dashboard',
@@ -72,5 +74,15 @@ export default Route.extend(ApplicationRouteMixin, UtmCookieRouteMixin, {
   setupController(controller, model) {
     this._super(controller, model);
     controller.set("model", model);
+  },
+  actions: {
+  loading(transition) {
+      const pageProgress = get(this, 'pageProgress');
+       pageProgress.start(transition.targetName);
+       transition.promise.finally(() => {
+         pageProgress.done();
+       });
+      return true
+    }
   }
 });

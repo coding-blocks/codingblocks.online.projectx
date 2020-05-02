@@ -13,6 +13,7 @@ export default Route.extend({
   setupController (controller, model) {
     controller.set('course', model.get('run.course'))
     controller.set('runAttempt', model)
+    controller.set('run', model.get('run'))
     controller.set('userRating', model.get('rating'))
   },
   async afterModel(model) {

@@ -1,17 +1,21 @@
-{{#if (not (or currentUser.user.verifiedemail currentUser.user.verifiedmobile))}}
-  <VerifyEmail />
-{{else if model.payload}}
-  {{!-- render content outlet and doubts and notes --}}
-  <div>
+<div id="player-content-fullscreen-container" class="col-lg-9 timeline__main-area__video-area no-scrollbar order-lg-12 order-1">
+  {{#if (not isMobileOrEmailVerified)}}
+    <Blockers::VerifyEmail />
+  {{else if hasEmptyName}}
+    <Blockers::FillupName />
+  {{else if model.payload}}
+    {{!-- render content outlet and doubts and notes --}}
     <div>
-      {{outlet}}
+      <div>
+        {{outlet}}
+      </div>
+      <div class="d-lg-block d-none">
+        <Player::PlayerTabs />
+      </div>
     </div>
-    <div class="d-lg-block d-none">
-      <Player::PlayerTabs />
-    </div>
-  </div>
-{{else if (not run.isStarted)}}
-  <UnstartedContent @run={{run}} />
-{{else}}
-  <LockedContent @course={{run.course}} />
-{{/if}}
+  {{else if (not run.isStarted)}}
+    <UnstartedContent @run={{run}} />
+  {{else}}
+    <LockedContent @course={{run.course}} />
+  {{/if}}
+</div>

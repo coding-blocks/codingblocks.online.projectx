@@ -18,8 +18,14 @@ export default class Overview extends Controller {
   visible = true
 
   @computed('runAttempt.{end,premium}', 'runAttempt.run.price')
-  get showGoodieRequest() {
+  get showCertificateRequest() {
     return this.runAttempt.premium && this.runAttempt.get('run.price')
+  }
+
+  @computed('runAttempt.{end,premium}', 'runAttempt.run.price')
+  get showGoodieRequest() {
+    const {premium, runTier} = this.runAttempt
+    return premium && this.runAttempt.get('run.price') && runTier != 'LITE'
   }
 
   @computed('runAttempt.{isExpired,end,premium}')

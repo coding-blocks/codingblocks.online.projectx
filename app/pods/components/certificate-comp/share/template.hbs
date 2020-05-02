@@ -1,0 +1,45 @@
+
+<div class="py-4 px-md-5 px-3 bg-gradient-purple d-flex align-items-center">
+  <div class="mr-4" style="flex-shrink: 0;">
+    <img 
+      src={{runAttempt.run.course.logo}} 
+      alt={{runAttempt.run.course.title}} 
+      class="s-80x80 p-1" />
+  </div>
+  <div class="white overflow-hidden">
+    <h5 class="bold mb-2">
+      Share your Certificate
+    </h5>
+    <div class="d-flex align-items-center">
+      <div class="border-dashed p-2 mr-3" style="
+          word-break: break-all;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        ">
+        <span class="copy-text bold font-sm" title="Click To Copy" {{did-insert (action (mut copyTextElement))}}  {{on "click" (action 'selectText')}}>
+          https://online.codingblocks.com/certificates/CBOL-{{runAttempt.id}}-{{certificate.salt}}
+        </span>
+      </div>
+      <img class="s-20x20 pointer hoverable-icon" src="https://minio.codingblocks.com/amoeba/copy-icon.svg" {{on "click" (action 'selectText')}} />
+      <EmberTooltip @event="click" @duration="5000">
+          Copied!
+        </EmberTooltip>
+    </div>
+  </div>
+</div>
+
+<div class="py-4 px-md-5 px-3">
+  <div class="bold font-sm">
+    Watch - how to add this certificate to your LinkedIn profile
+  </div> 
+
+  <div class="t-align-c py-4">
+    <iframe class="youtube-embed w-100" frameborder="0" controls="controls" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/Dr1YInGFNS0?loop=1&rel=0"></iframe>
+  </div>
+
+  <div class="t-align-r">
+    <span class="pointer grey hoverable-text" {{on "click" close}}>Cancel</span>
+    <a class="ml-2 button-solid button-orange" href="https://www.linkedin.com/profile/add" target="_blank" {{did-insert (action "scheduleCopy")}} >Share on Linkedin</a>
+  </div>
+</div>

@@ -12,11 +12,13 @@ export default class VdoPlayerComponent extends Component {
 
   classNames = ['w-100', 'h-100']
 
+  // is called everytime on video's progress event
   @dropTask onTimeUpdateTask = function* (updateProgressOnce) {
     yield timeout(500)
     const duration = this.lecture.get('duration') / 1000
 
-    if ((this.video.currentTime / duration) > 0.9) {
+    this.player.setResumeTime(this.video.currentTime)
+    if ((this.video.currentTime / duration) > 0.9) { 
       yield updateProgressOnce()
     }
   }
@@ -33,7 +35,11 @@ export default class VdoPlayerComponent extends Component {
     // can only call this once
     const updateProgressOnce = once(() => this.markProgress())
 
-    video.addEventListener('progress', () => this.onTimeUpdateTask.perform(updateProgressOnce))
+    video.addEventListener('load', () => {
+      // we can only seek once video is loaded
+      video.seek(this.player.getResumeTimeForCurrentContent())
+      video.addEventListener('progress', () => this.onTimeUpdateTask.perform(updateProgressOnce))
+    })
   }
   
   didRender () {

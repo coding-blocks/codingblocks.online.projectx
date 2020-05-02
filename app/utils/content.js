@@ -7,3 +7,5 @@ export const defaultProgressValueForContent = content => {
       return 'DONE'
   }
 }
+
+export const slugify = (title) => title.trim().replace(/ ?- ?/g, "-").replace(/ /g, "-")
