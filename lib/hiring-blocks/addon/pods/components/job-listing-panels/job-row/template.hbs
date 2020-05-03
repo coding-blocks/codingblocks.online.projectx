@@ -8,7 +8,7 @@
         <h5 class="bold">{{job.title}}</h5>
         <div class="font-normal mt-2 grey">
           {{job.company.name}} 
-          <span class="black">Posted {{moment-from-now job.postedOn}}</span>
+          <span class="black">Posted {{moment-from-now (unix job.postedOn)}}</span>
         </div>
       </div>
     </div>
