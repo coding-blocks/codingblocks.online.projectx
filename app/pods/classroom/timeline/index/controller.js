@@ -44,6 +44,17 @@ export default class Overview extends Controller {
     return 0.84 * this.runAttempt.get('run.goodiesThreshold')
   }
 
+  @computed('course.topRun')
+  get getTotalContents() {
+    return this.course.get('topRun').totalContents
+  }
+
+  @computed('course.topRun')
+  get getDoneContents() {
+    return this.runAttempt.completedContents
+  }
+
+
   @alias('runAttempt.progressPercent')
   progressPercent
 
