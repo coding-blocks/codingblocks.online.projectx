@@ -45,12 +45,12 @@ export default class Overview extends Controller {
   }
 
   @computed('course.topRun')
-  get getTotalContents() {
+  get totalContents() {
     return this.course.get('topRun').totalContents
   }
 
   @computed('course.topRun')
-  get getDoneContents() {
+  get doneContents() {
     return this.runAttempt.completedContents
   }
 
