@@ -1,9 +1,10 @@
 import Component from '@ember/component';
+import ENV from 'codingblocks-online/config/environment'
 
 export default Component.extend({
   actions: {
-    setRedirectUrl(jobId) {
-      localStorage.setItem('redirectionPath', "/app/jobs/listing/" +  jobId)
+    redirectToJob(jobId) {
+      window.location = ENV.hiringblocksUrl + '/jobs/' + jobId
     }
   }
 });
