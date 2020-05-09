@@ -19,7 +19,7 @@ export default class Overview extends Controller {
 
   @computed('runAttempt.{end,premium}', 'runAttempt.run.price')
   get showCertificateRequest() {
-    return this.runAttempt.premium && this.runAttempt.get('run.price')
+    return this.runAttempt.premium && this.runAttempt.get('run.certificateTemplate')
   }
 
   @computed('runAttempt.{end,premium}', 'runAttempt.run.price')
