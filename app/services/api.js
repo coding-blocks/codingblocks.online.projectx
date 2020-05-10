@@ -15,5 +15,8 @@ export default AjaxService.extend({
             headers['Authorization'] = `JWT ${jwt}`;
           }
         return headers;
-    })
+    }),
+    xhrFields: {
+      withCredentials: true
+    },
 });
