@@ -21,14 +21,16 @@ You will need the following things properly installed on your computer.
 * [Yarn](https://yarnpkg.com/)
 * [Ember CLI](https://ember-cli.com/)
 * [Google Chrome](https://google.com/chrome/)
+* [CodingBlocks Online Server](https://github.com/coding-blocks/codingblocks.online.server)
 
 ## Installation
 
+* Make sure [CodingBlocks Online Server](https://github.com/coding-blocks/codingblocks.online.server) is installed and running
 * `git clone https://github.com/coding-blocks/codingblocks.online.projectx` this repository
 * `cd codingblocks.online.projectx`
 * `yarn install`
 
-## Running / Development
+## Running for Development
 
 * `export oss=true && ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
@@ -38,18 +40,13 @@ You will need the following things properly installed on your computer.
 
 Make use of the many generators for code, try `ember help generate` for more details
 
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
 ### Linting
 
 * `npm run lint:hbs`
 * `npm run lint:js`
 * `npm run lint:js -- --fix`
 
-### Building
+### Building (for production)
 
 * `ember build` (development)
 * `ember build --environment production` (production)
