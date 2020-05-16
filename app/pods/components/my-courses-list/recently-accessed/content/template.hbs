@@ -1,18 +1,54 @@
-<div class="col-lg-5 col-md-6 pl-md-3 mt-md-0 mt-4">
+<div class="col-lg-3 col-md-6 pl-md-3 mt-md-0 mt-4">
   <div class="font-normal">Course Progress</div>
   <div class="mt-3">
     <MyCoursesList::ProgressBar @percent={{progressPercent}} />
   </div>
 </div>
-<div class="col-lg-3 col-12 mt-lg-0 mt-4 pl-lg-3">
+<div class="col-lg-5 col-12 mt-lg-0 mt-4 pl-lg-3">
   <div class="row no-gutters justify-content-around align-items-center">
     <a href="#" class="font-normal {{fontClassName}}"> {{progressText}} </a>
+    {{#if isPaused}}
+    <button class="button-dashed button-orange"{{action "unpauseRunAttempt"}}>UnPause</button>
+    {{else}}
     <LinkTo @route="classroom.timeline.overview" @models={{array run.course.id run.id}} @tagName="button"
-      class="button-orange button-solid">
+      class="button-orange button-solid ">
       {{resumeButtonText}}
     </LinkTo>
+    {{/if}}
     {{#if showGetCertificate}}
     <button class="button-green button-solid">Get Certificate</button>
+    {{/if}}
+    {{#if canBePaused}}
+    <button class="button-dashed button-orange" {{action (mut showConfirmPause) true}}>Pause</button>
+    {{/if}}
+
+
+    {{#if showConfirmPause}}
+    {{#modal-dialog
+            translucentOverlay=true
+            onClose=(action (mut showConfirmPause) false)
+            targetAttachment="none"
+            containerClass="centered-scrolling-container p-4"
+            overlayClass="centered-scrolling-overlay"
+            wrapperClass="centered-scrolling-wrapper"
+          }}
+    <div class="row">
+      <div class="col-2">
+        <img src="http://minio.codingblocks.com/amoeba/danger-flat-icon.svg" alt="danger!" width="75px" height="75px">
+      </div>
+      <div class="col-10 my-auto font-md bold">
+        Are you sure you want to pause?
+      </div>
+    </div>
+    <p class="font-sm">
+      All progress related to course material including assignments bookmarks, notes and your doubts that you asked will remain.
+    </p>
+    
+    <div class="d-flex justify-content-end">
+      <button class="button-solid button-orange mr-3" {{action "pauseRunAttempt"}}>Continue</button>
+      <button class="button-dashed button-orange" {{action (mut showConfirmPause) false}}>No, Take me back</button>
+    </div>
+    {{/modal-dialog}}
     {{/if}}
   </div>
 </div>
