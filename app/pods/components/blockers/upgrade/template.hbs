@@ -1,0 +1,12 @@
+Upgrade Now
+
+Fetching upgrade packs for {{courseId}} and {{runAttempt.id}}
+
+<WAsync @task={{fetchUpgradePacks}} @autoFire={{true}} as |upgradePacks| >
+  {{#each upgradePacks as |upgradePack| }}
+    {{upgradePack.title}} @ {{upgradePack.price}}
+  {{/each}}
+</WAsync>
+
+
+{{yield}}
