@@ -4,8 +4,9 @@
       <FaIcon @icon="lock" @size="3" />
     </div>
   </div>
-  <div class="row justify-content-center">
-    <h2 class="mt-3">You paused this course on {{runAttempt.last_paused_at}}.You must resume it before continuing</h2>
+  <div class="mx-auto">
+    <h2 class="my-3 t-align-c">Course Access Paused</h2>
+    <p class="mt-3  t-align-c">You paused this course on {{moment-format runAttempt.lastPausedAt 'DD MMM YY HH:mm'}}. You must resume it before continuing</p>
   </div>
   <div class="row justify-content-center">
     <div class="mt-3">

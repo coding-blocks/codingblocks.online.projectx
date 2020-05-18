@@ -8,7 +8,7 @@
   <div class="row no-gutters justify-content-around align-items-center">
     <a href="#" class="font-normal {{fontClassName}}"> {{progressText}} </a>
     {{#if isPaused}}
-    <button class="button-dashed button-orange"{{action "unpauseRunAttempt"}}>UnPause</button>
+    <button class="button-solid button-orange"{{action "unpauseRunAttempt"}}>UnPause</button>
     {{else}}
     <LinkTo @route="classroom.timeline.overview" @models={{array run.course.id run.id}} @tagName="button"
       class="button-orange button-solid ">
@@ -41,7 +41,11 @@
       </div>
     </div>
     <p class="font-sm">
-      All progress related to course material including assignments bookmarks, notes and your doubts that you asked will remain.
+      All progress related to course material including assignments bookmarks, notes and your doubts that you asked will remain. 
+      However, you won't be able access course until you unpause.
+
+      <br>
+      <span class="my-3 bold">Pause Time Left: {{moment-duration run.topRunAttempt.pauseTimeLeft}} </span>
     </p>
     
     <div class="d-flex justify-content-end">
