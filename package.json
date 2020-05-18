@@ -40,6 +40,7 @@
     "ember-cli-htmlbars": "^4.2.2",
     "ember-cli-inject-live-reload": "^2.0.2",
     "ember-cli-moment-shim": "^3.7.1",
+    "ember-cli-page-progress": "^2.0.0",
     "ember-cli-sass": "^7.1.7",
     "ember-cli-showdown": "^4.4.2",
     "ember-cli-sri": "^2.1.1",
@@ -80,6 +81,7 @@
     "ember-truth-helpers": "^2.0.0",
     "ember-uploader": "^2.0.0",
     "ember-welcome-page": "^4.0.0",
+    "ember-wormhole": "^0.5.5",
     "eslint-plugin-ember": "^7.7.2",
     "eslint-plugin-node": "^11.0.0",
     "firepad": "^1.5.3",
@@ -96,6 +98,7 @@
   "dependencies": {
     "@coding-blocks/motley": "0.7.3",
     "ember-line-clamp": "^0.2.15",
+    "jquery-resizable-dom": "^0.35.0",
     "js-base64": "^2.5.2",
     "moment": "^2.22.2",
     "showdown-katex-studdown": "^0.4.0"

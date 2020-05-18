@@ -2,13 +2,12 @@ import Component from '@ember/component';
 import { alias, and, not, equal } from '@ember/object/computed';
 import { computed } from '@ember/object';
 import { task } from 'ember-concurrency';
-import DS from 'ember-data';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
   api: service(),
   router: service(),
-
+  showShareModal: false,
   run: alias('runAttempt.run'),
   courseCompleted: computed('progressPercent', 'run.completionThreshold', function () {
     return this.progressPercent > this.get('run.completionThreshold')

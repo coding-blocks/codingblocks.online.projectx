@@ -11,5 +11,6 @@ export default DS.Model.extend({
   firebaseRef: DS.attr(),
   comments: DS.hasMany('comment'),
   feedbacks: DS.hasMany('doubt-feedback'),
-  resolvedById: DS.attr()
+  resolvedById: DS.attr(),
+  createdAt: DS.attr('date')
 })

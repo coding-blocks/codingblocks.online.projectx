@@ -18,8 +18,14 @@ export default class Overview extends Controller {
   visible = true
 
   @computed('runAttempt.{end,premium}', 'runAttempt.run.price')
+  get showCertificateRequest() {
+    return this.runAttempt.premium && this.runAttempt.get('run.certificateTemplate')
+  }
+
+  @computed('runAttempt.{end,premium}', 'runAttempt.run.price')
   get showGoodieRequest() {
-    return this.runAttempt.premium && this.runAttempt.get('run.price')
+    const {premium, runTier} = this.runAttempt
+    return premium && this.runAttempt.get('run.price') && runTier != 'LITE'
   }
 
   @computed('runAttempt.{isExpired,end,premium}')
@@ -43,6 +49,17 @@ export default class Overview extends Controller {
   get goodiesLockOffset() {
     return 0.84 * this.runAttempt.get('run.goodiesThreshold')
   }
+
+  @computed('course.topRun')
+  get totalContents() {
+    return this.course.get('topRun').totalContents
+  }
+
+  @computed('course.topRun')
+  get doneContents() {
+    return this.runAttempt.completedContents
+  }
+
 
   @alias('runAttempt.progressPercent')
   progressPercent

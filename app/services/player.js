@@ -8,9 +8,42 @@ const byNameValue = val => byFieldValue("name", val)
 const byNameAttempt = byNameValue("attempt")
 const byNameContent = byNameValue("attempt.content")
 
+const getObjectFromLocalStorage = (key, def= {}) => {
+  try {
+    return JSON.parse(window.localStorage.getItem(key)) || def
+  } catch (e) {
+    console.error(new Error('Malformed localstorage value:', key))
+    window.localStorage.removeItem(key)
+    return def
+  }
+}
+const setObjectToLocalStorage = (key, obj) => window.localStorage.setItem(key, JSON.stringify(obj))
+
 export default class PlayerService extends Service {
   @service router
   @service store
+
+  isFullscreen = false
+
+  constructor() {
+    super(...arguments)
+    document.addEventListener('fullscreenchange', event => {
+      const el = document.getElementById('player-content-fullscreen-container')
+      if (document.fullscreenElement === null) {
+        try {
+          this.cleanupDomEnhancementForFullScreen()
+        } catch (e) {
+          console.error(e)
+        } finally {
+          this.set('isFullscreen', false)
+        }
+      }
+      else if (el && el == document.fullscreenElement) {
+        this.set('isFullscreen', true)
+        this.enhanceDomForFullScreen()
+      }
+    })
+  }
 
   /*
     Are we inside player?
@@ -47,6 +80,22 @@ export default class PlayerService extends Service {
     return this.contentRoute && this.contentRoute.params.sectionId
   }
 
+  enhanceDomForFullScreen() {
+    window.setTimeout(() => { // dirty hack to get around some browsers f--ing up 'fullscreenchange' 
+      $('.c-code-challenge').children().first().resizable({
+        handleSelector: ".splitter",
+        resizeHeight: false
+      })
+    }, 0) 
+  }
+
+  cleanupDomEnhancementForFullScreen() {
+    //Cleanup any dom changes after user exit fullscreen;
+    const el = $('.c-code-challenge').children().first()
+    el.resizable('destroy')
+    el.css("width", "unset") //  was expecting this jquery plugin to cleanup this too, but can't seem to find anything
+  }
+
 
   //TODO:  transitionToNextContent(), transitionToPreviousContent()
   @action
@@ -77,5 +126,43 @@ export default class PlayerService extends Service {
   }
 
   @action
-  transitionToPreviousContent() {}
+  transitionToPreviousContent() { }
+  
+  @action
+  goFullScreen() {
+    const el = document.getElementById('player-content-fullscreen-container')
+    if (!this.isActive || !el) {
+      return console.error(`Can't go fullscreen. Either player service is inactive or container element(#player-content-fullscreen-container) not found ${el}`)
+    }
+    try {
+      el.requestFullscreen()
+    } catch (err) {
+      return console.error(`Can't request fullscreen on element. `, err)
+    }
+  }
+
+  @action
+  exitFullScreen() {
+    // do nothing now
+  }
+
+  @action
+  setResumeTime(time) {
+    const { runAttemptId, sectionId, contentId } = this
+
+    setObjectToLocalStorage(`player_resume_time:${runAttemptId}`, {
+      sectionId,
+      contentId,
+      time
+    })
+  }
+
+  @action
+  getResumeTimeForCurrentContent() {
+    const { runAttemptId } = this
+    const { sectionId, contentId, time } = getObjectFromLocalStorage(`player_resume_time:${runAttemptId}`)
+    const matchesCurrentContent = sectionId == this.sectionId && contentId == this.contentId
+    return matchesCurrentContent ? time : 0
+  }
+
 }

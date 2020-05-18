@@ -5,18 +5,23 @@ import { inject as service } from '@ember/service';
 export default class OnesignalService extends Service {
   @service store
 
+  isSubscribed = false
+
   constructor() {
     super(...arguments)
     window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
+    OneSignal.push(() => {
       OneSignal.init({
         allowLocalhostAsSecureOrigin: config.environment === 'development',
         appId: config.OnesignalAppId
       })
+
+      OneSignal.getSubscription().then(state => this.set('isSubscribed', state))
     })
 
     OneSignal.push(() => {
       OneSignal.on("subscriptionChange", async isSubscribed => {
+        this.set('isSubscribed', isSubscribed)
         if (!isSubscribed) 
           return;
         
@@ -27,6 +32,8 @@ export default class OnesignalService extends Service {
         await player.save();
       })
     })
+
+
   }
 
   // sets externalId on this user
@@ -34,5 +41,9 @@ export default class OnesignalService extends Service {
     if (OneSignal && typeof OneSignal.setExternalUserId === 'function') {
       OneSignal.setExternalUserId(oneauthId)
     }
+  }
+
+  initializeCustomLinks() {
+    window.OneSignal.initHelper.showPromptsFromWebConfigEditor()
   }
 }

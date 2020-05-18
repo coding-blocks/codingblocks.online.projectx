@@ -24,6 +24,7 @@ export default DS.Model.extend({
   description: DS.attr(),
   productId: DS.attr(),
   totalContents: DS.attr("number"),
+  tier: DS.attr(),
   course: DS.belongsTo("course", { inverse: "runs" }),
   sections: DS.hasMany("sections"),
   user: DS.belongsTo("user"),
@@ -31,6 +32,7 @@ export default DS.Model.extend({
   announcements: DS.hasMany("announcement"),
   ta: DS.hasMany("ta"),
   runRequests: DS.hasMany("run-request"),
+  shift: DS.attr(),
   topRunAttempt: computed("runAttempts", function() {
     return this.runAttempts.objectAt(0);
   }),

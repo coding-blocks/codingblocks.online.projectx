@@ -1,0 +1,20 @@
+.button-dashed{
+  &:hover {
+    svg.share .orange{
+      stroke: white;
+      fill: white;
+    }
+    svg.share .white{
+      stroke: white;
+      fill: #F2734C;
+    }
+  }
+  svg.share .orange{
+    stroke: #F2734C;
+    fill: #F2734C;
+  }
+  svg.share .white{
+    stroke: #F2734C;
+    fill: white;
+  }
+}

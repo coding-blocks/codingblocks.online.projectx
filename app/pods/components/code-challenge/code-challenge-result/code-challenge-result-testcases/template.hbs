@@ -12,29 +12,45 @@
       <ul class="font-mds extra-bold mt-0">
         {{#each testcases as |testcase index|}}
           <li class="px-5 py-4 d-flex align-items-center {{if (eq selectedIndex index) "test-cases-card__active"}}">
-            {{#if (eq testcase.result "correct")}}
+            {{#if (eq testcase.result "Success")}}
               <a 
                 href="#" 
                 class="gradient-text-green"
                 {{action (mut selectedIndex) index}}>
                 Test Case {{index}}
-                <FaIcon @icon="check" class="ml-3 gradient-text-green" />
+                <FaIcon @icon="check" class="ml-2 gradient-text-green" />
               </a>
-            {{else if (eq testcase.result "wrong-answer")}}
-              <a 
-                href="#" 
-                class="gradient-text-pink"
-                {{action (mut selectedIndex) index}}>
-                Test Case {{index}}
-                <FaIcon @icon="times" class="ml-3 gradient-text-pink" />
-              </a>
-            {{else}}
+            {{else if (eq testcase.result "Run Error")}}
               <a 
                 href="#" 
                 class="gradient-text-orange"
                 {{action (mut selectedIndex) index}}>
                 Test Case {{index}}
-                <FaIcon @icon="exclamation" class="ml-3 gradient-text-orange" />
+                <FaIcon @icon="exclamation" class="ml-2 gradient-text-orange" />
+              </a>
+            {{else if (eq testcase.result "Wrong Answer")}}
+              <a 
+                href="#" 
+                class="gradient-text-pink"
+                {{action (mut selectedIndex) index}}>
+                Test Case {{index}}
+                <FaIcon @icon="times" class="ml-2 gradient-text-pink" />
+              </a>
+            {{else if (eq testcase.result "TLE")}}
+              <a 
+                href="#" 
+                class="gradient-text-orange"
+                {{action (mut selectedIndex) index}}>
+                Test Case {{index}}
+                <FaIcon @icon="exclamation-triangle" class="ml-2 gradient-text-orange" />
+              </a>
+            {{else}}
+              <a 
+                href="#" 
+                class="gradient-text-pink"
+                {{action (mut selectedIndex) index}}>
+                Test Case {{index}}
+                <FaIcon @icon="exclamation-triangle" class="ml-2 gradient-text-pink" />
               </a>
             {{/if}}
           </li>

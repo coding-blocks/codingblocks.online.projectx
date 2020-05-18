@@ -9,6 +9,7 @@ body.centered-modal-showing {
   top: 0;
   left: 0;
   overflow-y: scroll;
+  overflow-x: hidden;
   z-index: 11;
 }
 
@@ -31,15 +32,16 @@ body.centered-modal-showing {
   box-sizing: border-box;
   box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
   width: 100%;
-  height: calc(100vh - 67px);
-  overflow: auto;
+  // height: calc(100vh - 67px);
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 0;
 }
 
 
 @media (min-width: 768px) {
   .centered-scrolling-container {
-    min-height: 20em;
+    // min-height: 20em;
     width: 75%;
     margin-top: 100px;
     height: auto;

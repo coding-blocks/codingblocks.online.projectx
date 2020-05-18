@@ -40,6 +40,7 @@ export default DS.Model.extend({
     backgroundImage: DS.attr(),
     rating: DS.attr('number'),
     seoMeta: DS.attr(),
+    code: DS.attr(),
     topRun: computed('activeRuns', 'runs', function () {
         let runs = this.activeRuns
 
@@ -59,10 +60,6 @@ export default DS.Model.extend({
     feedbacks: DS.hasMany('feedback'),
     feedback: computed('feedbacks', function () {
       return this.feedbacks.objectAt(0);
-    }),
-    canHazDoubtsLink: and('categoryId', 'doubtSubCategoryId'),
-    doubtsLink: computed('categoryId', 'doubtSubCategoryId', function () {
-      return `${env.discussBaseUrl}/c/${this.categoryId}/${this.doubtSubCategoryId}`;
     }),
     difficultyName: computed('difficulty', function () {
       switch(+this.difficulty) {

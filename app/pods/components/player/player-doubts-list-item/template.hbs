@@ -6,8 +6,8 @@
   </div>
 </div>
 <div class="mt-4">
-  <h3 class="bold">{{doubt.title}}</h3>
-  <p>{{doubt.body}}</p>
+  <h3 class="bold word-wrap overflow-hidden">{{doubt.title}}</h3>
+  <p class="word-wrap overflow-hidden">{{doubt.body}}</p>
 </div>
 <div class="mt-4 row mx-0">
   <form 
@@ -18,7 +18,7 @@
       @disabled={{commentTask.isRunning}}
       type="text" 
       placeholder="Press enter to reply" 
-      class="white w-100" />
+      class="w-100" />
   </form>
   <div class="col-md-4 d-flex align-items-center justify-content-center font-sm">
     {{#if (eq doubt.status "RESOLVED")}}
@@ -66,6 +66,8 @@
       </div>
     {{/each}}
   </div>
+{{else}}
+<h2 class="mt-4">No Replies Yet</h2>
 {{/if}}
 
 {{#if showFeedbackModal}}
