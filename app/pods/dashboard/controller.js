@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
-import { computed } from '@ember/object';
+import { action, computed } from '@ember/object';
 
 export default class Dashboard extends Controller {
   @service api
@@ -74,4 +74,14 @@ export default class Dashboard extends Controller {
       }
     });
   }
+
+  @action
+  async unpauseRunAttempt() {
+    await this.get('api').request(`run_attempts/${this.lastAccessedRun.topRunAttempt.id}/unpause`, {
+      method: 'PATCH'
+    })
+    return this.set('lastAccessedRun.topRunAttempt.paused', false)
+  }
+
+
 }

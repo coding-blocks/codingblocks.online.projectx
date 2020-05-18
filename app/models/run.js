@@ -25,6 +25,7 @@ export default DS.Model.extend({
   productId: DS.attr(),
   totalContents: DS.attr("number"),
   tier: DS.attr(),
+  max_pause_time: DS.attr('number'),
   course: DS.belongsTo("course", { inverse: "runs" }),
   sections: DS.hasMany("sections"),
   user: DS.belongsTo("user"),

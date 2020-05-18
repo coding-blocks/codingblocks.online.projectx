@@ -60,12 +60,16 @@
             </span>
           </div>
           <div class="mt-sm-0 mt-4">
+            {{#if lastAccessedRun.topRunAttempt.paused}}
+            <button class="button-dashed button-orange"{{action "unpauseRunAttempt"}}>UnPause</button>
+            {{else}}
             <LinkTo 
               @route="attempt"
               @model={{lastAccessedRun.topRunAttempt.id}}
               class="button-solid button-orange">
               Resume Now
             </LinkTo>
+            {{/if}}
           </div>
         </div>
       </div>

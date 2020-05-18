@@ -13,6 +13,9 @@ export default DS.Model.extend({
   completedContents: DS.attr('number'),
   approvalRequested: DS.attr('boolean'),
   doubtSupport: DS.attr('date'),
+  paused: DS.attr('boolean'),
+  pauseTimeLeft: DS.attr('number'),
+  lastPausedAt: DS.attr('date'),
   run: DS.belongsTo('run'),
   user: DS.belongsTo('user'),
   certificate: DS.belongsTo('certificate'),
@@ -28,5 +31,13 @@ export default DS.Model.extend({
     const totalContents = this.get('run.totalContents')
     const completedContents = this.completedContents || 0
     return totalContents == 0 ? 0 : Math.floor(completedContents * 100 / totalContents)
+  }),
+  isPausable: computed('runTier', 'pauseTimeLeft', function () {
+    return (
+      this.premium &&
+      !this.isExpired &&
+      (this.runTier == 'PREMIUM' || this.runTier == null) &&
+      (this.pauseTimeLeft >= (1 * 24 * 60 * 60 * 1000))
+    )
   })
 })
