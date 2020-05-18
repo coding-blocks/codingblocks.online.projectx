@@ -5,6 +5,7 @@ export default DS.Model.extend({
   description: DS.attr(),
   to: DS.attr(),
   price: DS.attr(),
+  toRunId: DS.attr('number'),
   productId: DS.attr('number'),
   course: DS.belongsTo('course')
 })

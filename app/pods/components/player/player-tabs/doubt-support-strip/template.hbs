@@ -56,15 +56,16 @@
     <Blockers::Upgrade 
       @courseId={{runAttempt.run.course.id}} 
       @runAttempt={{runAttempt}} 
-      @close={{action (mut showShareModal) false}} >
+      @close={{action (mut showUpgradeModal) false}}>
+      <div class="bg-light-grey t-align-c py-2">
        or <a 
           href={{communityForumLink}}
           target="_blank"
-          class="pointer gradient-text-orange" 
+          class="pointer hoverable-text" 
           id="ask-doubt" >
           Browse forums
         </a>
-
+      </div>
     </Blockers::Upgrade>
   </ModalDialog>
 {{/if}}
