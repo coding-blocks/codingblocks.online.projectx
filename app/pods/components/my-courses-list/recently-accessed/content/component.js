@@ -17,10 +17,10 @@ export default class MyCoursesListRecentlyAccessedContentComponent extends Compo
   get progressState() {
     const percent = this.progressPercent
     const threshold =  this.run.completionThreshold || 75
-    if (percent >= threshold)
-      return 'completed'
-    else if (this.isPaused)
+    if (this.isPaused)
       return 'paused'
+    else if (percent >= threshold)
+      return 'completed'
     else if (percent > 0)
       return 'ongoing'
     else
