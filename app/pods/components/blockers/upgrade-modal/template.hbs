@@ -1,0 +1,20 @@
+{{#if @show}}
+  <ModalDialog
+      @onClose={{@close}}
+      @translucentOverlay=true
+      @targetAttachment='none'
+      @containerClass='centered-scrolling-container'
+      @overlayClass='centered-scrolling-overlay'
+      @wrapperClass='centered-scrolling-wrapper'
+  >
+    <Blockers::Upgrade 
+      @courseId={{@courseId}} 
+      @runAttempt={{@runAttempt}} 
+      @close={{@close}}>
+
+      {{yield}}
+      
+    </Blockers::Upgrade>
+  </ModalDialog>
+{{/if}}
+
