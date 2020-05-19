@@ -44,20 +44,14 @@
 
 </div>
 
-{{#if showUpgradeModal}}
-  <ModalDialog
-      @onClose={{action (mut showUpgradeModal) false}}
-      @translucentOverlay=true
-      @targetAttachment='none'
-      @containerClass='centered-scrolling-container'
-      @overlayClass='centered-scrolling-overlay'
-      @wrapperClass='centered-scrolling-wrapper'
-  >
-    <Blockers::Upgrade 
-      @courseId={{runAttempt.run.course.id}} 
-      @runAttempt={{runAttempt}} 
-      @close={{action (mut showUpgradeModal) false}}>
-      <div class="bg-light-grey t-align-c py-2">
+
+<Blockers::UpgradeModal 
+  @show={{showUpgradeModal}} 
+  @close={{action (mut showUpgradeModal) false}}
+  @courseId={{runAttempt.run.course.id}} 
+  @runAttempt={{runAttempt}} 
+>
+  <div class="bg-light-grey t-align-c py-2">
        or <a 
           href={{communityForumLink}}
           target="_blank"
@@ -66,7 +60,4 @@
           Browse forums
         </a>
       </div>
-    </Blockers::Upgrade>
-  </ModalDialog>
-{{/if}}
-
+</Blockers::UpgradeModal>

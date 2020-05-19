@@ -11,20 +11,25 @@
               <h5 class="bold">
                 {{course.title}}
                 <i class="far fa-question-circle icon-hover-fill pointer" title="Take Tour" {{action "startTour"}} id="start-course-dashboard-tour" ></i>
-                <div style="border: solid 1px #f2734c; color: #f2734c; display: inline-block; padding: 4px 10px 0 7px; border-radius: 22px; margin-left:8px;">
-                    {{#if (eq run.tier 'LITE')}}
-                    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/lite.png" class="mr-1">
-                    {{else if (eq run.tier 'PREMIUM')}}
-                    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/premium.png" class="mr-1">
-                    {{else if (eq run.tier 'LIVE')}}
-                    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/live.png" class="mr-1">
-                    {{else if (eq run.tier 'CLASSROOM')}}
-                    <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/classroom.png" class="mr-1">
-                    {{/if}}
-                    {{#if run.tier}}
-                      <h6 class="gradient-text-orange d-inline-block">{{run.tier}}</h6>
-                    {{/if}}
-                </div>
+
+                {{#if run.tier}}
+                  {{#if (eq run.tier 'LITE')}}
+                    <div 
+                    class="pointer v-align-ma" 
+                    {{on "click" (action (mut showUpgradeModal) true)}}
+                    style="border: solid 1px #f2734c; color: #f2734c; display: inline-block; padding: 4px 10px 4px 7px; border-radius: 22px; margin-left:8px;">
+                      <img src={{tierIcon}} class="mr-1" >
+                      <h6 class="gradient-text-orange d-inline-block" >{{run.tier}}</h6>
+                    </div>
+                  {{else}}
+                    <div class="v-align-ma" style="border: solid 1px #f2734c; color: #f2734c; display: inline-block; padding: 4px 10px 4px 7px; border-radius: 22px; margin-left:8px;">
+                      <h6 class="gradient-text-orange d-inline-block" >{{run.tier}}</h6>
+                     <img src={{tierIcon}} class="mr-1">
+                    </div>
+                  {{/if}}
+                {{/if}}
+
+
               </h5>
               <div class="font-normal mt-2">
                   Mentor: 
@@ -256,3 +261,12 @@
     </div>
   {{/modal-dialog}}
 {{/if}}
+
+
+
+<Blockers::UpgradeModal 
+  @show={{showUpgradeModal}} 
+  @close={{action (mut showUpgradeModal) false}}
+  @courseId={{course.id}} 
+  @runAttempt={{runAttempt}} 
+/>
