@@ -13,12 +13,14 @@ export default class MyCoursesListRecentlyAccessedContentComponent extends Compo
     return this.run.topRunAttempt.isPausable && !this.isPaused
   }
 
-  @computed('progressPercent')
+  @computed('progressPercent', 'run.topRunAttempt.paused')
   get progressState() {
     const percent = this.progressPercent
     const threshold =  this.run.completionThreshold || 75
     if (percent >= threshold)
       return 'completed'
+    else if (this.isPaused)
+      return 'paused'
     else if (percent > 0)
       return 'ongoing'
     else
@@ -40,6 +42,7 @@ export default class MyCoursesListRecentlyAccessedContentComponent extends Compo
   get progressText() {
     switch (this.progressState) {
       case 'not-started': return 'Not Started'
+      case 'paused': return 'Paused'
       default: return 'Ongoing'
     }
   }
