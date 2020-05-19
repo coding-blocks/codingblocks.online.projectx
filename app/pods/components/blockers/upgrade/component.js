@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { dropTask } from 'ember-concurrency-decorators';
+import { timeout } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import config from 'codingblocks-online/config/environment';

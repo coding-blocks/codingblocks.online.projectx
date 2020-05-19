@@ -1,19 +1,24 @@
-<WAsync @task={{fetchUpgradePack}} @autoFire={{true}} as |upgradePack|>
-  <div class="row no-gutters">
-    <div class="col-12">
-      <div class="upgrade-modal">
-        <div class="bg-gradient-dpurple px-md-5 px-4 py-4 position-relative">
-          <div class="row no-gutters align-items-center">
-            <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/upgrade.svg">
-            <div class="flex-1 pl-4">
-              <h2 class="bold gradient-text-green">Upgrade Now</h2>
-              <div class="font-sm white mt-1">Upgrade now and get access to premimum features!</div>
-            </div>
+<div class="row no-gutters">
+  <div class="col-12">
+    <div class="upgrade-modal">
+      <div class="bg-gradient-dpurple px-md-5 px-4 py-4 position-relative">
+        <div class="row no-gutters align-items-center">
+          <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/upgrade.svg">
+          <div class="flex-1 pl-4">
+            <h2 class="bold gradient-text-green">Upgrade Now</h2>
+            <div class="font-sm white mt-1">Upgrade now and get access to premimum features!</div>
           </div>
-          <a href="#" class="close" {{on "click" close}}>
-            <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/cross-white.svg">
-          </a>
         </div>
+        <a href="#" class="close" {{on "click" close}}>
+          <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/cross-white.svg">
+        </a>
+      </div>
+      <WAsync 
+        @task={{fetchUpgradePack}} 
+        @autoFire={{true}} 
+        @loaderComponent={{component 'blockers/upgrade/loader'}}
+      as |upgradePack| 
+      >
         <div class="row no-gutters justify-content-between align-items-center border-bottom py-4 px-md-5 px-4">
           <div>
             <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/premium.svg" class="mr-2">
@@ -67,8 +72,8 @@
             </div>
           {{/if}}
         </div>
-      </div>
+      </WAsync>
     </div>
   </div>
+</div>
   {{yield}}
-</WAsync>
