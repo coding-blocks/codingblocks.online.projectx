@@ -7,9 +7,26 @@ export default class CourseBasicInfo extends Component {
   @service api
 
   @alias("run.course") course
+  tick = 0
+
+  constructor() {
+    super(...arguments)
+    window.setInterval(() => {
+      this.incrementProperty('tick')
+    }, 1000)
+  }
 
   @computed ('course.instructors.@each.name')
   get instrcutorNames () {
     return this.get('course.instructors').mapBy('name').join(', ')
+  }
+
+  @computed('run.topRunAttempt.{end,paused,lastPausedAt}', 'tick')
+  get expiryDate() {
+    const runAttempt = this.run.topRunAttempt
+    const { paused, lastPausedAt, pauseTimeLeft, end } = runAttempt
+    const now = new Date()
+    const offset = paused ? Math.min(Math.floor((now - lastPausedAt)/1000), pauseTimeLeft) : 0
+    return moment.unix(end + offset).format("DD MMM YYYY HH:mm:ss")
   }
 }
