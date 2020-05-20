@@ -66,21 +66,14 @@ export default class MyCoursesListRecentlyAccessedContentComponent extends Compo
     })
     this.set('showConfirmPause', false)
     this.store.pushPayload(resp)
-    // return this.set('run.topRunAttempt.paused', true)
   }
   @action
   async unpauseRunAttempt() {
     const resp = await this.get('api').request(`run_attempts/${this.run.topRunAttempt.id}/unpause`, {
       method: 'PATCH'
     })
-<<<<<<< HEAD
-    return this.set('run.topRunAttempt.paused', false)
-=======
     this.set('showConfirmPause', false)
     this.store.pushPayload(resp)
-
-    // return this.set('run.topRunAttempt.paused', false)
->>>>>>> 8542fc5ddcb12a1a45be814da57bf7fadd04c7ca
   }
 
 
