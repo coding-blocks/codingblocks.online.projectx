@@ -118,10 +118,18 @@
               Buy Now
             </a>
           {{/if}}
+          
+          {{#if canBePaused}}
+            <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
+          {{/if}}
 
-          {{#link-to "attempt" runAttempt.id activeClass="" class="button-dashed button-orange" invokeAction=(action 'log' 'resume' course.identifier preventDefault=false)}}
+          {{#if runAttempt.paused}}
+            <button class="button-solid button-orange"{{action "unpauseRunAttempt"}}>UnPause</button>
+          {{else}}
+          {{#link-to "attempt" runAttempt.id activeClass="" class="button-solid button-orange" invokeAction=(action 'log' 'resume' course.identifier preventDefault=false)}}
             Resume
           {{/link-to}}
+          {{/if}}
         </div>
       </div>
     </div>
@@ -254,5 +262,37 @@
       <button class="button-solid button-orange mr-3" {{action "resetProgress"}} >I Understand</button>
       <button class="button-dashed button-orange" {{action (mut showConfirmResetProgress) false}}>No, Take me back</button>
     </div>
+  {{/modal-dialog}}
+{{/if}}
+
+{{#if showConfirmPause}}
+  {{#modal-dialog
+          translucentOverlay=true
+          onClose=(action (mut showConfirmPause) false)
+          targetAttachment="none"
+          containerClass="centered-scrolling-container p-4"
+          overlayClass="centered-scrolling-overlay"
+          wrapperClass="centered-scrolling-wrapper"
+        }}
+  <div class="row">
+    <div class="col-2">
+      <img src="http://minio.codingblocks.com/amoeba/danger-flat-icon.svg" alt="danger!" width="75px" height="75px">
+    </div>
+    <div class="col-10 my-auto font-md bold">
+      Are you sure you want to pause?
+    </div>
+  </div>
+  <p class="font-sm">
+    All progress related to course material including assignments bookmarks, notes and your doubts that you asked will remain. 
+    However, you won't be able access course until you unpause.
+
+    <br>
+    <span class="my-3 bold">Pause Time Left: {{moment-duration runAttempt.pauseTimeLeft}} </span>
+  </p>
+
+  <div class="d-flex justify-content-end">
+    <button class="button-solid button-orange mr-3" {{action "pauseRunAttempt"}}>Continue</button>
+    <button class="button-dashed button-orange" {{action (mut showConfirmPause) false}}>No, Take me back</button>
+  </div>
   {{/modal-dialog}}
 {{/if}}

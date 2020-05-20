@@ -1,12 +1,27 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { action, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class MyCoursesListRecentlyAccessedContentComponent extends Component {
-  @computed('progressPercent')
+  @service api
+  @service store
+
+  @computed('run.topRunAttempt.paused')
+  get isPaused(){
+    return this.run.topRunAttempt.paused
+  }
+  @computed('run.topRunAttempt.paused')
+  get canBePaused(){
+    return this.run.topRunAttempt.isPausable && !this.isPaused
+  }
+
+  @computed('progressPercent', 'run.topRunAttempt.paused')
   get progressState() {
     const percent = this.progressPercent
     const threshold =  this.run.completionThreshold || 75
-    if (percent >= threshold)
+    if (this.isPaused)
+      return 'paused'
+    else if (percent >= threshold)
       return 'completed'
     else if (percent > 0)
       return 'ongoing'
@@ -29,6 +44,7 @@ export default class MyCoursesListRecentlyAccessedContentComponent extends Compo
   get progressText() {
     switch (this.progressState) {
       case 'not-started': return 'Not Started'
+      case 'paused': return 'Paused'
       default: return 'Ongoing'
     }
   }
@@ -42,5 +58,23 @@ export default class MyCoursesListRecentlyAccessedContentComponent extends Compo
   get resumeButtonText() {
     return this.progressState == "not-started" ? "Start Learning": "Resume Course"
   }
+
+  @action
+  async pauseRunAttempt() {
+    const resp = await this.get('api').request(`run_attempts/${this.run.topRunAttempt.id}/pause`, {
+      method: 'PATCH'
+    })
+    this.set('showConfirmPause', false)
+    this.store.pushPayload(resp)
+  }
+  @action
+  async unpauseRunAttempt() {
+    const resp = await this.get('api').request(`run_attempts/${this.run.topRunAttempt.id}/unpause`, {
+      method: 'PATCH'
+    })
+    this.set('showConfirmPause', false)
+    this.store.pushPayload(resp)
+  }
+
 
 }

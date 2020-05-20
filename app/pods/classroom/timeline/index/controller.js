@@ -8,6 +8,7 @@ import { alias } from '@ember/object/computed';
 
 export default class Overview extends Controller {
   @service api
+  @service store
   @service metrics
   @service productTour
 
@@ -60,6 +61,11 @@ export default class Overview extends Controller {
     return this.runAttempt.completedContents
   }
 
+  @computed('runAttempt.paused')
+  get canBePaused(){
+    return this.runAttempt.isPausable && !this.runAttempt.paused
+  }
+
 
   @alias('runAttempt.progressPercent')
   progressPercent
@@ -106,5 +112,22 @@ export default class Overview extends Controller {
       action: event,
       category: course,
     })
-  } 
+  }
+  
+  @action
+  async pauseRunAttempt() {
+    const resp = await this.get('api').request(`run_attempts/${this.runAttempt.id}/pause`, {
+      method: 'PATCH'
+    })
+    this.set('showConfirmPause', false)
+    this.store.pushPayload(resp)
+    return this.transitionToRoute('classroom')
+  }
+  @action
+  async unpauseRunAttempt() {
+    await this.get('api').request(`run_attempts/${this.runAttempt.id}/unpause`, {
+      method: 'PATCH'
+    })
+    return this.set('runAttempt.paused', false)
+  }
 }

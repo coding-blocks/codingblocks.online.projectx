@@ -2,23 +2,27 @@
   <div class="col-sm-8 col-12">
     <div class="row no-gutters align-items-center">
       <div class="col-2">
-        <img src="{{@run.course.logo}}" class="course-list-logo">
+        <img src="{{run.course.logo}}" class="course-list-logo">
       </div>
       <div class="col-10 pl-xl-0 pl-3">
-        <h5 class="bold">{{@run.course.title}}</h5>
+        <h5 class="bold">{{run.course.title}}</h5>
         <div class="mt-3">
-          <progress value="{{@run.topRunAttempt.progressPercent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
-          <span class="bold ml-3">{{@run.topRunAttempt.progressPercent}}%</span>
+          <progress value="{{run.topRunAttempt.progressPercent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
+          <span class="bold ml-3">{{run.topRunAttempt.progressPercent}}%</span>
         </div>
       </div>
     </div>
   </div>
   <div class="button-align-container mt-sm-0 mt-3">
+    {{#if run.topRunAttempt.paused}}
+    <button class="button-dashed button-orange"{{action "unpauseRunAttempt"}}>UnPause</button>
+    {{else}}
     <LinkTo 
       @route="classroom.timeline"
-      @models={{array @run.course.id @run.id}}
+      @models={{array run.course.id run.id}}
       class="button-orange button-solid">
       Resume
     </LinkTo>
+    {{/if}}
   </div>
 </div>
