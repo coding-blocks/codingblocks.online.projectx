@@ -70,7 +70,6 @@ export default class MyCoursesListRecentlyAccessedContentComponent extends Compo
     await this.get('api').request(`run_attempts/${this.run.topRunAttempt.id}/unpause`, {
       method: 'PATCH'
     })
-    this.set('showConfirmPause', false)
     return this.set('run.topRunAttempt.paused', false)
   }
 

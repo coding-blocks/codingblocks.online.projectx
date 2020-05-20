@@ -60,6 +60,11 @@ export default class Overview extends Controller {
     return this.runAttempt.completedContents
   }
 
+  @computed('runAttempt.paused')
+  get canBePaused(){
+    return this.runAttempt.isPausable && !this.runAttempt.paused
+  }
+
 
   @alias('runAttempt.progressPercent')
   progressPercent
@@ -106,5 +111,22 @@ export default class Overview extends Controller {
       action: event,
       category: course,
     })
-  } 
+  }
+  
+  @action
+  async pauseRunAttempt() {
+    await this.get('api').request(`run_attempts/${this.runAttempt.id}/pause`, {
+      method: 'PATCH'
+    })
+    this.set('showConfirmPause', false)
+    this.set('runAttempt.paused', true)
+    return this.transitionToRoute('classroom')
+  }
+  @action
+  async unpauseRunAttempt() {
+    await this.get('api').request(`run_attempts/${this.runAttempt.id}/unpause`, {
+      method: 'PATCH'
+    })
+    return this.set('runAttempt.paused', false)
+  }
 }
