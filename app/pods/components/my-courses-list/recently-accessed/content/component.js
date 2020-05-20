@@ -4,6 +4,8 @@ import { inject as service } from '@ember/service';
 
 export default class MyCoursesListRecentlyAccessedContentComponent extends Component {
   @service api
+  @service store
+
   @computed('run.topRunAttempt.paused')
   get isPaused(){
     return this.run.topRunAttempt.paused
@@ -59,19 +61,22 @@ export default class MyCoursesListRecentlyAccessedContentComponent extends Compo
 
   @action
   async pauseRunAttempt() {
-    await this.get('api').request(`run_attempts/${this.run.topRunAttempt.id}/pause`, {
+    const resp = await this.get('api').request(`run_attempts/${this.run.topRunAttempt.id}/pause`, {
       method: 'PATCH'
     })
     this.set('showConfirmPause', false)
-    return this.set('run.topRunAttempt.paused', true)
+    this.store.pushPayload(resp)
+    // return this.set('run.topRunAttempt.paused', true)
   }
   @action
   async unpauseRunAttempt() {
-    await this.get('api').request(`run_attempts/${this.run.topRunAttempt.id}/unpause`, {
+    const resp = await this.get('api').request(`run_attempts/${this.run.topRunAttempt.id}/unpause`, {
       method: 'PATCH'
     })
     this.set('showConfirmPause', false)
-    return this.set('run.topRunAttempt.paused', false)
+    this.store.pushPayload(resp)
+
+    // return this.set('run.topRunAttempt.paused', false)
   }
 
 
