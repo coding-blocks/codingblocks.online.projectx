@@ -8,6 +8,7 @@ import { alias } from '@ember/object/computed';
 
 export default class Overview extends Controller {
   @service api
+  @service store
   @service metrics
   @service productTour
 
@@ -115,11 +116,11 @@ export default class Overview extends Controller {
   
   @action
   async pauseRunAttempt() {
-    await this.get('api').request(`run_attempts/${this.runAttempt.id}/pause`, {
+    const resp = await this.get('api').request(`run_attempts/${this.runAttempt.id}/pause`, {
       method: 'PATCH'
     })
     this.set('showConfirmPause', false)
-    this.set('runAttempt.paused', true)
+    this.store.pushPayload(resp)
     return this.transitionToRoute('classroom')
   }
   @action
