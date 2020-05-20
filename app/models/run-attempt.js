@@ -5,7 +5,7 @@ import moment from 'moment';
 export default DS.Model.extend({
   name: DS.attr(),
   premium: DS.attr(),
-  end: DS.attr(),
+  end: DS.attr('number'),
   revoked: DS.attr(),
   certificateApproved: DS.attr(),
   rating: DS.attr(),
