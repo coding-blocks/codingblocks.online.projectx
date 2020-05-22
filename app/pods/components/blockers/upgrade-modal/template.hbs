@@ -1,6 +1,6 @@
-{{#if @show}}
+{{#if show}}
   <ModalDialog
-      @onClose={{@close}}
+      @onClose={{close}}
       @translucentOverlay=true
       @targetAttachment='none'
       @containerClass='centered-scrolling-container'
@@ -8,9 +8,9 @@
       @wrapperClass='centered-scrolling-wrapper'
   >
     <Blockers::Upgrade 
-      @courseId={{@courseId}} 
-      @runAttempt={{@runAttempt}} 
-      @close={{@close}}>
+      @courseId={{courseId}} 
+      @runAttempt={{runAttempt}} 
+      @close={{close}}>
 
       {{yield}}
       
