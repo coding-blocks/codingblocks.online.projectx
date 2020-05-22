@@ -8,6 +8,7 @@ import { alias } from '@ember/object/computed';
 
 export default class Overview extends Controller {
   @service api
+  @service store
   @service metrics
   @service productTour
 
@@ -68,9 +69,14 @@ export default class Overview extends Controller {
       case 'PREMIUM': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/premium.png'
       case 'LIVE': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/live.png'
       case 'CLASSROOM': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/classroom.png'
-      default: 
+      default:
         return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/lite.png'
     }
+  }
+  
+  @computed('runAttempt.paused')
+  get canBePaused(){
+    return this.runAttempt.isPausable && !this.runAttempt.paused
   }
 
 
@@ -119,5 +125,22 @@ export default class Overview extends Controller {
       action: event,
       category: course,
     })
-  } 
+  }
+  
+  @action
+  async pauseRunAttempt() {
+    const resp = await this.get('api').request(`run_attempts/${this.runAttempt.id}/pause`, {
+      method: 'PATCH'
+    })
+    this.set('showConfirmPause', false)
+    this.store.pushPayload(resp)
+    return this.transitionToRoute('classroom')
+  }
+  @action
+  async unpauseRunAttempt() {
+    await this.get('api').request(`run_attempts/${this.runAttempt.id}/unpause`, {
+      method: 'PATCH'
+    })
+    return this.set('runAttempt.paused', false)
+  }
 }
