@@ -10,13 +10,13 @@
       {{#if (gte stats.currentOverallRank stats.previousOverallRank)}}
         <span class="font-md bold green">{{stats.currentOverallRank}}</span>
         <span class="green">
-          <FaIcon @icon="caret-down" />
+          <FaIcon @icon="caret-up" />
           <span class="ml-1">{{sub stats.currentOverallRank stats.previousOverallRank}} ranks</span>
         </span>
       {{else}}
         <span class="font-md bold salmon">{{stats.currentOverallRank}}</span>
         <span class="salmon">
-          <FaIcon @icon="caret-up" />
+          <FaIcon @icon="caret-down" />
           <span class="ml-1">{{sub stats.previousOverallRank stats.currentOverallRank}} ranks</span>
         </span>
       {{/if}}
