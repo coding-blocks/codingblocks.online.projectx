@@ -96,7 +96,7 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@coding-blocks/motley": "0.7.3",
+    "@coding-blocks/motley": "0.8.10",
     "ember-line-clamp": "^0.2.15",
     "jquery-resizable-dom": "^0.35.0",
     "js-base64": "^2.5.2",

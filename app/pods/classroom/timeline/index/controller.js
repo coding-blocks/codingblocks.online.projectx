@@ -17,6 +17,7 @@ export default class Overview extends Controller {
 
   discussBaseUrl = config.discussBaseUrl
   visible = true
+  showUpgradeModal = false
 
   @computed('runAttempt.{end,premium}', 'runAttempt.run.price')
   get showCertificateRequest() {
@@ -61,6 +62,18 @@ export default class Overview extends Controller {
     return this.runAttempt.completedContents
   }
 
+  @computed('run.tier')
+  get tierIcon() {
+    switch (this.get('run.tier')) {
+      case 'LITE': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/lite.png'
+      case 'PREMIUM': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/premium.png'
+      case 'LIVE': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/live.png'
+      case 'CLASSROOM': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/classroom.png'
+      default:
+        return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/lite.png'
+    }
+  }
+  
   @computed('runAttempt.paused')
   get canBePaused(){
     return this.runAttempt.isPausable && !this.runAttempt.paused
