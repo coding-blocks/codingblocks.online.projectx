@@ -130,6 +130,7 @@
             Resume
           {{/link-to}}
           {{/if}}
+          <Blockers::PauseModal @runAttempt={{runAttempt}} @show={{showConfirmPause}} @redirectTo={{'classroom'}}/>
         </div>
       </div>
     </div>
@@ -265,47 +266,3 @@
   {{/modal-dialog}}
 {{/if}}
 
-{{#if showConfirmPause}}
-  {{#modal-dialog
-          translucentOverlay=true
-          onClose=(action (mut showConfirmPause) false)
-          targetAttachment="none"
-          containerClass="centered-scrolling-container p-4"
-          overlayClass="centered-scrolling-overlay"
-          wrapperClass="centered-scrolling-wrapper"
-        }}
-  <div class="row">
-    <div class="col-2">
-      <img src="http://minio.codingblocks.com/amoeba/danger-flat-icon.svg" alt="danger!" width="75px" height="75px">
-    </div>
-    <div class="col-10 my-auto font-md bold">
-      Are you sure you want to pause?
-    </div>
-  </div>
-  <div class="font-sm">
-      <p>
-       Pause feature allows to 'pause' your course during important days such as exam-time. 
-       Your course expiry date will be extended by X days if you pause your course for X days (upto 30 days max). 
-       Course can be paused-unpaused multiple times.
-      </p>
-
-      <p>
-        All progress related to course material including assignments bookmarks, notes and your doubts that you asked will remain. 
-        However, you won't be able access course until you unpause.
-      </p>
-      <p>
-        After course expiry, separate monthly extension packs can be bought if needed but we suggest you complete 
-        the course within given time to maximise your learning.
-      </p>
-      <br>
-      <span class="my-3 bold">
-        You have {{moment-duration run.topRunAttempt.pauseTimeLeft}} of pause time left.
-      </span>
-  </div>
-
-  <div class="d-flex justify-content-end my-3">
-    <button class="button-solid button-orange mr-3" {{action "pauseRunAttempt"}}>Continue</button>
-    <button class="button-dashed button-orange" {{action (mut showConfirmPause) false}}>No, Take me back</button>
-  </div>
-  {{/modal-dialog}}
-{{/if}}

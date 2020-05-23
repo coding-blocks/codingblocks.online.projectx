@@ -115,19 +115,15 @@ export default class Overview extends Controller {
   }
   
   @action
-  async pauseRunAttempt() {
-    const resp = await this.get('api').request(`run_attempts/${this.runAttempt.id}/pause`, {
-      method: 'PATCH'
-    })
-    this.set('showConfirmPause', false)
-    this.store.pushPayload(resp)
-    return this.transitionToRoute('classroom')
-  }
-  @action
   async unpauseRunAttempt() {
     await this.get('api').request(`run_attempts/${this.runAttempt.id}/unpause`, {
       method: 'PATCH'
     })
     return this.set('runAttempt.paused', false)
+  }
+
+  @action
+  redirectToClassRoom(){
+    return this.transitionToRoute('classroom')
   }
 }

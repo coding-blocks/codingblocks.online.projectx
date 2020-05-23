@@ -33,6 +33,11 @@ export default class Dashboard extends Controller {
     return this.fetchCoursesTask.last && this.runs && !this.runs.length
   }
 
+  @computed('lastAccessedRun.topRunAttempt.paused')
+  get canBePaused(){
+    return this.lastAccessedRun.topRunAttempt.isPausable && !this.lastAccessedRun.topRunAttempt.paused
+  }
+
   @restartableTask fetchPerformanceStatsTask = function *() {
     const leaderboard = yield this.api.request(`runs/${this.lastAccessedRun.id}/leaderboard`).catch(console.log)
     const stats = yield this.api.request(`progresses/stats/${this.lastAccessedRun.get('topRunAttempt.id')}`)
@@ -77,10 +82,10 @@ export default class Dashboard extends Controller {
 
   @action
   async unpauseRunAttempt() {
-    await this.get('api').request(`run_attempts/${this.lastAccessedRun.topRunAttempt.id}/unpause`, {
+    const resp = await this.get('api').request(`run_attempts/${this.lastAccessedRun.topRunAttempt.id}/unpause`, {
       method: 'PATCH'
     })
-    return this.set('lastAccessedRun.topRunAttempt.paused', false)
+    this.store.pushPayload(resp)
   }
 
 
