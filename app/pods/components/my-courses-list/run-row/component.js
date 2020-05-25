@@ -11,9 +11,10 @@ export default class CourseBasicInfo extends Component {
 
   constructor() {
     super(...arguments)
-    window.setInterval(() => {
+    const intervalId = window.setInterval(() => {
       this.incrementProperty('tick')
     }, 1000)
+    this.set('intervalId', intervalId)
   }
 
   @computed ('course.instructors.@each.name')
@@ -28,5 +29,10 @@ export default class CourseBasicInfo extends Component {
     const now = new Date()
     const offset = paused ? Math.min(Math.floor((now - lastPausedAt)/1000), pauseTimeLeft) : 0
     return moment.unix(end + offset).format("DD MMM YYYY HH:mm:ss")
+  }
+
+  willDestroyElement() {
+    this._super(...arguments)
+    window.clearInterval(this.intervalId)
   }
 }

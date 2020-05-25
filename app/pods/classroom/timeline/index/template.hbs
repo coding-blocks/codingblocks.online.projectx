@@ -123,10 +123,20 @@
               Buy Now
             </a>
           {{/if}}
+          
+          {{#if canBePaused}}
+            <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
+          {{else if (eq runAttempt.runTier "LITE")}}
+            <button class="button-dashed button-orange mx-2" {{action (mut showUpgradeModalForPause) true}}>Pause</button>
+          {{/if}}
 
-          {{#link-to "attempt" runAttempt.id activeClass="" class="button-dashed button-orange" invokeAction=(action 'log' 'resume' course.identifier preventDefault=false)}}
+          {{#if runAttempt.paused}}
+            <button class="button-solid button-orange"{{action "unpauseRunAttempt"}}>UnPause</button>
+          {{else}}
+          {{#link-to "attempt" runAttempt.id activeClass="" class="button-solid button-orange" invokeAction=(action 'log' 'resume' course.identifier preventDefault=false)}}
             Resume
           {{/link-to}}
+          {{/if}}
         </div>
       </div>
     </div>
@@ -262,11 +272,24 @@
   {{/modal-dialog}}
 {{/if}}
 
-
-
 <Blockers::UpgradeModal 
   @show={{showUpgradeModal}} 
   @close={{action (mut showUpgradeModal) false}}
   @courseId={{course.id}} 
   @runAttempt={{runAttempt}} 
+  @intent="dashboard_badge_click"
+/>
+
+<Blockers::UpgradeModal 
+  @show={{showUpgradeModalForPause}} 
+  @close={{action (mut showUpgradeModalForPause) false}}
+  @courseId={{course.id}} 
+  @runAttempt={{runAttempt}} 
+  @intent="pause_feature"
+/>
+
+<Blockers::PauseModal 
+  @runAttempt={{runAttempt}} 
+  @show={{showConfirmPause}} 
+  @redirectTo={{'classroom'}}
 />
