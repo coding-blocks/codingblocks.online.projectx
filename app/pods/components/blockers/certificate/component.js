@@ -13,10 +13,9 @@ export default class BlockersCertificateComponent extends Component {
       data: {
         runAttemptId: this.get('runAttempt.id')
       }
-    }).then(function(){
-      this.set('@checkAndGenerate', false)
+    })
+      this.set('checkAndGenerate', false)
       this.set('generationRequested', true)
-    });
-
+      this.get('router').transitionTo('classroom.timeline.index')
   }
 }
