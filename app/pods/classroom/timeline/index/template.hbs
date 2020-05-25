@@ -135,7 +135,6 @@
             Resume
           {{/link-to}}
           {{/if}}
-          <Blockers::PauseModal @runAttempt={{runAttempt}} @show={{showConfirmPause}} @redirectTo={{'classroom'}}/>
         </div>
       </div>
     </div>
@@ -277,4 +276,10 @@
   @courseId={{course.id}} 
   @runAttempt={{runAttempt}} 
   @intent="dashboard_badge_click"
+/>
+
+<Blockers::PauseModal 
+  @runAttempt={{runAttempt}} 
+  @show={{showConfirmPause}} 
+  @redirectTo={{'classroom'}}
 />

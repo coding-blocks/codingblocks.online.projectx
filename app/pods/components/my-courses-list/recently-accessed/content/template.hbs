@@ -22,7 +22,8 @@
       {{#if canBePaused}}
         <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
       {{/if}}
-    <Blockers::PauseModal @runAttempt={{run.topRunAttempt}} @show={{showConfirmPause}}/>
     </div>
   </div>
 </div>
+
+<Blockers::PauseModal @runAttempt={{run.topRunAttempt}} @show={{showConfirmPause}}/>
