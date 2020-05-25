@@ -1,7 +1,7 @@
 <div class="col-lg-3 col-md-6 pl-md-3 mt-md-0 mt-4">
   <div class="font-normal">Course Progress</div>
   <div class="mt-3">
-    <MyCoursesList::ProgressBar @percent={{progressPercent}} />
+    <MyCoursesList::ProgressBar @percent={{progressPercent}} @color={{if run.topRunAttempt.paused 'grey'}} />
   </div>
 </div>
 <div class="col-lg-5 col-12 mt-lg-0 mt-4 pl-lg-3">
