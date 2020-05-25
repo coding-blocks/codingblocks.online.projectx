@@ -21,9 +21,19 @@
       {{/if}}
       {{#if canBePaused}}
         <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
+      {{else if (eq run.tier "LITE")}}
+        <button class="button-dashed button-orange mx-2" {{action (mut showUpgradeModal) true}}>Pause</button>
       {{/if}}
     </div>
   </div>
 </div>
+
+<Blockers::UpgradeModal 
+  @show={{showUpgradeModal}} 
+  @close={{action (mut showUpgradeModal) false}}
+  @courseId={{run.course.id}} 
+  @runAttempt={{run.topRunAttempt}} 
+  @intent="pause_feature"
+/>
 
 <Blockers::PauseModal @runAttempt={{run.topRunAttempt}} @show={{showConfirmPause}}/>

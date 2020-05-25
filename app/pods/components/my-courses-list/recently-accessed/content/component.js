@@ -6,6 +6,8 @@ export default class MyCoursesListRecentlyAccessedContentComponent extends Compo
   @service api
   @service store
 
+  showUpgradeModal = false
+
   @computed('run.topRunAttempt.paused')
   get isPaused(){
     return this.run.topRunAttempt.paused
