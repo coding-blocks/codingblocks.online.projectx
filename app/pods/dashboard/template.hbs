@@ -60,6 +60,9 @@
             </span>
           </div>
           <div class="mt-sm-0 mt-4">
+            {{#if canBePaused}}
+              <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
+            {{/if}}
             {{#if lastAccessedRun.topRunAttempt.paused}}
             <button class="button-dashed button-orange"{{action "unpauseRunAttempt"}}>UnPause</button>
             {{else}}
@@ -70,6 +73,7 @@
               Resume Now
             </LinkTo>
             {{/if}}
+            <Blockers::PauseModal @runAttempt={{lastAccessedRun.topRunAttempt}} @show={{showConfirmPause}} />
           </div>
         </div>
       </div>
