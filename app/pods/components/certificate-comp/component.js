@@ -27,16 +27,6 @@ export default Component.extend({
     })
     this.set('runAttempt.approvalRequested', true)
   }).drop(),
-  generateCertificateTask: task(function * () {
-    yield this.api.request('certificates', {
-      method: 'POST',
-      data: {
-        runAttemptId: this.get('runAttempt.id')
-      }
-    })
-    this.set('generationRequested', true)
-  }).drop(),
-
   actions: {
     downloadCertificate() {
       const salt = this.get('runAttempt.certificate.salt')
