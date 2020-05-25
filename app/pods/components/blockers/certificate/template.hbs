@@ -1,0 +1,35 @@
+{{#if checkAndGenerate}}
+  {{#modal-dialog
+          translucentOverlay=true
+          onClose=(action (mut checkAndGenerate) false)
+          targetAttachment="none"
+          containerClass="centered-scrolling-container p-4"
+          overlayClass="centered-scrolling-overlay"
+          wrapperClass="centered-scrolling-wrapper"
+        }}
+  <div class="row">
+    <div class="col-2">
+      <img src="http://minio.codingblocks.com/amoeba/danger-flat-icon.svg" alt="danger!" width="75px" height="75px">
+    </div>
+    <div class="col-10 my-auto font-md bold">
+      Certificate Generation Alert
+    </div>
+  </div>
+  <div class="font-sm">
+      <p>
+        You are about to generate completion certificate for this course. Please make sure the following details are correct as once generated your certificate can't be edited.
+      </p>
+      <p>
+        {{!-- Name: Abhishek Gupta --}}
+      </p>
+      <p>
+        Click here: https://account.codingblocks.com/users/me to update this information before generating the certificate
+      </p>
+  </div>
+
+  <div class="d-flex justify-content-end my-3">
+    <button class="button-solid button-orange mr-3" {{action (perform generateCertificateTask)}}>Yes, Generate</button>
+    <button class="button-dashed button-orange" {{action (mut checkAndGenerate) false}}>Back</button>
+  </div>
+  {{/modal-dialog}}
+{{/if}}

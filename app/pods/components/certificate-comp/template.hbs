@@ -44,7 +44,7 @@
     {{else if (or generating generationRequested)}}
       <button class="white button-solid" disabled>Generating</button>
     {{else if canGenerate}}
-      <button class="white button-solid button-orange" {{action (perform generateCertificateTask)}}>Generate</button>
+      <button class="white button-solid button-orange" {{action (mut checkAndGenerate) true}}>Generate</button>
     {{else if approvalRequested}}
       <button class="white button-solid" disabled>Requested</button>
     {{else if canRequest}}
@@ -75,3 +75,8 @@
   />
 </ModalDialog>
 {{/if}}
+
+<Blockers::Certificate 
+  @runAttempt={{runAttempt}} 
+  @checkAndGenerate={{checkAndGenerate}} 
+/>
