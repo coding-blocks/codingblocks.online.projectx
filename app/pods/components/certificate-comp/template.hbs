@@ -44,7 +44,7 @@
     {{else if (or generating generationRequested)}}
       <button class="white button-solid" disabled>Generating</button>
     {{else if canGenerate}}
-      <button class="white button-solid button-orange" {{action (mut checkAndGenerate) true}}>Generate</button>
+      <button class="white button-solid button-orange" {{action (mut showCertificateGenerationBlocker) true}}>Generate</button>
     {{else if approvalRequested}}
       <button class="white button-solid" disabled>Requested</button>
     {{else if canRequest}}
@@ -78,6 +78,7 @@
 
 <Blockers::Certificate 
   @runAttempt={{runAttempt}} 
-  @checkAndGenerate={{checkAndGenerate}} 
-  @generationRequested = {{generationRequested}}
+  @show={{showCertificateGenerationBlocker}}
+  @close={{action (mut showCertificateGenerationBlocker) false}}
+  @onContinue={{perform generateCertificateTask}}
 />

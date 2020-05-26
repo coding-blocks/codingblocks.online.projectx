@@ -1,7 +1,7 @@
-{{#if checkAndGenerate}}
+{{#if show}}
   {{#modal-dialog
           translucentOverlay=true
-          onClose=(action (mut checkAndGenerate) false)
+          onClose= (action (mut show) false)
           targetAttachment="none"
           containerClass="centered-scrolling-container p-4"
           overlayClass="centered-scrolling-overlay"
@@ -12,7 +12,7 @@
       <img src="http://minio.codingblocks.com/amoeba/danger-flat-icon.svg" alt="danger!" width="75px" height="75px">
     </div>
     <div class="col-10 my-auto font-md bold">
-      Alert: Certificate Completion
+      Generate Certificate
     </div>
   </div>
   <div class="font-sm">
@@ -21,7 +21,7 @@
       </p>
       <p class="font-xl">
         Name: <strong>{{currentUser.user.fullName}} </strong> <br>
-        Email : {{currentUser.user.email}} <br>
+        Email : {{currentUser.user.email}}
         <span class="font-sm">(Not visible on certificate)</span>
       </p>
       <p>
@@ -30,8 +30,8 @@
   </div>
 
   <div class="d-flex justify-content-end my-3">
-    <button class="button-solid button-orange mr-3" {{action (perform generateCertificateTask)}}>Confirm</button>
-    <button class="button-dashed button-orange" {{action (mut checkAndGenerate) false}}>Back</button>
+    <button class="button-solid button-orange mr-3" {{action onContinue}} >Confirm</button>
+    <button class="button-dashed button-orange" {{on "click" close}}>Back</button>
   </div>
   {{/modal-dialog}}
 {{/if}}
