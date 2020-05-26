@@ -19,6 +19,7 @@ export default class NotesTab extends Component {
 
   @restartableTask addNoteTask = function* ()  {
     const content = this.store.peekRecord('content', this.player.contentId)
+    const section = this.store.peekRecord('section', this.player.sectionId)
     const runAttempt = this.store.peekRecord('run-attempt', this.player.runAttemptId)
 
     let duration ;
@@ -31,6 +32,7 @@ export default class NotesTab extends Component {
     const note = this.store.createRecord('note', {
       text: this.get('newNoteText'),
       content,
+      section,
       duration
     })
     note.set('runAttempt', runAttempt)

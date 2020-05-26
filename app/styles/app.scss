@@ -341,7 +341,8 @@ div.library_doubts .input-search {
 }
 
 .hoverable-text:hover {
-  filter: brightness(80%)
+  filter: brightness(80%);
+  text-decoration: underline
 }
 
 .hoverable-text:active {

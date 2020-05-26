@@ -8,6 +8,7 @@ import { alias } from '@ember/object/computed';
 
 export default class Overview extends Controller {
   @service api
+  @service store
   @service metrics
   @service productTour
 
@@ -16,10 +17,11 @@ export default class Overview extends Controller {
 
   discussBaseUrl = config.discussBaseUrl
   visible = true
+  showUpgradeModal = false
 
   @computed('runAttempt.{end,premium}', 'runAttempt.run.price')
   get showCertificateRequest() {
-    return this.runAttempt.premium && this.runAttempt.get('run.price')
+    return this.runAttempt.premium && this.runAttempt.get('run.certificateTemplate')
   }
 
   @computed('runAttempt.{end,premium}', 'runAttempt.run.price')
@@ -49,6 +51,34 @@ export default class Overview extends Controller {
   get goodiesLockOffset() {
     return 0.84 * this.runAttempt.get('run.goodiesThreshold')
   }
+
+  @computed('course.topRun')
+  get totalContents() {
+    return this.course.get('topRun').totalContents
+  }
+
+  @computed('course.topRun')
+  get doneContents() {
+    return this.runAttempt.completedContents
+  }
+
+  @computed('run.tier')
+  get tierIcon() {
+    switch (this.get('run.tier')) {
+      case 'LITE': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/lite.png'
+      case 'PREMIUM': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/premium.png'
+      case 'LIVE': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/live.png'
+      case 'CLASSROOM': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/classroom.png'
+      default:
+        return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/lite.png'
+    }
+  }
+  
+  @computed('runAttempt.paused')
+  get canBePaused(){
+    return this.runAttempt.isPausable && !this.runAttempt.paused
+  }
+
 
   @alias('runAttempt.progressPercent')
   progressPercent
@@ -95,5 +125,18 @@ export default class Overview extends Controller {
       action: event,
       category: course,
     })
-  } 
+  }
+  
+  @action
+  async unpauseRunAttempt() {
+    await this.get('api').request(`run_attempts/${this.runAttempt.id}/unpause`, {
+      method: 'PATCH'
+    })
+    return this.set('runAttempt.paused', false)
+  }
+
+  @action
+  redirectToClassRoom(){
+    return this.transitionToRoute('classroom')
+  }
 }

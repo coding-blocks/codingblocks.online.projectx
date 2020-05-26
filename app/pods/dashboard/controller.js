@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
-import { computed } from '@ember/object';
+import { action, computed } from '@ember/object';
 
 export default class Dashboard extends Controller {
   @service api
@@ -31,6 +31,11 @@ export default class Dashboard extends Controller {
   @computed('fetchCoursesTask.last', 'runs')
   get noRuns() {
     return this.fetchCoursesTask.last && this.runs && !this.runs.length
+  }
+
+  @computed('lastAccessedRun.topRunAttempt.paused')
+  get canBePaused(){
+    return this.lastAccessedRun.topRunAttempt.isPausable && !this.lastAccessedRun.topRunAttempt.paused
   }
 
   @restartableTask fetchPerformanceStatsTask = function *() {
@@ -74,4 +79,14 @@ export default class Dashboard extends Controller {
       }
     });
   }
+
+  @action
+  async unpauseRunAttempt() {
+    const resp = await this.get('api').request(`run_attempts/${this.lastAccessedRun.topRunAttempt.id}/unpause`, {
+      method: 'PATCH'
+    })
+    this.store.pushPayload(resp)
+  }
+
+
 }

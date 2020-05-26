@@ -14,7 +14,7 @@ export default class Track extends Controller {
   @restartableTask fetchJobsTask = function *() {
     return this.store.query('job', {
       filter: {
-        accepting: true
+        'is_accepting =': true
       },
       page: {
         limit: 3

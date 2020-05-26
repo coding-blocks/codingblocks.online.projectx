@@ -1,18 +1,39 @@
-<div class="col-lg-5 col-md-6 pl-md-3 mt-md-0 mt-4">
+<div class="col-lg-3 col-md-6 pl-md-3 mt-md-0 mt-4">
   <div class="font-normal">Course Progress</div>
   <div class="mt-3">
-    <MyCoursesList::ProgressBar @percent={{progressPercent}} />
+    <MyCoursesList::ProgressBar @percent={{progressPercent}} @color={{if run.topRunAttempt.paused 'grey'}} />
   </div>
 </div>
-<div class="col-lg-3 col-12 mt-lg-0 mt-4 pl-lg-3">
-  <div class="row no-gutters justify-content-around align-items-center">
-    <a href="#" class="font-normal {{fontClassName}}"> {{progressText}} </a>
-    <LinkTo @route="classroom.timeline.overview" @models={{array run.course.id run.id}} @tagName="button"
-      class="button-orange button-solid">
-      {{resumeButtonText}}
-    </LinkTo>
-    {{#if showGetCertificate}}
-    <button class="button-green button-solid">Get Certificate</button>
-    {{/if}}
+<div class="col-lg-5 col-12 mt-lg-0 mt-4 pl-lg-3">
+  <div class="row no-gutters  ml-0 ml-md-4">
+    <div class="font-normal my-auto {{fontClassName}}" style="width: 80px;"> {{progressText}} </div>
+    <div class="flex-1 ml-3 d-flex justify-content-end justify-content-md-around align-items-center">
+      {{#if isPaused}}
+        <button class="button-solid button-orange mx-2"{{action "unpauseRunAttempt"}}>UnPause</button>
+      {{else}}
+        <LinkTo @route="classroom.timeline.overview" @models={{array run.course.id run.id}} @tagName="button"
+          class="button-orange button-solid mx-2">
+          {{resumeButtonText}}
+        </LinkTo>
+      {{/if}}
+      {{#if showGetCertificate}}
+        <button class="button-green button-solid mx-2">Get Certificate</button>
+      {{/if}}
+      {{#if canBePaused}}
+        <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
+      {{else if (eq run.tier "LITE")}}
+        <button class="button-dashed button-orange mx-2" {{action (mut showUpgradeModal) true}}>Pause</button>
+      {{/if}}
+    </div>
   </div>
 </div>
+
+<Blockers::UpgradeModal 
+  @show={{showUpgradeModal}} 
+  @close={{action (mut showUpgradeModal) false}}
+  @courseId={{run.course.id}} 
+  @runAttempt={{run.topRunAttempt}} 
+  @intent="pause_feature"
+/>
+
+<Blockers::PauseModal @runAttempt={{run.topRunAttempt}} @show={{showConfirmPause}}/>
