@@ -29,7 +29,7 @@
           class="white content-row {{content.iconClass}} {{if (eq activeContentId content.id) "gradient-text-orange"}}"
           @route="attempt.content"
           @models={{array section.id content.id}}>
-          <span class="normal w-100">{{content.title}}  </span>
+          <span class="normal w-100">{{markdown-to-html content.title}}</span>
         </LinkTo>
         {{#if content.isDone}}
           <FaIcon @icon="check" class="gradient-text-green" />
