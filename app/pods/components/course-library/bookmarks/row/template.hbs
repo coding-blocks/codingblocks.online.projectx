@@ -3,7 +3,7 @@
     @route="attempt.content"
     @models={{array bookmark.runAttempt.id bookmark.section.id bookmark.content.id}}
     class="col-12 col-md-4 col-lg-3 gradient-text-orange font-sm d-flex bold" >
-      <div> {{bookmark.content.title}} </div>
+      <div> {{markdown-to-html bookmark.content.title}} </div>
   </LinkTo>
   <div class="col-6 col-md-3 grey">
     {{moment-from-now bookmark.createdAt}}
