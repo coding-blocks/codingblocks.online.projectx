@@ -9,7 +9,7 @@
   <Textarea @value={{note.text}} class="underline-input w-100"></Textarea>
   <div>
     <span class="gradient-text-orange">
-      {{markdown-to-html note.content.title}}
+      {{note.content.title}}
       <span class="ml-5">{{note.duration}}</span>
     </span>
     <span class="float-right">
@@ -27,7 +27,7 @@
   </p>
   <div>
     <span class="gradient-text-orange bold">
-      {{markdown-to-html note.content.title}}
+      {{note.content.title}}
       <span class="ml-5">
         {{displayDuration}}
       </span>
