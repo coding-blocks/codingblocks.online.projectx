@@ -3,7 +3,7 @@
     @route="attempt.content"
     @models={{array note.runAttempt.id note.section.id note.content.id}}
     class="col-12 col-md-5 gradient-text-orange font-sm d-flex bold" >
-      <div> {{markdown-to-html note.content.title}} </div>
+      <div> {{note.content.title}} </div>
       <div class="ml-auto mx-md-auto pl-2">
         {{format-video-time note.duration}}
       </div>
