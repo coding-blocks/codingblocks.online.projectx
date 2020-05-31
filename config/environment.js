@@ -7,6 +7,7 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/app/',
     locationType: 'auto',
+    historySupportMiddleware: true,
     'ember-simple-auth-token': {
       identificationField: 'code',
       passwordField: 'code',
