@@ -1,13 +1,13 @@
-{{#if showComponent}} 
+{{#if @showComponent}} 
 <div class="t-align-c mt-3 bold">
-  <button disabled="{{if disabledPrevious 'disabled'}}" {{action 'previousPage'}}>
+  <button type="button" disabled="{{if @disabledPrevious 'disabled'}}" {{on 'previousPage'}}>
     &lt; Prev
   </button>
   <span class="dark-grey mx-4">
     {{this.start}}-{{this.end}} of {{this.numberOfTotalResults}}
   </span>
   
-  <button disabled="{{if disabledNext 'disabled'}}" {{action 'nextPage'}}>
+  <button type="button" disabled="{{if @disabledNext 'disabled'}}" {{on 'nextPage'}}>
     Next &gt;
   </button>
   
