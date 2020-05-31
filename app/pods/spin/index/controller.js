@@ -44,24 +44,29 @@ export default class SpinIndexController extends Controller {
     const prize = yield this.api.request('/spins/draw', {
       method: 'POST'
     })
-    // TODO: Animate Image
-    // yield new Promise((resolve, reject) => {
-    //   const preloadImage = new Image()
-    //   preloadImage.src = prize.webp
-    //   preloadImage.onload = resolve
-    //   preloadImage.onerror = reject
-    // })
-    const prizeImage = document.getElementById('prize-image')
-    prizeImage.src = prize.webp
+    
+    this.wheel.style.transition = 'unset'
+    this.wheel.style.transform = "rotateZ(0deg)"
+    
+    yield timeout(10)
+   
+    this.wheel.style.transition = '8s ease'
+    this.wheel.style.transform = this.getTransformForRotation(this.wheel, prize.rotation)
+   
+    yield new Promise((resolve) => this.wheel.addEventListener('transitionend', resolve))
+    
 
-    yield timeout(4500)
-    this.set('wonPrize', prize)
-
-    const content = document.getElementById('content-play')
-    content.style.display = 'none'
-
-    const share = document.getElementById('content-share')
-    share.style.display = 'block'
+    if (prize.size > 0) {
+      this.setProperties({
+        showWinModal: true,
+        prizeDrawn: prize
+      })
+    } else {
+      this.setProperties({
+        showLoseModal: true,
+        prizeDrawn: prize
+      })
+    }
 
     yield this.reloadRoute()
   }

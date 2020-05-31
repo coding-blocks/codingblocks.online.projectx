@@ -1,43 +1,34 @@
-<div class="border-card px-0 p-md-4 t-align-c">
-  <div class="w-100">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 my-3 t-align-c t-align-lg-l">
-          <div class="row no-gutters align-items-center">
-            <div class="col-lg-2">
-              <img src="https://minio.codingblocks.com/amoeba/circle-heart.svg" class="s-60x60" />
-            </div>
-            <div class="col-lg-8">
-              <div class="extra-bold font-md letter-spaced gradient-text-red-pink">
-                Running out of hearts?
-              </div>
-              <div class="font-sm">
-                For every friend who signup with your code gets an extra heart. <br>
-                <span class="bold">You get an extra heart after their successful participation!</span>
-              </div>
-            </div>
-          </div>
+<div class="spin-bg-purple py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 my-3 t-align-c t-align-lg-l">
+        <div class="extra-bold font-md letter-spaced spin-yellow">
+          Running out of spins?
         </div>
-        <div class="d-flex col-lg-6 d-flex align-items-center justify-content-center flex-wrap">
-          <div class="gradient-br-red-pink p-2 font-md">
-            <span class="gradient-text-red-pink copy-text" {{on "click" (action 'selectText')}} title="Click To Copy">
-              https://cb.lk/join/{{referralCode}}
-              <EmberTooltip @event="click" @duration="1000">
-                Copied!
-              </EmberTooltip>
-            </span>
-          </div>
-          <div class="ml-5">
-            <span class="font-md pointer" {{action share 'facebook'}}>
-              <i class="fab fa-2x fa-facebook-f"></i>
-            </span>
-            <span class="ml-4 font-md pointer" {{action share 'twitter'}}>
-              <i class="fab fa-2x fa-twitter"></i>
-            </span>
-            <span class="ml-4 font-md pointer" {{action share 'whatsapp'}}>
-              <i class="fab fa-2x fa-whatsapp"></i>
-            </span>
-          </div>
+        <div class="font-sm white mt-4">
+          For every friend who signup with your code gets an extra heart. <br>
+          <span class="bold">You get an extra heart after their successful participation!</span>
+        </div>
+      </div>
+      <div class="d-flex col-lg-6 d-flex align-items-center justify-content-center flex-wrap">
+        <div>
+          <span class="border-dashed white p-2 font-md copy-text" {{on "click" (action 'selectText')}} title="Click To Copy">
+            https://cb.lk/join/{{referralCode}}
+            <EmberTooltip @event="click" @duration="1000">
+              Copied!
+            </EmberTooltip>
+          </span>
+        </div>
+        <div class="ml-5">
+          <span class="font-md pointer white" {{action share 'facebook'}}>
+            <i class="fab fa-2x fa-facebook-f"></i>
+          </span>
+          <span class="ml-4 font-md pointer white" {{action share 'twitter'}}>
+            <i class="fab fa-2x fa-twitter"></i>
+          </span>
+          <span class="ml-4 font-md pointer white" {{action share 'whatsapp'}}>
+            <i class="fab fa-2x fa-whatsapp"></i>
+          </span>
         </div>
       </div>
     </div>

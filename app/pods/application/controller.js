@@ -20,11 +20,11 @@ export default class ApplicationController extends Controller {
 
   @computed ('router.currentRouteName')
   get isInsideAttemptRoute () {
-    return ['attempt'].includes(this.get('router.currentRouteName').split('.')[0])
+    return ['attempt'].includes(this.get('router.currentRouteName')?.split('.')[0])
   }
   @computed ('router.currentRouteName')
   get isInsidePlayer () {
-    return ['player'].includes(this.get('router.currentRouteName').split('.')[0])
+    return ['player'].includes(this.get('router.currentRouteName')?.split('.')[0])
   }
 
   @or('isInsidePlayer', 'isInsideAttemptRoute') hideNav
