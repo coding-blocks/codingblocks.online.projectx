@@ -35,8 +35,8 @@ export default Component.extend({
       }
     })
     this.set('generationRequested', true)
+    this.set('showCertificateGenerationBlocker', false)
   }).drop(),
-
   actions: {
     downloadCertificate() {
       const salt = this.get('runAttempt.certificate.salt')

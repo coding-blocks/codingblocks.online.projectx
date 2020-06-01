@@ -1,0 +1,37 @@
+{{#if show}}
+  {{#modal-dialog
+          translucentOverlay=true
+          onClose= (action (mut show) false)
+          targetAttachment="none"
+          containerClass="centered-scrolling-container p-4"
+          overlayClass="centered-scrolling-overlay"
+          wrapperClass="centered-scrolling-wrapper"
+        }}
+  <div class="row">
+    <div class="col-2">
+      <img src="http://minio.codingblocks.com/amoeba/danger-flat-icon.svg" alt="danger!" width="75px" height="75px">
+    </div>
+    <div class="col-10 my-auto font-md bold">
+      Generate Certificate
+    </div>
+  </div>
+  <div class="font-sm">
+      <p>
+        You are about to generate completion certificate for this course. Please make sure the following details are correct as once generated your certificate can't be edited.
+      </p>
+      <p class="font-xl">
+        Name: <strong>{{currentUser.user.fullName}} </strong> <br>
+        Email : {{currentUser.user.email}}
+        <span class="font-sm">(Not visible on certificate)</span>
+      </p>
+      <p>
+        Click here: <a href="https://account.codingblocks.com/users/me" class="blue" target="blank"> https://account.codingblocks.com/users/me </a> to update this information before generating the certificate
+      </p>
+  </div>
+
+  <div class="d-flex justify-content-end my-3">
+    <button class="button-solid button-orange mr-3" {{action onContinue}} >Confirm</button>
+    <button class="button-dashed button-orange" {{on "click" close}}>Back</button>
+  </div>
+  {{/modal-dialog}}
+{{/if}}

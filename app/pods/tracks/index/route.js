@@ -7,7 +7,7 @@ export default class IndexRoute extends Route {
   model() {
     return this.store.query('career-track', {
       page: {
-        limit: 6
+        limit: 10
       }
     })
   }

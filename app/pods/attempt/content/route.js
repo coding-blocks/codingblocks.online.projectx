@@ -16,9 +16,11 @@ export default Route.extend({
     })
   },
   setupController(controller) {
-      this._super(...arguments)
-      controller.set('run', this.modelFor('attempt').get('run'))
-      controller.set('course', this.modelFor('attempt').get('run.course'))
+    this._super(...arguments)
+    const runAttempt = this.modelFor('attempt')
+    controller.set('runAttempt', runAttempt)
+    controller.set('run', runAttempt.get('run'))
+    controller.set('course', runAttempt.get('run.course'))
   },  
   async afterModel(content) {
     const courseTitle = this.modelFor('attempt').get('run.course.title')
