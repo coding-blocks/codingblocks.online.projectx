@@ -61,11 +61,14 @@
       </div>
     </div>
   </div>
-  {{!-- Share it --}}
-  <Spin::SpinShare 
-    @share={{action 'share'}}
-    @referralCode={{'something'}}
-    id="share-box" />
+
+  {{#if referralCode}}
+    {{!-- Share it --}}
+    <Spin::SpinShare 
+      @share={{action 'share'}}
+      @referralCode={{referralCode}}
+      id="share-box" />
+  {{/if}}
 
   <div class="container">
     {{!-- My Winnings --}}
