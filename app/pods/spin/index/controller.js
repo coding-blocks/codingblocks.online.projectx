@@ -11,6 +11,8 @@ export default class SpinIndexController extends Controller {
 
   showTnC = false
   prizeDrawn = null
+  showWinModal = false
+  showLoseModal = false
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
@@ -59,8 +61,6 @@ export default class SpinIndexController extends Controller {
     this.wheel.style.transform = this.getTransformForRotation(this.wheel, prize.rotation)
    
     yield new Promise((resolve) => this.wheel.addEventListener('transitionend', resolve))
-    
-
     if (prize.size > 0) {
       this.setProperties({
         showWinModal: true,
@@ -72,7 +72,6 @@ export default class SpinIndexController extends Controller {
         prizeDrawn: prize
       })
     }
-
     yield this.reloadRoute()
   }
 

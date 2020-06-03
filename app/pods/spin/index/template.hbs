@@ -5,7 +5,7 @@
         <div class="col-lg-6 my-auto d-flex align-items-center align-items-lg-start t-align-c t-align-lg-l flex-column">
           <img src="https://minio.cb.lk/public/spin-n-win-logo.png" style="width: 400px;" />
           <div class="font-xl spin-red bold mt-4">
-            This festive season, Spin the CB Wheel and win assured prizes!!
+            This festive season, Spin the CB Wheel and win assured prizes!! {{showWinModal}}
           </div>
           <button class="button-dashed button-pink w-75 p-3 border-round mt-4" {{did-insert (action (mut spinsLeftBox))}}>
             <div class="d-flex justify-content-between align-items-center px-3 flex-wrap">
@@ -159,6 +159,33 @@
 
 </div>
 
+{{#if showWinModal}}
+  <ModalDialog
+    @onClose={{action (mut showWinModal) false}}
+    @translucentOverlay={{true}}
+    @overlayClass="spin-overlay"
+    @containerClass="container spin-modal-container"
+  >
+    <Spin::SpinWinModal 
+      @onClose={{action (mut showWinModal) false}}
+      @referralCode={{referralCode.code}}
+      @prize={{prizeDrawn}}
+    />
+  </ModalDialog>
+{{else if showLoseModal}}
+  <ModalDialog
+    @onClose={{action (mut showLoseModal) false}}
+    @translucentOverlay={{true}}
+    @overlayClass="spin-overlay"
+    @containerClass="container spin-modal-container"
+  >
+    <Spin::SpinLoseModal 
+      @onClose={{action (mut showLoseModal) false}}
+      @referralCode={{referralCode.code}}
+      @prize={{prizeDrawn}}
+    />
+  </ModalDialog>
+{{/if}}
 {{#if showTnC}}
   <ModalDialog
     @onClose={{action (mut showTnC) false}}
