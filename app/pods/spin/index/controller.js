@@ -23,12 +23,17 @@ export default class SpinIndexController extends Controller {
     return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Click on https://cb.lk/join/${this.referralCode} to win an additional heart.`
   }
 
+  getTransformForRotation(el, deg) {
+    deg += (360 * 5)
+    return `rotateZ(${deg}deg)`
+  }
+
   @computed('referralCode', 'wonPrize.title')
   get shareTextWin() {
     return `I won ${this.wonPrize.title} from Coding Blocks. So, hurry up and participate in the Campaign. Click on https://cb.lk/join/${this.referralCode} to win an additional heart. The offer expires soon.`
   }
 
-  @dropTask spin = function *() {
+  @dropTask spin = function* () {
     if (!this.currentUser.user.verifiedemail) {
       this.set('notVerifiedEmailModal', true)
       return;
