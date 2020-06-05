@@ -22,7 +22,7 @@ export default class SpinIndexController extends Controller {
 
   @computed('referralCode')
   get shareText() {
-    return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Click on https://cb.lk/join/${this.referralCode} to win an additional heart.`
+    return `Signup using this link to get Rs 500 in your wallet and stand a chance of winning amazing prizes this Summer using my referral code: https://cb.lk/join/${this.referralCode}`
   }
 
   getTransformForRotation(el, deg) {

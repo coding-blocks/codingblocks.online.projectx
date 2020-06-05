@@ -15,7 +15,7 @@ export default class SpinLoseModalComponent extends Component{
 
   @computed('referralCode', 'prize.title')
   get shareText() {
-    return 'Signup using this link to get 500Rs in your wallet and win a chance to win prizes this Christmas using my referral code: https://cb.lk/join/' + this.code
+    return `Signup using this link to get Rs 500 in your wallet and stand a chance of winning amazing prizes this Summer using my referral code: https://cb.lk/join/${this.code}`
   }
 
   @action
