@@ -16,13 +16,13 @@ export default class SpinIndexController extends Controller {
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
-    'twitter': text => `http://twitter.com/share?text=${text}&url=https://cb.lk/vdoncb&hashtags=codingBlocksIN,CBVDay&via=codingBlocksIN`,
-    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=https://cb.lk/vdfb&quote=${text}`
+    'twitter': text => `http://twitter.com/share?text=${text}&url=https://cb.lk/snwtw&hashtags=CodingBlocks,TurnYourLuck&via=codingBlocksIN`,
+    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=https://cb.lk/snwfb&quote=${text}`
   }
 
   @computed('referralCode')
   get shareText() {
-    return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Click on https://cb.lk/join/${this.referralCode} to win an additional spin.`
+    return `Signup using this link to get Rs 500 in your wallet and stand a chance of winning amazing prizes this Summer using my referral code: https://cb.lk/join/${this.referralCode}`
   }
 
   getTransformForRotation(el, deg) {
