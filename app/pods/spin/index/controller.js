@@ -22,7 +22,7 @@ export default class SpinIndexController extends Controller {
 
   @computed('referralCode')
   get shareText() {
-    return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Click on https://cb.lk/join/${this.referralCode} to win an additional heart.`
+    return `Hey, have you found out about Coding Blocks' Valentine’s Campaign? This week of love, Coding Blocks is all set to spread love and learning. Click on https://cb.lk/join/${this.referralCode} to win an additional spin.`
   }
 
   getTransformForRotation(el, deg) {
@@ -32,7 +32,7 @@ export default class SpinIndexController extends Controller {
 
   @computed('referralCode', 'wonPrize.title')
   get shareTextWin() {
-    return `I won ${this.wonPrize.title} from Coding Blocks. So, hurry up and participate in the Campaign. Click on https://cb.lk/join/${this.referralCode} to win an additional heart. The offer expires soon.`
+    return `I won ${this.wonPrize.title} from Coding Blocks. So, hurry up and participate in the Campaign. Click on https://cb.lk/join/${this.referralCode} to win an additional spin. The offer expires soon.`
   }
 
   @dropTask spin = function* () {
