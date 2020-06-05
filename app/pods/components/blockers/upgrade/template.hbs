@@ -57,7 +57,12 @@
         <div class="divider-h"></div>
 
         <div class="row no-gutters align-items-center justify-content-between py-4 px-md-5 px-4">
-          {{#if upgradePack}}
+          {{#if (not runAttempt.run.isStarted)}}
+            <div class="col-12 t-align-c">
+              You will be able to purchase an upgrade once your batch starts i.e <b> {{moment-format (unix runAttempt.run.start) "MMM Do YYYY"}} </b>
+              Contact <a class="blue hoverable-underline" href="mailto:support@codingblocks.com">support@codingblocks.com</a> if you need assistance.
+            </div>
+          {{else if upgradePack}}
             <div class="flex-1">
               <div>
                 <span class="font-xl bold gradient-text-orange mr-3">&#8377; {{upgradePack.price}}</span>

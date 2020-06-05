@@ -60,7 +60,7 @@ Router.map(function() {
   this.route('tracks', function() {
     this.route('id', {path: '/:slug'});
   });
-  this.route('spin', {path: '/valentines'}, function() {});
+  this.route('spin', {path: '/spin-n-win'}, function() {});
   this.route('login-blocker');
   this.route('subscribe');
 });

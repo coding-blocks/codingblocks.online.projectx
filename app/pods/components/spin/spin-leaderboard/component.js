@@ -8,6 +8,7 @@ export default class SpinLeaderboard extends Component {
   @service store
 
   @alias('fetchWinnersTask.lastSuccessful.value') winners
+  @alias('winners.meta.pagination') pagination
 
   limit = 5
   offset = 0
@@ -32,8 +33,8 @@ export default class SpinLeaderboard extends Component {
   }
 
   @action
-  setOffset(offset) {
-    this.set('offset', offset)
+  paginate(page) {
+    this.set("offset", (page - 1) * this.limit);
     this.fetchWinnersTask.perform()
   }
 }
