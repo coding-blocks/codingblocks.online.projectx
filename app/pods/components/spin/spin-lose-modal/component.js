@@ -9,8 +9,8 @@ export default class SpinLoseModalComponent extends Component{
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
-    'twitter': text => `http://twitter.com/share?text=${text}&url=https://online.codingblocks.com/spin&hashtags=CBSanta`,
-    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=online.codingblocks.com&quote=${text}`
+    'twitter': text => `http://twitter.com/share?text=${text}&url=https://cb.lk/snwtw&hashtags=CodingBlocks,TurnYourLuck&via=codingBlocksIN`,
+    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=https://cb.lk/snwfb&quote=${text}`
   }
 
   @computed('referralCode', 'prize.title')
