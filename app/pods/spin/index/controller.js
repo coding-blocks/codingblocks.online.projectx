@@ -32,7 +32,7 @@ export default class SpinIndexController extends Controller {
 
   @computed('referralCode', 'wonPrize.title')
   get shareTextWin() {
-    return `I won ${this.wonPrize.title} from Coding Blocks. So, hurry up and participate in the Campaign. Click on https://cb.lk/join/${this.referralCode} to win an additional heart. The offer expires soon.`
+    return `I won ${this.wonPrize.title} from Coding Blocks. So, hurry up and participate in the Campaign. Click on https://cb.lk/join/${this.referralCode} to win an additional spin. The offer expires soon.`
   }
 
   @dropTask spin = function* () {
