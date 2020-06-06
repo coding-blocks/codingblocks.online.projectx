@@ -6,13 +6,13 @@ export default class SpinWinModalComponent extends Component {
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
-    'twitter': text => `http://twitter.com/share?text=${text}&url=https://online.codingblocks.com/spin&hashtags=CBSanta`,
+    'twitter': text => `http://twitter.com/share?text=${text}&url=https://online.codingblocks.com/spin&hashtags=TurnYourLuck,CodingBlocks`,
     'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=online.codingblocks.com&quote=${text}`
   }
 
   @computed('referralCode', 'prize.title')
   get shareText() {
-    return `I just won ${this.prize.title} on Coding Blocks Spin-n-Win. Signup using this link to get 500 in your Coding Blocks wallet and get a chance to spin and win exciting prizes this Christmas with Coding Blocks: https://cb.lk/join/${this.referralCode}`
+    return `I am ecstatic to share that I have won ${this.prize.title} in Coding Blocks’s new Summer Learning Spree Campaign. Don’t wait any further. You can also win amazing prizes. Click on https://cb.lk/snwfb to participate in the Campaign and get an extra spin. #TurnYourLuck #CodingBlocks`
   }
 
   @action

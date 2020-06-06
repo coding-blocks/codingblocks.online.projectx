@@ -1,2 +1,9 @@
-{{outlet}}
-
+{{#if session.isAuthenticated}}
+  {{#if layout.outsideContainer}}
+    {{#in-element layout.outsideContainer}}
+      {{outlet}}
+    {{/in-element}}
+  {{/if}}
+{{else}}
+  {{outlet}}
+{{/if}}

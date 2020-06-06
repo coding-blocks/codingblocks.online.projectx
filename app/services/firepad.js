@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import firepad from 'firepad'
+// import firepad from 'firepad'
 import { getRef } from "codingblocks-online/utils/firebase";
 
 export default class FirepadService extends Service {
@@ -7,6 +7,15 @@ export default class FirepadService extends Service {
   ref = null
   connected = false
   _firepad = null
+  Firepad = null
+  
+  async loadFirepad() {
+    if (this.Firepad)
+      return;
+    
+    const firepad = await import('firepad')  
+    this.set('Firepad', firepad)
+  }
 
   async connect (refString = '', keepText = true) {
     if (refString.length) {
@@ -26,7 +35,7 @@ export default class FirepadService extends Service {
     const defaultText = this.editor.getValue()
     this.editor.setValue("")
     
-    const newFirepad = firepad.fromMonaco(getRef(this.ref), this.editor, {
+    const newFirepad = this.Firepad.fromMonaco(getRef(this.ref), this.editor, {
       defaultText
     })
 
