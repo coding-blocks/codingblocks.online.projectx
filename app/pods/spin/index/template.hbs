@@ -7,27 +7,38 @@
           <div class="font-xl spin-red bold mt-4">
             This Summer, Spin the wheel with us and win assured prizes to spring up the learning spree
           </div>
-          <button class="button-dashed button-pink w-75 p-3 border-round mt-4" {{did-insert (action (mut spinsLeftBox))}}>
-            <div class="d-flex justify-content-between align-items-center px-3 flex-wrap">
-              <span class="font-xl bold spin-purple">
-                {{stats.availableSpins}} SPINS LEFT
-              </span>
-              <a class="font-sm bold spin-red mx-auto mr-lg-0" href="#" {{action "goToShare"}}>
-                Earn More 
-                <i class="fas fa-long-arrow-alt-right"></i>
-              </a>
-            </div>
-          </button>
+
+          {{#if session.isAuthenticated}}
+            <button class="button-dashed button-pink w-75 p-3 border-round mt-4" {{did-insert (action (mut spinsLeftBox))}}>
+              <div class="d-flex justify-content-between align-items-center px-3 flex-wrap">
+                <span class="font-xl bold spin-purple">
+                  {{stats.availableSpins}} SPINS LEFT
+                </span>
+                <a class="font-sm bold spin-red mx-auto mr-lg-0" href="#" {{action "goToShare"}}>
+                  Earn More 
+                  <i class="fas fa-long-arrow-alt-right"></i>
+                </a>
+              </div>
+            </button>
+          {{/if}}
+
           <div class="font-md mt-4 spin-red">
             Get <span class="bold">500 CB Credits</span> on your first successful spin
           </div>
           <div class="mt-5">
-            <button 
-              class="button-solid button-purple font-xl px-5" 
-              disabled={{spin.isRunning}}
-              {{action (perform spin)}}>
-              Spin Now
-            </button>
+            {{#if session.isAuthenticated}}
+              <button 
+                class="button-solid button-purple font-xl px-5" 
+                disabled={{spin.isRunning}}
+                {{action (perform spin)}}>
+                Spin Now
+              </button>
+            {{else}}
+              <LinkTo @route="dashboard"
+                class="button-solid button-purple font-xl px-5" >
+                Login
+              </LinkTo>
+            {{/if}}
           </div> 
           <div id="content-share" style="display: none;">
             <div class="mt-4 font-md bold t-align-c t-align-lg-l">

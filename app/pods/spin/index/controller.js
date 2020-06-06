@@ -8,6 +8,7 @@ export default class SpinIndexController extends Controller {
   @service api
   @service router
   @service currentUser
+  @service session
 
   showTnC = false
   prizeDrawn = null
