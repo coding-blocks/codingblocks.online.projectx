@@ -9,9 +9,11 @@
       <div>
         {{outlet}}
       </div>
+      {{#unless (eq model.contentable 'course_recommend')}}
       <div class="d-lg-block d-none">
         <Player::PlayerTabs />
       </div>
+      {{/unless}}
     </div>
   {{else if (not run.isStarted)}}
     <UnstartedContent @run={{run}} />

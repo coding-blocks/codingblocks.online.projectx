@@ -135,8 +135,4 @@ export default class Overview extends Controller {
     return this.set('runAttempt.paused', false)
   }
 
-  @action
-  redirectToClassRoom(){
-    return this.transitionToRoute('classroom')
-  }
 }

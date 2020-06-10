@@ -1,0 +1,150 @@
+<div class="row no-gutters a-ocb">
+  <div class="col-lg-10">
+    <div class="bg-med-grey white">
+      <div class="p-md-5 p-4">
+        <h3 class="bold mb-5">Recommended Course</h3>
+        <div class="row">
+          <div class="col-xl-7 col-lg-12 col-md-7 mb-xl-0 mb-lg-4 mb-md-0 mb-4">
+            <div class="border-card border-none p-md-5 p-4 bg-gradient-pink white h-100" style="background-image: url({{course.coverImage}});  background-repeat: no-repeat;  background-size: cover;">
+              <div class="row no-gutters justify-content-between">
+                <div class="flex-1">
+                  <span class="bg-gradient-yellow py-2 px-3 br-50">
+                    <span class="card-md bold">NEW</span>
+                  </span>
+                  <h3 class="bold mt-4">{{course.title}}</h3>
+                  <div class="mt-2">{{course.subtitle}}</div>
+                </div>
+                <div class="s-60x60 round border b-white">
+                  <img src={{course.logo}}>
+                </div>
+              </div>
+              <div class="mt-4 d-flex align-items-center">
+                <RatingStarsStatic @rating={{course.rating}}></RatingStarsStatic>
+                <span class="ml-3 card-md">{{course.rating}}/5, {{course.reviewCount}} ratings</span>
+              </div>
+              <div class="mentor-row d-flex align-items-center mt-5">
+                <div class="mentor-row__image-container">
+                  {{#each course.instructors as |instructor|}}
+                    <img src={{instructor.photo}}
+                    alt="photo of  instructors" class="mentor-row__image-container__mentor-image s-40x40">
+                  {{/each}}
+                </div>
+                <div class="mentor-row__text-container">
+                  <div class="card-md">Instructors</div>
+                  <div class="bold mt-1">{{#each course.instructors as |instructor i|}} {{if i ","}}  {{instructor.name}} {{/each}}</div>
+                </div>
+              </div>
+              <div class="divider-h my-4 bg-white w-75" style="opacity: 0.2;"></div>
+              <div class="row">
+                <div class="col-9">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="card-md">Course Language</div>
+                      <div class="bold mt-1">{{course.language}}</div>
+                    </div>
+                    <div class="col-6">
+                      <div class="card-md">Course Duration</div>
+                      <div class="bold mt-1">{{moment-duration courseDuration}}</div>
+                      {{courseDuration}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-12 col-md-5">
+            <div class="flex-col justify-content-between h-100">
+              <div class="w-100 mb-4">
+                <iframe class="border-card bg-gradient-orange border-none" style="height:200px; padding:0;" width="560" height="315" src="https://www.youtube.com/embed/pt6U19z0aPU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              {{!-- <div class="border-card p-0 position-relative w-100 white bg-dark-grey border-none">
+                <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/gradient-clock.svg"
+                  class="position-absolute" style="right: 1.5rem; top: 1.5rem;">
+                <div class="p-md-5 p-4">
+                  <div class="side-tag side-tag--orange side-tag--std">
+                    <h6 class="bold mb-1">Special Coupon</h6>
+                    <div>Get extra 10% off on this course</div>
+                    <div class="dashed-border b-orange p-2 mt-3" style="width: max-content;">
+                      <span class="font-md gradient-text-orange bold">REACTEXTRA10</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-md-5 px-4 py-4 bg-gradient-orange">
+                  <div class="row no-gutters justify-content-between align-items-center">
+                    <div class="flex-1">
+                      <div class="card-md extra-bold">
+                        HURRY UP!
+                      </div>
+                      <div class="card-md mt-1">Coupon expires in</div>
+                    </div>
+                    <div>
+                      <ul class="divided-list timer timer--dots">
+                        <li class="timer-item">
+                          <div class="list-heading white bold">00</div>
+                          <div class="list-data">Days</div>
+                        </li>
+                        <li class="timer-item">
+                          <div class="list-heading white bold">12</div>
+                          <div class="list-data">Hours</div>
+                        </li>
+                        <li class="timer-item">
+                          <div class="list-heading white bold">30</div>
+                          <div class="list-data">Minutes</div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div> --}}
+            </div>
+          </div>
+        </div>
+        <div class="mt-5">
+          <h4 class="bold">About Course</h4>
+        </div>
+        <div class="mt-3">
+          {{course_recommend.text}}
+        </div>
+      </div>
+      <div class="divider-h" style="background: #43454A;"></div>
+      <div class="p-md-5 p-4 white">
+        <div class="row no-gutters justify-content-between align-items-center">
+          <div class="flex-1">
+            <div class="row no-gutters align-items-center">
+              <div class="mr-sm-5 mr-4">
+                <div class="bold">Batch</div>
+                <div class="border b-orange br-50 p-2 v-align-ma mt-2">
+                  <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/premium.png" class="mr-1">
+                  <span class="gradient-text-orange card-md extra-bold">PREMIUM</span>
+                </div>
+              </div>
+              <div class="flex-1 pr-4">
+                <div>
+                  <div>
+                    <span class="bold gradient-text-orange font-xl">&#8377;&nbsp;{{course.topRun.price}}&nbsp;&nbsp;&nbsp;</span>
+                  </div>
+                  <div class="mt-1">Enrollment ends  {{moment-format (unix course.topRun.enrollmentEnd) 'MMM Do YYYY'}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="v-align-ma t-align-c">
+            <div class="d-sm-none d-block mb-2">
+              <a href="#" class="gradient-text-orange font-sm">
+                Explore Courses
+              </a>
+            </div>
+            <span class="d-sm-inline-block d-none">
+              <a href="/courses" class="gradient-text-orange font-sm">
+                Explore Courses
+              </a>
+            </span>
+            <a href={{course.buyNowLink}}>
+              <div class="button-solid button-orange ml-sm-3">Buy Now</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
