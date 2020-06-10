@@ -4,7 +4,6 @@ import { inject as service } from "@ember/service";
 import { alias, bool, reads, equal } from "@ember/object/computed";
 import env from "codingblocks-online/config/environment";
 
-
 export default class navBarComponent extends Component {
   @service session;
   @service currentUser;
@@ -14,12 +13,14 @@ export default class navBarComponent extends Component {
   @alias("currentUser.user") user;
   @equal("domain.domain", "hellointern") isAnotherDomain;
   @reads("currentUser.organization") organization;
+  @reads("currentUser.wallet.amount") walletAmount;
   @bool("organization") isOrgView;
 
   showSidebar = false;
   hideHamburgerNav = true;
   mobileSelectedTab = "online";
   logoutLink = env.oneauthURL + '/logout?redirect=' + this.domain.domainBasedPublicUrl + '/logout' 
+  dukaanUrl = env.dukaanUrl
 
   didInsertElement() {
     this._super(...arguments);

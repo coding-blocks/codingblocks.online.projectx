@@ -1,6 +1,8 @@
 import Service from "@ember/service";
 import { inject as service } from "@ember/service";
 import { alias } from "@ember/object/computed";
+import { computed } from '@ember/object';
+import DS from 'ember-data'
 
 export default Service.extend({
   api: service(),
@@ -10,6 +12,13 @@ export default Service.extend({
   metrics: service(),
   user: {},
   organization: alias("user.organization"),
+  wallet: computed('user.oneauthId', function () {
+    return DS.PromiseObject.create({
+      promise: this.api.request('/users/me/wallet')
+        .then(({ wallet_amount }) => Math.floor(wallet_amount / 100))
+        .then(v => ({amount: v}))
+    })
+  }),
   init() {
     // restore org from store
     this._super(...arguments)
