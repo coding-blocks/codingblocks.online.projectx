@@ -5,14 +5,14 @@
         <h3 class="bold mb-5">Recommended Course</h3>
         <div class="row">
           <div class="col-xl-7 col-lg-12 col-md-7 mb-xl-0 mb-lg-4 mb-md-0 mb-4">
-            <div class="border-card border-none p-md-5 p-4 bg-gradient-pink white h-100" style="background-image: url({{course.coverImage}});  background-repeat: no-repeat;  background-size: cover;">
+            <div class="border-card border-none p-md-5 p-4 bg-gradient-pink h-100" style="background-image: url({{course.coverImage}}); background-color:rgba(0,0,0,0);   background-size: cover;">
               <div class="row no-gutters justify-content-between">
                 <div class="flex-1">
                   <span class="bg-gradient-yellow py-2 px-3 br-50">
                     <span class="card-md bold">NEW</span>
                   </span>
                   <h3 class="bold mt-4">{{course.title}}</h3>
-                  <div class="mt-2">{{course.subtitle}}</div>
+                  <div class="mt-2" style="height:42px;">{{course.subtitle}}</div>
                 </div>
                 <div class="s-60x60 round border b-white">
                   <img src={{course.logo}}>
@@ -55,7 +55,7 @@
           <div class="col-xl-5 col-lg-12 col-md-5">
             <div class="flex-col justify-content-between h-100">
               <div class="w-100 mb-4">
-                <iframe class="border-card bg-gradient-orange border-none" style="height:200px; padding:0;" width="560" height="315" src="https://www.youtube.com/embed/pt6U19z0aPU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe class="border-card bg-gradient-orange border-none" style="height:200px; padding:0;" width="560" height="315" src={{course.promoVideo}} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
               {{!-- <div class="border-card p-0 position-relative w-100 white bg-dark-grey border-none">
                 <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/gradient-clock.svg"
@@ -139,7 +139,7 @@
                 Explore Courses
               </a>
             </span>
-            <a href={{course.buyNowLink}}>
+            <a href>
               <div class="button-solid button-orange ml-sm-3">Buy Now</div>
             </a>
           </div>

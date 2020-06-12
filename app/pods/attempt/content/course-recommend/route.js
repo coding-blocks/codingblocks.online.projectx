@@ -8,7 +8,7 @@ export default class AttemptContentCourseRecommendRoute extends Route {
     model(){
       return hash({
         content: this.modelFor('attempt.content'),
-        course: this.store.findRecord('course',25)
+        course:  this.store.findRecord('course',this.store.peekRecord('content', this.paramsFor('attempt.content').contentId).get('payload').get('courseId'))
     })
   }
     setupController(controller, {content,course}) {

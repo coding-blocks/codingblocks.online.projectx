@@ -15,9 +15,9 @@ export default DS.Model.extend({
   //attachment: DS.belongsTo('attachment'),
   video: DS.belongsTo('video'),
   webinar: DS.belongsTo('webinar'),
-  course_recommend: DS.belongsTo('course-recommend'),
+  "course-recommend": DS.belongsTo('course-recommend'),
   duration: DS.attr(),
-  payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', 'csv', 'webinar', 'course_recommend', function () {
+  payload: computed('contentable', 'qna', 'lecture', 'code-challenge', 'document', 'video', 'csv', 'webinar', 'course-recommend', function () {
     return this.get(this.contentable);
   }),
   isDone: bool('progress.isDone'),

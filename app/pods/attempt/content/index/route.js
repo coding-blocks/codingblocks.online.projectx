@@ -20,7 +20,7 @@ export default Route.extend({
         return this.transitionTo('attempt.content.quiz', content.get('payload.qId'))
       case 'webinar':
         return this.transitionTo('attempt.content.webinar')
-      case 'course_recommend':
+      case 'course-recommend':
         return this.transitionTo('attempt.content.course-recommend')
     }
   }
