@@ -5,6 +5,7 @@ import { restartableTask } from 'ember-concurrency-decorators';
 import config from 'codingblocks-online/config/environment';
 import moment from 'moment';
 import { alias } from '@ember/object/computed';
+import { iconForTier } from 'codingblocks-online/utils/run'
 
 export default class Overview extends Controller {
   @service api
@@ -64,14 +65,7 @@ export default class Overview extends Controller {
 
   @computed('run.tier')
   get tierIcon() {
-    switch (this.get('run.tier')) {
-      case 'LITE': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/lite.png'
-      case 'PREMIUM': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/premium.png'
-      case 'LIVE': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/live.png'
-      case 'CLASSROOM': return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/classroom.png'
-      default:
-        return 'https://cb-thumbnails.s3.ap-south-1.amazonaws.com/lite.png'
-    }
+    return iconForTier(this.run.tier)
   }
   
   @computed('runAttempt.paused')
