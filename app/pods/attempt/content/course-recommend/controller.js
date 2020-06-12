@@ -4,7 +4,7 @@ import { computed } from '@ember/object';
 
 export default class AttemptContentCourseRecommendController extends Controller { 
   get courseDuration(){
-    return this.course.topRun.totalDuration * 100
+    return Math.round((this.course.topRun.end - this.course.topRun.start)/ (60 * 60 * 24 * 30))
   }
 
 
