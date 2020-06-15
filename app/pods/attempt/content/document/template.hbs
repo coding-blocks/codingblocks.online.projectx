@@ -15,12 +15,12 @@
       
   </div>
   <div class="row markdown">
-    {{#if document.pdfLink}}
+    {{#if document.markdown}}
+      {{markdown-to-html document.markdown extensions='katex' class="my-2 font-sm px-4"}}
+    {{else}}
       <iframe src="https://docs.google.com/gview?url={{document.pdfLink}}&embedded=true"
               style="width:100%" frameborder="0">
       </iframe>
-    {{else}}
-      {{markdown-to-html document.markdown extensions='katex'}}
     {{/if}}
   </div>
 </div>

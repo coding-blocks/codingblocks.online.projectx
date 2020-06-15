@@ -5,10 +5,11 @@ import RSVP from 'rsvp';
 export default class IndexRoute extends Route {
   @service api
   @service currentUser
+  @service session
 
   model() {
     const stats = this.api.request('spins/stats')
-    const usedSpins = this.store.query('spin', {
+    const usedSpins = this.session.isAuthenticated && this.store.query('spin', {
       filter: {
         userId: this.currentUser.id,
         used: true,

@@ -1,0 +1,7 @@
+import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
+
+export default class SpinController extends Controller {
+  @service layout
+  @service session
+}

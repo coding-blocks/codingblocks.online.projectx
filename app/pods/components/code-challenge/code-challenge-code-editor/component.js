@@ -19,6 +19,11 @@ export default class CodeEditor extends Component {
   @alias('judgeTaskGroup.lastSuccessful.value.explanation') explanation
   @alias('firepad.connected') isCollaborating
 
+  constructor() {
+    super(...arguments)
+    this.firepad.loadFirepad()
+  }
+
   @computed('explanation')
   get headerForExplanation() {
     switch(this.explanation) {

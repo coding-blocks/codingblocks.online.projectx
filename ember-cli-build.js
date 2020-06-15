@@ -4,6 +4,12 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
+    'ember-cli-babel': {
+      includeExternalHelpers: true
+    },
+    babel: {
+      plugins: [ require.resolve('ember-auto-import/babel-plugin') ]
+    },
     hinting: false, // disabled lint warnings
     // Add options here
     'ember-composable-helpers': {
@@ -21,7 +27,7 @@ module.exports = function(defaults) {
     },
     'ember-cli-uglify': {
       /* https://github.com/mike-north/ember-monaco/issues/54 */
-      exclude: EmberApp.env() == 'production' ? ['ember-monaco/**'] : []
+      exclude: EmberApp.env() == 'production' ? ['ember-monaco/**', 'firepad/**'] : []
     },
     tests: false
   });

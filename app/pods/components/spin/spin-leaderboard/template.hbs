@@ -24,10 +24,19 @@
           </div>
         {{/each}}
       </div>
-      <PaginationPills 
+      {{!-- <PaginationPills 
         class="mt-5"
         @pagination={{winners.meta.pagination}} 
-        @setOffset={{action 'setOffset'}} />
+        @setOffset={{action 'setOffset'}} /> --}}
+      
+
+        <WPagination
+          @pages={{pagination.totalPages}}
+          @count={{pagination.count}}
+          @size={{limit}}
+          @current={{pagination.currentPage}}
+          @onchange={{action "paginate"}}
+        />
     </div>
   {{else if fetchWinnersTask.isRunning}}
     <LoaderComponent />

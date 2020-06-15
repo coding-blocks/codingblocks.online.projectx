@@ -35,7 +35,16 @@
   <div class="col-5 align-items-center">
     <ul class="right-nav pull-right">
       {{#if session.isAuthenticated}}
-     <li class="top-nav-option px-3 d-md-block d-none pointer">
+
+      {{#if walletAmount}}
+        <li class="top-nav-option px-4 d-md-block d-none pointer">
+          <a class="dropdown-li row align-items-center" href={{dukaanUrl}}>
+              <img class="s-20x20" src="https://minio.codingblocks.com/img/wallet-outline.svg" alt=""> 
+              <span class="ml-2 bold">₹ {{walletAmount}}</span>
+          </a>
+        </li>
+      {{/if}}
+      <li class="top-nav-option px-3 d-md-block d-none pointer">
         {{notification-dropdown toggleAction=toggleNotification activeTab=activeTab}}
       </li>
       <li class="top-nav-option px-3 d-md-block d-none pointer">
