@@ -4,141 +4,139 @@
   </div>
   <div class="col-md-9 col-12">
     {{#if lastAccessedRun}}
-    <<<<<<< HEAD <h4 class="my-4">Continue Learning</h4>
-      =======
-      <h4 class="my-4">Continue Other Learnings</h4>
-      >>>>>>> master
+    <h4 class="my-4">Continue Learning</h4>
+    <h4 class="my-4">Continue Other Learnings</h4>
 
-      {{!-- Recent run and stats card --}}
-      <div class="border-card p-lg-5 p-4 mb-5">
-        <div class="row no-gutters align-items-center">
-          <div class="col-md-6 col-12">
-            <div class="row no-gutters align-items-center justify-content-between">
-              <img src="{{lastAccessedRun.course.logo}}" alt="C++" class="s-70x70 round">
-              <div class="flex-1 pl-4">
-                <h5 class="bold">{{lastAccessedRun.course.title}}</h5>
-                <div class="font-normal mt-2">Mentor:
-                  {{#each lastAccessedRun.course.instructors as |instructor index|}}
-                  {{#if index}}, {{/if}} {{instructor.name}}
-                  {{/each}}
-                </div>
+    {{!-- Recent run and stats card --}}
+    <div class="border-card p-lg-5 p-4 mb-5">
+      <div class="row no-gutters align-items-center">
+        <div class="col-md-6 col-12">
+          <div class="row no-gutters align-items-center justify-content-between">
+            <img src="{{lastAccessedRun.course.logo}}" alt="C++" class="s-70x70 round">
+            <div class="flex-1 pl-4">
+              <h5 class="bold">{{lastAccessedRun.course.title}}</h5>
+              <div class="font-normal mt-2">Mentor:
+                {{#each lastAccessedRun.course.instructors as |instructor index|}}
+                {{#if index}}, {{/if}} {{instructor.name}}
+                {{/each}}
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-12 mt-md-0 mt-4">
-            <div class="font-normal">Course Progress</div>
-            <div class="mt-md-4 mt-2">
-              <progress value="{{progressPercent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
-              <span class="bold ml-3">{{progressPercent}}%</span>
-            </div>
-          </div>
         </div>
-
-        <div class="divider-h w-100 mx-auto my-4"></div>
-
-        <WAsync @task={{fetchPerformanceStatsTask}}
-          @loaderComponent={{component 'performance-stats-view/loading-placeholder'}} @autoFire="true" as |stats|>
-          <PerformanceStatsView @stats={{stats}} />
-        </WAsync>
-
-        <div class="divider-h w-100 mx-auto my-4"></div>
-
-        <div class="row no-gutters align-items-center justify-content-between">
-          <div class="col-sm-8 col-12">
-            <span class="normal mr-4">
-              Leave a rating
-            </span>
-            <span>
-              <RatingStars @course={{lastAccessedRun.course}} @showModal={{true}} @isShowingModal={{showFeedback}}
-                @initialRating={{lastAccessedRun.topRunAttempt.rating}} />
-            </span>
-          </div>
-          <div class="mt-sm-0 mt-4">
-            {{#if canBePaused}}
-            <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
-            {{/if}}
-            {{#if lastAccessedRun.topRunAttempt.paused}}
-            <button class="button-dashed button-orange" {{action "unpauseRunAttempt"}}>UnPause</button>
-            {{else}}
-            <LinkTo @route="attempt" @model={{lastAccessedRun.topRunAttempt.id}} class="button-solid button-orange">
-              Resume Now
-            </LinkTo>
-            {{/if}}
-            <Blockers::PauseModal @runAttempt={{lastAccessedRun.topRunAttempt}} @show={{showConfirmPause}} />
+        <div class="col-md-6 col-12 mt-md-0 mt-4">
+          <div class="font-normal">Course Progress</div>
+          <div class="mt-md-4 mt-2">
+            <progress value="{{progressPercent}}" max="100" class="d-inline-block w-80 progress-orange"></progress>
+            <span class="bold ml-3">{{progressPercent}}%</span>
           </div>
         </div>
       </div>
-      {{/if}}
 
-      {{!-- My courses card --}}
-      <div class="mb-5">
-        <div class="border-card p-lg-5 p-4">
-          {{#if noRuns}}
-          <div class="t-align-c">
-            <img src="/app/images/camera-orange.svg" alt="Courses">
-            <h4 class="bold mt-4">My Courses</h4>
-            <div class="grey mb-4">You are not enrolled in any course! Find courses to get enrolled!</div>
-            <a href="/courses" class="font-sm bold gradient-text-orange">Explore Courses</a>
-          </div>
-          {{else}}
-          <div class="d-flex align-items-center justify-content-between">
-            <h4 class="bold">My Courses</h4>
-            <LinkTo @route="classroom" class="orange font-sm font-normal">View All</LinkTo>
-          </div>
-          <div class="divider-h my-4"></div>
-          <Dashboard::DashboardCoursesList @runs={{runs}} />
+      <div class="divider-h w-100 mx-auto my-4"></div>
+
+      <WAsync @task={{fetchPerformanceStatsTask}}
+        @loaderComponent={{component 'performance-stats-view/loading-placeholder'}} @autoFire="true" as |stats|>
+        <PerformanceStatsView @stats={{stats}} />
+      </WAsync>
+
+      <div class="divider-h w-100 mx-auto my-4"></div>
+
+      <div class="row no-gutters align-items-center justify-content-between">
+        <div class="col-sm-8 col-12">
+          <span class="normal mr-4">
+            Leave a rating
+          </span>
+          <span>
+            <RatingStars @course={{lastAccessedRun.course}} @showModal={{true}} @isShowingModal={{showFeedback}}
+              @initialRating={{lastAccessedRun.topRunAttempt.rating}} />
+          </span>
+        </div>
+        <div class="mt-sm-0 mt-4 button-align-container">
+          {{#if canBePaused}}
+          <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
           {{/if}}
+          {{#if lastAccessedRun.topRunAttempt.paused}}
+          <button class="button-dashed button-orange" {{action "unpauseRunAttempt"}}>UnPause</button>
+          {{else}}
+          <LinkTo @route="attempt" @model={{lastAccessedRun.topRunAttempt.id}} class="button-solid button-orange">
+            Resume Now
+          </LinkTo>
+          {{/if}}
+          <Blockers::PauseModal @runAttempt={{lastAccessedRun.topRunAttempt}} @show={{showConfirmPause}} />
         </div>
       </div>
+    </div>
+    {{/if}}
 
-      <div class="mb-5">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="border-card h-100 px-0 py-lg-5 py-4">
-              {{#if noWishlist}}
-              <div class="px-lg-5 px-4">
-                <img src="/app/images/heart-orange.svg" alt="Bag">
-                <h4 class="bold mt-4">Wishlisted Courses</h4>
-                <div class="grey mb-4">You have not wishlisted any course! Start Wishlisting now!</div>
-                <a href="/courses" target="_blank" class="font-sm bold gradient-text-orange">Explore Courses</a>
-              </div>
-              {{else}}
-              <h4 class="bold px-lg-5 px-4">Wishlisted Courses</h4>
-              <div class="divider-h mt-4 content-divider px-lg-5 px-4"></div>
+    {{!-- My courses card --}}
+    <div class="mb-5">
+      <div class="border-card p-lg-5 p-4">
+        {{#if noRuns}}
+        <div class="t-align-c">
+          <img src="/app/images/camera-orange.svg" alt="Courses">
+          <h4 class="bold mt-4">My Courses</h4>
+          <div class="grey mb-4">You are not enrolled in any course! Find courses to get enrolled!</div>
+          <a href="/courses" class="font-sm bold gradient-text-orange">Explore Courses</a>
+        </div>
+        {{else}}
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="bold">My Courses</h4>
+          <LinkTo @route="classroom" class="orange font-sm font-normal">View All</LinkTo>
+        </div>
+        <div class="divider-h my-4"></div>
+        <Dashboard::DashboardCoursesList @runs={{runs}} />
+        {{/if}}
+      </div>
+    </div>
 
-              <Dashboard::DashboardWishList @wishlist={{wishlist}} />
-              {{#if (gt wishlist.length 2)}}
-              <div class="t-align-c">
-                <button class="button-solid button-orange mt-4">View All</button>
-              </div>
-              {{/if}}
-              {{/if}}
+    <div class="mb-5">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="border-card h-100 px-0 py-lg-5 py-4">
+            {{#if noWishlist}}
+            <div class="px-lg-5 px-4">
+              <img src="/app/images/heart-orange.svg" alt="Bag">
+              <h4 class="bold mt-4">Wishlisted Courses</h4>
+              <div class="grey mb-4">You have not wishlisted any course! Start Wishlisting now!</div>
+              <a href="/courses" target="_blank" class="font-sm bold gradient-text-orange">Explore Courses</a>
             </div>
+            {{else}}
+            <h4 class="bold px-lg-5 px-4">Wishlisted Courses</h4>
+            <div class="divider-h mt-4 content-divider px-lg-5 px-4"></div>
+
+            <Dashboard::DashboardWishList @wishlist={{wishlist}} />
+            {{#if (gt wishlist.length 2)}}
+            <div class="t-align-c">
+              <button class="button-solid button-orange mt-4">View All</button>
+            </div>
+            {{/if}}
+            {{/if}}
           </div>
+        </div>
 
-          <div class="col-md-6 mt-md-0 mt-5">
-            <div class="border-card h-100 px-0 py-lg-5 py-4">
-              {{#if noAppliedJobs}}
-              <div class="px-lg-5 px-4">
-                <img src="/app/images/bag-orange.svg" alt="Heart">
-                <h4 class="bold mt-4">Applied Jobs</h4>
-                <div class="grey mb-4">You have not applied to any jobs! Find jobs now!</div>
-                <LinkTo @route="hiring-blocks" class="font-sm bold gradient-text-orange">See Jobs</LinkTo>
-              </div>
-              {{else}}
-              <h4 class="bold px-lg-5 px-4">Applied Jobs</h4>
-              <div class="divider-h mt-4 content-divider px-lg-5 px-4"></div>
-              <Dashboard::DashboardAppliedJobs @jobs={{appliedJobs}} />
-              {{#if (gt wishlist.length 2)}}
-              <div class="t-align-c">
-                <button class="button-solid button-orange my-5">View All</button>
-              </div>
-              {{/if}}
-              {{/if}}
+        <div class="col-md-6 mt-md-0 mt-5">
+          <div class="border-card h-100 px-0 py-lg-5 py-4">
+            {{#if noAppliedJobs}}
+            <div class="px-lg-5 px-4">
+              <img src="/app/images/bag-orange.svg" alt="Heart">
+              <h4 class="bold mt-4">Applied Jobs</h4>
+              <div class="grey mb-4">You have not applied to any jobs! Find jobs now!</div>
+              <LinkTo @route="hiring-blocks" class="font-sm bold gradient-text-orange">See Jobs</LinkTo>
             </div>
+            {{else}}
+            <h4 class="bold px-lg-5 px-4">Applied Jobs</h4>
+            <div class="divider-h mt-4 content-divider px-lg-5 px-4"></div>
+            <Dashboard::DashboardAppliedJobs @jobs={{appliedJobs}} />
+            {{#if (gt wishlist.length 2)}}
+            <div class="t-align-c">
+              <button class="button-solid button-orange my-5">View All</button>
+            </div>
+            {{/if}}
+            {{/if}}
           </div>
         </div>
       </div>
+    </div>
   </div>
   <div class="col-md-3 col-12">
     {{!-- <div>
