@@ -11,7 +11,7 @@ export default Route.extend({
     const section = this.store.peekRecord('section', params.sectionId)
     await section.get('contents')
     return this.store.peekRecord('content', params.contentId, {
-        include: 'lecture,video,document,code_challenge,webinar',
+        include: 'lecture,video,document,code_challenge,webinar,course_recommend',
         reload: true
     })
   },

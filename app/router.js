@@ -38,6 +38,7 @@ Router.map(function() {
       this.route('video');
       this.route('csv');
       this.route('webinar');
+      this.route('course-recommend');
     });
   });
   this.route('error');

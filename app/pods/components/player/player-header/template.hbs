@@ -28,10 +28,12 @@
       <span class="bold ml-3">{{progressPercent}}%</span>
     </div>
   </div>
+  <div class="col">
   <LinkTo
     @route="classroom.timeline"
     @models={{array run.course.id run.id}}
     class="button-solid button-orange">
     Exit Class  
   </LinkTo>
+  </div>
 </div>
