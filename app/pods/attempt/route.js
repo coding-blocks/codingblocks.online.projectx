@@ -25,8 +25,9 @@ export default Route.extend(AuthenticatedRouteMixin, {
 					//get a corrected RunAttempt
 					return this.api.request('/users/correctRunAttempt/'+ params.runAttemptId)
 						.then(result => {
-							// replace url param with corrected runAttemptId
-							const url = this.get('router.currentURL').replace(/player\/\d*\//g, "player/" + result.id + '/')
+              // replace url param with corrected runAttemptId
+              const path = window.location.pathname
+							const url = path.replace("/app", "").replace(/player\/\d*\//g, "player/" + result.id + '/')
 							return this.transitionTo(url)
 						})
 						.catch(e => {
