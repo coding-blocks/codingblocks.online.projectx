@@ -1,18 +1,18 @@
-<WAsync
-  @task={{getCarouselCardsTask}}
-  @autoFire="true" as |cards|>
+<WAsync @task={{getCarouselCardsTask}} @autoFire="true" as |cards|>
   {{#each cards as |card|}}
-    <div class="border-card {{card.theme}} white mt-5">
-      <div class="mb-4 s-50x50">
-        <img src="{{card.img}}" alt="Carousel Card">
-      </div>
-      <h3 class="bold mb-4">{{card.title}}</h3>
-      <div class="font-normal mb-4">
-        {{card.subtitle}}
-      </div>
+  <div class="border-card {{card.theme}} white mt-5 p-lg-5 p-4">
+    <div class="mb-4 s-50x50">
+      <img src="{{card.img}}" alt="Carousel Card">
+    </div>
+    <h3 class="bold mb-4">{{card.title}}</h3>
+    <div class="font-normal mb-4">
+      {{card.subtitle}}
+    </div>
+    <div class="button-align-container">
       <a href="{{card.buttonLink}}" target="_blank" class="button-white button-solid purple">
         {{card.buttonText}}
       </a>
     </div>
+  </div>
   {{/each}}
 </WAsync>

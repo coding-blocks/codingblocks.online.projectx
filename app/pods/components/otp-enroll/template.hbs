@@ -1,24 +1,24 @@
-<div class="c-otp-enroll row align-items-center m-0">
-  <div class="col-12 col-md-6 flex-row justify-content-center justify-content-md-start">
-    <div>
-      <p class="text-center text-lg-left">ENROLL TO COURSES VIA OTP</p>
-      <p class="red text-center text-lg-left">
+<div class="row align-items-center no-gutters justify-content-between py-4 px-lg-5 px-4 bg-light-grey">
+  <div class="flex-1">
+    <div class="t-align-md-l t-align-c">
+      <div class="font-sm bold">ENROLL TO COURSES VIA OTP</div>
+      <div class="red mt-1">
         {{#if otpSent}}
-          We have sent an OTP to your registered Email
+        We have sent an OTP to your registered Email
         {{else if errorString}}
-          {{errorString}}
+        {{errorString}}
         {{/if}}
-      </p>
+      </div>
     </div>
   </div>
-  <div class="col-12 col-md-6">
-    <div class="row justify-content-center justify-content-lg-end">
-      <div class="col-12 col-md-9 col-lg-8 d-flex justify-content-center justify-content-md-end p-1">
-        <div class="search-bar w-100">
+  <div class="col-12 col-md-7 mt-md-0 mt-4">
+    <div class="row justify-content-center justify-content-lg-end no-gutters align-items-center">
+      <div class="flex-1">
+        <div class="search-bar w-100 bg-white">
           {{input type="text" placeholder=placeholderText value=userInput}}
         </div>
       </div>
-      <div class="col-12 col-md-3 col-lg-2 d-flex justify-content-center justify-content-md-start p-1">
+      <div class="ml-4">
         <button class="button-solid button-orange" {{action 'handleClick'}}>
           {{buttonText}}
         </button>

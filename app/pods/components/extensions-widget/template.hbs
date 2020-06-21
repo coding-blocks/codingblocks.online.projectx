@@ -1,62 +1,43 @@
 <div class="p-4">
-  <div class="row">
-    <div class="col-8 my-auto font-mds">
-      <div class="bold">Your course 
+  <div class="row no-gutters justify-content-between align-items-center">
+    <div class="flex-1 font-mds">
+      <div class="bold">Your course
         {{if @expired 'has been expired!' 'will expire soon!'}}
       </div>
       <div>Buy extension for this course</div>
     </div>
-    <div class="col-4 t-align-r">
-      <img class="s-50x50" src={{run.course.logo}}>
+    <div>
+      <img class="s-50x50 br-50" src={{run.course.logo}}>
     </div>
   </div>
   <div class="divider-h my-4"></div>
 
-  <WAsync 
-    @task={{extensionsTask}} 
-    @autoFire="true" as |extensions|>
+  <WAsync @task={{extensionsTask}} @autoFire="true" as |extensions|>
     {{#if extensions.length}}
-      <div class="spaced-list">
-        {{#each extensions as |extension index|}}
-          <div class="row">
-            <div class="col-1 my-auto">
-              <input 
-                    class="mt-1" 
-                    type="radio" 
-                    name="extension" 
-                    id="extensionRadio{{index}}" 
-                    checked={{eq selectedExtension extension}}
-                    onchange={{action (mut selectedExtension) extension}}
-                    style="transform:scale(1.5)"
-                  >
-            </div>
-            <div class="col-8">
-              <label for="extensionRadio{{index}}">
-                <div class="font-mds bold">
-                  {{extension.name}}
-                </div>
-                {{!-- <div class="grey">
-                  Expires: {{extension.expiry}}
-                </div> --}}
-              </label>
-            </div>
-            <div class="col-3 t-align-r">
-              <label class="dark-orange bold font-mds" for="extensionRadio{{index}}">
-                {{#if extension.price}}
-                  INR {{extension.price}}
-                {{else}}
-                  FREE
-                {{/if}}
-              </label>
-            </div>
-          </div>
-        {{/each}}
+    <div class="spaced-list">
+      {{#each extensions as |extension index|}}
+      <div class="row no-gutters align-items-center justify-content-between">
+        <label for="extensionRadio{{index}}" class="input-radio checked-input d-block font-mds bold flex-1 pl-4">
+          <input type="radio" name="extension" id="extensionRadio{{index}}" checked={{eq selectedExtension extension}}
+            onchange={{action (mut selectedExtension) extension}}>
+          {{extension.name}}
+          <span></span>
+        </label>
+        <label class="dark-orange bold font-mds" for="extensionRadio{{index}}">
+          {{#if extension.price}}
+          INR {{extension.price}}
+          {{else}}
+          FREE
+          {{/if}}
+        </label>
       </div>
-      <div class="row mt-4">
-        <div class="col-12 t-align-r">
-          <button class="px-3"  {{on "click" onClose}}> Cancel </button>
+      {{/each}}
+    </div>
+    <div class="row mt-4">
+      <div class="col-12 t-align-r">
+        <button class="px-3" {{on "click" onClose}}> Cancel </button>
 
-          {{!-- {{task-button 
+        {{!-- {{task-button 
             task=buyExtensionTask
             click=(perform buyExtensionTask)
             idleText="Buy Extension"
@@ -64,18 +45,18 @@
             type="button"
             class="button-solid button-orange"
             runningClass="disabled"}} --}}
-          {{#if selectedExtension}}
-            <a href={{buyExtensionUrl}} class="button-solid button-orange"> Buy Extension </a>
-          {{else}}
-            <a class="button-solid button-grey" disabled style="cursor: not-allowed;"> Buy Extension </a>
+        {{#if selectedExtension}}
+        <a href={{buyExtensionUrl}} class="button-solid button-orange"> Buy Extension </a>
+        {{else}}
+        <a class="button-solid button-grey" disabled style="cursor: not-allowed;"> Buy Extension </a>
 
-          {{/if}}
-        </div>
+        {{/if}}
       </div>
+    </div>
     {{else}}
-      <div class="font-lg bold t-align-c">
-        No Extensions
-      </div>
+    <div class="font-lg bold t-align-c">
+      No Extensions
+    </div>
     {{/if}}
   </WAsync>
 </div>

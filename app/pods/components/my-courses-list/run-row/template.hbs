@@ -11,9 +11,9 @@
         </h5>
         <div class="font-normal mt-2">Mentor: {{instrcutorNames}}</div>
         {{#if (and (not run.topRunAttempt.paused) run.topRunAttempt.isExpired)}}
-          <div class="red">Expired</div>
+          <div class="red mt-1">Expired</div>
         {{else}}
-          <div>Expires on <span class="bold">{{expiryDate}}</span> </div>
+          <div class="mt-1">Expires on <span class="bold">{{expiryDate}}</span> </div>
         {{/if}}
       </div>
     </div>

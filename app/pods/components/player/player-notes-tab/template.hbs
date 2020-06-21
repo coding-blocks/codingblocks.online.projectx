@@ -1,10 +1,11 @@
-<div class="flex-row no-gutters bg-grey-darker p-3 justify-content-between mt-5">
-  <img src="{{currentUser.user.photo}}" alt="user-photo" class="round s-50x50">
-  <Textarea 
-    placeholder="Add a Note" 
-    class="underline-input w-80"
-    @value={{newNoteText}}>
+<div class="row no-gutters bg-grey-darker p-3 justify-content-between mt-5 align-items-center br-10">
+  <div class="flex-1">
+    <div class="row no-gutters align-items-center">
+      <img src="{{currentUser.user.photo}}" alt="user-photo" class="round s-50x50">
+      <Textarea placeholder="Add a Note" class="underline-input flex-1 mx-4" @value={{newNoteText}}>
   </Textarea>
+    </div>
+  </div>
   <button class="button-solid button-orange" {{action (perform addNoteTask)}}>
     Save
   </button>

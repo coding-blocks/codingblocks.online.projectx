@@ -1,7 +1,7 @@
 <div class="row no-gutters">
   <div class="col-12">
     <div class="upgrade-modal">
-      <div class="bg-gradient-dpurple px-md-5 px-4 py-4 position-relative">
+      <div class="bg-gradient-dpurple px-lg-5 px-4 py-4 position-relative">
         <div class="row no-gutters align-items-center">
           <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/upgrade.svg">
           <div class="flex-1 pl-4">
@@ -19,14 +19,14 @@
         @loaderComponent={{component 'blockers/upgrade/loader'}}
       as |upgradePack| 
       >
-        <div class="row no-gutters justify-content-between align-items-center border-bottom py-4 px-md-5 px-4">
+        <div class="row no-gutters justify-content-between align-items-center border-bottom py-4 px-lg-5 px-4">
           <div>
             <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/premium.svg" class="mr-2">
             <span class="font-md bold gradient-text-orange">Premium</span>
           </div>
           <a href="/courses/{{courseId}}?compare=true" target="_blank" class="gradient-text-orange">View all features</a>
         </div>
-        <div class="row px-md-5 px-4 align-items-center my-4">
+        <div class="row px-lg-5 px-4 align-items-center my-4">
           <div class="col-sm-6 mb-sm-0 mb-4">
             <div class="row no-gutters align-items-center">
               <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/certification-med.svg" class="mr-4">
@@ -40,7 +40,7 @@
             </div>
           </div>
         </div>
-        <div class="row px-md-5 px-4 align-items-center mb-4">
+        <div class="row px-lg-5 px-4 align-items-center mb-4">
           <div class="col-sm-6 mb-sm-0 mb-4">
             <div class="row no-gutters align-items-center">
               <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/person-med.svg" class="mr-4">
@@ -56,7 +56,7 @@
         </div>
         <div class="divider-h"></div>
 
-        <div class="row no-gutters align-items-center justify-content-between py-4 px-md-5 px-4">
+        <div class="row no-gutters align-items-center justify-content-between py-4 px-lg-5 px-4">
           {{#if (not runAttempt.run.isStarted)}}
             <div class="col-12 t-align-c">
               You will be able to purchase an upgrade once your batch starts i.e <b> {{moment-format (unix runAttempt.run.start) "MMM Do YYYY"}} </b>

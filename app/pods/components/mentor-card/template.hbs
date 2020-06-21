@@ -1,13 +1,13 @@
-<div class="border-card px-0 pb-0">
-  <h4 class="bold px-4">Mentors</h4>
-  <div class="divider-h content-divider mt-4 px-4"></div>
+<div class="border-card px-0 pb-0 py-lg-5 py-4">
+  <h4 class="bold px-lg-5 px-4">Mentors</h4>
+  <div class="divider-h content-divider mt-4 px-lg-5 px-4"></div>
   {{#each instructors as |instructor|}}
-  <div class="d-flex align-items-center hover-grey py-4 px-4">
-    <div class="mr-2" style="flex-shrink: 0;">
+  <div class="row no-gutters align-items-center hover-grey py-4 px-lg-5 px-4">
+    <div class="mr-2">
       <img class="round s-50x50 br-25 overflow-hidden" src="{{instructor.photo}}" alt="">
     </div>
-    <div class="flex-1 ml-4 ml-md-2" style="word-break: break-all;">
-      <h5 class="bold mb-1 word-wrap">
+    <div class="flex-1 ml-4 ml-md-2">
+      <h5 class="bold mb-1">
         {{instructor.name}}
       </h5>
       <a href="mailto:{{instructor.email}}">
