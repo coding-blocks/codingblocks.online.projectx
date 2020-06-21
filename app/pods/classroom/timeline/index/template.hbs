@@ -1,40 +1,40 @@
 <div class="row mt-5">
   <div class="col-md-9 col-12 spaced-list-margin">
-    <div class="border-card" id="course-information-card">
+    <div class="border-card p-lg-5 p-4" id="course-information-card">
       <div class="row no-gutters align-items-center">
         <div class="col-md-8">
-          <div class="d-flex align-items-center">
+          <div class="row no-gutters align-items-center">
             <div class="mr-3">
-              <img src="{{course.logo}}" alt="{{course.title}}" class="s-50x50">
+              <img src="{{course.logo}}" alt="{{course.title}}" class="s-50x50 br-50">
             </div>
-            <div>
+            <div class="flex-1">
               <h5 class="bold">
                 {{course.title}}
-                <i class="far fa-question-circle icon-hover-fill pointer" title="Take Tour" {{action "startTour"}} id="start-course-dashboard-tour" ></i>
+                <i class="far fa-question-circle icon-hover-fill pointer" title="Take Tour" {{action "startTour"}}
+                  id="start-course-dashboard-tour"></i>
 
                 {{#if run.tier}}
-                  {{#if (eq run.tier 'LITE')}}
-                    <div 
-                    class="pointer v-align-ma" 
-                    {{on "click" (action (mut showUpgradeModal) true)}}
-                    style="border: solid 1px #f2734c; color: #f2734c; display: inline-block; padding: 4px 10px 4px 7px; border-radius: 22px; margin-left:8px;">
-                      <img src={{tierIcon}} class="mr-1" >
-                      <h6 class="gradient-text-orange d-inline-block" >{{run.tier}}</h6>
-                    </div>
-                  {{else}}
-                    <div class="v-align-ma" style="border: solid 1px #f2734c; color: #f2734c; display: inline-block; padding: 4px 10px 4px 7px; border-radius: 22px; margin-left:8px;">
-                      <h6 class="gradient-text-orange d-inline-block" >{{run.tier}}</h6>
-                     <img src={{tierIcon}} class="mr-1">
-                    </div>
-                  {{/if}}
+                {{#if (eq run.tier 'LITE')}}
+                <div class="pointer v-align-ma" {{on "click" (action (mut showUpgradeModal) true)}}
+                  style="border: solid 1px #f2734c; color: #f2734c; display: inline-block; padding: 4px 10px 4px 7px; border-radius: 22px; margin-left:8px;">
+                  <img src={{tierIcon}} class="mr-1">
+                  <h6 class="gradient-text-orange d-inline-block">{{run.tier}}</h6>
+                </div>
+                {{else}}
+                <div class="v-align-ma"
+                  style="border: solid 1px #f2734c; color: #f2734c; display: inline-block; padding: 4px 10px 4px 7px; border-radius: 22px; margin-left:8px;">
+                  <h6 class="gradient-text-orange d-inline-block">{{run.tier}}</h6>
+                  <img src={{tierIcon}} class="mr-1">
+                </div>
+                {{/if}}
                 {{/if}}
 
 
               </h5>
               <div class="font-normal mt-2">
-                  Mentor: 
+                Mentor:
                 {{#each course.instructors as |instructor index|}}
-                  {{#if index}}, {{/if}} {{instructor.name}}
+                {{#if index}}, {{/if}} {{instructor.name}}
                 {{/each}}
               </div>
             </div>
@@ -42,10 +42,7 @@
         </div>
         <div class="t-align-md-r t-align-c col-md-4 mt-3 mt-md-0">
           <div class="normal mb-2">Leave a rating</div>
-          <RatingStars 
-            @course={{course}}
-            @showModal={{true}}
-            @isShowingModal={{showFeedback}}
+          <RatingStars @course={{course}} @showModal={{true}} @isShowingModal={{showFeedback}}
             @initialRating={{userRating}} />
         </div>
       </div>
@@ -54,87 +51,89 @@
       <div>
         <h4 class="bold">Course Progress</h4>
         <div class="mt-4 pt-2">
-          
+
           <div class="row no-gutters align-items-center justify-content-between position-relative">
             <progress value="{{progressPercent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
 
             {{!-- % * 0.9 to compensate for 90% width of progress bar --}}
-            {{#if (and (is-after (unix runAttempt.run.start) '2019-11-29') showGoodieRequest)}}  
-              <div class="progress-lock" style="left: {{goodiesLockOffset}}%; bottom: -2px" id="goodies-lock">
-                <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
-                {{#if (gte progressPercent runAttempt.run.goodiesThreshold)}}
-                  <img 
-                    src="https://minio.codingblocks.com/amoeba/progress-unlocked.svg"
-                    class="gradient-text-green pointer s-25x25"/>
-                {{else}}
-                  <img 
-                    src="https://minio.codingblocks.com/amoeba/progress-lock.svg"
-                    class="gradient-text-green pointer s-25x25"/>
-                {{/if}}
-              </div>
+            {{#if (and (is-after (unix runAttempt.run.start) '2019-11-29') showGoodieRequest)}}
+            <div class="progress-lock" style="left: {{goodiesLockOffset}}%; bottom: -2px" id="goodies-lock">
+              <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble mb-2">Complete
+                {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
+              {{#if (gte progressPercent runAttempt.run.goodiesThreshold)}}
+              <img src="https://minio.codingblocks.com/amoeba/progress-unlocked.svg"
+                class="gradient-text-green pointer s-25x25" />
+              {{else}}
+              <img src="https://minio.codingblocks.com/amoeba/progress-lock.svg"
+                class="gradient-text-green pointer s-25x25" />
+              {{/if}}
+            </div>
             {{/if}}
 
             {{#if showCertificateRequest}}
             <div class="progress-lock" style="left: {{certificateLockOffset}}%; bottom: -2px" id="certificate-lock">
-              <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble">Complete {{runAttempt.run.completionThreshold}}% to get certified</div>
+              <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble mb-2">Complete
+                {{runAttempt.run.completionThreshold}}% to get certified</div>
               {{#if (gte progressPercent runAttempt.run.completionThreshold)}}
-                <img 
-                  src="https://minio.codingblocks.com/amoeba/progress-unlocked.svg"
-                  class="gradient-text-green pointer s-25x25" />
+              <img src="https://minio.codingblocks.com/amoeba/progress-unlocked.svg"
+                class="gradient-text-green pointer s-25x25" />
               {{else}}
-                <img 
-                  src="https://minio.codingblocks.com/amoeba/progress-lock.svg"
-                  class="gradient-text-green pointer s-25x25" />
+              <img src="https://minio.codingblocks.com/amoeba/progress-lock.svg"
+                class="gradient-text-green pointer s-25x25" />
               {{/if}}
             </div>
             {{/if}}
             <div class="bold">{{progressPercent}}%</div>
           </div>
-        
+
         </div>
       </div>
-      <div class="mb-5">
-        <button class="card-md font-normal salmon mt-3 d-block"  style="float: left;" {{action (mut showConfirmResetProgress) true}}>
+
+      <div class="row no-gutters align-items-center justify-content-between mt-4">
+        <button class="card-md font-normal salmon flex-1 t-align-l"
+          {{action (mut showConfirmResetProgress) true}}>
           <i class="fas fa-exclamation-triangle mr-2"></i>
           Reset Progress
         </button>
-          <div class="font-normal mt-3 d-block" style="float: right;"> {{doneContents}} / {{totalContents}} contents completed 
-          </div>
+        <div class="font-normal"> {{doneContents}} / {{totalContents}} contents
+          completed
+        </div>
       </div>
       <div class="divider-h my-4"></div>
 
       <div class="row no-gutters justify-content-between align-items-center">
-        <div class="col-sm-6 col-12 mb-sm-0 mb-3">
+        <div class="flex-1 mb-sm-0 mb-3">
           <div class="font-normal salmon">
             {{#if runAttempt.premium}}
-              {{#if runAttempt.isExpired}}
-                Expired
+            {{#if runAttempt.isExpired}}
+            Expired
             {{else}}
-                Batch Ends {{moment-format runAttempt.endDate 'DD-MMM-YY'}}
-              {{/if}}
+            Batch Ends {{moment-format runAttempt.endDate 'DD-MMM-YY'}}
+            {{/if}}
             {{else}}
-              Free Trial
+            Free Trial
             {{/if}}
           </div>
         </div>
-        <div>
-          {{#if showBuyNow}} 
-            <a href="/courses/{{course.identifier}}"  class="button-solid button-orange mr-4" onclick={{action 'log' 'buy_now' course.identifier preventDefault=false}}>
-              Buy Now
-            </a>
+        <div class="button-align-container">
+          {{#if showBuyNow}}
+          <a href="/courses/{{course.identifier}}" class="button-solid button-orange mr-4"
+            onclick={{action 'log' 'buy_now' course.identifier preventDefault=false}}>
+            Buy Now
+          </a>
           {{/if}}
-          
+
           {{#if canBePaused}}
-            <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
+          <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
           {{else if (eq runAttempt.runTier "LITE")}}
-            <button class="button-dashed button-orange mx-2" {{action (mut showUpgradeModalForPause) true}}>Pause</button>
+          <button class="button-dashed button-orange mx-2" {{action (mut showUpgradeModalForPause) true}}>Pause</button>
           {{/if}}
 
           {{#if runAttempt.paused}}
-            <button class="button-solid button-orange"{{action "unpauseRunAttempt"}}>UnPause</button>
+          <button class="button-solid button-orange" {{action "unpauseRunAttempt"}}>UnPause</button>
           {{else}}
           {{#link-to "attempt" runAttempt.id activeClass="" class="button-solid button-orange" invokeAction=(action 'log' 'resume' course.identifier preventDefault=false)}}
-            Resume
+          Resume
           {{/link-to}}
           {{/if}}
         </div>
@@ -142,51 +141,45 @@
     </div>
 
     {{!-- Course Library CTA --}}
-    <LinkTo 
-    @route="classroom.timeline.library"
-    @tagName="div"
-    id="course-library"
-    class="border-card px-5 py-4 pointer">
-      <div class="row">
-        <div class="col-9">
+    <LinkTo @route="classroom.timeline.library" @tagName="div" id="course-library"
+      class="border-card px-lg-5 px-4 py-4 pointer">
+      <div class="row no-gutters align-items-center justify-content-between">
+        <div class="flex-1 pr-4">
           <div class="gradient-text-orange font-md bold">Course Library</div>
           <div>
-             Access course notes, bookmarks, announcements, doubts
+            Access course notes, bookmarks, announcements, doubts
           </div>
         </div>
-        <div class="col-3 t-align-r">
+        <div>
           <img src="https://minio.codingblocks.com/amoeba/course-library.svg" alt="Course Library" srcset="">
         </div>
       </div>
     </LinkTo>
 
     {{#if showExtensions}}
-      <div class="border-card p-4">
-        <ExtensionsWidget 
-          @onClose={{action (mut showExtensions) false}} 
-          @run={{runAttempt.run}}
-          @expired={{runAttempt.isExpired}}
-        />
-      </div>
+    <div class="border-card p-lg-5 p-4">
+      <ExtensionsWidget @onClose={{action (mut showExtensions) false}} @run={{runAttempt.run}}
+        @expired={{runAttempt.isExpired}} />
+    </div>
     {{/if}}
 
-    <div class="border-card p-5" id="performance-stats">
-      <WAsync
-        @task={{fetchPerformanceStatsTask}}
-        @autoFire="true" as |stats|>
+    <div class="border-card p-lg-5 p-4" id="performance-stats">
+      <WAsync @task={{fetchPerformanceStatsTask}} @autoFire="true" as |stats|>
         <PerformanceStatsView @stats={{stats}} />
       </WAsync>
     </div>
 
-    <div class="border-card p-5" id="course-intro">
+    <div class="border-card p-lg-5 p-4" id="course-intro">
       <h4 class="mb-5">Course Introduction</h4>
 
       <div class="bold mb-3">Lectures</div>
       <div class="grey card-md mb-4">
-        • We are providing access of complete contents on course starting date. If there are any topics which needs to be
+        • We are providing access of complete contents on course starting date. If there are any topics which needs to
+        be
         discussed then we'll add more lectures to the course accordingly.
         <br>
-        • There are In-Class Quizzes, Assignments, Notes along with Lecture Videos in a lecture. You should attempt them all
+        • There are In-Class Quizzes, Assignments, Notes along with Lecture Videos in a lecture. You should attempt them
+        all
         to
         master each section that you study.
         <br>
@@ -199,7 +192,8 @@
         <br>
         • Assignments will have deadlines.
         <br>
-        • Deadlines will be the soft deadlines, submitting a challenge after the given deadline will not affect your score. 
+        • Deadlines will be the soft deadlines, submitting a challenge after the given deadline will not affect your
+        score.
       </div>
 
       <div class="bold mb-3">Teaching Assistants and Doubts Resolution</div>
@@ -211,40 +205,36 @@
         Doubt”
         button on the top right corner to raise your doubt.
         <br>
-        • The doubt support period is valid for 6 months from the start of course date. This is kept after considering 
+        • The doubt support period is valid for 6 months from the start of course date. This is kept after considering
         the section deadlines and the content that is available for the students to learn.
       </div>
     </div>
   </div>
   <div class="col-md-3 col-12">
     {{#if (and runAttempt.run.whatsappLink runAttempt.premium)}}
-      <a href={{runAttempt.run.whatsappLink}} class="pointer" target="blank">
-        <div class="border-card border-none bg-gradient-green mb-5 white p-4 v-align-ma mt-md-0 mt-5" id="join-whatsapp-card">
-          <i class="fab fa-whatsapp fa-2x mr-2"></i>
-          <strong class="font-sm">Join Whatsapp Group</strong>
-        </div>
-      </a>
+    <a href={{runAttempt.run.whatsappLink}} class="pointer" target="blank">
+      <div
+        class="border-card border-none bg-gradient-green mb-5 white p-4 v-align-ma mt-md-0 mt-5 row no-gutters align-items-center"
+        id="join-whatsapp-card">
+        <i class="fab fa-whatsapp fa-2x mr-2"></i>
+        <strong class="font-sm flex-1 pl-1">Join Whatsapp Group</strong>
+      </div>
+    </a>
     {{/if}}
     {{#if (and (is-after (unix runAttempt.run.start) '2019-11-29') showGoodieRequest)}}
-      <GoodieComp
-        class="mb-5"
-        @runAttempt={{runAttempt}} />
+    <GoodieComp class="mb-5" @runAttempt={{runAttempt}} />
     {{/if}}
     {{#if showCertificateRequest}}
-    <CertificateComp 
-      class="mb-5"
-      @runAttempt={{runAttempt}} />
+    <CertificateComp class="mb-5" @runAttempt={{runAttempt}} />
     {{/if}}
-    <MentorCard
-      class="mb-5"
-      @instructors={{course.instructors}} />
+    <MentorCard class="mb-5" @instructors={{course.instructors}} />
     <HackerblocksStats />
   </div>
 </div>
 
 
 {{#if showConfirmResetProgress}}
-  {{#modal-dialog
+{{#modal-dialog
     translucentOverlay=true
     onClose=(action (mut showConfirmResetProgress) false)
     targetAttachment="none"
@@ -252,44 +242,30 @@
     overlayClass="centered-scrolling-overlay"
     wrapperClass="centered-scrolling-wrapper"
   }}
-    <div class="row">
-      <div class="col-2">
-        <img src="http://minio.codingblocks.com/amoeba/danger-flat-icon.svg" alt="danger!" width="75px" height="75px">
-      </div>
-      <div class="col-10 my-auto font-md bold">
-        Are you sure you want to reset all your progress? 
-      </div>
-    </div>
-    <p class="font-sm">
-      All progress related to course material including assignments will be lost forever.
-      Bookmarks, Notes our doubts that you asked will still remain.
-    </p>
+<div class="row">
+  <div class="col-2">
+    <img src="http://minio.codingblocks.com/amoeba/danger-flat-icon.svg" alt="danger!" width="75px" height="75px">
+  </div>
+  <div class="col-10 my-auto font-md bold">
+    Are you sure you want to reset all your progress?
+  </div>
+</div>
+<p class="font-sm">
+  All progress related to course material including assignments will be lost forever.
+  Bookmarks, Notes our doubts that you asked will still remain.
+</p>
 
-    <div class="d-flex justify-content-end">
-      <button class="button-solid button-orange mr-3" {{action "resetProgress"}} >I Understand</button>
-      <button class="button-dashed button-orange" {{action (mut showConfirmResetProgress) false}}>No, Take me back</button>
-    </div>
-  {{/modal-dialog}}
+<div class="d-flex justify-content-end">
+  <button class="button-solid button-orange mr-3" {{action "resetProgress"}}>I Understand</button>
+  <button class="button-dashed button-orange" {{action (mut showConfirmResetProgress) false}}>No, Take me back</button>
+</div>
+{{/modal-dialog}}
 {{/if}}
 
-<Blockers::UpgradeModal 
-  @show={{showUpgradeModal}} 
-  @close={{action (mut showUpgradeModal) false}}
-  @courseId={{course.id}} 
-  @runAttempt={{runAttempt}} 
-  @intent="dashboard_badge_click"
-/>
+<Blockers::UpgradeModal @show={{showUpgradeModal}} @close={{action (mut showUpgradeModal) false}}
+  @courseId={{course.id}} @runAttempt={{runAttempt}} @intent="dashboard_badge_click" />
 
-<Blockers::UpgradeModal 
-  @show={{showUpgradeModalForPause}} 
-  @close={{action (mut showUpgradeModalForPause) false}}
-  @courseId={{course.id}} 
-  @runAttempt={{runAttempt}} 
-  @intent="pause_feature"
-/>
+<Blockers::UpgradeModal @show={{showUpgradeModalForPause}} @close={{action (mut showUpgradeModalForPause) false}}
+  @courseId={{course.id}} @runAttempt={{runAttempt}} @intent="pause_feature" />
 
-<Blockers::PauseModal 
-  @runAttempt={{runAttempt}} 
-  @show={{showConfirmPause}} 
-  @redirectTo={{'classroom'}}
-/>
+<Blockers::PauseModal @runAttempt={{runAttempt}} @show={{showConfirmPause}} @redirectTo={{'classroom'}} />

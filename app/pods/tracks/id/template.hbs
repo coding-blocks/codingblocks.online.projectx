@@ -1,52 +1,54 @@
 <div class="row">
   <div class="col-md-8 my-4">
-    <div class="border-card px-3 p-4 bg-gradient-pink" style="background: url({{track.background}}); background-size: cover; background-position: center">
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="col-xl-10 col-md-8 col-12">
-          <div class="row justify-content-between align-items-center">
+    <div class="border-card p-4 bg-gradient-pink"
+      style="background: url({{ track.background }}); background-size: cover; background-position: center">
+      <div class="row no-gutters justify-content-between align-items-center">
+        <div class="flex-1 pr-2">
+          <div class="row align-items-center no-gutters">
             <div class="">
-               <img src="{{track.logo}}" alt="" class="tracks-logo p-0 s-70x70">
-              {{!-- <div class="s-50x50">
-               
-              </div> --}}
+              <img src="{{ track.logo }}" class="tracks-logo p-0 s-70x70">
             </div>
-            <div class="col-10 white">
-              <h3 class="bold">{{track.name}}</h3>
+            <div class="flex-1 white pl-4">
+              <h3 class="bold">{{ track.name }}</h3>
               <div class="normal">
-                {{track.description}}
+                {{ track.description }}
               </div>
             </div>
           </div>
         </div>
-        <div class="pill pill-white">{{track.courseCount}} Courses</div>
+        <div class="pill pill-white d-sm-block d-none">{{ track.courseContent }} Courses</div>
+      </div>
+      <div class="t-align-c mt-3 d-sm-none d-block">
+        <div class="pill pill-white">{{ track.courseContent }} Courses</div>
       </div>
     </div>
+
     <div class="pl-4">
       <div class="border-left">
         {{#if (not coursesLoaded)}}
-          {{#each (repeat 3)}}
-            <Tracks::TracksCourseRowLoading />
-          {{/each}}
+        {{#each (repeat 3)}}
+        <Tracks::TracksCourseRowLoading />
+        {{/each}}
         {{else}}
-          {{#each courses as |course index|}}
-            <Tracks::TracksCourseRow @course={{course}} @index={{index}}/>
-          {{/each}}
-          <div class="px-5 pt-5 position-relative">
-            <div class="track-indicator complete">&#8226;</div>
-            <div class="row no-gutters align-items-center mb-5">
-              <div class="col-md-2 t-align-md-l t-align-c">
-                <img src="https://minio.codingblocks.com/amoeba/badge-orange.svg" />
+        {{#each courses as |course index|}}
+        <Tracks::TracksCourseRow @course={{course}} @index={{index}} />
+        {{/each}}
+        <div class="px-5 pt-5 position-relative">
+          <div class="track-indicator">&#8226;</div>
+          <div class="row no-gutters align-items-center mb-5">
+            <div class="col-md-2 t-align-md-l t-align-c">
+              <img src="https://minio.codingblocks.com/amoeba/badge-orange.svg" />
+            </div>
+            <div class="col-md-10 t-align-md-l t-align-c">
+              <div class="gradient-text-orange font-md">
+                Certified in {{track.name}}
               </div>
-              <div class="col-md-10 t-align-md-l t-align-c">
-                <div class="gradient-text-orange font-md">
-                  Certified in {{track.name}}
-                </div>
-                <div>
-                  At the end of the track, you will be job ready and can start applying for jobs!
-                </div>
+              <div>
+                At the end of the track, you will be job ready and can start applying for jobs!
               </div>
             </div>
           </div>
+        </div>
         {{/if}}
       </div>
     </div>
@@ -54,14 +56,10 @@
   <div class="col-md-4 my-4">
     <Tracks::TracksDoubtsForm />
     <WAsync @task={{fetchInstructorsTask}} @autoFire="true" as |instructors|>
-      <MentorCard
-        class="mt-5"
-        @instructors={{instructors}} />
+      <MentorCard class="mt-5" @instructors={{instructors}} />
     </WAsync>
     <WAsync @task={{fetchJobsTask}} @autoFire="true" as |jobs|>
-      <JobsCard
-        class="mt-5"
-        @jobs={{jobs}} />
+      <JobsCard class="mt-5" @jobs={{jobs}} />
     </WAsync>
   </div>
 </div>
