@@ -1000,10 +1000,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@coding-blocks/motley@0.8.10":
-  version "0.8.10"
-  resolved "https://registry.yarnpkg.com/@coding-blocks/motley/-/motley-0.8.10.tgz#d7f8528a24a4337d9e5438fb87fb3646649e15ce"
-  integrity sha512-SNAhpGA4SdcAOSmGOPyM//vaB81YqmZ+vZN6zYmoT5VQG+WgHiqH/UGA7WIRtb5apST9DXb1vtaZHoSnIAYf9w==
+"@coding-blocks/motley@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@coding-blocks/motley/-/motley-1.1.1.tgz#fe97a89883b03fcfb5161e5a28a381b603122fab"
+  integrity sha512-La/t0Z86QTFfXFlK+iFP8f7xTW0L7NHmfUrh6poggSl/ATQlKkatK+YIlo5lXHW9vJafGAB8F3j3cOPIa9ow4Q==
   dependencies:
     build "^0.1.4"
     run "^1.4.0"
