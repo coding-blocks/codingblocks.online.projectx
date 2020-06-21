@@ -10,6 +10,6 @@ export default class AttemptContentCourseRecommendController extends Controller 
 
   @computed('course.topRun.tier')
   get tierIcon() {
-    return iconForTier(this.course.topRun.tier)
+    return iconForTier(this.course.get('topRun.tier'))
   }
 }
