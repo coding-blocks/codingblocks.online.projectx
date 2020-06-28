@@ -1,9 +1,9 @@
-{{#if showLoader}}
-  {{#if loaderComponent}}
-    {{loaderComponent}}
+{{#if @showLoader}}
+  {{#if @loaderComponent}}
+    <loaderComponent></loaderComponent>
   {{else}}
     Loading...
   {{/if}}
 {{else}}
-  {{yield task.last.value}}
+  {{yield @task.last.value}}
 {{/if}}
