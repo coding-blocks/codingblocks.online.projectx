@@ -34,6 +34,7 @@ export default DS.Model.extend({
   ta: DS.hasMany("ta"),
   runRequests: DS.hasMany("run-request"),
   shift: DS.attr(),
+  excellenceThreshold: DS.attr(),
   topRunAttempt: computed("runAttempts", function() {
     return this.runAttempts.objectAt(0);
   }),

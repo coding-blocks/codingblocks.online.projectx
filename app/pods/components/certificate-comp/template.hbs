@@ -56,6 +56,21 @@
       </button>
     {{/if}}
   </div>
+  {{#if goldenLogo}}
+  <div>
+    <div class="row">
+      <div class="col-2 font-sm">Get</div>
+      <div class="divider-h content-divider col-10 my-auto"></div>
+    </div>
+    <div class="row pointer flex-nowrap hoverable-before-line hoverable-icon position-relative"
+      {{action (mut showExcellenceCertificateModal) true }}>
+      <div class="col-9">
+        <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/CertificateOfExcellence.svg" style="height: 100%;">
+      </div>
+      <div class="col font-sm my-auto px-0">View ></div>
+    </div>
+  </div>
+  {{/if}}
 </div>
 
 
@@ -69,9 +84,28 @@
     @wrapperClass='centered-scrolling-wrapper'
 >
   <CertificateComp::Share 
-    @certificate={{runAttempt.certificate}} 
+    @certificate={{runAttempt.completionCertificate.firstObject}} 
     @runAttempt={{runAttempt}} 
     @close={{action (mut showShareModal) false}}
+  />
+</ModalDialog>
+{{/if}}
+
+{{#if showExcellenceCertificateModal}}
+<ModalDialog
+  @onClose={{action (mut showExcellenceCertificateModal) false}}
+  @translucentOverlay=true
+  @targetAttachment='none'
+  @containerClass='centered-scrolling-container'
+  @overlayClass='centered-scrolling-overlay'
+  @wrapperClass='centered-scrolling-wrapper'
+>
+  <CertificateComp::ExcellenceCertificateModal
+    @runAttempt={{runAttempt}}
+    @run={{runAttempt.run}}
+    @stats={{stats}}
+    @excellenceCertificate={{runAttempt.excellenceCertificate.firstObject}}
+    @courseCompleted={{courseCompleted}}
   />
 </ModalDialog>
 {{/if}}

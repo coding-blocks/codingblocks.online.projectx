@@ -1,0 +1,35 @@
+<div>
+
+  <div class=" row py-4 px-md-5 px-3 position-relative"
+    style="background-image: url(https://cb-thumbnails.s3.ap-south-1.amazonaws.com/CertificateOfExcellenceGoldenBackground.svg);">
+    <div class="mr-4" style="flex-shrink: 0;">
+      <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/CertificateOfExcellenceGolden.svg"
+        alt="CertificateOfExcellence" class="mt-2" />
+      <img src={{run.course.goldenLogo}} class="s-100x100"
+        style="position: absolute; border-radius:50%; top:60%; right:10%" />
+    </div>
+
+  </div>
+
+
+  <div class="py-5 px-md-5 px-3 row">
+    <h4 class="bold">
+      Generate Certificate
+    </h4>
+    <p class="font-sm">Complete of {{run.completionThreshold}}% the course and be in the {{run.excellenceThreshold}}
+      percentile to generate the certificate</p>
+  </div>
+
+  {{#if canDownload}}
+  <button {{action (perform excellenceCertificateTask)}}class="button-solid button-orange float-right mb-4 mr-5"
+    {{action 'downloadCertificate'}}>
+    Download
+  </button>
+  {{else if isQualifiedForExcellenceCertificate}}
+  <button
+    {{action (perform excellenceCertificateTask)}}class="button-solid button-orange float-right mb-4 mr-5">Generate</button>
+  {{else}}
+  <button class="button-solid button-grey float-right mb-4 mr-5">Generate</button>
+  {{/if}}
+
+</div>
