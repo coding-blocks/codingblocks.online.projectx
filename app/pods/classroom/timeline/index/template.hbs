@@ -222,13 +222,13 @@
     </a>
     {{/if}}
     {{#if (and (is-after (unix runAttempt.run.start) '2019-11-29') showGoodieRequest)}}
-    <GoodieComp class="mb-5" @runAttempt={{runAttempt}} />
+      {{!-- <GoodieComp class="mb-5" @runAttempt={{runAttempt}} /> --}}
     {{/if}}
     {{#if showCertificateRequest}}
-    <CertificateComp class="mb-5" @runAttempt={{runAttempt}} />
+      <CertificateComp class="mb-5" @runAttempt={{runAttempt}} />
     {{/if}}
-    <MentorCard class="mb-5" @instructors={{course.instructors}} />
-    <HackerblocksStats />
+      <MentorCard class="mb-5" @instructors={{course.instructors}} />
+      <HackerblocksStats />
   </div>
 </div>
 
