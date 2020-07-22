@@ -65,7 +65,7 @@ export default class Overview extends Controller {
 
   @computed('run.tier')
   get tierIcon() {
-    return iconForTier(this.run.get('tier'))
+    return iconForTier(this.get('run.tier'))
   }
   
   @computed('runAttempt.paused')
