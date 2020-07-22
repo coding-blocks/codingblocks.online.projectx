@@ -1,4 +1,4 @@
-<div class="border-card b-orange">
+<div class="border-card b-orange p-md-5 p-4">
   <div class="gradient-text-orange mb-4 font-md bold">Certificate Request</div>
   <p class="mb-4">
     Complete {{ run.completionThreshold }}% of your course to generate certificate
@@ -7,9 +7,9 @@
   <div class="divider-h w-100 mx-auto mb-4"></div>
 
   <div class="row no-gutters mb-4 align-items-center">
-    <div class="s-30x30 bg-light-grey round mr-3">
+    <div class="s-30x30 bg-light-grey round mr-3 all-center">
       {{#if courseCompleted}}
-        <FaIcon @icon="check" class="orange" />
+      <FaIcon @icon="check" class="orange" />
       {{/if}}
     </div>
     <div class="flex-1">
@@ -17,43 +17,50 @@
     </div>
   </div>
   <div class="row no-gutters mb-4 align-items-center">
-    <div class="s-30x30 bg-light-grey round mr-3">
+    <div class="s-30x30 bg-light-grey round mr-3 all-center">
       {{#if runAttempt.certificateApproved}}
-        <FaIcon @icon="check" class="orange" />
+      <FaIcon @icon="check" class="orange" />
       {{/if}}
     </div>
     <div class="flex-1">
       <span>Mentor Approved</span>
     </div>
   </div>
-  <div class="mb-4 white">
+  <div class="white button-align-container">
     {{#if canDownload}}
-      <div class="d-flex justify-content-md-between justify-content-md-center flex-wrap">
+    <div class="d-flex justify-content-md-between justify-content-md-center flex-wrap">
       <button class="white button-solid button-orange" {{action 'downloadCertificate'}}> Download </button>
       <button class="button-dashed button-orange v-align-ma ml-3" {{action (mut showShareModal) true}}>
         <svg class="share" width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path class="white" d="M9.58184 4.12656C10.5649 4.12656 11.3619 3.32959 11.3619 2.34648C11.3619 1.36337 10.5649 0.566399 9.58184 0.566399C8.59873 0.566399 7.80176 1.36337 7.80176 2.34648C7.80176 3.32959 8.59873 4.12656 9.58184 4.12656Z" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="white" d="M2.46154 8.28008C3.44465 8.28008 4.24162 7.48311 4.24162 6.5C4.24162 5.51689 3.44465 4.71992 2.46154 4.71992C1.47843 4.71992 0.681458 5.51689 0.681458 6.5C0.681458 7.48311 1.47843 8.28008 2.46154 8.28008Z" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="white" d="M9.58184 12.4336C10.5649 12.4336 11.3619 11.6366 11.3619 10.6535C11.3619 9.6704 10.5649 8.87344 9.58184 8.87344C8.59873 8.87344 7.80176 9.6704 7.80176 10.6535C7.80176 11.6366 8.59873 12.4336 9.58184 12.4336Z" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="orange" d="M3.99835 7.39597L8.051 9.75755" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="orange" d="M8.04507 3.24245L3.99835 5.60403" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="white"
+            d="M9.58184 4.12656C10.5649 4.12656 11.3619 3.32959 11.3619 2.34648C11.3619 1.36337 10.5649 0.566399 9.58184 0.566399C8.59873 0.566399 7.80176 1.36337 7.80176 2.34648C7.80176 3.32959 8.59873 4.12656 9.58184 4.12656Z"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <path class="white"
+            d="M2.46154 8.28008C3.44465 8.28008 4.24162 7.48311 4.24162 6.5C4.24162 5.51689 3.44465 4.71992 2.46154 4.71992C1.47843 4.71992 0.681458 5.51689 0.681458 6.5C0.681458 7.48311 1.47843 8.28008 2.46154 8.28008Z"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <path class="white"
+            d="M9.58184 12.4336C10.5649 12.4336 11.3619 11.6366 11.3619 10.6535C11.3619 9.6704 10.5649 8.87344 9.58184 8.87344C8.59873 8.87344 7.80176 9.6704 7.80176 10.6535C7.80176 11.6366 8.59873 12.4336 9.58184 12.4336Z"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <path class="orange" d="M3.99835 7.39597L8.051 9.75755" stroke-linecap="round" stroke-linejoin="round" />
+          <path class="orange" d="M8.04507 3.24245L3.99835 5.60403" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
         <span> Share </span>
       </button>
-      </div>
+    </div>
     {{else if (or generating generationRequested)}}
-      <button class="white button-solid" disabled>Generating</button>
+    <button class="white button-solid" disabled>Generating</button>
     {{else if canGenerate}}
-      <button class="white button-solid button-orange" {{action (mut showCertificateGenerationBlocker) true}}>Generate</button>
+    <button class="white button-solid button-orange"
+      {{action (mut showCertificateGenerationBlocker) true}}>Generate</button>
     {{else if approvalRequested}}
-      <button class="white button-solid" disabled>Requested</button>
+    <button class="white button-solid" disabled>Requested</button>
     {{else if canRequest}}
-      <button class="white button-solid button-orange" {{action (perform requestApprovalTask)}}>Request</button>
+    <button class="white button-solid button-orange" {{action (perform requestApprovalTask)}}>Request</button>
     {{else}}
-      <button class="white button-solid" disabled>
-        <i class="fas fa-lock"></i>
-        Generate
-      </button>
+    <button class="white button-solid" disabled>
+      <i class="fas fa-lock"></i>
+      Generate
+    </button>
     {{/if}}
   </div>
   {{#if excellenceCertificateAllowed}}
@@ -116,3 +123,4 @@
   @close={{action (mut showCertificateGenerationBlocker) false}}
   @onContinue={{perform generateCertificateTask}}
 />
+

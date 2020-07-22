@@ -5,60 +5,33 @@
         <div class="col-lg-6 my-auto d-flex align-items-center align-items-lg-start t-align-c t-align-lg-l flex-column">
           <img src="https://minio.cb.lk/public/spin-n-win-logo.png" style="width: 400px;" />
           <div class="font-xl spin-red bold mt-4">
-            This Summer, Spin the wheel with us and win assured prizes to spring up the learning spree
+            Thank You for participating in the Summer Learning spree and making it a success!
           </div>
 
-          {{#if session.isAuthenticated}}
-            <button class="button-dashed button-pink w-75 p-3 border-round mt-4" {{did-insert (action (mut spinsLeftBox))}}>
-              <div class="d-flex justify-content-between align-items-center px-3 flex-wrap">
-                <span class="font-xl bold spin-purple">
-                  {{stats.availableSpins}} SPINS LEFT
-                </span>
-                <a class="font-sm bold spin-red mx-auto mr-lg-0" href="#" {{action "goToShare"}}>
-                  Earn More 
-                  <i class="fas fa-long-arrow-alt-right"></i>
-                </a>
-              </div>
-            </button>
-          {{/if}}
-
-          <div class="font-md mt-4 spin-red">
-            Get <span class="bold">500 CB Credits</span> on your first successful spin
+          <div class="mt-5 t-align-c t-align-lg-l spin-red font-sm bold">
+            We reached a staggering number of students across India, 1,30,000+ spins were made.
+            <p>
+              Don’t forget to share your gifts on social media platforms! <a href="https://twitter.com/search?q=TurnYourLuck">#TurnYourLuck</a>.
+              <br>
+              You can also subscribe to our social media channels for upcoming contests and updates regarding Coding Blocks.
+            </p>
           </div>
           <div class="mt-5">
-            {{#if session.isAuthenticated}}
-              <button 
-                class="button-solid button-purple font-xl px-5" 
-                disabled={{spin.isRunning}}
-                {{action (perform spin)}}>
-                Spin Now
-              </button>
-            {{else}}
-              <LinkTo @route="dashboard"
-                class="button-solid button-purple font-xl px-5" >
-                Login
-              </LinkTo>
-            {{/if}}
-          </div> 
-          <div id="content-share" style="display: none;">
-            <div class="mt-4 font-md bold t-align-c t-align-lg-l">
-              {{#liquid-if (eq wonPrize.size 0) class="fade"}}
-                <span class="gradient-text-yellow">Oops! Didn't win anything? Share with your friends to win an extra spin for every Sign-Up</span>
-              {{else}}
-                <span class="gradient-text-yellow">Congratulations on winning {{wonPrize.title}} ! Spread the love by sharing with your friends</span>
-              {{/liquid-if}}
-            </div>
-            <div class="mt-5 t-align-c t-align-lg-l white">
-              <span class="font-md pointer" {{action 'share' 'facebook' (eq wonPrize.size 0)}}>
-                <i class="fab fa-2x fa-facebook-f"></i>
-              </span>
-              <span class="ml-4 font-md pointer" {{action 'share' 'twitter' (eq wonPrize.size 0)}}>
-                <i class="fab fa-2x fa-twitter"></i>
-              </span>
-              <span class="ml-4 font-md pointer" {{action 'share' 'whatsapp' (eq wonPrize.size 0)}}>
-                <i class="fab fa-2x fa-whatsapp"></i>
-              </span>
-            </div>
+            <a target="_blank" href="https://cb.lk/fbsw" class="ml-lg-5 font-md pointer">
+              <i class="fab fa-2x fa-facebook-f"></i>
+            </a>
+            <a target="_blank" href="https://cb.lk/twsw" class="ml-5 font-md pointer">
+              <i class="fab fa-2x fa-twitter"></i>
+            </a>
+            <a target="_blank" href="https://cb.lk/insw" class="ml-5 font-md pointer">
+              <i class="fab fa-2x fa-instagram"></i>
+            </a>
+            <a target="_blank" href="https://cb.lk/lisw" class="ml-5 font-md pointer">
+              <i class="fab fa-2x fa-linkedin"></i>
+            </a>
+            <a target="_blank" href="https://cb.lk/ytsw" class="ml-5 font-md pointer">
+              <i class="fab fa-2x fa-youtube"></i>
+            </a>
           </div>
         </div>
         <div class="col-lg-6 spin-wheel d-flex my-5">
@@ -99,7 +72,7 @@
           <div class="p-5 font-sm">
             1. User get one free spin everyday till 13th June, 2020.<br> <br>
             2. New user need to signup in order to participate.<br> <br>
-            3. User gets 5 spins on every course purchase during this campaign.<br> <br>
+            3. User gets 5 spins on every course purchase during this campaign. Not applicable for free courses.<br> <br>
             4. We will notify the participants, eligible to claim the Prize by E-Mail / SMS.<br> <br>
             5. The chance to draw is valid for the same day only<br> <br>
             6. User should have a billing address within the territory of India.<br> <br>
@@ -144,7 +117,7 @@
         </h6>
         <p>
           For any details regarding the Contest and the Prizes thereof, please contact Coding Blocks Customer Care or mail us at 
-          <a href="mailto:support@codingblocks.com">support@codingblocks.com</a>
+          <a href="mailto:snw@codingblocks.com">snw@codingblocks.com</a>
         </p>
       </div>
 
@@ -163,6 +136,15 @@
         </h6>
         <p>
           No. You'll get no goodies with the free course.
+        </p>
+      </div>
+
+      <div class="mt-5">
+        <h6 class="bold">
+          Q.5 Can i use the coupons to redeem a Live course?
+        </h6>
+        <p>
+          No. Coupons won during Spin n Win are not valid for Live courses.
         </p>
       </div>
     </div>
@@ -214,6 +196,7 @@
       <li>In case of any discrepency, the final decision will be of Coding Blocks.</li>
       <li>The prizes and thier final deliverablility is subject to change at any moment without due notice.</li>
       <li>No Goodies will be shipped with free courses won during this campaign. </li>
+      <li>Any purchase made during Spin n Win cannot be refunded.</li>
     </ul>
   </ModalDialog>
 {{/if}}

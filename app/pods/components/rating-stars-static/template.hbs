@@ -1,8 +1,6 @@
 <!--showValue: {type: bool, description: to show total number of reviews}-->
 {{#each (range 1 6) as |index|}}
-  <span class="{{if (lte index rating) 'orange'}}">
-    <FaIcon @icon="star" class="mr-1" />
-  </span>
+   <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/star_{{if (lte index rating) 'filled' 'unfilled'}}.svg" alt="" class="mr-1">
 {{/each}}
 
 {{#if showValue}}

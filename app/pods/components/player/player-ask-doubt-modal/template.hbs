@@ -25,12 +25,12 @@
         </div>
         <div class="mt-5">
           <div class="bold">Description</div>
-          <Textarea 
-            placeholder="Description goes here"
+          <Player::MarkdownInput 
+            @placeholder="Description goes here. You may drag and drop images here to give more context."
             class="bg-grey-darker my-2 w-100 p-2"
-            @rows="4"
-            @value={{doubt.body}} />
-          <div class="card-sm">Describe your problem thoroughly</div>
+            @rows="8"
+            @text={{doubt.body}} />
+          <div class="card-sm">Describe your problem thoroughly. You can drag and drop images in your description.</div>
         </div>
         <div class="mt-5 d-flex justify-content-end">
           <button class="mr-3" {{action onClose}}>Cancel</button>
