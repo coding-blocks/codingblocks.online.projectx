@@ -18,7 +18,7 @@ export default DS.Model.extend({
   lastPausedAt: DS.attr('date'),
   run: DS.belongsTo('run'),
   user: DS.belongsTo('user'),
-  certificate: DS.belongsTo('certificate'),
+  certificates: DS.hasMany('certificate'),
   notes: DS.hasMany('note'),
   doubts: DS.hasMany('doubt'),
   endDate: computed('end', function(){
@@ -39,5 +39,11 @@ export default DS.Model.extend({
       (this.runTier == 'PREMIUM' || this.runTier == null) &&
       (this.pauseTimeLeft >= (1 * 24 * 60 * 60 * 1000))
     )
+  }),
+  completionCertificate: computed('ceritificates', function() {
+    return this.certificates.filter(c => c.type != 'excellence')
+  }),
+  excellenceCertificate: computed('certificates', function() {
+    return this.certificates.filter(c => c.type == 'excellence')
   })
 })

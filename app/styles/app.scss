@@ -376,3 +376,13 @@ button:disabled{
 .hoverable-underline:hover {
   text-decoration: underline;
 }
+
+.hoverable-before-line:hover:before {
+  content: "";
+  height: 75%;
+  width: 0.35rem;
+  position: absolute;
+  left: -1rem;
+  top: 0.6rem;
+  background: linear-gradient(#E74E4B 14.25%, #FB8133 96.93%);
+}

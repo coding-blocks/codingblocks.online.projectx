@@ -41,6 +41,7 @@ export default DS.Model.extend({
     rating: DS.attr('number'),
     seoMeta: DS.attr(),
     code: DS.attr(),
+    goldenLogo: DS.attr(),
     topRun: computed('activeRuns', 'runs', function () {
         let runs = this.activeRuns
 
