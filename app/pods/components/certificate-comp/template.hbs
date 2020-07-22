@@ -56,20 +56,20 @@
       </button>
     {{/if}}
   </div>
-  {{#if goldenLogo}}
-  <div>
-    <div class="row">
-      <div class="col-2 font-sm">Get</div>
-      <div class="divider-h content-divider col-10 my-auto"></div>
-    </div>
-    <div class="row pointer flex-nowrap hoverable-before-line hoverable-icon position-relative"
-      {{action (mut showExcellenceCertificateModal) true }}>
-      <div class="col-9">
-        <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/CertificateOfExcellence.svg" style="height: 100%;">
+  {{#if excellenceCertificateAllowed}}
+    <div>
+      <div class="row">
+        <div class="col-2 font-sm">Get</div>
+        <div class="divider-h content-divider col-10 my-auto"></div>
       </div>
-      <div class="col font-sm my-auto px-0">View ></div>
+      <div class="row pointer flex-nowrap hoverable-before-line hoverable-icon position-relative"
+        {{action (mut showExcellenceCertificateModal) true }}>
+        <div class="col-9">
+          <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/CertificateOfExcellence.svg" style="height: 100%;">
+        </div>
+        <div class="col font-sm my-auto px-0">View ></div>
+      </div>
     </div>
-  </div>
   {{/if}}
 </div>
 

@@ -23,6 +23,10 @@ export default Component.extend({
   approvalRequested: alias('runAttempt.approvalRequested'),
   certificateStatus: alias('runAttempt.completionCertificate.firstObject.status'),
 
+  excellenceCertificateAllowed: computed('goldenLogo', 'runAttempt.runTier', function () {
+    return this.goldenLogo && this.get('runAttempt.runTier') != 'LITE'
+  }),
+
   requestApprovalTask: task(function *() {
     yield this.api.request(`run_attempts/${this.get('runAttempt.id')}/requestApproval`, {
       method: 'GET',

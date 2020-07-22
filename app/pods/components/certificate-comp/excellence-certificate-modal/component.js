@@ -2,18 +2,16 @@ import Component from '@ember/component';
 import { computed, action } from '@ember/object';
 import { dropTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
+import { equal } from '@ember/object/computed';
 
 
 export default class ExcellenceCertificateModal extends Component {
   @service api
 
-  @computed('excellenceCertificate')
-  get canDownload() {
-    if (this.excellenceCertificate)
-      return this.excellenceCertificate.status == 'published'
-    else
-      return false
-  }
+  certificateRequested = false
+
+  @equal('excellenceCertificate.status', 'published') canDownload
+  @equal('excellenceCertificate.status', 'generating') isGenerating
 
   @computed('stats')
   get isQualifiedForExcellenceCertififcate() {
@@ -27,11 +25,14 @@ export default class ExcellenceCertificateModal extends Component {
         runAttemptId: this.get('runAttempt.id')
       }
     })
+
+    this.set('excellenceCertificate', {
+      status: 'generating'
+    })
   }
 
   @action downloadCertificate() {
-    if (this.excellenceCertificate)
-      window.open(this.excellenceCertificate.url, '_blank')
+    window.open(this.excellenceCertificate.url, '_blank')
   }
 
 };

@@ -13,23 +13,34 @@
 
 
   <div class="py-5 px-md-5 px-3 row">
-    <h4 class="bold">
-      Generate Certificate
-    </h4>
-    <p class="font-sm">Complete of {{run.completionThreshold}}% the course and be in the {{run.excellenceThreshold}}
-      percentile to generate the certificate</p>
+    {{!-- <h4 class="bold">
+      Excellence Certificate
+    </h4> --}}
+    <p class="font-sm">
+      We recognize the dedication and hard work you put during the course. 
+      Excellence certificates are presented to limited students who are at top of their the class.
+    </p>
+      
+      <p class="font-sm">
+      Complete {{run.completionThreshold}}% of the course and be in the top {{run.excellenceThreshold}}
+      percentile to generate excellence certificate.</p>
   </div>
 
   {{#if canDownload}}
-  <button {{action (perform excellenceCertificateTask)}}class="button-solid button-orange float-right mb-4 mr-5"
-    {{action 'downloadCertificate'}}>
-    Download
-  </button>
-  {{else if isQualifiedForExcellenceCertificate}}
-  <button
-    {{action (perform excellenceCertificateTask)}}class="button-solid button-orange float-right mb-4 mr-5">Generate</button>
+    <button class="button-solid button-orange float-right mb-4 mr-5"
+      {{action 'downloadCertificate'}}>
+      Download
+    </button>
+  {{else if isQualifiedForExcellenceCertififcate}}
+    {{#if isGenerating}}
+      <button class="button-solid button-grey float-right mb-4 mr-5" disabled title="check back in few hours">Certificate Already Requested</button>
+    {{else}}
+      <button {{action (perform excellenceCertificateTask)}} class="button-solid button-orange float-right mb-4 mr-5" disabled={{excellenceCertificateTask.isRunning}}>
+        {{if excellenceCertificateTask.isRunning 'Generating...' 'Generate'}}
+      </button>
+    {{/if}}
   {{else}}
-  <button class="button-solid button-grey float-right mb-4 mr-5">Generate</button>
+    <button class="button-solid button-grey float-right mb-4 mr-5" disabled>Generate</button>
   {{/if}}
 
 </div>
