@@ -45,7 +45,7 @@ export default Component.extend({
   }).drop(),
   actions: {
     downloadCertificate() {
-      const salt = this.get('runAttempt.completionCertificate.salt')
+      const salt = this.get('runAttempt.completionCertificate.firstObject.salt')
       this.router.transitionTo('certificate', `CBOL-${this.get('runAttempt.id')}-${salt}`)
     },
     toggleCollapse() {
