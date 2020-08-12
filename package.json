@@ -71,6 +71,7 @@
     "ember-power-select": "^4.0.0-beta.4",
     "ember-qunit": "^4.6.0",
     "ember-resolver": "^7.0.0",
+    "ember-router-scroll": "^3.3.2",
     "ember-shepherd": "^10.0.1",
     "ember-simple-auth": "^1.4.2",
     "ember-simple-auth-token": "git+https://github.com/abhishek97/ember-simple-auth-token.git",

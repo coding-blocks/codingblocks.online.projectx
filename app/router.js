@@ -1,8 +1,9 @@
 import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 import googlePageview from './mixins/google-pageview';
+import EmberRouterScroll from 'ember-router-scroll';
 
-export default class Router extends EmberRouter {
+export default class Router extends EmberRouterScroll {
   location = config.locationType;
   rootURL = config.rootURL;
 }
