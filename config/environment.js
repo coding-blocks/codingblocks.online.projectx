@@ -101,6 +101,7 @@ module.exports = function(environment) {
       webPropertyId: 'UA-83327907-12'
     }
     ENV.OnesignalAppId = 'ae392a03-3c7d-498b-94aa-2a7c17f7db0c'
+    ENV.discordinatorUrl = 'http://localhost:5050'
   }
 
   if (environment === 'test') {
@@ -138,7 +139,7 @@ module.exports = function(environment) {
       appId: '2LhQvB3j'
     }
     ENV.OnesignalAppId = '01d75aac-5123-4145-b655-ba8d27c5dc13'
-
+    ENV.discordinatorUrl = 'https://discordinator.codingblocks.com'
   }
 
   if (environment === 'staging') {
@@ -148,6 +149,7 @@ module.exports = function(environment) {
     ENV.oneauthURL = 'https://account.codingblocks.com'
     ENV.hackApiHost = 'https://hack-api.codingblocks.xyz'
     ENV.hiringblocksUrl = 'https://hire.codingblocks.xyz'
+    ENV.discordinatorUrl = 'https://discordinator.codingblocks.com'
 
     ENV.talkjs = {
       appId: '2LhQvB3j'
