@@ -64,4 +64,5 @@ Router.map(function() {
   this.route('spin', {path: '/spin-n-win'}, function() {});
   this.route('login-blocker');
   this.route('subscribe');
+  this.route('chitkara', function() {});
 });
