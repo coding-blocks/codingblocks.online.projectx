@@ -18,7 +18,15 @@ export default DS.Model.extend({
   oneauthId: DS.attr(),
   roleId: DS.attr(),
   verifiedemail: DS.attr(),
-  verifiedmobile: DS.attr()
+  verifiedmobile: DS.attr(),
+  orgLogo: computed('organization', function() {
+    switch(this.organization) {
+      case 'chitkara':
+        return 'https://www.chitkara.edu.in/wp-content/themes/chitkara/images/CU_logo.png';
+      default:
+        return 'https://minio.codingblocks.com/amoeba/OnlineLogo2020.svg'
+    }
+  })
   //contents: DS.hasMany('content'),
   //courseRuns: DS.hasMany('run'),
   //runAttempt: DS.belongsTo('run-attempt')

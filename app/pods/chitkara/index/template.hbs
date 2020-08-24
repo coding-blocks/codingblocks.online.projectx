@@ -1,0 +1,36 @@
+<div class="nagarro-banner row p-5 br-50">
+  <img class="logo" src="/app/images/naggaro-logo.png" alt="nagarro-logo">
+
+  <div class="information col-12 col-lg-6 mt-5 mt-lg-0">
+    <div class="title font-lg">The destination for workplace learning</div>
+    <div class="sub mt-4">Keep up with technology with expert-led courses, assessments and tools that 
+help you build the skills you need, when you need them.</div>
+    <div class="row mt-5">
+      <div class="col-4">
+        <img src="/app/images/ng-icon-1.png">
+        <div class="sub"> Learn latest technologies </div>
+      </div>
+      <div class="col-4">
+        <img src="/app/images/ng-icon-2.png">
+        <div class="sub"> Work on live projects </div>
+      </div>
+      <div class="col-4">
+        <img src="/app/images/ng-icon-3.png">
+        <div class="sub"> Scale your company's learnings </div>
+      </div>
+    </div>
+    
+    <button class="button-solid button-blue mt-5" {{action 'goToRecommendedCourses'}} >Explore</button>
+  </div>
+  
+  <div class="banner-image col-12 col-lg-6">
+    <img src="/app/images/nagarro-banner.jpg" alt="nagarro-banner-image">
+  </div>
+</div>
+
+<div class="container mt-5">
+  {{recommended-courses organization='chitkara'}}
+</div>
+
+
+{{offerings-static}}

@@ -11,6 +11,7 @@
     "test": "tests"
   },
   "scripts": {
+    "build:dev": "ember build --env development",
     "build": "ember build --environment=production",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
