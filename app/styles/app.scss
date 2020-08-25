@@ -20,6 +20,7 @@ $cb-red: #ff6666;
 @import "./components/code-challenge.scss";
 @import "./components/progress-bar.scss";
 @import "lists.scss";
+@import "./components/chitkara-banner.scss";
 
 body {
   padding-top: 70px;
@@ -357,7 +358,7 @@ div.library_doubts .input-search {
 }
 
 .c-topnav {
-  z-index: 10;
+  z-index: 101;
 }
 
 button:disabled{

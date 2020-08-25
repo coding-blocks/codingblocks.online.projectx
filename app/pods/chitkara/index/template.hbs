@@ -1,30 +1,21 @@
-<div class="nagarro-banner row p-5 br-50">
-  <img class="logo" src="/app/images/naggaro-logo.png" alt="nagarro-logo">
+<div class="chitkara-banner p-5 br-50">
 
-  <div class="information col-12 col-lg-6 mt-5 mt-lg-0">
-    <div class="title font-lg">The destination for workplace learning</div>
-    <div class="sub mt-4">Keep up with technology with expert-led courses, assessments and tools that 
-help you build the skills you need, when you need them.</div>
-    <div class="row mt-5">
-      <div class="col-4">
-        <img src="/app/images/ng-icon-1.png">
-        <div class="sub"> Learn latest technologies </div>
-      </div>
-      <div class="col-4">
-        <img src="/app/images/ng-icon-2.png">
-        <div class="sub"> Work on live projects </div>
-      </div>
-      <div class="col-4">
-        <img src="/app/images/ng-icon-3.png">
-        <div class="sub"> Scale your company's learnings </div>
-      </div>
+    <div class="information row justify-content-between mt-md-5 mt-lg-0">
+      <div class="title col-lg-6 col-md-8 mt-lg-5">Courses specially curated for
+        Chitkara University</div>
+        <div class="col-2"><img class="logo d-none d-md-block" src="/app/images/chitkara-university-logo.png" alt="nagarro-logo"></div>
     </div>
     
-    <button class="button-solid button-blue mt-5" {{action 'goToRecommendedCourses'}} >Explore</button>
+  <div class="row justify-content-around">
+    <div class="align-self-end mb-5 d-none d-md-block"><button class="button-solid white-button font-lg" {{action 'goToRecommendedCourses'}}>Explore More</button></div>
+    <div class="banner-image col-7">
+        <div><img src="/app/images/chitkara-university-banner.png" alt="nagarro-banner-image"></div>
+    </div>
   </div>
-  
-  <div class="banner-image col-12 col-lg-6">
-    <img src="/app/images/nagarro-banner.jpg" alt="nagarro-banner-image">
+
+
+  <div class="d-md-none row justify-content-center">
+    <div><button class="button-solid white-button mt-5" {{action 'goToRecommendedCourses'}}>Explore More</button></div>
   </div>
 </div>
 
