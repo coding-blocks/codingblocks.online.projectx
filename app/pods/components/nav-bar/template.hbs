@@ -10,7 +10,11 @@
           </div>
         </div>
       </div>
-      <img src="https://minio.codingblocks.com/motley/online-logo-text.png" alt="" class="d-inline-block w-70">
+      {{#if currentUser.user.orgLogo}}
+        <img src="https://minio.codingblocks.com/public/chitkara_uni_logo_square.png" alt="" srcset="" width="40">
+      {{else}}
+        <img src="https://minio.codingblocks.com/motley/online-logo-text.png" alt="" class="d-inline-block w-70">
+      {{/if}}
     </div>
   </div>
   <div class="col-6 offset-1 d-md-block d-none">
