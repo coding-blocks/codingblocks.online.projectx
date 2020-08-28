@@ -21,6 +21,7 @@ export default DS.Model.extend({
   goodiesThreshold: DS.attr("number"),
   contestId: DS.attr(),
   whatsappLink: DS.attr(),
+  discordEnabled: DS.attr(),
   description: DS.attr(),
   productId: DS.attr(),
   totalContents: DS.attr("number"),
