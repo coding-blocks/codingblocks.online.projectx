@@ -1,11 +1,11 @@
-<div class="img-card course-card">
+<div class="img-card course-card mb-2">
   <div class="head pt-4" style="background-image: url('{{course.coverImage}}')">
     <div class="t-align-r">
       <DifficultyDots 
         @difficulty={{course.difficulty}} 
         @difficultyName={{course.difficultyName}} />
     </div>
-    <h5 class="bold">{{course.title}}</h5>
+    <h5 class="bold" style="height: 42px;">{{course.title}}</h5>
     <div class="mt-2">
       <RatingStarsStatic @rating={{course.rating}} @showValue="true" />
     </div>
@@ -64,7 +64,7 @@
     </div>
     <div class="divider-h my-4"></div>
     {{#if session.isAuthenticated}}
-      {{#link-to "classroom.timeline.index" array course.id course.topRun.id 
+      {{#link-to "classroom.timeline.index" course.id course.topRun.id 
         activeClass="" class="orange t-align-c d-block card-md font-normal"
         invokeAction=(action 'log' 'Free trial' course.identifier preventDefault=false)}}
         Try it for Free!

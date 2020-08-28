@@ -1,0 +1,30 @@
+<div class="chitkara-banner p-5" style="border-radius: 30px;">
+
+    <div class="information row justify-content-between mt-md-5 mt-lg-0">
+      <div class="title col-lg-6 col-md-8 mt-lg-5">Courses specially curated for <br>
+        Chitkara University</div>
+        <div class="col-2"><img class="logo d-none d-md-block" src="/app/images/chitkara-university-logo.png" alt="chitkara-logo"></div>
+    </div>
+    
+  <div class="row justify-content-between">
+    <div class="col-md-5 align-self-end mb-5 d-none d-md-block">
+      
+      <button class="button-solid white-button font-lg" {{action 'goToRecommendedCourses'}}>Explore Courses</button>
+      </div>
+    <div class="banner-image col-md-7">
+        <img  src="/app/images/chitkara-university-banner.png" alt="chitkara-banner-image">
+    </div>
+  </div>
+
+
+  <div class="d-md-none row justify-content-center">
+    <div><button class="button-solid white-button mt-5" {{action 'goToRecommendedCourses'}}>Explore Courses</button></div>
+  </div>
+</div>
+
+<div class="container mt-5" id="recommended-courses">
+  {{recommended-courses organization='chitkara'}}
+</div>
+
+
+{{offerings-static}}

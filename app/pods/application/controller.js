@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-import { or, alias } from '@ember/object/computed';
+import { or, alias, bool } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
@@ -8,6 +8,7 @@ export default class ApplicationController extends Controller {
   @service router
   @service session
   @service layout
+  @service currentUser;
 
   queryParams = ['utm_campaign', 'utm_source', 'utm_medium', 'utm_term', 'utm_content', 'utm_coupon' ,'code']
   utm_campaign = null
@@ -17,6 +18,9 @@ export default class ApplicationController extends Controller {
   utm_content = null
   utm_coupon = null
   code = null
+
+  @bool("currentUser.organization") isOrgView;
+  
 
   @computed ('router.currentRouteName')
   get isInsideAttemptRoute () {

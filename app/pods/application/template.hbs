@@ -6,12 +6,16 @@
   {{#if session.isAuthenticated}}
     <NavBar />
     <SideNav />
-    <div class="offset-1">
-      <cb-navbar topalign="right" />
-    </div>
+
+      <div class="offset-1">
+        <cb-navbar topalign="right" />
+      </div>
 
     <div class="offset-md-1 mb-5">
-      <promotion-banner />
+      {{#unless isOrgView}}
+        <promotion-banner />
+      {{/unless}}
+
       <div id="outside-container" {{did-insert (action "setOutsideContainer")}} ></div>
       <div class="container">
         <div class="row justify-content-center mx-0">
@@ -26,7 +30,9 @@
       <div class="col-12">
         <NavBarPublic class="ml-0 w-100" />
         <cb-navbar topalign="right" />
-        <promotion-banner />
+        {{#unless isOrgView}}
+          <promotion-banner />
+        {{/unless}}
         <div class="">
           {{outlet}}
         </div>
