@@ -221,7 +221,7 @@
       </div>
     </a>
     {{/if}}
-    {{#if runAttempt.premium}}
+    {{#if (and runAttempt.run.discordEnabled runAttempt.premium)}}
       <DiscordinatorJoinButton />
     {{/if}}
     {{#if (and (is-after (unix runAttempt.run.start) '2019-11-29') showGoodieRequest)}}
