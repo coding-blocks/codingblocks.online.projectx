@@ -25,7 +25,7 @@
         </a>
       {{/if}}
     </div>
-    {{#unless domain.isExternal}}
+    {{#unless (or domain.isExternal currentUser.organization)}}
       <div class="col-2 col-md-12">
         <LinkTo @route="tracks" href="#" class="nav-element py-4 px-2">
           <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/tracks_grey.svg" alt="tracks">
@@ -39,11 +39,13 @@
         <div class="pt-2 d-none d-md-block font-sm card-md">My Courses</div>
       </LinkTo>
     </div>
+    {{#unless currentUser.organization}}
     <div class="col-2 col-md-12">
       <LinkTo @route="hiring-blocks" class="nav-element py-4 px-2">
         <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/job_grey.svg" alt="">
         <div class="pt-2 d-none d-md-block font-sm card-md">Hiring Blocks</div>
       </LinkTo>
     </div>
+    {{/unless}}
   </div>
 </div>

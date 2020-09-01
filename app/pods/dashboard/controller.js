@@ -8,6 +8,7 @@ export default class Dashboard extends Controller {
   @service api
   @service store
   @service player
+  @service currentUser
 
   @alias('lastAccessedRun.topRunAttempt.progressPercent')
   progressPercent
