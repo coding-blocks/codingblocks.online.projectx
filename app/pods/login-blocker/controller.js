@@ -21,8 +21,9 @@ export default class LoginBlockerController extends Controller {
       }
     })
 
-     // already someone else is logged; this might happen while impersonating
+    // already someone else is loggedIn; reload page after we switch new session data; this might happen while impersonating
     const afterLogin = this.session.data?.authenticated ? () => window.location.href = "/app/" : NOOP
+    
     await this.session.authenticate('authenticator:jwt-direct', response)
 
     await this.currentUser.load()
