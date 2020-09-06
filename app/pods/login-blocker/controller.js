@@ -2,6 +2,8 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
+const NOOP = () => {}
+
 export default class LoginBlockerController extends Controller {
   @service api
   @service session
@@ -18,7 +20,11 @@ export default class LoginBlockerController extends Controller {
         'Authorization': `JWT ${this.token}`
       }
     })
+
+     // already someone else is logged; this might happen while impersonating
+    const afterLogin = this.session.data?.authenticated ? () => window.location.href = "/app/" : NOOP
     await this.session.authenticate('authenticator:jwt-direct', response)
+
     await this.currentUser.load()
 
     const user = this.currentUser.user
@@ -27,6 +33,6 @@ export default class LoginBlockerController extends Controller {
       this.transitionTo(user.get('organization'))
     }
 
-    // window.location.href = '/app/'
+    afterLogin()
   }
 }
