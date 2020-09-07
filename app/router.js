@@ -65,4 +65,5 @@ Router.map(function() {
   this.route('login-blocker');
   this.route('subscribe');
   this.route('chitkara', function() {});
+  this.route('saitm', function() {});
 });
