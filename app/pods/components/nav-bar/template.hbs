@@ -11,7 +11,7 @@
         </div>
       </div>
       {{#if currentUser.user.orgLogo}}
-        <img src="https://minio.codingblocks.com/public/chitkara_uni_logo_square.png" alt="" srcset="" width="40">
+        <img src="{{currentUser.user.orgLogo}}" alt="" srcset="" width="40">
       {{else}}
         <img src="https://minio.codingblocks.com/motley/online-logo-text.png" alt="" class="d-inline-block w-70">
       {{/if}}
