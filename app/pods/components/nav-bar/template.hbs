@@ -19,11 +19,13 @@
   </div>
   <div class="col-6 offset-1 d-md-block d-none">
     <ul>
+      {{#unless currentUser.user.organization}}
       <li class="top-nav-option px-3 d-none d-md-block">
         <a href="https://codingblocks.com/classroom-courses/" target="blank">
           <h6>Classroom Courses</h6>
         </a>
       </li>
+      {{/unless}}
       <li class="top-nav-option px-3 d-none d-md-block">
         <a href="https://hack.codingblocks.com" target="blank">
           <h6>HackerBlocks</h6>

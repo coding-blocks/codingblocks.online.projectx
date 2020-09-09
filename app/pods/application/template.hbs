@@ -7,9 +7,11 @@
     <NavBar />
     <SideNav />
 
-      <div class="offset-1">
-        <cb-navbar topalign="right" />
-      </div>
+    {{#unless isOrgView}}
+    <div class="offset-1">
+      <cb-navbar topalign="right" />
+    </div>
+    {{/unless}}
 
     <div class="offset-md-1 mb-5">
       {{#unless isOrgView}}
