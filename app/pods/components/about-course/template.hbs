@@ -156,21 +156,8 @@
 
         </div>
       </div>
-
-      {{#if course.faq}}
-        <div class="border-card mt-4">
-          <h3>Frequently Asked Questions</h3>
-          <hr>
-          <div>
-            {{markdown-to-html course.faq}} 
-          </div>
-        </div>
-      {{/if}}
     </div>
   </div>
-  {{#unless getRatingStats.isRunning}}
-    {{review-carousel courseId=course.id}}
-  {{/unless}}
 
   <div class="row justify-content-center">
     <div class="col-12 {{if course.projects 'col-md-9'}}">
@@ -284,14 +271,6 @@
   </div>
 </div>
 
-{{#testimonials-video videoLink="https://www.youtube.com/embed/hqWZgg0vf1c"}}
-  <h2 class="white">What our students say about us</h2>
-  <h2 class="yellow semi-bold">Rashid Saifi shares his experience of Machine Learning Course</h2>
-{{/testimonials-video}}
-
-<div class="container mt-5">
-  {{testimonials-view}}
-</div>
 {{!-- Available Batches --}}
 <div class="bg-light-grey pb-5 pt-5 mb-5" id="runs">
   <div class="container">
