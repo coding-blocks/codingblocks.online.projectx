@@ -10,7 +10,7 @@ export default class DiscordinatorComponent extends Component {
   }
 
   get redirectUrl() {
-    return ENV.discordinatorUrl + `/app/connect?redirectTo=${window.location.href}`
+    return ENV.discordinatorUrl + `/app/connect?returnTo=${window.location.href}`
   }
 
   @restartableTask fetchDiscordSynced = function *() {
