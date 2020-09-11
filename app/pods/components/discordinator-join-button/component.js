@@ -4,10 +4,13 @@ import { restartableTask } from 'ember-concurrency-decorators';
 
 export default class DiscordinatorComponent extends Component {
   shouldJoinDiscord = false;
-  redirectUrl = ENV.discordinatorUrl + '/app/connect';
 
   didReceiveAttrs() {
     this.fetchDiscordSynced.perform();
+  }
+
+  get redirectUrl() {
+    return ENV.discordinatorUrl + `/app/connect?redirectTo=${window.location.href}`
   }
 
   @restartableTask fetchDiscordSynced = function *() {
