@@ -38,7 +38,7 @@
     </div>
     <div class="row no-gutters align-items-center justify-content-between">
       <div class="col-lg-8 col-6">
-        {{#unless organization}}
+        {{#unless isOrgView}}
           <div>
             <span class="bold orange font-sm">&#x20b9; {{format-price course.topRun.price}}</span>
             {{#unless (eq course.topRun.mrp course.topRun.price)}}
