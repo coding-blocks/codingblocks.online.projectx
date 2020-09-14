@@ -2,21 +2,21 @@
   <div class="col-lg-4 col-md-6">
     <div class="row no-gutters align-items-center">
       <div>
-        <img class="s-60x60 br-5" src={{course.logo}} alt={{course.title}}>
+        <img class="s-60x60 br-5" src={{this.course.logo}} alt={{this.course.title}}>
       </div>
       <div class="flex-1 pl-4">
         <h5 class="bold">
-          {{course.title}}
-          <span class="border d-inline-block p-1 grey" style="font-size: 10px;">{{run.name}}</span>
+          {{this.course.title}}
+          <span class="border d-inline-block p-1 grey" style="font-size: 10px;">{{@run.name}}</span>
         </h5>
-        <div class="font-normal mt-2">Mentor: {{instrcutorNames}}</div>
-        {{#if (and (not run.topRunAttempt.paused) run.topRunAttempt.isExpired)}}
+        <div class="font-normal mt-2">Mentor: {{this.instrcutorNames}}</div>
+        {{#if (and (not @run.topRunAttempt.paused) @run.topRunAttempt.isExpired)}}
           <div class="red mt-1">Expired</div>
         {{else}}
-          <div class="mt-1">Expires on <span class="bold">{{expiryDate}}</span> </div>
+          <div class="mt-1">Expires on <span class="bold">{{this.expiryDate}}</span> </div>
         {{/if}}
       </div>
     </div>
   </div>
-  {{yield run.topRunAttempt.progressPercent}}
+  {{yield @run.topRunAttempt.progressPercent}}
 </div>
