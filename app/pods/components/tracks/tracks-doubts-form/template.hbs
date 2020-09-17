@@ -6,7 +6,7 @@
   {{else}}
     <h4 class="bold gradient-text-orange d-flex align-items-center">
       <img src="/app/images/doubt_chat.svg" alt="hat">
-      <span class="ml-2">Have any Doubts?</span>
+      <span class="ml-2">Free Counseling Session</span>
     </h4>
     <div class="divider-h my-4"></div>
     <p class="grey">
@@ -18,8 +18,11 @@
     <div class="mt-4">
       {{input type="text" class="input-search bg-light-grey p-3 w-100" placeholder="Mobile number, For eg. 9999999999" value=mobile}}
     </div>
-        <div class="mt-4">
+    <div class="mt-4">
       {{input type="text" class="input-search bg-light-grey p-3 w-100" placeholder="Email" value=email}}
+    </div>
+    <div class="mt-4">
+      {{input type="text" class="input-search bg-light-grey p-3 w-100" placeholder="Doubt" value=doubt}}
     </div>
     {{#if error}}
       <p class="mt-4 mb-0 red">
