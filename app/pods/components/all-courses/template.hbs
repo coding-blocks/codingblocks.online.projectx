@@ -5,7 +5,12 @@
   <CardGrid class="row justify-content-center" as |card|>
     {{#each courses as |course index|}}
       <div class="c-layout-card col-md-6 col-lg-4 pr-md-0">
-        {{course-card course=course index=index showPopUp=(eq index card.poppedIndex) onChangePopped=card.changePoppedCard}}
+        {{course-card 
+          course=course 
+          index=index 
+          showPopUp=(eq index card.poppedIndex) 
+          onChangePopped=card.changePoppedCard
+          organization=org}}
       </div>
     {{/each}}
   </CardGrid>

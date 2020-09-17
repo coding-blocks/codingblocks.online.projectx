@@ -5,7 +5,6 @@
   <div class="col-md-9 col-12">
     {{#if lastAccessedRun}}
     <h4 class="my-4">Continue Learning</h4>
-    <h4 class="my-4">Continue Other Learnings</h4>
 
     {{!-- Recent run and stats card --}}
     <div class="border-card p-lg-5 p-4 mb-5">
@@ -89,77 +88,83 @@
       </div>
     </div>
 
-    <div class="mb-5">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="border-card h-100 px-0 py-lg-5 py-4">
-            {{#if noWishlist}}
-            <div class="px-lg-5 px-4">
-              <img src="/app/images/heart-orange.svg" alt="Bag">
-              <h4 class="bold mt-4">Wishlisted Courses</h4>
-              <div class="grey mb-4">You have not wishlisted any course! Start Wishlisting now!</div>
-              <a href="/courses" target="_blank" class="font-sm bold gradient-text-orange">Explore Courses</a>
-            </div>
-            {{else}}
-            <h4 class="bold px-lg-5 px-4">Wishlisted Courses</h4>
-            <div class="divider-h mt-4 content-divider px-lg-5 px-4"></div>
+    {{#unless currentUser.user.organization}}
+      <div class="mb-5">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="border-card h-100 px-0 py-lg-5 py-4">
+              {{#if noWishlist}}
+              <div class="px-lg-5 px-4">
+                <img src="/app/images/heart-orange.svg" alt="Bag">
+                <h4 class="bold mt-4">Wishlisted Courses</h4>
+                <div class="grey mb-4">You have not wishlisted any course! Start Wishlisting now!</div>
+                <a href="/courses" target="_blank" class="font-sm bold gradient-text-orange">Explore Courses</a>
+              </div>
+              {{else}}
+              <h4 class="bold px-lg-5 px-4">Wishlisted Courses</h4>
+              <div class="divider-h mt-4 content-divider px-lg-5 px-4"></div>
 
-            <Dashboard::DashboardWishList @wishlist={{wishlist}} />
-            {{#if (gt wishlist.length 2)}}
-            <div class="t-align-c">
-              <button class="button-solid button-orange mt-4">View All</button>
+              <Dashboard::DashboardWishList @wishlist={{wishlist}} />
+              {{#if (gt wishlist.length 2)}}
+              <div class="t-align-c">
+                <button class="button-solid button-orange mt-4">View All</button>
+              </div>
+              {{/if}}
+              {{/if}}
             </div>
-            {{/if}}
-            {{/if}}
           </div>
-        </div>
 
-        <div class="col-md-6 mt-md-0 mt-5">
-          <div class="border-card h-100 px-0 py-lg-5 py-4">
-            {{#if noAppliedJobs}}
-            <div class="px-lg-5 px-4">
-              <img src="/app/images/bag-orange.svg" alt="Heart">
-              <h4 class="bold mt-4">Applied Jobs</h4>
-              <div class="grey mb-4">You have not applied to any jobs! Find jobs now!</div>
-              <LinkTo @route="hiring-blocks" class="font-sm bold gradient-text-orange">See Jobs</LinkTo>
+          <div class="col-md-6 mt-md-0 mt-5">
+            <div class="border-card h-100 px-0 py-lg-5 py-4">
+              {{#if noAppliedJobs}}
+              <div class="px-lg-5 px-4">
+                <img src="/app/images/bag-orange.svg" alt="Heart">
+                <h4 class="bold mt-4">Applied Jobs</h4>
+                <div class="grey mb-4">You have not applied to any jobs! Find jobs now!</div>
+                <LinkTo @route="hiring-blocks" class="font-sm bold gradient-text-orange">See Jobs</LinkTo>
+              </div>
+              {{else}}
+              <h4 class="bold px-lg-5 px-4">Applied Jobs</h4>
+              <div class="divider-h mt-4 content-divider px-lg-5 px-4"></div>
+              <Dashboard::DashboardAppliedJobs @jobs={{appliedJobs}} />
+              {{#if (gt wishlist.length 2)}}
+              <div class="t-align-c">
+                <button class="button-solid button-orange my-5">View All</button>
+              </div>
+              {{/if}}
+              {{/if}}
             </div>
-            {{else}}
-            <h4 class="bold px-lg-5 px-4">Applied Jobs</h4>
-            <div class="divider-h mt-4 content-divider px-lg-5 px-4"></div>
-            <Dashboard::DashboardAppliedJobs @jobs={{appliedJobs}} />
-            {{#if (gt wishlist.length 2)}}
-            <div class="t-align-c">
-              <button class="button-solid button-orange my-5">View All</button>
-            </div>
-            {{/if}}
-            {{/if}}
           </div>
         </div>
       </div>
-    </div>
+    {{/unless}}
   </div>
   <div class="col-md-3 col-12">
     {{!-- <div>
       <demographic-form />
     </div> --}}
-    <h4 class="my-4">Learning Tracks</h4>
-    <div class="border-card bg-gradient-purple white mb-5 p-lg-5 p-4">
-      <div class="mb-3 semi-bold yellow font-sm">
-        <img src="https://minio.codingblocks.com/amoeba/fire-orange.svg" alt=""> Trending
+    {{#unless currentUser.user.organization}}
+      <h4 class="my-4">Learning Tracks</h4>
+      <div class="border-card bg-gradient-purple white mb-5 p-lg-5 p-4">
+        <div class="mb-3 semi-bold yellow font-sm">
+          <img src="https://minio.codingblocks.com/amoeba/fire-orange.svg" alt=""> Trending
+        </div>
+        <div class="font-lg">Become a Certified</div>
+        <h3 class="bold mb-4">Data Scientist</h3>
+        <div class="font-normal mb-4">
+          Average Salary of a Data Scientist is 15LPA
+        </div>
+        <div class="button-align-container">
+          <LinkTo @route="tracks" class="button-white button-solid purple">
+            View Tracks
+          </LinkTo>
+        </div>
       </div>
-      <div class="font-lg">Become a Certified</div>
-      <h3 class="bold mb-4">Data Scientist</h3>
-      <div class="font-normal mb-4">
-        Average Salary of a Data Scientist is 15LPA
-      </div>
-      <div class="button-align-container">
-        <LinkTo @route="tracks" class="button-white button-solid purple">
-          View Tracks
-        </LinkTo>
-      </div>
-    </div>
+    {{/unless}}
 
     <HackerblocksStats />
-    <CarouselCards />
+    {{#unless currentUser.user.organization}}
+      <CarouselCards />
+    {{/unless}}
   </div>
 </div>

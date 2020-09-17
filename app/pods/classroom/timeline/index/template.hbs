@@ -56,7 +56,7 @@
             <progress value="{{progressPercent}}" max="100" class="d-inline-block w-90 progress-orange"></progress>
 
             {{!-- % * 0.9 to compensate for 90% width of progress bar --}}
-            {{#if (and (is-after (unix runAttempt.run.start) '2019-11-29') showGoodieRequest)}}
+            {{!-- {{#if (and (is-after (unix runAttempt.run.start) '2019-11-29') showGoodieRequest)}}
             <div class="progress-lock" style="left: {{goodiesLockOffset}}%; bottom: -2px" id="goodies-lock">
               <div class="bg-light-grey br-25 card-sm font-normal p-2 progress-lock__bubble mb-2">Complete
                 {{runAttempt.run.goodiesThreshold}}% to claim goodies</div>
@@ -68,7 +68,7 @@
                 class="gradient-text-green pointer s-25x25" />
               {{/if}}
             </div>
-            {{/if}}
+            {{/if}} --}}
 
             {{#if showCertificateRequest}}
             <div class="progress-lock" style="left: {{certificateLockOffset}}%; bottom: -2px" id="certificate-lock">
@@ -221,7 +221,7 @@
       </div>
     </a>
     {{/if}}
-    {{#if runAttempt.premium}}
+    {{#if (and runAttempt.run.discordEnabled runAttempt.premium)}}
       <DiscordinatorJoinButton />
     {{/if}}
     {{#if (and (is-after (unix runAttempt.run.start) '2019-11-29') showGoodieRequest)}}

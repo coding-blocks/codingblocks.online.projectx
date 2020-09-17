@@ -23,8 +23,10 @@ export default DS.Model.extend({
     switch(this.organization) {
       case 'chitkara':
         return 'https://www.chitkara.edu.in/wp-content/themes/chitkara/images/CU_logo.png';
+      case 'saitm':
+        return 'https://minio.cb.lk/public/saitm.png';
       default:
-        return 'https://minio.codingblocks.com/amoeba/OnlineLogo2020.svg'
+        return 'https://minio.codingblocks.com/amoeba/OnlineLogo2020.svg';
     }
   })
   //contents: DS.hasMany('content'),

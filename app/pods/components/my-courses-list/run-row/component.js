@@ -27,7 +27,7 @@ export default class CourseBasicInfo extends Component {
     const runAttempt = this.run.topRunAttempt
     const { paused, lastPausedAt, pauseTimeLeft, end } = runAttempt
     const now = new Date()
-    const offset = paused ? Math.min(Math.floor((now - lastPausedAt)/1000), pauseTimeLeft) : 0
+    const offset = paused ? Math.min(Math.floor((now - lastPausedAt)/1000), pauseTimeLeft/1000) : 0
     return moment.unix(end + offset).format("DD MMM YYYY HH:mm:ss")
   }
 
