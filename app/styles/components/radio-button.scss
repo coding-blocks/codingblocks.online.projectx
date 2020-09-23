@@ -1,0 +1,80 @@
+/*
+Ex: 
+    <label class="radio-container">One
+        <input type="radio" checked="checked" name="radio">
+        <span class="checkmark"></span>
+    </label>
+
+*/
+
+/* The radio-button container */
+.radio-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* Hide the browser's default radio button */
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* On mouse-over, add a grey background color */
+  &:hover input~.checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the radio button is checked, add a blue background */
+  input:checked~.checkmark {
+    background: linear-gradient(90deg, #FB8133 0%, #FFBA08 100%);
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+
+  input:checked~.checkmark:after {
+    display: block;
+  }
+
+  /* Style the indicator (dot/circle) */
+
+  .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+
+}
+
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+}
+
+.t-smaller {
+    transform-origin: left;
+    transform: scale(0.7)
+}

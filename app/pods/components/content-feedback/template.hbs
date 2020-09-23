@@ -1,25 +1,82 @@
-{{#if showFeedback}}
-            {{#if (eq feedbackState 'COLLAPSED')}}
-                                <div class="feed-box collapsed" {{action 'changeState' 'EXPANDED'}}>
-                                    <img src="/images/love.svg" alt="" class="love-ico">
-                                </div>
-            {{else if (eq feedbackState 'EXPANDED')}}
-                                <div class="feed-overlay"></div>
-                                <div class="feed-box expanded">
-                                    <div class="feed-text">Did you like the video?</div>
-                                    <form>
-                                        <input type="radio" name="gender" value="UP" {{action 'submitFeedback' 'UP'}}> Yes
-                                        <input type="radio" name="gender" value="DOWN" {{action 'submitFeedback' 'DOWN'}}> No
-                                    </form>
-                                    <img src="/images/love.svg" alt="" class="love-ico"  {{action 'changeState' 'COLLAPSED'}}>
-                                </div>
-            {{else if (eq feedbackState 'SUBMITTED')}}
-                                <div class="feed-overlay"></div>
-                                <div class="feed-box">
-                                    <div class="feed-text">Feedback Submitted</div>
-                                    <img src="/images/love.svg" alt="" class="love-ico">
-                                </div>
-            {{else}}
+<div class="content-feedback">
+  <div class="cta font-md bold cursor pl-2 py-4" {{on "click" this.toggleExpandedView}} role="button">
+    Give Feedback
+  </div>
 
-            {{/if}}
-{{/if}}
+  {{#if this.expanded}}
+  <div class="expanded p-3 d-flex flex-column justify-content-center">
+    <div class="row font-sm">
+      <div class="col-12 bold py-2">
+        How will you rate the video?
+      </div>
+      <div class="col-12 py-2">
+        <RatingBar @scale={{5}} @rating={{this.selectedRating}} @changeRating={{fn (mut this.selectedRating)}} />
+      </div>
+
+      {{#unless (eq this.expansionType 'NONE') }}
+        <div class="col-12 bold py-4 fade-in">
+          <span class="py-3">
+            {{this.expansionText}}
+          </span>
+
+          {{#each this.expansionReasons as |reason|}}
+          <div class="py-2">
+            <label class="radio-container v-align-ma">
+              <input class="radio" type="radio" name="reason" 
+              checked={{eq this.selectedReason reason}}
+              onclick={{fn (mut this.selectedReason) reason}} />
+              <span class="checkmark t-smaller"></span>
+              <span class="font-xs">{{reason}}</span>
+            </label>
+          </div>
+          {{/each}}
+        </div>
+      {{/unless}}
+    </div>
+  </div>
+  {{/if}}
+
+</div>
+
+<style>
+  .content-feedback {
+    position: absolute;
+    right: 0;
+    top: 23%;
+  }
+
+
+  .content-feedback .cta {
+    width: 35px;
+    background-color: orange;
+    writing-mode: vertical-lr;
+    position: relative;
+    transform-origin: center;
+    transform: rotateZ(180deg);
+  }
+
+  .content-feedback .expanded {
+    position: absolute;
+    right: 40px;
+    top: -100px;
+    width: 300px;
+    height: 400px;
+    background-color: #393B41;
+    
+
+  }
+
+  .fade-in {
+    animation: fade-in 0.3s ease-in;
+  }
+
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
