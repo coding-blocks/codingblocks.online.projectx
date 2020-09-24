@@ -15,7 +15,7 @@ export default class ExcellenceCertificateModal extends Component {
 
   @computed('stats')
   get isQualifiedForExcellenceCertififcate() {
-    return this.courseCompleted && (this.stats.performance.score > this.run.get('excellenceThreshold'))
+    return this.courseCompleted && (this.stats.performance.percentageCompletion > this.run.get('excellenceThreshold'))
   }
 
   @dropTask excellenceCertificateTask = function* () {
