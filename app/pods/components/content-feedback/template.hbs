@@ -24,7 +24,7 @@
             <label class="radio-container v-align-ma">
               <input class="radio" type="radio" name="reason" 
               checked={{eq this.selectedReason reason}}
-              onclick={{fn (mut this.selectedReason) reason}} />
+              onclick={{fn this.updateContentFeedback reason}} />
               <span class="checkmark t-smaller"></span>
               <span class="font-xs">{{reason}}</span>
             </label>

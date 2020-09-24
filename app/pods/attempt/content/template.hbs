@@ -7,7 +7,9 @@
     {{!-- render content outlet and doubts and notes --}}
     <div>
       <div>
-        <ContentFeedback @showFeedback={{true}} />
+        <WAsync @promise={{this.model.progress}} as |progress|>
+          <ContentFeedback @progress={{progress}} />
+        </WAsync>
         {{outlet}}
       </div>
       {{#unless (eq model.contentable 'course-recommend')}}

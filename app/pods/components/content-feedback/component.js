@@ -18,23 +18,22 @@ export default class ContentFeedbackComponent extends Component {
 	expanded = false
 	selectedRating = null
 
-	@action
-	toggleExpandedView() {
-		// this.expanded && this.set('selectedRating', null)
-		this.toggleProperty('expanded')
-	}
+	didReceiveAttrs () {
+		this._super(...arguments)
+		this.selectedRating = this.progress
+	}	
 
 	@computed('selectedRating')
 	get expansionType () {
 		const rating = this.selectedRating
 		if (rating === 4 || rating === null)
-			return 'NONE'
+		return 'NONE'
 		else if (rating <= 3) 
-			return 'BAD'
-		 else
-			return 'GOOD'
+		return 'BAD'
+		else
+		return 'GOOD'
 	}
-
+	
 	@computed('expansionType')
 	get expansionText () {
 		switch(this.expansionType) {
@@ -43,7 +42,7 @@ export default class ContentFeedbackComponent extends Component {
 			default: return ''
 		}
 	}
-
+	
 	@computed('expansionType')
 	get expansionReasons() {
 		switch(this.expansionType) {
@@ -52,5 +51,21 @@ export default class ContentFeedbackComponent extends Component {
 			default: return []
 		}
 	}
-
+	
+	@action
+	async updateContentFeedback (reason = '') {
+		// update everything in progress
+		const feedback = {
+			rating: this.selectedRating,
+			reason
+		}
+		this.progress.set('feedback', feedback)
+		await this.progress.save()
+	}
+	
+	@action
+	toggleExpandedView() {
+		// this.expanded && this.set('selectedRating', null)
+		this.toggleProperty('expanded')
+	}
 }
