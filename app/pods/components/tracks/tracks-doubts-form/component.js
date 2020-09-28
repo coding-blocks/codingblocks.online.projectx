@@ -8,6 +8,7 @@ export default class TracksDoubtsFormComponent extends Component {
   name = null
   mobile = null
   email = null
+  doubt = null
 
   @service api
 
@@ -20,6 +21,7 @@ export default class TracksDoubtsFormComponent extends Component {
             name: this.name,
             mobile: this.mobile,
             email: this.email,
+            doubt: this.doubt,
             course: 'Tracks',
           },
           meta: {
