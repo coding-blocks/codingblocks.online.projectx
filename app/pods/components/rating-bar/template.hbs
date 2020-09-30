@@ -1,11 +1,15 @@
-{{#each (range 1 (inc scale)) as |index|}}
-  <span 
-    class={{if (lte index hoverRating) "pos-rating" "neg-rating"}}
-    onMouseEnter={{action (mut hoverRating) index}}
-    onClick={{action changeRating index}}
-    onMouseLeave={{action (mut hoverRating) rating}}
+{{#each (range 1 (inc @scale)) as |index|}}
+  <span
+    class={{if (lte index this.hoverRating) @filledClass @emptyClass}}
+    onMouseEnter={{fn (mut this.hoverRating) index}}
+    onClick={{fn @changeRating index}}
+    onMouseLeave={{fn (mut this.hoverRating) @rating}}
     role="button"
   >
-    <i class="fas fa-star"></i>
+    {{#if (lte index this.hoverRating)}}
+      <RatingBar::FilledStar />
+    {{else}}
+      <RatingBar::EmptyStar />
+    {{/if}}
   </span>
 {{/each}}

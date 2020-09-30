@@ -13,6 +13,7 @@ export default DS.Model.extend({
   isFeedbackDone: computed('feedbackStatus', function() {
     return !(this.feedbackStatus == null);
   }),
+  feedback: DS.attr(),
   runAttempt: DS.belongsTo('runAttempt'),
   content: DS.belongsTo('content'),
 })

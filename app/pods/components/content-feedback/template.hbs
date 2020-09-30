@@ -1,25 +1,80 @@
-{{#if showFeedback}}
-            {{#if (eq feedbackState 'COLLAPSED')}}
-                                <div class="feed-box collapsed" {{action 'changeState' 'EXPANDED'}}>
-                                    <img src="/images/love.svg" alt="" class="love-ico">
-                                </div>
-            {{else if (eq feedbackState 'EXPANDED')}}
-                                <div class="feed-overlay"></div>
-                                <div class="feed-box expanded">
-                                    <div class="feed-text">Did you like the video?</div>
-                                    <form>
-                                        <input type="radio" name="gender" value="UP" {{action 'submitFeedback' 'UP'}}> Yes
-                                        <input type="radio" name="gender" value="DOWN" {{action 'submitFeedback' 'DOWN'}}> No
-                                    </form>
-                                    <img src="/images/love.svg" alt="" class="love-ico"  {{action 'changeState' 'COLLAPSED'}}>
-                                </div>
-            {{else if (eq feedbackState 'SUBMITTED')}}
-                                <div class="feed-overlay"></div>
-                                <div class="feed-box">
-                                    <div class="feed-text">Feedback Submitted</div>
-                                    <img src="/images/love.svg" alt="" class="love-ico">
-                                </div>
-            {{else}}
+<div class="content-feedback {{if this.updateContentFeedbackTask.isRunning 'busy'}}"
+  {{on-click-outside (fn this.close)}}>
+  <div class="cta font-mds bold cursor pl-2 py-4" {{on "click" this.toggleExpandedView}} role="button">
+    Give Feedback
+  </div>
 
-            {{/if}}
-{{/if}}
+  {{#if this.expanded}}
+  <div class="expanded py-2 px-4 d-flex flex-column justify-content-center">
+
+
+    {{#if this.sayThankYou}}
+    {{!-- <div class="row font-sm"> --}}
+    <div class="bold font-mds">
+      Feedback Submitted
+    </div>
+    <div class="py-4 fade-in">
+      <RatingStarsStatic @rating={{this.selectedRating}} />
+    </div>
+    <div class="fade-in">
+      <div class="bold py-2">
+        Thank you for the feedback!!!
+      </div>
+      This will help us improve quality of our content.
+    </div>
+
+    <div class="divider-h bg-white my-4 px-3"></div>
+
+    <div class="fade-in">
+      <div class="bold py-2">
+        Have any other issues?
+      </div>
+      Contact our support team
+      at <a class="white" href="mailto:support@codingblocks.com"> support@codingblocks.com </a>
+    </div>
+
+    {{!-- </div> --}}
+    {{else}}
+    <div class="row font-sm">
+
+      <div class="col-12 bold py-2">
+        {{#if (eq this.expansionType 'NONE')}}
+        <img class="mx-auto d-block my-4" src="https://minio.codingblocks.com/public/feedback-img-min.png"
+          alt="content-feedback-img" height="120px" />
+        {{/if}}
+        How will you rate the video?
+      </div>
+      <div class="col-12 py-2">
+        <RatingBar @scale={{5}} @rating={{this.selectedRating}} @filledClass="mx-2" @emptyClass="mx-2"
+          @changeRating={{fn this.setRating}} />
+      </div>
+
+      {{#if (eq this.expansionType 'NONE') }}
+      <div class="col-12 py-4 fade-in">
+        Your feedback helps us improve learning experience for you and your peers.
+      </div>
+      {{else}}
+      <div class="col-12 bold py-4 fade-in">
+        <span class="py-3">
+          {{this.expansionText}}
+        </span>
+
+        {{#each this.expansionReasons as |reason|}}
+        <div class="py-2">
+          <label class="radio-container v-align-ma">
+            <input class="radio" type="radio" name="reason" checked={{eq this.selectedReason reason}}
+              onclick={{perform this.updateContentFeedbackTask reason}} />
+            <span class="checkmark t-smaller"></span>
+            <span class="font-xs">{{reason}}</span>
+          </label>
+        </div>
+        {{/each}}
+      </div>
+      {{/if}}
+    </div>
+
+    {{/if}}
+  </div>
+  {{/if}}
+
+</div>

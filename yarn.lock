@@ -6086,7 +6086,16 @@ ember-cli@~3.16.0:
     watch-detector "^1.0.0"
     yam "^1.0.0"
 
-ember-compatibility-helpers@^1.1.1, ember-compatibility-helpers@^1.1.2, ember-compatibility-helpers@^1.2.0:
+ember-click-outside@^2.0.0-beta.1:
+  version "2.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/ember-click-outside/-/ember-click-outside-2.0.0-beta.1.tgz#fe2b5da67432a14547c75aa4514191e46ca4617a"
+  integrity sha512-4aBZN42eEUCJdgfe9XeZCptctlZOPnPZIWwUYUkjtx/lnopU6CuapbrcyqaW8R+4Zi4XLKSmrlv1uhONtRfp1Q==
+  dependencies:
+    ember-cli-babel "^7.18.0"
+    ember-cli-htmlbars "^4.2.3"
+    ember-modifier "^1.0.3"
+
+ember-compatibility-helpers@^1.1.1, ember-compatibility-helpers@^1.1.2, ember-compatibility-helpers@^1.2.0, ember-compatibility-helpers@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/ember-compatibility-helpers/-/ember-compatibility-helpers-1.2.1.tgz#87c92c4303f990ff455c28ca39fb3ee11441aa16"
   integrity sha512-6wzYvnhg1ihQUT5yGqnLtleq3Nv5KNv79WhrEuNU9SwR4uIxCO+KpyC7r3d5VI0EM7/Nmv9Nd0yTkzmTMdVG1A==
@@ -6485,6 +6494,18 @@ ember-modifier-manager-polyfill@^1.1.0, ember-modifier-manager-polyfill@^1.2.0:
     ember-cli-version-checker "^2.1.2"
     ember-compatibility-helpers "^1.2.0"
 
+ember-modifier@^1.0.3:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/ember-modifier/-/ember-modifier-1.0.5.tgz#b0152a4b81b72debbff48ff75f0ff0959afa1df2"
+  integrity sha512-bOqWyp6bEa8i/2c2Gay6b9CVB7CAROg2UuX+C3eDMOdGUEzrsBZ5ENul5zF4RHey2RuAqZ/qvQpY/85R2fQ94A==
+  dependencies:
+    ember-cli-babel "^7.11.1"
+    ember-cli-is-package-missing "^1.0.0"
+    ember-cli-normalize-entity-name "^1.0.0"
+    ember-cli-string-utils "^1.1.0"
+    ember-compatibility-helpers "^1.2.1"
+    ember-modifier-manager-polyfill "^1.2.0"
+
 ember-moment@^7.7.0:
   version "7.8.1"
   resolved "https://registry.yarnpkg.com/ember-moment/-/ember-moment-7.8.1.tgz#6f77cf941d1a92e231b2f4b810e113b2fae50c5f"
@@ -6512,9 +6533,9 @@ ember-monaco@^1.1.0:
     rollup-plugin-commonjs "^9.2.0"
     rollup-plugin-node-resolve "^4.0.0"
 
-"ember-one-way-controls@git+https://github.com/marxsk/ember-one-way-controls.git":
+"ember-one-way-controls@https://github.com/marxsk/ember-one-way-controls.git":
   version "3.1.0"
-  resolved "git+https://github.com/marxsk/ember-one-way-controls.git#09427eeaeb57eeb7c280b821d95b9ae0735677de"
+  resolved "https://github.com/marxsk/ember-one-way-controls.git#09427eeaeb57eeb7c280b821d95b9ae0735677de"
   dependencies:
     ember-cli-babel "^6.0.0"
     ember-cli-htmlbars "^2.0.1"

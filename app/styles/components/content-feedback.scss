@@ -1,0 +1,48 @@
+.content-feedback {
+  position: absolute;
+  right: 0;
+  top: 23%;
+
+  .cta {
+    width: 35px;
+    background: linear-gradient(90deg, #FB8133 0%, #FFBA08 100%);
+    writing-mode: vertical-lr;
+    position: relative;
+    transform-origin: center;
+    transform: rotateZ(180deg);
+  }
+
+  .expanded {
+    position: absolute;
+    right: 40px;
+    top: -100px;
+    width: 300px;
+    height: 400px;
+    background-color: #393B41;
+
+    &.busy::before {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      left:0;
+      z-index: 2;
+    }
+  }
+
+}
+
+.fade-in {
+  animation: fade-in 0.2s ease-in;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
