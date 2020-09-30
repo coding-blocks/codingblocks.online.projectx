@@ -1,5 +1,6 @@
-<div class="content-feedback {{if this.updateContentFeedbackTask.isRunning 'busy'}}" {{on-click-outside (fn this.close)}}>
-  <div class="cta font-md bold cursor pl-2 py-4" {{on "click" this.toggleExpandedView}} role="button">
+<div class="content-feedback {{if this.updateContentFeedbackTask.isRunning 'busy'}}"
+  {{on-click-outside (fn this.close)}}>
+  <div class="cta font-mds bold cursor pl-2 py-4" {{on "click" this.toggleExpandedView}} role="button">
     Give Feedback
   </div>
 
@@ -8,119 +9,72 @@
 
 
     {{#if this.sayThankYou}}
-      {{!-- <div class="row font-sm"> --}}
-        <div class="bold font-mds">
-          Feedback Submitted
-        </div>
-        <div class="py-4 fade-in">
-          <RatingStarsStatic @rating={{this.selectedRating}} />
-        </div>
-        <div class="fade-in">
-          <div class="bold py-2">
-            Thank you for the feedback!!!
-          </div>
-          This will help us improve quality of our content.
-        </div>
-
-        <div class="divider-h bg-white my-4 px-3"></div>
-
-        <div class="fade-in">
-          <div class="bold py-2">
-            Have any other issues?
-          </div>
-          Contact our support team
-          at <a class="white" href="mailto:support@codingblocks.com"> support@codingblocks.com </a>
-        </div>
-
-      {{!-- </div> --}}
-    {{else}}
-      <div class="row font-sm">
-        <div class="col-12 bold py-2">
-          How will you rate the video?
-        </div>
-        <div class="col-12 py-2">
-          <RatingBar @scale={{5}} @rating={{this.selectedRating}} @changeRating={{fn this.setRating}} />
-        </div>
-
-        {{#if (eq this.expansionType 'NONE') }}
-          <div class="col-12 bold py-4 fade-in">
-            Your feedback helps us.
-          </div>
-        {{else}}
-          <div class="col-12 bold py-4 fade-in">
-            <span class="py-3">
-              {{this.expansionText}}
-            </span>
-
-            {{#each this.expansionReasons as |reason|}}
-            <div class="py-2">
-              <label class="radio-container v-align-ma">
-                <input class="radio" type="radio" name="reason" 
-                checked={{eq this.selectedReason reason}}
-                onclick={{perform this.updateContentFeedbackTask reason}} />
-                <span class="checkmark t-smaller"></span>
-                <span class="font-xs">{{reason}}</span>
-              </label>
-            </div>
-            {{/each}}
-          </div>
-        {{/if}}
+    {{!-- <div class="row font-sm"> --}}
+    <div class="bold font-mds">
+      Feedback Submitted
+    </div>
+    <div class="py-4 fade-in">
+      <RatingStarsStatic @rating={{this.selectedRating}} />
+    </div>
+    <div class="fade-in">
+      <div class="bold py-2">
+        Thank you for the feedback!!!
       </div>
+      This will help us improve quality of our content.
+    </div>
+
+    <div class="divider-h bg-white my-4 px-3"></div>
+
+    <div class="fade-in">
+      <div class="bold py-2">
+        Have any other issues?
+      </div>
+      Contact our support team
+      at <a class="white" href="mailto:support@codingblocks.com"> support@codingblocks.com </a>
+    </div>
+
+    {{!-- </div> --}}
+    {{else}}
+    <div class="row font-sm">
+
+      <div class="col-12 bold py-2">
+        {{#if (eq this.expansionType 'NONE')}}
+        <img class="mx-auto d-block my-4" src="https://minio.codingblocks.com/public/feedback-img-min.png"
+          alt="content-feedback-img" height="120px" />
+        {{/if}}
+        How will you rate the video?
+      </div>
+      <div class="col-12 py-2">
+        <RatingBar @scale={{5}} @rating={{this.selectedRating}} @filledClass="mx-2" @emptyClass="mx-2"
+          @changeRating={{fn this.setRating}} />
+      </div>
+
+      {{#if (eq this.expansionType 'NONE') }}
+      <div class="col-12 py-4 fade-in">
+        Your feedback helps us improve learning experience for you and your peers.
+      </div>
+      {{else}}
+      <div class="col-12 bold py-4 fade-in">
+        <span class="py-3">
+          {{this.expansionText}}
+        </span>
+
+        {{#each this.expansionReasons as |reason|}}
+        <div class="py-2">
+          <label class="radio-container v-align-ma">
+            <input class="radio" type="radio" name="reason" checked={{eq this.selectedReason reason}}
+              onclick={{perform this.updateContentFeedbackTask reason}} />
+            <span class="checkmark t-smaller"></span>
+            <span class="font-xs">{{reason}}</span>
+          </label>
+        </div>
+        {{/each}}
+      </div>
+      {{/if}}
+    </div>
 
     {{/if}}
   </div>
   {{/if}}
 
 </div>
-
-<style>
-  .content-feedback {
-    position: absolute;
-    right: 0;
-    top: 23%;
-  }
-
-
-  .content-feedback .cta {
-    width: 35px;
-    background-color: orange;
-    writing-mode: vertical-lr;
-    position: relative;
-    transform-origin: center;
-    transform: rotateZ(180deg);
-  }
-
-  .content-feedback .expanded {
-    position: absolute;
-    right: 40px;
-    top: -100px;
-    width: 300px;
-    height: 400px;
-    background-color: #393B41;
-  }
-
-  .content-feedback .expanded.busy::before {
-    content: '';
-    position: absolute;
-    display: block;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    left:0;
-    z-index: 2;
-  }
-
-  .fade-in {
-    animation: fade-in 0.2s ease-in;
-  }
-
-
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-</style>

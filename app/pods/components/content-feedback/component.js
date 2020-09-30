@@ -24,42 +24,42 @@ export default class ContentFeedbackComponent extends Component {
 	selectedReason = null
 	sayThankYou = false
 
-	didReceiveAttrs () {
+	didReceiveAttrs() {
 		this._super(...arguments)
 		this.selectedRating = this.progress.get('feedback.rating')
 		this.selectedReason = this.progress.get('feedback.reason')
-	}	
+	}
 
 	@computed('selectedRating')
-	get expansionType () {
+	get expansionType() {
 		const rating = this.selectedRating
 		if (rating === 4 || !rating)
-		return 'NONE'
-		else if (rating <= 3) 
-		return 'BAD'
+			return 'NONE'
+		else if (rating <= 3)
+			return 'BAD'
 		else
-		return 'GOOD'
+			return 'GOOD'
 	}
-	
+
 	@computed('expansionType')
-	get expansionText () {
-		switch(this.expansionType) {
+	get expansionText() {
+		switch (this.expansionType) {
 			case 'BAD': return 'What went wrong?';
 			case 'GOOD': return 'What went awesome?';
 			default: return ''
 		}
 	}
-	
+
 	@computed('expansionType')
 	get expansionReasons() {
-		switch(this.expansionType) {
+		switch (this.expansionType) {
 			case 'BAD': return BAD_REASONS;
 			case 'GOOD': return GOOD_REASONS;
 			default: return []
 		}
 	}
 
-	@restartableTask updateContentFeedbackTask = function *(reason = '') {
+	@restartableTask updateContentFeedbackTask = function* (reason = '') {
 		const feedback = {
 			rating: this.selectedRating,
 			reason
@@ -68,7 +68,7 @@ export default class ContentFeedbackComponent extends Component {
 		yield this.progress.save()
 		this.set('sayThankYou', true)
 	}
-	
+
 	@action
 	toggleExpandedView() {
 		// this.expanded && this.set('selectedRating', null)
@@ -76,7 +76,7 @@ export default class ContentFeedbackComponent extends Component {
 	}
 
 	@action
-	setRating (value) {
+	setRating(value) {
 		if (value === 4) {
 			// short circuit flow -> dont wait for reasons; just submit
 			return this.updateContentFeedbackTask.perform()
@@ -86,7 +86,7 @@ export default class ContentFeedbackComponent extends Component {
 	}
 
 	@action
-	close () {
+	close() {
 		this.set('expanded', false)
 	}
 }
