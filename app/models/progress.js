@@ -9,7 +9,7 @@ export default DS.Model.extend({
     switch (this.get('content.contentable')) {
       case 'code-challenge':
       case 'qna':
-        return this.score === 100
+        return this.score >= this.get('content.maxScore')
       default:
         return this.status === 'DONE';
     }
