@@ -4,12 +4,12 @@ import { computed } from '@ember/object'
 export default DS.Model.extend({
   status: DS.attr(),
   feedbackStatus: DS.attr(),
-  score: DS.attr(),
+  score: DS.attr('number'),
   isDone: computed('status', function () {
     switch (this.get('content.contentable')) {
       case 'code-challenge':
       case 'qna':
-        return this.score === 100
+        return this.score >= this.get('content.maxScore')
       default:
         return this.status === 'DONE';
     }

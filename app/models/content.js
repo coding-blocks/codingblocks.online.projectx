@@ -6,6 +6,7 @@ export default DS.Model.extend({
   contentable: DS.attr(),
   title: DS.attr(),
   sectionContent: DS.attr(),
+  maxScore: DS.attr('number'),
   course: DS.belongsTo('course'),
   qna: DS.belongsTo('qna'),
   lecture: DS.belongsTo('lecture'),
