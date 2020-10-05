@@ -8,8 +8,6 @@ export default DS.Model.extend({
   isDone: computed('status', function () {
     switch (this.get('content.contentable')) {
       case 'code-challenge':
-      case 'qna':
-        return this.score >= this.get('content.maxScore')
       default:
         return this.status === 'DONE';
     }
