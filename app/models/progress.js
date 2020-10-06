@@ -4,7 +4,7 @@ import { computed } from '@ember/object'
 export default DS.Model.extend({
   status: DS.attr(),
   feedbackStatus: DS.attr(),
-  score: DS.attr('number'),
+  score: DS.attr('number', { defaultValue: 0 }),
   isDone: computed('status', function () {
     switch (this.get('content.contentable')) {
       case 'code-challenge':
