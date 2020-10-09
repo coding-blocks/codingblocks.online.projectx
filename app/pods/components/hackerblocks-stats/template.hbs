@@ -7,28 +7,30 @@
     @autoFire="true" as |stats|>
     <div class="font-normal">Current Rank</div>
     <div class="row no-gutters justify-content-between align-items-center mt-2">
-      <span class="font-md bold">{{stats.currentOverallRank}}</span>
       {{#if (gte stats.currentOverallRank stats.previousOverallRank)}}
+        <span class="font-md bold green">{{stats.currentOverallRank}}</span>
         <span class="green">
-          <FaIcon @icon="caret-down" />
+          <FaIcon @icon="caret-up" />
           <span class="ml-1">{{sub stats.currentOverallRank stats.previousOverallRank}} ranks</span>
         </span>
       {{else}}
+        <span class="font-md bold salmon">{{stats.currentOverallRank}}</span>
         <span class="salmon">
-          <FaIcon @icon="caret-up" />
+          <FaIcon @icon="caret-down" />
           <span class="ml-1">{{sub stats.previousOverallRank stats.currentOverallRank}} ranks</span>
         </span>
       {{/if}}
     </div>
     <div class="font-normal mt-4 pt-2">Monthly Performance</div>
     <div class="row no-gutters justify-content-between align-items-center mt-2">
-      <span class="font-md bold">{{stats.currentMonthScore}} Points</span>
       {{#if (gte stats.currentMonthScore stats.previousMonthScore)}}
+        <span class="font-md bold green">{{stats.currentMonthScore}} Points</span>
         <span class="green">
           <FaIcon @icon="caret-up" />
           <span class="ml-1">{{sub stats.currentMonthScore stats.previousMonthScore}} points</span>
         </span>
       {{else}}
+        <span class="font-md bold salmon">{{stats.currentMonthScore}} Points</span>
         <span class="salmon">
           <FaIcon @icon="caret-down" />
           <span class="ml-1">{{sub stats.previousMonthScore stats.currentMonthScore}} points</span>
