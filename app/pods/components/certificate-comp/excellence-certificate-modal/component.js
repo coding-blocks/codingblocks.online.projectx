@@ -18,6 +18,11 @@ export default class ExcellenceCertificateModal extends Component {
     return this.courseCompleted && (this.stats.scoreCompletionPercentage >= this.run.get('excellenceThreshold'))
   }
 
+  @computed('stats.scoreCompletionPercentage')
+  get assignmentPercentage () {
+    return this.stats.scoreCompletionPercentage.toFixed(2)
+  }
+
   @dropTask excellenceCertificateTask = function* () {
     yield this.api.request('certificates/excellence', {
       method: 'POST',
