@@ -36,7 +36,7 @@ export default DS.Model.extend({
     return (
       this.premium &&
       !this.isExpired &&
-      (this.runTier == 'PREMIUM' || this.runTier == null) &&
+      (['PREMIUM', 'LIVE'].includes(this.runTier) || this.runTier == null) &&
       (this.pauseTimeLeft >= (1 * 24 * 60 * 60 * 1000))
     )
   }),
