@@ -33,6 +33,15 @@ export default FileField.extend({
       }
     })
 
+    if(this.maxSize){
+      if(files[0].size/1024 > this.maxSize){
+        alert("file is way too large")
+        this.enableUpload(false)
+      }else{
+        this.enableUpload(true)
+      }
+    }
+
     if(this.onProgress) {
       uploader.on('progress', e => {
         this.onProgress(e)

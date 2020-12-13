@@ -12,5 +12,6 @@ export default DS.Model.extend({
   comments: DS.hasMany('comment'),
   feedbacks: DS.hasMany('doubt-feedback'),
   resolvedById: DS.attr(),
-  createdAt: DS.attr('date')
+  createdAt: DS.attr('date'),
+  file_link: DS.attr()
 })
