@@ -21,7 +21,7 @@ export default class CodeEditor extends Component {
 
   constructor() {
     super(...arguments)
-    this.firepad.loadFirepad()
+    this.firepad.loadFirepad() 
   }
 
   @computed('explanation')
