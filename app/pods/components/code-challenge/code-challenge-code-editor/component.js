@@ -130,7 +130,7 @@ export default class CodeEditor extends Component {
       method: "POST",
       data: {
         contentId: this.codeChallenge.get("hbContentId"),
-        custom_input: Base64.encode(this.customInputText),
+        custom_input: Base64.encode(this.customInputText) || this.get('problem.details.sample_input'),
         source: Base64.encode(this.selectedLanguage.source),
         language: this.selectedLanguage.code,
       },
