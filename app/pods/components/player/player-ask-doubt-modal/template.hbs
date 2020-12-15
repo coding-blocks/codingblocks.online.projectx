@@ -36,7 +36,7 @@
           {{#if doubt.file_link}}
             <span>
               <a href="{{doubt.file_link}}" class="white" download>Download File</a>
-              <i class="fa fa-times" {{action 'reset'}} ></i>
+              <button {{action 'resetUpload'}}><i class="fa fa-times" ></i></button>
             </span>
             {{yield}}
           {{else}}

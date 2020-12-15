@@ -27,6 +27,12 @@ export default class AskDoubtModal extends Component {
   }
 
   @action
+  resetUpload () {
+    this.set("doubt.file_link", null)
+    this.set('triggerUpload', false)
+  }
+
+  @action
   uploadFailed () {
     alert(`Can't Upload file.`)
     this.set('triggerUpload', false)
