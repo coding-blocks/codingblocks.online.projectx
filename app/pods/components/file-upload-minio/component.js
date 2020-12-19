@@ -7,6 +7,7 @@ import Uploader from 'ember-uploader/uploaders/uploader';
 export default FileField.extend({
   uploader: null,
   files: null,
+  maxSize: 10240,
   session: service(),
   didUpdateAttrs () {
     this._super(...arguments)
@@ -33,13 +34,11 @@ export default FileField.extend({
       }
     })
 
-    if(this.maxSize){
-      if(files[0].size/1024 > this.maxSize){
-        alert("file is way too large")
-        this.enableUpload(false)
-      }else{
-        this.enableUpload(true)
-      }
+    if(files[0].size/1024 > this.maxSize){
+      alert("file is way too large")
+      this.enableUpload(false)
+    }else{
+      this.enableUpload(true)
     }
 
     if(this.onProgress) {
