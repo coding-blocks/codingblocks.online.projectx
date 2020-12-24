@@ -22,7 +22,7 @@ export default class AskDoubtModal extends Component {
 
   @action
   uploaded(e) {
-    this.set("doubt.file_link",e)
+    this.set("doubt.file_link", e)
     this.set('triggerUpload', false)
   }
 
