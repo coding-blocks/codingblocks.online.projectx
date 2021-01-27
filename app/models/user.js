@@ -25,7 +25,7 @@ export default DS.Model.extend({
         return 'https://www.chitkara.edu.in/wp-content/themes/chitkara/images/CU_logo.png';
       case 'saitm':
         return 'https://minio.cb.lk/public/saitm.png';
-      case 'munjal':
+      case 'bml':
         return 'https://minio.cb.lk/public/thumbnail_bml-munjal-university-logo.png';
       default:
         return 'https://minio.codingblocks.com/amoeba/OnlineLogo2020.svg';

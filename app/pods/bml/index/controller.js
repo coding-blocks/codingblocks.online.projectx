@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 
-export default class MunjalIndexController extends Controller {
+export default class BMLIndexController extends Controller {
   @action
   goToRecommendedCourses () {
     window.scrollTo({
