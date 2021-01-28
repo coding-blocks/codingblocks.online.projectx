@@ -26,7 +26,7 @@ export default DS.Model.extend({
       case 'saitm':
         return 'https://minio.cb.lk/public/saitm.png';
       case 'bml':
-        return 'https://minio.cb.lk/public/thumbnail_bml-munjal-university-logo.png';
+        return 'https://minio.cb.lk/public/bml-logo.jpeg';
       default:
         return 'https://minio.codingblocks.com/amoeba/OnlineLogo2020.svg';
     }
