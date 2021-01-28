@@ -1,0 +1,39 @@
+<div class="p-5" style="border-radius: 30px;">
+
+  <div class="information row justify-content-between mt-md-5 mt-lg-0">
+    <div class="title col-md-6 mt-lg-5">
+      <div class="font-md">Courses specially curated for</div>
+      <div class="font-mdxl bold">BML Munjal University</div>
+    </div>
+    <div class="col-4">
+      <img 
+        class="logo d-none d-md-block" 
+        src="/app/images/thumbnail_bml-munjal-university-logo.png"
+        alt="bml-munjal-logo"
+      />
+      </div>
+  </div>
+
+  <div class="row justify-content-between">
+    <div class="col-md-5 align-self-end mb-5 d-none d-md-block">
+      <button class="button-solid button-purple font-lg" {{action 'goToRecommendedCourses'}}>Explore Courses</button>
+    </div>
+    <div class="banner-image col-md-7 d-flex justify-content-center justify-content-md-end">
+      <img src="https://minio.cb.lk/public/saitm-banner-image.png" alt="saitm-banner-image" class="w-50">
+    </div>
+  </div>
+
+
+  <div class="d-md-none row justify-content-center">
+    <div>
+      <button class="button-solid button-purple font-lg" {{action 'goToRecommendedCourses'}}>Explore Courses</button>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5" id="recommended-courses">
+  {{recommended-courses organization='bml'}}
+</div>
+
+
+{{offerings-static}}

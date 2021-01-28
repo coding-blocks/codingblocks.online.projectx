@@ -66,4 +66,5 @@ Router.map(function() {
   this.route('subscribe');
   this.route('chitkara', function() {});
   this.route('saitm', function() {});
+  this.route('bml', function() {});
 });
