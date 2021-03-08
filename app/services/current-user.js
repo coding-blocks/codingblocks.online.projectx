@@ -41,6 +41,9 @@ export default Service.extend({
       .queryRecord("user", { custom: { ext: "url", url: "me" } })
       .then(user => {
         this.set("user", user);
+        if(this.user.photo==""){
+        	this.user.photo="https://online.codingblocks/assets/default.png"
+        }
         this.setOrg(user.get("organization"));
         this.onesignal.setExternalId(user.oneauthId)
         this.metrics.identify({
