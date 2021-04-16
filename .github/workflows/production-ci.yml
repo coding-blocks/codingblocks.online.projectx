@@ -54,4 +54,4 @@ jobs:
           host: ${{ secrets.HOST_PRODUCTION }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
-          script: rm -rf ~/frontends/codingblocks.online.projectx/* && cp -rf ~/temp/dist/* ~/frontends/codingblocks.online.projectx && rm -rf ~/temp
+          script: rm -rf ~/frontends/codingblocks.online.projectx/current/* && cp -rf ~/temp/dist/* ~/frontends/codingblocks.online.projectx/current && rm -rf ~/temp
