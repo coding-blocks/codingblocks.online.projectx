@@ -1,0 +1,33 @@
+---
+language: node_js
+node_js:
+  - "10"
+
+dist: trusty
+
+cache:
+  yarn: true
+  directories:
+    - ~/.npm
+
+env:
+  global:
+    # See https://git.io/vdao3 for details.
+    - JOBS=1
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+
+install:
+  - yarn install --non-interactive
+
+
+before_script: 
+  - openssl aes-256-cbc -d -in key.pem.enc -out key.pem -k $ENC_KEY
+  - rm -rf dist/
+  - ember build --environment=production
+
+script:
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then bash ./deployToProduction.sh; fi
+  - if [ "$TRAVIS_BRANCH" = "development" ]; then bash ./deploy-staging.sh; fi
