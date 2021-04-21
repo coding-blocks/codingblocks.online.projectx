@@ -49,25 +49,27 @@
 </div>
 
 {{#if showReplies}}
-  <div class="ml-5 py-4 b-left b-grey">
-    {{#each doubt.comments as |comment|}}
-      <div class="ml-4">  
-        <div class="d-flex align-items-center">
-          <img src="{{comment.avatarTemplate}}" alt="user photo" class="round s-50x50">
-          <div class="ml-3">
-            <div class="bold">{{comment.name}}</div>
-            <div class="font-xs">{{moment-from-now comment.createdAt}}</div>
+  {{#if doubt.comments.length}}
+    <div class="ml-5 py-4 b-left b-grey">
+      {{#each doubt.comments as |comment|}}
+        <div class="ml-4">  
+          <div class="d-flex align-items-center">
+            <img src="{{comment.avatarTemplate}}" alt="user photo" class="round s-50x50">
+            <div class="ml-3">
+              <div class="bold">{{comment.name}}</div>
+              <div class="font-xs">{{moment-from-now comment.createdAt}}</div>
+            </div>
           </div>
+          <div class="mt-4">
+            <p>{{markdown-to-html comment.body}}</p>
+          </div>
+          <div class="divider-h my-4"></div>
         </div>
-        <div class="mt-4">
-          <p>{{markdown-to-html comment.body}}</p>
-        </div>
-        <div class="divider-h my-4"></div>
-      </div>
-    {{/each}}
-  </div>
-{{else}}
-<h2 class="mt-4">No Replies Yet</h2>
+      {{/each}}
+    </div>
+  {{else}}
+    <h2 class="mt-4">No Replies Yet</h2>
+  {{/if}}
 {{/if}}
 
 {{#if showFeedbackModal}}
