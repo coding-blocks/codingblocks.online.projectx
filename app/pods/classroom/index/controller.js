@@ -74,6 +74,7 @@ export default class MyCoursesController extends Controller {
   @restartableTask fetchWishlistedCourses = function* () {
     return this.store.query('user-course-wishlist', {
       include: 'course',
+      exclude: 'course.*',
       page: {
         limit: this.limit,
         offset: this.offset
