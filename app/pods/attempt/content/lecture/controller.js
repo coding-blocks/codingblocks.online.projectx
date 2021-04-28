@@ -15,6 +15,7 @@ export default class LectureController extends Controller {
       return;
     
     progress.set('status', 'DONE')
+    progress.set('score', this.content.get('maxScore'))
     this.runAttempt.incrementProperty("completedContents")
     progress.save()
   }

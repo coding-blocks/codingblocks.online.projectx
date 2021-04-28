@@ -173,11 +173,13 @@ export default class CodeEditor extends Component {
       later(async () => {
         this.get('store').pushPayload(payload)
         const hbContent = await this.get('store').peekRecord('hbcontent', result.data.id)
-        if (await hbContent.get('topSubmission.score') == 100) {
-          const progress = await this.content.get('progress')
+        const topSubmissionScore = await hbContent.get('topSubmission.score')
+        const progress = await this.content.get('progress')
+        if (topSubmissionScore == 100) {
           progress.set("status", 'DONE')
-          return progress.save();
         }
+        progress.set("score", +topSubmissionScore)
+        return progress.save();
       }, 0)
     })
   
