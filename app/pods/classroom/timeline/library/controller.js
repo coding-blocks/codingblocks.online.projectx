@@ -32,7 +32,7 @@ export default class ClassroomTimelineLibraryController extends Controller {
       name: 'Doubts',
       component: 'course-library/doubts',
       task: this.fetchDoubts,
-      option:true
+      options: {showTransitionButton: true}
     }
   ];
 
