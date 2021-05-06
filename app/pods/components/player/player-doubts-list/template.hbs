@@ -1,7 +1,7 @@
 {{#if doubts }}
   {{#each doubts as |doubt|}}
     <div class="py-4">
-      <Player::PlayerDoubtsListItem @doubt={{doubt}} />
+      <Player::PlayerDoubtsListItem @doubt={{doubt}} @showTransitionButton={{@option}}/>
     </div>
     <div class="divider-h"></div>
   {{/each}}

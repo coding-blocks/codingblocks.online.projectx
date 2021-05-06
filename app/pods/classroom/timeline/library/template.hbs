@@ -5,7 +5,7 @@
   @onTabChange={{action "changeTab"}}
   >
   <WAsync @task={{activeTab.task}} @autoFire={{true}} as |result|>
-    {{component activeTab.component runAttempt=runAttempt payload=result class="border-bottom-list my-5"}}
+    {{component activeTab.component runAttempt=runAttempt payload=result option=true class="border-bottom-list my-5"}}
   </WAsync>
 </WTabNav>
 
