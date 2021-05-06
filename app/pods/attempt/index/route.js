@@ -20,11 +20,11 @@ export default class IndexRoute extends Route {
 
       for(const section of sections.toArray()){
         const contents=await section.get('contents')
-        const contentArray=contents.filter((content, index, self) => content.get("id")==contentId)
-        if(contentArray.length){
-        sectionId=section.get("id")
-        break
-        } 
+        const content=contents.findBy("id",contentId)
+        if(content){
+          sectionId=section.get("id")
+          break
+        }
       }
       this.transitionTo(
         "attempt.content",
