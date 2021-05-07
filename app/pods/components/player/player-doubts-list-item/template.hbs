@@ -6,6 +6,16 @@
   </div>
 </div>
 <div class="mt-4">
+  {{#if showTransitionButton}}
+    <span>Go to  </span>
+    <LinkTo
+      class="btn btn-primary btn-lg active"
+      @route="attempt"
+      @model={{doubt.runAttempt.id}}
+      @query={{hash contentId= doubt.content.id}}>
+      {{doubt.content.title}}
+    </LinkTo>
+    {{/if}}
   <h3 class="bold word-wrap overflow-hidden">{{doubt.title}}</h3>
   <p class="word-wrap overflow-hidden">{{doubt.body}}</p>
 </div>
