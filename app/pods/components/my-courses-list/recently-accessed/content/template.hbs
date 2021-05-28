@@ -17,7 +17,10 @@
         </LinkTo>
       {{/if}}
       {{#if showGetCertificate}}
-        <button class="button-green button-solid mx-2">Get Certificate</button>
+        <LinkTo @route="classroom.timeline.overview" @models={{array run.course.id run.id}} @tagName="button"
+          class="button-green button-solid mx-2">
+          Get Certificate
+        </LinkTo>
       {{/if}}
       {{#if canBePaused}}
         <button class="button-dashed button-orange mx-2" {{action (mut showConfirmPause) true}}>Pause</button>
