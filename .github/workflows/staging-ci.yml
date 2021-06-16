@@ -3,7 +3,7 @@ name: deploy
 on: 
   push:
     branches:
-      - master
+      - development
 
 jobs:
   deploy:
@@ -36,14 +36,14 @@ jobs:
       - name: Create temp Directory
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST_PRODUCTION }}
+          host: ${{ secrets.HOST_STAGING }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: mkdir -p ~/temp && rm -rf ~/temp/*
       - name: Upload Build
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.HOST_PRODUCTION }}
+          host: ${{ secrets.HOST_STAGING }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           source: "dist"
@@ -51,7 +51,7 @@ jobs:
       - name: Replace New Build
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST_PRODUCTION }}
+          host: ${{ secrets.HOST_STAGING }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: rm -rf ~/frontends/codingblocks.online.projectx/* && cp -rf ~/temp/dist/* ~/frontends/codingblocks.online.projectx/ && rm -rf ~/temp
