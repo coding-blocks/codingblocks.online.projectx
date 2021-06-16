@@ -70,7 +70,14 @@
               </div>
               {{!-- <div class="gradient-text-orange mt-1">30% Discount</div> --}}
             </div>
-            <a href={{buyLink}} target="_blank" class="button-solid button-orange">Upgrade</a>
+            {{#if runAttempt.premimum}}
+              <a href={{buyLink}} target="_blank" class="button-solid button-orange">Upgrade</a>
+            {{else}}
+              <a href="/courses/{{runAttempt.run.course.identifier}}" class="button-solid button-orange mr-4"
+                onclick={{action 'log' 'buy_now' runAttempt.run.course.identifier preventDefault=false}}>
+                Buy Now to Upgrade
+              </a>
+            {{/if}}
           {{else}}
             <div class="col-12 t-align-c">
               No Upgrade Packs available. Please contact <a href="mailto:support@codingblocks.com">support@codingblocks.com</a>
