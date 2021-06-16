@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { dropTask } from 'ember-concurrency-decorators';
 import { timeout } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
+import { action, computed } from '@ember/object';
 import config from 'codingblocks-online/config/environment';
 
 
@@ -36,5 +36,13 @@ export default class UpgradeBlocker extends Component {
       }
     }
     return `${config.dukaanUrl}/buy?` + $.param(params)
+  }
+
+  @action
+  log(event, course){
+    this.metrics.trackEvent({
+      action: event,
+      category: course,
+    })
   }
 }
