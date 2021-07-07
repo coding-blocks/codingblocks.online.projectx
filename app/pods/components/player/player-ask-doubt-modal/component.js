@@ -18,4 +18,23 @@ export default class AskDoubtModal extends Component {
     if (!this.doubt.isNew)
       this.onClose()
   }
+  canUpload = true;
+
+  @action
+  uploaded(e) {
+    this.set("doubt.file_link", e)
+    this.set('triggerUpload', false)
+  }
+
+  @action
+  resetUpload () {
+    this.set("doubt.file_link", null)
+    this.set('triggerUpload', false)
+  }
+
+  @action
+  uploadFailed () {
+    alert(`Can't Upload file.`)
+    this.set('triggerUpload', false)
+  }
 }

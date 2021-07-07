@@ -32,6 +32,27 @@
             @text={{doubt.body}} />
           <div class="card-sm">Describe your problem thoroughly. You can drag and drop images in your description.</div>
         </div>
+        <div class="d-flex justify-content-between align-items-center">
+          {{#if doubt.file_link}}
+            <span>
+              <a href="{{doubt.file_link}}" class="white" download>Download File</a>
+              <button {{action 'resetUpload'}}><i class="fa fa-times" ></i></button>
+            </span>
+            {{yield}}
+          {{else}}
+            <div>
+              <span class="bold mr-3">
+                Upload File:
+              </span>
+              {{file-upload-minio triggerUpload=triggerUpload onComplete=(action 'uploaded') onError=(action 'uploadFailed') enableUpload=(action (mut this.canUpload)) maxSize=5120 }}
+            </div>
+            <span class="float-right">
+              <button class="button-solid button-orange" disabled={{ not this.canUpload}} {{action (mut triggerUpload) true}}>
+                Upload File
+              </button>
+            </span>
+          {{/if}}
+        </div>
         <div class="mt-5 d-flex justify-content-end">
           <button class="mr-3" {{action onClose}}>Cancel</button>
           <button 
