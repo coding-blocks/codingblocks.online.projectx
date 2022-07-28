@@ -12,7 +12,7 @@ export default class SpinWinModalComponent extends Component {
 
   @computed('referralCode', 'prize.title')
   get shareText() {
-    return `I am ecstatic to share that I have won ${this.prize.title} in Coding Blocks’s new Summer Learning Spree Campaign. Don’t wait any further. You can also win amazing prizes. Click on https://cb.lk/snwfb to participate in the Campaign and get an extra spin. #TurnYourLuck #CodingBlocks`
+    return `I am ecstatic to share that I have won ${this.prize.title} in Coding Blocks’s new Summer Learning Spree Campaign. Don’t wait any further. You can also win amazing prizes. Click on https://codingblocks.com/snwfb to participate in the Campaign and get an extra spin. #TurnYourLuck #CodingBlocks`
   }
 
   @action

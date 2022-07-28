@@ -9,13 +9,13 @@ export default class SpinLoseModalComponent extends Component{
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
-    'twitter': text => `http://twitter.com/share?text=${text}&url=https://cb.lk/snwtw&hashtags=CodingBlocks,TurnYourLuck&via=codingBlocksIN`,
-    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=https://cb.lk/snwfb&quote=${text}`
+    'twitter': text => `http://twitter.com/share?text=${text}&url=https://codingblocks.com/snwtw&hashtags=CodingBlocks,TurnYourLuck&via=codingBlocksIN`,
+    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=https://codingblocks.com/snwfb&quote=${text}`
   }
 
   @computed('referralCode', 'prize.title')
   get shareText() {
-    return `Signup using this link to get Rs 500 in your wallet and stand a chance of winning amazing prizes this Summer using my referral code: https://cb.lk/join/${this.code}`
+    return `Signup using this link to get Rs 500 in your wallet and stand a chance of winning amazing prizes this Summer using my referral code: https://codingblocks.com/join/${this.code}`
   }
 
   @action

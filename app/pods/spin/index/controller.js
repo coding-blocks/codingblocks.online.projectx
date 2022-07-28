@@ -17,14 +17,14 @@ export default class SpinIndexController extends Controller {
 
   linksMap = {
     'whatsapp': text => `https://web.whatsapp.com/send?text=${text}`,
-    'twitter': text => `http://twitter.com/share?text=${text}&url=https://cb.lk/snwtw&hashtags=CodingBlocks,TurnYourLuck&via=codingBlocksIN`,
-    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=https://cb.lk/snwfb&quote=${text}`,
+    'twitter': text => `http://twitter.com/share?text=${text}&url=https://codingblocks.com/snwtw&hashtags=CodingBlocks,TurnYourLuck&via=codingBlocksIN`,
+    'facebook': text => `https://www.facebook.com/sharer/sharer.php?u=https://codingblocks.com/snwfb&quote=${text}`,
     // 'linkedin': text => `...`
   }
 
   @computed('referralCode')
   get shareText() {
-    return `Signup using this link to get Rs 500 in your wallet and stand a chance of winning amazing prizes this Summer using my referral code: https://cb.lk/join/${this.referralCode}`
+    return `Signup using this link to get Rs 500 in your wallet and stand a chance of winning amazing prizes this Summer using my referral code: https://codingblocks.com/join/${this.referralCode}`
   }
 
   getTransformForRotation(el, deg) {
@@ -34,7 +34,7 @@ export default class SpinIndexController extends Controller {
 
   @computed('referralCode', 'wonPrize.title')
   get shareTextWin() {
-    return `I won ${this.wonPrize.title} from Coding Blocks. So, hurry up and participate in the Campaign. Click on https://cb.lk/join/${this.referralCode} to win an additional spin. The offer expires soon.`
+    return `I won ${this.wonPrize.title} from Coding Blocks. So, hurry up and participate in the Campaign. Click on https://codingblocks.com/join/${this.referralCode} to win an additional spin. The offer expires soon.`
   }
 
   @dropTask spin = function* () {
